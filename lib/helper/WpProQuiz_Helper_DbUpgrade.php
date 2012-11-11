@@ -1,0 +1,102 @@
+<?php
+class WpProQuiz_Helper_DbUpgrade {
+	
+	const WPPROQUIZ_DB_VERSION = 3;
+	
+	private $_wpdb;
+	private $_prefix;
+
+	public function __construct() {
+		global $wpdb;
+		
+		$this->_wpdb = $wpdb;
+	}
+	
+	public function upgrade($version) {
+		
+		if($version === false || ((int)$version) > WpProQuiz_Helper_DbUpgrade::WPPROQUIZ_DB_VERSION) {
+			$this->install();
+			return WpProQuiz_Helper_DbUpgrade::WPPROQUIZ_DB_VERSION;
+		}
+		
+		$version = (int) $version;
+		
+		if($version === WpProQuiz_Helper_DbUpgrade::WPPROQUIZ_DB_VERSION)
+			return WpProQuiz_Helper_DbUpgrade::WPPROQUIZ_DB_VERSION;
+		
+		if($version === false || $version > WpProQuiz_Helper_DbUpgrade::WPPROQUIZ_DB_VERSION) {
+			$this->install();
+			return WpProQuiz_Helper_DbUpgrade::WPPROQUIZ_DB_VERSION;
+		}
+		
+		do {
+			$f = 'upgradeDbV'.$version;
+			
+			if(method_exists($this, $f)) {
+				$version = $this->$f();
+			} else {
+				die("WpProQuiz upgrade error");
+			}
+		} while ($version < WpProQuiz_Helper_DbUpgrade::WPPROQUIZ_DB_VERSION);
+		
+		return WpProQuiz_Helper_DbUpgrade::WPPROQUIZ_DB_VERSION;
+	}
+	
+	public function delete() {
+		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_master`');
+		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_question`');
+	}
+	
+	private function install() {
+		
+		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_master`');
+		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_question`');
+		
+		$this->_wpdb->query('
+			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_master` (
+				`id` int(11) NOT NULL AUTO_INCREMENT,
+				`name` varchar(200) NOT NULL,
+				`text` text NOT NULL,
+				`result_text` text NOT NULL,
+				`title_hidden` tinyint(1) NOT NULL,
+				`question_random` tinyint(1) NOT NULL,
+				`answer_random` tinyint(1) NOT NULL,
+				`check_answer` tinyint(1) NOT NULL,
+				`back_button` tinyint(1) NOT NULL,
+				`time_limit` int(11) NOT NULL,
+				PRIMARY KEY (`id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+		');
+		
+		$this->_wpdb->query('
+			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_question` (
+				`id` int(11) NOT NULL AUTO_INCREMENT,
+				`quiz_id` int(11) NOT NULL,
+				`sort` tinyint(3) unsigned NOT NULL,
+				`title` varchar(200) NOT NULL,
+				`question` text NOT NULL,
+				`correct_msg` text NOT NULL,
+				`incorrect_msg` text NOT NULL,
+				`answer_type` varchar(50) NOT NULL,
+				`answer_json` text NOT NULL,
+				PRIMARY KEY (`id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+		');
+	}
+	
+	private function upgradeDbV1() {
+		
+		$this->_wpdb->query('
+			ALTER TABLE `'.$this->_wpdb->prefix.'wp_pro_quiz_master` 
+				ADD  `back_button` TINYINT( 1 ) NOT NULL AFTER  `answer_random`,
+				ADD  `check_answer` TINYINT( 1 ) NOT NULL AFTER  `answer_random`,
+				ADD  `result_text` TEXT NOT NULL AFTER  `text`
+		');
+		
+		return 2;
+	}
+	
+	private function upgradeDbV2() {
+		return 3;
+	}
+}

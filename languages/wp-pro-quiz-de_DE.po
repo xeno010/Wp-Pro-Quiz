@@ -1,0 +1,374 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wp-Pro-Quiz\n"
+"POT-Creation-Date: 2012-11-10 13:55+0100\n"
+"PO-Revision-Date: 2012-11-10 16:40+0100\n"
+"Last-Translator: Julius Fischer <julius.f@gmx.net>\n"
+"Language-Team: Julius Fischer\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:21
+msgid "Do you really want to delete the quiz/question?"
+msgstr "Wollen Sie das Quiz/Frage wirklich löschen?"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:22
+msgid "Title is not filled!"
+msgstr "Titel wurde nicht ausgefüllt!"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:23
+msgid "No question deposited!"
+msgstr "Keine Frage hinterlegt!"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:24
+msgid "Correct answer was not selected!"
+msgstr "Keine korrekte Antwort markiert!"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:25
+msgid "No answer deposited!"
+msgstr "Keine Antwort hinterlegt!"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:52
+msgid "Edit question"
+msgstr "Frage bearbeiten"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:59
+msgid "Question edited"
+msgstr "Frage geändert"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:68
+msgid "New question"
+msgstr "Neue Frage"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:77
+msgid "Question added"
+msgstr "Frage hinzugefügt"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:37
+msgid "Edit quiz"
+msgstr "Quiz bearbeiten"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:44
+#: lib/controller/WpProQuiz_Controller_Quiz.php:73
+msgid "Quiz title or quiz description are not filled"
+msgstr "Quiz Titel oder Quiz Beschreibung nicht ausgefüllt"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:49
+msgid "Not all fields are filled"
+msgstr "Nicht alle Felder ausgefüllt"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:61
+#: lib/controller/WpProQuiz_Controller_Quiz.php:67
+msgid "Create quiz"
+msgstr "Quiz erstellen"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:85
+msgid "Quiz deleted"
+msgstr "Quiz gelöscht"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:51
+msgid "Start quiz"
+msgstr "Quiz starten"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:55
+msgid "Results"
+msgstr "Ergebnis"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:57
+#, php-format
+msgid "%s from %s questions answered correctly"
+msgstr "%s von %s Frage korrekt beantwortet"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:60
+msgid "Time has elapsed"
+msgstr "Zeit ist abgelaufen"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:63
+msgid "Your time: <span></span>"
+msgstr "Ihre Zeit: <span></span>"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:69
+msgid "Restart quiz"
+msgstr "Quiz erneut starten"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:70
+msgid "View question"
+msgstr "Frage ansehen"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:74
+#: lib/view/WpProQuiz_View_QuizEdit.php:72
+#: lib/view/WpProQuiz_View_QuizEdit.php:77
+msgid "Time limit"
+msgstr "Zeitlimit"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:86
+#, php-format
+msgid "Question %s from %s"
+msgstr "Frage %s von %s"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:88
+#: lib/view/WpProQuiz_View_QuestionEdit.php:23
+msgid "Question"
+msgstr "Frage"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:132
+msgid "Right"
+msgstr "Richtig"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:140
+msgid "Wrong"
+msgstr "Falsch"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:147
+msgid "Check"
+msgstr "Prüfen"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:148
+msgid "Back"
+msgstr "Zurück"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:149
+msgid "Next exercise"
+msgstr "Nächste Frage"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:13
+#: lib/view/WpProQuiz_View_QuestionOverall.php:9
+#: lib/view/WpProQuiz_View_QuizEdit.php:8
+msgid "back to overview"
+msgstr "zurück zur Übersicht"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:17
+msgid "Title"
+msgstr "Titel"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:31
+msgid "Message with the correct answer"
+msgstr "Nachricht bei korrekter Antwort"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:39
+msgid "Message with the incorrect answer"
+msgstr "Nachricht bei inkorrekter Antwort"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:47
+msgid "Answer type"
+msgstr "Antwort Typ?"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:55
+msgid "Single choice"
+msgstr "Single choice"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:59
+msgid "Multiple choice"
+msgstr "Multiple choice"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:63
+msgid "\"Free\" choice"
+msgstr "\"Free\" choice"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:67
+msgid "\"Sorting\" choice"
+msgstr "\"Sorting\" choice"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:72
+msgid "Answers"
+msgstr "Antworten"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:81
+msgid ""
+"korrect answers (one per line) (answers will be converted to lower case)"
+msgstr ""
+"Korrekte Antworten (eine pro Zeile ) (Antworten werden in Kleinbuchstaben "
+"umgewandelt)"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:87
+msgid ""
+"Please sort the answers in right order with the \"Move\" - Button. The "
+"answers will be displayed in right order later."
+msgstr ""
+"Bitte Fragen mit dem \"Verschiebe\"-Button in die richtige Reihenfolge "
+"bringen. Die Fragen werden später immer sortiert ausgegeben."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:93
+#: lib/view/WpProQuiz_View_QuestionEdit.php:105
+#: lib/view/WpProQuiz_View_QuestionEdit.php:115
+#: lib/view/WpProQuiz_View_QuestionEdit.php:134
+#: lib/view/WpProQuiz_View_QuestionEdit.php:150
+#: lib/view/WpProQuiz_View_QuestionEdit.php:164
+msgid "Delete question"
+msgstr "Frage löschen"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:94
+#: lib/view/WpProQuiz_View_QuestionEdit.php:106
+#: lib/view/WpProQuiz_View_QuestionEdit.php:116
+#: lib/view/WpProQuiz_View_QuestionEdit.php:135
+#: lib/view/WpProQuiz_View_QuestionEdit.php:151
+#: lib/view/WpProQuiz_View_QuestionEdit.php:165
+#: lib/view/WpProQuiz_View_QuestionOverall.php:26
+msgid "Move"
+msgstr "Verschieben"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:96
+#: lib/view/WpProQuiz_View_QuestionEdit.php:108
+#: lib/view/WpProQuiz_View_QuestionEdit.php:118
+#: lib/view/WpProQuiz_View_QuestionEdit.php:137
+#: lib/view/WpProQuiz_View_QuestionEdit.php:153
+#: lib/view/WpProQuiz_View_QuestionEdit.php:167
+msgid "Allow HTML"
+msgstr "HTML erlauben"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:124
+#: lib/view/WpProQuiz_View_QuestionEdit.php:173
+msgid "add new question"
+msgstr "neue Frage hinzufügen"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:132
+#: lib/view/WpProQuiz_View_QuestionEdit.php:148
+#: lib/view/WpProQuiz_View_QuestionEdit.php:162
+msgid "correct?"
+msgstr "Korrekt?"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:8
+msgid "Questions sorted"
+msgstr "Fragen sortiert"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:13
+#: lib/view/WpProQuiz_View_QuizOverall.php:14
+msgid "Name"
+msgstr "Name"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:14
+#: lib/view/WpProQuiz_View_QuizOverall.php:15
+msgid "Action"
+msgstr "Aktion"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:24
+#: lib/view/WpProQuiz_View_QuizOverall.php:28
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:25
+#: lib/view/WpProQuiz_View_QuizOverall.php:29
+msgid "Delete"
+msgstr "Löschen"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:33
+msgid "Add question"
+msgstr "Frage hinzufügen"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:34
+msgid "Save order"
+msgstr "Sortierung speichern"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:12
+msgid "Quiz title"
+msgstr "Quiz Titel"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:18
+msgid "Options"
+msgstr "Optionen"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:24
+msgid "Hide quiz title"
+msgstr "Quiz Titel verstecken"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:29
+msgid "Hide title"
+msgstr "Titel verstecken"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:35
+msgid "The title serves as quiz heading."
+msgstr "Der Titel dient als Quiz Überschrift."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:42
+#: lib/view/WpProQuiz_View_QuizEdit.php:47
+msgid "Display question randomly"
+msgstr "Fragen zufällig ausgeben"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:57
+#: lib/view/WpProQuiz_View_QuizEdit.php:62
+msgid "Display answers randomly"
+msgstr "Antworten zufällig ausgeben"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:80
+msgid "Seconds"
+msgstr "Sekunden"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:83
+msgid "0 = no limit"
+msgstr "0 = Kein Limit"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:90
+#: lib/view/WpProQuiz_View_QuizEdit.php:95
+msgid "Check -> continue"
+msgstr "Prüfen -> Weiter"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:101
+msgid ""
+"Show \"right or wrong\" after the question. Otherwise the solutions will be "
+"displayed at the end."
+msgstr ""
+"Zeigt \"richtig oder falsch\" nach jeder Frage an. Ansonsten werden die "
+"Lösungen erst am Ende angezeigt."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:108
+#: lib/view/WpProQuiz_View_QuizEdit.php:113
+msgid "Back button"
+msgstr "Zurück Button"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:119
+msgid ""
+"Allow to use back button in a question. (Option will be ignored if \"Check -"
+"> Continue\" was used)"
+msgstr ""
+"Ermöglicht das Zurückgehen einer Frage. (Option wird ignoriert bei \"Prüfen -"
+"> Weiter\")"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:129
+msgid "Quiz description"
+msgstr "Quiz Beschreibung"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:132
+msgid "This text will be displayed before start of the quiz."
+msgstr "Dieser Text wird vor dem Starten des Quizes angezeigt."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:140
+msgid "Results text"
+msgstr "Ergebnis Text"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:143
+msgid ""
+"This text will be displayed at the end of the quiz (in results). (this text "
+"is optional)"
+msgstr ""
+"Dieser Text wird beim Beenden (im Ergebnis) des Quizes angezeigt (Dieser "
+"Text ist optional)"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:8
+msgid "Quiz overview"
+msgstr "Quiz Übersicht"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:12
+msgid "ID"
+msgstr "ID"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:13
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:27
+msgid "Questions"
+msgstr "Fragen"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:30
+msgid "Preview"
+msgstr "Vorschau"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:37
+msgid "Add quiz"
+msgstr "Quiz hinzufügen"
