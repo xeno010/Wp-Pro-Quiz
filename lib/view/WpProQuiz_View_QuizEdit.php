@@ -9,14 +9,14 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 	<form method="post">
 		<div id="poststuff">
 			<div class="postbox">
-				<h3 class="hndle"><?php _e('Quiz title', 'wp-pro-quiz'); ?></h3>
+				<h3 class="hndle"><?php _e('Quiz title', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
 					<input name="name" type="text" class="regular-text" value="<?php echo $this->quiz->getName(); ?>">
 				</div>
 			</div>
 			<div class="postbox">
 				<h3 class="hndle"><?php _e('Options', 'wp-pro-quiz'); ?></h3>
-				<div class="inside">
+				<div class="wrap wpProQuiz_quizEdit">
 					<table class="form-table">
 						<tbody>
 							<tr>
@@ -121,12 +121,50 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</fieldset>
 								</td>
 							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Statistics', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Statistics', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label for="statistics_on">
+											<input type="checkbox" id="statistics_on" value="1" name="statisticsOn" <?php echo $this->quiz->isStatisticsOn() ? 'checked="checked"' : '' ?>>
+											<?php _e('activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('Statistics about right or wrong answers. Statistics will be saved by completed quiz, not after every question. The statistics is only visible over administration menu. (internal statistics)', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
+							<tr id="statistics_ip_lock_tr" style="display: none;">
+								<th scope="row">
+									<?php _e('Statistics IP-lock', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Statistics IP-lock', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label for="statistics_ip_lock">
+											<input type="text" id="statistics_ip_lock" value="<?php echo ($this->quiz->getStatisticsIpLock() === null) ? 1440 : $this->quiz->getStatisticsIpLock(); ?>" name="statisticsIpLock">
+											<?php _e('in minutes (recommended 1440 minutes = 1 day)', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('Protect the statistics from spam. Result will only be saved every X minutes from same IP. (0 = deactivated)', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
 			<div class="postbox">
-				<h3 class="hndle"><?php _e('Quiz description', 'wp-pro-quiz'); ?></h3>
+				<h3 class="hndle"><?php _e('Quiz description', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
 					<p class="description">
 						<?php _e('This text will be displayed before start of the quiz.', 'wp-pro-quiz'); ?>
@@ -137,7 +175,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 				</div>
 			</div>
 			<div class="postbox">
-				<h3 class="hndle"><?php _e('Results text', 'wp-pro-quiz'); ?></h3>
+				<h3 class="hndle"><?php _e('Results text', 'wp-pro-quiz'); ?> <?php _e('(optional)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
 					<p class="description">
 						<?php _e('This text will be displayed at the end of the quiz (in results). (this text is optional)', 'wp-pro-quiz'); ?>
@@ -147,10 +185,10 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 					?>
 				</div>
 			</div>
-			<input type="submit" name="submit" class="button-primary">
+			<input type="submit" name="submit" class="button-primary" value="<?php _e('Save', 'wp-pro-quiz'); ?>">
 		</div>
 	</form>
 </div>
-<?php 
+<?php
 	}
 }

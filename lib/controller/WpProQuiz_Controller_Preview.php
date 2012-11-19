@@ -1,11 +1,16 @@
 <?php
-class WpProQuiz_Controller_Preview {
+class WpProQuiz_Controller_Preview extends WpProQuiz_Controller_Controller {
 	
 	private $_plugin_file;
 	
 	public function __construct($plugin_file) {
+		parent::__construct();
 		
+
 		$this->_plugin_file = $plugin_file;
+	}
+	
+	public function route() {
 		
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-sortable');
@@ -25,6 +30,6 @@ class WpProQuiz_Controller_Preview {
 		$view->quiz = $quizMapper->fetch($id);
 		$view->question = $questionMapper->fetchAll($id);
 		
-		$view->show();
+		$view->show(true);
 	}
 }

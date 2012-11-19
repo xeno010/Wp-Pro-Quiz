@@ -1,8 +1,8 @@
 <?php
-class WpProQuiz_Controller_Quiz {
+class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 	private $view;
 		
-	public function __construct() {
+	public function route() {
 		$action = isset($_GET['action']) ? $_GET['action'] : 'show';
 		
 		switch ($action) {
@@ -36,20 +36,26 @@ class WpProQuiz_Controller_Quiz {
 		$this->view = new WpProQuiz_View_QuizEdit();
 		$this->view->header = __('Edit quiz', 'wp-pro-quiz');
 		
-		if(isset($_POST['submit'])) {
-			$this->view->quiz = new WpProQuiz_Model_Quiz($_POST);
+		$m = new WpProQuiz_Model_QuizMapper();
+		
+		if($m->exists($id) == 0) {
+			WpProQuiz_View_View::admin_notices(__('Quiz not found', 'wp-pro-quiz'), 'error');
+			return;
+		}
+		
+		if(isset($this->_post['submit'])) {
+			$this->view->quiz = new WpProQuiz_Model_Quiz($this->_post);
 			$this->view->quiz->setId($id);
 			
-			if($this->checkValidit($_POST)) {
-				WpProQuiz_View_View::admin_notices(__('Quiz title or quiz description are not filled', 'wp-pro-quiz'), 'info');
+			if($this->checkValidit($this->_post)) {
+				WpProQuiz_View_View::admin_notices(__('Quiz edited', 'wp-pro-quiz'), 'info');
 				$this->view->quiz->getMapper()->save($this->view->quiz);
 				$this->showAction();
 				return;
 			} else {
-				WpProQuiz_View_View::admin_notices(__('Not all fields are filled', 'wp-pro-quiz'));
+				WpProQuiz_View_View::admin_notices(__('Quiz title or quiz description are not filled', 'wp-pro-quiz'));
 			}
 		} else {
-			$m = new WpProQuiz_Model_QuizMapper();
 			$this->view->quiz = $m->fetch($id);
 		}
 		
@@ -60,10 +66,10 @@ class WpProQuiz_Controller_Quiz {
 		$this->view = new WpProQuiz_View_QuizEdit();
 		$this->view->header = __('Create quiz', 'wp-pro-quiz');
 		
-		if(isset($_POST['submit'])) {
-			$this->view->quiz = new WpProQuiz_Model_Quiz($_POST);
+		if(isset($this->_post['submit'])) {
+			$this->view->quiz = new WpProQuiz_Model_Quiz($this->_post);
 			
-			if($this->checkValidit($_POST)) {
+			if($this->checkValidit($this->_post)) {
 				WpProQuiz_View_View::admin_notices(__('Create quiz', 'wp-pro-quiz'), 'info');
 				$this->view->quiz->getMapper()->save($this->view->quiz);
 				$this->showAction();

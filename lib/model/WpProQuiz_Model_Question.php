@@ -9,6 +9,9 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	protected $_incorrectMsg;
 	protected $_answerType;
 	protected $_answerJson;
+	protected $_correctCount;
+	protected $_incorrectCount;
+	protected $_correctSameText = false;
 	
 	public function setId($_id)
 	{
@@ -102,5 +105,35 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	
 	public function getAnswerJson() {
 		return $this->_answerJson;
+	}
+	
+	public function setCorrectCount($_correctCount)
+	{
+		$this->_correctCount = $_correctCount;
+		return $this;
+	}
+	
+	public function getCorrectCount() {
+		return (int)$this->_correctCount;
+	}
+	
+	public function setIncorrectCount($_incorrectCount)
+	{
+		$this->_incorrectCount = $_incorrectCount;
+		return $this;
+	}
+	
+	public function getIncorrectCount() {
+		return (int)$this->_incorrectCount;
+	}
+	
+	public function setCorrectSameText($_correctSameText)
+	{
+		$this->_correctSameText = (bool)$_correctSameText;
+		return $this;
+	}
+	
+	public function isCorrectSameText() {
+		return $this->_correctSameText;
 	}
 }

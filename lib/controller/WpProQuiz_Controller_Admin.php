@@ -10,10 +10,25 @@ class WpProQuiz_Controller_Admin {
 		$this->_plugin_dir = $plugin_dir;
 		$this->_plugin_file = $this->_plugin_dir.'/wp-pro-quiz.php';
 		
-		add_action('admin_init', array($this, 'upgradePlugin'));
-		add_action('wp_ajax_update_sort', array($this, 'route') );
+		add_action('wp_ajax_update_sort', array($this, 'updateSort'));
+		add_action('wp_ajax_wp_pro_quiz_statistics_save', array($this, 'statisticsSave'));
+		add_action('wp_ajax_nopriv_wp_pro_quiz_statistics_save', array($this, 'statisticsSave'));
 		add_action('admin_menu', array($this, 'register_page'));
 		add_action('admin_enqueue_scripts', array($this, 'enqueueScript') );
+	}
+	
+	public function updateSort() {
+		
+		if(!current_user_can('administrator'))
+			exit;
+			
+		$c = new WpProQuiz_Controller_Question();
+		$c->route();
+	}
+	
+	public function statisticsSave() {
+		$statistics = new WpProQuiz_Controller_Statistics();
+		$statistics->save();
 	}
 	
 	private function localizeScript() {
@@ -37,18 +52,13 @@ class WpProQuiz_Controller_Admin {
 		
 	}
 	
-	public function upgradePlugin() {
-		$db = new WpProQuiz_Helper_DbUpgrade();
-		$v = $db->upgrade(get_option('wpProQuiz_dbVersion', false));
-		
-		add_option('wpProQuiz_dbVersion', $v);
-	}
-	
 	public static function install() {
+		
 		$db = new WpProQuiz_Helper_DbUpgrade();
 		$v = $db->upgrade(get_option('wpProQuiz_dbVersion', false));
 		
-		add_option('wpProQuiz_dbVersion', $v);
+		if(add_option('wpProQuiz_dbVersion', $v) === false)
+			update_option('wpProQuiz_dbVersion', $v);
 	}
 	
 	public function register_page() {
@@ -61,19 +71,27 @@ class WpProQuiz_Controller_Admin {
 	}
 	
 	public function route() {
-		$_POST = stripslashes_deep($_POST);
-			
 		$module = isset($_GET['module']) ? $_GET['module'] : 'overallView';
+		
+		$c = null;
+		
 		switch ($module) {
 			case 'overallView':
-				new WpProQuiz_Controller_Quiz();
+				$c = new WpProQuiz_Controller_Quiz();
 				break;
 			case 'question':
-				new WpProQuiz_Controller_Question();
+				$c = new WpProQuiz_Controller_Question();
 				break;
 			case 'preview':
-				new WpProQuiz_Controller_Preview($this->_plugin_file);
+				$c = new WpProQuiz_Controller_Preview($this->_plugin_file);
 				break;
+			case 'statistics':
+				$c = new WpProQuiz_Controller_Statistics();
+				break;
+		}
+		
+		if($c !== null) {
+			$c->route();
 		}
 	}
 	

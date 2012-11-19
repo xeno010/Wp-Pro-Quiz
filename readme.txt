@@ -1,9 +1,9 @@
 === Wp-Pro-Quiz ===
-Contributors: Julius Fischer
+Contributors: xeno010
 Tags: quiz
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 0.1
+Stable tag: 0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,11 +26,12 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Back-Button (optional)		
 *		Correct / incorrect response message for all questions (optional)
 *		Preview-function
+*		statistics
 *		really nice standard design
 *		mighty
 
 = Translations =
-* 		English
+* 		English (Thanks Alexander M.)
 *		German (Deutsch)
 
 = Live Demo =
@@ -52,9 +53,14 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 7. Adminmenu - Create quiz
 8. Adminmenu - Quiz question overview
 9. Adminmenu - Create question
-
+10. Adminmenu - Question statistics
 
 == Changelog ==
 
 = 0.1 =
 * release
+
+= 0.2 =
+* bugfix
+* add statistics function
+* small changes

@@ -7,9 +7,12 @@
 		var count = 0;
 		var intervalId = 0;
 		var startTime = 0;
+		var results = new Object();
 		
 		plugin.methode = {
 			startQuiz: function() {
+				
+				results = new Object();
 
 				if(config.questionRandom) {
 					plugin.methode.questionRandom();
@@ -104,7 +107,7 @@
 				$element.find('.wpProQuiz_questionList').each(function() {
 					var j = config.json[i];
 					var ii = 0;
-					$(this).parent().parent().data('type', j.answer_type);
+					$(this).parent().parent().data('type', j.answer_type).data('questionId', j.id);
 					$(this).find('input[name="question"]').each(function() {
 						switch(j.answer_type) {
 						case 'single':
@@ -200,6 +203,8 @@
 				
 				$(btn).hide();
 				checked.attr('disabled', 'disabled');
+				
+				results[$question.data('questionId')] = Number(correct);
 
 				$question.find('.wpProQuiz_response').show();
 
@@ -248,6 +253,19 @@
 				$element.find('.wpProQuiz_results').show();
 				$element.find('.wpProQuiz_time_limit').hide();
 				plugin.methode.setQuizTime();
+				plugin.methode.sendStatistics();
+			},
+			
+			sendStatistics: function() {
+				if(!config.statisticsOn)
+					return;
+				
+				$.ajax({
+					url: config.url,
+					type: 'POST',
+					cache: false,
+					data: {action: 'wp_pro_quiz_statistics_save', 'results': results, 'quizId': config.quizId}	
+				});
 			},
 
 			reShowQuestion: function() {

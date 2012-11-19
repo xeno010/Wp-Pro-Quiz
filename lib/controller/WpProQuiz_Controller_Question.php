@@ -1,15 +1,24 @@
 <?php
-class WpProQuiz_Controller_Question {
+class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 	
 	private $_quizId;
 	
-	public function __construct() {
+	public function route() {
 		
-		if(!isset($_GET['quiz_id']))
-			wp_die('Keine ID');
+		if(!isset($_GET['quiz_id']) || empty($_GET['quiz_id'])) {
+			WpProQuiz_View_View::admin_notices(__('Quiz not found', 'wp-pro-quiz'), 'error');
+			return;
+		}
 		
 		$this->_quizId = (int)$_GET['quiz_id'];
 		$action = isset($_GET['action']) ? $_GET['action'] : 'show';
+		
+		$m = new WpProQuiz_Model_QuizMapper();
+		
+		if($m->exists($this->_quizId) == 0) {
+			WpProQuiz_View_View::admin_notices(__('Quiz not found', 'wp-pro-quiz'), 'error');
+			return;
+		}
 		
 		switch ($action) {
 			case 'add':
@@ -32,7 +41,7 @@ class WpProQuiz_Controller_Question {
 	
 	public function saveSort($quizId) {
 		$mapper = new WpProQuiz_Model_QuestionMapper();
-		$map = $_POST['sort'];
+		$map = $this->_post['sort'];
 		
 		foreach($map as $k => $v)
 			$mapper->updateSort($v, $k);
@@ -52,9 +61,23 @@ class WpProQuiz_Controller_Question {
 		$this->view->header = __('Edit question', 'wp-pro-quiz');
 		$mapper 	= new WpProQuiz_Model_QuestionMapper();
 		
-		if(isset($_POST['submit'])) {
-			$post = $this->clearPost($_POST);
+		if($mapper->exists($id) == 0) {
+			WpProQuiz_View_View::admin_notices(__('Question not found', 'wp-pro-quiz'), 'error');
+			return;
+		}
+		
+		if(isset($this->_post['submit'])) {
+			$post = $this->clearPost($this->_post);
 			$post['id'] = $id;
+			
+			$post['title'] = isset($post['title']) ? trim($post['title']) : '';
+				
+			if(empty($post['title'])) {
+				$question = $mapper->fetch($id);
+
+				$post['title'] = sprintf(__('Question: %d', 'wp-pro-quiz'), $question->getSort()+1);
+			}			
+			
 			$mapper->save(new WpProQuiz_Model_Question($post));
 			WpProQuiz_View_View::admin_notices(__('Question edited', 'wp-pro-quiz'), 'info');
 		} 
@@ -67,11 +90,20 @@ class WpProQuiz_Controller_Question {
 		$this->view = new WpProQuiz_View_QuestionEdit();
 		$this->view->header = __('New question', 'wp-pro-quiz');
 		$post = null;
-		
-		if(isset($_POST['submit'])) {
-			$post = $this->clearPost($_POST);
+
+		if(isset($this->_post['submit'])) {
+			$post = $this->clearPost($this->_post);
 			
 			$questionMapper = new WpProQuiz_Model_QuestionMapper();
+			
+			$post['title'] = isset($post['title']) ? trim($post['title']) : '';
+			
+			if(empty($post['title'])) {
+				$count = $questionMapper->count($this->_quizId);
+
+				$post['title'] = sprintf(__('Question: %d', 'wp-pro-quiz'), $count+1);
+			}
+			
 			$questionMapper->save(new WpProQuiz_Model_Question($post));
 			
 			WpProQuiz_View_View::admin_notices(__('Question added', 'wp-pro-quiz'), 'info');
@@ -81,6 +113,7 @@ class WpProQuiz_Controller_Question {
 		}
 		
 		$this->view->question = new WpProQuiz_Model_Question($post);
+		$this->view->question->setQuizId($this->_quizId);
 		$this->view->show();
 	}
 	
@@ -103,7 +136,6 @@ class WpProQuiz_Controller_Question {
 		}
 			
 		$post['answerJson'] = $this->clear($post['answerJson']);
-		$post = $post;
 		$post['quizId'] = $this->_quizId;
 		
 		return $post;

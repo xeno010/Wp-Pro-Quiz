@@ -50,7 +50,7 @@ class WpProQuiz_Controller_Front {
 		$question = $questionMapper->fetchAll($id);
 		
 		if(empty($quiz) || empty($question))
-			return '';
+			echo '';
 		
 		$view->quiz = $quiz;
 		$view->question = $question;

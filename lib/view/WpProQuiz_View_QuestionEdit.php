@@ -14,13 +14,16 @@ jQuery(document).ready(function($) {
 	<form action="" method="POST">
 		<div id="poststuff">
 			<div class="postbox">
-				<h3 class="hndle"><?php _e('Title', 'wp-pro-quiz'); ?></h3>
+				<h3 class="hndle"><?php _e('Title', 'wp-pro-quiz'); ?> <?php _e('(optional)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
+					<p class="description">
+						<?php _e('The title is used for overview, it is not visible in quiz. If you leave the title field empty, a title will be generated.', 'wp-pro-quiz'); ?>
+					</p>
 					<input name="title" class="regular-text" value="<?php echo $this->question->getTitle(); ?>">
 				</div>
 			</div>			
 			<div class="postbox">
-				<h3 class="hndle"><?php _e('Question', 'wp-pro-quiz'); ?></h3>
+				<h3 class="hndle"><?php _e('Question', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
 					<?php 
 						wp_editor($this->question->getQuestion(), "question", array('textarea_rows' => 5));
@@ -28,16 +31,28 @@ jQuery(document).ready(function($) {
 				</div>
 			</div>	
 			<div class="postbox">
-				<h3 class="hndle"><?php _e('Message with the correct answer', 'wp-pro-quiz'); ?></h3>
+				<h3 class="hndle"><?php _e('Message with the correct answer', 'wp-pro-quiz'); ?> <?php _e('(optional)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
+					<p class="description">
+						<?php _e('This text will be visible if answered correctly. It can be used as explanation for complex questions. The message "Right" or "Wrong" is always displayed automatically.', 'wp-pro-quiz'); ?>
+					</p>
+					<div style="padding-top: 10px; padding-bottom: 10px;">
+						<label for="wpProQuiz_correctSameText">
+							<?php _e('Same text for correct- and incorrect-message?', 'wp-pro-quiz'); ?>  
+							<input type="checkbox" name="correctSameText" id="wpProQuiz_correctSameText" value="1" <?php echo $this->question->isCorrectSameText() ? 'checked="checked"' : '' ?>>
+						</label>
+					</div>
 					<?php 
 						wp_editor($this->question->getCorrectMsg(), "correctMsg", array('textarea_rows' => 3));
 					?>
 				</div>
 			</div>	
-			<div class="postbox">
-				<h3 class="hndle"><?php _e('Message with the incorrect answer', 'wp-pro-quiz'); ?></h3>
+			<div class="postbox" id="wpProQuiz_incorrectMassageBox">
+				<h3 class="hndle"><?php _e('Message with the incorrect answer', 'wp-pro-quiz'); ?> <?php _e('(optional)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
+					<p class="description">
+						<?php _e('This text will be visible if answered incorrectly. It can be used as explanation for complex questions. The message "Right" or "Wrong" is always displayed automatically.', 'wp-pro-quiz'); ?>
+					</p>
 					<?php 
 						wp_editor($this->question->getIncorrectMsg(), "incorrectMsg", array('textarea_rows' => 3));
 					?>
@@ -69,7 +84,7 @@ jQuery(document).ready(function($) {
 				</div>
 			</div>
 			<div class="postbox">
-				<h3 class="hndle"><?php _e('Answers', 'wp-pro-quiz'); ?></h3>
+				<h3 class="hndle"><?php _e('Answers', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside answer_felder">
 					<div class="free_answer">
 					<?php if($type === 'free_answer') { ?>
@@ -84,13 +99,13 @@ jQuery(document).ready(function($) {
 					</div>
 					<div class="sort_answer">
 						<p class="description">
-							<?php _e('Please sort the answers in right order with the "Move" - Button. The answers will be displayed in right order later.', 'wp-pro-quiz'); ?>
+							<?php _e('Please sort the answers in right order with the "Move" - Button. The answers will be displayed randomly.', 'wp-pro-quiz'); ?>
 						</p>
 						<ul>
 							<li style="border-bottom:1px dotted #ccc; padding-bottom: 5px; display:none; background-color: whiteSmoke;">
 								<!--  <input class="small-text" name="answerJson[answer_sort][nr][]" value="" placeholder="Nr."> -->
 								<textarea rows="2" cols="100" class="large-text" name="answerJson[answer_sort][answer][]"></textarea>
-								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete question', 'wp-pro-quiz'); ?>">
+								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete answer', 'wp-pro-quiz'); ?>">
 								<a href="#" class="button-secondary wpProQuiz_move" style="cursor: move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
 								<label>
 									<?php _e('Allow HTML', 'wp-pro-quiz'); ?>
@@ -102,7 +117,7 @@ jQuery(document).ready(function($) {
 							<li style="border-bottom:1px dotted #ccc; padding-bottom: 5px; background-color: whiteSmoke;">
 								<!-- <input class="small-text" name="answerJson[answer_sort][nr][]" value="<?php echo $qa['answer_sort']['nr'][$k]; ?>" placeholder="Nr.">-->
 								<textarea rows="2" cols="100" class="large-text" name="answerJson[answer_sort][answer][]"><?php echo $v; ?></textarea>
-								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete question', 'wp-pro-quiz'); ?>">
+								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete answer', 'wp-pro-quiz'); ?>">
 								<a href="#" class="button-secondary wpProQuiz_move" style="cursor: move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
 								<label>
 									<?php _e('Allow HTML', 'wp-pro-quiz'); ?>
@@ -112,7 +127,7 @@ jQuery(document).ready(function($) {
 					<?php } } else { ?>
 							<li style="border-bottom:1px dotted #ccc; padding-bottom: 5px; background-color: whiteSmoke;">
 								<textarea rows="2" cols="100" class="large-text" name="answerJson[answer_sort][answer][]"></textarea>
-								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete question', 'wp-pro-quiz'); ?>">
+								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete answer', 'wp-pro-quiz'); ?>">
 								<a href="#" class="button-secondary wpProQuiz_move" style="cursor: move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
 								<label>
 									<?php _e('Allow HTML', 'wp-pro-quiz'); ?>
@@ -121,7 +136,7 @@ jQuery(document).ready(function($) {
 							</li>
 						<?php } ?>
 						</ul>
-						<input type="button" class="button-primary addAnswer" value="<?php _e('add new question', 'wp-pro-quiz'); ?>">
+						<input type="button" class="button-primary addAnswer" value="<?php _e('Add new answer', 'wp-pro-quiz'); ?>">
 					</div>
 					<div class="classic_answer">
 						<ul>
@@ -131,7 +146,7 @@ jQuery(document).ready(function($) {
 									<input type="radio" name="answerJson[classic_answer][correct][]" value="0">
 									<?php _e('correct?', 'wp-pro-quiz'); ?>
 								</label>
-								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete question', 'wp-pro-quiz'); ?>">
+								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete answer', 'wp-pro-quiz'); ?>">
 								<a href="#" class="button-secondary wpProQuiz_move" style="cursor: move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
 								<label>
 									<?php _e('Allow HTML', 'wp-pro-quiz'); ?>
@@ -147,7 +162,7 @@ jQuery(document).ready(function($) {
 										<?php echo (isset($qa['classic_answer']['correct']) && in_array($k, $qa['classic_answer']['correct'])) ? 'checked="checked"' : ''; ?>>
 									<?php _e('correct?', 'wp-pro-quiz'); ?>
 								</label>
-								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete question', 'wp-pro-quiz'); ?>">
+								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete answer', 'wp-pro-quiz'); ?>">
 								<a href="#" class="button-secondary wpProQuiz_move" style="cursor: move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
 								<label>
 									<?php _e('Allow HTML', 'wp-pro-quiz'); ?>
@@ -161,7 +176,7 @@ jQuery(document).ready(function($) {
 									<input type="radio" name="answerJson[classic_answer][correct][]" value="1" checked="checked">
 									<?php _e('correct?', 'wp-pro-quiz'); ?>
 								</label>
-								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete question', 'wp-pro-quiz'); ?>">
+								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete answer', 'wp-pro-quiz'); ?>">
 								<a href="#" class="button-secondary wpProQuiz_move" style="cursor: move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
 								<label>
 									<?php _e('Allow HTML', 'wp-pro-quiz'); ?>
@@ -170,11 +185,11 @@ jQuery(document).ready(function($) {
 							</li>
 						<?php } ?>
 						</ul>
-						<input type="button" class="button-primary addAnswer" value="<?php _e('add new question', 'wp-pro-quiz'); ?>">
+						<input type="button" class="button-primary addAnswer" value="<?php _e('Add new answer', 'wp-pro-quiz'); ?>">
 					</div>
 				</div>
 			</div>
-			<input type="submit" name="submit" id="saveQuestion" class="button-primary" name="Senden">			
+			<input type="submit" name="submit" id="saveQuestion" class="button-primary" value="<?php _e('Save', 'wp-pro-quiz'); ?>">			
 		</div>
 	</form>
 </div>

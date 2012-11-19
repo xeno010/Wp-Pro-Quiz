@@ -11,6 +11,8 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_timeLimit = 0;
 	protected $_backButton;
 	protected $_checkAnswer;
+	protected $_statisticsOn;
+	protected $_statisticsIpLock;
 	
 	public function getId() {
 		return $this->_id;
@@ -29,12 +31,7 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 		$this->_name = $name;
 		return $this;
 	}
-	
-	/**
-	 * Test
-	 * @param string $text
-	 * @return WpProQuiz_Model_Quiz
-	 */
+
 	public function setText($text) {
 		$this->_text = $text;
 		return $this;
@@ -105,5 +102,23 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
 	public function isCheckAnswer() {
 		return $this->_checkAnswer;
+	}
+	
+	public function setStatisticsOn($_statisticsOn) {
+		$this->_statisticsOn = (bool)$_statisticsOn;
+		return $this;
+	}
+	
+	public function isStatisticsOn() {
+		return $this->_statisticsOn;
+	}
+	
+	public function setStatisticsIpLock($_statisticsIpLock) {
+		$this->_statisticsIpLock = (int)$_statisticsIpLock;
+		return $this;
+	}
+	
+	public function getStatisticsIpLock() {
+		return $this->_statisticsIpLock;
 	}
 }

@@ -24,6 +24,7 @@ jQuery(document).ready(function($) {
 			}
 			
 			$('input[name="answerType"]:checked').click();
+			$('#wpProQuiz_correctSameText').change();
 		};
 
 		var formListener = {
@@ -64,6 +65,13 @@ jQuery(document).ready(function($) {
 					update: function(event, ui) {
 						formListener.setValueClassicAnswer();
 					}
+				});
+				
+				$('#wpProQuiz_correctSameText').change(function() {
+					if(this.checked)
+						$('#wpProQuiz_incorrectMassageBox').hide();
+					else
+						$('#wpProQuiz_incorrectMassageBox').show();
 				});
 				
 			},
@@ -111,14 +119,8 @@ jQuery(document).ready(function($) {
 		};
 
 		var validate = function () {
-			var title = $('input[name="title"]');
 			var question = tinymce.editors.question.getContent();
 			var type = $('input[name="answerType"]:checked');
-			
-			if(isEmpty(title.val())) {
-				alert(wpProQuizLocalize.no_title_msg);
-				return false;
-			}
 			
 			if(isEmpty(question)) {
 				alert(wpProQuizLocalize.no_question_msg);
@@ -197,11 +199,17 @@ jQuery(document).ready(function($) {
 				});
 				
 				return array;
+			},
+			
+			sortUpdate: function(e, ui) {
+				$('.wpProQuiz_questionOverall tbody').children().each(function() {
+					$t = $(this).children().first().text($(this).index() + 1);
+				});
 			}
 		};
 		
 		var init = function() {
-			$('.wp-list-table tbody').sortable({ handle: '.wpProQuiz_move' });
+			$('.wp-list-table tbody').sortable({ handle: '.wpProQuiz_move', update: methode.sortUpdate });
 
 			$('.wpProQuiz_delete').click(function(e) {
 				var b = confirm(wpProQuizLocalize.delete_msg);
@@ -224,8 +232,32 @@ jQuery(document).ready(function($) {
 
 		init();
 	};
+	
+	$.fn.wpProQuiz_quizEdit = function() {
+		var init = function() {
+			$('#statistics_on').change(function() {
+				if(this.checked) {
+					$('#statistics_ip_lock_tr').show();
+				} else {
+					$('#statistics_ip_lock_tr').hide();
+				}
+			});
+			
+			$('#statistics_on').change();
+		};
+		
+		init();
+	};
 
-	$('.wpProQuiz_quizOverall').wpProQuiz_preview();
-	$('.wpProQuiz_questionEdit').wpProQuiz_questionEdit();
-	$('.wpProQuiz_questionOverall').wpProQuiz_questionOverall();
+	if($('.wpProQuiz_quizOverall').length)
+		$('.wpProQuiz_quizOverall').wpProQuiz_preview();
+	
+	if($('.wpProQuiz_quizEdit').length)
+		$('.wpProQuiz_quizEdit').wpProQuiz_quizEdit();
+	
+	if($('.wpProQuiz_questionEdit').length)
+		$('.wpProQuiz_questionEdit').wpProQuiz_questionEdit();
+	
+	if($('.wpProQuiz_questionOverall').length)
+		$('.wpProQuiz_questionOverall').wpProQuiz_questionOverall();
 });

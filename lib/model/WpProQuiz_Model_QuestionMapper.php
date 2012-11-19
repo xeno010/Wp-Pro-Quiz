@@ -31,10 +31,11 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 						'question' => $question->getQuestion(),
 						'correct_msg' => $question->getCorrectMsg(),
 						'incorrect_msg' => $question->getIncorrectMsg(),
+						'correct_same_text' => (int)$question->isCorrectSameText(),
 						'answer_type' => $question->getAnswerType(),
 						'answer_json' => json_encode($question->getAnswerJson())),
 					array('id' => $question->getId()),
-					array('%s', '%s', '%s', '%s', '%s', '%s'),
+					array('%s', '%s', '%s', '%s', '%d', '%s', '%s'),
 					array('%d'));
 		} else {
 			$id = $this->_wpdb->insert($this->_table, array(
@@ -44,10 +45,11 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 					'question' => $question->getQuestion(),
 					'correct_msg' => $question->getCorrectMsg(),
 					'incorrect_msg' => $question->getIncorrectMsg(),
+					'correct_same_text' => (int)$question->isCorrectSameText(),
 					'answer_type' => $question->getAnswerType(),
 					'answer_json' => json_encode($question->getAnswerJson())
 				),
-				array('%d', '%d', '%s', '%s', '%s', '%s', '%s', '%s')
+				array('%d', '%d', '%s', '%s', '%s', '%s', '%d', '%s', '%s')
 			);
 			
 			$question->setId($id);
@@ -65,18 +67,26 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 					". $this->_table. "
 				WHERE
 					id = %d",
-				$id)
+				$id),
+			ARRAY_A
 		);
 		
-		$model = new WpProQuiz_Model_Question();
-		$model	->setId($row->id)
-				->setQuizId($row->quiz_id)
-				->setTitle($row->title)
-				->setQuestion($row->question)
-				->setCorrectMsg($row->correct_msg)
-				->setIncorrectMsg($row->incorrect_msg)
-				->setAnswerType($row->answer_type)
-				->setAnswerJson(json_decode($row->answer_json, true));
+		$row['answer_json'] = json_decode($row['answer_json'], true);
+		
+		$model = new WpProQuiz_Model_Question($row);
+		
+// 		$model = new WpProQuiz_Model_Question();
+// 		$model	->setId($row->id)
+// 				->setQuizId($row->quiz_id)
+// 				->setTitle($row->title)
+// 				->setQuestion($row->question)
+// 				->setCorrectMsg($row->correct_msg)
+// 				->setIncorrectMsg($row->incorrect_msg)
+// 				->setAnswerType($row->answer_type)
+// 				->setAnswerJson(json_decode($row->answer_json, true))
+// 				->setCorrectCount($row->correct_count)
+// 				->setIncorrectCount($row->incorrect_count)
+// 				->setSort($row->sort);
 		
 		return $model;
 	}
@@ -91,19 +101,28 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 							'. $this->_table.'
 						WHERE
 							quiz_id = %d 
-						ORDER BY sort ASC', $quizId));
+						ORDER BY sort ASC', $quizId),
+				ARRAY_A);
 		
 		foreach($results as $row) {
-			$model = new WpProQuiz_Model_Question();
 			
-			$model	->setId($row->id)
-					->setQuizId($row->quiz_id)
-					->setTitle($row->title)
-					->setQuestion($row->question)
-					->setCorrectMsg($row->correct_msg)
-					->setIncorrectMsg($row->incorrect_msg)
-					->setAnswerType($row->answer_type)
-					->setAnswerJson(json_decode($row->answer_json, true));
+			$row['answer_json'] = json_decode($row['answer_json'], true);
+			
+			$model = new WpProQuiz_Model_Question($row);
+			
+// 			$model = new WpProQuiz_Model_Question();
+			
+// 			$model	->setId($row->id)
+// 					->setQuizId($row->quiz_id)
+// 					->setTitle($row->title)
+// 					->setQuestion($row->question)
+// 					->setCorrectMsg($row->correct_msg)
+// 					->setIncorrectMsg($row->incorrect_msg)
+// 					->setAnswerType($row->answer_type)
+// 					->setAnswerJson(json_decode($row->answer_json, true))
+// 					->setCorrectCount($row->correct_count)
+// 					->setIncorrectCount($row->incorrect_count)
+// 					->setSort($row->sort);
 			
 			$a[] = $model;
 		}
@@ -113,5 +132,41 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 	
 	public function count($quizId) {
 		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_table} WHERE quiz_id = %d", $quizId));
+	}
+	
+	public function exists($id) {
+		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_table} WHERE id = %d", $id));
+	}	
+
+	public function updateStatistics($quizId, $array) {
+		$ids = $this->_wpdb->get_col($this->_wpdb->prepare("SELECT id FROM {$this->_table} WHERE quiz_id = %d", $quizId));
+		
+		$v = array_keys($array);
+		
+		if(array_diff($ids, $v) !== array_diff($v, $ids))
+			return false;
+		
+		$correctIds = implode(', ', array_keys($array, 1));			
+		$incorrectIds = implode(', ', array_keys($array, 0));
+		
+		if(!empty($correctIds)) {
+			$this->_wpdb->query("UPDATE {$this->_table}	SET	correct_count = correct_count + 1 WHERE	id IN({$correctIds})");
+		}
+		
+		if(!empty($incorrectIds)) {
+			$this->_wpdb->query("UPDATE	{$this->_table} SET	incorrect_count = incorrect_count + 1 WHERE	id IN({$incorrectIds})");
+		}
+		
+		return true;
+	}
+	
+	public function resetStatistics($quizId) {
+		return $this->_wpdb->update($this->_table, 
+					array(	'incorrect_count' => 0,
+							'correct_count' => 0
+							), 
+					array(	'quiz_id' => $quizId),
+					array(	'%d', '%d'),
+					array(	'%d'));
 	}
 }

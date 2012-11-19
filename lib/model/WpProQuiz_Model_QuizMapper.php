@@ -15,6 +15,10 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 				array('%d'));
 	}
 	
+	public function exists($id) {
+		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_table} WHERE id = %d", $id));
+	}
+	
 	public function fetch($id) {
 		$results = $this->_wpdb->get_row(
 					$this->_wpdb->prepare(
@@ -54,7 +58,9 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'answer_random' => (int)$data->isAnswerRandom(),
 			'back_button' => (int)$data->isBackButton(),
 			'check_answer' => (int) $data->isCheckAnswer(),
-			'time_limit' => (int)$data->getTimeLimit()
+			'time_limit' => (int)$data->getTimeLimit(),
+			'statistics_on' => (int)$data->isStatisticsOn(),
+			'statistics_ip_lock' => (int)$data->getStatisticsIpLock()
 		);
 		
 		if($data->getId() != 0) {
@@ -63,12 +69,12 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					array(
 							'id' => $data->getId()
 					),
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d'),
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
 					array('%d'));
 		} else {
 			return $this->_wpdb->insert($this->_table,
 					$set,
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d'));
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
 		}
 	}
 }

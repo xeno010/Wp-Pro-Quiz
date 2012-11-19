@@ -10,15 +10,18 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 	<table class="wp-list-table widefat">
 		<thead>
 			<tr>
+				<th style="width: 50px;"></th>
 				<th scope="col"><?php _e('Name', 'wp-pro-quiz'); ?></th>
 				<th><?php _e('Action', 'wp-pro-quiz'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php 
+			$index = 1;
 			foreach ($this->question as $question) {
 			?>
 			<tr id="wpProQuiz_questionId_<?php echo $question->getId(); ?>">
+				<th><?php echo $index++; ?></th>
 				<th><?php echo $question->getTitle(); ?></th>
 				<th>
 					<a class="button-secondary" href="admin.php?page=wpProQuiz&module=question&action=edit&quiz_id=<?php echo $this->quiz->getId(); ?>&id=<?php echo $question->getId(); ?>"><?php _e('Edit', 'wp-pro-quiz'); ?></a> 

@@ -7,6 +7,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		foreach($data as $q) {
 			$a = array();
 			$a['answer_type'] = $q->getAnswerType();
+			$a['id'] = $q->getId();
 			$j = $q->getAnswerJson();
 			
 			switch ($q->getAnswerType()) {
@@ -31,7 +32,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		return $r;
 	}
 	
-	public function show() {
+	public function show($preview = false) {
 			
 		$question_count = count($this->question);
 		
@@ -140,7 +141,15 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 							<?php _e('Wrong', 'wp-pro-quiz'); ?>
 						</span>
 						<p>
-							<?php echo do_shortcode(apply_filters('comment_text', $question->getIncorrectMsg())); ?>
+							<?php 
+							
+								if($question->isCorrectSameText()) {
+									echo do_shortcode(apply_filters('comment_text', $question->getCorrectMsg()));
+								} else {
+									echo do_shortcode(apply_filters('comment_text', $question->getIncorrectMsg())); 
+								}
+							
+							?>
 						</p>
 					</div>
 				</div>
@@ -162,6 +171,9 @@ jQuery(document).ready(function($) {
 		timeLimit: <?php echo (int)$this->quiz->getTimeLimit(); ?>,
 		checkAnswer: <?php echo (int)$this->quiz->isCheckAnswer(); ?>,
 		backButton: <?php echo (int)$this->quiz->isBackButton();?>,
+		quizId: <?php echo (int)$this->quiz->getId(); ?>,
+		statisticsOn: <?php echo $preview ? 0 : (int)$this->quiz->isStatisticsOn(); ?>,
+		url: '<?php echo admin_url('admin-ajax.php'); ?>',
 		json: <?php echo $json; ?>
 	});
 });
