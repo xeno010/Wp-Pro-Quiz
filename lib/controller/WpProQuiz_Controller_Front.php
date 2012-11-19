@@ -16,15 +16,25 @@ class WpProQuiz_Controller_Front {
 	
 	public function loadDefaultScripts() {
 		wp_enqueue_script('jquery');
-		wp_enqueue_style('wpProQuiz_front_style', plugins_url('css/wpProQuiz_front.min.css', $this->_plugin_file));
+		
+		wp_enqueue_style(
+			'wpProQuiz_front_style', 
+			plugins_url('css/wpProQuiz_front.min.css', $this->_plugin_file),
+			array(),
+			WPPROQUIZ_VERSION
+		);
 	}
 	
 	public function shortcode($attr) {
 		$id = $attr[0];
 		$content = '';
 		
-		wp_enqueue_script('jquery-ui-sortable');
-		wp_enqueue_script('wpProQuiz_front_javascript', plugins_url('js/wpProQuiz_front.min.js', $this->_plugin_file));
+		wp_enqueue_script(
+			'wpProQuiz_front_javascript', 
+			plugins_url('js/wpProQuiz_front.min.js', $this->_plugin_file),
+			array('jquery-ui-sortable'),
+			WPPROQUIZ_VERSION
+		);
 		
 		
 		if(is_numeric($id)) {

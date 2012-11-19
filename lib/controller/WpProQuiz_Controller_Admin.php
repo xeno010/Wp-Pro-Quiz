@@ -10,11 +10,10 @@ class WpProQuiz_Controller_Admin {
 		$this->_plugin_dir = $plugin_dir;
 		$this->_plugin_file = $this->_plugin_dir.'/wp-pro-quiz.php';
 		
-		add_action('wp_ajax_update_sort', array($this, 'updateSort'));
+		add_action('wp_ajax_wp_pro_quiz_update_sort', array($this, 'updateSort'));
 		add_action('wp_ajax_wp_pro_quiz_statistics_save', array($this, 'statisticsSave'));
 		add_action('wp_ajax_nopriv_wp_pro_quiz_statistics_save', array($this, 'statisticsSave'));
 		add_action('admin_menu', array($this, 'register_page'));
-		add_action('admin_enqueue_scripts', array($this, 'enqueueScript') );
 	}
 	
 	public function updateSort() {
@@ -44,12 +43,14 @@ class WpProQuiz_Controller_Admin {
 	}
 	
 	public function enqueueScript() {
+		wp_enqueue_script(
+			'wpProQuiz_admin_javascript', 
+			plugins_url('js/wpProQuiz_admin.min.js', $this->_plugin_file),
+			array('jquery', 'jquery-ui-sortable'),
+			WPPROQUIZ_VERSION
+		);
 		
-		wp_enqueue_script('jquery');
-		wp_enqueue_script('jquery-ui-sortable');
-		wp_enqueue_script('wpProQuiz_admin_javascript', plugins_url('js/wpProQuiz_admin.min.js', $this->_plugin_file));
-		$this->localizeScript();
-		
+		$this->localizeScript();		
 	}
 	
 	public static function install() {
@@ -62,12 +63,14 @@ class WpProQuiz_Controller_Admin {
 	}
 	
 	public function register_page() {
-		add_menu_page(
-			'WP-Pro-Quiz',
-			'WP-Pro-Quiz',
-			'administrator',
-			'wpProQuiz',
-			array($this, 'route'));
+		$page = add_menu_page(
+					'WP-Pro-Quiz',
+					'WP-Pro-Quiz',
+					'administrator',
+					'wpProQuiz',
+					array($this, 'route'));
+
+		add_action('admin_print_scripts-'.$page, array($this, 'enqueueScript'));
 	}
 	
 	public function route() {

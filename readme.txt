@@ -3,7 +3,7 @@ Contributors: xeno010
 Tags: quiz
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 0.2
+Stable tag: 0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,3 +64,6 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * bugfix
 * add statistics function
 * small changes
+
+= 0.3 =
+* added version number for js and css

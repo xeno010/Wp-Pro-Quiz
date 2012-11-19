@@ -178,7 +178,7 @@ jQuery(document).ready(function($) {
 			saveSort: function() {
 
 				var data = {
-					action: 'update_sort',
+					action: 'wp_pro_quiz_update_sort',
 					sort: methode.parseSortArray()
 				};
 
