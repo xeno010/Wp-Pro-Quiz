@@ -7,7 +7,7 @@
 	margin-bottom: 10px;
 }
 
-.wpProQuiz_content input[type="button"] {
+.wpProQuiz_content input[type="button"], .wpProQuiz_content input[type="button"]:hover {
 	margin: 0;
 	padding: 5px 10px;
 	background: #13455B;
@@ -16,6 +16,7 @@
 	font-weight: bold;
 	border: 1px solid #13455B;
 	box-shadow: 1px 1px 1px #333;
+	text-shadow: none;
 }
 
 .wpProQuiz_question_page {
@@ -47,6 +48,9 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
+}
+.wpProQuiz_listItem {
+	position: relative;	
 }
 .wpProQuiz_response {
 	display: none;
@@ -110,4 +114,17 @@
 }
 .wpProQuiz_question_text {
 	margin-bottom: 10px;
+}
+.wpProQuiz_tipp {
+	padding: 10px;
+	background-color: #DDECFF;
+	border: 1px dotted #363636;
+	border-radius: 10px;
+	position: absolute;
+	bottom: 35px;
+	left: 5px;
+	right: 5px;
+	box-shadow: 2px 2px 5px 0px #313131;
+	z-index: 99999;
+	display: none;
 }

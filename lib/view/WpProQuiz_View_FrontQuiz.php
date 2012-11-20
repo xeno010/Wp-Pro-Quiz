@@ -33,7 +33,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 	}
 	
 	public function show($preview = false) {
-			
+
 		$question_count = count($this->question);
 		
 		$json = json_encode($this->parseJson($this->question));
@@ -55,7 +55,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 	<div class="wpProQuiz_results">
 		<h3><?php _e('Results', 'wp-pro-quiz'); ?></h3>
 		<p>
-			<?php printf(__('%s from %s questions answered correctly', 'wp-pro-quiz'), '<span class="wpProQuiz_points"></span>', '<span>'.$question_count.'</span>'); ?> <span class="wpProQuiz_points_prozent">(0%)</span>
+			<?php printf(__('%s of %s questions answered correctly', 'wp-pro-quiz'), '<span class="wpProQuiz_points"></span>', '<span>'.$question_count.'</span>'); ?> <span class="wpProQuiz_points_prozent">(0%)</span>
 		</p>
 		<p class="wpProQuiz_time_limit_expired">
 			<?php _e('Time has elapsed', 'wp-pro-quiz'); ?>
@@ -84,7 +84,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		?>
 			<li class="wpProQuiz_listItem">
 				<div class="wpProQuiz_question_page">
-					<?php printf(__('Question %s from %s', 'wp-pro-quiz'), '<span>'.$index.'</span>', '<span>'.$question_count.'</span>'); ?>
+					<?php printf(__('Question %s of %s', 'wp-pro-quiz'), '<span>'.$index.'</span>', '<span>'.$question_count.'</span>'); ?>
 				</div>
 				<h3><span><?php echo $index; ?></span>. <?php _e('Question', 'wp-pro-quiz'); ?></h3>
 				<div class="wpProQuiz_question">
@@ -130,7 +130,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 				<div class="wpProQuiz_response">
 					<div class="wpProQuiz_correct">
 						<span>
-							<?php _e('Right', 'wp-pro-quiz'); ?>
+							<?php _e('Correct', 'wp-pro-quiz'); ?>
 						</span>
 						<p>
 							<?php echo do_shortcode(apply_filters('comment_text', $question->getCorrectMsg())); ?>
@@ -138,7 +138,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 					</div>
 					<div class="wpProQuiz_incorrect">
 						<span>
-							<?php _e('Wrong', 'wp-pro-quiz'); ?>
+							<?php _e('Incorrect', 'wp-pro-quiz'); ?>
 						</span>
 						<p>
 							<?php 
@@ -153,8 +153,19 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 						</p>
 					</div>
 				</div>
-				<input type="button" name="check" value="<?php _e('Check', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left;">
-				<input type="button" name="back" value="<?php _e('Back', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left;">
+				<div class="wpProQuiz_tipp">
+					<h3><?php _e('Hint', 'wp-pro-quiz'); ?></h3>
+					<?php 
+						if($question->isTipEnabled()) {
+							echo do_shortcode(apply_filters('comment_text', $question->getTipMsg()));
+						}
+					?>
+				</div>
+				<input type="button" name="check" value="<?php _e('Check', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left; margin-right: 10px;">
+				<input type="button" name="back" value="<?php _e('Back', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left; margin-right: 10px;">
+				<?php if($question->isTipEnabled()) { ?>
+				<input type="button" name="tip" value="<?php _e('Hint', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton wpProQuiz_TipButton" style="float: left; display: inline-block;">
+				<?php } ?>
 				<input type="button" name="next" value="<?php _e('Next exercise', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: right;" >
 				<div style="clear: both;"></div>
 			</li>

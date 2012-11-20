@@ -3,7 +3,7 @@ Contributors: xeno010
 Tags: quiz
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 0.3
+Stable tag: 0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,9 +26,10 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Back-Button (optional)		
 *		Correct / incorrect response message for all questions (optional)
 *		Preview-function
-*		statistics
-*		really nice standard design
-*		mighty
+*		Statistics
+*		Hints
+*		Really nice standard design
+*		Mighty
 
 = Translations =
 * 		English (Thanks Alexander M.)
@@ -67,3 +68,8 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 
 = 0.3 =
 * added version number for js and css
+
+= 0.4 =
+* added hint support
+* bug in sort choice were fixed
+* mistranslations were fixed

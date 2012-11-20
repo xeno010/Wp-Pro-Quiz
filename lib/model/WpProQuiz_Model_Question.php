@@ -12,6 +12,9 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	protected $_correctCount;
 	protected $_incorrectCount;
 	protected $_correctSameText = false;
+	protected $_tipEnabled = false;
+	protected $_tipMsg;
+	protected $_tipCount;
 	
 	public function setId($_id)
 	{
@@ -135,5 +138,35 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	
 	public function isCorrectSameText() {
 		return $this->_correctSameText;
+	}
+	
+	public function setTipEnabled($_tipEnabled)
+	{
+		$this->_tipEnabled = (bool)$_tipEnabled;
+		return $this;
+	}
+	
+	public function isTipEnabled() {
+		return $this->_tipEnabled;
+	}
+	
+	public function setTipMsg($_tipMsg)
+	{
+		$this->_tipMsg = $_tipMsg;
+		return $this;
+	}
+	
+	public function getTipMsg() {
+		return $this->_tipMsg;
+	}
+	
+	public function setTipCount($_tipCount)
+	{
+		$this->_tipCount = (int)$_tipCount;
+		return $this;
+	}
+	
+	public function getTipCount() {
+		return $this->_tipCount;
 	}
 }

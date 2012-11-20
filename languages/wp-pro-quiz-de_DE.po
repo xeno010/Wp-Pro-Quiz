@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wp-Pro-Quiz\n"
-"POT-Creation-Date: 2012-11-19 16:09+0100\n"
-"PO-Revision-Date: 2012-11-19 16:09+0100\n"
+"POT-Creation-Date: 2012-11-20 20:52+0100\n"
+"PO-Revision-Date: 2012-11-20 20:52+0100\n"
 "Last-Translator: Julius Fischer <julius.f@gmx.net>\n"
 "Language-Team: Julius Fischer\n"
 "Language: German\n"
@@ -14,23 +14,23 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: lib/controller/WpProQuiz_Controller_Admin.php:36
+#: lib/controller/WpProQuiz_Controller_Admin.php:35
 msgid "Do you really want to delete the quiz/question?"
 msgstr "Wollen Sie das Quiz/Frage wirklich löschen?"
 
-#: lib/controller/WpProQuiz_Controller_Admin.php:37
+#: lib/controller/WpProQuiz_Controller_Admin.php:36
 msgid "Title is not filled!"
 msgstr "Titel wurde nicht ausgefüllt!"
 
-#: lib/controller/WpProQuiz_Controller_Admin.php:38
+#: lib/controller/WpProQuiz_Controller_Admin.php:37
 msgid "No question deposited!"
 msgstr "Keine Frage hinterlegt!"
 
-#: lib/controller/WpProQuiz_Controller_Admin.php:39
+#: lib/controller/WpProQuiz_Controller_Admin.php:38
 msgid "Correct answer was not selected!"
 msgstr "Keine korrekte Antwort markiert!"
 
-#: lib/controller/WpProQuiz_Controller_Admin.php:40
+#: lib/controller/WpProQuiz_Controller_Admin.php:39
 msgid "No answer deposited!"
 msgstr "Keine Antwort hinterlegt!"
 
@@ -98,7 +98,7 @@ msgstr "Ergebnis"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:58
 #, php-format
-msgid "%s from %s questions answered correctly"
+msgid "%s of %s questions answered correctly"
 msgstr "%s von %s Frage korrekt beantwortet"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:61
@@ -125,7 +125,7 @@ msgstr "Zeitlimit"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:87
 #, php-format
-msgid "Question %s from %s"
+msgid "Question %s of %s"
 msgstr "Frage %s von %s"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:89
@@ -135,22 +135,30 @@ msgid "Question"
 msgstr "Frage"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:133
-msgid "Right"
-msgstr "Richtig"
+#: lib/view/WpProQuiz_View_Statistics.php:21
+msgid "Correct"
+msgstr "Korrekt"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:141
-msgid "Wrong"
-msgstr "Falsch"
+#: lib/view/WpProQuiz_View_Statistics.php:20
+msgid "Incorrect"
+msgstr "Inkorrekt"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:156
+#: lib/view/WpProQuiz_View_FrontQuiz.php:157
+#: lib/view/WpProQuiz_View_FrontQuiz.php:167
+#: lib/view/WpProQuiz_View_QuestionEdit.php:62
+msgid "Hint"
+msgstr "Tipp"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:164
 msgid "Check"
 msgstr "Prüfen"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:157
+#: lib/view/WpProQuiz_View_FrontQuiz.php:165
 msgid "Back"
 msgstr "Zurück"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:158
+#: lib/view/WpProQuiz_View_FrontQuiz.php:169
 msgid "Next exercise"
 msgstr "Nächste Frage"
 
@@ -168,6 +176,7 @@ msgstr "Titel"
 #: lib/view/WpProQuiz_View_QuestionEdit.php:17
 #: lib/view/WpProQuiz_View_QuestionEdit.php:34
 #: lib/view/WpProQuiz_View_QuestionEdit.php:51
+#: lib/view/WpProQuiz_View_QuestionEdit.php:62
 #: lib/view/WpProQuiz_View_QuizEdit.php:178
 msgid "(optional)"
 msgstr "(Optional)"
@@ -181,7 +190,7 @@ msgstr ""
 "Titel leer gelassen, wird ein Titel generiert."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:26
-#: lib/view/WpProQuiz_View_QuestionEdit.php:87
+#: lib/view/WpProQuiz_View_QuestionEdit.php:106
 #: lib/view/WpProQuiz_View_QuizEdit.php:12
 #: lib/view/WpProQuiz_View_QuizEdit.php:167
 msgid "(required)"
@@ -219,38 +228,47 @@ msgstr ""
 "komplexe Aufgaben dienen. Die Nachricht \"Richtig\" oder \"Falsch\" wird "
 "immer automatisch angezeigt."
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:62
+#: lib/view/WpProQuiz_View_QuestionEdit.php:65
+msgid "Here you can enter solution hint."
+msgstr "Hier können Sie einen Lösungstipp hinterlegen."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:69
+msgid "Activate hint for this question?"
+msgstr "Tipp für diese Frage aktivieren?"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:81
 msgid "Answer type"
 msgstr "Antwort Typ?"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:70
+#: lib/view/WpProQuiz_View_QuestionEdit.php:89
 msgid "Single choice"
 msgstr "Single choice"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:74
+#: lib/view/WpProQuiz_View_QuestionEdit.php:93
 msgid "Multiple choice"
 msgstr "Multiple choice"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:78
+#: lib/view/WpProQuiz_View_QuestionEdit.php:97
 msgid "\"Free\" choice"
 msgstr "\"Free\" choice"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:82
+#: lib/view/WpProQuiz_View_QuestionEdit.php:101
 msgid "\"Sorting\" choice"
 msgstr "\"Sorting\" choice"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:87
+#: lib/view/WpProQuiz_View_QuestionEdit.php:106
 msgid "Answers"
 msgstr "Antworten"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:96
+#: lib/view/WpProQuiz_View_QuestionEdit.php:111
+#: lib/view/WpProQuiz_View_QuestionEdit.php:115
 msgid ""
-"korrect answers (one per line) (answers will be converted to lower case)"
+"correct answers (one per line) (answers will be converted to lower case)"
 msgstr ""
 "Korrekte Antworten (eine pro Zeile ) (Antworten werden in Kleinbuchstaben "
 "umgewandelt)"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:102
+#: lib/view/WpProQuiz_View_QuestionEdit.php:121
 msgid ""
 "Please sort the answers in right order with the \"Move\" - Button. The "
 "answers will be displayed randomly."
@@ -258,46 +276,46 @@ msgstr ""
 "Bitte Antworten mit dem \"Verschiebe\"-Button in die richtige Reihenfolge "
 "bringen. Die Antworten werden später immer zufällig ausgegeben."
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:108
-#: lib/view/WpProQuiz_View_QuestionEdit.php:120
-#: lib/view/WpProQuiz_View_QuestionEdit.php:130
+#: lib/view/WpProQuiz_View_QuestionEdit.php:127
+#: lib/view/WpProQuiz_View_QuestionEdit.php:139
 #: lib/view/WpProQuiz_View_QuestionEdit.php:149
-#: lib/view/WpProQuiz_View_QuestionEdit.php:165
-#: lib/view/WpProQuiz_View_QuestionEdit.php:179
+#: lib/view/WpProQuiz_View_QuestionEdit.php:168
+#: lib/view/WpProQuiz_View_QuestionEdit.php:184
+#: lib/view/WpProQuiz_View_QuestionEdit.php:198
 msgid "Delete answer"
 msgstr "Antwort löschen"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:109
-#: lib/view/WpProQuiz_View_QuestionEdit.php:121
-#: lib/view/WpProQuiz_View_QuestionEdit.php:131
+#: lib/view/WpProQuiz_View_QuestionEdit.php:128
+#: lib/view/WpProQuiz_View_QuestionEdit.php:140
 #: lib/view/WpProQuiz_View_QuestionEdit.php:150
-#: lib/view/WpProQuiz_View_QuestionEdit.php:166
-#: lib/view/WpProQuiz_View_QuestionEdit.php:180
+#: lib/view/WpProQuiz_View_QuestionEdit.php:169
+#: lib/view/WpProQuiz_View_QuestionEdit.php:185
+#: lib/view/WpProQuiz_View_QuestionEdit.php:199
 #: lib/view/WpProQuiz_View_QuestionOverall.php:29
 msgid "Move"
 msgstr "Verschieben"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:111
-#: lib/view/WpProQuiz_View_QuestionEdit.php:123
-#: lib/view/WpProQuiz_View_QuestionEdit.php:133
+#: lib/view/WpProQuiz_View_QuestionEdit.php:130
+#: lib/view/WpProQuiz_View_QuestionEdit.php:142
 #: lib/view/WpProQuiz_View_QuestionEdit.php:152
-#: lib/view/WpProQuiz_View_QuestionEdit.php:168
-#: lib/view/WpProQuiz_View_QuestionEdit.php:182
+#: lib/view/WpProQuiz_View_QuestionEdit.php:171
+#: lib/view/WpProQuiz_View_QuestionEdit.php:187
+#: lib/view/WpProQuiz_View_QuestionEdit.php:201
 msgid "Allow HTML"
 msgstr "HTML erlauben"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:139
-#: lib/view/WpProQuiz_View_QuestionEdit.php:188
+#: lib/view/WpProQuiz_View_QuestionEdit.php:158
+#: lib/view/WpProQuiz_View_QuestionEdit.php:207
 msgid "Add new answer"
 msgstr "Neue Antwort hinzufügen"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:147
-#: lib/view/WpProQuiz_View_QuestionEdit.php:163
-#: lib/view/WpProQuiz_View_QuestionEdit.php:177
+#: lib/view/WpProQuiz_View_QuestionEdit.php:166
+#: lib/view/WpProQuiz_View_QuestionEdit.php:182
+#: lib/view/WpProQuiz_View_QuestionEdit.php:196
 msgid "correct?"
 msgstr "Korrekt?"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:192
+#: lib/view/WpProQuiz_View_QuestionEdit.php:211
 #: lib/view/WpProQuiz_View_QuizEdit.php:188
 msgid "Save"
 msgstr "Speichern"
@@ -492,21 +510,26 @@ msgstr "Statistik ist nicht aktiviert"
 msgid "Activate statistics"
 msgstr "Statistik aktivieren"
 
-#: lib/view/WpProQuiz_View_Statistics.php:20
-msgid "Incorrect"
-msgstr "Inkorrekt"
+#: lib/view/WpProQuiz_View_Statistics.php:22
+msgid "Hints used"
+msgstr "Tipp benutzt"
 
-#: lib/view/WpProQuiz_View_Statistics.php:21
-msgid "Correct"
-msgstr "Korrekt"
-
-#: lib/view/WpProQuiz_View_Statistics.php:55
+#: lib/view/WpProQuiz_View_Statistics.php:59
 msgid "Total"
 msgstr "Total"
 
-#: lib/view/WpProQuiz_View_Statistics.php:61
+#: lib/view/WpProQuiz_View_Statistics.php:66
 msgid "Reset statistics"
 msgstr "Statistik zurücksetzen"
+
+#~ msgid "Right"
+#~ msgstr "Richtig"
+
+#~ msgid "Wrong"
+#~ msgstr "Falsch"
+
+#~ msgid "Tip"
+#~ msgstr "Tipp"
 
 #~ msgid "Delete question"
 #~ msgstr "Frage löschen"

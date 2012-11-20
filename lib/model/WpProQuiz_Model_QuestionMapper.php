@@ -32,10 +32,12 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 						'correct_msg' => $question->getCorrectMsg(),
 						'incorrect_msg' => $question->getIncorrectMsg(),
 						'correct_same_text' => (int)$question->isCorrectSameText(),
+						'tip_enabled' => (int)$question->isTipEnabled(),
+						'tip_msg' => $question->getTipMsg(),
 						'answer_type' => $question->getAnswerType(),
 						'answer_json' => json_encode($question->getAnswerJson())),
 					array('id' => $question->getId()),
-					array('%s', '%s', '%s', '%s', '%d', '%s', '%s'),
+					array('%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s'),
 					array('%d'));
 		} else {
 			$id = $this->_wpdb->insert($this->_table, array(
@@ -46,10 +48,12 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 					'correct_msg' => $question->getCorrectMsg(),
 					'incorrect_msg' => $question->getIncorrectMsg(),
 					'correct_same_text' => (int)$question->isCorrectSameText(),
+					'tip_enabled' => (int)$question->isTipEnabled(),
+					'tip_msg' => $question->getTipMsg(),
 					'answer_type' => $question->getAnswerType(),
 					'answer_json' => json_encode($question->getAnswerJson())
 				),
-				array('%d', '%d', '%s', '%s', '%s', '%s', '%d', '%s', '%s')
+				array('%d', '%d', '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s')
 			);
 			
 			$question->setId($id);
@@ -141,13 +145,28 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 	public function updateStatistics($quizId, $array) {
 		$ids = $this->_wpdb->get_col($this->_wpdb->prepare("SELECT id FROM {$this->_table} WHERE quiz_id = %d", $quizId));
 		
-		$v = array_keys($array);
+		$ak = array_keys($array);
 		
-		if(array_diff($ids, $v) !== array_diff($v, $ids))
+		if(array_diff($ids, $ak) !== array_diff($ak, $ids))
 			return false;
 		
-		$correctIds = implode(', ', array_keys($array, 1));			
-		$incorrectIds = implode(', ', array_keys($array, 0));
+		$correctIds = $incorrectIds = $tipIds = array();
+		
+		foreach($array as $k => $v) {
+			if(isset($v['tip'])) {
+				$tipIds[] = $k;
+			}
+			
+			if($v['correct']) {
+				$correctIds[] = $k;
+			} else {
+				$incorrectIds[] = $k;
+			}
+		}
+		
+		$correctIds = implode(', ', $correctIds);			
+		$incorrectIds = implode(', ', $incorrectIds);
+		$tipIds = implode(', ', $tipIds);
 		
 		if(!empty($correctIds)) {
 			$this->_wpdb->query("UPDATE {$this->_table}	SET	correct_count = correct_count + 1 WHERE	id IN({$correctIds})");
@@ -157,16 +176,21 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 			$this->_wpdb->query("UPDATE	{$this->_table} SET	incorrect_count = incorrect_count + 1 WHERE	id IN({$incorrectIds})");
 		}
 		
+		if(!empty($tipIds)) {
+			$this->_wpdb->query("UPDATE	{$this->_table} SET	tip_count = tip_count + 1 WHERE	id IN({$tipIds})");
+		}
+		
 		return true;
 	}
 	
 	public function resetStatistics($quizId) {
 		return $this->_wpdb->update($this->_table, 
 					array(	'incorrect_count' => 0,
-							'correct_count' => 0
+							'correct_count' => 0,
+							'tip_count' => 0
 							), 
 					array(	'quiz_id' => $quizId),
-					array(	'%d', '%d'),
+					array(	'%d', '%d', '%d'),
 					array(	'%d'));
 	}
 }

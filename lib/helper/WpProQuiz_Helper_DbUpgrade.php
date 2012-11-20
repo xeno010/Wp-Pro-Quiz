@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 4;
+	const WPPROQUIZ_DB_VERSION = 5;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -78,6 +78,9 @@ class WpProQuiz_Helper_DbUpgrade {
 				  `correct_same_text` tinyint(1) NOT NULL,
 				  `correct_count` int(10) unsigned NOT NULL,
 				  `incorrect_count` int(10) unsigned NOT NULL,
+				  `tip_enabled` tinyint(1) NOT NULL,
+				  `tip_msg` text NOT NULL,
+				  `tip_count` int(11) NOT NULL,
 				  `answer_type` varchar(50) NOT NULL,
 				  `answer_json` text NOT NULL,
 				  PRIMARY KEY (`id`),
@@ -141,5 +144,17 @@ class WpProQuiz_Helper_DbUpgrade {
 		');
 		
 		return 4;
+	}
+	
+	private function upgradeDbV4() {
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `wp_wp_pro_quiz_question` 
+				ADD  `tip_enabled` TINYINT( 1 ) NOT NULL AFTER  `incorrect_count` ,
+				ADD  `tip_msg` TEXT NOT NULL AFTER  `tip_enabled` ,
+				ADD  `tip_count` INT NOT NULL AFTER  `tip_msg`
+		');
+				
+		return 5;
 	}
 }

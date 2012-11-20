@@ -25,6 +25,7 @@ jQuery(document).ready(function($) {
 			
 			$('input[name="answerType"]:checked').click();
 			$('#wpProQuiz_correctSameText').change();
+			$('#wpProQuiz_tip').change();
 		};
 
 		var formListener = {
@@ -72,6 +73,13 @@ jQuery(document).ready(function($) {
 						$('#wpProQuiz_incorrectMassageBox').hide();
 					else
 						$('#wpProQuiz_incorrectMassageBox').show();
+				});
+				
+				$('#wpProQuiz_tip').change(function(e) {
+					if(this.checked)
+						$('#wpProQuiz_tipBox').show();
+					else
+						$('#wpProQuiz_tipBox').hide();
 				});
 				
 			},

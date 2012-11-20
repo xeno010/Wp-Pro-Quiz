@@ -59,6 +59,25 @@ jQuery(document).ready(function($) {
 				</div>
 			</div>
 			<div class="postbox">
+				<h3 class="hndle"><?php _e('Hint', 'wp-pro-quiz'); ?> <?php _e('(optional)', 'wp-pro-quiz'); ?></h3>
+				<div class="inside">
+					<p class="description">
+						<?php _e('Here you can enter solution hint.', 'wp-pro-quiz'); ?>
+					</p>
+					<div style="padding-top: 10px; padding-bottom: 10px;">
+						<label for="wpProQuiz_tip">
+							<?php _e('Activate hint for this question?', 'wp-pro-quiz'); ?>  
+							<input type="checkbox" name="tipEnabled" id="wpProQuiz_tip" value="1" <?php echo $this->question->isTipEnabled() ? 'checked="checked"' : '' ?>>
+						</label>
+					</div>
+					<div id="wpProQuiz_tipBox">
+						<?php 
+							wp_editor($this->question->getTipMsg(), 'tipMsg', array('textarea_rows' => 3));
+						?>
+					</div>
+				</div>
+			</div>
+			<div class="postbox">
 				<h3 class="hndle"><?php _e('Answer type', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
 				<?php
@@ -89,11 +108,11 @@ jQuery(document).ready(function($) {
 					<div class="free_answer">
 					<?php if($type === 'free_answer') { ?>
 						<p style="border-bottom:1px dotted #ccc;">
-							<textarea placeholder="Korrekte antworten (per komme getrennt)" rows="6" cols="100" class="large-text" name="answerJson[free_answer][correct]"><?php echo $qa['free_answer']['correct']; ?></textarea>
+							<textarea placeholder="<?php _e('correct answers (one per line) (answers will be converted to lower case)', 'wp-pro-quiz'); ?>" rows="6" cols="100" class="large-text" name="answerJson[free_answer][correct]"><?php echo $qa['free_answer']['correct']; ?></textarea>
 						</p>
 					<?php } else { ?>
 						<p style="border-bottom:1px dotted #ccc;">
-							<textarea placeholder="<?php _e('korrect answers (one per line) (answers will be converted to lower case)', 'wp-pro-quiz'); ?>" rows="6" cols="100" class="large-text" name="answerJson[free_answer][correct]"></textarea>
+							<textarea placeholder="<?php _e('correct answers (one per line) (answers will be converted to lower case)', 'wp-pro-quiz'); ?>" rows="6" cols="100" class="large-text" name="answerJson[free_answer][correct]"></textarea>
 						</p>
 					<?php } ?>
 					</div>
