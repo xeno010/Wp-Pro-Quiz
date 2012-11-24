@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 5;
+	const WPPROQUIZ_DB_VERSION = 6;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -53,6 +53,7 @@ class WpProQuiz_Helper_DbUpgrade {
 				  `name` varchar(200) NOT NULL,
 				  `text` text NOT NULL,
 				  `result_text` text NOT NULL,
+				  `result_grade_enabled` tinyint(1) NOT NULL,
 				  `title_hidden` tinyint(1) NOT NULL,
 				  `question_random` tinyint(1) NOT NULL,
 				  `answer_random` tinyint(1) NOT NULL,
@@ -149,12 +150,44 @@ class WpProQuiz_Helper_DbUpgrade {
 	private function upgradeDbV4() {
 		
 		$this->_wpdb->query('
-			ALTER TABLE  `wp_wp_pro_quiz_question` 
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_question` 
 				ADD  `tip_enabled` TINYINT( 1 ) NOT NULL AFTER  `incorrect_count` ,
 				ADD  `tip_msg` TEXT NOT NULL AFTER  `tip_enabled` ,
 				ADD  `tip_count` INT NOT NULL AFTER  `tip_msg`
 		');
 				
 		return 5;
+	}
+	
+	private function upgradeFixDbV4() {
+		if($this->_wpdb->prefix != 'wp_') {
+			$this->_wpdb->query('SELECT * FROM `'.$this->_wpdb->prefix.'wp_pro_quiz_question` LIMIT 0,1');
+		
+			$names = $this->_wpdb->get_col_info('name');
+		
+			if(!in_array('tip_enabled', $names)) {
+				$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_question` ADD `tip_enabled` TINYINT( 1 ) NOT NULL AFTER  `incorrect_count`');
+			}
+		
+			if(!in_array('tip_msg', $names)) {
+				$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_question` ADD `tip_msg` TEXT NOT NULL AFTER  `tip_enabled`');
+			}
+		
+			if(!in_array('tip_count', $names)) {
+				$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_question` ADD  `tip_count` INT NOT NULL AFTER `tip_msg`');
+			}
+		}
+	}
+	
+	private function upgradeDbV5() {
+		
+		$this->upgradeFixDbV4();
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master`
+				ADD  `result_grade_enabled` TINYINT( 1 ) NOT NULL AFTER  `result_text`
+		');
+		
+		return 6;
 	}
 }

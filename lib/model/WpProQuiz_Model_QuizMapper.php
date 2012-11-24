@@ -32,6 +32,9 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 								ARRAY_A
 					);
 		
+		if($results['result_grade_enabled'])
+			$results['result_text'] = unserialize($results['result_text']);
+		
 		return new WpProQuiz_Model_Quiz($results);
 	}
 	
@@ -41,6 +44,10 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 		$results = $this->_wpdb->get_results("SELECT * FROM {$this->_table}", ARRAY_A);
 
 		foreach ($results as $row) {
+			
+			if($row['result_grade_enabled'])
+				$row['result_text'] = unserialize($row['result_text']);
+			
 			$r[] =  new WpProQuiz_Model_Quiz($row);
 		}
 		
@@ -49,10 +56,16 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 	
 	public function save(WpProQuiz_Model_Quiz $data) {
 		
+		if($data->isResultGradeEnabled()) {
+			$resultText = serialize($data->getResultText());
+		} else {
+			$resultText = $data->getResultText();
+		}
+		
 		$set = array(
 			'name' => $data->getName(),
 			'text' => $data->getText(),
-			'result_text' => $data->getResultText(),
+			'result_text' => $resultText,
 			'title_hidden' => (int)$data->isTitleHidden(),
 			'question_random' => (int)$data->isQuestionRandom(),
 			'answer_random' => (int)$data->isAnswerRandom(),
@@ -60,7 +73,8 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'check_answer' => (int) $data->isCheckAnswer(),
 			'time_limit' => (int)$data->getTimeLimit(),
 			'statistics_on' => (int)$data->isStatisticsOn(),
-			'statistics_ip_lock' => (int)$data->getStatisticsIpLock()
+			'statistics_ip_lock' => (int)$data->getStatisticsIpLock(),
+			'result_grade_enabled' => (int)$data->isResultGradeEnabled()
 		);
 		
 		if($data->getId() != 0) {
@@ -69,12 +83,12 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					array(
 							'id' => $data->getId()
 					),
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
 					array('%d'));
 		} else {
 			return $this->_wpdb->insert($this->_table,
 					$set,
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
 		}
 	}
 }

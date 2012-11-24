@@ -16,6 +16,23 @@ jQuery(document).ready(function($) {
 		init();
 	};
 	
+	$.fn.wpProQuiz_quizOverall = function() {
+		var init = function() {
+			$('.wpProQuiz_delete').click(function(e) {
+				var b = confirm(wpProQuizLocalize.delete_msg);
+
+				if(!b) {
+					e.preventDefault();
+					return false;
+				}
+
+				return true;
+			});
+		};
+		
+		init();
+	};
+	
 	$.fn.wpProQuiz_questionEdit = function() {
 
 		var setup = function() {
@@ -46,6 +63,9 @@ jQuery(document).ready(function($) {
 					case 'sort_answer':
 						formListener.displaySortAnswer();
 						break;
+					case 'matrix_sort_answer':
+						formListener.displayMatrixSortAnswer();
+						break;
 					}
 				});
 
@@ -61,7 +81,7 @@ jQuery(document).ready(function($) {
 					return validate();
 				});
 
-				$('.sort_answer ul, .classic_answer ul').sortable({
+				$('.sort_answer ul, .classic_answer ul, .matrix_sort_answer ul').sortable({
 					handle: '.wpProQuiz_move',
 					update: function(event, ui) {
 						formListener.setValueClassicAnswer();
@@ -99,6 +119,10 @@ jQuery(document).ready(function($) {
 			displaySortAnswer: function() {
 				$('.sort_answer').css('display', 'block');
 			},
+			
+			displayMatrixSortAnswer: function() {
+				$('.matrix_sort_answer').show();
+			},
 
 			addAnswer: function(obj) {
 				$(obj).siblings('ul').children().first()
@@ -119,8 +143,18 @@ jQuery(document).ready(function($) {
 			},
 
 			setValueClassicAnswer: function() {
-				i = 0;
+				var i = 0;
 				$('input[name="answerJson[classic_answer][correct][]"]').each(function() {
+					this.value = i++;
+				});
+				
+				i = 0;
+				$('input[name="answerJson[answer_matrix_sort][sort_string_html][]"]').each(function() {
+					this.value = i++;
+				});
+				
+				i = 0;
+				$('input[name="answerJson[answer_matrix_sort][answer_html][]"]').each(function() {
 					this.value = i++;
 				});
 			}
@@ -166,6 +200,27 @@ jQuery(document).ready(function($) {
 					alert(wpProQuizLocalize.no_answer_msg);
 					return false;
 				}
+			} else if(type.val() == 'matrix_sort_answer') {
+				var findChecked = false;
+				$('textarea[name="answerJson[answer_matrix_sort][answer][]"]').each(function() {
+					if(isEmpty($(this).val())) {
+						findChecked |= false;
+					} else {
+						
+						var $sortString = $(this).parent().parent().find('textarea[name="answerJson[answer_matrix_sort][sort_string][]"]');
+						
+						if(isEmpty($sortString.val())) {
+							findChecked |= false;
+						} else {
+							findChecked = true;
+						}
+					}
+				});
+				
+				if(!findChecked) {
+					alert(wpProQuizLocalize.no_answer_msg);
+					return false;
+				}
 			}
 
 			return true;
@@ -173,6 +228,7 @@ jQuery(document).ready(function($) {
 		};
 
 		var isEmpty = function(str) {
+			str = $.trim(str);
 			return (!str || 0 === str.length);
 		};
 	
@@ -242,6 +298,108 @@ jQuery(document).ready(function($) {
 	};
 	
 	$.fn.wpProQuiz_quizEdit = function() {
+		
+		var methode = {
+			addResult: function() {
+				$('#resultList').children().each(function() {
+					if($(this).css('display') == 'none') {
+						
+						var $this = $(this);
+						var id = $this.find('textarea[name="resultTextGrade[text][]"]').attr('id');
+
+						$this.find('input[name="resultTextGrade[prozent][]"]').val('0');
+						$this.find('input[name="resultTextGrade[activ][]"]').val('1').keyup();
+						
+						tinymce.editors[id].setContent('');
+						
+						tinyMCE.execCommand('mceRemoveControl', false, id);
+						
+						$this.parent().children(':visible').last().after($this);
+						
+						tinyMCE.execCommand('mceAddControl', false, id);
+						
+						$(this).show();
+						
+						return false;
+					}
+				});
+			},
+			
+			deleteResult: function(e) {
+				$(e).parent().parent().hide();
+				$(e).siblings('input[name="resultTextGrade[activ][]"]').val('0');
+			},
+			
+			changeResult: function(e) {
+				var $this = $(e);
+
+				if(methode.validResultInput($this.val())) {
+					$this.siblings('.resultProzent').text($this.val());
+					$this.removeAttr('style');
+					return true;
+				}
+				
+				$this.css('background-color', '#FF9696');
+				
+				return false;
+			},
+			
+			validResultInput: function(input) {
+				
+				if(isEmpty(input))
+					return false;
+				
+				input = input.replace(/\,/, '.');
+
+				if(!isNaN(input) && Number(input) <= 100 && Number(input) >= 0) {
+					if(input.match(/\./) != null)
+						return input.split('.')[1].length < 3;
+					
+					return true;
+				}
+				
+				return false;
+			},
+			
+			validInput: function() {
+				if(isEmpty($('#wpProQuiz_title').val())) {
+					alert(wpProQuizLocalize.no_title_msg);
+					return false;
+				}
+				
+				if(isEmpty(tinymce.editors.text.getContent())) {
+					alert(wpProQuizLocalize.no_quiz_start_msg);
+					return false;
+				}
+				
+				if($('#wpProQuiz_resultGradeEnabled:checked').length) {
+					var rCheck = true;
+					console.debug("hier");
+					$('#resultList').children().each(function() {
+						if($(this).is(':visible')) {
+							if(!methode.validResultInput($(this).find('input[name="resultTextGrade[prozent][]"]').val())) {
+								rCheck = false;
+								return false;
+							}
+						}
+					});
+					
+					if(!rCheck) {
+						alert(wpProQuizLocalize.fail_grade_result);
+						return false;
+					}
+				}
+				
+				return true;
+			}
+			
+		};
+		
+		var isEmpty = function(str) {
+			str = $.trim(str);
+			return (!str || 0 === str.length);
+		};
+		
 		var init = function() {
 			$('#statistics_on').change(function() {
 				if(this.checked) {
@@ -251,14 +409,51 @@ jQuery(document).ready(function($) {
 				}
 			});
 			
+			$('.addResult').click(function() {
+				methode.addResult();
+			});
+			
+			$('.deleteResult').click(function (e) {
+				methode.deleteResult(this);
+			});
+			
+			$('input[name="resultTextGrade[prozent][]"]').keyup(function(event) {	
+				methode.changeResult(this);
+			}).keydown(function(event) {
+				if(event.which == 13) {
+					   event.preventDefault();
+				}				
+			});
+			
+			$('#wpProQuiz_resultGradeEnabled').change(function() {
+				if(this.checked) {
+					$('#resultGrade').show();
+					$('#resultNormal').hide();
+				} else {
+					$('#resultGrade').hide();
+					$('#resultNormal').show();
+				}
+			});
+			
+			$('#wpProQuiz_save').click(function(e) {
+				if(!methode.validInput())
+					e.preventDefault();
+			});
+			
 			$('#statistics_on').change();
+			$('#wpProQuiz_resultGradeEnabled').change();
 		};
 		
 		init();
 	};
+	
 
 	if($('.wpProQuiz_quizOverall').length)
 		$('.wpProQuiz_quizOverall').wpProQuiz_preview();
+	
+	if($('.wpProQuiz_quizOverall').length) {
+		$('.wpProQuiz_quizOverall').wpProQuiz_quizOverall();
+	}
 	
 	if($('.wpProQuiz_quizEdit').length)
 		$('.wpProQuiz_quizEdit').wpProQuiz_quizEdit();

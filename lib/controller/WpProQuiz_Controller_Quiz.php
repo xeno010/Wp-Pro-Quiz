@@ -44,13 +44,23 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		}
 		
 		if(isset($this->_post['submit'])) {
+			
+			if(isset($this->_post['resultGradeEnabled'])) {
+				$this->_post['result_text'] = $this->filterResultTextGrade($this->_post);
+			}
+						
 			$this->view->quiz = new WpProQuiz_Model_Quiz($this->_post);
 			$this->view->quiz->setId($id);
-			
+					
 			if($this->checkValidit($this->_post)) {
+				
 				WpProQuiz_View_View::admin_notices(__('Quiz edited', 'wp-pro-quiz'), 'info');
+				
 				$this->view->quiz->getMapper()->save($this->view->quiz);
+				
+				
 				$this->showAction();
+				
 				return;
 			} else {
 				WpProQuiz_View_View::admin_notices(__('Quiz title or quiz description are not filled', 'wp-pro-quiz'));
@@ -67,6 +77,11 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		$this->view->header = __('Create quiz', 'wp-pro-quiz');
 		
 		if(isset($this->_post['submit'])) {
+			
+			if(isset($this->_post['resultGradeEnabled'])) {
+				$this->_post['result_text'] = $this->filterResultTextGrade($this->_post);
+			}
+			
 			$this->view->quiz = new WpProQuiz_Model_Quiz($this->_post);
 			
 			if($this->checkValidit($this->_post)) {
@@ -94,5 +109,17 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 	
 	private function checkValidit($post) {
 		return (isset($post['name']) && !empty($post['name']) && isset($post['text']) && !empty($post['text']));
+	}
+	
+	private function filterResultTextGrade($post) {
+		$activ = array_keys($post['resultTextGrade']['activ'], '1');
+		$result = array();
+		
+		foreach($activ as $k) {
+			$result['text'][] = $post['resultTextGrade']['text'][$k];
+			$result['prozent'][] = (float)str_replace(',', '.', $post['resultTextGrade']['prozent'][$k]);
+		}
+		
+		return $result;				
 	}
 }

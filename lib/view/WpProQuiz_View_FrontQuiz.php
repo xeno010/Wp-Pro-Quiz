@@ -24,6 +24,9 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 					$t = explode("\n", $t);
 					$a['correct'] = array_values(array_filter(array_map('trim', $t)));
 					break;
+				case 'matrix_sort_answer':
+					$a['correct'] = array_keys(array_values($j['answer_matrix_sort']['sort_string']));
+					break;
 			}
 			
 			$r[] = $a;
@@ -37,6 +40,18 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		$question_count = count($this->question);
 		
 		$json = json_encode($this->parseJson($this->question));
+		
+		$result = $this->quiz->getResultText();
+
+		if(!$this->quiz->isResultGradeEnabled()) {
+			$r = array();
+			$r['text'][] = $result;
+			$r['prozent'][] = 0;
+			
+			$result = $r;
+		}
+
+		$resultsProzent = json_encode($result['prozent']);
 		
 		?>
 
@@ -64,7 +79,15 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			<?php _e('Your time: <span></span>', 'wp-pro-quiz') ?>
 		</p>
 		<div>
-			<?php echo do_shortcode(apply_filters('comment_text', $this->quiz->getResultText())); ?>
+			<ul class="wpProQuiz_resultsList">
+				<?php foreach($result['text'] as $resultText) { ?>
+				<li>
+					<div>
+						<?php echo do_shortcode(apply_filters('comment_text', $resultText)); ?>
+					</div>
+				</li>
+				<?php } ?>
+			</ul>
 		</div>
 		<p>
 			<input type="button" name="restartQuiz" value="<?php _e('Restart quiz', 'wp-pro-quiz'); ?>" >
@@ -80,7 +103,8 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		<?php 
 			$index = 0; 
 			foreach($this->question as $question) { 
-				$index++; 
+				$index++;
+				$answerArray = $question->getAnswerJson();
 		?>
 			<li class="wpProQuiz_listItem">
 				<div class="wpProQuiz_question_page">
@@ -91,10 +115,21 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 					<div class="wpProQuiz_question_text">
 						<?php echo do_shortcode(apply_filters('comment_text', $question->getQuestion())); ?>
 					</div>
+					<?php if($question->getAnswerType() === 'matrix_sort_answer') { ?>
+					<div class="wpProQuiz_matrixSortString">
+						<h3><?php _e('Sort elements', 'wp-pro-quiz'); ?></h3>
+						<ul class="wpProQuiz_sortStringList">
+						<?php
+						 	foreach($answerArray['answer_matrix_sort']['sort_string'] as $k => $v) {
+						 ?>
+						 <li class="wpProQuiz_sortStringItem"><?php echo (isset($answerArray['answer_matrix_sort']['sort_string_html']) && in_array($k, $answerArray['answer_matrix_sort']['sort_string_html'])) ? $v : esc_html($v); ?></li>
+						<?php } ?>
+						</ul>
+						<div style="clear: both;"></div>
+					</div>
+					<?php } ?>
 					<ul class="wpProQuiz_questionList">
 					<?php
-						$answerArray = $question->getAnswerJson();
-						
 						if($question->getAnswerType() === 'single' || $question->getAnswerType() === 'multiple') {
 							$answer_index = 1; 
 							foreach($answerArray['classic_answer']['answer'] as $k => $v) {
@@ -124,7 +159,25 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 								<input type="text" name="question" style="width: 300px;">
 							</label>
 						</li>
-					 <?php } ?>
+					 <?php } else if($question->getAnswerType() === 'matrix_sort_answer') { 
+					 	foreach($answerArray['answer_matrix_sort']['answer'] as $k => $v) {
+							$ma = $answerArray['answer_matrix_sort'];
+					 	?>
+					 	
+					 	<li class="wpProQuiz_questionListItem">
+							<table>
+								<tbody>
+									<tr class="wpProQuiz_mextrixTr">
+										<td width="20%"><div class="wpProQuiz_maxtrixSortText" ><?php echo (isset($ma['answer_html']) && in_array($k, $ma['answer_html'])) ? $v : esc_html($v); ?></div></td>
+										<td width="80%" >
+											<ul class="wpProQuiz_maxtrixSortCriterion"></ul>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</li>
+						
+					 <?php } } ?>
 					</ul>
 				</div>
 				<div class="wpProQuiz_response">
@@ -185,6 +238,7 @@ jQuery(document).ready(function($) {
 		quizId: <?php echo (int)$this->quiz->getId(); ?>,
 		statisticsOn: <?php echo $preview ? 0 : (int)$this->quiz->isStatisticsOn(); ?>,
 		url: '<?php echo admin_url('admin-ajax.php'); ?>',
+		resultsGrade: <?php echo $resultsProzent; ?>,
 		json: <?php echo $json; ?>
 	});
 });

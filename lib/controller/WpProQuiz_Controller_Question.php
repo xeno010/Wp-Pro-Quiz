@@ -123,12 +123,20 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			case 'multiple':
 				unset($post['answerJson']['answer_sort']);
 				unset($post['answerJson']['free_answer']);
+				unset($post['answerJson']['matrix_sort_answer']);
 				break;
 			case 'free_answer':
 				unset($post['answerJson']['answer_sort']);
 				unset($post['answerJson']['classic_answer']);
+				unset($post['answerJson']['matrix_sort_answer']);
 				break;
 			case 'sort_answer':
+				unset($post['answerJson']['free_answer']);
+				unset($post['answerJson']['classic_answer']);
+				unset($post['answerJson']['matrix_sort_answer']);
+				break;
+			case 'matrix_sort_answer':
+				unset($post['answerJson']['answer_sort']);
 				unset($post['answerJson']['free_answer']);
 				unset($post['answerJson']['classic_answer']);
 				break;

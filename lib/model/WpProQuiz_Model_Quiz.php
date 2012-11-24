@@ -13,6 +13,7 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_checkAnswer;
 	protected $_statisticsOn;
 	protected $_statisticsIpLock;
+	protected $_resultGradeEnabled = false;
 	
 	public function getId() {
 		return $this->_id;
@@ -120,5 +121,14 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
 	public function getStatisticsIpLock() {
 		return $this->_statisticsIpLock;
+	}
+	
+	public function setResultGradeEnabled($_resultGradeEnabled) {
+		$this->_resultGradeEnabled = (bool)$_resultGradeEnabled;
+		return $this;
+	}
+	
+	public function isResultGradeEnabled() {
+		return $this->_resultGradeEnabled;
 	}
 }

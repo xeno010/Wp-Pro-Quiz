@@ -7,7 +7,7 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 	<h2><?php printf(__('Quiz: %s - Statistics', 'wp-pro-quiz'), $this->quiz->getName()); ?></h2>
 	<p><a class="button-secondary" href="admin.php?page=wpProQuiz"><?php _e('back to overview', 'wp-pro-quiz'); ?></a></p>
 	<?php if(!$this->quiz->isStatisticsOn()) { ?>
-	<p style="padding: 30px; background: #F7E4E4; border: 1px dotted; width: 260px;">
+	<p style="padding: 30px; background: #F7E4E4; border: 1px dotted; width: 300px;">
 		<span style="font-weight: bold; padding-right: 10px;"><?php _e('Stats not enabled', 'wp-pro-quiz'); ?></span>
 		<a class="button-secondary" href="admin.php?page=wpProQuiz&action=edit&id=<?php echo $this->quiz->getId(); ?>"><?php _e('Activate statistics', 'wp-pro-quiz'); ?></a>
 	</p>

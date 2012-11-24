@@ -3,7 +3,7 @@ Contributors: xeno010
 Tags: quiz
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 0.4
+Stable tag: 0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,13 +18,15 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Multiple Choice
 *		"Sorting" Choice
 *		"Free" Choice
+*       "Matrix Sorting" Choice
 *		Timelimit
 *		Random Answer (optional)
 *		Random Question (optional)
 *		HTML in questions and answers is allowed  (optional)	
 *		Multimedia in questions
-*		Back-Button (optional)		
+*		Back-Button (optional)	
 *		Correct / incorrect response message for all questions (optional)
+*		Result text with gradations (optional)
 *		Preview-function
 *		Statistics
 *		Hints
@@ -73,3 +75,8 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * added hint support
 * bug in sort choice were fixed
 * mistranslations were fixed
+
+= 0.5 =
+* New choice: "Matrix Sorting" choice
+* Result text now can be graduated
+* CSS Bugfix

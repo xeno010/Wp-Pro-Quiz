@@ -43,6 +43,11 @@
 				$element.find('.wpProQuiz_listItem').first().fadeIn(200);
 				
 				$element.find('.wpProQuiz_sortable').parent().parent().sortable().disableSelection();
+				
+				$element.find('.wpProQuiz_sortStringList, .wpProQuiz_maxtrixSortCriterion').sortable({
+					connectWith: '.wpProQuiz_maxtrixSortCriterion:not(:has(li)), .wpProQuiz_sortStringList',
+					placeholder: 'wpProQuiz_placehold'
+				}).disableSelection();
 			},
 
 			reStartQuiz: function() {
@@ -55,11 +60,25 @@
 				$element.find('.wpProQuiz_time_limit, .wpProQuiz_time_limit_expired, .wpProQuiz_sort_correct_answer')
 					.hide();
 				$element.find('.wpProQuiz_quiz').children().first().children().hide();				
-				$element.find('.wpProQuiz_sortable').removeAttr('style');				
+				$element.find('.wpProQuiz_sortable, .wpProQuiz_sortStringItem').removeAttr('style');				
 				$element.find('input[name="check"]').hide();
 				$element.find('input[name="next"]').hide();
 				$element.find('input[name="question"]').removeAttr('disabled').removeAttr('checked');
 				$element.find('input[name="question"][type="text"]').removeAttr('value');
+				$element.find('.wpProQuiz_resultsList').children().hide();
+				
+				plugin.methode.resetMatrix();
+			},
+			
+			resetMatrix: function() {
+				$element.find('.wpProQuiz_question').each(function() {
+					var $tq = $(this);
+					var $list = $tq.find('.wpProQuiz_sortStringList');
+					
+					$tq.find('.wpProQuiz_sortStringItem').each(function() {
+						$list.append($(this));
+					});
+				});
 			},
 			
 			setTimeLimit: function() {
@@ -124,8 +143,15 @@
 						}
 					});
 					
+					ii = 0;
 					$(this).find('.wpProQuiz_sortable').each(function() {
 						$(this).data('correct', j.correct[ii++]);
+					});
+					
+					ii = 0;
+					$(this).parent().find('.wpProQuiz_sortStringList').children().each(function() {
+						$(this).data('correct', j.correct[ii++]);
+						console.debug($(this));
 					});
 					
 					i++;
@@ -202,8 +228,33 @@
 					} else {
 						checked.parent().parent().addClass('wpProQuiz_answerIncorrect');
 					}
+				} else if(type == 'matrix_sort_answer') {
+					var check = true;
+					var $qList = $question.find('.wpProQuiz_questionList').children();
+					
+					$qList.each(function() {
+						var index = $(this).index();
+						var $par = $(this).find('.wpProQuiz_maxtrixSortCriterion');
+						var item = $par.children().first();
+						
+						if(item.data('correct') == index) {
+							check &= true;
+							$par.addClass('wpProQuiz_answerCorrect');
+						} else {
+							check = false;
+							$par.addClass('wpProQuiz_answerIncorrect');
+						}
+					});
+					
+					$question.find('.wpProQuiz_sortStringItem').each(function() {
+						$qList.eq($(this).data('correct')).find('.wpProQuiz_maxtrixSortCriterion').append(this);
+					}).css({'box-shadow': '0 0', 'cursor': 'auto'});
+					
+					$question.find('.wpProQuiz_sortStringList, .wpProQuiz_maxtrixSortCriterion').sortable("destroy");
+					
+					correct = check;
 				}
-				
+
 				$(btn).hide();
 				checked.attr('disabled', 'disabled');
 				
@@ -260,7 +311,31 @@
 				$element.find('.wpProQuiz_results').show();
 				$element.find('.wpProQuiz_time_limit').hide();
 				plugin.methode.setQuizTime();
+				
+				var index = plugin.methode.findResultIndex(Math.round(points / count * 100 * 100) / 100);
+				
+				if(index > -1) {
+					$element.find('.wpProQuiz_resultsList').children().eq(index).show();
+				}
+				
 				plugin.methode.sendStatistics();
+			},
+			
+			findResultIndex: function(p) {
+				var r = config.resultsGrade;
+				var index = -1;
+				var diff = 999999;
+				
+				for(var i = 0; i < r.length; i++){
+					var v = r[i];
+					
+					if((p >= v) && ((p-v) < diff)) {
+						diff = p-v;
+						index = i;
+					}
+				}
+				
+				return index;
 			},
 			
 			sendStatistics: function() {
@@ -324,6 +399,9 @@
 
 		plugin.init = function() {
 			points = 0;
+			
+			if(config.resultsGrade == undefined)
+				config.resultsGrade = [0];
 			
 			$element.find('.wpProQuiz_quiz, .wpProQuiz_results').hide();
 			

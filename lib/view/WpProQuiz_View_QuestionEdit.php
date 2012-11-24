@@ -100,6 +100,10 @@ jQuery(document).ready(function($) {
 						<input type="radio" name="answerType" value="sort_answer" <?php echo ($type === 'sort_answer') ? 'checked="checked"' : ''; ?>>
 						<?php _e('"Sorting" choice', 'wp-pro-quiz'); ?>
 					</label>
+					<label style="padding-right: 10px;">
+						<input type="radio" name="answerType" value="matrix_sort_answer" <?php echo ($type === 'matrix_sort_answer') ? 'checked="checked"' : ''; ?>>
+						<?php _e('"Matrix Sorting" choice', 'wp-pro-quiz'); ?>
+					</label>
 				</div>
 			</div>
 			<div class="postbox">
@@ -203,6 +207,122 @@ jQuery(document).ready(function($) {
 								</label>
 							</li>
 						<?php } ?>
+						</ul>
+						<input type="button" class="button-primary addAnswer" value="<?php _e('Add new answer', 'wp-pro-quiz'); ?>">
+					</div>
+					<div class="matrix_sort_answer">
+							<p class="description">
+							<?php _e('In this mode, not a list have to be sorted, but elements must be assigned to matching criterion.', 'wp-pro-quiz'); ?>
+						</p>
+						<ul>
+							<li style="border-bottom:1px dotted #ccc; padding-bottom: 5px; display:none; background-color: whiteSmoke;">
+								<table style="width: 100%; margin-bottom: 10px;">
+									<thead>
+										<td><?php _e('Criterion', 'wp-pro-quiz'); ?></td>
+										<td><?php _e('Sort elements', 'wp-pro-quiz'); ?></td>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<textarea rows="4" name="answerJson[answer_matrix_sort][answer][]" style="width: 100%; resize:none;"></textarea>
+											</td>
+											<td>
+												<textarea rows="4" name="answerJson[answer_matrix_sort][sort_string][]" style="width: 100%; resize:none;"></textarea>
+											</td>	
+										</tr>
+										<tr>
+											<td>
+												<label>
+													<?php _e('Allow HTML', 'wp-pro-quiz'); ?>
+													<input type="checkbox" name="answerJson[answer_matrix_sort][answer_html][]" value="0">
+												</label>
+											</td>
+											<td>
+												<label>
+													<?php _e('Allow HTML', 'wp-pro-quiz'); ?>
+													<input type="checkbox" name="answerJson[answer_matrix_sort][sort_string_html][]" value="0">
+												</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<a href="#" class="button-secondary wpProQuiz_move" style="cursor: move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
+								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete answer', 'wp-pro-quiz'); ?>">
+							</li>
+							<?php if($type === 'matrix_sort_answer') {
+							foreach($qa['answer_matrix_sort']['answer'] as $k => $v) {
+								$ms = $qa['answer_matrix_sort'];
+							?>
+							<li style="border-bottom:1px dotted #ccc; padding-bottom: 5px; background-color: whiteSmoke;">
+								<table style="width: 100%; margin-bottom: 10px;">
+									<thead>
+										<td><?php _e('Criterion', 'wp-pro-quiz'); ?></td>
+										<td><?php _e('Sort elements', 'wp-pro-quiz'); ?></td>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<textarea rows="4" name="answerJson[answer_matrix_sort][answer][]" style="width: 100%; resize:none;"><?php echo $v; ?></textarea>
+											</td>
+											<td>
+												<textarea rows="4" name="answerJson[answer_matrix_sort][sort_string][]" style="width: 100%; resize:none;"><?php echo $ms['sort_string'][$k]; ?></textarea>
+											</td>	
+										</tr>
+										<tr>
+											<td>
+												<label>
+													<?php _e('Allow HTML', 'wp-pro-quiz'); ?>
+													<input type="checkbox" name="answerJson[answer_matrix_sort][answer_html][]" value="<?php echo $k; ?>" <?php echo (isset($ms['answer_html']) && in_array($k, $ms['answer_html'])) ? 'checked="checked"' : '';  ?>>
+												</label>
+											</td>
+											<td>
+												<label>
+													<?php _e('Allow HTML', 'wp-pro-quiz'); ?>
+													<input type="checkbox" name="answerJson[answer_matrix_sort][sort_string_html][]" value="<?php echo $k; ?>" <?php echo (isset($ms['sort_string_html']) && in_array($k, $ms['sort_string_html'])) ? 'checked="checked"' : '';  ?>>
+												</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<a href="#" class="button-secondary wpProQuiz_move" style="cursor: move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
+								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete answer', 'wp-pro-quiz'); ?>">
+							</li>
+							<?php } } else { ?>
+							<li style="border-bottom:1px dotted #ccc; padding-bottom: 5px; background-color: whiteSmoke;">
+								<table style="width: 100%; margin-bottom: 10px;">
+									<thead>
+										<th><?php _e('Criterion', 'wp-pro-quiz'); ?></th>
+										<th><?php _e('Sort elements', 'wp-pro-quiz'); ?></th>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<textarea rows="4" name="answerJson[answer_matrix_sort][answer][]" style="width: 100%; resize:vertical;"></textarea>
+											</td>
+											<td>
+												<textarea rows="4" name="answerJson[answer_matrix_sort][sort_string][]" style="width: 100%; resize:vertical;"></textarea>
+											</td>	
+										</tr>
+										<tr>
+											<td>
+												<label>
+													<?php _e('Allow HTML', 'wp-pro-quiz'); ?>
+													<input type="checkbox" name="answerJson[answer_matrix_sort][answer_html][]" value="1">
+												</label>
+											</td>
+											<td>
+												<label>
+													<?php _e('Allow HTML', 'wp-pro-quiz'); ?>
+													<input type="checkbox" name="answerJson[answer_matrix_sort][sort_string_html][]" value="1">
+												</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<a href="#" class="button-secondary wpProQuiz_move" style="cursor: move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
+								<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete answer', 'wp-pro-quiz'); ?>">
+							</li>
+							<?php } ?>
 						</ul>
 						<input type="button" class="button-primary addAnswer" value="<?php _e('Add new answer', 'wp-pro-quiz'); ?>">
 					</div>
