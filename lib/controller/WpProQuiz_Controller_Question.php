@@ -118,31 +118,33 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 	}
 	
 	public function clearPost($post) {
+		$j = array();
+		
 		switch($post['answerType']) {
+			
+			
 			case 'single':
 			case 'multiple':
-				unset($post['answerJson']['answer_sort']);
-				unset($post['answerJson']['free_answer']);
-				unset($post['answerJson']['matrix_sort_answer']);
+				$j = array('classic_answer' => $post['answerJson']['classic_answer']);
 				break;
 			case 'free_answer':
-				unset($post['answerJson']['answer_sort']);
-				unset($post['answerJson']['classic_answer']);
-				unset($post['answerJson']['matrix_sort_answer']);
+				$j = array('free_answer' => $post['answerJson']['free_answer']);
 				break;
 			case 'sort_answer':
-				unset($post['answerJson']['free_answer']);
-				unset($post['answerJson']['classic_answer']);
-				unset($post['answerJson']['matrix_sort_answer']);
+				$j = array('answer_sort' => $post['answerJson']['answer_sort']);
 				break;
 			case 'matrix_sort_answer':
-				unset($post['answerJson']['answer_sort']);
-				unset($post['answerJson']['free_answer']);
-				unset($post['answerJson']['classic_answer']);
+				$j = array('answer_matrix_sort' => $post['answerJson']['answer_matrix_sort']);
+				break;
+			case 'cloze_answer':
+				$j = array('answer_cloze' => $post['answerJson']['answer_cloze']);
 				break;
 					
 		}
-			
+
+		unset($post['answerJson']);
+		
+		$post['answerJson'] = $j;			
 		$post['answerJson'] = $this->clear($post['answerJson']);
 		$post['quizId'] = $this->_quizId;
 		

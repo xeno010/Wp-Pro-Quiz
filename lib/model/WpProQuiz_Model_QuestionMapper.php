@@ -28,6 +28,7 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 					$this->_table, 
 					array(
 						'title' => $question->getTitle(),
+						'points' => $question->getPoints(),
 						'question' => $question->getQuestion(),
 						'correct_msg' => $question->getCorrectMsg(),
 						'incorrect_msg' => $question->getIncorrectMsg(),
@@ -37,13 +38,14 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 						'answer_type' => $question->getAnswerType(),
 						'answer_json' => json_encode($question->getAnswerJson())),
 					array('id' => $question->getId()),
-					array('%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s'),
+					array('%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s'),
 					array('%d'));
 		} else {
 			$id = $this->_wpdb->insert($this->_table, array(
 					'quiz_id' => $question->getQuizId(),
 					'sort' => $this->count($question->getQuizId()),
 					'title' => $question->getTitle(),
+					'points' => $question->getPoints(),
 					'question' => $question->getQuestion(),
 					'correct_msg' => $question->getCorrectMsg(),
 					'incorrect_msg' => $question->getIncorrectMsg(),
@@ -53,7 +55,7 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 					'answer_type' => $question->getAnswerType(),
 					'answer_json' => json_encode($question->getAnswerJson())
 				),
-				array('%d', '%d', '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s')
+				array('%d', '%d', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s')
 			);
 			
 			$question->setId($id);

@@ -15,6 +15,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	protected $_tipEnabled = false;
 	protected $_tipMsg;
 	protected $_tipCount;
+	protected $_points = 1;
 	
 	public function setId($_id)
 	{
@@ -168,5 +169,15 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	
 	public function getTipCount() {
 		return $this->_tipCount;
+	}
+	
+	public function setPoints($_points)
+	{
+		$this->_points = (int)$_points;
+		return $this;
+	}
+	
+	public function getPoints() {
+		return $this->_points;
 	}
 }

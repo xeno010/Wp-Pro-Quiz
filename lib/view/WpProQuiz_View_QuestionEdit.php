@@ -23,6 +23,15 @@ jQuery(document).ready(function($) {
 				</div>
 			</div>			
 			<div class="postbox">
+				<h3 class="hndle"><?php _e('Points', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
+				<div class="inside">
+					<p class="description">
+						<?php _e('Points for this question (Standard is 1 point)', 'wp-pro-quiz'); ?>
+					</p>
+					<input name="points" class="small-text" value="<?php echo $this->question->getPoints(); ?>"> <?php _e('Points', 'wp-pro-quiz'); ?>
+				</div>
+			</div>
+			<div class="postbox">
 				<h3 class="hndle"><?php _e('Question', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
 					<?php 
@@ -103,6 +112,10 @@ jQuery(document).ready(function($) {
 					<label style="padding-right: 10px;">
 						<input type="radio" name="answerType" value="matrix_sort_answer" <?php echo ($type === 'matrix_sort_answer') ? 'checked="checked"' : ''; ?>>
 						<?php _e('"Matrix Sorting" choice', 'wp-pro-quiz'); ?>
+					</label>
+					<label style="padding-right: 10px;">
+						<input type="radio" name="answerType" value="cloze_answer" <?php echo ($type === 'cloze_answer') ? 'checked="checked"' : ''; ?>>
+						<?php _e('Cloze', 'wp-pro-quiz'); ?>
 					</label>
 				</div>
 			</div>
@@ -325,6 +338,15 @@ jQuery(document).ready(function($) {
 							<?php } ?>
 						</ul>
 						<input type="button" class="button-primary addAnswer" value="<?php _e('Add new answer', 'wp-pro-quiz'); ?>">
+					</div>
+					<div class="cloze_answer">
+						<p class="description">
+							<?php _e('Enclose the searched words with { } e.g. "I {play} soccer". Capital and small letters will be ignored.', 'wp-pro-quiz'); ?>
+						</p>
+						<?php
+							$clozeText = isset($qa['answer_cloze'], $qa['answer_cloze']['text']) ? $qa['answer_cloze']['text'] : '';
+							wp_editor($clozeText, 'cloze', array('textarea_rows' => 10, 'textarea_name' => 'answerJson[answer_cloze][text]'));
+						?>
 					</div>
 				</div>
 			</div>

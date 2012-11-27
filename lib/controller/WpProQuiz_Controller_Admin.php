@@ -38,7 +38,9 @@ class WpProQuiz_Controller_Admin {
 			'no_correct_msg' => __('Correct answer was not selected!', 'wp-pro-quiz'),
 			'no_answer_msg' => __('No answer deposited!', 'wp-pro-quiz'),
 			'no_quiz_start_msg' => __('No quiz description filled!', 'wp-pro-quiz'),
-			'fail_grade_result' => __('The percent values in result text are incorrect.', 'wp-pro-quiz')
+			'fail_grade_result' => __('The percent values in result text are incorrect.', 'wp-pro-quiz'),
+			'no_nummber_points' => __('No number in the field "Points" or less than 1', 'wp-pro-quiz'),
+			'no_selected_quiz' => __('No quiz selected', 'wp-pro-quiz')
 		);
 		
 		wp_localize_script('wpProQuiz_admin_javascript', 'wpProQuizLocalize', $translation_array);
@@ -92,6 +94,9 @@ class WpProQuiz_Controller_Admin {
 				break;
 			case 'statistics':
 				$c = new WpProQuiz_Controller_Statistics();
+				break;
+			case 'importExport':
+				$c = new WpProQuiz_Controller_ImportExport();
 				break;
 		}
 		

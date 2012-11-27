@@ -39,6 +39,24 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 							</tr>
 							<tr>
 								<th scope="row">
+									<?php _e('Show points', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Show points', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label for="show_points">
+											<input type="checkbox" id="show_points" value="1" name="showPoints" <?php echo $this->quiz->isShowPoints() ? 'checked="checked"' : '' ?> >
+										</label>
+										<p class="description">
+											<?php _e('Shows in quiz, how many points are reachable for respective question.', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
 									<?php _e('Display question randomly', 'wp-pro-quiz'); ?>
 								</th>
 								<td>
@@ -191,7 +209,10 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 							<strong><?php _e('Hint:', 'wp-pro-quiz'); ?></strong>
 							<ul style="list-style-type: square; padding: 5px; margin-left: 20px; margin-top: 0;">
 								<li><?php _e('Maximal 15 levels', 'wp-pro-quiz'); ?></li>
-								<li><?php _e('One question is one point', 'wp-pro-quiz'); ?></li>
+								<li>
+									<?php printf(__('Percentages refer to the total score of the quiz. (Current total %d points in %d questions.', 'wp-pro-quiz'),
+											$this->quiz->fetchSumQuestionPoints(), $this->quiz->fetchCountQuestions()); ?>
+									</li>
 								<li><?php _e('Values can also be mixed up', 'wp-pro-quiz'); ?></li>
 								<li><?php _e('10,15% or 10.15% allowed (max. two digits after the decimal point)', 'wp-pro-quiz'); ?></li>
 							</ul>

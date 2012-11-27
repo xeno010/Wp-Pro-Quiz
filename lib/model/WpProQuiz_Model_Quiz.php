@@ -14,6 +14,7 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_statisticsOn;
 	protected $_statisticsIpLock;
 	protected $_resultGradeEnabled = false;
+	protected $_showPoints = false;
 	
 	public function getId() {
 		return $this->_id;
@@ -130,5 +131,26 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
 	public function isResultGradeEnabled() {
 		return $this->_resultGradeEnabled;
+	}
+	
+	public function setShowPoints($_showPoints) {
+		$this->_showPoints = (bool)$_showPoints;
+		return $this;
+	}
+	
+	public function isShowPoints() {
+		return $this->_showPoints;
+	}
+	
+	public function fetchSumQuestionPoints() {
+		$m = new WpProQuiz_Model_QuizMapper();
+		
+		return $m->sumQuestionPoints($this->_id);
+	}
+	
+	public function fetchCountQuestions() {
+		$m = new WpProQuiz_Model_QuizMapper();
+	
+		return $m->countQuestion($this->_id);
 	}
 }

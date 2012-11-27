@@ -74,21 +74,39 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'time_limit' => (int)$data->getTimeLimit(),
 			'statistics_on' => (int)$data->isStatisticsOn(),
 			'statistics_ip_lock' => (int)$data->getStatisticsIpLock(),
-			'result_grade_enabled' => (int)$data->isResultGradeEnabled()
+			'result_grade_enabled' => (int)$data->isResultGradeEnabled(),
+			'show_points' => (int)$data->isShowPoints()
 		);
 		
 		if($data->getId() != 0) {
-			return $this->_wpdb->update($this->_table,
+			$result = $this->_wpdb->update($this->_table,
 					$set,
 					array(
 							'id' => $data->getId()
 					),
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
 					array('%d'));
 		} else {
-			return $this->_wpdb->insert($this->_table,
-					$set,
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
+			
+			$result = $this->_wpdb->insert($this->_table,
+						$set,
+						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
+			
+			$data->setId($this->_wpdb->insert_id);
 		}
+		
+		if($result === false) {
+			return null;
+		}
+		
+		return $data;
+	}
+	
+	public function sumQuestionPoints($id) {
+		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT SUM(points) FROM {$this->_tableQuestion} WHERE quiz_id = %d", $id));
+	}
+	
+	public function countQuestion($id) {
+		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_tableQuestion} WHERE quiz_id = %d", $id));
 	}
 }

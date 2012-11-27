@@ -8,6 +8,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			$a = array();
 			$a['answer_type'] = $q->getAnswerType();
 			$a['id'] = $q->getId();
+			$a['points'] = $q->getPoints();
 			$j = $q->getAnswerJson();
 			
 			switch ($q->getAnswerType()) {
@@ -31,7 +32,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			
 			$r[] = $a;
 		}
-		
+
 		return $r;
 	}
 	
@@ -70,13 +71,16 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 	<div class="wpProQuiz_results">
 		<h3><?php _e('Results', 'wp-pro-quiz'); ?></h3>
 		<p>
-			<?php printf(__('%s of %s questions answered correctly', 'wp-pro-quiz'), '<span class="wpProQuiz_points"></span>', '<span>'.$question_count.'</span>'); ?> <span class="wpProQuiz_points_prozent">(0%)</span>
+			<?php printf(__('%s of %s questions answered correctly', 'wp-pro-quiz'), '<span class="wpProQuiz_correct_answer"></span>', '<span>'.$question_count.'</span>'); ?>
+		</p>
+		<p class="wpProQuiz_quiz_time">
+			<?php _e('Your time: <span></span>', 'wp-pro-quiz') ?>
 		</p>
 		<p class="wpProQuiz_time_limit_expired">
 			<?php _e('Time has elapsed', 'wp-pro-quiz'); ?>
 		</p>
-		<p class="wpProQuiz_quiz_time">
-			<?php _e('Your time: <span></span>', 'wp-pro-quiz') ?>
+		<p class="wpProQuiz_points">
+			<?php _e('You have reached <span></span> of <span></span> points, (<span></span>%)', 'wp-pro-quiz') ?>
 		</p>
 		<div>
 			<ul class="wpProQuiz_resultsList">
@@ -109,6 +113,11 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			<li class="wpProQuiz_listItem">
 				<div class="wpProQuiz_question_page">
 					<?php printf(__('Question %s of %s', 'wp-pro-quiz'), '<span>'.$index.'</span>', '<span>'.$question_count.'</span>'); ?>
+					
+					<?php if($this->quiz->isShowPoints()) { ?>
+					<span style="float:right;"><?php printf(__('%d points', 'wp-pro-quiz'), $question->getPoints()); ?></span>
+					<div style="clear: right;"></div>
+					<?php } ?>
 				</div>
 				<h3><span><?php echo $index; ?></span>. <?php _e('Question', 'wp-pro-quiz'); ?></h3>
 				<div class="wpProQuiz_question">
@@ -176,8 +185,21 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 								</tbody>
 							</table>
 						</li>
-						
-					 <?php } } ?>
+					 <?php } } else if($question->getAnswerType() === 'cloze_answer') { ?>
+					 	<li class="wpProQuiz_questionListItem">
+					 		<?php 
+					 			$clozeText = $answerArray['answer_cloze']['text'];
+					 			
+					 			$clozeText = do_shortcode(apply_filters('comment_text', $clozeText));
+					 			
+					 			$input = '<span class="wpProQuiz_cloze"><input type="text" value="">'; 
+
+					 			$clozeText = preg_replace('#\{(.*?)\}#', $input.' <span class="wpProQuiz_clozeCorrect">(\1)</span></span>', $clozeText);
+					 			
+					 			echo $clozeText;
+					 		?>
+					 	</li>
+					 <?php } ?>
 					</ul>
 				</div>
 				<div class="wpProQuiz_response">
@@ -242,7 +264,6 @@ jQuery(document).ready(function($) {
 		json: <?php echo $json; ?>
 	});
 });
-
 </script>	
 		<?php 
 	}

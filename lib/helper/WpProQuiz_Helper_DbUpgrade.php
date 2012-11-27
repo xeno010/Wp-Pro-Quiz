@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 6;
+	const WPPROQUIZ_DB_VERSION = 7;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -62,6 +62,7 @@ class WpProQuiz_Helper_DbUpgrade {
 				  `time_limit` int(11) NOT NULL,
 				  `statistics_on` tinyint(1) NOT NULL,
 				  `statistics_ip_lock` int(10) unsigned NOT NULL,
+				  `show_points` tinyint(1) NOT NULL,
 				  PRIMARY KEY (`id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 				
@@ -73,6 +74,7 @@ class WpProQuiz_Helper_DbUpgrade {
 				  `quiz_id` int(11) NOT NULL,
 				  `sort` tinyint(3) unsigned NOT NULL,
 				  `title` varchar(200) NOT NULL,
+				  `points` int(11) NOT NULL,
 				  `question` text NOT NULL,
 				  `correct_msg` text NOT NULL,
 				  `incorrect_msg` text NOT NULL,
@@ -189,5 +191,24 @@ class WpProQuiz_Helper_DbUpgrade {
 		');
 		
 		return 6;
+	}
+	
+	private function upgradeDbV6() {
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_question`
+				ADD  `points` INT NOT NULL AFTER  `title`
+		');
+		
+		$this->_wpdb->query('
+			UPDATE `'.$this->_wpdb->prefix.'wp_pro_quiz_question` SET `points` = 1
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master`
+				ADD  `show_points` TINYINT( 1 ) NOT NULL
+		');
+		
+		return 7;
 	}
 }
