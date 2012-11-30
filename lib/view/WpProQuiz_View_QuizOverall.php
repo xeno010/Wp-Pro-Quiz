@@ -30,6 +30,18 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 </style>
 <div class="wrap wpProQuiz_quizOverall">
 	<h2><?php _e('Quiz overview', 'wp-pro-quiz'); ?></h2>
+	<div class="updated">
+		<h3><?php _e('In case of problems', 'wp-pro-quiz'); ?></h3>
+		<p>
+			<?php _e('If quiz doesn\'t work in front-end, please try following:', 'wp-pro-quiz'); ?>
+		</p>
+		<p>
+			[raw][WpProQuiz X][/raw]
+		</p>
+		<p>
+			<?php _e('Own themes changes internal  order of filters, what causes the problems. With additional shortcode [raw] this is prevented.', 'wp-pro-quiz'); ?>
+		</p>
+	</div>
 	<table class="wp-list-table widefat">
 		<thead>
 			<tr>

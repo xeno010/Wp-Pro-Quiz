@@ -1,9 +1,9 @@
 === Wp-Pro-Quiz ===
 Contributors: xeno010
-Tags: quiz
+Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 0.6
+Stable tag: 0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,15 @@ A powerful and beautiful quiz plugin for WordPress.
 = Live Demo =
 http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "Demo")
 
+= In case of problems =
+If quiz doesn’t work in front-end, please try following:<br>
+[raw][WpProQuiz X][/raw]<br><br>
+Own themes changes internal  order of filters, what causes the problems. With additional shortcode [raw] this is prevented.   
+
+= Support = 
+* English: http://wordpress.org/support/plugin/wp-pro-quiz
+* German/Deutsch: http://www.it-gecko.de/kontakt
+
 == Installation ==
 
 1. Upload the wp-pro-quiz folder to the /wp-content/plugins/ directory
@@ -60,6 +69,13 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 8. Adminmenu - Quiz question overview
 9. Adminmenu - Create question
 10. Adminmenu - Question statistics
+
+== Frequently Asked Questions ==
+
+= In case of problems =
+If quiz doesn’t work in front-end, please try following:<br>
+[raw][WpProQuiz X][/raw]<br><br>
+Own themes changes internal  order of filters, what causes the problems. With additional shortcode [raw] this is prevented.  
 
 == Changelog ==
 
@@ -88,3 +104,6 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * For every question you can now individually be determined
 * Cloze answer type added
 * Import / export function added
+
+= 0.7 =
+* CSS: !important added to all CSS-properties

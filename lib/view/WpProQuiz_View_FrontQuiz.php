@@ -68,7 +68,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			<input type="button" value="<?php _e('Start quiz', 'wp-pro-quiz'); ?>" name="startQuiz">
 		</div>
 	</div>
-	<div class="wpProQuiz_results">
+	<div style="display: none;" class="wpProQuiz_results">
 		<h3><?php _e('Results', 'wp-pro-quiz'); ?></h3>
 		<p>
 			<?php printf(__('%s of %s questions answered correctly', 'wp-pro-quiz'), '<span class="wpProQuiz_correct_answer"></span>', '<span>'.$question_count.'</span>'); ?>
@@ -98,11 +98,11 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			<input type="button" name="reShowQuestion" value="<?php _e('View question', 'wp-pro-quiz'); ?>">
 		</p>
 	</div>
-	<div class="wpProQuiz_time_limit">
+	<div style="display: none;" class="wpProQuiz_time_limit">
 		<div class="time"><?php _e('Time limit', 'wp-pro-quiz'); ?>: <span>00:03:15</span></div>
 		<div class="progress"></div>
 	</div>
-	<div class="wpProQuiz_quiz">
+	<div style="display: none;" class="wpProQuiz_quiz">
 		<ol class="wpProQuiz_list">
 		<?php 
 			$index = 0; 
@@ -120,7 +120,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 					<?php } ?>
 				</div>
 				<h3><span><?php echo $index; ?></span>. <?php _e('Question', 'wp-pro-quiz'); ?></h3>
-				<div class="wpProQuiz_question">
+				<div class="wpProQuiz_question" style="margin: 10px 0px 0px 0px;">
 					<div class="wpProQuiz_question_text">
 						<?php echo do_shortcode(apply_filters('comment_text', $question->getQuestion())); ?>
 					</div>
@@ -194,7 +194,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 					 			
 					 			$input = '<span class="wpProQuiz_cloze"><input type="text" value="">'; 
 
-					 			$clozeText = preg_replace('#\{(.*?)\}#', $input.' <span class="wpProQuiz_clozeCorrect">(\1)</span></span>', $clozeText);
+					 			$clozeText = preg_replace('#\{(.*?)\}#', $input.' <span class="wpProQuiz_clozeCorrect" style="display: none;">(\1)</span></span>', $clozeText);
 					 			
 					 			echo $clozeText;
 					 		?>
@@ -203,7 +203,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 					</ul>
 				</div>
 				<div class="wpProQuiz_response">
-					<div class="wpProQuiz_correct">
+					<div style="display: none;" class="wpProQuiz_correct">
 						<span>
 							<?php _e('Correct', 'wp-pro-quiz'); ?>
 						</span>
@@ -211,7 +211,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 							<?php echo do_shortcode(apply_filters('comment_text', $question->getCorrectMsg())); ?>
 						</p>
 					</div>
-					<div class="wpProQuiz_incorrect">
+					<div style="display: none;" class="wpProQuiz_incorrect">
 						<span>
 							<?php _e('Incorrect', 'wp-pro-quiz'); ?>
 						</span>
@@ -228,7 +228,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 						</p>
 					</div>
 				</div>
-				<div class="wpProQuiz_tipp">
+				<div class="wpProQuiz_tipp" style="display: none;">
 					<h3><?php _e('Hint', 'wp-pro-quiz'); ?></h3>
 					<?php 
 						if($question->isTipEnabled()) {
@@ -236,12 +236,12 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 						}
 					?>
 				</div>
-				<input type="button" name="check" value="<?php _e('Check', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left; margin-right: 10px;">
-				<input type="button" name="back" value="<?php _e('Back', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left; margin-right: 10px;">
+				<input type="button" name="check" value="<?php _e('Check', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left !important; margin-right: 10px !important; display: none;">
+				<input type="button" name="back" value="<?php _e('Back', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left !important; margin-right: 10px !important; display: none;">
 				<?php if($question->isTipEnabled()) { ?>
-				<input type="button" name="tip" value="<?php _e('Hint', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton wpProQuiz_TipButton" style="float: left; display: inline-block;">
+				<input type="button" name="tip" value="<?php _e('Hint', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton wpProQuiz_TipButton" style="float: left !important; display: inline-block;">
 				<?php } ?>
-				<input type="button" name="next" value="<?php _e('Next exercise', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: right;" >
+				<input type="button" name="next" value="<?php _e('Next exercise', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: right; display: none;" >
 				<div style="clear: both;"></div>
 			</li>
 		

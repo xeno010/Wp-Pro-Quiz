@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wp-Pro-Quiz\n"
-"POT-Creation-Date: 2012-11-27 12:06+0100\n"
-"PO-Revision-Date: 2012-11-27 12:06+0100\n"
+"POT-Creation-Date: 2012-11-30 13:45+0100\n"
+"PO-Revision-Date: 2012-11-30 13:45+0100\n"
 "Last-Translator: Julius Fischer <julius.f@gmx.net>\n"
 "Language-Team: Julius Fischer\n"
 "Language: German\n"
@@ -212,8 +212,8 @@ msgid "Next exercise"
 msgstr "Nächste Frage"
 
 #: lib/view/WpProQuiz_View_Import.php:21
-#: lib/view/WpProQuiz_View_QuizOverall.php:65
-#: lib/view/WpProQuiz_View_QuizOverall.php:80
+#: lib/view/WpProQuiz_View_QuizOverall.php:77
+#: lib/view/WpProQuiz_View_QuizOverall.php:92
 msgid "Import"
 msgstr "Import"
 
@@ -242,12 +242,12 @@ msgid "Quiz name"
 msgstr "Quiz-Name"
 
 #: lib/view/WpProQuiz_View_Import.php:44
-#: lib/view/WpProQuiz_View_QuizOverall.php:53
+#: lib/view/WpProQuiz_View_QuizOverall.php:65
 msgid "Questions"
 msgstr "Fragen"
 
 #: lib/view/WpProQuiz_View_Import.php:67
-#: lib/view/WpProQuiz_View_QuizOverall.php:91
+#: lib/view/WpProQuiz_View_QuizOverall.php:103
 msgid "Start import"
 msgstr "Import starten"
 
@@ -460,22 +460,22 @@ msgid "Questions sorted"
 msgstr "Fragen sortiert"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:14
-#: lib/view/WpProQuiz_View_QuizOverall.php:39
+#: lib/view/WpProQuiz_View_QuizOverall.php:51
 msgid "Name"
 msgstr "Name"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:15
-#: lib/view/WpProQuiz_View_QuizOverall.php:40
+#: lib/view/WpProQuiz_View_QuizOverall.php:52
 msgid "Action"
 msgstr "Aktion"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:27
-#: lib/view/WpProQuiz_View_QuizOverall.php:54
+#: lib/view/WpProQuiz_View_QuizOverall.php:66
 msgid "Edit"
 msgstr "Bearbeiten"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:28
-#: lib/view/WpProQuiz_View_QuizOverall.php:55
+#: lib/view/WpProQuiz_View_QuizOverall.php:67
 msgid "Delete"
 msgstr "Löschen"
 
@@ -562,7 +562,7 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:144
 #: lib/view/WpProQuiz_View_QuizEdit.php:149
-#: lib/view/WpProQuiz_View_QuizOverall.php:57
+#: lib/view/WpProQuiz_View_QuizOverall.php:69
 msgid "Statistics"
 msgstr "Statistik"
 
@@ -679,28 +679,45 @@ msgstr "Stufe hinzufügen"
 msgid "Quiz overview"
 msgstr "Quiz Übersicht"
 
-#: lib/view/WpProQuiz_View_QuizOverall.php:37
+#: lib/view/WpProQuiz_View_QuizOverall.php:34
+msgid "In case of problems"
+msgstr "Bei Problemen"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:36
+msgid "If quiz doesn't work in front-end, please try following:"
+msgstr ""
+"Wenn das Quiz im Front-End nicht funktioniert, versucht bitte folgendes:"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:42
+msgid ""
+"Own themes changes internal  order of filters, what causes the problems. "
+"With additional shortcode [raw] this is prevented."
+msgstr ""
+"Einige Themen verändern die interne Reihenfolge der Filter, wodurch es zu "
+"Fehlern kommt. Mit dem zusätzlichen Shortcode [raw] wird dies verhindert."
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:49
 msgid "ID"
 msgstr "ID"
 
-#: lib/view/WpProQuiz_View_QuizOverall.php:38
+#: lib/view/WpProQuiz_View_QuizOverall.php:50
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: lib/view/WpProQuiz_View_QuizOverall.php:56
+#: lib/view/WpProQuiz_View_QuizOverall.php:68
 msgid "Preview"
 msgstr "Vorschau"
 
-#: lib/view/WpProQuiz_View_QuizOverall.php:64
+#: lib/view/WpProQuiz_View_QuizOverall.php:76
 msgid "Add quiz"
 msgstr "Quiz hinzufügen"
 
-#: lib/view/WpProQuiz_View_QuizOverall.php:66
-#: lib/view/WpProQuiz_View_QuizOverall.php:70
+#: lib/view/WpProQuiz_View_QuizOverall.php:78
+#: lib/view/WpProQuiz_View_QuizOverall.php:82
 msgid "Export"
 msgstr "Export"
 
-#: lib/view/WpProQuiz_View_QuizOverall.php:71
+#: lib/view/WpProQuiz_View_QuizOverall.php:83
 msgid ""
 "Choose the respective question, which you would like to export and press on "
 "\"Start export\""
@@ -708,17 +725,17 @@ msgstr ""
 "Wählen Sie oben die entsprechen Quiz aus, die Sie exportieren möchten und "
 "klicken Sie anschliessen auf \"Export starten\""
 
-#: lib/view/WpProQuiz_View_QuizOverall.php:75
+#: lib/view/WpProQuiz_View_QuizOverall.php:87
 msgid "Start export"
 msgstr "Export starten"
 
-#: lib/view/WpProQuiz_View_QuizOverall.php:81
+#: lib/view/WpProQuiz_View_QuizOverall.php:93
 msgid "Import only *.wpq files from known and trusted sources."
 msgstr ""
 "Importieren sie nur *.wpq Dateien aus bekannten und vertrauenswürdigen "
 "Quellen."
 
-#: lib/view/WpProQuiz_View_QuizOverall.php:89
+#: lib/view/WpProQuiz_View_QuizOverall.php:101
 #, php-format
 msgid "Maximal %d MiB"
 msgstr "Maximal %d MiB"
