@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 7;
+	const WPPROQUIZ_DB_VERSION = 8;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -63,8 +63,8 @@ class WpProQuiz_Helper_DbUpgrade {
 				  `statistics_on` tinyint(1) NOT NULL,
 				  `statistics_ip_lock` int(10) unsigned NOT NULL,
 				  `show_points` tinyint(1) NOT NULL,
-				  PRIMARY KEY (`id`)
-			) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+			  PRIMARY KEY (`id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 				
 		');
 		
@@ -86,18 +86,18 @@ class WpProQuiz_Helper_DbUpgrade {
 				  `tip_count` int(11) NOT NULL,
 				  `answer_type` varchar(50) NOT NULL,
 				  `answer_json` text NOT NULL,
-				  PRIMARY KEY (`id`),
-				  KEY `quiz_id` (`quiz_id`)
-			) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+			  PRIMARY KEY (`id`),
+			  KEY `quiz_id` (`quiz_id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		');
 		
 		$this->_wpdb->query('
 			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_lock` (
-				`quiz_id` int(11) NOT NULL,
-				`lock_ip` varchar(100) NOT NULL,
-				`lock_date` int(11) NOT NULL,
-				PRIMARY KEY (`quiz_id`,`lock_ip`)
-			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+				  `quiz_id` int(11) NOT NULL,
+				  `lock_ip` varchar(100) NOT NULL,
+				  `lock_date` int(11) NOT NULL,
+			  PRIMARY KEY (`quiz_id`,`lock_ip`)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 		');
 	}
 	
@@ -210,5 +210,44 @@ class WpProQuiz_Helper_DbUpgrade {
 		');
 		
 		return 7;
+	}
+	
+	private function upgradeDbV7() {
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` 
+				CHANGE  `name`  `name` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+				CHANGE  `text`  `text` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+				CHANGE  `result_text`  `result_text` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_question` 
+				CHANGE  `title`  `title` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+				CHANGE  `question`  `question` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+				CHANGE  `correct_msg`  `correct_msg` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+				CHANGE  `incorrect_msg`  `incorrect_msg` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+				CHANGE  `tip_msg`  `tip_msg` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+				CHANGE  `answer_type`  `answer_type` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+				CHANGE  `answer_json`  `answer_json` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_lock` 
+				CHANGE  `lock_ip`  `lock_ip` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_lock` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_question` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci
+		');
+			
+		return 8;
 	}
 }

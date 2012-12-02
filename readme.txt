@@ -3,7 +3,7 @@ Contributors: xeno010
 Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 0.9
+Stable tag: 0.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,3 +113,9 @@ Own themes changes internal  order of filters, what causes the problems. With ad
 
 = 0.9 =
 * Bugfix in the frontend (Single choice)
+
+= 0.10 =
+* Bugfix: "Matrix Sorting" in connection with "Random answer"
+* Bugfix: Database in connection with UTF-8
+* Bugfix in cloze
+* Bugfix in the backend

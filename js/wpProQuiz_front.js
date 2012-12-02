@@ -166,6 +166,12 @@
 						console.debug($(this));
 					});
 					
+					if(j.answer_type == 'matrix_sort_answer') {
+						$(this).children().each(function() {
+							$(this).data('correct', $(this).index());
+						});
+					}
+					
 					i++;
 				});
 			},
@@ -243,9 +249,10 @@
 				} else if(type == 'matrix_sort_answer') {
 					var check = true;
 					var $qList = $question.find('.wpProQuiz_questionList').children();
+					var matrixArray = new Object();
 					
 					$qList.each(function() {
-						var index = $(this).index();
+						var index = $(this).data('correct');
 						var $par = $(this).find('.wpProQuiz_maxtrixSortCriterion');
 						var item = $par.children().first();
 						
@@ -256,10 +263,12 @@
 							check = false;
 							$par.addClass('wpProQuiz_answerIncorrect');
 						}
+						
+						matrixArray[index] = $(this);
 					});
 					
 					$question.find('.wpProQuiz_sortStringItem').each(function() {
-						$qList.eq($(this).data('correct')).find('.wpProQuiz_maxtrixSortCriterion').append(this);
+						matrixArray[$(this).data('correct')].find('.wpProQuiz_maxtrixSortCriterion').append(this);
 					}).css({'box-shadow': '0 0', 'cursor': 'auto'});
 					
 					$question.find('.wpProQuiz_sortStringList, .wpProQuiz_maxtrixSortCriterion').sortable("destroy");
@@ -275,9 +284,11 @@
 						var iText = input.val().toLowerCase();
 						var cloze = children.last().text().toLowerCase();
 						
-						cloze = cloze.substr(1, cloze.length-2);
+						cloze = $.trim(cloze.substr(1, cloze.length-2));
+						cloze = plugin.methode.cleanupCurlyQuotes(cloze);
+						iText = plugin.methode.cleanupCurlyQuotes($.trim(iText));
 
-						if($.trim(cloze) == $.trim(iText)) {
+						if(cloze == iText) {
 							check &= true;
 							input.css('background-color', '#B0DAB0');
 						} else {
@@ -382,6 +393,17 @@
 				}
 				
 				return index;
+			},
+			
+			cleanupCurlyQuotes: function(str) {
+				
+				str = str.replace(/\u2018/, "'");
+				str = str.replace(/\u2019/, "'");
+				
+				str = str.replace(/\u201C/, '"');
+				str = str.replace(/\u201D/, '"');
+								
+				return str;
 			},
 			
 			sendStatistics: function() {

@@ -252,7 +252,7 @@ jQuery(document).ready(function($) {
 			var type = $('input[name="answerType"]:checked');
 			var $points = $('input[name="points"]');
 			
-			if(tinymce.editors.question != undefined) {
+			if(tinymce.editors.question != undefined && !tinymce.editors.question.isHidden()) {
 				question = tinymce.editors.question.getContent();
 			} else {
 				question = $('textarea[name="question"]').val();
@@ -325,13 +325,20 @@ jQuery(document).ready(function($) {
 			} else if(type.val() == 'cloze_answer') {
 				var clozeText = '';
 				
-				if(tinymce.editors.cloze != undefined) {
+				if(tinymce.editors.cloze != undefined && !tinymce.editors.cloze.isHidden()) {
 					clozeText = tinymce.editors.cloze.getContent();
 				} else {
-					clozeText = $('textarea[name="cloze"]').val();
+					clozeText = $('textarea[name="answerJson[answer_cloze][text]"]').val();
 				}
 				
 				if(isEmpty(clozeText)) {
+					alert(wpProQuizLocalize.no_answer_msg);
+					return false;
+				}
+			} else if(type.val() == 'free_answer') {
+				var freeText = $('textarea[name="answerJson[free_answer][correct]"]').val();
+				
+				if(isEmpty(freeText)) {
 					alert(wpProQuizLocalize.no_answer_msg);
 					return false;
 				}
@@ -416,27 +423,46 @@ jQuery(document).ready(function($) {
 			addResult: function() {
 				$('#resultList').children().each(function() {
 					if($(this).css('display') == 'none') {
-						
+						//TODO rework
 						var $this 	= $(this);
 						var $text 	= $this.find('textarea[name="resultTextGrade[text][]"]');
 						var id 		= $text.attr('id');
+						var hidden  = true;
 
 						$this.find('input[name="resultTextGrade[prozent][]"]').val('0');
 						$this.find('input[name="resultTextGrade[activ][]"]').val('1').keyup();
+						
+						if(tinymce.editors[id] != undefined && !tinymce.editors[id].isHidden()) {
+							hidden = false;
+						}
+						
+						if(switchEditors != undefined  && !hidden) {
+							switchEditors.go(id, 'toggle');
+							switchEditors.go(id, 'toggle');
+						}
 						
 						if(tinymce.editors[id] != undefined) {
 							tinymce.editors[id].setContent('');
 						} else {
 							$text.val('');
 						}
-						
-						tinyMCE.execCommand('mceRemoveControl', false, id);
+
+						if(tinymce.editors[id] != undefined && !hidden) {
+							tinyMCE.execCommand('mceRemoveControl', false, id);
+						}
 						
 						$this.parent().children(':visible').last().after($this);
 						
-						tinyMCE.execCommand('mceAddControl', false, id);
+						if(tinymce.editors[id] != undefined && !hidden) {
+							tinyMCE.execCommand('mceAddControl', false, id);
+						}
 						
 						$(this).show();
+
+						if(switchEditors != undefined && !hidden) {
+							switchEditors.go(id, 'toggle');
+						}
+						
 						
 						return false;
 					}
@@ -487,7 +513,7 @@ jQuery(document).ready(function($) {
 				
 				var text = ''; 
 				
-				if(tinymce.editors.text != undefined) {
+				if(tinymce.editors.text != undefined && !tinymce.editors.text.isHidden()) {
 					text = tinymce.editors.text.getContent();
 				} else {
 					text = $('textarea[name="text"]').val();
