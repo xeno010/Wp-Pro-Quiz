@@ -33,9 +33,9 @@ class WpProQuiz_Controller_Front {
 			'wpProQuiz_front_javascript', 
 			plugins_url('js/wpProQuiz_front.min.js', $this->_plugin_file),
 			array('jquery-ui-sortable'),
-			WPPROQUIZ_VERSION
+			WPPROQUIZ_VERSION,
+			true
 		);
-		
 		
 		if(is_numeric($id)) {
 			ob_start();

@@ -76,7 +76,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		<p class="wpProQuiz_quiz_time">
 			<?php _e('Your time: <span></span>', 'wp-pro-quiz') ?>
 		</p>
-		<p class="wpProQuiz_time_limit_expired">
+		<p class="wpProQuiz_time_limit_expired" style="display: none;">
 			<?php _e('Time has elapsed', 'wp-pro-quiz'); ?>
 		</p>
 		<p class="wpProQuiz_points">
@@ -85,7 +85,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		<div>
 			<ul class="wpProQuiz_resultsList">
 				<?php foreach($result['text'] as $resultText) { ?>
-				<li>
+				<li style="display: none;">
 					<div>
 						<?php echo do_shortcode(apply_filters('comment_text', $resultText)); ?>
 					</div>
@@ -202,7 +202,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 					 <?php } ?>
 					</ul>
 				</div>
-				<div class="wpProQuiz_response">
+				<div class="wpProQuiz_response" style="display: none;">
 					<div style="display: none;" class="wpProQuiz_correct">
 						<span>
 							<?php _e('Correct', 'wp-pro-quiz'); ?>

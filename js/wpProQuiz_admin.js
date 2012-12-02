@@ -247,9 +247,16 @@ jQuery(document).ready(function($) {
 		};
 
 		var validate = function () {
-			var question = tinymce.editors.question.getContent();
+			
+			var question = '';
 			var type = $('input[name="answerType"]:checked');
 			var $points = $('input[name="points"]');
+			
+			if(tinymce.editors.question != undefined) {
+				question = tinymce.editors.question.getContent();
+			} else {
+				question = $('textarea[name="question"]').val();
+			}
 			
 			if(isNaN($points.val()) || $points.val() < 1) {
 				alert(wpProQuizLocalize.no_nummber_points);
@@ -316,7 +323,13 @@ jQuery(document).ready(function($) {
 					return false;
 				}
 			} else if(type.val() == 'cloze_answer') {
-				var clozeText = tinymce.editors.cloze.getContent();
+				var clozeText = '';
+				
+				if(tinymce.editors.cloze != undefined) {
+					clozeText = tinymce.editors.cloze.getContent();
+				} else {
+					clozeText = $('textarea[name="cloze"]').val();
+				}
 				
 				if(isEmpty(clozeText)) {
 					alert(wpProQuizLocalize.no_answer_msg);
@@ -325,7 +338,6 @@ jQuery(document).ready(function($) {
 			}
 
 			return true;
-			
 		};
 
 		var isEmpty = function(str) {
@@ -405,13 +417,18 @@ jQuery(document).ready(function($) {
 				$('#resultList').children().each(function() {
 					if($(this).css('display') == 'none') {
 						
-						var $this = $(this);
-						var id = $this.find('textarea[name="resultTextGrade[text][]"]').attr('id');
+						var $this 	= $(this);
+						var $text 	= $this.find('textarea[name="resultTextGrade[text][]"]');
+						var id 		= $text.attr('id');
 
 						$this.find('input[name="resultTextGrade[prozent][]"]').val('0');
 						$this.find('input[name="resultTextGrade[activ][]"]').val('1').keyup();
 						
-						tinymce.editors[id].setContent('');
+						if(tinymce.editors[id] != undefined) {
+							tinymce.editors[id].setContent('');
+						} else {
+							$text.val('');
+						}
 						
 						tinyMCE.execCommand('mceRemoveControl', false, id);
 						
@@ -468,7 +485,15 @@ jQuery(document).ready(function($) {
 					return false;
 				}
 				
-				if(isEmpty(tinymce.editors.text.getContent())) {
+				var text = ''; 
+				
+				if(tinymce.editors.text != undefined) {
+					text = tinymce.editors.text.getContent();
+				} else {
+					text = $('textarea[name="text"]').val();
+				}
+				
+				if(isEmpty(text)) {
 					alert(wpProQuizLocalize.no_quiz_start_msg);
 					return false;
 				}

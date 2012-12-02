@@ -46,6 +46,8 @@
 
 .wpProQuiz_questionListItem > table{
 	border-collapse: collapse !important;
+	margin: 0 !important;
+	padding: 0 !important;
 	width: 100%;
 }
 
@@ -54,7 +56,7 @@
 	margin-bottom: 0 !important;
 }
 
-.wpProQuiz_list, wpProQuiz_listItem, .wpProQuiz_questionList, .wpProQuiz_sortStringList, .wpProQuiz_sortStringList, .wpProQuiz_maxtrixSortCriterion, .wpProQuiz_resultsList {
+.wpProQuiz_list, .wpProQuiz_listItem, .wpProQuiz_questionList, .wpProQuiz_sortStringList, .wpProQuiz_sortStringList, .wpProQuiz_maxtrixSortCriterion, .wpProQuiz_resultsList {
 	list-style: none !important;
 	padding: 0 !important;
 	margin: 0 !important;
@@ -70,7 +72,6 @@
 	position: relative !important;	
 }
 .wpProQuiz_response {
-	display: none !important;
 	background: #F8FAF5 !important;
 	border: 1px solid #C4C4C4 !important;
 	padding: 5px !important;
@@ -109,7 +110,6 @@
 	margin-bottom: 5px !important;
 }
 .wpProQuiz_time_limit_expired {
-	display: none !important;
 	font-weight: bold !important;
 	font-size: 15px !important;
 	text-align: center !important;
@@ -166,9 +166,6 @@
 	border: 1px solid #D1D1D1 !important;
 	padding: 5px !important;
 	vertical-align: middle !important;
-}
-.wpProQuiz_resultsList > li {
-	display: none !important;
 }
 .wpProQuiz_points {
 	font-weight: bold !important;
