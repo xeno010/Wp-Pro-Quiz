@@ -147,7 +147,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 							
 						<li class="wpProQuiz_questionListItem">
 							<label>
-								<input type="<?php echo $question->getAnswerType() === 'single' ? 'radio' : 'checkbox' ?>" name="question" value="<?php echo $answer_index; ?>"> <?php echo $answer_text; ?>
+								<input class="wpProQuiz_questionInput" type="<?php echo $question->getAnswerType() === 'single' ? 'radio' : 'checkbox' ?>" name="question_<?php echo $this->quiz->getId(); ?>_<?php echo $question->getId(); ?>" value="<?php echo $answer_index; ?>"> <?php echo $answer_text; ?>
 							</label>
 						</li>
 						
@@ -165,7 +165,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 					 	?>
 					 	<li class="wpProQuiz_questionListItem">
 							<label>
-								<input type="text" name="question" style="width: 300px;">
+								<input class="wpProQuiz_questionInput" type="text" name="question_<?php echo $this->quiz->getId(); ?>_<?php echo $question->getId(); ?>" style="width: 300px;">
 							</label>
 						</li>
 					 <?php } else if($question->getAnswerType() === 'matrix_sort_answer') { 

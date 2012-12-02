@@ -66,8 +66,8 @@
 				$element.find('.wpProQuiz_sortable, .wpProQuiz_sortStringItem').removeAttr('style');				
 				$element.find('input[name="check"]').hide();
 				$element.find('input[name="next"]').hide();
-				$element.find('input[name="question"]').removeAttr('disabled').removeAttr('checked');
-				$element.find('input[name="question"][type="text"]').removeAttr('value');
+				$element.find('.wpProQuiz_questionInput').removeAttr('disabled').removeAttr('checked');
+				$element.find('input.wpProQuiz_questionInput[type="text"]').removeAttr('value');
 				$element.find('.wpProQuiz_resultsList').children().hide();
 				$element.find('.wpProQuiz_cloze input').removeAttr('disabled').removeAttr('value').css('background-color', '');
 				$element.find('.wpProQuiz_cloze span').hide();
@@ -139,7 +139,7 @@
 						.data('questionId', j.id)
 						.data('points', j.points);
 					
-					$(this).find('input[name="question"]').each(function() {
+					$(this).find('.wpProQuiz_questionInput').each(function() {
 						switch(j.answer_type) {
 						case 'single':
 						case 'multiple':
@@ -173,7 +173,7 @@
 			checkAnswer: function(btn) {
 				var $question = $(btn).parent();
 				var correct = false;
-				var checked = $question.find('input[name="question"]');
+				var checked = $question.find('.wpProQuiz_questionInput');
 				var type = $question.data('type');
 				
 				$question.find('input[name="tip"]').hide();
