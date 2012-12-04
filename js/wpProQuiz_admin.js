@@ -370,7 +370,6 @@ jQuery(document).ready(function($) {
 				var url = location.replace('admin.php', 'admin-ajax.php') + '&action=save_sort';
 				
 				$.post(url, data, function(response) {
-					console.debug(response);
 					$('#sortMsg').show(400).delay(1000).hide(400);
 				});
 			},
@@ -410,8 +409,6 @@ jQuery(document).ready(function($) {
 				e.preventDefault();
 				methode.saveSort();
 			});
-
-			console.debug($);
 		};
 
 		init();
@@ -526,7 +523,7 @@ jQuery(document).ready(function($) {
 				
 				if($('#wpProQuiz_resultGradeEnabled:checked').length) {
 					var rCheck = true;
-					console.debug("hier");
+
 					$('#resultList').children().each(function() {
 						if($(this).is(':visible')) {
 							if(!methode.validResultInput($(this).find('input[name="resultTextGrade[prozent][]"]').val())) {

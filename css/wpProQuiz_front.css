@@ -42,6 +42,9 @@
 .wpProQuiz_questionListItem {
 	padding: 3px !important;
 	margin-bottom: 5px !important;
+	background-image: none !important;
+	margin-left: 0 !important;
+	list-style: none !important;
 }
 
 .wpProQuiz_questionListItem > table{
@@ -149,12 +152,16 @@
 }
 .wpProQuiz_sortStringItem {
 	margin: 0 !important;
+	background-image: none !important;
+	list-style: none !important;
 }
 .wpProQuiz_maxtrixSortCriterion {
-	padding: 10px !important;
+	padding: 5px !important;
 }
 .wpProQuiz_placehold {
 	background-color: #FFFFC2 !important;
+	list-style: none !important;
+	background-image: none !important;
 	padding: 5px !important;
 	height: 30px !important;
 	min-width: 50px !important;
@@ -189,4 +196,9 @@
 .wpProQuiz_questionListItem input, .wpProQuiz_questionListItem label {
 	margin: 0 !important;
 	font-weight: normal;
+}
+.wpProQuiz_resultsList > li {
+	background-image: none !important;
+	padding: 0 !important;
+	margin: 0 !important;	
 }

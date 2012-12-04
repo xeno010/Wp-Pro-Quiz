@@ -3,7 +3,7 @@ Contributors: xeno010
 Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 0.10
+Stable tag: 0.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,3 +119,8 @@ Own themes changes internal  order of filters, what causes the problems. With ad
 * Bugfix: Database in connection with UTF-8
 * Bugfix in cloze
 * Bugfix in the backend
+
+= 0.11 =
+* Bugfix in javascript-code
+* "Sort elements" are always randomly arranged
+* Bugfix in CSS for different themes

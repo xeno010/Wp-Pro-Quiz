@@ -46,7 +46,7 @@ class WpProQuiz_Controller_Front {
 			
 			ob_end_clean();
 		}
-		
+
 		return $content;
 	}
 	

@@ -26,6 +26,8 @@
 					plugin.methode.answerRandom($element.find('.wpProQuiz_sortable').parent().parent());
 				}
 				
+				plugin.methode.answerRandom('.wpProQuiz_sortStringList');
+				
 				if(config.timeLimit) {
 					plugin.methode.setTimeLimit();
 				}
@@ -163,7 +165,6 @@
 					ii = 0;
 					$(this).parent().find('.wpProQuiz_sortStringList').children().each(function() {
 						$(this).data('correct', j.correct[ii++]);
-						console.debug($(this));
 					});
 					
 					if(j.answer_type == 'matrix_sort_answer') {
