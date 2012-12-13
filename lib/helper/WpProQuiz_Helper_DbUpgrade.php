@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 8;
+	const WPPROQUIZ_DB_VERSION = 9;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -55,6 +55,8 @@ class WpProQuiz_Helper_DbUpgrade {
 				  `result_text` text NOT NULL,
 				  `result_grade_enabled` tinyint(1) NOT NULL,
 				  `title_hidden` tinyint(1) NOT NULL,
+				  `btn_restart_quiz_hidden` tinyint(1) NOT NULL,
+				  `btn_view_question_hidden` tinyint(1) NOT NULL,
 				  `question_random` tinyint(1) NOT NULL,
 				  `answer_random` tinyint(1) NOT NULL,
 				  `check_answer` tinyint(1) NOT NULL,
@@ -249,5 +251,16 @@ class WpProQuiz_Helper_DbUpgrade {
 		');
 			
 		return 8;
+	}
+	
+	private function upgradeDbV8() {
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `wp_wp_pro_quiz_master` 
+				ADD  `btn_restart_quiz_hidden` TINYINT( 1 ) NOT NULL AFTER  `title_hidden` ,
+				ADD  `btn_view_question_hidden` TINYINT( 1 ) NOT NULL AFTER  `btn_restart_quiz_hidden`
+		');
+		
+		return 9;
 	}
 }

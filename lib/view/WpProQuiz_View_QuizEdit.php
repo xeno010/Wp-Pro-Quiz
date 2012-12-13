@@ -39,6 +39,42 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 							</tr>
 							<tr>
 								<th scope="row">
+									<?php _e('Hide "Restart quiz" button', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Hide "Restart quiz" button', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label for="btn_restart_quiz_hidden">
+											<input type="checkbox" id="btn_restart_quiz_hidden" value="1" name="btnRestartQuizHidden" <?php echo $this->quiz->isBtnRestartQuizHidden() ? 'checked="checked"' : '' ?> >
+										</label>
+										<p class="description">
+											<?php _e('Hide the "Restart quiz" button in the Frontend.', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Hide "View question" button', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Hide "View question" button', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label for="btn_view_question_hidden">
+											<input type="checkbox" id="btn_view_question_hidden" value="1" name="btnViewQuestionHidden" <?php echo $this->quiz->isBtnViewQuestionHidden() ? 'checked="checked"' : '' ?> >
+										</label>
+										<p class="description">
+											<?php _e('Hide the "View question" button in the Frontend.', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
 									<?php _e('Show points', 'wp-pro-quiz'); ?>
 								</th>
 								<td>

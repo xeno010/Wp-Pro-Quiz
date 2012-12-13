@@ -67,6 +67,8 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'text' => $data->getText(),
 			'result_text' => $resultText,
 			'title_hidden' => (int)$data->isTitleHidden(),
+			'btn_restart_quiz_hidden' => (int)$data->isBtnRestartQuizHidden(),
+			'btn_view_question_hidden' => (int)$data->isBtnViewQuestionHidden(),
 			'question_random' => (int)$data->isQuestionRandom(),
 			'answer_random' => (int)$data->isAnswerRandom(),
 			'back_button' => (int)$data->isBackButton(),
@@ -84,13 +86,13 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					array(
 							'id' => $data->getId()
 					),
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
 					array('%d'));
 		} else {
 			
 			$result = $this->_wpdb->insert($this->_table,
 						$set,
-						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
+						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
 			
 			$data->setId($this->_wpdb->insert_id);
 		}

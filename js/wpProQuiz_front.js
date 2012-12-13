@@ -231,7 +231,7 @@
 					list.sortable("destroy");
 					
 					items.sort(function(a, b) {
-					   return $(a).children('div').data('correct') > $(b).children('div').data('correct');
+					   return $(a).children('div').data('correct') - $(b).children('div').data('correct');
 					});
 					
 					$.each(items, function(idx, itm) { list.append(itm); });

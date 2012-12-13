@@ -2,8 +2,8 @@
 Contributors: xeno010
 Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
-Tested up to: 3.4.2
-Stable tag: 0.11
+Tested up to: 3.5
+Stable tag: 0.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,7 +38,8 @@ A powerful and beautiful quiz plugin for WordPress.
 
 = Translations =
 * 		English (Thanks Alexander M.)
-*		German (Deutsch)
+*		German / Deutsch
+*		Arabic / عربي (Thanks Abuhassan)
 
 = Live Demo =
 http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "Demo")
@@ -124,3 +125,10 @@ Own themes changes internal  order of filters, what causes the problems. With ad
 * Bugfix in javascript-code
 * "Sort elements" are always randomly arranged
 * Bugfix in CSS for different themes
+
+= 0.12 =
+* Compatible for WordPress 3.5
+* Translation for Arabic have been added (Thanks Abuhassan)
+* added hide "restart quiz" button option
+* added hide "view question" button option
+* Bugfix in sorting choice with IE & Safari

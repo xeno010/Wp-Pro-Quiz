@@ -94,8 +94,11 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			</ul>
 		</div>
 		<p>
+			<?php if(!$this->quiz->isBtnRestartQuizHidden()) { ?>
 			<input type="button" name="restartQuiz" value="<?php _e('Restart quiz', 'wp-pro-quiz'); ?>" >
-			<input type="button" name="reShowQuestion" value="<?php _e('View question', 'wp-pro-quiz'); ?>">
+			<?php } if(!$this->quiz->isBtnViewQuestionHidden()) { ?>
+			<input type="button" name="reShowQuestion" value="<?php _e('View questions', 'wp-pro-quiz'); ?>">
+			<?php } ?>
 		</p>
 	</div>
 	<div style="display: none;" class="wpProQuiz_time_limit">

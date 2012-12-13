@@ -6,6 +6,8 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_text;
 	protected $_resultText;
 	protected $_titleHidden;
+	protected $_btnRestartQuizHidden = false;
+	protected $_btnViewQuestionHidden = false;
 	protected $_questionRandom;
 	protected $_answerRandom;
 	protected $_timeLimit = 0;
@@ -152,5 +154,23 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 		$m = new WpProQuiz_Model_QuizMapper();
 	
 		return $m->countQuestion($this->_id);
+	}
+	
+	public function setBtnRestartQuizHidden($_btnRestartQuizHidden) {
+		$this->_btnRestartQuizHidden = (bool)$_btnRestartQuizHidden;
+		return $this;
+	}
+	
+	public function isBtnRestartQuizHidden() {
+		return $this->_btnRestartQuizHidden;
+	}
+	
+	public function setBtnViewQuestionHidden($_btnViewQuestionHidden) {
+		$this->_btnViewQuestionHidden = (bool)$_btnViewQuestionHidden;
+		return $this;
+	}
+	
+	public function isBtnViewQuestionHidden() {
+		return $this->_btnViewQuestionHidden;
 	}
 }
