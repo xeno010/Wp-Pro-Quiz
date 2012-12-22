@@ -3,7 +3,7 @@ Contributors: xeno010
 Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 0.12
+Stable tag: 0.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -132,3 +132,12 @@ Own themes changes internal  order of filters, what causes the problems. With ad
 * added hide "restart quiz" button option
 * added hide "view question" button option
 * Bugfix in sorting choice with IE & Safari
+
+= 0.13 =
+* Bugfix
+* New screenshots
+* A new Touch Library was added for mobile devices
+* Statistics function has been extended
+* Setting page in case of problems added
+* "Copy questions from another Quiz" function added
+* "Execute quiz only once" option added

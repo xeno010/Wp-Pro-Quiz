@@ -5,17 +5,66 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$action = (isset($_GET['action'])) ? $_GET['action'] : 'show';
 		
 		switch ($action) {
+			case 'load_statistics':
+				$this->loadStatistics($_GET['id']);
+				break;
 			case 'reset':
 				$this->reset($_GET['id']);
+				break;
 			case 'show':
 			default:
 				$this->show($_GET['id']);
 		}
 	}
 	
+	private function loadStatistics($quizId) {
+		$questionMapper = new WpProQuiz_Model_StatisticMapper();
+		$questions = $questionMapper->fetchAll($quizId, $this->_post['userId']);
+		
+		$data = array(	'global' => array('cCorrect' => 0, 'cIncorrect' => 0, 'pCorrect' => 0, 'pIncorrect' => 0, 'cTip' => 0), 
+						'items' => array());
+		
+		$data['clear'] = $data['global'];
+
+		foreach($questions as $question) {
+			$sum = $question->getCorrectCount() + $question->getIncorrectCount();
+			
+			$data['global']['cCorrect'] += $question->getCorrectCount();
+			$data['global']['cIncorrect'] += $question->getIncorrectCount();
+			$data['global']['cTip'] += $question->getHintCount();
+
+			$data['items'][] = array(
+				'id' => $question->getQuestionId(),
+				'cCorrect' => $question->getCorrectCount(),
+				'cIncorrect' => $question->getIncorrectCount(),
+				'cTip' => $question->getHintCount(),
+				'pCorrect' => round((100 * $question->getCorrectCount() / $sum), 2),
+				'pIncorrect' => round((100 * $question->getIncorrectCount() / $sum), 2),
+			);
+		}
+		
+		$sum = $data['global']['cCorrect'] + $data['global']['cIncorrect'];
+		
+		if($sum > 0) {
+			$data['global']['pCorrect'] = round((100 * $data['global']['cCorrect'] / $sum), 2);
+			$data['global']['pIncorrect'] = round((100 * $data['global']['cIncorrect'] / $sum), 2);
+		}
+				
+		echo json_encode($data);
+		
+		exit;
+	}
+	
 	private function reset($quizId) {
-		$questionMapper = new WpProQuiz_Model_QuestionMapper();
-		$questionMapper->resetStatistics($quizId);
+		$statisticMapper = new WpProQuiz_Model_StatisticMapper();
+		
+		if(isset($this->_post['complete']) && $this->_post['complete']) {
+			$statisticMapper->deleteByQuizId($quizId);			
+		} else {
+			$statisticMapper->delete($quizId, $this->_post['userId']);
+		}
+		
+		exit;
 	}
 	
 	private function show($quizId) {
@@ -25,7 +74,20 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		
 		$view->quiz = $quizMapper->fetch($quizId);
 		$view->question = $questionMapper->fetchAll($quizId);
+		
+		
+		$users = get_users();
+		$userArray = array();
 
+		if(isset($users[0]->data)) {
+			foreach($users as $user) {
+				$userArray[] = $user->data;
+			}
+		} else {
+			$userArray = $users;
+		}
+		
+		$view->users = $userArray;
 		$view->show();
 	}
 	
@@ -35,37 +97,44 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$lockIp = $this->getIp();
 		
 		if($lockIp === false)
-			exit;
+			return false;
 		
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$quiz = $quizMapper->fetch($quizId);
 		
 		if(!$quiz->isStatisticsOn())		
-			exit;
+			return false;
 		
 		if($quiz->getStatisticsIpLock() > 0) {		
 			$lockMapper = new WpProQuiz_Model_LockMapper();
+			$lockTime = $quiz->getStatisticsIpLock() * 60;
 			
-			$lockMapper->deleteOldLock($quiz, time());
+			
+			$lockMapper->deleteOldLock($lockTime, $quiz->getId(), time(), WpProQuiz_Model_Lock::TYPE_STATISTIC);
 
-			if($lockMapper->isLock($quizId, $lockIp))
-				exit;
+			if($lockMapper->isLock($quizId, $lockIp, get_current_user_id(), WpProQuiz_Model_Lock::TYPE_STATISTIC))
+				return false;
 			
 			$lock = new WpProQuiz_Model_Lock();
-			$lock->setQuizId($quizId)
-				->setLockIp($lockIp)
-				->setLockDate(time());
+			$lock	->setQuizId($quizId)
+					->setLockIp($lockIp)
+					->setUserId(get_current_user_id())
+					->setLockType(WpProQuiz_Model_Lock::TYPE_STATISTIC)
+					->setLockDate(time());
 			
 			$lockMapper->insert($lock);
 		}
 		
-		$questionMapper = new WpProQuiz_Model_QuestionMapper();
-		$questionMapper->updateStatistics($quizId, $array);
+		$questionMapper = new WpProQuiz_Model_StatisticMapper();
+		$questionMapper->save($quizId, get_current_user_id(), $array);
 		
-		exit;
+		return true;
 	}
 	
 	private function getIp() {
-		return filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
+		if(get_current_user_id() > 0) 
+			return '0';
+		else
+			return filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
 	}
 }

@@ -53,7 +53,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		}
 
 		$resultsProzent = json_encode($result['prozent']);
-		
+				
 		?>
 
 <div class="wpProQuiz_content" id="wpProQuiz_<?php echo $this->quiz->getId(); ?>">
@@ -68,13 +68,18 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			<input type="button" value="<?php _e('Start quiz', 'wp-pro-quiz'); ?>" name="startQuiz">
 		</div>
 	</div>
+	<div style="display: none;" class="wpProQuiz_lock">
+		<p style="font-weight: bold;">
+			<?php _e('You have already completed the quiz before. Hence you can not start it again.', 'wp-pro-quiz'); ?>
+		</p>
+	</div>
 	<div style="display: none;" class="wpProQuiz_results">
 		<h3><?php _e('Results', 'wp-pro-quiz'); ?></h3>
 		<p>
 			<?php printf(__('%s of %s questions answered correctly', 'wp-pro-quiz'), '<span class="wpProQuiz_correct_answer"></span>', '<span>'.$question_count.'</span>'); ?>
 		</p>
 		<p class="wpProQuiz_quiz_time">
-			<?php _e('Your time: <span></span>', 'wp-pro-quiz') ?>
+			<?php _e('Your time: <span></span>', 'wp-pro-quiz'); ?>
 		</p>
 		<p class="wpProQuiz_time_limit_expired" style="display: none;">
 			<?php _e('Time has elapsed', 'wp-pro-quiz'); ?>
@@ -261,7 +266,8 @@ jQuery(document).ready(function($) {
 		checkAnswer: <?php echo (int)$this->quiz->isCheckAnswer(); ?>,
 		backButton: <?php echo (int)$this->quiz->isBackButton();?>,
 		quizId: <?php echo (int)$this->quiz->getId(); ?>,
-		statisticsOn: <?php echo $preview ? 0 : (int)$this->quiz->isStatisticsOn(); ?>,
+		lock: <?php echo (int)$this->quiz->isQuizRunOnce(); ?>,
+		preview: <?php echo ($preview) ? 1 : 0; ?>,
 		url: '<?php echo admin_url('admin-ajax.php'); ?>',
 		resultsGrade: <?php echo $resultsProzent; ?>,
 		json: <?php echo $json; ?>

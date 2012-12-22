@@ -203,3 +203,10 @@
 	padding: 0 !important;
 	margin: 0 !important;	
 }
+.wpProQuiz_lock {
+	border: 1px dotted #FFC3C3 !important;
+	background-color: #FFF7F7 !important;
+}
+.wpProQuiz_lock p {
+	margin: 20px !important;
+}

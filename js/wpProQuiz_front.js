@@ -11,9 +11,14 @@
 		var points = 0;
 		var pointsTotal = 0;
 		
+		var isLock = false;
+		var locked = false;
+		var loadLocked = false;
+		var startQuiz = false;
+		
 		plugin.methode = {
-			startQuiz: function() {
-				
+
+			preStartQuiz: function() {
 				statistics = new Object();
 
 				if(config.questionRandom) {
@@ -28,22 +33,36 @@
 				
 				plugin.methode.answerRandom('.wpProQuiz_sortStringList');
 				
-				if(config.timeLimit) {
-					plugin.methode.setTimeLimit();
-				}
-				
 				correctAnswer = 0;
 				points = 0;
-				
-				startTime = new Date();
 				
 				if(config.checkAnswer) {
 					$element.find('input[name="check"]').show();
 				} else {				
 					$element.find('input[name="next"]').show();
 				}
-								
+				
+				if(!isLock || !loadLocked) {
+					plugin.methode.startQuiz();
+				} else {
+					startQuiz = true;
+				}
+			},
+			
+			startQuiz: function() {
 				$element.find('.wpProQuiz_text').hide();
+				
+				if(locked) {
+					$element.find('.wpProQuiz_lock').show();
+					return;
+				}
+				
+				startTime = new Date();
+				
+				if(config.timeLimit) {
+					plugin.methode.setTimeLimit();
+				}
+				
 				$element.find('.wpProQuiz_quiz').show();
 				$element.find('.wpProQuiz_listItem').first().fadeIn(200);
 				
@@ -75,6 +94,8 @@
 				$element.find('.wpProQuiz_cloze span').hide();
 				
 				plugin.methode.resetMatrix();
+				
+				$element.find('.wpProQuiz_listItem').data('isChecked', false);
 			},
 			
 			resetMatrix: function() {
@@ -185,6 +206,10 @@
 				
 				$question.find('input[name="tip"]').hide();
 				
+				if($question.data('isChecked')) {
+					return;
+				}
+				
 				if(type == 'multiple' || type == 'single') {
 					var check = true;
 					
@@ -227,7 +252,7 @@
 					
 					var list = $question.find('.wpProQuiz_sortable').parent().parent();
 					var items = list.children('li');
-					
+
 					list.sortable("destroy");
 					
 					items.sort(function(a, b) {
@@ -325,6 +350,8 @@
 				}
 				
 				$question.find('input[name="next"]').show();
+				
+				$question.data('isChecked', true);
 			},
 
 			nextQuestion: function(btn) {
@@ -376,7 +403,18 @@
 					$element.find('.wpProQuiz_resultsList').children().eq(index).show();
 				}
 				
-				plugin.methode.sendStatistics();
+				plugin.methode.sendCompletedQuiz();
+			},
+			
+			sendCompletedQuiz: function() {
+				if(config.preview)
+					return;
+
+				$.post(config.url, {
+					action : 'wp_pro_quiz_completed_quiz',
+					'results' : statistics,
+					'quizId' : config.quizId
+				});				
 			},
 			
 			findResultIndex: function(p) {
@@ -406,19 +444,7 @@
 								
 				return str;
 			},
-			
-			sendStatistics: function() {
-				if(!config.statisticsOn)
-					return;
-				
-				$.ajax({
-					url: config.url,
-					type: 'POST',
-					cache: false,
-					data: {action: 'wp_pro_quiz_statistics_save', 'results': statistics, 'quizId': config.quizId}	
-				});
-			},
-
+	
 			reShowQuestion: function() {
 				$element.find('input[name="next"], input[name="check"], input[name="back"]').hide();
 				$element.find('.wpProQuiz_quiz').children().first().children().show();
@@ -483,11 +509,38 @@
 					
 					input.width(width + 10);
 				});
+			},
+			
+			checkLock: function() {
+				
+				loadLocked = true;
+				
+				$.post(config.url, {
+					action: 'wp_pro_quiz_check_lock',
+					quizId: config.quizId
+				}, function(json) {
+					locked = json.is;
+					loadLocked = false;
+					
+					if(json.pre) {
+						$element.find('input[name="restartQuiz"]').hide();
+					}
+					
+					if(startQuiz) {
+						startQuiz = false;
+						plugin.methode.startQuiz();
+					}
+				}, 'json');
 			}
 		};
 
 		plugin.init = function() {
 			correctAnswer = 0;
+			
+			if(config.lock && !config.preview) {
+				isLock = true;
+				plugin.methode.checkLock();
+			}
 			
 			if(config.resultsGrade == undefined)
 				config.resultsGrade = [0];
@@ -506,7 +559,7 @@
 
 			$element.find('input[name="startQuiz"]').click(function(e) {
 				e.preventDefault();
-				plugin.methode.startQuiz();
+				plugin.methode.preStartQuiz();
 			});
 
 			$element.find('input[name="check"]').click(function(e) {

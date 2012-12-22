@@ -30,6 +30,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										</legend>
 										<label for="title_hidden">
 											<input type="checkbox" id="title_hidden" value="1" name="titleHidden" <?php echo $this->quiz->isTitleHidden() ? 'checked="checked"' : '' ?> >
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
 										</label>
 										<p class="description">
 											<?php _e('The title serves as quiz heading.', 'wp-pro-quiz'); ?>
@@ -48,6 +49,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										</legend>
 										<label for="btn_restart_quiz_hidden">
 											<input type="checkbox" id="btn_restart_quiz_hidden" value="1" name="btnRestartQuizHidden" <?php echo $this->quiz->isBtnRestartQuizHidden() ? 'checked="checked"' : '' ?> >
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
 										</label>
 										<p class="description">
 											<?php _e('Hide the "Restart quiz" button in the Frontend.', 'wp-pro-quiz'); ?>
@@ -66,6 +68,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										</legend>
 										<label for="btn_view_question_hidden">
 											<input type="checkbox" id="btn_view_question_hidden" value="1" name="btnViewQuestionHidden" <?php echo $this->quiz->isBtnViewQuestionHidden() ? 'checked="checked"' : '' ?> >
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
 										</label>
 										<p class="description">
 											<?php _e('Hide the "View question" button in the Frontend.', 'wp-pro-quiz'); ?>
@@ -84,6 +87,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										</legend>
 										<label for="show_points">
 											<input type="checkbox" id="show_points" value="1" name="showPoints" <?php echo $this->quiz->isShowPoints() ? 'checked="checked"' : '' ?> >
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
 										</label>
 										<p class="description">
 											<?php _e('Shows in quiz, how many points are reachable for respective question.', 'wp-pro-quiz'); ?>
@@ -102,6 +106,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										</legend>
 										<label for="question_random">
 											<input type="checkbox" id="question_random" value="1" name="questionRandom" <?php echo $this->quiz->isQuestionRandom() ? 'checked="checked"' : '' ?> >
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
 										</label>
 									</fieldset>
 								</td>
@@ -117,6 +122,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										</legend>
 										<label for="answer_random">
 											<input type="checkbox" id="answer_random" value="1" name="answerRandom" <?php echo $this->quiz->isAnswerRandom() ? 'checked="checked"' : '' ?> >
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
 										</label>
 									</fieldset>
 								</td>
@@ -149,7 +155,8 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 											<span><?php _e('Check -> continue', 'wp-pro-quiz'); ?></span>
 										</legend>
 										<label for="check_next">
-											<input type="checkbox" id="check_next" value="1" name="checkAnswer" <?php echo $this->quiz->isCheckAnswer() ? 'checked="checked"' : '' ?>> 
+											<input type="checkbox" id="check_next" value="1" name="checkAnswer" <?php echo $this->quiz->isCheckAnswer() ? 'checked="checked"' : '' ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?> 
 										</label>
 										<p class="description">
 											<?php _e('Show "right or wrong" after the question. Otherwise the solutions will be displayed at the end.', 'wp-pro-quiz'); ?>
@@ -168,6 +175,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										</legend>
 										<label for="back_button">
 											<input type="checkbox" id="back_button" value="1" name="backButton" <?php echo $this->quiz->isBackButton() ? 'checked="checked"' : '' ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
 										</label>
 										<p class="description">
 											<?php _e('Allow to use back button in a question. (Option will be ignored if "Check -> Continue" was used)', 'wp-pro-quiz'); ?>
@@ -186,7 +194,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										</legend>
 										<label for="statistics_on">
 											<input type="checkbox" id="statistics_on" value="1" name="statisticsOn" <?php echo $this->quiz->isStatisticsOn() ? 'checked="checked"' : '' ?>>
-											<?php _e('activate', 'wp-pro-quiz'); ?>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
 										</label>
 										<p class="description">
 											<?php _e('Statistics about right or wrong answers. Statistics will be saved by completed quiz, not after every question. The statistics is only visible over administration menu. (internal statistics)', 'wp-pro-quiz'); ?>
@@ -210,6 +218,66 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										<p class="description">
 											<?php _e('Protect the statistics from spam. Result will only be saved every X minutes from same IP. (0 = deactivated)', 'wp-pro-quiz'); ?>
 										</p>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Execute quiz only once', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+									
+										<legend class="screen-reader-text">
+											<span><?php _e('Execute quiz only once', 'wp-pro-quiz'); ?></span>
+										</legend>
+										
+										<label>
+											<input type="checkbox" value="1" name="quizRunOnce" <?php echo $this->quiz->isQuizRunOnce() ? 'checked="checked"' : '' ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you activate this option, the user can complete the quiz only once. Afterwards the quiz is blocked for this user.'); ?>
+										</p>
+										
+										<div id="wpProQuiz_quiz_run_once_type" style="margin-bottom: 5px; display: none;">
+											<?php _e('This option applies to:', 'wp-pro-quiz'); 
+											
+											$quizRunOnceType = $this->quiz->getQuizRunOnceType();
+											$quizRunOnceType = ($quizRunOnceType == 0) ? 1: $quizRunOnceType; 
+											
+											?>		
+											<label>
+												<input name="quizRunOnceType" type="radio" value="1" <?php echo ($quizRunOnceType == 1) ? 'checked="checked"' : ''; ?>>
+												<?php _e('all users', 'wp-pro-quiz'); ?>
+											</label>
+											<label>
+												<input name="quizRunOnceType" type="radio" value="2" <?php echo ($quizRunOnceType == 2) ? 'checked="checked"' : ''; ?>>
+												<?php _e('registered useres only', 'wp-pro-quiz'); ?>
+											</label>
+											<label>
+												<input name="quizRunOnceType" type="radio" value="3" <?php echo ($quizRunOnceType == 3) ? 'checked="checked"' : ''; ?>>
+												<?php _e('anonymous users only', 'wp-pro-quiz'); ?>
+											</label>
+											
+											<div id="wpProQuiz_quiz_run_once_cookie" style="margin-top: 10px;">
+												<label>
+													<input type="checkbox" value="1" name="quizRunOnceCookie" <?php echo $this->quiz->isQuizRunOnceCookie() ? 'checked="checked"' : '' ?>>
+													<?php _e('user identification by cookie', 'wp-pro-quiz'); ?>
+												</label>
+												<p class="description">
+													<?php _e('If you activate this option, a cookie is set additionally for unregistrated (anonymous) users. This ensures a longer assignment of the user than the simple assignment by the IP address.'); ?>
+												</p>
+											</div>
+											
+											<div style="margin-top: 15px;">
+												<input class="button-secondary" type="button" name="resetQuizLock" value="<?php _e('Reset the user identification', 'wp-pro-quiz'); ?>">
+												<span id="resetLockMsg" style="display:none; background-color: rgb(255, 255, 173); border: 1px solid rgb(143, 143, 143); padding: 4px; margin-left: 5px; "><?php _e('User identification has been reset.'); ?></span>
+												<p class="description">
+													<?php _e('Resets user identification for all users.'); ?>
+												</p>
+											</div>
+										</div>
 									</fieldset>
 								</td>
 							</tr>

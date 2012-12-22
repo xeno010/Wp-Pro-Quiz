@@ -30,7 +30,7 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 </style>
 <div class="wrap wpProQuiz_quizOverall">
 	<h2><?php _e('Quiz overview', 'wp-pro-quiz'); ?></h2>
-	<div class="updated">
+	<div class="updated" style="display: none;">
 		<h3><?php _e('In case of problems', 'wp-pro-quiz'); ?></h3>
 		<p>
 			<?php _e('If quiz doesn\'t work in front-end, please try following:', 'wp-pro-quiz'); ?>
@@ -41,6 +41,9 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 		<p>
 			<?php _e('Own themes changes internal  order of filters, what causes the problems. With additional shortcode [raw] this is prevented.', 'wp-pro-quiz'); ?>
 		</p>
+	</div>
+	<div style="margin: 8px 0px;">
+		<a class="button-primary" style="font-weight: bold;" href="admin.php?page=wpProQuiz&module=globalSettings"><?php _e('Settings in case of problems', 'wp-pro-quiz'); ?></a>
 	</div>
 	<table class="wp-list-table widefat">
 		<thead>
@@ -98,7 +101,7 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 				$memoryLimit = (int)(ini_get('memory_limit'));
 				$uploadMB = min($maxUpload, $maxPost, $memoryLimit);
 			?>
-				<input type="file" name="import" accept="*application/octet-stream, .wpq" required="required"> <?php printf(__('Maximal %d MiB', 'wp-pro-quiz'), $uploadMB); ?>
+				<input type="file" name="import" accept=".wpq" required="required"> <?php printf(__('Maximal %d MiB', 'wp-pro-quiz'), $uploadMB); ?>
 			</div>
 			<input class="button-primary" name="exportStart" id="exportStart" value="<?php echo __('Start import', 'wp-pro-quiz'); ?>" type="submit">
 		</form>

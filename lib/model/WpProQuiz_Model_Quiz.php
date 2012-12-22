@@ -1,6 +1,10 @@
 <?php
 class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
+	const QUIZ_RUN_ONCE_TYPE_ALL = 1;
+	const QUIZ_RUN_ONCE_TYPE_ONLY_USER = 2;
+	const QUIZ_RUN_ONCE_TYPE_ONLY_ANONYM = 3;
+	
 	protected $_id;
 	protected $_name;
 	protected $_text;
@@ -17,6 +21,10 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_statisticsIpLock;
 	protected $_resultGradeEnabled = false;
 	protected $_showPoints = false;
+	protected $_quizRunOnce = false;
+	protected $_quizRunOnceType = 0;
+	protected $_quizRunOnceCookie = false;
+	protected $_quizRunOnceTime = 0;
 	
 	public function getId() {
 		return $this->_id;
@@ -172,5 +180,41 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
 	public function isBtnViewQuestionHidden() {
 		return $this->_btnViewQuestionHidden;
+	}
+	
+	public function setQuizRunOnce($_quizRunOnce) {
+		$this->_quizRunOnce = (bool)$_quizRunOnce;
+		return $this;
+	}
+	
+	public function isQuizRunOnce() {
+		return $this->_quizRunOnce;
+	}
+	
+	public function setQuizRunOnceCookie($_quizRunOnceCookie) {
+		$this->_quizRunOnceCookie = (bool)$_quizRunOnceCookie;
+		return $this;
+	}
+	
+	public function isQuizRunOnceCookie() {
+		return $this->_quizRunOnceCookie;
+	}
+	
+	public function setQuizRunOnceType($_quizRunOnceType) {
+		$this->_quizRunOnceType = (int)$_quizRunOnceType;
+		return $this;
+	}
+	
+	public function getQuizRunOnceType() {
+		return $this->_quizRunOnceType;
+	}
+	
+	public function setQuizRunOnceTime($_quizRunOnceTime) {
+		$this->_quizRunOnceTime = (int)$_quizRunOnceTime;
+		return $this;
+	}
+	
+	public function getQuizRunOnceTime() {
+		return $this->_quizRunOnceTime;
 	}
 }

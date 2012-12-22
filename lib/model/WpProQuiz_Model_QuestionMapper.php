@@ -12,6 +12,10 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 		$this->_wpdb->delete($this->_table, array('id' => $id), '%d');
 	}
 	
+	public function deleteByQuizId($id) {
+		$this->_wpdb->delete($this->_table, array('quiz_id' => $id), '%d');
+	}
+	
 	public function updateSort($id, $sort) {
 		$this->_wpdb->update(
 				$this->_table,
@@ -65,6 +69,7 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 	}
 	
 	public function fetch($id) {
+		
 		$row = $this->_wpdb->get_row(
 			$this->_wpdb->prepare(
 				"SELECT
@@ -80,21 +85,36 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 		$row['answer_json'] = json_decode($row['answer_json'], true);
 		
 		$model = new WpProQuiz_Model_Question($row);
-		
-// 		$model = new WpProQuiz_Model_Question();
-// 		$model	->setId($row->id)
-// 				->setQuizId($row->quiz_id)
-// 				->setTitle($row->title)
-// 				->setQuestion($row->question)
-// 				->setCorrectMsg($row->correct_msg)
-// 				->setIncorrectMsg($row->incorrect_msg)
-// 				->setAnswerType($row->answer_type)
-// 				->setAnswerJson(json_decode($row->answer_json, true))
-// 				->setCorrectCount($row->correct_count)
-// 				->setIncorrectCount($row->incorrect_count)
-// 				->setSort($row->sort);
-		
+	
 		return $model;
+	}
+	
+	public function fetchById($id) {
+		
+		$ids = array_map('intval', (array)$id);
+		$a = array();
+		
+		if(empty($ids))
+			return null;
+		
+		$results = $this->_wpdb->get_results(
+				"SELECT
+					*
+				FROM
+					". $this->_table. "
+				WHERE
+					id IN(".implode(', ', $ids).")",
+				ARRAY_A
+		);
+		
+		foreach ($results as $row) {
+			$row['answer_json'] = json_decode($row['answer_json'], true);
+				
+			$a[] = new WpProQuiz_Model_Question($row);
+			
+		}
+		
+		return is_array($id) ? $a : (isset($a[0]) ? $a[0] : null);
 	}
 	
 	public function fetchAll($quizId) {

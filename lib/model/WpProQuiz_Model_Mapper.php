@@ -16,6 +16,8 @@ class WpProQuiz_Model_Mapper {
 	 */
 	protected $_tableQuestion;
 	protected $_tableMaster;
+	protected $_tableLock;
+	protected $_tableStatistic;
 	
 	
 	function __construct() {
@@ -26,5 +28,7 @@ class WpProQuiz_Model_Mapper {
 		
 		$this->_tableQuestion = $this->_prefix.'question';
 		$this->_tableMaster = $this->_prefix.'master';
+		$this->_tableLock = $this->_prefix.'lock';
+		$this->_tableStatistic = $this->_prefix.'statistic';
 	}
 }

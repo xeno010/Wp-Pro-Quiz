@@ -77,7 +77,11 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'statistics_on' => (int)$data->isStatisticsOn(),
 			'statistics_ip_lock' => (int)$data->getStatisticsIpLock(),
 			'result_grade_enabled' => (int)$data->isResultGradeEnabled(),
-			'show_points' => (int)$data->isShowPoints()
+			'show_points' => (int)$data->isShowPoints(),
+			'quiz_run_once' => (int)$data->isQuizRunOnce(),
+			'quiz_run_once_type' => $data->getQuizRunOnceType(),
+			'quiz_run_once_cookie' => (int)$data->isQuizRunOnceCookie(),
+			'quiz_run_once_time' => (int)$data->getQuizRunOnceTime()
 		);
 		
 		if($data->getId() != 0) {
@@ -86,13 +90,13 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					array(
 							'id' => $data->getId()
 					),
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
 					array('%d'));
 		} else {
 			
 			$result = $this->_wpdb->insert($this->_table,
 						$set,
-						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
+						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
 			
 			$data->setId($this->_wpdb->insert_id);
 		}

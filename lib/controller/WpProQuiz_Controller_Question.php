@@ -36,7 +36,64 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			case 'save_sort':
 				$this->saveSort($_GET['id']);
 				break;
+			case 'load_question':
+				$this->loadQuestion($_GET['quiz_id']);
+				break;
+			case 'copy_question':
+				$this->copyQuestion($_GET['quiz_id']);
+				break;
 		}
+	}
+	
+	public function copyQuestion($quizId) {
+		$m = new WpProQuiz_Model_QuestionMapper();
+		
+		$questions = $m->fetchById($this->_post['copyIds']);
+		
+		foreach($questions as $question) {
+			$question->setId(0);
+			$question->setQuizId($quizId);
+			
+			$m->save($question);
+		}
+		
+		WpProQuiz_View_View::admin_notices(__('questions copied', 'wp-pro-quiz'), 'info');
+		
+		$this->showAction();
+	}
+	
+	public function loadQuestion($quizId) {
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		$questionMapper = new WpProQuiz_Model_QuestionMapper();
+		$data = array();
+		
+		$quiz = $quizMapper->fetchAll();
+		
+		foreach($quiz as $qz) {
+			
+			if($qz->getId() == $quizId)
+				continue;
+			
+			$question = $questionMapper->fetchAll($qz->getId());
+			$questionArray = array();
+			
+			foreach($question as $qu) {
+				$questionArray[] = array(
+					'name' => $qu->getTitle(),
+					'id' => $qu->getId()
+				);
+			}
+			
+			$data[] = array(
+				'name' => $qz->getName(),
+				'id' => $qz->getId(),
+				'question' => $questionArray
+			);
+		}
+		
+		echo json_encode($data);
+		
+		exit;
 	}
 	
 	public function saveSort($quizId) {
@@ -52,6 +109,9 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 	public function deleteAction($id) {
 		$mapper = new WpProQuiz_Model_QuestionMapper();
 		$mapper->delete($id);
+		
+		$sm = new WpProQuiz_Model_StatisticMapper();
+		$sm->deleteByQuestionId($id);
 		
 		$this->showAction();
 	}

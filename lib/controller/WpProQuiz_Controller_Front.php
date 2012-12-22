@@ -4,12 +4,19 @@ class WpProQuiz_Controller_Front {
 	private $_plugin_dir;
 	private $_plugin_file;
 	
+	/**
+	 * @var WpProQuiz_Model_GlobalSettings
+	 */
+	private $_settings = null;
+	
 	public function __construct($plugin_dir) {
 		$this->_plugin_dir = $plugin_dir;
 		$this->_plugin_file = $this->_plugin_dir.'/wp-pro-quiz.php';
 		
 		spl_autoload_register(array($this, 'autoload'));
 		
+		$this->loadSettings();
+				
 		add_action('wp_enqueue_scripts', array($this, 'loadDefaultScripts'));
 		add_shortcode('WpProQuiz', array($this, 'shortcode'));
 	}
@@ -23,19 +30,39 @@ class WpProQuiz_Controller_Front {
 			array(),
 			WPPROQUIZ_VERSION
 		);
+		
+		if($this->_settings->isJsLoadInHead()) {
+			$this->loadJsScripts(false);
+		}
+	}
+	
+	private function loadJsScripts($footer = true) {
+		wp_enqueue_script(
+			'wpProQuiz_front_javascript',
+			plugins_url('js/wpProQuiz_front.min.js', $this->_plugin_file),
+			array('jquery-ui-sortable'),
+			WPPROQUIZ_VERSION,
+			$footer
+		);
+		
+		if(!$this->_settings->isTouchLibraryDeactivate()) {
+			wp_enqueue_script(
+				'jquery-ui-touch-punch',
+				plugins_url('js/jquery.ui.touch-punch.min.js', $this->_plugin_file),
+				array('jquery-ui-sortable'),
+				'0.2.2',
+				$footer
+			);
+		}
 	}
 	
 	public function shortcode($attr) {
 		$id = $attr[0];
 		$content = '';
 		
-		wp_enqueue_script(
-			'wpProQuiz_front_javascript', 
-			plugins_url('js/wpProQuiz_front.min.js', $this->_plugin_file),
-			array('jquery-ui-sortable'),
-			WPPROQUIZ_VERSION,
-			true
-		);
+		if(!$this->_settings->isJsLoadInHead()) {
+			$this->loadJsScripts();
+		}
 		
 		if(is_numeric($id)) {
 			ob_start();
@@ -47,6 +74,10 @@ class WpProQuiz_Controller_Front {
 			ob_end_clean();
 		}
 
+		if($this->_settings->isAddRawShortcode()) {
+			return '[raw]'.$content.'[/raw]';
+		} 
+		
 		return $content;
 	}
 	
@@ -59,13 +90,22 @@ class WpProQuiz_Controller_Front {
 		$quiz = $quizMapper->fetch($id);
 		$question = $questionMapper->fetchAll($id);
 		
-		if(empty($quiz) || empty($question))
+		if(empty($quiz) || empty($question)) {			
 			echo '';
+			
+			return;
+		}
 		
 		$view->quiz = $quiz;
 		$view->question = $question;
 		
 		$view->show();		
+	}
+	
+	private function loadSettings() {
+		$mapper = new WpProQuiz_Model_GlobalSettingsMapper();
+		
+		$this->_settings = $mapper->fetchAll();
 	}
 	
 	public function autoload($class) {
