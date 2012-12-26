@@ -147,6 +147,56 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 							</tr>
 							<tr>
 								<th scope="row">
+									<?php _e('Number answers', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Number answers', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="numberedAnswer" <?php echo $this->quiz->isNumberedAnswer() ? 'checked="checked"' : '' ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?> 
+										</label>
+										<p class="description">
+											<?php _e('If this option is activated, all answers are numbered (only single and multiple choice)', 'wp-pro-quiz'); ?>
+										</p>
+										<div class="wpProQuiz_demoBox">
+											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+												<img alt="" src="<?php echo WpProQuiz_Controller_Admin::getPluginUrl().'/img/numbering.png'; ?> ">
+											</div>
+										</div>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Questions below each other', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Questions below each other', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="questionOnSinglePage" <?php echo $this->quiz->isQuestionOnSinglePage() ? 'checked="checked"' : ''; ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?> 
+										</label>
+										<p class="description">
+											<?php _e('If this option is activated, all answers are displayed below each other, i.e. all questions are on a single page. Otherwise all questions are displayed one after the other.', 'wp-pro-quiz'); ?>
+										</p>
+										<div class="wpProQuiz_demoBox">
+											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+												<img alt="" src="<?php echo WpProQuiz_Controller_Admin::getPluginUrl().'/img/singlePage.png'; ?> ">
+											</div>
+										</div>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
 									<?php _e('Check -> continue', 'wp-pro-quiz'); ?>
 								</th>
 								<td>
@@ -155,12 +205,18 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 											<span><?php _e('Check -> continue', 'wp-pro-quiz'); ?></span>
 										</legend>
 										<label for="check_next">
-											<input type="checkbox" id="check_next" value="1" name="checkAnswer" <?php echo $this->quiz->isCheckAnswer() ? 'checked="checked"' : '' ?>>
+											<input type="checkbox" id="check_next" value="1" name="checkAnswer" <?php echo $this->quiz->isCheckAnswer() ? 'checked="checked"' : ''; ?>>
 											<?php _e('Activate', 'wp-pro-quiz'); ?> 
 										</label>
 										<p class="description">
-											<?php _e('Show "right or wrong" after the question. Otherwise the solutions will be displayed at the end.', 'wp-pro-quiz'); ?>
+											<?php _e('Shows "right or wrong" after each question. Otherwise the solutions will be displayed at the end. (Option will be ignored if "questions below each other" was used)', 'wp-pro-quiz'); ?>
 										</p>
+										<div class="wpProQuiz_demoBox">
+											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+												<img alt="" src="<?php echo WpProQuiz_Controller_Admin::getPluginUrl().'/img/checkCcontinue.png'; ?> ">
+											</div>
+										</div>
 									</fieldset>
 								</td>
 							</tr>
@@ -174,12 +230,18 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 											<span><?php _e('Back button', 'wp-pro-quiz'); ?></span>
 										</legend>
 										<label for="back_button">
-											<input type="checkbox" id="back_button" value="1" name="backButton" <?php echo $this->quiz->isBackButton() ? 'checked="checked"' : '' ?>>
+											<input type="checkbox" id="back_button" value="1" name="backButton" <?php echo $this->quiz->isBackButton() ? 'checked="checked"' : ''; ?>>
 											<?php _e('Activate', 'wp-pro-quiz'); ?>
 										</label>
 										<p class="description">
-											<?php _e('Allow to use back button in a question. (Option will be ignored if "Check -> Continue" was used)', 'wp-pro-quiz'); ?>
+											<?php _e('Allows to use the back button in a question. (Option will be ignored if "Check -> Continue" or "questions below each other" was used)', 'wp-pro-quiz'); ?>
 										</p>
+										<div class="wpProQuiz_demoBox">
+											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+												<img alt="" src="<?php echo WpProQuiz_Controller_Admin::getPluginUrl().'/img/backButton.png'; ?> ">
+											</div>
+										</div>
 									</fieldset>
 								</td>
 							</tr>
@@ -193,7 +255,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 											<span><?php _e('Statistics', 'wp-pro-quiz'); ?></span>
 										</legend>
 										<label for="statistics_on">
-											<input type="checkbox" id="statistics_on" value="1" name="statisticsOn" <?php echo $this->quiz->isStatisticsOn() ? 'checked="checked"' : '' ?>>
+											<input type="checkbox" id="statistics_on" value="1" name="statisticsOn" <?php echo $this->quiz->isStatisticsOn() ? 'checked="checked"' : ''; ?>>
 											<?php _e('Activate', 'wp-pro-quiz'); ?>
 										</label>
 										<p class="description">

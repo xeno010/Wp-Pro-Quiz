@@ -25,6 +25,8 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_quizRunOnceType = 0;
 	protected $_quizRunOnceCookie = false;
 	protected $_quizRunOnceTime = 0;
+	protected $_questionOnSinglePage = false;
+	protected $_numberedAnswer = false;
 	
 	public function getId() {
 		return $this->_id;
@@ -216,5 +218,23 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
 	public function getQuizRunOnceTime() {
 		return $this->_quizRunOnceTime;
+	}
+	
+	public function setQuestionOnSinglePage($_questionOnSinglePage) {
+		$this->_questionOnSinglePage = (bool)$_questionOnSinglePage;
+		return $this;
+	}
+	
+	public function isQuestionOnSinglePage() {
+		return $this->_questionOnSinglePage;
+	}
+	
+	public function setNumberedAnswer($_numberedAnswer) {
+		$this->_numberedAnswer = (bool)$_numberedAnswer;
+		return $this;
+	}
+	
+	public function isNumberedAnswer() {
+		return $this->_numberedAnswer;
 	}
 }

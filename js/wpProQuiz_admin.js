@@ -681,6 +681,14 @@ jQuery(document).ready(function($) {
 				return false;
 			});
 			
+			$('.wpProQuiz_demoBox a').mouseover(function() {
+				$(this).next().show();
+			}).mouseout(function() {
+				$(this).next().hide();
+			}).click(function() {
+				return false;
+			});
+			
 			$('#statistics_on').change();
 			$('#wpProQuiz_resultGradeEnabled').change();
 			$('input[name="quizRunOnce"]').change();
@@ -717,6 +725,7 @@ jQuery(document).ready(function($) {
 				var $table = $('.wpProQuiz_statistics_table');
 				var $tbody = $table.find('tbody');
 				var points = 0;
+				var gPoints = 0;
 				
 				var setItem = function(i, j, r) {
 					i.find('.wpProQuiz_cCorrect').text(j.cCorrect + ' (' + j.pCorrect + '%)');;
@@ -724,11 +733,16 @@ jQuery(document).ready(function($) {
 					i.find('.wpProQuiz_cTip').text(j.cTip);
 					
 					if(r == true) {
-						$table.find('.wpProQuiz_cResult').text(
-							(Math.round(points / i.find('.wpProQuiz_points').text() * 100 * 100) / 100)
-							+ "%");
+						if(gPoints > 0) {
+							$table.find('.wpProQuiz_cResult').text(
+									(Math.round(points / gPoints * 100 * 100) / 100)
+									+ "%");
+						} else {
+							$table.find('.wpProQuiz_cResult').text("0%");
+						}
 					} else {
 						points += j.cCorrect * i.find('.wpProQuiz_points').text();
+						gPoints += (j.cCorrect + j.cIncorrect )* i.find('.wpProQuiz_points').text();
 					}
 				};
 				

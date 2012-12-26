@@ -3,7 +3,7 @@ Contributors: xeno010
 Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 0.13
+Stable tag: 0.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -141,3 +141,8 @@ Own themes changes internal  order of filters, what causes the problems. With ad
 * Setting page in case of problems added
 * "Copy questions from another Quiz" function added
 * "Execute quiz only once" option added
+
+= 0.14 =
+* Bugfix in the statistics function
+* "Questions below each other" option was added
+* "Number answers" option was added

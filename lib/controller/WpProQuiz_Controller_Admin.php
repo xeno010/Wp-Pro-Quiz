@@ -28,6 +28,25 @@ class WpProQuiz_Controller_Admin {
 		add_action('admin_menu', array($this, 'register_page'));
 	}
 	
+	public static function getPluginInfo() {
+		$path = realpath(dirname(__FILE__) .'/../../');
+		
+		return array('path' => $path,
+				'file' => $path.'/wp-pro-quiz.php');
+	}
+	
+	public static function getPluginPath() {
+		return realpath(dirname(__FILE__) .'/../../');
+	}
+	
+	public static function getPluginFile() {
+		return realpath(WpProQuiz_Controller_Admin::getPluginPath().'/wp-pro-quiz.php');
+	}
+	
+	public static function getPluginUrl() {
+		return plugins_url('', WpProQuiz_Controller_Admin::getPluginFile());
+	}
+	
 	public function resetLock() {
 		if(!current_user_can('administrator'))
 			exit;
@@ -138,6 +157,9 @@ class WpProQuiz_Controller_Admin {
 				break;
 			case 'globalSettings':
 				$c = new WpProQuiz_Controller_GlobalSettings();
+				break;
+			case 'styleManager':
+				$c = new WpProQuiz_Controller_StyleManager();
 				break;
 		}
 

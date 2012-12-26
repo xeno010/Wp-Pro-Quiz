@@ -43,6 +43,7 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 		</p>
 	</div>
 	<div style="margin: 8px 0px;">
+		<a class="button-primary" style="font-weight: bold; display: none;" href="admin.php?page=wpProQuiz&module=styleManager"><?php _e('Style Manager', 'wp-pro-quiz'); ?></a>
 		<a class="button-primary" style="font-weight: bold;" href="admin.php?page=wpProQuiz&module=globalSettings"><?php _e('Settings in case of problems', 'wp-pro-quiz'); ?></a>
 	</div>
 	<table class="wp-list-table widefat">

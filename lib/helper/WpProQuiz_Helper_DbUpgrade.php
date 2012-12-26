@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 10;
+	const WPPROQUIZ_DB_VERSION = 11;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -70,6 +70,8 @@ class WpProQuiz_Helper_DbUpgrade {
 				  `quiz_run_once_type` tinyint(4) NOT NULL,
 				  `quiz_run_once_cookie` tinyint(1) NOT NULL,
 				  `quiz_run_once_time` int(10) unsigned NOT NULL,
+				  `question_on_single_page` tinyint(1) NOT NULL,
+				  `numbered_answer` tinyint(1) NOT NULL,
 				  PRIMARY KEY (`id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		');
@@ -355,5 +357,16 @@ class WpProQuiz_Helper_DbUpgrade {
 		');
 				
 		return 10;
+	}
+	
+	private function upgradeDbV10() {
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master`
+				ADD  `question_on_single_page` TINYINT( 1 ) NOT NULL ,
+				ADD  `numbered_answer` TINYINT( 1 ) NOT NULL 
+		');
+				
+		return 11;
 	}
 }

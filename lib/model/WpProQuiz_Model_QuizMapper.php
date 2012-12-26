@@ -81,7 +81,9 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'quiz_run_once' => (int)$data->isQuizRunOnce(),
 			'quiz_run_once_type' => $data->getQuizRunOnceType(),
 			'quiz_run_once_cookie' => (int)$data->isQuizRunOnceCookie(),
-			'quiz_run_once_time' => (int)$data->getQuizRunOnceTime()
+			'quiz_run_once_time' => (int)$data->getQuizRunOnceTime(),
+			'question_on_single_page' => (int)$data->isQuestionOnSinglePage(),
+			'numbered_answer' => (int)$data->isNumberedAnswer()
 		);
 		
 		if($data->getId() != 0) {
@@ -90,13 +92,13 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					array(
 							'id' => $data->getId()
 					),
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
 					array('%d'));
 		} else {
 			
 			$result = $this->_wpdb->insert($this->_table,
 						$set,
-						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
+						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
 			
 			$data->setId($this->_wpdb->insert_id);
 		}

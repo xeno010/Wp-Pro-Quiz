@@ -53,8 +53,20 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		}
 
 		$resultsProzent = json_encode($result['prozent']);
-				
-		?>
+		
+		$questionOnSinglePage = 0;
+		$checkAnswer = 0;
+		$backButton = 0;
+		
+		if($this->quiz->isQuestionOnSinglePage()) {
+			$questionOnSinglePage = 1;
+		} else if($this->quiz->isCheckAnswer()) {
+			$checkAnswer = 1;
+		} else if($this->quiz->isBackButton()) {
+			$backButton = 1;
+		}
+
+?>
 
 <div class="wpProQuiz_content" id="wpProQuiz_<?php echo $this->quiz->getId(); ?>">
 	<?php if(!$this->quiz->isTitleHidden()) { ?>
@@ -85,7 +97,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			<?php _e('Time has elapsed', 'wp-pro-quiz'); ?>
 		</p>
 		<p class="wpProQuiz_points">
-			<?php _e('You have reached <span></span> of <span></span> points, (<span></span>%)', 'wp-pro-quiz') ?>
+			<?php _e('You have reached <span></span> of <span></span> points, (<span></span>%)', 'wp-pro-quiz'); ?>
 		</p>
 		<div>
 			<ul class="wpProQuiz_resultsList">
@@ -119,15 +131,18 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 				$answerArray = $question->getAnswerJson();
 		?>
 			<li class="wpProQuiz_listItem">
-				<div class="wpProQuiz_question_page">
+				<div class="wpProQuiz_question_page" <?php echo $this->quiz->isQuestionOnSinglePage() ? 'style="display: none;"' : ''; ?> >
 					<?php printf(__('Question %s of %s', 'wp-pro-quiz'), '<span>'.$index.'</span>', '<span>'.$question_count.'</span>'); ?>
-					
-					<?php if($this->quiz->isShowPoints()) { ?>
-					<span style="float:right;"><?php printf(__('%d points', 'wp-pro-quiz'), $question->getPoints()); ?></span>
-					<div style="clear: right;"></div>
-					<?php } ?>
 				</div>
-				<h3><span><?php echo $index; ?></span>. <?php _e('Question', 'wp-pro-quiz'); ?></h3>
+				<h3 style="display: inline-block;">
+					<span><?php echo $index; ?></span>. <?php _e('Question', 'wp-pro-quiz'); ?>
+				</h3>
+				
+				<?php if($this->quiz->isShowPoints()) { ?>
+					<span style="font-weight: bold; float: right;"><?php printf(__('%d points', 'wp-pro-quiz'), $question->getPoints()); ?></span>
+					<div style="clear: both;"></div>
+				<?php } ?>
+
 				<div class="wpProQuiz_question" style="margin: 10px 0px 0px 0px;">
 					<div class="wpProQuiz_question_text">
 						<?php echo do_shortcode(apply_filters('comment_text', $question->getQuestion())); ?>
@@ -154,8 +169,9 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 						?>
 							
 						<li class="wpProQuiz_questionListItem">
+							<span class="WpProQuiz_numberedAnswer"></span>
 							<label>
-								<input class="wpProQuiz_questionInput" type="<?php echo $question->getAnswerType() === 'single' ? 'radio' : 'checkbox' ?>" name="question_<?php echo $this->quiz->getId(); ?>_<?php echo $question->getId(); ?>" value="<?php echo $answer_index; ?>"> <?php echo $answer_text; ?>
+								<input class="wpProQuiz_questionInput" type="<?php echo $question->getAnswerType() === 'single' ? 'radio' : 'checkbox'; ?>" name="question_<?php echo $this->quiz->getId(); ?>_<?php echo $question->getId(); ?>" value="<?php echo $answer_index; ?>"> <?php echo $answer_text; ?>
 							</label>
 						</li>
 						
@@ -244,17 +260,27 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 						}
 					?>
 				</div>
-				<input type="button" name="check" value="<?php _e('Check', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left !important; margin-right: 10px !important; display: none;">
-				<input type="button" name="back" value="<?php _e('Back', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left !important; margin-right: 10px !important; display: none;">
-				<?php if($question->isTipEnabled()) { ?>
-				<input type="button" name="tip" value="<?php _e('Hint', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton wpProQuiz_TipButton" style="float: left !important; display: inline-block;">
+					<input type="button" name="check" value="<?php _e('Check', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left !important; margin-right: 10px !important; display: none;">
+					<input type="button" name="back" value="<?php _e('Back', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left !important; margin-right: 10px !important; display: none;">
+					<?php if($question->isTipEnabled()) { ?>
+						<input type="button" name="tip" value="<?php _e('Hint', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton wpProQuiz_TipButton" style="float: left !important; display: inline-block;">
+					<?php } ?>
+					<input type="button" name="next" value="<?php _e('Next exercise', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: right; display: none;" >
+					<div style="clear: both;"></div>
+					
+				<?php if($this->quiz->isQuestionOnSinglePage()) { ?>
+					<div style="margin-bottom: 20px;"></div>
 				<?php } ?>
-				<input type="button" name="next" value="<?php _e('Next exercise', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: right; display: none;" >
-				<div style="clear: both;"></div>
+				
 			</li>
 		
 		<?php } ?>
 		</ol>
+		<?php if($this->quiz->isQuestionOnSinglePage()) { ?>
+			<div>
+				<input type="button" name="checkSingle" value="<?php _e('Finish quiz', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" >
+			</div>
+		<?php } ?>
 	</div>
 </div>
 <script>
@@ -263,11 +289,13 @@ jQuery(document).ready(function($) {
 		questionRandom: <?php echo (int)$this->quiz->isQuestionRandom(); ?>,
 		answerRandom: <?php echo (int)$this->quiz->isAnswerRandom(); ?>,
 		timeLimit: <?php echo (int)$this->quiz->getTimeLimit(); ?>,
-		checkAnswer: <?php echo (int)$this->quiz->isCheckAnswer(); ?>,
-		backButton: <?php echo (int)$this->quiz->isBackButton();?>,
+		checkAnswer: <?php echo $checkAnswer; ?>,
+		backButton: <?php echo $backButton; ?>,
 		quizId: <?php echo (int)$this->quiz->getId(); ?>,
 		lock: <?php echo (int)$this->quiz->isQuizRunOnce(); ?>,
 		preview: <?php echo ($preview) ? 1 : 0; ?>,
+		numberedAnswer: <?php echo (int)$this->quiz->isnumberedAnswer(); ?>,
+		questionOnSinglePage: <?php echo $questionOnSinglePage; ?>,
 		url: '<?php echo admin_url('admin-ajax.php'); ?>',
 		resultsGrade: <?php echo $resultsProzent; ?>,
 		json: <?php echo $json; ?>
