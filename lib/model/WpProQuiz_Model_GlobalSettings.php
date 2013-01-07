@@ -4,6 +4,7 @@ class WpProQuiz_Model_GlobalSettings extends WpProQuiz_Model_Model {
 	protected $_addRawShortcode = false;
 	protected $_jsLoadInHead = false;
 	protected $_touchLibraryDeactivate = false;
+	protected $_corsActivated = false;
 	
 	public function setAddRawShortcode($_addRawShortcode) {
 		$this->_addRawShortcode = (bool)$_addRawShortcode;
@@ -30,5 +31,14 @@ class WpProQuiz_Model_GlobalSettings extends WpProQuiz_Model_Model {
 	
 	public function isTouchLibraryDeactivate() {
 		return $this->_touchLibraryDeactivate;
+	}
+	
+	public function setCorsActivated($_corsActivated) {
+		$this->_corsActivated = (bool)$_corsActivated;
+		return $this;
+	}
+	
+	public function isCorsActivated() {
+		return $this->_corsActivated;
 	}
 }

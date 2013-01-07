@@ -44,7 +44,9 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 	</div>
 	<div style="margin: 8px 0px;">
 		<a class="button-primary" style="font-weight: bold; display: none;" href="admin.php?page=wpProQuiz&module=styleManager"><?php _e('Style Manager', 'wp-pro-quiz'); ?></a>
+		<?php if(current_user_can('wpProQuiz_change_settings')) { ?>
 		<a class="button-primary" style="font-weight: bold;" href="admin.php?page=wpProQuiz&module=globalSettings"><?php _e('Settings in case of problems', 'wp-pro-quiz'); ?></a>
+		<?php } ?>
 	</div>
 	<table class="wp-list-table widefat">
 		<thead>
@@ -67,19 +69,29 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 				<th class="wpProQuiz_quizName"><?php echo $quiz->getName(); ?></th>
 				<th>
 					<a class="button-secondary" href="admin.php?page=wpProQuiz&module=question&quiz_id=<?php echo $quiz->getId(); ?>"><?php _e('Questions', 'wp-pro-quiz'); ?></a>
+					
+					<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
 					<a class="button-secondary" href="admin.php?page=wpProQuiz&action=edit&id=<?php echo $quiz->getId(); ?>"><?php _e('Edit', 'wp-pro-quiz'); ?></a> 
+					<?php } if(current_user_can('wpProQuiz_delete_quiz')) { ?>
 					<a class="button-secondary wpProQuiz_delete" href="admin.php?page=wpProQuiz&action=delete&id=<?php echo $quiz->getId(); ?>"><?php _e('Delete', 'wp-pro-quiz'); ?></a>
+					<?php } ?>
 					<a class="button-secondary wpProQuiz_prview" href="admin.php?page=wpProQuiz&module=preview&id=<?php echo $quiz->getId(); ?>"><?php _e('Preview', 'wp-pro-quiz'); ?></a>
+					<?php if(current_user_can('wpProQuiz_show_statistics')) { ?>
 					<a class="button-secondary" href="admin.php?page=wpProQuiz&module=statistics&id=<?php echo $quiz->getId(); ?>"><?php _e('Statistics', 'wp-pro-quiz'); ?></a>
+					<?php } ?>
 				</th>
 			</tr>
 			<?php } ?>
 		</tbody>
 	</table>
 	<p>
+		<?php if(current_user_can('wpProQuiz_add_quiz')) { ?>
 		<a class="button-secondary" href="admin.php?page=wpProQuiz&action=add"><?php echo __('Add quiz', 'wp-pro-quiz'); ?></a>
+		<?php } if(current_user_can('wpProQuiz_import')) { ?>
 		<a class="button-secondary wpProQuiz_import" href="#"><?php echo __('Import', 'wp-pro-quiz'); ?></a>
+		<?php } if(current_user_can('wpProQuiz_export')) { ?>
 		<a class="button-secondary wpProQuiz_export" href="#"><?php echo __('Export', 'wp-pro-quiz'); ?></a>
+		<?php } ?>
 	</p>
 	<div class="wpProQuiz_exportList">
 		<form action="admin.php?page=wpProQuiz&module=importExport&action=export&noheader=true" method="POST">

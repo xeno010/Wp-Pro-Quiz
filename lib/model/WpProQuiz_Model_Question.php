@@ -16,9 +16,11 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	protected $_tipMsg;
 	protected $_tipCount;
 	protected $_points = 1;
+	protected $_pointsPerAnswer = false;
+	protected $_pointsAnswer = 1;
+	protected $_showPointsInBox = false;
 	
-	public function setId($_id)
-	{
+	public function setId($_id) {
 		$this->_id = $_id;
 		return $this;
 	}
@@ -27,8 +29,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_id;
 	}
 	
-	public function setQuizId($_quizId)
-	{
+	public function setQuizId($_quizId) {
 		$this->_quizId = $_quizId;
 		return $this;
 	}
@@ -37,8 +38,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_quizId;
 	}
 	
-	public function setSort($_sort)
-	{
+	public function setSort($_sort) {
 		$this->_sort = $_sort;
 		return $this;
 	}
@@ -47,8 +47,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_sort;
 	}
 	
-	public function setTitle($title)
-	{
+	public function setTitle($title) {
 		$this->_title = $title;
 		return $this;
 	}
@@ -57,8 +56,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_title;
 	}
 	
-	public function setQuestion($question)
-	{
+	public function setQuestion($question) {
 		$this->_question = $question;
 		return $this;
 	}
@@ -67,8 +65,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_question;
 	}
 	
-	public function setCorrectMsg($correctMsg)
-	{
+	public function setCorrectMsg($correctMsg) {
 		$this->_correctMsg = $correctMsg;
 		return $this;
 	}
@@ -77,8 +74,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_correctMsg;
 	}
 	
-	public function setIncorrectMsg($incorrectMsg)
-	{
+	public function setIncorrectMsg($incorrectMsg) {
 		$this->_incorrectMsg = $incorrectMsg;
 		return $this;
 	}
@@ -87,8 +83,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_incorrectMsg;
 	}
 	
-	public function setAnswerType($_answerType)
-	{
+	public function setAnswerType($_answerType) {
 		$this->_answerType = $_answerType;
 		return $this;
 	}
@@ -97,8 +92,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_answerType;
 	}
 	
-	public function setAnswerJson($answerJson)
-	{
+	public function setAnswerJson($answerJson) {
 		$this->_answerJson = $answerJson;
 		
 		if(isset($this->_answerJson['answer_type']))
@@ -111,8 +105,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_answerJson;
 	}
 	
-	public function setCorrectCount($_correctCount)
-	{
+	public function setCorrectCount($_correctCount) {
 		$this->_correctCount = $_correctCount;
 		return $this;
 	}
@@ -121,8 +114,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return (int)$this->_correctCount;
 	}
 	
-	public function setIncorrectCount($_incorrectCount)
-	{
+	public function setIncorrectCount($_incorrectCount) {
 		$this->_incorrectCount = $_incorrectCount;
 		return $this;
 	}
@@ -131,8 +123,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return (int)$this->_incorrectCount;
 	}
 	
-	public function setCorrectSameText($_correctSameText)
-	{
+	public function setCorrectSameText($_correctSameText) {
 		$this->_correctSameText = (bool)$_correctSameText;
 		return $this;
 	}
@@ -141,8 +132,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_correctSameText;
 	}
 	
-	public function setTipEnabled($_tipEnabled)
-	{
+	public function setTipEnabled($_tipEnabled) {
 		$this->_tipEnabled = (bool)$_tipEnabled;
 		return $this;
 	}
@@ -151,8 +141,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_tipEnabled;
 	}
 	
-	public function setTipMsg($_tipMsg)
-	{
+	public function setTipMsg($_tipMsg) {
 		$this->_tipMsg = $_tipMsg;
 		return $this;
 	}
@@ -161,8 +150,7 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_tipMsg;
 	}
 	
-	public function setTipCount($_tipCount)
-	{
+	public function setTipCount($_tipCount)	{
 		$this->_tipCount = (int)$_tipCount;
 		return $this;
 	}
@@ -171,13 +159,39 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_tipCount;
 	}
 	
-	public function setPoints($_points)
-	{
+	public function setPoints($_points) {
 		$this->_points = (int)$_points;
 		return $this;
 	}
 	
 	public function getPoints() {
 		return $this->_points;
+	}
+	
+	public function setPointsPerAnswer($_pointsPerAnswer) {
+		$this->_pointsPerAnswer = (bool)$_pointsPerAnswer;
+		return $this;
+	}
+	
+	public function isPointsPerAnswer() {
+		return $this->_pointsPerAnswer;
+	}
+	
+	public function setPointsAnswer($_pointsAnswer)	{
+		$this->_pointsAnswer = (int)$_pointsAnswer;
+		return $this;
+	}
+	
+	public function getPointsAnswer() {
+		return $this->_pointsAnswer;
+	}
+	
+	public function setShowPointsInBox($_showPointsInBox) {
+		$this->_showPointsInBox = (bool)$_showPointsInBox;
+		return $this;
+	}
+	
+	public function isShowPointsInBox() {
+		return $this->_showPointsInBox;
 	}
 }

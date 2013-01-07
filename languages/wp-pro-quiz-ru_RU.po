@@ -4,8 +4,8 @@ msgstr ""
 "POT-Creation-Date: 2013-01-07 23:42+0100\n"
 "PO-Revision-Date: 2013-01-07 23:42+0100\n"
 "Last-Translator: Julius Fischer <julius.f@gmx.net>\n"
-"Language-Team: abuhassan <sajja2002@hotmail.com>\n"
-"Language: Arabic\n"
+"Language-Team: Sergei Bondarenko\n"
+"Language: Russian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,43 +16,43 @@ msgstr ""
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:54
 msgid "Do you really want to delete the quiz/question?"
-msgstr "هل تريد حقاً ان تحذف هذا الاختبار/السؤال؟"
+msgstr "Вы действительно хотите удалить тест/вопрос?"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:55
 msgid "Title is not filled!"
-msgstr "لم يتم تعبئة هذا!"
+msgstr "Заголовок не заполнен!"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:56
 msgid "No question deposited!"
-msgstr "لم يتم وضع سؤال!"
+msgstr "Нет сохраненных вопросов!"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:57
 msgid "Correct answer was not selected!"
-msgstr "لم يتم اختيار اجابة صحيحة!"
+msgstr "Правильный ответ не выбран!"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:58
 msgid "No answer deposited!"
-msgstr "لم يتم وضع اجابة!"
+msgstr "Ответ не сохранен!!"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:59
 msgid "No quiz description filled!"
-msgstr "لم يتم تعبئة وصف للاختبار!"
+msgstr "Не заполнено описание к тесту!"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:60
 msgid "The percent values in result text are incorrect."
-msgstr "النسبة المئوية في نص النتائج غير صحيحة."
+msgstr "Процентное значение в тексте результатов неверно."
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:61
 msgid "No number in the field \"Points\" or less than 1"
-msgstr "لا يوجد رقم في حقل  /\"النقاط/\" أو أقل من 1"
+msgstr "Нет числа в поле \"Баллы\" или оно меньше 1"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:62
 msgid "No quiz selected"
-msgstr "لم يتم اختيار اختبار"
+msgstr "Тест не выбран"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:63
 msgid "Do you really want to reset the statistic?"
-msgstr ""
+msgstr "Вы действительно хотите сбросить статистику?"
 
 #: lib/controller/WpProQuiz_Controller_GlobalSettings.php:11
 #: lib/controller/WpProQuiz_Controller_ImportExport.php:23
@@ -72,81 +72,81 @@ msgstr ""
 
 #: lib/controller/WpProQuiz_Controller_GlobalSettings.php:19
 msgid "Settings saved"
-msgstr ""
+msgstr "Настройки сохранены"
 
 #: lib/controller/WpProQuiz_Controller_ImportExport.php:79
 #: lib/helper/WpProQuiz_Helper_Import.php:54
 #: lib/helper/WpProQuiz_Helper_Import.php:63
 #: lib/helper/WpProQuiz_Helper_Import.php:70
 msgid "File cannot be processed"
-msgstr "لا يمكن استكمال الملف"
+msgstr "Файл не может быть обработан"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:9
 #: lib/controller/WpProQuiz_Controller_Question.php:19
 #: lib/controller/WpProQuiz_Controller_Quiz.php:78
 msgid "Quiz not found"
-msgstr "لم يتم العثور على الاختبار"
+msgstr "Тест не найден"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:65
 msgid "questions copied"
-msgstr ""
+msgstr "вопросы скопированы"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:147
 msgid "Edit question"
-msgstr "تحرير السؤال"
+msgstr "Редактирование вопроса"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:151
 msgid "Question not found"
-msgstr "لم يتم العثور على السؤال"
+msgstr "Вопрос не найден"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:164
 #: lib/controller/WpProQuiz_Controller_Question.php:206
 #, php-format
 msgid "Question: %d"
-msgstr "السؤال: %d"
+msgstr "Вопрос: %d"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:174
 msgid "Question edited"
-msgstr "تم تحرير السؤال"
+msgstr "Вопрос отредактирован"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:193
 msgid "New question"
-msgstr "سؤال جديد"
+msgstr "Новый вопрос"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:217
 msgid "Question added"
-msgstr "تم اضافة سؤال"
+msgstr "Вопрос добавлен"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:73
 #: lib/view/WpProQuiz_View_QuestionOverall.php:21
 msgid "Edit quiz"
-msgstr "تحرير الاختبار"
+msgstr "Редактирование теста"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:93
 msgid "Quiz edited"
-msgstr "تم تحرير الاختبار"
+msgstr "Тест отредактирован"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:102
 #: lib/controller/WpProQuiz_Controller_Quiz.php:135
 msgid "Quiz title or quiz description are not filled"
-msgstr "لم يتم تعبئة عنوان او وصف الاختبار"
+msgstr "Не заполнены заголовок или описание теста"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:118
 #: lib/controller/WpProQuiz_Controller_Quiz.php:129
 msgid "Create quiz"
-msgstr "انشاء اختبار"
+msgstr "Создать тест"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:160
 msgid "Quiz deleted"
-msgstr "تم حذف الاختبار"
+msgstr "Тест удален"
 
 #: lib/helper/WpProQuiz_Helper_Import.php:9
 msgid "File was not uploaded"
-msgstr "لم يتم رفع الملف"
+msgstr "Файл не загружен"
 
 #: lib/helper/WpProQuiz_Helper_Import.php:40
 msgid "File have wrong format"
-msgstr "صيغة الملف خاطئة"
+msgstr "Неверный формат файла"
 
 #: lib/plugin/WpProQuiz_Plugin_BpAchievementsV2.php:33
 msgid "The user completed a quiz."
@@ -154,80 +154,80 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:86
 msgid "Start quiz"
-msgstr "بدأ الاختبار"
+msgstr "Начать тест"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:91
 msgid ""
 "You have already completed the quiz before. Hence you can not start it again."
-msgstr ""
+msgstr "Вы уже проходили тест ранее. Вы не можете запустить его снова."
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:95
 #: lib/view/WpProQuiz_View_Statistics.php:59
 #: lib/view/WpProQuiz_View_Statistics.php:150
 msgid "Results"
-msgstr "النتائج"
+msgstr "Результаты"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:97
 #, php-format
 msgid "%s of %s questions answered correctly"
-msgstr "تم اجابة %s من %s  اسئلة بشكل صحيح"
+msgstr "Правильных ответов: %s из %s"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:100
 msgid "Your time: <span></span>"
-msgstr "وقتك: <span></span>"
+msgstr "Ваше время: <span></span>"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:103
 msgid "Time has elapsed"
-msgstr "مضى من الوقت"
+msgstr "Время вышло"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:106
 msgid ""
 "You have reached <span></span> of <span></span> points, (<span></span>%)"
-msgstr "لقد وصلت الي <span></span> من <span></span> لنقاط, (<span></span>%)"
+msgstr "Вы набрали <span></span> из <span></span> баллов (<span></span>%)"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:121
 msgid "Restart quiz"
-msgstr "اعادة الاختبار"
+msgstr "Начать тест заново"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:123
 msgid "View questions"
-msgstr "استعراض الاسئلة"
+msgstr "Показать вопросы"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:128
 #: lib/view/WpProQuiz_View_QuizEdit.php:132
 #: lib/view/WpProQuiz_View_QuizEdit.php:137
 msgid "Time limit"
-msgstr "الوقت المحدد"
+msgstr "Осталось"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:141
 #, php-format
 msgid "Question %s of %s"
-msgstr "اسئلة %s  من %s "
+msgstr "Вопрос %s из %s"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:144
 #: lib/view/WpProQuiz_View_QuestionEdit.php:49
 #: lib/view/WpProQuiz_View_Statistics.php:53
 msgid "Question"
-msgstr "اسئلة"
+msgstr "Вопрос"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:148
 #, php-format
 msgid "%d points"
-msgstr "%d درجات"
+msgstr "%d б."
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:158
 #: lib/view/WpProQuiz_View_QuestionEdit.php:250
 #: lib/view/WpProQuiz_View_QuestionEdit.php:290
 #: lib/view/WpProQuiz_View_QuestionEdit.php:327
 msgid "Sort elements"
-msgstr "ترتيب العناصر"
+msgstr "Элементы сортировки"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:240
 #: lib/view/WpProQuiz_View_FrontQuiz.php:247
 #: lib/view/WpProQuiz_View_Statistics.php:55
 #: lib/view/WpProQuiz_View_Statistics.php:147
 msgid "Correct"
-msgstr "صحيح"
+msgstr "Правильно"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:242
 #: lib/view/WpProQuiz_View_FrontQuiz.php:260
@@ -237,59 +237,60 @@ msgstr "صحيح"
 #: lib/view/WpProQuiz_View_Statistics.php:54
 #: lib/view/WpProQuiz_View_Statistics.php:146
 msgid "Points"
-msgstr "درجات"
+msgstr "Баллы"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:258
 #: lib/view/WpProQuiz_View_FrontQuiz.php:265
 #: lib/view/WpProQuiz_View_Statistics.php:56
 #: lib/view/WpProQuiz_View_Statistics.php:148
 msgid "Incorrect"
-msgstr "خطأ"
+msgstr "Неправильно"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:282
 #: lib/view/WpProQuiz_View_FrontQuiz.php:292
 #: lib/view/WpProQuiz_View_QuestionEdit.php:85
 msgid "Hint"
-msgstr "تلميح"
+msgstr "Подсказка"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:289
 msgid "Check"
-msgstr "التحقق"
+msgstr "Проверить"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:290
 msgid "Back"
-msgstr "العودة"
+msgstr "Назад"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:294
 msgid "Next exercise"
-msgstr "التمرين التالي"
+msgstr "Далее"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:307
 msgid "Finish quiz"
-msgstr ""
+msgstr "Завершить тест"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:7
 msgid "to activate"
-msgstr ""
+msgstr "включить"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:9
 msgid "not to activate"
-msgstr ""
+msgstr "отключить"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:14
 #: lib/view/WpProQuiz_View_GobalSettings.php:25
 #: lib/view/WpProQuiz_View_QuizOverall.php:48
 msgid "Settings in case of problems"
-msgstr ""
+msgstr "Настройки в случае возникновения проблем"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:16
 msgid "Please note"
-msgstr ""
+msgstr "Пожалуйста, обратите внимание"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:18
 msgid ""
 "These settings should only be set in cases of problems with Wp-Pro-Quiz."
 msgstr ""
+"Эти параметры должны быть установлены только в случае проблем с Wp-Pro-Quiz."
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:21
 #: lib/view/WpProQuiz_View_Import.php:22
@@ -299,12 +300,12 @@ msgstr ""
 #: lib/view/WpProQuiz_View_Statistics.php:18
 #: lib/view/WpProQuiz_View_StyleManager.php:11
 msgid "back to overview"
-msgstr "العودة للرئيسية"
+msgstr "Назад к списку"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:31
 #: lib/view/WpProQuiz_View_GobalSettings.php:36
 msgid "Automatically add [raw] shortcode"
-msgstr ""
+msgstr "Автоматически добавлять шорткод [raw]"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:40
 #: lib/view/WpProQuiz_View_GobalSettings.php:62
@@ -322,18 +323,20 @@ msgstr ""
 #: lib/view/WpProQuiz_View_QuizEdit.php:259
 #: lib/view/WpProQuiz_View_QuizEdit.php:299
 msgid "Activate"
-msgstr ""
+msgstr "Активно"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:40
 #, php-format
 msgid "It is recommended %s this option on your system."
-msgstr ""
+msgstr "Рекомендуется %s эту опцию в вашей системе."
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:43
 msgid ""
 "If this option is activated, a [raw] shortcode is automatically set around "
 "WpProQuiz shortcode ( [WpProQuiz X] ) into [raw] [WpProQuiz X] [/raw]"
 msgstr ""
+"Если этот параметр активен, шорткод [raw] будет автоматически обрамлять "
+"WpProQuiz шорткод ( [WpProQuiz X]  в [raw] [WpProQuiz X] [/raw])."
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:46
 #: lib/view/WpProQuiz_View_QuizOverall.php:42
@@ -341,29 +344,33 @@ msgid ""
 "Own themes changes internal  order of filters, what causes the problems. "
 "With additional shortcode [raw] this is prevented."
 msgstr ""
-"الثيمات الخاصة تغير النظام الداخلي للمرشحات، مما يسبب المشاكل. مع الرمز "
-"القصير إضافية [الخام] يتم منع هذا. MIB"
+"Некоторые темы меняют внутренний порядок фильтра, что приводит к ошибкам. "
+"Шорткод [raw] препятствует этому."
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:53
 #: lib/view/WpProQuiz_View_GobalSettings.php:58
 msgid "Do not load the Javascript-files in the footer"
-msgstr ""
+msgstr "Не загружать Javascript-файлы в нижнюю часть страницы (подвал)"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:65
 msgid ""
 "Generally all WpProQuiz-Javascript files are loaded in the footer and only "
 "when they are really needed."
 msgstr ""
+"По умолчанию все WpProQuiz-Javascript файлы грузятся в нижнюю часть страницы "
+"(подвал) и только если они действительно нужны."
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:68
 msgid "In very old Wordpress themes this can lead to problems."
-msgstr ""
+msgstr "Может вызывать проблемы в старых темах Wordpress."
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:71
 msgid ""
 "If you activate this option, all WpProQuiz-Javascript files are loaded in "
 "the header even if they are not needed."
 msgstr ""
+"Если вы включите эту опцию, все WpProQuiz-Javascript файлы будут загружены в "
+"заголовок страницы, даже если они не нужны."
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:74
 #, php-format
@@ -371,23 +378,26 @@ msgid ""
 "Anyone who wants to learn more about this topic should read through the "
 "following websites %s and %s."
 msgstr ""
+"Если Вам нужна дополнительная информация по данной теме, посетите следующие "
+"вебсайты: %s и %s"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:83
 #: lib/view/WpProQuiz_View_GobalSettings.php:88
 msgid "Touch Library"
-msgstr ""
+msgstr "Сеснсорная библиотека"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:92
 msgid "Deactivate"
-msgstr ""
+msgstr "Неактивно"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:95
 msgid "In Version 0.13 a new Touch Library was added for mobile devices."
 msgstr ""
+"В версии 0.13 добавлена новая сенсорная библиотека для мобильных устройств."
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:98
 msgid "If you have any problems with the Touch Library, please deactivate it."
-msgstr ""
+msgstr "Если у Вас проблемы с сенсорной библиотекой, пожалуйста отключите ее."
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:105
 #: lib/view/WpProQuiz_View_GobalSettings.php:110
@@ -410,43 +420,43 @@ msgstr ""
 #: lib/view/WpProQuiz_View_QuestionEdit.php:373
 #: lib/view/WpProQuiz_View_QuizEdit.php:430
 msgid "Save"
-msgstr "حفظ"
+msgstr "Сохранить"
 
 #: lib/view/WpProQuiz_View_Import.php:21
 #: lib/view/WpProQuiz_View_QuizOverall.php:91
 #: lib/view/WpProQuiz_View_QuizOverall.php:108
 msgid "Import"
-msgstr "استيراد"
+msgstr "Импорт"
 
 #: lib/view/WpProQuiz_View_Import.php:25
 msgid "Error"
-msgstr "خطأ"
+msgstr "Ошибка"
 
 #: lib/view/WpProQuiz_View_Import.php:32
 msgid "Successfully"
-msgstr "بنجاح"
+msgstr "Успешно"
 
 #: lib/view/WpProQuiz_View_Import.php:34
 msgid "Import completed successfully"
-msgstr "تم الاستيراد بنجاح"
+msgstr "Импорт завершен успешно"
 
 #: lib/view/WpProQuiz_View_Import.php:43
 msgid "Quiz name"
-msgstr "اسم الاختبار"
+msgstr "Название теста"
 
 #: lib/view/WpProQuiz_View_Import.php:44
 #: lib/view/WpProQuiz_View_QuizOverall.php:71
 msgid "Questions"
-msgstr "اسئلة"
+msgstr "Вопросы"
 
 #: lib/view/WpProQuiz_View_Import.php:67
 #: lib/view/WpProQuiz_View_QuizOverall.php:119
 msgid "Start import"
-msgstr "ابدأ الاستيراد"
+msgstr "Начать импорт"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:12
 msgid "Title"
-msgstr "العنوان"
+msgstr "Заголовок"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:12
 #: lib/view/WpProQuiz_View_QuestionEdit.php:57
@@ -454,15 +464,15 @@ msgstr "العنوان"
 #: lib/view/WpProQuiz_View_QuestionEdit.php:85
 #: lib/view/WpProQuiz_View_QuizEdit.php:362
 msgid "(optional)"
-msgstr "(اختيار)"
+msgstr "(необязательное поле)"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:15
 msgid ""
 "The title is used for overview, it is not visible in quiz. If you leave the "
 "title field empty, a title will be generated."
 msgstr ""
-"يتم استخدام العنوان للعرض، وهو غير مرئيا في الاختبار. إذا تركت حقل العنوان "
-"فارغا، سيتم إنشاء عنوان."
+"Название используется для обзора и не отображается в тесте. Если поле "
+"оставить пустым, название сгенерируется автоматически."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:21
 #: lib/view/WpProQuiz_View_QuestionEdit.php:49
@@ -470,11 +480,11 @@ msgstr ""
 #: lib/view/WpProQuiz_View_QuizEdit.php:12
 #: lib/view/WpProQuiz_View_QuizEdit.php:351
 msgid "(required)"
-msgstr "(مطلوب)"
+msgstr "(обязательное поле)"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:25
 msgid "Points for this question (Standard is 1 point)"
-msgstr "درجات هذا السؤال (عادة 1 درجة)"
+msgstr "Количество баллов для этого вопроса (по-умолчанию 1 балл)"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:34
 msgid "Points per correct answer"
@@ -493,7 +503,7 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:57
 msgid "Message with the correct answer"
-msgstr "رسالة مع الاجابة الصحيحة"
+msgstr "Сообщение для правильного ответа"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:60
 msgid ""
@@ -501,16 +511,17 @@ msgid ""
 "explanation for complex questions. The message \"Right\" or \"Wrong\" is "
 "always displayed automatically."
 msgstr ""
-"وهذا النص مرئية إذا أجاب بشكل صحيح. ويمكن استخدامه كدليل شرح للمسائل "
-"المعقدة. الرسالة\"صحيح \" أو\" خطأ\" دائما يتم عرضها تلقائيا."
+"Этот текст будет виден, если ответили правильно. Он может быть использован в "
+"качестве объяснения сложных вопросов. Сообщение \"Правильно \" или  "
+"\"Неправильно\" всегда отображается автоматически."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:64
 msgid "Same text for correct- and incorrect-message?"
-msgstr "نفس النص مع رسالة الاجابة الصحيحة - و الغير صحيحة؟"
+msgstr "Одинаковый текст для сообщений с правильным и неправильным ответом?"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:74
 msgid "Message with the incorrect answer"
-msgstr "رسالة مع الاجابة الغير صحيحة"
+msgstr "Сообщение для неправильного ответа"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:77
 msgid ""
@@ -518,62 +529,66 @@ msgid ""
 "explanation for complex questions. The message \"Right\" or \"Wrong\" is "
 "always displayed automatically."
 msgstr ""
-"وهذا النص مرئية إذا أجاب بشكل غير صحيح. ويمكن استخدامه كدليل شرح للمسائل "
-"المعقدة. الرسالة\"صحيح \" أو\" خطأ\" دائما يتم عرضها تلقائيا."
+"Этот текст будет виден, если ответили неправильно. Он может быть использован "
+"в качестве объяснения сложных вопросов. Сообщение \"Правильно \" или  "
+"\"Неправильно\" всегда отображается автоматически."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:88
 msgid "Here you can enter solution hint."
-msgstr "يمكنك وضع هنا تلميح للأجابة."
+msgstr "Сюда можно ввести подсказку."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:92
 msgid "Activate hint for this question?"
-msgstr "تفعيل التلميح لهذا السؤال؟"
+msgstr "Активировать подсказку для этого вопроса?"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:104
 msgid "Answer type"
-msgstr "نوع السؤال؟"
+msgstr "Тип ответа"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:112
 msgid "Single choice"
-msgstr "اختيار واحد"
+msgstr "Одиночный выбор"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:116
 msgid "Multiple choice"
-msgstr "أختيار متعدد"
+msgstr "Множественный выбор"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:120
 msgid "\"Free\" choice"
-msgstr "\"حر\" اختيار"
+msgstr "\"Открытый\""
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:124
 msgid "\"Sorting\" choice"
-msgstr "\"ترتيب\" اختيار"
+msgstr "\"Сортировка\""
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:128
 msgid "\"Matrix Sorting\" choice"
-msgstr "\"ترتيب منظمي\" اختيار"
+msgstr "\"Матричная сортировка\""
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:132
+#, fuzzy
 msgid "Cloze"
-msgstr "اكمل"
+msgstr "\"Заключенный текст\""
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:137
 msgid "Answers"
-msgstr "اجابات"
+msgstr "Ответы"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:142
 #: lib/view/WpProQuiz_View_QuestionEdit.php:146
 msgid ""
 "correct answers (one per line) (answers will be converted to lower case)"
-msgstr "الإجابات الصحيحة (واحد في كل سطر) (يتم تحويل الإجابات إلى أحرف صغيرة)"
+msgstr ""
+"правильных ответов (по одному на строку) (ответы будут преобразованы в "
+"нижний регистр)"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:152
 msgid ""
 "Please sort the answers in right order with the \"Move\" - Button. The "
 "answers will be displayed randomly."
 msgstr ""
-"يرجى فرز الإجابات في بالترتيب الصحيح بزر \"نقل\" - . سوف يتم عرض الإجابات "
-"بشكل عشوائي."
+"Пожалуйста, отсортируйте ответы в правильном порядке при помощи кнопки "
+"\"Переместить \". Ответы будут отображаться в случайном порядке."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:158
 #: lib/view/WpProQuiz_View_QuestionEdit.php:170
@@ -585,7 +600,7 @@ msgstr ""
 #: lib/view/WpProQuiz_View_QuestionEdit.php:319
 #: lib/view/WpProQuiz_View_QuestionEdit.php:356
 msgid "Delete answer"
-msgstr "حذف الاجابة"
+msgstr "Удалить ответ"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:159
 #: lib/view/WpProQuiz_View_QuestionEdit.php:171
@@ -598,7 +613,7 @@ msgstr "حذف الاجابة"
 #: lib/view/WpProQuiz_View_QuestionEdit.php:355
 #: lib/view/WpProQuiz_View_QuestionOverall.php:50
 msgid "Move"
-msgstr "تحريك"
+msgstr "Переместить"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:161
 #: lib/view/WpProQuiz_View_QuestionEdit.php:173
@@ -613,186 +628,192 @@ msgstr "تحريك"
 #: lib/view/WpProQuiz_View_QuestionEdit.php:342
 #: lib/view/WpProQuiz_View_QuestionEdit.php:348
 msgid "Allow HTML"
-msgstr "السماح بــ HTML"
+msgstr "Разрешить HTML"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:189
 #: lib/view/WpProQuiz_View_QuestionEdit.php:238
 #: lib/view/WpProQuiz_View_QuestionEdit.php:360
 msgid "Add new answer"
-msgstr "اضف اجابة جديدة"
+msgstr "Добавить новый ответ"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:197
 #: lib/view/WpProQuiz_View_QuestionEdit.php:213
 #: lib/view/WpProQuiz_View_QuestionEdit.php:227
 msgid "correct?"
-msgstr "صحيح؟"
+msgstr "правильно?"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:242
 msgid ""
 "In this mode, not a list have to be sorted, but elements must be assigned to "
 "matching criterion."
 msgstr ""
-"في هذا الوضع، لا يوجد قائمة لا بد من فرزها، ولكن يجب تعيين عناصر مطابقة "
-"لمعيار."
+"В этом режиме не нужно сортировать список. Элементы сортировки должны быть "
+"отнесены к соответствующему критерию."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:249
 #: lib/view/WpProQuiz_View_QuestionEdit.php:289
 #: lib/view/WpProQuiz_View_QuestionEdit.php:326
 msgid "Criterion"
-msgstr "معيار"
+msgstr "Критерий"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:364
+#, fuzzy
 msgid ""
 "Enclose the searched words with { } e.g. \"I {play} soccer\". Capital and "
 "small letters will be ignored."
 msgstr ""
-"لاحتوائه مع قاموس رواجا مثل {} \"{} I كرة القدم ألعاب \". يتم تجاهل الحروف "
-"الكبيرة والصغيرة."
+"Заключите поиск слов в { } , например, \"I {играть} в футбол\". Прописные и "
+"строчные буквы будут игнорироваться."
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:17
 msgid "Questions sorted"
-msgstr "ترتيب الاسئلة"
+msgstr "Вопросы отсортированы"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:28
 #: lib/view/WpProQuiz_View_QuizOverall.php:57
 msgid "Name"
-msgstr "الاسم"
+msgstr "Название"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:30
 #: lib/view/WpProQuiz_View_QuizOverall.php:58
 msgid "Action"
-msgstr "الحدث"
+msgstr "Действие"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:46
 #: lib/view/WpProQuiz_View_QuizOverall.php:74
 msgid "Edit"
-msgstr "تحرير"
+msgstr "Редактировать"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:48
 #: lib/view/WpProQuiz_View_QuizOverall.php:76
 msgid "Delete"
-msgstr "حذف"
+msgstr "Удалить"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:59
 #: lib/view/WpProQuiz_View_Statistics.php:84
 msgid "Total"
-msgstr "المجموع"
+msgstr "Всего"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:67
 msgid "Add question"
-msgstr "اضافة سؤال"
+msgstr "Добавить вопрос"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:68
 msgid "Save order"
-msgstr "حفظ الترتيب"
+msgstr "сохранить сортировку"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:69
 #: lib/view/WpProQuiz_View_QuestionOverall.php:74
 msgid "Copy questions from another Quiz"
-msgstr ""
+msgstr "Копировать вопросы из другого теста."
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:75
 msgid ""
 "Here you can copy questions from another quiz into this quiz. (Multiple "
 "selection enabled)"
 msgstr ""
+"Здесь Вы можете скопировать вопросы из другого теста в этот тест. "
+"(Множественный выбор включен)"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:79
 #: lib/view/WpProQuiz_View_Statistics.php:45
 msgid "Loading"
-msgstr ""
+msgstr "Загрузка"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:87
 msgid "Copy questions"
-msgstr ""
+msgstr "Вопросы скопированы"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:12
 msgid "Quiz title"
-msgstr "عنوان الاختبار"
+msgstr "Заголовок теста"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:18
 msgid "Options"
-msgstr "خيارات"
+msgstr "Настройки"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:24
 msgid "Hide quiz title"
-msgstr "اخفاء عنوان الاختبار"
+msgstr "Спрятать заголовок теста"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:29
 msgid "Hide title"
-msgstr "اخفاء العنوان"
+msgstr "Спрятать заголовок"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:36
 msgid "The title serves as quiz heading."
-msgstr "العنوان يظهر كعنوانا من اجل الاختبار."
+msgstr "Заголовок служит названием теста."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:43
 #: lib/view/WpProQuiz_View_QuizEdit.php:48
 msgid "Hide \"Restart quiz\" button"
-msgstr "اخفاء زر\"اعادة الاختبار\""
+msgstr "Спрятать кнопку \"Перезагрузить тест\""
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:55
 msgid "Hide the \"Restart quiz\" button in the Frontend."
-msgstr "اخفاء زر \"اعادة الاختبار\" في الواجهة"
+msgstr "Спрятать кнопку \"Перезагрузить тест\" в конце теста."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:62
 #: lib/view/WpProQuiz_View_QuizEdit.php:67
 msgid "Hide \"View question\" button"
-msgstr "اخفاء زر \"عرض السؤال\""
+msgstr "Спрятать кнопку  \"Показать вопросы\""
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:74
 msgid "Hide the \"View question\" button in the Frontend."
-msgstr "اخفاء زر \"عرض السؤال\" في الواجهة"
+msgstr "Спрятать кнопку  \"Показать вопросы\" в конце теста."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:81
 #: lib/view/WpProQuiz_View_QuizEdit.php:86
 msgid "Show points"
-msgstr "اعرض الدرجات"
+msgstr "Показывать баллы"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:93
 msgid "Shows in quiz, how many points are reachable for respective question."
-msgstr "يظهر في الاختبار، كم عدد نقاط يمكن الوصول للأسئلة المعنية."
+msgstr ""
+"Показывать в тесте, сколько можно набрать баллов на соответствующий вопрос."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:100
 #: lib/view/WpProQuiz_View_QuizEdit.php:105
 msgid "Display question randomly"
-msgstr "اعرض الاسئلة عشوائياً"
+msgstr "Выводить вопросы случайным образом"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:116
 #: lib/view/WpProQuiz_View_QuizEdit.php:121
 msgid "Display answers randomly"
-msgstr "اعرض الاجابات عشوائياً"
+msgstr "Выводить ответы случайным образом"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:140
 msgid "Seconds"
-msgstr "ثواني"
+msgstr "Секунды"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:143
 msgid "0 = no limit"
-msgstr "0 = بدون وقت محدد"
+msgstr "0 = без ограничений"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:150
 #: lib/view/WpProQuiz_View_QuizEdit.php:155
 msgid "Number answers"
-msgstr ""
+msgstr "Номера ответов"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:162
 msgid ""
 "If this option is activated, all answers are numbered (only single and "
 "multiple choice)"
 msgstr ""
+"Если эта опция включена, все ответы нумеруются (только для одиночного и "
+"множественного выбора)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:165
 #: lib/view/WpProQuiz_View_QuizEdit.php:190
 #: lib/view/WpProQuiz_View_QuizEdit.php:215
 #: lib/view/WpProQuiz_View_QuizEdit.php:240
 msgid "Demo"
-msgstr ""
+msgstr "Демо"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:175
 #: lib/view/WpProQuiz_View_QuizEdit.php:180
 msgid "Questions below each other"
-msgstr ""
+msgstr "Вопросы один под другим"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:187
 msgid ""
@@ -800,39 +821,43 @@ msgid ""
 "e. all questions are on a single page. Otherwise all questions are displayed "
 "one after the other."
 msgstr ""
+"Если Вы включите данную опцию, вопросы будут отображаться один под другим, т."
+"е. все вопросы на одной странице. В противном случае все вопросы "
+"отображаются последовательно."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:200
 #: lib/view/WpProQuiz_View_QuizEdit.php:205
 msgid "Check -> continue"
-msgstr "فحص->استكمال"
+msgstr "Проверить -> Далее"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:212
-#, fuzzy
 msgid ""
 "Shows \"right or wrong\" after each question. Otherwise the solutions will "
 "be displayed at the end. (Option will be ignored if \"questions below each "
 "other\" was used)"
-msgstr "عرض\"صواب أو خطأ\" بعد السؤال. وإلا يتم عرض الحلول في نهاية المطاف."
+msgstr ""
+"Показывать \"правильно или неправильно\" после вопроса. В противном случае "
+"решение будет показано в конце теста. (Опция игнорируется для  \"Ответы с "
+"номерами \")"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:225
 #: lib/view/WpProQuiz_View_QuizEdit.php:230
 msgid "Back button"
-msgstr "زر العودة"
+msgstr "Кнопка назад"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:237
-#, fuzzy
 msgid ""
 "Allows to use the back button in a question. (Option will be ignored if "
 "\"Check -> Continue\" or \"questions below each other\" was used)"
 msgstr ""
-"السماح لاستخدام زر العودة في سؤال. (سيتم تجاهل الخيار إذا\"تم تأشير زر -> "
-"متابعة \" مستخدماً)"
+"Позволяет вернуться к вопросу. (Опция игнорируется для \"Проверить -> Далее "
+"\" и для \"Ответы с номерами \")"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:250
 #: lib/view/WpProQuiz_View_QuizEdit.php:255
 #: lib/view/WpProQuiz_View_QuizOverall.php:80
 msgid "Statistics"
-msgstr "احصائيات"
+msgstr "Статистика"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:262
 msgid ""
@@ -840,57 +865,59 @@ msgid ""
 "completed quiz, not after every question. The statistics is only visible "
 "over administration menu. (internal statistics)"
 msgstr ""
-"الإحصاءات عن الإجابات الصحيحة أو الخاطئة. سيتم حفظ الإحصاءات عند إكمال "
-"الاختبار، وليس بعد كل سؤال. الإحصاءات تظهر فقط خلال قائمة الإدارة. "
-"(الإحصاءات الداخلية)"
+"Статистические данные по правильным или неправильным ответам. Статистика "
+"будет сохранена по завершении теста, а не после каждого вопроса. Статистика "
+"отображается только в административном меню. (внутренняя статистика)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:269
 #: lib/view/WpProQuiz_View_QuizEdit.php:274
 msgid "Statistics IP-lock"
-msgstr "احصائيات قفل-اي بي"
+msgstr "Статистика IP-блокировки"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:278
 msgid "in minutes (recommended 1440 minutes = 1 day)"
-msgstr "بالدقائق (مستحسن 1440 دقيقة = 1 يوم)"
+msgstr "в минутах (рекомендация: 1440 минут = 1 день)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:281
 msgid ""
 "Protect the statistics from spam. Result will only be saved every X minutes "
 "from same IP. (0 = deactivated)"
 msgstr ""
-"حماية الإحصاءات من البريد المزعج. النتائج سوف تحفظ كل * دقيقة من نفي الاي "
-"بي. (0= غير مفعل)"
+"Защитить статистику от спама. Результат будет сохраняться только каждые X "
+"минут с одного IP. (0 = деактивировано)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:288
 #: lib/view/WpProQuiz_View_QuizEdit.php:294
 msgid "Execute quiz only once"
-msgstr ""
+msgstr "Выполнять тест только 1 раз"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:302
 msgid ""
 "If you activate this option, the user can complete the quiz only once. "
 "Afterwards the quiz is blocked for this user."
 msgstr ""
+"Если вы активируете эту опцию, пользователь сможет пройти тест только один "
+"раз. После тест будет заблокирован для данного пользователя."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:306
 msgid "This option applies to:"
-msgstr ""
+msgstr "Этот параметр применяется к:"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:314
 msgid "all users"
-msgstr ""
+msgstr "все пользователи"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:318
 msgid "registered useres only"
-msgstr ""
+msgstr "только зарегистрированные пользователи"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:322
 msgid "anonymous users only"
-msgstr ""
+msgstr "только анонимные пользователи"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:328
 msgid "user identification by cookie"
-msgstr ""
+msgstr "Идентифицировать пользователя по кукисам"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:331
 msgid ""
@@ -898,48 +925,53 @@ msgid ""
 "(anonymous) users. This ensures a longer assignment of the user than the "
 "simple assignment by the IP address."
 msgstr ""
+"Если вы активируете эту опцию, куки установливаются дополнительно для "
+"незарегистрированных (анонимных) пользователей. Это обеспечивает более "
+"длительное назначение пользователю, чем простое задание по IP-адресу."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:336
 msgid "Reset the user identification"
-msgstr ""
+msgstr "Сброс идентификации пользователя"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:337
 msgid "User identification has been reset."
-msgstr ""
+msgstr "Идентификация пользователей была сброшена."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:339
 msgid "Resets user identification for all users."
-msgstr ""
+msgstr "Сбросить идентификацию для всех пользователей."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:351
 msgid "Quiz description"
-msgstr "وصف الاختبار"
+msgstr "Описание теста"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:354
 msgid "This text will be displayed before start of the quiz."
-msgstr "سيتم عرض هذا النص قبل بدء الاختبار."
+msgstr "Этот текст будет отображаться перед началом теста."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:362
 msgid "Results text"
-msgstr "نص النتائج"
+msgstr "Текст для результата"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:365
 msgid ""
 "This text will be displayed at the end of the quiz (in results). (this text "
 "is optional)"
-msgstr "سيتم عرض هذا النص في نهاية الاختبار (في النتائج). (هذا النص اختياري)"
+msgstr ""
+"Этот текст будет отображаться в конце теста (в результатах). (не является "
+"обязательным)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:369
 msgid "Activate graduation"
-msgstr "تفعيل التقييم"
+msgstr "Активировать окончания"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:375
 msgid "Hint:"
-msgstr "تلميح:"
+msgstr "Подсказка:"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:377
 msgid "Maximal 15 levels"
-msgstr "اقصى حد 15 مستوى"
+msgstr "Максимум 15 уровней"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:379
 #, php-format
@@ -947,135 +979,136 @@ msgid ""
 "Percentages refer to the total score of the quiz. (Current total %d points "
 "in %d questions."
 msgstr ""
-"النسبة المئوية تشير الي الدرجة الكلية للأختبار.( المجموع الحالي %d درجة في "
-"%d سؤال"
+"Проценты относятся к общему баллу теста (Всего %d баллов в %d вопросах)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:382
 msgid "Values can also be mixed up"
-msgstr "يمكن لخبطة القيم"
+msgstr "значения могут быть перепутаны"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:383
 msgid "10,15% or 10.15% allowed (max. two digits after the decimal point)"
-msgstr "10.15% او 10.15% مسموح به (اقصى حد هو رقمين بعد النسبة المئوية)"
+msgstr "Допускается 10,15% или 10.15% (макс. до двух знаков после запятой)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:399
 #: lib/view/WpProQuiz_View_QuizEdit.php:410
 msgid "from:"
-msgstr "من:"
+msgstr "от:"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:399
 #: lib/view/WpProQuiz_View_QuizEdit.php:410
 msgid "percent"
-msgstr "النسبة المئوية"
+msgstr "процент"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:399
 #: lib/view/WpProQuiz_View_QuizEdit.php:410
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "(Will be displayed, when result-percent is >= <span class=\"resultProzent\">"
 "%s</span>%%)"
 msgstr ""
-"(سوف يتم عرضه، عندما تكون نسبة النتيجة>= <span class=\"resultProzent\">%s</"
-"span>%%)"
+"(Будет отображаться, если процентный результат >= <span class=\"resultProzent"
+"\">%s</span>%%)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:400
 #: lib/view/WpProQuiz_View_QuizEdit.php:411
 msgid "Delete graduation"
-msgstr "حذف التقييم"
+msgstr "Удалить окончания"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:418
 msgid "Add graduation"
-msgstr "اضافة تقييم"
+msgstr "Добавить окончания"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:32
 msgid "Quiz overview"
-msgstr "شاشة الاختبار"
+msgstr "Обзор теста"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:34
 msgid "In case of problems"
-msgstr "في حالة وجود مشاكل"
+msgstr "В случае возникновения проблем"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:36
 msgid "If quiz doesn't work in front-end, please try following:"
-msgstr "إذا الاختبار لا يعمل في الواجهة الأمامية، يرجى تجربة التالي:"
+msgstr "Если тест не работает в интерфейсе, попробуйте следующее:"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:46
 msgid "Style Manager"
-msgstr ""
+msgstr "Менеджер стилей"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:55
 msgid "ID"
-msgstr "الرقم"
+msgstr "ID"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:56
 msgid "Shortcode"
-msgstr "الكود"
+msgstr "Шорткод"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:78
 msgid "Preview"
-msgstr "استعراض"
+msgstr "Предварительный просмотр"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:89
 msgid "Add quiz"
-msgstr "اضف اختبار"
+msgstr "Добавить тест"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:93
 #: lib/view/WpProQuiz_View_QuizOverall.php:98
 msgid "Export"
-msgstr "تصدير"
+msgstr "Экспорт"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:99
 msgid ""
 "Choose the respective question, which you would like to export and press on "
 "\"Start export\""
-msgstr "اختار سؤال، الذي تود أن تقوم بتصديره و اضغط على \"ابدأ التصدير\""
+msgstr ""
+"Выберите вопрос, который хотите экспортировать и нажмите \"Экспортировать\""
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:103
 msgid "Start export"
-msgstr "ابدأ التصدير"
+msgstr "Экспортировать"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:109
 msgid "Import only *.wpq files from known and trusted sources."
-msgstr "استورد ملفات *.wpq فقط من مصدر معروف او موثوق به"
+msgstr "Импортировать только *.wpq файлы из известных и надежных источников."
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:117
 #, php-format
 msgid "Maximal %d MiB"
-msgstr "الحد الاقصى من %d MIB"
+msgstr "Максимально %d MiB"
 
 #: lib/view/WpProQuiz_View_Statistics.php:17
 #, php-format
 msgid "Quiz: %s - Statistics"
-msgstr "احصائيات اختبار: %s "
+msgstr "Тест: %s - Статистика"
 
 #: lib/view/WpProQuiz_View_Statistics.php:21
 msgid "Stats not enabled"
-msgstr "الاحصائيات غير مفعلة"
+msgstr "Статистика выключена"
 
 #: lib/view/WpProQuiz_View_Statistics.php:22
 msgid "Activate statistics"
-msgstr "تفعيل الاحصائيات"
+msgstr "Включить статистику"
 
 #: lib/view/WpProQuiz_View_Statistics.php:27
 msgid "Anonymous users"
-msgstr ""
+msgstr "Анонимный пользователь"
 
 #: lib/view/WpProQuiz_View_Statistics.php:28
+#, fuzzy
 msgid "Registered users"
-msgstr ""
+msgstr "Зарегистрированный пользователь"
 
 #: lib/view/WpProQuiz_View_Statistics.php:29
 msgid "Overview"
-msgstr ""
+msgstr "Обзор"
 
 #: lib/view/WpProQuiz_View_Statistics.php:34
 msgid "Please select user name:"
-msgstr ""
+msgstr "Пожалуйста, укажите имя:"
 
 #: lib/view/WpProQuiz_View_Statistics.php:57
 #: lib/view/WpProQuiz_View_Statistics.php:149
 msgid "Hints used"
-msgstr "التلميحات مستخدمة"
+msgstr "Подсказка использована"
 
 #: lib/view/WpProQuiz_View_Statistics.php:58
 msgid "Points scored"
@@ -1083,17 +1116,17 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_Statistics.php:98
 msgid "Reset statistics"
-msgstr "اعادة ضبط الاحصائيات"
+msgstr "Сбросить статистику"
 
 #: lib/view/WpProQuiz_View_Statistics.php:100
 #: lib/view/WpProQuiz_View_Statistics.php:172
 msgid "Refresh"
-msgstr ""
+msgstr "Обновить"
 
 #: lib/view/WpProQuiz_View_Statistics.php:104
 #: lib/view/WpProQuiz_View_Statistics.php:174
 msgid "Reset entire statistic"
-msgstr ""
+msgstr "Сброс всей статистики"
 
 #: lib/view/WpProQuiz_View_Statistics.php:115
 msgid "Filter"
@@ -1112,29 +1145,28 @@ msgid "User"
 msgstr ""
 
 #: lib/view/WpProQuiz_View_StyleManager.php:15
+#, fuzzy
 msgid "Front"
-msgstr ""
+msgstr "Фронт"
+
+#~ msgid "All"
+#~ msgstr "Alle"
 
 #~ msgid "One question is one point"
-#~ msgstr "سؤال واحد يعني درجة واحدة"
+#~ msgstr "Eine Frage ist 1 Punkt"
 
 #~ msgid "Right"
-#~ msgstr "صحيح"
+#~ msgstr "Richtig"
 
 #~ msgid "Wrong"
-#~ msgstr "خطأ"
+#~ msgstr "Falsch"
 
 #~ msgid "Tip"
-#~ msgstr "ملاحظة"
+#~ msgstr "Tipp"
 
-#~ msgid "Statistics activate"
-#~ msgstr "تفعيل الاحصائيات"
-
+#, fuzzy
 #~ msgid "Statistics reset"
-#~ msgstr "اعادة ضبط الاحصائيات"
-
-#~ msgid "add new question"
-#~ msgstr "اضف سؤال جديد"
+#~ msgstr "Statistik zurücksetzen"
 
 #~ msgid "Not all fields are filled"
-#~ msgstr "لم يتم تعبئة جميع الحقول"
+#~ msgstr "Nicht alle Felder ausgefüllt"

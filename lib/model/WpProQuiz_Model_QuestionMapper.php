@@ -40,9 +40,13 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 						'tip_enabled' => (int)$question->isTipEnabled(),
 						'tip_msg' => $question->getTipMsg(),
 						'answer_type' => $question->getAnswerType(),
-						'answer_json' => json_encode($question->getAnswerJson())),
+						'answer_json' => json_encode($question->getAnswerJson()),
+						'points_per_answer' => (int)$question->isPointsPerAnswer(),
+						'points_answer' => (int)$question->getPointsAnswer(),
+						'show_points_in_box' => (int)$question->isShowPointsInBox()
+					),
 					array('id' => $question->getId()),
-					array('%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s'),
+					array('%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s', '%d', '%d', '%d'),
 					array('%d'));
 		} else {
 			$id = $this->_wpdb->insert($this->_table, array(
@@ -57,9 +61,12 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 					'tip_enabled' => (int)$question->isTipEnabled(),
 					'tip_msg' => $question->getTipMsg(),
 					'answer_type' => $question->getAnswerType(),
-					'answer_json' => json_encode($question->getAnswerJson())
+					'answer_json' => json_encode($question->getAnswerJson()),
+					'points_per_answer' => (int)$question->isPointsPerAnswer(),
+					'points_answer' => (int)$question->getPointsAnswer(),
+					'show_points_in_box' => (int)$question->isShowPointsInBox()
 				),
-				array('%d', '%d', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s')
+				array('%d', '%d', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s', '%d', '%d', '%d')
 			);
 			
 			$question->setId($id);

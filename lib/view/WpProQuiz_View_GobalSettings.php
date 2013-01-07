@@ -100,6 +100,31 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 									</fieldset>
 								</td>
 							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('jQuery support cors', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('jQuery support cors', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="corsActivated" <?php echo $this->settings->isCorsActivated() ? 'checked="checked"' : '' ?> >
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('Is required only in rare cases.', 'wp-pro-quiz'); ?>
+										</p>
+										<p class="description">
+											<?php _e('If you have problems with the front ajax, please activate it.', 'wp-pro-quiz'); ?>
+										</p>
+										<p class="description">
+											<?php _e('e.g. Domain with special characters in combination with IE', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>

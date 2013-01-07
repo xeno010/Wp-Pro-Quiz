@@ -85,12 +85,13 @@ class WpProQuiz_Helper_Import {
 		
 		switch($data['exportVersion']) {
 			case '1':
-				return $this->importDataV1($data, $ids);
+			case '2':
+				return $this->importDataV1($data, $ids, $data['exportVersion']);
 				break;
 		}
 	}
 	
-	private function importDataV1($o, $ids = false) {
+	private function importDataV1($o, $ids = false, $version = '1') {
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
 
@@ -119,6 +120,10 @@ class WpProQuiz_Helper_Import {
 				
 				$question->setQuizId($master->getId());
 				$question->setId(0);
+				
+				if($version == '1') {
+					$question->setPointsAnswer($question->getPoints());
+				}
 				
 				$questionMapper->save($question);
 			}		

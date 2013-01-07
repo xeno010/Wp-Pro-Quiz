@@ -18,6 +18,11 @@ class WpProQuiz_Controller_ImportExport extends WpProQuiz_Controller_Controller 
 	}
 	
 	private function handleExport() {
+		
+		if(!current_user_can('wpProQuiz_export')) {
+			wp_die(__('You do not have sufficient permissions to access this page.'));
+		}
+		
 		$export = new WpProQuiz_Helper_Export();
 		
 		$a = $export->export($this->_post['exportIds']);
@@ -33,6 +38,10 @@ class WpProQuiz_Controller_ImportExport extends WpProQuiz_Controller_Controller 
 	}
 	
 	private function handleImport() {
+		
+		if(!current_user_can('wpProQuiz_import')) {
+			wp_die(__('You do not have sufficient permissions to access this page.'));
+		}
 		
 		$this->view = new WpProQuiz_View_Import();
 		$this->view->error = false;

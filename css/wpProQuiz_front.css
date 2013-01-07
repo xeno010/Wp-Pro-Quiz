@@ -29,6 +29,7 @@
 	border: 1px solid #13455B !important;
 	box-shadow: 1px 1px 1px #333 !important;
 	text-shadow: none !important;
+	filter: none !important;
 }
 
 .wpProQuiz_question_page {

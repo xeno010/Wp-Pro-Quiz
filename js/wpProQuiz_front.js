@@ -10,6 +10,7 @@
 		var statistics = new Object();
 		var points = 0;
 		var pointsTotal = 0;
+		var cors = false;
 		
 		var isLock = false;
 		var locked = false;
@@ -201,7 +202,9 @@
 					$(this).parent().parent()
 						.data('type', j.answer_type)
 						.data('questionId', j.id)
-						.data('points', j.points);
+						.data('points', j.points)
+						.data('pointsPerAnswer', j.pointsPerAnswer)
+						.data('pointsAnswer', j.pointsAnswer);
 					
 					$(this).find('.wpProQuiz_questionInput').each(function() {
 						switch(j.answer_type) {
@@ -244,6 +247,7 @@
 				var correct = false;
 				var checked = $question.find('.wpProQuiz_questionInput');
 				var type = $question.data('type');
+				var correctCount = 0;
 				
 				$question.find('input[name="tip"]').hide();
 				
@@ -258,10 +262,12 @@
 						if($(this).data('correct') == '1') {
 							$(this).parent().parent().addClass('wpProQuiz_answerCorrect');
 
-							if(this.checked)
+							if(this.checked) {
 								check &= true;
-							else 
+								correctCount++;
+							} else {
 								check &= false;
+							} 
 						} else {
 							if(this.checked) {
 								$(this).parent().parent().addClass('wpProQuiz_answerIncorrect');
@@ -283,6 +289,7 @@
 						if(correct == index) {
 							$div.parent().addClass('wpProQuiz_answerCorrect');
 							check &= true;
+							correctCount++;
 						} else {
 							$div.parent().addClass('wpProQuiz_answerIncorrect');
 							check = false;
@@ -309,6 +316,7 @@
 					
 					if($.inArray(value, checked.data('correct')) >= 0) {
 						correct = true;
+						correctCount++;
 						checked.parent().parent().addClass('wpProQuiz_answerCorrect');						
 					} else {
 						checked.parent().parent().addClass('wpProQuiz_answerIncorrect');
@@ -325,6 +333,7 @@
 						
 						if(item.data('correct') == index) {
 							check &= true;
+							correctCount++;
 							$par.addClass('wpProQuiz_answerCorrect');
 						} else {
 							check = false;
@@ -357,6 +366,7 @@
 
 						if(cloze == iText) {
 							check &= true;
+							correctCount++;
 							input.css('background-color', '#B0DAB0');
 						} else {
 							check = false;
@@ -381,11 +391,23 @@
 				statistics[$question.data('questionId')].correct = Number(correct);
 
 				$question.find('.wpProQuiz_response').show();
-
+				
+				if($question.data('pointsPerAnswer')) {
+					points += $question.data('pointsAnswer') * correctCount;
+					statistics[$question.data('questionId')].correct_answer_count = correctCount;
+				}
+				
+				$question.find('.wpProQuiz_responsePoints').text($question.data('pointsAnswer') * correctCount);
+					
 				if(correct) {
 					$question.find('.wpProQuiz_correct').show();
 					correctAnswer++;
-					points += $question.data('points');
+					
+					if(!$question.data('pointsPerAnswer')) {
+						points += $question.data('points');
+						statistics[$question.data('questionId')].correct_answer_count = 1;
+					}
+					
 				} else {
 					$question.find('.wpProQuiz_incorrect').show();
 				}
@@ -454,7 +476,7 @@
 					$element.find('.wpProQuiz_resultsList').children().eq(index).show();
 				}
 				
-				plugin.methode.scrollTo($('.wpProQuiz_results'), true);
+				plugin.methode.scrollTo($element.find('.wpProQuiz_results'), true);
 				
 				plugin.methode.sendCompletedQuiz();
 			},
@@ -462,12 +484,20 @@
 			sendCompletedQuiz: function() {
 				if(config.preview)
 					return;
-
+				
+				if(cors) {
+					jQuery.support.cors = true;
+				}
+				
 				$.post(config.url, {
 					action : 'wp_pro_quiz_completed_quiz',
 					'results' : statistics,
 					'quizId' : config.quizId
-				});				
+				});
+				
+				if(cors) {
+					jQuery.support.cors = false;
+				}
 			},
 			
 			findResultIndex: function(p) {
@@ -569,6 +599,10 @@
 				
 				loadLocked = true;
 				
+				if(cors) {
+					jQuery.support.cors = true;
+				}
+				
 				$.post(config.url, {
 					action: 'wp_pro_quiz_check_lock',
 					quizId: config.quizId
@@ -585,10 +619,19 @@
 						plugin.methode.startQuiz();
 					}
 				}, 'json');
+				
+				if(cors) {
+					jQuery.support.cors = false;
+				}
 			}
 		};
 
 		plugin.init = function() {
+			
+			if(config.cors && jQuery.support != undefined && jQuery.support.cors != undefined && jQuery.support.cors == false) {
+				cors = true;
+			}
+			
 			correctAnswer = 0;
 			
 			if(config.lock && !config.preview) {

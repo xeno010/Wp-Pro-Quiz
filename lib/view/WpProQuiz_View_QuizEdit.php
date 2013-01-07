@@ -164,7 +164,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										<div class="wpProQuiz_demoBox">
 											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
 											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
-												<img alt="" src="<?php echo WpProQuiz_Controller_Admin::getPluginUrl().'/img/numbering.png'; ?> ">
+												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/numbering.png'; ?> ">
 											</div>
 										</div>
 									</fieldset>
@@ -189,7 +189,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										<div class="wpProQuiz_demoBox">
 											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
 											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
-												<img alt="" src="<?php echo WpProQuiz_Controller_Admin::getPluginUrl().'/img/singlePage.png'; ?> ">
+												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/singlePage.png'; ?> ">
 											</div>
 										</div>
 									</fieldset>
@@ -214,7 +214,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										<div class="wpProQuiz_demoBox">
 											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
 											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
-												<img alt="" src="<?php echo WpProQuiz_Controller_Admin::getPluginUrl().'/img/checkCcontinue.png'; ?> ">
+												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/checkCcontinue.png'; ?> ">
 											</div>
 										</div>
 									</fieldset>
@@ -239,7 +239,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										<div class="wpProQuiz_demoBox">
 											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
 											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
-												<img alt="" src="<?php echo WpProQuiz_Controller_Admin::getPluginUrl().'/img/backButton.png'; ?> ">
+												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/backButton.png'; ?> ">
 											</div>
 										</div>
 									</fieldset>

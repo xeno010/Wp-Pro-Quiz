@@ -18,10 +18,22 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 	}
 	
 	private function loadStatistics($quizId) {
+		
+		if(!current_user_can('wpProQuiz_show_statistics')) {
+			echo json_encode(array());
+			exit;
+		}
+		
+		if(isset($this->_post['overview']) && $this->_post['overview'] == true) {
+			$this->loadStatisticsOverview($quizId);
+			
+			exit;
+		}
+		
 		$questionMapper = new WpProQuiz_Model_StatisticMapper();
 		$questions = $questionMapper->fetchAll($quizId, $this->_post['userId']);
 		
-		$data = array(	'global' => array('cCorrect' => 0, 'cIncorrect' => 0, 'pCorrect' => 0, 'pIncorrect' => 0, 'cTip' => 0), 
+		$data = array(	'global' => array('cCorrect' => 0, 'cIncorrect' => 0, 'pCorrect' => 0, 'pIncorrect' => 0, 'cTip' => 0, 'cCorrectAnswerPoints' => 0), 
 						'items' => array());
 		
 		$data['clear'] = $data['global'];
@@ -32,6 +44,7 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 			$data['global']['cCorrect'] += $question->getCorrectCount();
 			$data['global']['cIncorrect'] += $question->getIncorrectCount();
 			$data['global']['cTip'] += $question->getHintCount();
+			$data['global']['cCorrectAnswerPoints'] += $question->getCorrectAnswerCount();
 
 			$data['items'][] = array(
 				'id' => $question->getQuestionId(),
@@ -40,6 +53,7 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 				'cTip' => $question->getHintCount(),
 				'pCorrect' => round((100 * $question->getCorrectCount() / $sum), 2),
 				'pIncorrect' => round((100 * $question->getIncorrectCount() / $sum), 2),
+				'cCorrectAnswerPoints' => $question->getCorrectAnswerCount()
 			);
 		}
 		
@@ -55,7 +69,58 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		exit;
 	}
 	
+	private function loadStatisticsOverview($quizId) {
+		$m = new WpProQuiz_Model_StatisticMapper();
+	
+		$page = (isset($this->_post['page']) && $this->_post['page'] > 0) ? $this->_post['page'] : 1;
+		$limit = $this->_post['pageLimit'];
+		$start = $limit * ($page - 1);
+		
+		$s = $m->fetchOverview($quizId, (bool)$this->_post['onlyCompleted'], $start, $limit);
+		$data = array('items' => array());
+		
+		foreach($s as $r) {
+			
+			$sum = $r->getCorrectCount() + $r->getIncorrectCount();
+			
+			if($sum === 0) {
+				$data['items'][] = array(
+					'userId' => $r->getUserId(),
+					'userName' => $r->getUserName(),
+					'completed' => false
+				);
+				
+				continue;
+			}
+			
+			$data['items'][] = array(
+				'userId' => $r->getUserId(),
+				'userName' => $r->getUserName(),
+				'cPoints' => $r->getPoints(),
+				'totalPoints' => $r->getTotalPoints(),
+				'cCorrect' => $r->getCorrectCount(),
+				'cIncorrect' => $r->getIncorrectCount(),
+				'cTip' => $r->getHintCount(),
+				'pCorrect' => round((100 * $r->getCorrectCount() / $sum), 2),
+				'pIncorrect' => round((100 * $r->getIncorrectCount() / $sum), 2),
+				'completed' => true
+			);	
+		}
+		
+		if(isset($this->_post['generatePageNav']) && $this->_post['generatePageNav']) {
+			$count = $m->countOverview($quizId, (bool)$this->_post['onlyCompleted']);
+			$data['page'] = $count > 0 ? $count : 1; 
+		}
+		
+		echo json_encode($data);
+	}
+	
 	private function reset($quizId) {
+		
+		if(!current_user_can('wpProQuiz_reset_statistics')) {
+			exit;
+		}
+		
 		$statisticMapper = new WpProQuiz_Model_StatisticMapper();
 		
 		if(isset($this->_post['complete']) && $this->_post['complete']) {
@@ -68,6 +133,11 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 	}
 	
 	private function show($quizId) {
+		
+		if(!current_user_can('wpProQuiz_show_statistics')) {
+			wp_die(__('You do not have sufficient permissions to access this page.'));
+		}
+		
 		$view = new WpProQuiz_View_Statistics();
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
@@ -75,19 +145,18 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$view->quiz = $quizMapper->fetch($quizId);
 		$view->question = $questionMapper->fetchAll($quizId);
 		
-		
-		$users = get_users();
-		$userArray = array();
-
-		if(isset($users[0]->data)) {
-			foreach($users as $user) {
-				$userArray[] = $user->data;
-			}
+		if(has_action('pre_user_query', 'ure_exclude_administrators')) {
+			remove_action('pre_user_query', 'ure_exclude_administrators');
+						
+			$users = get_users(array('fields' => array('ID','user_login','display_name')));
+			
+			add_action('pre_user_query', 'ure_exclude_administrators');
+			
 		} else {
-			$userArray = $users;
+			$users = get_users(array('fields' => array('ID','user_login','display_name')));
 		}
 		
-		$view->users = $userArray;
+		$view->users = $users;
 		$view->show();
 	}
 	

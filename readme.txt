@@ -3,7 +3,7 @@ Contributors: xeno010
 Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 0.14
+Stable tag: 0.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,16 +38,17 @@ A powerful and beautiful quiz plugin for WordPress.
 
 = Translations =
 * 		English (Thanks Alexander M.)
-*		German / Deutsch
+*		German / deutsch
 *		Arabic / عربي (Thanks Abuhassan)
+*		Russian / русский (Thanks Sergei B.)
+*		Swedish / svenska (Thanks Martin J.)
 
 = Live Demo =
 http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "Demo")
 
-= In case of problems =
-If quiz doesn’t work in front-end, please try following:<br>
-[raw][WpProQuiz X][/raw]<br><br>
-Own themes changes internal  order of filters, what causes the problems. With additional shortcode [raw] this is prevented.   
+= Special =
+* Support for "User Role Editor" etc.
+* Support for BodyPress achievements 2.x.x
 
 = Support = 
 * English: http://wordpress.org/support/plugin/wp-pro-quiz
@@ -70,13 +71,6 @@ Own themes changes internal  order of filters, what causes the problems. With ad
 8. Adminmenu - Quiz question overview
 9. Adminmenu - Create question
 10. Adminmenu - Question statistics
-
-== Frequently Asked Questions ==
-
-= In case of problems =
-If quiz doesn’t work in front-end, please try following:<br>
-[raw][WpProQuiz X][/raw]<br><br>
-Own themes changes internal  order of filters, what causes the problems. With additional shortcode [raw] this is prevented.  
 
 == Changelog ==
 
@@ -146,3 +140,15 @@ Own themes changes internal  order of filters, what causes the problems. With ad
 * Bugfix in the statistics function
 * "Questions below each other" option was added
 * "Number answers" option was added
+
+= 0.15 =
+* Typo corrected
+* Adjustment of admin template
+* Internal changes
+* Capability added
+* Support for BuddyPress achievements added
+* Support for "User Role Editor" etc. added
+* Statistic function expanded
+* Points now can be entered per correct answer instead of correct question
+* Translation for Russian have been added (Thanks Sergei B.)
+* Translation for Swedish have been added (Thanks Martin J.)

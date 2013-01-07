@@ -9,6 +9,12 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			$a['answer_type'] = $q->getAnswerType();
 			$a['id'] = $q->getId();
 			$a['points'] = $q->getPoints();
+			$a['pointsPerAnswer'] = (int)$q->isPointsPerAnswer();
+			
+			if($q->isPointsPerAnswer()) {
+				$a['pointsAnswer'] = $q->getPointsAnswer();
+			}
+			
 			$j = $q->getAnswerJson();
 			
 			switch ($q->getAnswerType()) {
@@ -110,13 +116,13 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 				<?php } ?>
 			</ul>
 		</div>
-		<p>
+		<div style="margin: 10px 0px;">
 			<?php if(!$this->quiz->isBtnRestartQuizHidden()) { ?>
 			<input type="button" name="restartQuiz" value="<?php _e('Restart quiz', 'wp-pro-quiz'); ?>" >
 			<?php } if(!$this->quiz->isBtnViewQuestionHidden()) { ?>
 			<input type="button" name="reShowQuestion" value="<?php _e('View questions', 'wp-pro-quiz'); ?>">
 			<?php } ?>
-		</p>
+		</div>
 	</div>
 	<div style="display: none;" class="wpProQuiz_time_limit">
 		<div class="time"><?php _e('Time limit', 'wp-pro-quiz'); ?>: <span>00:03:15</span></div>
@@ -228,17 +234,37 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 				</div>
 				<div class="wpProQuiz_response" style="display: none;">
 					<div style="display: none;" class="wpProQuiz_correct">
+						<?php if($question->isShowPointsInBox() && $question->isPointsPerAnswer()) { ?>
+						<div>
+							<span style="float: left;">
+								<?php _e('Correct', 'wp-pro-quiz'); ?>
+							</span>
+							<span style="float: right;"><?php echo $question->getPoints().' / '.$question->getPoints(); ?> <?php _e('Points', 'wp-pro-quiz'); ?></span>
+							<div style="clear: both;"></div>
+						</div>		
+					<?php } else { ?>
 						<span>
 							<?php _e('Correct', 'wp-pro-quiz'); ?>
 						</span>
+					<?php } ?>
 						<p>
 							<?php echo do_shortcode(apply_filters('comment_text', $question->getCorrectMsg())); ?>
 						</p>
 					</div>
 					<div style="display: none;" class="wpProQuiz_incorrect">
+					<?php if($question->isShowPointsInBox() && $question->isPointsPerAnswer()) { ?>
+						<div>
+							<span style="float: left;">
+								<?php _e('Incorrect', 'wp-pro-quiz'); ?>
+							</span>
+							<span style="float: right;"><span class="wpProQuiz_responsePoints"></span> / <?php echo $question->getPoints(); ?> <?php _e('Points', 'wp-pro-quiz'); ?></span>
+							<div style="clear: both;"></div>
+						</div>		
+					<?php } else { ?>
 						<span>
 							<?php _e('Incorrect', 'wp-pro-quiz'); ?>
 						</span>
+					<?php } ?>
 						<p>
 							<?php 
 							
@@ -298,6 +324,7 @@ jQuery(document).ready(function($) {
 		questionOnSinglePage: <?php echo $questionOnSinglePage; ?>,
 		url: '<?php echo admin_url('admin-ajax.php'); ?>',
 		resultsGrade: <?php echo $resultsProzent; ?>,
+		<?php echo get_option('wpProQuiz_corsActivated') ? 'cors: 1,' : ''; ?>
 		json: <?php echo $json; ?>
 	});
 });

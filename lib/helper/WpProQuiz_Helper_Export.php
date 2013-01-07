@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_Export {
 	
-	const WPPROQUIZ_EXPORT_VERSION = 1;
+	const WPPROQUIZ_EXPORT_VERSION = 2;
 	
 	public function export($ids) {
 		$export = array();
@@ -44,5 +44,4 @@ class WpProQuiz_Helper_Export {
 		
 		return $m->fetchAll($quizId);
 	}
-	
 }

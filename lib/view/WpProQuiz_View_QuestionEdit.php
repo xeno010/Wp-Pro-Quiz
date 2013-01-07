@@ -3,11 +3,6 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 	
 	public function show() {
 ?>
-<script>
-jQuery(document).ready(function($) {
-
-});
-</script>
 <div class="wrap wpProQuiz_questionEdit">
 	<h2 style="margin-bottom: 10px;"><?php echo $this->header; ?></h2>
 	<a class="button-secondary" href="admin.php?page=wpProQuiz&module=question&action=show&quiz_id=<?php echo $this->question->getQuizId(); ?>"><?php _e('back to overview', 'wp-pro-quiz'); ?></a>
@@ -19,16 +14,35 @@ jQuery(document).ready(function($) {
 					<p class="description">
 						<?php _e('The title is used for overview, it is not visible in quiz. If you leave the title field empty, a title will be generated.', 'wp-pro-quiz'); ?>
 					</p>
-					<input name="title" class="regular-text" value="<?php echo $this->question->getTitle(); ?>">
+					<input name="title" class="regular-text" value="<?php echo $this->question->getTitle(); ?>" type="text">
 				</div>
 			</div>			
 			<div class="postbox">
 				<h3 class="hndle"><?php _e('Points', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
-					<p class="description">
-						<?php _e('Points for this question (Standard is 1 point)', 'wp-pro-quiz'); ?>
-					</p>
-					<input name="points" class="small-text" value="<?php echo $this->question->getPoints(); ?>"> <?php _e('Points', 'wp-pro-quiz'); ?>
+					<div>
+						<p class="description">
+							<?php _e('Points for this question (Standard is 1 point)', 'wp-pro-quiz'); ?>
+						</p>
+						<label>
+							<input name="points" class="small-text" value="<?php echo $this->question->getPoints(); ?>" type="text"> <?php _e('Points', 'wp-pro-quiz'); ?>
+						</label>
+					</div>
+					<div style="margin-top: 10px;">
+						<label>
+							<input name="pointsPerAnswer" value="1" type="checkbox" <?php echo $this->question->isPointsPerAnswer() ? 'checked="checked"' : '' ?>>
+							<?php _e('Points per correct answer', 'wp-pro-quiz'); ?>
+						</label>
+						<p class="description">
+							<?php _e('If you enable this option, for every correct answer user will receive X points. Otherwise he will receive points only if the question was solved completely.', 'wp-pro-quiz'); ?>
+						</p>
+					</div>
+					<div style="margin-top: 10px; display: none;" id="wpProQuiz_showPointsBox">
+						<label>
+							<input name="showPointsInBox" value="1" type="checkbox" <?php echo $this->question->isShowPointsInBox() ? 'checked="checked"' : '' ?>>
+							<?php _e('Show reached points in the correct- and incorrect message?', 'wp-pro-quiz'); ?>
+						</label>
+					</div>
 				</div>
 			</div>
 			<div class="postbox">
@@ -231,8 +245,10 @@ jQuery(document).ready(function($) {
 							<li style="border-bottom:1px dotted #ccc; padding-bottom: 5px; display:none; background-color: whiteSmoke;">
 								<table style="width: 100%; margin-bottom: 10px;">
 									<thead>
-										<td><?php _e('Criterion', 'wp-pro-quiz'); ?></td>
-										<td><?php _e('Sort elements', 'wp-pro-quiz'); ?></td>
+										<tr>
+											<td><?php _e('Criterion', 'wp-pro-quiz'); ?></td>
+											<td><?php _e('Sort elements', 'wp-pro-quiz'); ?></td>
+										</tr>
 									</thead>
 									<tbody>
 										<tr>
@@ -269,8 +285,10 @@ jQuery(document).ready(function($) {
 							<li style="border-bottom:1px dotted #ccc; padding-bottom: 5px; background-color: whiteSmoke;">
 								<table style="width: 100%; margin-bottom: 10px;">
 									<thead>
-										<td><?php _e('Criterion', 'wp-pro-quiz'); ?></td>
-										<td><?php _e('Sort elements', 'wp-pro-quiz'); ?></td>
+										<tr>
+											<td><?php _e('Criterion', 'wp-pro-quiz'); ?></td>
+											<td><?php _e('Sort elements', 'wp-pro-quiz'); ?></td>
+										</tr>
 									</thead>
 									<tbody>
 										<tr>
@@ -304,8 +322,10 @@ jQuery(document).ready(function($) {
 							<li style="border-bottom:1px dotted #ccc; padding-bottom: 5px; background-color: whiteSmoke;">
 								<table style="width: 100%; margin-bottom: 10px;">
 									<thead>
-										<th><?php _e('Criterion', 'wp-pro-quiz'); ?></th>
-										<th><?php _e('Sort elements', 'wp-pro-quiz'); ?></th>
+										<tr>
+											<th><?php _e('Criterion', 'wp-pro-quiz'); ?></th>
+											<th><?php _e('Sort elements', 'wp-pro-quiz'); ?></th>
+										</tr>
 									</thead>
 									<tbody>
 										<tr>

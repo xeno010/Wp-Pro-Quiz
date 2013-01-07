@@ -3,26 +3,86 @@
 Plugin Name: WP-Pro-Quiz
 Plugin URI: http://wordpress.org/extend/plugins/wp-pro-quiz
 Description: A powerful and beautiful quiz plugin for WordPress.
-Version: 0.14
+Version: 0.15
 Author: Julius Fischer
 Author URI: http://www.it-gecko.de
 */
 
-define('WPPROQUIZ_VERSION', '0.14');
+define('WPPROQUIZ_VERSION', '0.15');
 
-include_once 'lib/controller/WpProQuiz_Controller_Admin.php';
-include_once 'lib/helper/WpProQuiz_Helper_DbUpgrade.php';
+define('WPPROQUIZ_PATH', dirname(__FILE__));
+define('WPPROQUIZ_URL', plugins_url('', __FILE__));
+define('WPPROQUIZ_FILE', __FILE__);
+define('WPPROQUIZ_PPATH', dirname(plugin_basename(__FILE__)));
+define('WPPROQUIZ_PLUGIN_PATH', WPPROQUIZ_PATH.'/plugin');
 
-register_activation_hook(__FILE__, array('WpProQuiz_Controller_Admin', 'install'));
+spl_autoload_register('wpProQuiz_autoload');
 
-add_action('plugins_loaded', array('WpProQuiz_Controller_Admin', 'install'));
+register_activation_hook(__FILE__, array('WpProQuiz_Helper_Upgrade', 'upgrade'));
 
-load_plugin_textdomain('wp-pro-quiz', false, dirname(plugin_basename(__FILE__)).'/languages');
+add_action('plugins_loaded', 'wpProQuiz_pluginLoaded');
 
 if(is_admin()) {
-	new WpProQuiz_Controller_Admin(dirname(__FILE__));
+	new WpProQuiz_Controller_Admin();
 } else {
-	require_once 'lib/controller/WpProQuiz_Controller_Front.php';
-	
-	new WpProQuiz_Controller_Front(dirname(__FILE__));
+	new WpProQuiz_Controller_Front();
 }
+
+function wpProQuiz_autoload($class) {
+	$c = explode('_', $class);
+
+	if($c === false || count($c) != 3 || $c[0] !== 'WpProQuiz')
+		return;
+
+	$dir = '';
+
+	switch ($c[1]) {
+		case 'View':
+			$dir = 'view';
+			break;
+		case 'Model':
+			$dir = 'model';
+			break;
+		case 'Helper':
+			$dir = 'helper';
+			break;
+		case 'Controller':
+			$dir = 'controller';
+			break;
+		case 'Plugin':
+			$dir = 'plugin';
+			break;
+		default:
+			return;
+	}
+
+	if(file_exists(WPPROQUIZ_PATH.'/lib/'.$dir.'/'.$class.'.php'))
+		include_once WPPROQUIZ_PATH.'/lib/'.$dir.'/'.$class.'.php';
+}
+
+function wpProQuiz_pluginLoaded() {
+	
+	load_plugin_textdomain('wp-pro-quiz', false, WPPROQUIZ_PPATH.'/languages');
+	
+	if(get_option('wpProQuiz_version') !== WPPROQUIZ_VERSION) {
+		WpProQuiz_Helper_Upgrade::upgrade();
+	}
+	
+	//ACHIEVEMENTS Version 2.x.x
+	if(defined('ACHIEVEMENTS_IS_INSTALLED') && ACHIEVEMENTS_IS_INSTALLED === 1 && defined('ACHIEVEMENTS_VERSION')) {
+		$version = ACHIEVEMENTS_VERSION;
+		if($version{0} == '2') {
+			new WpProQuiz_Plugin_BpAchievementsV2();
+		}
+	}
+}
+
+
+//ACHIEVEMENTS Version 2.x.x
+$bpAchievementsV2_path = realpath(ABSPATH.PLUGINDIR.'/achievements/loader.php');
+
+if($bpAchievementsV2_path !== false) {
+	register_deactivation_hook($bpAchievementsV2_path, array('WpProQuiz_Plugin_BpAchievementsV2', 'deinstall'));
+	register_activation_hook($bpAchievementsV2_path, array('WpProQuiz_Plugin_BpAchievementsV2', 'install'));
+}
+

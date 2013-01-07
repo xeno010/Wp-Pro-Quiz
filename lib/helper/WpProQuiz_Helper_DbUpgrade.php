@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 11;
+	const WPPROQUIZ_DB_VERSION = 12;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -94,6 +94,9 @@ class WpProQuiz_Helper_DbUpgrade {
 				  `tip_count` int(11) NOT NULL,
 				  `answer_type` varchar(50) NOT NULL,
 				  `answer_json` text NOT NULL,
+				  `points_per_answer` tinyint(1) NOT NULL,
+				  `points_answer` int(10) unsigned NOT NULL,
+				  `show_points_in_box` tinyint(1) NOT NULL,
 				  PRIMARY KEY (`id`),
 				  KEY `quiz_id` (`quiz_id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
@@ -118,6 +121,7 @@ class WpProQuiz_Helper_DbUpgrade {
 				  `correct_count` int(10) unsigned NOT NULL,
 				  `incorrect_count` int(10) unsigned NOT NULL,
 				  `hint_count` int(10) unsigned NOT NULL,
+				  `correct_answer_count` int(10) unsigned NOT NULL,
 				  PRIMARY KEY (`quiz_id`,`question_id`,`user_id`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 		');
@@ -368,5 +372,26 @@ class WpProQuiz_Helper_DbUpgrade {
 		');
 				
 		return 11;
+	}
+	
+	private function upgradeDbV11() {
+		
+		$this->_wpdb->query('
+			ALTER TABLE `'.$this->_wpdb->prefix.'wp_pro_quiz_question` 
+				ADD  `points_per_answer` TINYINT( 1 ) NOT NULL ,
+				ADD  `points_answer` INT UNSIGNED NOT NULL , 
+				ADD  `show_points_in_box` TINYINT( 1 ) NOT NULL 
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE `'.$this->_wpdb->prefix.'wp_pro_quiz_statistic`
+				ADD  `correct_answer_count` INT UNSIGNED NOT NULL
+		');
+		
+		$this->_wpdb->query('UPDATE `'.$this->_wpdb->prefix.'wp_pro_quiz_statistic` SET `correct_answer_count` = `correct_count`');
+		
+		$this->_wpdb->query('UPDATE `'.$this->_wpdb->prefix.'wp_pro_quiz_question` SET `points_answer` = `points`');
+		
+		return 12;
 	}
 }

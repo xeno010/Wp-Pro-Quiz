@@ -27,6 +27,11 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 	}
 	
 	private function resetLock($quizId) {
+		
+		if(!current_user_can('wpProQuiz_edit_quiz')) {
+			exit;
+		}
+		
 		$lm = new WpProQuiz_Model_LockMapper();
 		$qm = new WpProQuiz_Model_QuizMapper();
 		
@@ -45,6 +50,11 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 	}
 	
 	private function showAction() {
+		
+		if(!current_user_can('wpProQuiz_show')) {
+			wp_die(__('You do not have sufficient permissions to access this page.'));
+		}
+		
 		$this->view = new WpProQuiz_View_QuizOverall();
 		
 		$m = new WpProQuiz_Model_QuizMapper();
@@ -54,6 +64,11 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 	}
 	
 	private function editAction($id) {
+		
+		if(!current_user_can('wpProQuiz_edit_quiz')) {
+			wp_die(__('You do not have sufficient permissions to access this page.'));
+		}
+		
 		$this->view = new WpProQuiz_View_QuizEdit();
 		$this->view->header = __('Edit quiz', 'wp-pro-quiz');
 		
@@ -94,6 +109,11 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 	}
 	
 	private function createAction() {
+		
+		if(!current_user_can('wpProQuiz_add_quiz')) {
+			wp_die(__('You do not have sufficient permissions to access this page.'));
+		}
+		
 		$this->view = new WpProQuiz_View_QuizEdit();
 		$this->view->header = __('Create quiz', 'wp-pro-quiz');
 		
@@ -122,6 +142,11 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 	}
 	
 	private function deleteAction($id) {
+		
+		if(!current_user_can('wpProQuiz_delete_quiz')) {
+			wp_die(__('You do not have sufficient permissions to access this page.'));
+		}
+		
 		$m = new WpProQuiz_Model_QuizMapper();
 		$qm = new WpProQuiz_Model_QuestionMapper();
 		$lm = new WpProQuiz_Model_LockMapper();
@@ -169,6 +194,8 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			$statistics = new WpProQuiz_Controller_Statistics();
 			$statistics->save();
 			
+			do_action('wp_pro_quiz_completed_quiz');
+			
 			exit;
 		}
 		
@@ -192,6 +219,8 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		if(!$lockIp && !$lockCookie) {
 			$statistics = new WpProQuiz_Controller_Statistics();
 			$statistics->save();
+			
+			do_action('wp_pro_quiz_completed_quiz');
 
 			if(get_current_user_id() == 0 && $quiz->isQuizRunOnceCookie()) {
 				$cookieData = array();

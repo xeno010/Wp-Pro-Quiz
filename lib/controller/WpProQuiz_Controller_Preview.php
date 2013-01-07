@@ -1,27 +1,18 @@
 <?php
 class WpProQuiz_Controller_Preview extends WpProQuiz_Controller_Controller {
 	
-	private $_plugin_file;
-	
-	public function __construct($plugin_file) {
-		parent::__construct();
-		
-
-		$this->_plugin_file = $plugin_file;
-	}
-	
 	public function route() {
 		
 		wp_enqueue_script(
 			'wpProQuiz_fron_javascript', 
-			plugins_url('js/wpProQuiz_front.min.js', $this->_plugin_file),
+			plugins_url('js/wpProQuiz_front.min.js', WPPROQUIZ_FILE),
 			array('jquery', 'jquery-ui-sortable'),
 			WPPROQUIZ_VERSION
 		);
 		
 		wp_enqueue_style(
 			'wpProQuiz_front_style', 
-			plugins_url('css/wpProQuiz_front.min.css', $this->_plugin_file),
+			plugins_url('css/wpProQuiz_front.min.css', WPPROQUIZ_FILE),
 			array(),
 			WPPROQUIZ_VERSION
 		);

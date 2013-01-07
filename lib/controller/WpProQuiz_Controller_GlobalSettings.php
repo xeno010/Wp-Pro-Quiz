@@ -6,6 +6,11 @@ class WpProQuiz_Controller_GlobalSettings extends WpProQuiz_Controller_Controlle
 	}
 	
 	private function edit() {
+		
+		if(!current_user_can('wpProQuiz_change_settings')) {
+			wp_die(__('You do not have sufficient permissions to access this page.'));
+		}
+		
 		$mapper = new WpProQuiz_Model_GlobalSettingsMapper();
 		$view = new WpProQuiz_View_GobalSettings();
 		

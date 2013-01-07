@@ -15,36 +15,59 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 <div class="wrap wpProQuiz_questionOverall">
 	<h2>Quiz: <?php echo $this->quiz->getName(); ?></h2>
 	<div id="sortMsg" class="updated" style="display: none;"><p><strong><?php _e('Questions sorted', 'wp-pro-quiz'); ?></strong></p></div>
-	<p><a class="button-secondary" href="admin.php?page=wpProQuiz"><?php _e('back to overview', 'wp-pro-quiz'); ?></a></p>
+	<p>
+		<a class="button-secondary" href="admin.php?page=wpProQuiz"><?php _e('back to overview', 'wp-pro-quiz'); ?></a>
+		<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
+			<a class="button-secondary" href="admin.php?page=wpProQuiz&action=edit&id=<?php echo $this->quiz->getId(); ?>"><?php _e('Edit quiz', 'wp-pro-quiz'); ?></a> 
+		<?php } ?>
+	</p>
 	<table class="wp-list-table widefat">
 		<thead>
 			<tr>
-				<th style="width: 50px;"></th>
+				<th scope="col" style="width: 50px;"></th>
 				<th scope="col"><?php _e('Name', 'wp-pro-quiz'); ?></th>
-				<th><?php _e('Action', 'wp-pro-quiz'); ?></th>
+				<th scope="col"><?php _e('Points', 'wp-pro-quiz'); ?></th>
+				<th scope="col"><?php _e('Action', 'wp-pro-quiz'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php 
 			$index = 1;
+			$points = 0;
 			foreach ($this->question as $question) {
+				$points += $question->getPoints();
 			?>
 			<tr id="wpProQuiz_questionId_<?php echo $question->getId(); ?>">
 				<th><?php echo $index++; ?></th>
 				<th><?php echo $question->getTitle(); ?></th>
+				<th><?php echo $question->getPoints(); ?></th>
 				<th>
-					<a class="button-secondary" href="admin.php?page=wpProQuiz&module=question&action=edit&quiz_id=<?php echo $this->quiz->getId(); ?>&id=<?php echo $question->getId(); ?>"><?php _e('Edit', 'wp-pro-quiz'); ?></a> 
+					<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
+					<a class="button-secondary" href="admin.php?page=wpProQuiz&module=question&action=edit&quiz_id=<?php echo $this->quiz->getId(); ?>&id=<?php echo $question->getId(); ?>"><?php _e('Edit', 'wp-pro-quiz'); ?></a>
+					<?php } if(current_user_can('wpProQuiz_delete_quiz')) { ?> 
 					<a class="button-secondary wpProQuiz_delete" href="admin.php?page=wpProQuiz&module=question&action=delete&quiz_id=<?php echo $this->quiz->getId(); ?>&id=<?php echo $question->getId(); ?>"><?php _e('Delete', 'wp-pro-quiz'); ?></a>
+					<?php } if(current_user_can('wpProQuiz_edit_quiz')) { ?>
 					<a class="button-secondary wpProQuiz_move" href="#" style="cursor:move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
+					<?php } ?>
 				</th>
 			</tr>
 			<?php } ?>
 		</tbody>
+		<tfoot>
+			<tr>
+				<th></th>
+				<th style="font-weight: bold;"><?php _e('Total', 'wp-pro-quiz'); ?></th>
+				<th style="font-weight: bold;"><?php echo $points; ?></th>
+				<th></th>
+			</tr>
+		</tfoot>
 	</table>
 	<p>
+		<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
 		<a class="button-secondary" href="admin.php?page=wpProQuiz&module=question&action=add&quiz_id=<?php echo $this->quiz->getId(); ?>"><?php _e('Add question', 'wp-pro-quiz'); ?></a>
 		<a class="button-secondary" href="#" id="wpProQuiz_saveSort"><?php _e('Save order', 'wp-pro-quiz'); ?></a>
 		<a class="button-secondary" href="#" id="wpProQuiz_questionCopy"><?php _e('Copy questions from another Quiz', 'wp-pro-quiz'); ?></a>
+		<?php } ?>
 	</p>
 	<div class="wpProQuiz_questionCopy">
 		<form action="admin.php?page=wpProQuiz&module=question&quiz_id=<?php echo $this->quiz->getId(); ?>&action=copy_question" method="POST">

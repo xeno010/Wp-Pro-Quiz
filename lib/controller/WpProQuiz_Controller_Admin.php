@@ -1,14 +1,7 @@
 <?php
 class WpProQuiz_Controller_Admin {
-	
-	private $_plugin_dir;
-	private $_plugin_file;
 		
-	public function __construct($plugin_dir) {
-		spl_autoload_register(array($this, 'autoload'));
-		
-		$this->_plugin_dir = $plugin_dir;
-		$this->_plugin_file = $this->_plugin_dir.'/wp-pro-quiz.php';
+	public function __construct() {
 		
 		add_action('wp_ajax_wp_pro_quiz_update_sort', array($this, 'updateSort'));
 		add_action('wp_ajax_wp_pro_quiz_load_question', array($this, 'updateSort'));
@@ -28,29 +21,7 @@ class WpProQuiz_Controller_Admin {
 		add_action('admin_menu', array($this, 'register_page'));
 	}
 	
-	public static function getPluginInfo() {
-		$path = realpath(dirname(__FILE__) .'/../../');
-		
-		return array('path' => $path,
-				'file' => $path.'/wp-pro-quiz.php');
-	}
-	
-	public static function getPluginPath() {
-		return realpath(dirname(__FILE__) .'/../../');
-	}
-	
-	public static function getPluginFile() {
-		return realpath(WpProQuiz_Controller_Admin::getPluginPath().'/wp-pro-quiz.php');
-	}
-	
-	public static function getPluginUrl() {
-		return plugins_url('', WpProQuiz_Controller_Admin::getPluginFile());
-	}
-	
 	public function resetLock() {
-		if(!current_user_can('administrator'))
-			exit;
-			
 		$c = new WpProQuiz_Controller_Quiz();
 		$c->route();
 	}
@@ -64,19 +35,11 @@ class WpProQuiz_Controller_Admin {
 	}
 	
 	public function updateSort() {
-		
-		if(!current_user_can('administrator'))
-			exit;
-			
 		$c = new WpProQuiz_Controller_Question();
 		$c->route();
 	}
 	
 	public function loadStatistics() {
-	
-		if(!current_user_can('administrator'))
-			exit;
-			
 		$c = new WpProQuiz_Controller_Statistics();
 		$c->route();
 	}
@@ -106,7 +69,7 @@ class WpProQuiz_Controller_Admin {
 	public function enqueueScript() {
 		wp_enqueue_script(
 			'wpProQuiz_admin_javascript', 
-			plugins_url('js/wpProQuiz_admin.min.js', $this->_plugin_file),
+			plugins_url('js/wpProQuiz_admin.min.js', WPPROQUIZ_FILE),
 			array('jquery', 'jquery-ui-sortable'),
 			WPPROQUIZ_VERSION
 		);
@@ -114,20 +77,11 @@ class WpProQuiz_Controller_Admin {
 		$this->localizeScript();		
 	}
 	
-	public static function install() {
-		
-		$db = new WpProQuiz_Helper_DbUpgrade();
-		$v = $db->upgrade(get_option('wpProQuiz_dbVersion', false));
-		
-		if(add_option('wpProQuiz_dbVersion', $v) === false)
-			update_option('wpProQuiz_dbVersion', $v);
-	}
-	
 	public function register_page() {
 		$page = add_menu_page(
 					'WP-Pro-Quiz',
 					'WP-Pro-Quiz',
-					'administrator',
+					'wpProQuiz_show',
 					'wpProQuiz',
 					array($this, 'route'));
 
@@ -147,7 +101,7 @@ class WpProQuiz_Controller_Admin {
 				$c = new WpProQuiz_Controller_Question();
 				break;
 			case 'preview':
-				$c = new WpProQuiz_Controller_Preview($this->_plugin_file);
+				$c = new WpProQuiz_Controller_Preview();
 				break;
 			case 'statistics':
 				$c = new WpProQuiz_Controller_Statistics();
@@ -166,32 +120,5 @@ class WpProQuiz_Controller_Admin {
 		if($c !== null) {
 			$c->route();
 		}
-	}
-	
-	public function autoload($class) {
-		$c = explode("_", $class);
-
-		if($c === false || count($c) != 3 || $c[0] !== 'WpProQuiz')
-			return;
-		
-		$dir = '';
-		
-		switch ($c[1]) {
-			case 'View':
-				$dir = 'view';
-				break;
-			case 'Model':
-				$dir = 'model';
-				break;
-			case 'Helper':
-				$dir = 'helper';
-				break;
-			case 'Controller':
-				$dir = 'controller';
-				break;
-		}
-		
-		if(file_exists($this->_plugin_dir.'/lib/'.$dir.'/'.$class.'.php'))
-			include_once $this->_plugin_dir.'/lib/'.$dir.'/'.$class.'.php';
 	}
 }
