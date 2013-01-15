@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 13;
+	const WPPROQUIZ_DB_VERSION = 14;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -412,5 +412,36 @@ class WpProQuiz_Helper_DbUpgrade {
 		');
 		
 		return 13;
+	}
+	
+	private function upgradeDbV13() {
+	
+		//WordPress SVN Bug
+				
+		$this->_wpdb->query('SELECT * FROM `'.$this->_wpdb->prefix.'wp_pro_quiz_master` LIMIT 0,1');
+	
+		$names = $this->_wpdb->get_col_info('name');
+	
+		if(!in_array('hide_answer_message_box', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` ADD  `hide_answer_message_box` TINYINT( 1 ) NOT NULL');
+		}
+	
+		if(!in_array('disabled_answer_mark', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` ADD  `disabled_answer_mark` TINYINT( 1 ) NOT NULL');
+		}
+	
+		if(!in_array('show_max_question', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` ADD  `show_max_question` TINYINT( 1 ) NOT NULL');
+		}
+		
+		if(!in_array('show_max_question_value', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` ADD  `show_max_question_value` INT UNSIGNED NOT NULL');
+		}
+		
+		if(!in_array('show_max_question_percent', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` ADD  `show_max_question_percent` TINYINT( 1 ) NOT NULL');
+		}
+	
+		return 14;
 	}
 }

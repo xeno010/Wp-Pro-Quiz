@@ -3,7 +3,7 @@ Contributors: xeno010
 Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 0.16
+Stable tag: 0.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -164,3 +164,6 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * Bugfix in statistic function
 * Translation for Dutch have been added (Thanks Bas W.)
 * Translation for Norwegian have been added (Thanks Stein Ivar J.)
+
+= 0.17 =
+* 0.17 is 0.16 (WordPress SVN bug)

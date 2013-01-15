@@ -8,6 +8,8 @@ class WpProQuiz_Helper_Upgrade {
 		$oldVersion = get_option('wpProQuiz_version');
 
 		switch($oldVersion) {
+			case '0.17':
+				break;
 			default:
 				WpProQuiz_Helper_Upgrade::install();
 				break;
