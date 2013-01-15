@@ -162,3 +162,5 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * Option "correct- and incorrect-answermark" added 
 * Option "show only specific number of questions" added
 * Bugfix in statistic function
+* Translation for Dutch have been added (Thanks Bas W.)
+* Translation for Norwegian have been added (Thanks Stein Ivar J.)
