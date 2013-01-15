@@ -299,7 +299,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 											<?php _e('Activate', 'wp-pro-quiz'); ?>
 										</label>
 										<p class="description">
-											<?php _e('If you activate this option, the user can complete the quiz only once. Afterwards the quiz is blocked for this user.'); ?>
+											<?php _e('If you activate this option, the user can complete the quiz only once. Afterwards the quiz is blocked for this user.', 'wp-pro-quiz'); ?>
 										</p>
 										
 										<div id="wpProQuiz_quiz_run_once_type" style="margin-bottom: 5px; display: none;">
@@ -343,8 +343,120 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</fieldset>
 								</td>
 							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Hide correct- and incorrect message', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Hide correct- and incorrect message', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="hideAnswerMessageBox" <?php echo $this->quiz->isHideAnswerMessageBox() ? 'checked="checked"' : '' ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, no correct- or incorrect message will be displayed.', 'wp-pro-quiz'); ?>
+										</p>
+										<div class="wpProQuiz_demoBox">
+											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/hideAnswerMessageBox.png'; ?> ">
+											</div>
+										</div>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Correct and incorrect answer mark', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Correct and incorrect answer mark', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="disabledAnswerMark" <?php echo $this->quiz->isDisabledAnswerMark() ? 'checked="checked"' : '' ?>>
+											<?php _e('Deactivate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, answers won\'t be color highlighted as correct or incorrect. ', 'wp-pro-quiz'); ?>
+										</p>
+										<div class="wpProQuiz_demoBox">
+											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/mark.png'; ?> ">
+											</div>
+										</div>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Show only specific number of questions', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Show only specific number of questions', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="showMaxQuestion" <?php echo $this->quiz->isShowMaxQuestion() ? 'checked="checked"' : '' ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, maximum number of displayed questions will be X from X questions. (The output of questions is random)', 'wp-pro-quiz'); ?>
+										</p>
+										<p class="description">
+											<?php _e('The statistics function is not available in this option.', 'wp-pro-quiz'); ?>
+										</p>
+										<p style="font-weight: bold;" class="description">
+											<?php _e('This option doesn\'t work reliable in connection with Frontend-Cache-Plugins.', 'wp-pro-quiz'); ?>
+										</p>
+										<div id="wpProQuiz_showMaxBox" style="display: none;">
+											<label>
+												<?php _e('How many questions should be displayed simultaneously:', 'wp-pro-quiz'); ?> 
+												<input class="small-text" type="text" name="showMaxQuestionValue" value="<?php echo $this->quiz->getShowMaxQuestionValue(); ?>">
+											</label>
+											<label>
+												<input type="checkbox" value="1" name="showMaxQuestionPercent" <?php echo $this->quiz->isShowMaxQuestionPercent() ? 'checked="checked"' : '' ?>>
+												<?php _e('in percent', 'wp-pro-quiz'); ?> 
+											</label>
+										</div>
+									</fieldset>
+								</td>
+							</tr>
 						</tbody>
 					</table>
+				</div>
+			</div>
+			<div class="postbox" style="display: none;">
+				<h3 class="hndle"><?php //_e('Frage-Pool Modus', 'wp-pro-quiz'); ?> <?php _e('(optional)', 'wp-pro-quiz'); ?></h3>
+				<div class="inside">
+				
+					<p class="description" style="margin-top: 10px;">
+						<?php //_e('Der Frage-Pool Modus ermoeglicht es automatisch eine bestimmte Anzahl von Fragen aus anderen Quiz anzeigen zu lassen. Es koennen nach der Aktivierung keine Fragen manuell hinzugefuegt werden. Die Statistik-Funktion ist im diesem Modus nicht verfuegbar.', 'wp-pro-quiz'); ?>
+					</p>
+					
+					<p style="color: red;">
+						<?php //_e('Der Frage-Pool Modus nicht zuverlaesslich in Verbindung mit Frontend-Cache-Plugins', 'wp-pro-quiz'); ?>
+					</p>
+					
+					<label style="margin-top: 10px;">
+						<input type="checkbox" value="1" name=""> <?php _e('Activate', 'wp-pro-quiz'); ?>
+					</label>
+									
+					<div>
+						
+						<p>
+							<?php //_e('Viele Fragen sollen angezeigt werden?', 'wp-pro-quiz'); ?>
+						</p>
+						
+						<input type="text">
+						
+					</div>
 				</div>
 			</div>
 			<div class="postbox">
@@ -427,7 +539,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 					</div>
 				</div>
 			</div>
-			<input type="submit" name="submit" class="button-primary" id="wpProQuiz_save" value="<?php _e('Save', 'wp-pro-quiz'); ?>">
+		<input type="submit" name="submit" class="button-primary" id="wpProQuiz_save" value="<?php _e('Save', 'wp-pro-quiz'); ?>">
 		</div>
 	</form>
 </div>

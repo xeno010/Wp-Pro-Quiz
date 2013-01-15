@@ -3,12 +3,12 @@
 Plugin Name: WP-Pro-Quiz
 Plugin URI: http://wordpress.org/extend/plugins/wp-pro-quiz
 Description: A powerful and beautiful quiz plugin for WordPress.
-Version: 0.15
+Version: 0.16
 Author: Julius Fischer
 Author URI: http://www.it-gecko.de
 */
 
-define('WPPROQUIZ_VERSION', '0.15');
+define('WPPROQUIZ_VERSION', '0.16');
 
 define('WPPROQUIZ_PATH', dirname(__FILE__));
 define('WPPROQUIZ_URL', plugins_url('', __FILE__));
@@ -85,4 +85,3 @@ if($bpAchievementsV2_path !== false) {
 	register_deactivation_hook($bpAchievementsV2_path, array('WpProQuiz_Plugin_BpAchievementsV2', 'deinstall'));
 	register_activation_hook($bpAchievementsV2_path, array('WpProQuiz_Plugin_BpAchievementsV2', 'install'));
 }
-

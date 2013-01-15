@@ -146,6 +146,9 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		$this->view	= new WpProQuiz_View_QuestionEdit();
 		$this->view->header = __('Edit question', 'wp-pro-quiz');
 		$mapper 	= new WpProQuiz_Model_QuestionMapper();
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		
+		$this->view->quiz = $quizMapper->fetch($id);
 		
 		if($mapper->exists($id) == 0) {
 			WpProQuiz_View_View::admin_notices(__('Question not found', 'wp-pro-quiz'), 'error');
@@ -192,6 +195,10 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		$this->view = new WpProQuiz_View_QuestionEdit();
 		$this->view->header = __('New question', 'wp-pro-quiz');
 		$post = null;
+		
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		
+		$this->view->quiz = $quizMapper->fetch($this->_quizId);
 
 		if(isset($this->_post['submit'])) {
 			$post = $this->clearPost($this->_post);

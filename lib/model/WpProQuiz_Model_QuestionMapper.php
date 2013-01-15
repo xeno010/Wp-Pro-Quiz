@@ -124,17 +124,32 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 		return is_array($id) ? $a : (isset($a[0]) ? $a[0] : null);
 	}
 	
-	public function fetchAll($quizId) {
+	public function fetchAll($quizId, $rand = false, $max = 0) {
+		
+		if($rand) {
+			$orderBy = 'ORDER BY RAND()';
+		} else {
+			$orderBy = 'ORDER BY sort ASC';
+		}
+		
+		$limit = '';
+		
+		if($max > 0) {
+			$limit = 'LIMIT 0, '.((int)$max);
+		}
+		
 		$a = array();
 		$results = $this->_wpdb->get_results(
 				$this->_wpdb->prepare(
-						'SELECT 
-							* 
-						FROM 
-							'. $this->_table.'
-						WHERE
-							quiz_id = %d 
-						ORDER BY sort ASC', $quizId),
+							'SELECT 
+								* 
+							FROM 
+								'. $this->_table.'
+							WHERE
+								quiz_id = %d 
+							'.$orderBy.' 
+							'.$limit
+						, $quizId),
 				ARRAY_A);
 		
 		foreach($results as $row) {
@@ -142,20 +157,6 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 			$row['answer_json'] = json_decode($row['answer_json'], true);
 			
 			$model = new WpProQuiz_Model_Question($row);
-			
-// 			$model = new WpProQuiz_Model_Question();
-			
-// 			$model	->setId($row->id)
-// 					->setQuizId($row->quiz_id)
-// 					->setTitle($row->title)
-// 					->setQuestion($row->question)
-// 					->setCorrectMsg($row->correct_msg)
-// 					->setIncorrectMsg($row->incorrect_msg)
-// 					->setAnswerType($row->answer_type)
-// 					->setAnswerJson(json_decode($row->answer_json, true))
-// 					->setCorrectCount($row->correct_count)
-// 					->setIncorrectCount($row->incorrect_count)
-// 					->setSort($row->sort);
 			
 			$a[] = $model;
 		}

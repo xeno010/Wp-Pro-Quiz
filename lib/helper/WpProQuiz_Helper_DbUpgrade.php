@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 12;
+	const WPPROQUIZ_DB_VERSION = 13;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -72,6 +72,11 @@ class WpProQuiz_Helper_DbUpgrade {
 				  `quiz_run_once_time` int(10) unsigned NOT NULL,
 				  `question_on_single_page` tinyint(1) NOT NULL,
 				  `numbered_answer` tinyint(1) NOT NULL,
+				  `hide_answer_message_box` tinyint(1) NOT NULL,
+				  `disabled_answer_mark` tinyint(1) NOT NULL,
+				  `show_max_question` tinyint(1) NOT NULL,
+				  `show_max_question_value` int(10) unsigned NOT NULL,
+				  `show_max_question_percent` tinyint(1) NOT NULL,
 				  PRIMARY KEY (`id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		');
@@ -393,5 +398,19 @@ class WpProQuiz_Helper_DbUpgrade {
 		$this->_wpdb->query('UPDATE `'.$this->_wpdb->prefix.'wp_pro_quiz_question` SET `points_answer` = `points`');
 		
 		return 12;
+	}
+	
+	private function upgradeDbV12() {
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master`
+				ADD  `hide_answer_message_box` TINYINT( 1 ) NOT NULL ,
+				ADD  `disabled_answer_mark` TINYINT( 1 ) NOT NULL ,
+				ADD  `show_max_question` TINYINT( 1 ) NOT NULL ,
+				ADD  `show_max_question_value` INT UNSIGNED NOT NULL ,
+				ADD  `show_max_question_percent` TINYINT( 1 ) NOT NULL
+		');
+		
+		return 13;
 	}
 }

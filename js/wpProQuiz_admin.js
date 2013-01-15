@@ -193,6 +193,14 @@ jQuery(document).ready(function($) {
 					}
 				});
 				
+				$('.wpProQuiz_demoBox a').mouseover(function() {
+					$(this).next().show();
+				}).mouseout(function() {
+					$(this).next().hide();
+				}).click(function() {
+					return false;
+				});
+				
 			},
 
 			displaySingle: function(type) {
@@ -698,10 +706,21 @@ jQuery(document).ready(function($) {
 				return false;
 			});
 			
+			$('input[name="showMaxQuestion"]').change(function() {
+				if(this.checked) {
+					$('input[name="statisticsOn"]').removeAttr('checked').attr('disabled', 'disabled').change();
+					$('#wpProQuiz_showMaxBox').show();
+				} else {
+					$('input[name="statisticsOn"]').removeAttr('disabled');
+					$('#wpProQuiz_showMaxBox').hide();
+				}
+			});
+			
 			$('#statistics_on').change();
 			$('#wpProQuiz_resultGradeEnabled').change();
 			$('input[name="quizRunOnce"]').change();
 			$('input[name="quizRunOnceType"]:checked').change();
+			$('input[name="showMaxQuestion"]').change();
 		};
 		
 		init();
@@ -736,6 +755,7 @@ jQuery(document).ready(function($) {
 				var $tbody = $table.find('tbody');
 				var points = 0;
 				var gPoints = 0;
+				var cPoints = 0;
 				
 				if(currectTab == 'wpProQuiz_typeOverview') {
 					return;
@@ -755,9 +775,11 @@ jQuery(document).ready(function($) {
 						} else {
 							$table.find('.wpProQuiz_cResult').text("0%");
 						}
+						i.find('.wpProQuiz_cCorrectAnswerPoints').text(cPoints);
 					} else {
 						points += (j.cCorrectAnswerPoints * i.find('.wpProQuiz_pointsAnswer').text());
 						gPoints += (j.cCorrect + j.cIncorrect ) * i.find('.wpProQuiz_points').text();
+						cPoints += j.cCorrectAnswerPoints * i.find('.wpProQuiz_pointsAnswer').text();
 					}
 				};
 				

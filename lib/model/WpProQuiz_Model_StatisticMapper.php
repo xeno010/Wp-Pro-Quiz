@@ -76,7 +76,7 @@ class WpProQuiz_Model_StatisticMapper extends WpProQuiz_Model_Mapper {
 								COUNT(ID)
 							FROM {$this->_wpdb->users} 
 							WHERE
-								ID IN(SELECT user_id FROM wp_wp_pro_quiz_statistic WHERE quiz_id = %d GROUP BY user_id)",
+								ID IN(SELECT user_id FROM {$this->_tableStatistic} WHERE quiz_id = %d GROUP BY user_id)",
 							$quizId
 				)
 			);

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wp-Pro-Quiz\n"
-"POT-Creation-Date: 2013-01-07 23:42+0100\n"
-"PO-Revision-Date: 2013-01-07 23:42+0100\n"
+"POT-Creation-Date: 2013-01-15 11:34+0100\n"
+"PO-Revision-Date: 2013-01-15 11:34+0100\n"
 "Last-Translator: Julius Fischer <julius.f@gmx.net>\n"
 "Language-Team: abuhassan <sajja2002@hotmail.com>\n"
 "Language: Arabic\n"
@@ -60,8 +60,8 @@ msgstr ""
 #: lib/controller/WpProQuiz_Controller_Question.php:51
 #: lib/controller/WpProQuiz_Controller_Question.php:128
 #: lib/controller/WpProQuiz_Controller_Question.php:143
-#: lib/controller/WpProQuiz_Controller_Question.php:189
-#: lib/controller/WpProQuiz_Controller_Question.php:284
+#: lib/controller/WpProQuiz_Controller_Question.php:192
+#: lib/controller/WpProQuiz_Controller_Question.php:291
 #: lib/controller/WpProQuiz_Controller_Quiz.php:55
 #: lib/controller/WpProQuiz_Controller_Quiz.php:69
 #: lib/controller/WpProQuiz_Controller_Quiz.php:114
@@ -95,25 +95,25 @@ msgstr ""
 msgid "Edit question"
 msgstr "تحرير السؤال"
 
-#: lib/controller/WpProQuiz_Controller_Question.php:151
+#: lib/controller/WpProQuiz_Controller_Question.php:154
 msgid "Question not found"
 msgstr "لم يتم العثور على السؤال"
 
-#: lib/controller/WpProQuiz_Controller_Question.php:164
-#: lib/controller/WpProQuiz_Controller_Question.php:206
+#: lib/controller/WpProQuiz_Controller_Question.php:167
+#: lib/controller/WpProQuiz_Controller_Question.php:213
 #, php-format
 msgid "Question: %d"
 msgstr "السؤال: %d"
 
-#: lib/controller/WpProQuiz_Controller_Question.php:174
+#: lib/controller/WpProQuiz_Controller_Question.php:177
 msgid "Question edited"
 msgstr "تم تحرير السؤال"
 
-#: lib/controller/WpProQuiz_Controller_Question.php:193
+#: lib/controller/WpProQuiz_Controller_Question.php:196
 msgid "New question"
 msgstr "سؤال جديد"
 
-#: lib/controller/WpProQuiz_Controller_Question.php:217
+#: lib/controller/WpProQuiz_Controller_Question.php:224
 msgid "Question added"
 msgstr "تم اضافة سؤال"
 
@@ -216,21 +216,21 @@ msgid "%d points"
 msgstr "%d درجات"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:158
-#: lib/view/WpProQuiz_View_QuestionEdit.php:250
-#: lib/view/WpProQuiz_View_QuestionEdit.php:290
-#: lib/view/WpProQuiz_View_QuestionEdit.php:327
+#: lib/view/WpProQuiz_View_QuestionEdit.php:258
+#: lib/view/WpProQuiz_View_QuestionEdit.php:298
+#: lib/view/WpProQuiz_View_QuestionEdit.php:335
 msgid "Sort elements"
 msgstr "ترتيب العناصر"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:240
-#: lib/view/WpProQuiz_View_FrontQuiz.php:247
+#: lib/view/WpProQuiz_View_FrontQuiz.php:241
+#: lib/view/WpProQuiz_View_FrontQuiz.php:248
 #: lib/view/WpProQuiz_View_Statistics.php:55
 #: lib/view/WpProQuiz_View_Statistics.php:147
 msgid "Correct"
 msgstr "صحيح"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:242
-#: lib/view/WpProQuiz_View_FrontQuiz.php:260
+#: lib/view/WpProQuiz_View_FrontQuiz.php:243
+#: lib/view/WpProQuiz_View_FrontQuiz.php:261
 #: lib/view/WpProQuiz_View_QuestionEdit.php:21
 #: lib/view/WpProQuiz_View_QuestionEdit.php:28
 #: lib/view/WpProQuiz_View_QuestionOverall.php:29
@@ -239,32 +239,32 @@ msgstr "صحيح"
 msgid "Points"
 msgstr "درجات"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:258
-#: lib/view/WpProQuiz_View_FrontQuiz.php:265
+#: lib/view/WpProQuiz_View_FrontQuiz.php:259
+#: lib/view/WpProQuiz_View_FrontQuiz.php:266
 #: lib/view/WpProQuiz_View_Statistics.php:56
 #: lib/view/WpProQuiz_View_Statistics.php:148
 msgid "Incorrect"
 msgstr "خطأ"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:282
-#: lib/view/WpProQuiz_View_FrontQuiz.php:292
-#: lib/view/WpProQuiz_View_QuestionEdit.php:85
+#: lib/view/WpProQuiz_View_FrontQuiz.php:284
+#: lib/view/WpProQuiz_View_FrontQuiz.php:294
+#: lib/view/WpProQuiz_View_QuestionEdit.php:93
 msgid "Hint"
 msgstr "تلميح"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:289
+#: lib/view/WpProQuiz_View_FrontQuiz.php:291
 msgid "Check"
 msgstr "التحقق"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:290
+#: lib/view/WpProQuiz_View_FrontQuiz.php:292
 msgid "Back"
 msgstr "العودة"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:294
+#: lib/view/WpProQuiz_View_FrontQuiz.php:296
 msgid "Next exercise"
 msgstr "التمرين التالي"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:307
+#: lib/view/WpProQuiz_View_FrontQuiz.php:309
 msgid "Finish quiz"
 msgstr ""
 
@@ -321,6 +321,9 @@ msgstr ""
 #: lib/view/WpProQuiz_View_QuizEdit.php:234
 #: lib/view/WpProQuiz_View_QuizEdit.php:259
 #: lib/view/WpProQuiz_View_QuizEdit.php:299
+#: lib/view/WpProQuiz_View_QuizEdit.php:357
+#: lib/view/WpProQuiz_View_QuizEdit.php:407
+#: lib/view/WpProQuiz_View_QuizEdit.php:448
 msgid "Activate"
 msgstr ""
 
@@ -378,6 +381,7 @@ msgid "Touch Library"
 msgstr ""
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:92
+#: lib/view/WpProQuiz_View_QuizEdit.php:382
 msgid "Deactivate"
 msgstr ""
 
@@ -407,8 +411,8 @@ msgid "e.g. Domain with special characters in combination with IE"
 msgstr ""
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:132
-#: lib/view/WpProQuiz_View_QuestionEdit.php:373
-#: lib/view/WpProQuiz_View_QuizEdit.php:430
+#: lib/view/WpProQuiz_View_QuestionEdit.php:381
+#: lib/view/WpProQuiz_View_QuizEdit.php:542
 msgid "Save"
 msgstr "حفظ"
 
@@ -449,10 +453,11 @@ msgid "Title"
 msgstr "العنوان"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:12
-#: lib/view/WpProQuiz_View_QuestionEdit.php:57
-#: lib/view/WpProQuiz_View_QuestionEdit.php:74
-#: lib/view/WpProQuiz_View_QuestionEdit.php:85
-#: lib/view/WpProQuiz_View_QuizEdit.php:362
+#: lib/view/WpProQuiz_View_QuestionEdit.php:64
+#: lib/view/WpProQuiz_View_QuestionEdit.php:81
+#: lib/view/WpProQuiz_View_QuestionEdit.php:93
+#: lib/view/WpProQuiz_View_QuizEdit.php:436
+#: lib/view/WpProQuiz_View_QuizEdit.php:474
 msgid "(optional)"
 msgstr "(اختيار)"
 
@@ -466,9 +471,9 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:21
 #: lib/view/WpProQuiz_View_QuestionEdit.php:49
-#: lib/view/WpProQuiz_View_QuestionEdit.php:137
+#: lib/view/WpProQuiz_View_QuestionEdit.php:145
 #: lib/view/WpProQuiz_View_QuizEdit.php:12
-#: lib/view/WpProQuiz_View_QuizEdit.php:351
+#: lib/view/WpProQuiz_View_QuizEdit.php:463
 msgid "(required)"
 msgstr "(مطلوب)"
 
@@ -492,10 +497,18 @@ msgid "Show reached points in the correct- and incorrect message?"
 msgstr ""
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:57
+msgid "Message with the correct / incorrect answer"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:59
+msgid "Deactivated in quiz settings."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:64
 msgid "Message with the correct answer"
 msgstr "رسالة مع الاجابة الصحيحة"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:60
+#: lib/view/WpProQuiz_View_QuestionEdit.php:67
 msgid ""
 "This text will be visible if answered correctly. It can be used as "
 "explanation for complex questions. The message \"Right\" or \"Wrong\" is "
@@ -504,15 +517,15 @@ msgstr ""
 "وهذا النص مرئية إذا أجاب بشكل صحيح. ويمكن استخدامه كدليل شرح للمسائل "
 "المعقدة. الرسالة\"صحيح \" أو\" خطأ\" دائما يتم عرضها تلقائيا."
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:64
+#: lib/view/WpProQuiz_View_QuestionEdit.php:71
 msgid "Same text for correct- and incorrect-message?"
 msgstr "نفس النص مع رسالة الاجابة الصحيحة - و الغير صحيحة؟"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:74
+#: lib/view/WpProQuiz_View_QuestionEdit.php:81
 msgid "Message with the incorrect answer"
 msgstr "رسالة مع الاجابة الغير صحيحة"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:77
+#: lib/view/WpProQuiz_View_QuestionEdit.php:84
 msgid ""
 "This text will be visible if answered incorrectly. It can be used as "
 "explanation for complex questions. The message \"Right\" or \"Wrong\" is "
@@ -521,53 +534,53 @@ msgstr ""
 "وهذا النص مرئية إذا أجاب بشكل غير صحيح. ويمكن استخدامه كدليل شرح للمسائل "
 "المعقدة. الرسالة\"صحيح \" أو\" خطأ\" دائما يتم عرضها تلقائيا."
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:88
+#: lib/view/WpProQuiz_View_QuestionEdit.php:96
 msgid "Here you can enter solution hint."
 msgstr "يمكنك وضع هنا تلميح للأجابة."
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:92
+#: lib/view/WpProQuiz_View_QuestionEdit.php:100
 msgid "Activate hint for this question?"
 msgstr "تفعيل التلميح لهذا السؤال؟"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:104
+#: lib/view/WpProQuiz_View_QuestionEdit.php:112
 msgid "Answer type"
 msgstr "نوع السؤال؟"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:112
+#: lib/view/WpProQuiz_View_QuestionEdit.php:120
 msgid "Single choice"
 msgstr "اختيار واحد"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:116
+#: lib/view/WpProQuiz_View_QuestionEdit.php:124
 msgid "Multiple choice"
 msgstr "أختيار متعدد"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:120
+#: lib/view/WpProQuiz_View_QuestionEdit.php:128
 msgid "\"Free\" choice"
 msgstr "\"حر\" اختيار"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:124
+#: lib/view/WpProQuiz_View_QuestionEdit.php:132
 msgid "\"Sorting\" choice"
 msgstr "\"ترتيب\" اختيار"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:128
+#: lib/view/WpProQuiz_View_QuestionEdit.php:136
 msgid "\"Matrix Sorting\" choice"
 msgstr "\"ترتيب منظمي\" اختيار"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:132
+#: lib/view/WpProQuiz_View_QuestionEdit.php:140
 msgid "Cloze"
 msgstr "اكمل"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:137
+#: lib/view/WpProQuiz_View_QuestionEdit.php:145
 msgid "Answers"
 msgstr "اجابات"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:142
-#: lib/view/WpProQuiz_View_QuestionEdit.php:146
+#: lib/view/WpProQuiz_View_QuestionEdit.php:150
+#: lib/view/WpProQuiz_View_QuestionEdit.php:154
 msgid ""
 "correct answers (one per line) (answers will be converted to lower case)"
 msgstr "الإجابات الصحيحة (واحد في كل سطر) (يتم تحويل الإجابات إلى أحرف صغيرة)"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:152
+#: lib/view/WpProQuiz_View_QuestionEdit.php:160
 msgid ""
 "Please sort the answers in right order with the \"Move\" - Button. The "
 "answers will be displayed randomly."
@@ -575,59 +588,59 @@ msgstr ""
 "يرجى فرز الإجابات في بالترتيب الصحيح بزر \"نقل\" - . سوف يتم عرض الإجابات "
 "بشكل عشوائي."
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:158
-#: lib/view/WpProQuiz_View_QuestionEdit.php:170
-#: lib/view/WpProQuiz_View_QuestionEdit.php:180
-#: lib/view/WpProQuiz_View_QuestionEdit.php:199
-#: lib/view/WpProQuiz_View_QuestionEdit.php:215
-#: lib/view/WpProQuiz_View_QuestionEdit.php:229
-#: lib/view/WpProQuiz_View_QuestionEdit.php:279
-#: lib/view/WpProQuiz_View_QuestionEdit.php:319
-#: lib/view/WpProQuiz_View_QuestionEdit.php:356
+#: lib/view/WpProQuiz_View_QuestionEdit.php:166
+#: lib/view/WpProQuiz_View_QuestionEdit.php:178
+#: lib/view/WpProQuiz_View_QuestionEdit.php:188
+#: lib/view/WpProQuiz_View_QuestionEdit.php:207
+#: lib/view/WpProQuiz_View_QuestionEdit.php:223
+#: lib/view/WpProQuiz_View_QuestionEdit.php:237
+#: lib/view/WpProQuiz_View_QuestionEdit.php:287
+#: lib/view/WpProQuiz_View_QuestionEdit.php:327
+#: lib/view/WpProQuiz_View_QuestionEdit.php:364
 msgid "Delete answer"
 msgstr "حذف الاجابة"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:159
-#: lib/view/WpProQuiz_View_QuestionEdit.php:171
-#: lib/view/WpProQuiz_View_QuestionEdit.php:181
-#: lib/view/WpProQuiz_View_QuestionEdit.php:200
-#: lib/view/WpProQuiz_View_QuestionEdit.php:216
-#: lib/view/WpProQuiz_View_QuestionEdit.php:230
-#: lib/view/WpProQuiz_View_QuestionEdit.php:278
-#: lib/view/WpProQuiz_View_QuestionEdit.php:318
-#: lib/view/WpProQuiz_View_QuestionEdit.php:355
+#: lib/view/WpProQuiz_View_QuestionEdit.php:167
+#: lib/view/WpProQuiz_View_QuestionEdit.php:179
+#: lib/view/WpProQuiz_View_QuestionEdit.php:189
+#: lib/view/WpProQuiz_View_QuestionEdit.php:208
+#: lib/view/WpProQuiz_View_QuestionEdit.php:224
+#: lib/view/WpProQuiz_View_QuestionEdit.php:238
+#: lib/view/WpProQuiz_View_QuestionEdit.php:286
+#: lib/view/WpProQuiz_View_QuestionEdit.php:326
+#: lib/view/WpProQuiz_View_QuestionEdit.php:363
 #: lib/view/WpProQuiz_View_QuestionOverall.php:50
 msgid "Move"
 msgstr "تحريك"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:161
-#: lib/view/WpProQuiz_View_QuestionEdit.php:173
-#: lib/view/WpProQuiz_View_QuestionEdit.php:183
-#: lib/view/WpProQuiz_View_QuestionEdit.php:202
-#: lib/view/WpProQuiz_View_QuestionEdit.php:218
-#: lib/view/WpProQuiz_View_QuestionEdit.php:232
-#: lib/view/WpProQuiz_View_QuestionEdit.php:265
-#: lib/view/WpProQuiz_View_QuestionEdit.php:271
-#: lib/view/WpProQuiz_View_QuestionEdit.php:305
-#: lib/view/WpProQuiz_View_QuestionEdit.php:311
-#: lib/view/WpProQuiz_View_QuestionEdit.php:342
-#: lib/view/WpProQuiz_View_QuestionEdit.php:348
+#: lib/view/WpProQuiz_View_QuestionEdit.php:169
+#: lib/view/WpProQuiz_View_QuestionEdit.php:181
+#: lib/view/WpProQuiz_View_QuestionEdit.php:191
+#: lib/view/WpProQuiz_View_QuestionEdit.php:210
+#: lib/view/WpProQuiz_View_QuestionEdit.php:226
+#: lib/view/WpProQuiz_View_QuestionEdit.php:240
+#: lib/view/WpProQuiz_View_QuestionEdit.php:273
+#: lib/view/WpProQuiz_View_QuestionEdit.php:279
+#: lib/view/WpProQuiz_View_QuestionEdit.php:313
+#: lib/view/WpProQuiz_View_QuestionEdit.php:319
+#: lib/view/WpProQuiz_View_QuestionEdit.php:350
+#: lib/view/WpProQuiz_View_QuestionEdit.php:356
 msgid "Allow HTML"
 msgstr "السماح بــ HTML"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:189
-#: lib/view/WpProQuiz_View_QuestionEdit.php:238
-#: lib/view/WpProQuiz_View_QuestionEdit.php:360
+#: lib/view/WpProQuiz_View_QuestionEdit.php:197
+#: lib/view/WpProQuiz_View_QuestionEdit.php:246
+#: lib/view/WpProQuiz_View_QuestionEdit.php:368
 msgid "Add new answer"
 msgstr "اضف اجابة جديدة"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:197
-#: lib/view/WpProQuiz_View_QuestionEdit.php:213
-#: lib/view/WpProQuiz_View_QuestionEdit.php:227
+#: lib/view/WpProQuiz_View_QuestionEdit.php:205
+#: lib/view/WpProQuiz_View_QuestionEdit.php:221
+#: lib/view/WpProQuiz_View_QuestionEdit.php:235
 msgid "correct?"
 msgstr "صحيح؟"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:242
+#: lib/view/WpProQuiz_View_QuestionEdit.php:250
 msgid ""
 "In this mode, not a list have to be sorted, but elements must be assigned to "
 "matching criterion."
@@ -635,13 +648,13 @@ msgstr ""
 "في هذا الوضع، لا يوجد قائمة لا بد من فرزها، ولكن يجب تعيين عناصر مطابقة "
 "لمعيار."
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:249
-#: lib/view/WpProQuiz_View_QuestionEdit.php:289
-#: lib/view/WpProQuiz_View_QuestionEdit.php:326
+#: lib/view/WpProQuiz_View_QuestionEdit.php:257
+#: lib/view/WpProQuiz_View_QuestionEdit.php:297
+#: lib/view/WpProQuiz_View_QuestionEdit.php:334
 msgid "Criterion"
 msgstr "معيار"
 
-#: lib/view/WpProQuiz_View_QuestionEdit.php:364
+#: lib/view/WpProQuiz_View_QuestionEdit.php:372
 msgid ""
 "Enclose the searched words with { } e.g. \"I {play} soccer\". Capital and "
 "small letters will be ignored."
@@ -786,6 +799,8 @@ msgstr ""
 #: lib/view/WpProQuiz_View_QuizEdit.php:190
 #: lib/view/WpProQuiz_View_QuizEdit.php:215
 #: lib/view/WpProQuiz_View_QuizEdit.php:240
+#: lib/view/WpProQuiz_View_QuizEdit.php:363
+#: lib/view/WpProQuiz_View_QuizEdit.php:388
 msgid "Demo"
 msgstr ""
 
@@ -911,37 +926,87 @@ msgstr ""
 msgid "Resets user identification for all users."
 msgstr ""
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:351
+#: lib/view/WpProQuiz_View_QuizEdit.php:348
+#: lib/view/WpProQuiz_View_QuizEdit.php:353
+msgid "Hide correct- and incorrect message"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:360
+msgid ""
+"If you enable this option, no correct- or incorrect message will be "
+"displayed."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:373
+#: lib/view/WpProQuiz_View_QuizEdit.php:378
+msgid "Correct and incorrect answer mark"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:385
+msgid ""
+"If you enable this option, answers won't be color highlighted as correct or "
+"incorrect. "
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:398
+#: lib/view/WpProQuiz_View_QuizEdit.php:403
+msgid "Show only specific number of questions"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:410
+msgid ""
+"If you enable this option, maximum number of displayed questions will be X "
+"from X questions. (The output of questions is random)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:413
+msgid "The statistics function is not available in this option."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:416
+msgid ""
+"This option doesn't work reliable in connection with Frontend-Cache-Plugins."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:420
+msgid "How many questions should be displayed simultaneously:"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:425
+msgid "in percent"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:463
 msgid "Quiz description"
 msgstr "وصف الاختبار"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:354
+#: lib/view/WpProQuiz_View_QuizEdit.php:466
 msgid "This text will be displayed before start of the quiz."
 msgstr "سيتم عرض هذا النص قبل بدء الاختبار."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:362
+#: lib/view/WpProQuiz_View_QuizEdit.php:474
 msgid "Results text"
 msgstr "نص النتائج"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:365
+#: lib/view/WpProQuiz_View_QuizEdit.php:477
 msgid ""
 "This text will be displayed at the end of the quiz (in results). (this text "
 "is optional)"
 msgstr "سيتم عرض هذا النص في نهاية الاختبار (في النتائج). (هذا النص اختياري)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:369
+#: lib/view/WpProQuiz_View_QuizEdit.php:481
 msgid "Activate graduation"
 msgstr "تفعيل التقييم"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:375
+#: lib/view/WpProQuiz_View_QuizEdit.php:487
 msgid "Hint:"
 msgstr "تلميح:"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:377
+#: lib/view/WpProQuiz_View_QuizEdit.php:489
 msgid "Maximal 15 levels"
 msgstr "اقصى حد 15 مستوى"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:379
+#: lib/view/WpProQuiz_View_QuizEdit.php:491
 #, php-format
 msgid ""
 "Percentages refer to the total score of the quiz. (Current total %d points "
@@ -950,26 +1015,26 @@ msgstr ""
 "النسبة المئوية تشير الي الدرجة الكلية للأختبار.( المجموع الحالي %d درجة في "
 "%d سؤال"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:382
+#: lib/view/WpProQuiz_View_QuizEdit.php:494
 msgid "Values can also be mixed up"
 msgstr "يمكن لخبطة القيم"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:383
+#: lib/view/WpProQuiz_View_QuizEdit.php:495
 msgid "10,15% or 10.15% allowed (max. two digits after the decimal point)"
 msgstr "10.15% او 10.15% مسموح به (اقصى حد هو رقمين بعد النسبة المئوية)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:399
-#: lib/view/WpProQuiz_View_QuizEdit.php:410
+#: lib/view/WpProQuiz_View_QuizEdit.php:511
+#: lib/view/WpProQuiz_View_QuizEdit.php:522
 msgid "from:"
 msgstr "من:"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:399
-#: lib/view/WpProQuiz_View_QuizEdit.php:410
+#: lib/view/WpProQuiz_View_QuizEdit.php:511
+#: lib/view/WpProQuiz_View_QuizEdit.php:522
 msgid "percent"
 msgstr "النسبة المئوية"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:399
-#: lib/view/WpProQuiz_View_QuizEdit.php:410
+#: lib/view/WpProQuiz_View_QuizEdit.php:511
+#: lib/view/WpProQuiz_View_QuizEdit.php:522
 #, php-format
 msgid ""
 "(Will be displayed, when result-percent is >= <span class=\"resultProzent\">"
@@ -978,12 +1043,12 @@ msgstr ""
 "(سوف يتم عرضه، عندما تكون نسبة النتيجة>= <span class=\"resultProzent\">%s</"
 "span>%%)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:400
-#: lib/view/WpProQuiz_View_QuizEdit.php:411
+#: lib/view/WpProQuiz_View_QuizEdit.php:512
+#: lib/view/WpProQuiz_View_QuizEdit.php:523
 msgid "Delete graduation"
 msgstr "حذف التقييم"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:418
+#: lib/view/WpProQuiz_View_QuizEdit.php:530
 msgid "Add graduation"
 msgstr "اضافة تقييم"
 

@@ -260,8 +260,8 @@
 					
 					checked.each(function() {
 						if($(this).data('correct') == '1') {
-							$(this).parent().parent().addClass('wpProQuiz_answerCorrect');
-
+							plugin.methode.setAnswerMark($(this).parent().parent(), true);
+							
 							if(this.checked) {
 								check &= true;
 								correctCount++;
@@ -270,7 +270,7 @@
 							} 
 						} else {
 							if(this.checked) {
-								$(this).parent().parent().addClass('wpProQuiz_answerIncorrect');
+								plugin.methode.setAnswerMark($(this).parent().parent(), false);
 								check &= false;
 							}
 						}
@@ -287,11 +287,11 @@
 						var correct = $div.data('correct');
 						
 						if(correct == index) {
-							$div.parent().addClass('wpProQuiz_answerCorrect');
+							plugin.methode.setAnswerMark($div.parent(), true);
 							check &= true;
 							correctCount++;
 						} else {
-							$div.parent().addClass('wpProQuiz_answerIncorrect');
+							plugin.methode.setAnswerMark($div.parent(), false);
 							check = false;
 						}
 						
@@ -317,9 +317,9 @@
 					if($.inArray(value, checked.data('correct')) >= 0) {
 						correct = true;
 						correctCount++;
-						checked.parent().parent().addClass('wpProQuiz_answerCorrect');						
+						plugin.methode.setAnswerMark(checked.parent().parent(), true);
 					} else {
-						checked.parent().parent().addClass('wpProQuiz_answerIncorrect');
+						plugin.methode.setAnswerMark(checked.parent().parent(), false);
 					}
 				} else if(type == 'matrix_sort_answer') {
 					var check = true;
@@ -334,10 +334,10 @@
 						if(item.data('correct') == index) {
 							check &= true;
 							correctCount++;
-							$par.addClass('wpProQuiz_answerCorrect');
+							plugin.methode.setAnswerMark($par, true);
 						} else {
 							check = false;
-							$par.addClass('wpProQuiz_answerIncorrect');
+							plugin.methode.setAnswerMark($par, false);
 						}
 						
 						matrixArray[index] = $(this);
@@ -367,10 +367,18 @@
 						if(cloze == iText) {
 							check &= true;
 							correctCount++;
-							input.css('background-color', '#B0DAB0');
+							
+							if(!config.disabledAnswerMark) {
+								input.css('background-color', '#B0DAB0');
+							}
 						} else {
+							
 							check = false;
-							input.css('background-color', '#FFBABA');
+							
+							if(!config.disabledAnswerMark) {
+								input.css('background-color', '#FFBABA');
+							}
+							
 							children.last().show();
 						}
 						
@@ -415,6 +423,16 @@
 				$question.find('input[name="next"]').show();
 				
 				$question.data('isChecked', true);
+			},
+			
+			setAnswerMark: function(obj, c) {
+				if(!config.disabledAnswerMark) {
+					if(c) {
+						obj.addClass('wpProQuiz_answerCorrect');
+					} else {
+						obj.addClass('wpProQuiz_answerIncorrect');
+					}
+				}
 			},
 
 			nextQuestion: function(btn) {

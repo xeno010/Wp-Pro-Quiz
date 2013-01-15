@@ -3,7 +3,7 @@ Contributors: xeno010
 Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 0.15
+Stable tag: 0.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,13 +33,16 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Statistics
 *		Hints
 *		Import / Export function
+*		Many configuration options
 *		Really nice standard design
 *		Mighty
 
 = Translations =
+*		Arabic / عربي (Thanks Abuhassan)
+*		Dutch / nederlands (Thanks Bas W.)
 * 		English (Thanks Alexander M.)
 *		German / deutsch
-*		Arabic / عربي (Thanks Abuhassan)
+*		Norwegian / norsk (Thanks Stein Ivar J.)
 *		Russian / русский (Thanks Sergei B.)
 *		Swedish / svenska (Thanks Martin J.)
 
@@ -152,3 +155,10 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * Points now can be entered per correct answer instead of correct question
 * Translation for Russian have been added (Thanks Sergei B.)
 * Translation for Swedish have been added (Thanks Martin J.)
+
+= 0.16 =
+* Bug in uninstall script fixed 
+* Option "hide correct- and incorrect-message" added
+* Option "correct- and incorrect-answermark" added 
+* Option "show only specific number of questions" added
+* Bugfix in statistic function

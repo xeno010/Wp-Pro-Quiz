@@ -171,7 +171,7 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$quiz = $quizMapper->fetch($quizId);
 		
-		if(!$quiz->isStatisticsOn())		
+		if(!$quiz->isStatisticsOn() || $quiz->isShowMaxQuestion())		
 			return false;
 		
 		if($quiz->getStatisticsIpLock() > 0) {		

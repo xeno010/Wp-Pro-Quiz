@@ -80,7 +80,22 @@ class WpProQuiz_Controller_Front {
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
 		
 		$quiz = $quizMapper->fetch($id);
-		$question = $questionMapper->fetchAll($id);
+
+		if($quiz->isShowMaxQuestion() && $quiz->getShowMaxQuestionValue() > 0) {
+			
+			$value = $quiz->getShowMaxQuestionValue();
+			
+			if($quiz->isShowMaxQuestionPercent()) {
+				$count = $questionMapper->count($id);
+				
+				$value = ceil($count * $value / 100);
+			}
+			
+			$question = $questionMapper->fetchAll($id, true, $value);
+			
+		} else {
+			$question = $questionMapper->fetchAll($id);
+		}
 		
 		if(empty($quiz) || empty($question)) {			
 			echo '';

@@ -26,9 +26,26 @@ class WpProQuiz_Controller_Preview extends WpProQuiz_Controller_Controller {
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
 		
-		$view->quiz = $quizMapper->fetch($id);
-		$view->question = $questionMapper->fetchAll($id);
+		$quiz = $quizMapper->fetch($id);
 		
+		if($quiz->isShowMaxQuestion() && $quiz->getShowMaxQuestionValue() > 0) {
+				
+			$value = $quiz->getShowMaxQuestionValue();
+				
+			if($quiz->isShowMaxQuestionPercent()) {
+				$count = $questionMapper->count($id);
+		
+				$value = ceil($count * $value / 100);
+			}
+				
+			$question = $questionMapper->fetchAll($id, true, $value);
+				
+		} else {
+			$question = $questionMapper->fetchAll($id);
+		}
+		
+		$view->quiz = $quiz;
+		$view->question = $question;
 		$view->show(true);
 	}
 }

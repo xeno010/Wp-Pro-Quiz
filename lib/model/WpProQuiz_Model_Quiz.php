@@ -27,6 +27,11 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_quizRunOnceTime = 0;
 	protected $_questionOnSinglePage = false;
 	protected $_numberedAnswer = false;
+	protected $_hideAnswerMessageBox = false;
+	protected $_disabledAnswerMark = false;
+	protected $_showMaxQuestion = false;
+	protected $_showMaxQuestionValue = 1;
+	protected $_showMaxQuestionPercent = false;
 	
 	public function getId() {
 		return $this->_id;
@@ -236,5 +241,50 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
 	public function isNumberedAnswer() {
 		return $this->_numberedAnswer;
+	}
+	
+	public function setHideAnswerMessageBox($_hideAnswerMessageBox) {
+		$this->_hideAnswerMessageBox = (bool)$_hideAnswerMessageBox;
+		return $this;
+	}
+	
+	public function isHideAnswerMessageBox() {
+		return $this->_hideAnswerMessageBox;
+	}
+	
+	public function setDisabledAnswerMark($_disabledAnswerMark) {
+		$this->_disabledAnswerMark = (bool)$_disabledAnswerMark;
+		return $this;
+	}
+	
+	public function isDisabledAnswerMark() {
+		return $this->_disabledAnswerMark;
+	}
+	
+	public function setShowMaxQuestion($_showMaxQuestion) {
+		$this->_showMaxQuestion = (bool)$_showMaxQuestion;
+		return $this;
+	}
+	
+	public function isShowMaxQuestion() {
+		return $this->_showMaxQuestion;
+	}
+	
+	public function setShowMaxQuestionValue($_showMaxQuestionValue) {
+		$this->_showMaxQuestionValue = (int)$_showMaxQuestionValue;
+		return $this;
+	}
+	
+	public function getShowMaxQuestionValue() {
+		return $this->_showMaxQuestionValue;
+	}
+	
+	public function setShowMaxQuestionPercent($_showMaxQuestionPercent) {
+		$this->_showMaxQuestionPercent = (bool)$_showMaxQuestionPercent;
+		return $this;
+	}
+	
+	public function isShowMaxQuestionPercent() {
+		return $this->_showMaxQuestionPercent;
 	}
 }

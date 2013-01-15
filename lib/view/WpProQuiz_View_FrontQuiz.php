@@ -232,52 +232,54 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 					 <?php } ?>
 					</ul>
 				</div>
-				<div class="wpProQuiz_response" style="display: none;">
-					<div style="display: none;" class="wpProQuiz_correct">
-						<?php if($question->isShowPointsInBox() && $question->isPointsPerAnswer()) { ?>
-						<div>
-							<span style="float: left;">
+				<?php if(!$this->quiz->isHideAnswerMessageBox()) { ?>
+					<div class="wpProQuiz_response" style="display: none;">
+						<div style="display: none;" class="wpProQuiz_correct">
+							<?php if($question->isShowPointsInBox() && $question->isPointsPerAnswer()) { ?>
+							<div>
+								<span style="float: left;">
+									<?php _e('Correct', 'wp-pro-quiz'); ?>
+								</span>
+								<span style="float: right;"><?php echo $question->getPoints().' / '.$question->getPoints(); ?> <?php _e('Points', 'wp-pro-quiz'); ?></span>
+								<div style="clear: both;"></div>
+							</div>		
+						<?php } else { ?>
+							<span>
 								<?php _e('Correct', 'wp-pro-quiz'); ?>
 							</span>
-							<span style="float: right;"><?php echo $question->getPoints().' / '.$question->getPoints(); ?> <?php _e('Points', 'wp-pro-quiz'); ?></span>
-							<div style="clear: both;"></div>
-						</div>		
-					<?php } else { ?>
-						<span>
-							<?php _e('Correct', 'wp-pro-quiz'); ?>
-						</span>
-					<?php } ?>
-						<p>
-							<?php echo do_shortcode(apply_filters('comment_text', $question->getCorrectMsg())); ?>
-						</p>
-					</div>
-					<div style="display: none;" class="wpProQuiz_incorrect">
-					<?php if($question->isShowPointsInBox() && $question->isPointsPerAnswer()) { ?>
-						<div>
-							<span style="float: left;">
+						<?php } ?>
+							<p>
+								<?php echo do_shortcode(apply_filters('comment_text', $question->getCorrectMsg())); ?>
+							</p>
+						</div>
+						<div style="display: none;" class="wpProQuiz_incorrect">
+						<?php if($question->isShowPointsInBox() && $question->isPointsPerAnswer()) { ?>
+							<div>
+								<span style="float: left;">
+									<?php _e('Incorrect', 'wp-pro-quiz'); ?>
+								</span>
+								<span style="float: right;"><span class="wpProQuiz_responsePoints"></span> / <?php echo $question->getPoints(); ?> <?php _e('Points', 'wp-pro-quiz'); ?></span>
+								<div style="clear: both;"></div>
+							</div>		
+						<?php } else { ?>
+							<span>
 								<?php _e('Incorrect', 'wp-pro-quiz'); ?>
 							</span>
-							<span style="float: right;"><span class="wpProQuiz_responsePoints"></span> / <?php echo $question->getPoints(); ?> <?php _e('Points', 'wp-pro-quiz'); ?></span>
-							<div style="clear: both;"></div>
-						</div>		
-					<?php } else { ?>
-						<span>
-							<?php _e('Incorrect', 'wp-pro-quiz'); ?>
-						</span>
-					<?php } ?>
-						<p>
-							<?php 
-							
-								if($question->isCorrectSameText()) {
-									echo do_shortcode(apply_filters('comment_text', $question->getCorrectMsg()));
-								} else {
-									echo do_shortcode(apply_filters('comment_text', $question->getIncorrectMsg())); 
-								}
-							
-							?>
-						</p>
+						<?php } ?>
+							<p>
+								<?php 
+								
+									if($question->isCorrectSameText()) {
+										echo do_shortcode(apply_filters('comment_text', $question->getCorrectMsg()));
+									} else {
+										echo do_shortcode(apply_filters('comment_text', $question->getIncorrectMsg())); 
+									}
+								
+								?>
+							</p>
+						</div>
 					</div>
-				</div>
+				<?php } ?>
 				<div class="wpProQuiz_tipp" style="display: none;">
 					<h3><?php _e('Hint', 'wp-pro-quiz'); ?></h3>
 					<?php 
@@ -325,6 +327,7 @@ jQuery(document).ready(function($) {
 		url: '<?php echo admin_url('admin-ajax.php'); ?>',
 		resultsGrade: <?php echo $resultsProzent; ?>,
 		<?php echo get_option('wpProQuiz_corsActivated') ? 'cors: 1,' : ''; ?>
+		<?php echo $this->quiz->isDisabledAnswerMark() ? 'disabledAnswerMark: 1,' : ''; ?>
 		json: <?php echo $json; ?>
 	});
 });

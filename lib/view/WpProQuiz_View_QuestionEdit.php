@@ -52,33 +52,41 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 						wp_editor($this->question->getQuestion(), "question", array('textarea_rows' => 5));
 					?>
 				</div>
-			</div>	
-			<div class="postbox">
-				<h3 class="hndle"><?php _e('Message with the correct answer', 'wp-pro-quiz'); ?> <?php _e('(optional)', 'wp-pro-quiz'); ?></h3>
+			</div>
+			<div class="postbox" style="<?php echo $this->quiz->isHideAnswerMessageBox() ? '' : 'display: none;'; ?>">
+				<h3 class="hndle"><?php _e('Message with the correct / incorrect answer', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
-					<p class="description">
-						<?php _e('This text will be visible if answered correctly. It can be used as explanation for complex questions. The message "Right" or "Wrong" is always displayed automatically.', 'wp-pro-quiz'); ?>
-					</p>
-					<div style="padding-top: 10px; padding-bottom: 10px;">
-						<label for="wpProQuiz_correctSameText">
-							<?php _e('Same text for correct- and incorrect-message?', 'wp-pro-quiz'); ?>  
-							<input type="checkbox" name="correctSameText" id="wpProQuiz_correctSameText" value="1" <?php echo $this->question->isCorrectSameText() ? 'checked="checked"' : '' ?>>
-						</label>
-					</div>
-					<?php 
-						wp_editor($this->question->getCorrectMsg(), "correctMsg", array('textarea_rows' => 3));
-					?>
+					<?php _e('Deactivated in quiz settings.', 'wp-pro-quiz'); ?>
 				</div>
-			</div>	
-			<div class="postbox" id="wpProQuiz_incorrectMassageBox">
-				<h3 class="hndle"><?php _e('Message with the incorrect answer', 'wp-pro-quiz'); ?> <?php _e('(optional)', 'wp-pro-quiz'); ?></h3>
-				<div class="inside">
-					<p class="description">
-						<?php _e('This text will be visible if answered incorrectly. It can be used as explanation for complex questions. The message "Right" or "Wrong" is always displayed automatically.', 'wp-pro-quiz'); ?>
-					</p>
-					<?php 
-						wp_editor($this->question->getIncorrectMsg(), "incorrectMsg", array('textarea_rows' => 3));
-					?>
+			</div>
+			<div style="<?php echo $this->quiz->isHideAnswerMessageBox() ? 'display: none;' : ''; ?>">
+				<div class="postbox">
+					<h3 class="hndle"><?php _e('Message with the correct answer', 'wp-pro-quiz'); ?> <?php _e('(optional)', 'wp-pro-quiz'); ?></h3>
+					<div class="inside">
+						<p class="description">
+							<?php _e('This text will be visible if answered correctly. It can be used as explanation for complex questions. The message "Right" or "Wrong" is always displayed automatically.', 'wp-pro-quiz'); ?>
+						</p>
+						<div style="padding-top: 10px; padding-bottom: 10px;">
+							<label for="wpProQuiz_correctSameText">
+								<?php _e('Same text for correct- and incorrect-message?', 'wp-pro-quiz'); ?>  
+								<input type="checkbox" name="correctSameText" id="wpProQuiz_correctSameText" value="1" <?php echo $this->question->isCorrectSameText() ? 'checked="checked"' : '' ?>>
+							</label>
+						</div>
+						<?php 
+							wp_editor($this->question->getCorrectMsg(), "correctMsg", array('textarea_rows' => 3));
+						?>
+					</div>
+				</div>	
+				<div class="postbox" id="wpProQuiz_incorrectMassageBox">
+					<h3 class="hndle"><?php _e('Message with the incorrect answer', 'wp-pro-quiz'); ?> <?php _e('(optional)', 'wp-pro-quiz'); ?></h3>
+					<div class="inside">
+						<p class="description">
+							<?php _e('This text will be visible if answered incorrectly. It can be used as explanation for complex questions. The message "Right" or "Wrong" is always displayed automatically.', 'wp-pro-quiz'); ?>
+						</p>
+						<?php 
+							wp_editor($this->question->getIncorrectMsg(), "incorrectMsg", array('textarea_rows' => 3));
+						?>
+					</div>
 				</div>
 			</div>
 			<div class="postbox">
