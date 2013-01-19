@@ -328,7 +328,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 													<?php _e('user identification by cookie', 'wp-pro-quiz'); ?>
 												</label>
 												<p class="description">
-													<?php _e('If you activate this option, a cookie is set additionally for unregistrated (anonymous) users. This ensures a longer assignment of the user than the simple assignment by the IP address.'); ?>
+													<?php _e('If you activate this option, a cookie is set additionally for unregistrated (anonymous) users. This ensures a longer assignment of the user than the simple assignment by the IP address.', 'wp-pro-quiz'); ?>
 												</p>
 											</div>
 											
@@ -336,7 +336,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 												<input class="button-secondary" type="button" name="resetQuizLock" value="<?php _e('Reset the user identification', 'wp-pro-quiz'); ?>">
 												<span id="resetLockMsg" style="display:none; background-color: rgb(255, 255, 173); border: 1px solid rgb(143, 143, 143); padding: 4px; margin-left: 5px; "><?php _e('User identification has been reset.'); ?></span>
 												<p class="description">
-													<?php _e('Resets user identification for all users.'); ?>
+													<?php _e('Resets user identification for all users.', 'wp-pro-quiz'); ?>
 												</p>
 											</div>
 										</div>

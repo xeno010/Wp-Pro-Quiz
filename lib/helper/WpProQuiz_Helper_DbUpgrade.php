@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 14;
+	const WPPROQUIZ_DB_VERSION = 15;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -443,5 +443,15 @@ class WpProQuiz_Helper_DbUpgrade {
 		}
 	
 		return 14;
+	}
+	
+	private function upgradeDbV14() {
+		
+		$this->_wpdb->query('
+			ALTER TABLE `'.$this->_wpdb->prefix.'wp_pro_quiz_question`
+				CHANGE  `sort`  `sort` SMALLINT UNSIGNED NOT NULL 
+		');
+		
+		return 15;
 	}
 }

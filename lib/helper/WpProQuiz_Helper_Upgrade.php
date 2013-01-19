@@ -9,6 +9,7 @@ class WpProQuiz_Helper_Upgrade {
 
 		switch($oldVersion) {
 			case '0.17':
+			case '0.18':
 				break;
 			default:
 				WpProQuiz_Helper_Upgrade::install();

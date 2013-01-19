@@ -246,19 +246,15 @@ jQuery(document).ready(function($) {
 			},
 
 			setValueClassicAnswer: function() {
-				var i = 0;
-				$('input[name="answerJson[classic_answer][correct][]"]').each(function() {
-					this.value = i++;
-				});
 				
-				i = 0;
-				$('input[name="answerJson[answer_matrix_sort][sort_string_html][]"]').each(function() {
-					this.value = i++;
-				});
-				
-				i = 0;
-				$('input[name="answerJson[answer_matrix_sort][answer_html][]"]').each(function() {
-					this.value = i++;
+				$('.classic_answer ul, .matrix_sort_answer ul, .sort_answer ul').children().each(function() {
+					var index = $(this).index();
+					
+					$(this).find( 'input[name="answerJson[classic_answer][correct][]"], '
+								+ 'input[name="answerJson[classic_answer][html][]"], '
+								+ 'input[name="answerJson[answer_matrix_sort][answer_html][]"], '
+								+ 'input[name="answerJson[answer_matrix_sort][sort_string_html][]"], '
+								+ 'input[name="answerJson[answer_sort][html][]"]').val(index);
 				});
 			}
 		};

@@ -119,7 +119,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		foreach($map as $k => $v)
 			$mapper->updateSort($v, $k);
 		
-		die();
+		exit;
 	}
 	
 	public function deleteAction($id) {
@@ -199,7 +199,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		
 		$this->view->quiz = $quizMapper->fetch($this->_quizId);
-
+		
 		if(isset($this->_post['submit'])) {
 			$post = $this->clearPost($this->_post);
 			
@@ -276,7 +276,15 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			if(is_array($v)) {
  				$a[$k] = $this->clear($a[$k]);
 			}
-						
+
+			if(is_string($a[$k])) {
+				$a[$k] = trim($a[$k]);
+
+				if($a[$k] != '') {
+					continue;
+				}
+			}
+			
 			if(empty($a[$k])) {
 				unset($a[$k]);				
 			}

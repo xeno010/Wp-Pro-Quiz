@@ -184,13 +184,12 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		
 		$quiz = $quizMapper->fetch($this->_post['quizId']);
-		
+
 		if($quiz === null || $quiz->getId() <= 0) {
 			exit;
 		}
 
 		if(!$this->isPreLockQuiz($quiz)) {
-			
 			$statistics = new WpProQuiz_Controller_Statistics();
 			$statistics->save();
 			
@@ -219,7 +218,7 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		if(!$lockIp && !$lockCookie) {
 			$statistics = new WpProQuiz_Controller_Statistics();
 			$statistics->save();
-			
+
 			do_action('wp_pro_quiz_completed_quiz');
 
 			if(get_current_user_id() == 0 && $quiz->isQuizRunOnceCookie()) {

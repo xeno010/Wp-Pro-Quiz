@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wp-Pro-Quiz\n"
-"POT-Creation-Date: 2013-01-15 11:34+0100\n"
-"PO-Revision-Date: 2013-01-15 11:34+0100\n"
+"POT-Creation-Date: 2013-01-19 16:11+0100\n"
+"PO-Revision-Date: 2013-01-19 16:11+0100\n"
 "Last-Translator: Julius Fischer <julius.f@gmx.net>\n"
 "Language-Team: Stein Ivar Johnsen\n"
 "Language: Norwegian\n"
@@ -61,7 +61,7 @@ msgstr "Vil du virkelig tilbakestille statistikken?"
 #: lib/controller/WpProQuiz_Controller_Question.php:128
 #: lib/controller/WpProQuiz_Controller_Question.php:143
 #: lib/controller/WpProQuiz_Controller_Question.php:192
-#: lib/controller/WpProQuiz_Controller_Question.php:291
+#: lib/controller/WpProQuiz_Controller_Question.php:299
 #: lib/controller/WpProQuiz_Controller_Quiz.php:55
 #: lib/controller/WpProQuiz_Controller_Quiz.php:69
 #: lib/controller/WpProQuiz_Controller_Quiz.php:114
@@ -514,11 +514,11 @@ msgstr "Vis oppnådde poeng i riktig og feil melding?"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:57
 msgid "Message with the correct / incorrect answer"
-msgstr ""
+msgstr "Melding med riktig / feil svar"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:59
 msgid "Deactivated in quiz settings."
-msgstr ""
+msgstr "Deaktivert i quiz innstillinger."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:64
 msgid "Message with the correct answer"
@@ -962,52 +962,60 @@ msgstr "Tilbakestille brukeridentifikasjon for alle brukere."
 #: lib/view/WpProQuiz_View_QuizEdit.php:348
 #: lib/view/WpProQuiz_View_QuizEdit.php:353
 msgid "Hide correct- and incorrect message"
-msgstr ""
+msgstr "Skjul riktig og feil melding"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:360
 msgid ""
 "If you enable this option, no correct- or incorrect message will be "
 "displayed."
 msgstr ""
+"Hvis du aktiverer dette alternativet, vil ingen riktig-eller feil melding "
+"bli vist."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:373
 #: lib/view/WpProQuiz_View_QuizEdit.php:378
 msgid "Correct and incorrect answer mark"
-msgstr ""
+msgstr "Riktig og feil svar merket"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:385
 msgid ""
 "If you enable this option, answers won't be color highlighted as correct or "
 "incorrect. "
 msgstr ""
+"Hvis du aktiverer dette alternativet, vil svarene ikke være farge fremhevet "
+"som riktig eller gal."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:398
 #: lib/view/WpProQuiz_View_QuizEdit.php:403
 msgid "Show only specific number of questions"
-msgstr ""
+msgstr "Vis bare bestemt antall spørsmål"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:410
 msgid ""
 "If you enable this option, maximum number of displayed questions will be X "
 "from X questions. (The output of questions is random)"
 msgstr ""
+"Hvis du aktiverer dette alternativet, vil maksimalt antall viste spørsmål "
+"være X fra X spørsmål. (Visningen av spørsmålene er tilfeldig)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:413
 msgid "The statistics function is not available in this option."
-msgstr ""
+msgstr "Statistikk funksjonen er ikke tilgjengelig i dette alternativet."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:416
 msgid ""
 "This option doesn't work reliable in connection with Frontend-Cache-Plugins."
 msgstr ""
+"Dette alternativet fungerer ikke pålitelig i forbindelse med Frontend-cache-"
+"Innstikk."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:420
 msgid "How many questions should be displayed simultaneously:"
-msgstr ""
+msgstr "Hvor mange spørsmål som skal vises samtidig:"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:425
 msgid "in percent"
-msgstr ""
+msgstr "i prosent"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:463
 msgid "Quiz description"

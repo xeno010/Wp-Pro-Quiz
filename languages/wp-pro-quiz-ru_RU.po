@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wp-Pro-Quiz\n"
-"POT-Creation-Date: 2013-01-15 11:34+0100\n"
-"PO-Revision-Date: 2013-01-15 11:34+0100\n"
+"POT-Creation-Date: 2013-01-16 15:30+0100\n"
+"PO-Revision-Date: 2013-01-16 15:30+0100\n"
 "Last-Translator: Julius Fischer <julius.f@gmx.net>\n"
 "Language-Team: Sergei Bondarenko\n"
 "Language: Russian\n"
@@ -61,7 +61,7 @@ msgstr "Вы действительно хотите сбросить стати
 #: lib/controller/WpProQuiz_Controller_Question.php:128
 #: lib/controller/WpProQuiz_Controller_Question.php:143
 #: lib/controller/WpProQuiz_Controller_Question.php:192
-#: lib/controller/WpProQuiz_Controller_Question.php:291
+#: lib/controller/WpProQuiz_Controller_Question.php:299
 #: lib/controller/WpProQuiz_Controller_Quiz.php:55
 #: lib/controller/WpProQuiz_Controller_Quiz.php:69
 #: lib/controller/WpProQuiz_Controller_Quiz.php:114
@@ -197,7 +197,7 @@ msgstr "Показать вопросы"
 #: lib/view/WpProQuiz_View_QuizEdit.php:132
 #: lib/view/WpProQuiz_View_QuizEdit.php:137
 msgid "Time limit"
-msgstr "Осталось"
+msgstr "Лимит времени"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:141
 #, php-format
@@ -208,7 +208,7 @@ msgstr "Вопрос %s из %s"
 #: lib/view/WpProQuiz_View_QuestionEdit.php:49
 #: lib/view/WpProQuiz_View_Statistics.php:53
 msgid "Question"
-msgstr "Вопрос:"
+msgstr "Вопрос"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:148
 #, php-format
@@ -372,7 +372,7 @@ msgid ""
 "If you activate this option, all WpProQuiz-Javascript files are loaded in "
 "the header even if they are not needed."
 msgstr ""
-"Если вы включите эту опцию, все WpProQuiz-Javascript файлы будут загружены в "
+"Если Вы включите эту опцию, все WpProQuiz-Javascript файлы будут загружены в "
 "заголовок страницы, даже если они не нужны."
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:74
@@ -418,7 +418,7 @@ msgstr "Пожалуйста, активируйте при проблеммах
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:123
 msgid "e.g. Domain with special characters in combination with IE"
-msgstr "например домен со специальными символами в сочетании с IE"
+msgstr "Например домен со специальными символами в сочетании с IE"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:132
 #: lib/view/WpProQuiz_View_QuestionEdit.php:381
@@ -513,11 +513,11 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:57
 msgid "Message with the correct / incorrect answer"
-msgstr ""
+msgstr "Сообщение для правильного / неправильного ответа"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:59
 msgid "Deactivated in quiz settings."
-msgstr ""
+msgstr "Отключено в настройках теста."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:64
 msgid "Message with the correct answer"
@@ -675,7 +675,6 @@ msgid "Criterion"
 msgstr "Критерий"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:372
-#, fuzzy
 msgid ""
 "Enclose the searched words with { } e.g. \"I {play} soccer\". Capital and "
 "small letters will be ignored."
@@ -964,52 +963,58 @@ msgstr "Сбросить идентификацию для всех пользо
 #: lib/view/WpProQuiz_View_QuizEdit.php:348
 #: lib/view/WpProQuiz_View_QuizEdit.php:353
 msgid "Hide correct- and incorrect message"
-msgstr ""
+msgstr "Спрятать сообщения \"Правильно \" и \"Неправильно\""
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:360
 msgid ""
 "If you enable this option, no correct- or incorrect message will be "
 "displayed."
 msgstr ""
+"Если Вы включите эту опцию, то не будет сообщений для правильного или "
+"неправильного ответов."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:373
 #: lib/view/WpProQuiz_View_QuizEdit.php:378
 msgid "Correct and incorrect answer mark"
-msgstr ""
+msgstr "Цветовое выделение для правильного и неправильного ответов"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:385
 msgid ""
 "If you enable this option, answers won't be color highlighted as correct or "
 "incorrect. "
 msgstr ""
+"Если Вы включите эту опцию, ответы не будут выделены цветом, как правильные "
+"или неправильные."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:398
 #: lib/view/WpProQuiz_View_QuizEdit.php:403
 msgid "Show only specific number of questions"
-msgstr ""
+msgstr "Показывать только определенное количество вопросов"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:410
 msgid ""
 "If you enable this option, maximum number of displayed questions will be X "
 "from X questions. (The output of questions is random)"
 msgstr ""
+"Если Вы включите эту опцию, максимальное количество отображаемых вопросов "
+"будет X из X. (Вывод  случайным образом)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:413
 msgid "The statistics function is not available in this option."
-msgstr ""
+msgstr "Статистика недоступна с данной опцией"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:416
 msgid ""
 "This option doesn't work reliable in connection with Frontend-Cache-Plugins."
-msgstr ""
+msgstr "Эта опция работает ненадежно с кеширующими плагинами."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:420
 msgid "How many questions should be displayed simultaneously:"
-msgstr ""
+msgstr "Сколько вопросов должно быть показано:"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:425
 msgid "in percent"
-msgstr ""
+msgstr "в процентах"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:463
 msgid "Quiz description"
@@ -1071,7 +1076,7 @@ msgstr "процент"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:511
 #: lib/view/WpProQuiz_View_QuizEdit.php:522
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "(Will be displayed, when result-percent is >= <span class=\"resultProzent\">"
 "%s</span>%%)"
@@ -1163,9 +1168,8 @@ msgid "Anonymous users"
 msgstr "Анонимный пользователь"
 
 #: lib/view/WpProQuiz_View_Statistics.php:28
-#, fuzzy
 msgid "Registered users"
-msgstr "Зарегистрированный пользователь"
+msgstr "Зарегистрированные пользователи"
 
 #: lib/view/WpProQuiz_View_Statistics.php:29
 msgid "Overview"
