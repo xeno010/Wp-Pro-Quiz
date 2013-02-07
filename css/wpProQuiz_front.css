@@ -18,8 +18,10 @@
 .wpProQuiz_content h2 {
 	margin-bottom: 10px !important;
 }
-
-.wpProQuiz_content input[type="button"], .wpProQuiz_content input[type="button"]:hover {
+*+html .wpProQuiz_button, *+html .wpProQuiz_button:hover {
+	padding: 3px 0px !important;
+}
+.wpProQuiz_button, .wpProQuiz_button:hover {
 	margin: 0 !important;
 	padding: 5px 10px !important;
 	background: #13455B !important;
@@ -40,6 +42,11 @@
 	font-weight: bold !important;
 }
 
+.wpProQuiz_questionListItem:last-child, .wpProQuiz_questionListItemLastChildIE {
+	padding: 3px !important;
+	margin-bottom: 0 !important;
+}
+
 .wpProQuiz_questionListItem {
 	padding: 3px !important;
 	margin-bottom: 5px !important;
@@ -53,11 +60,6 @@
 	margin: 0 !important;
 	padding: 0 !important;
 	width: 100%;
-}
-
-.wpProQuiz_questionListItem:last-child {
-	padding: 3px !important;
-	margin-bottom: 0 !important;
 }
 
 .wpProQuiz_list, .wpProQuiz_listItem, .wpProQuiz_questionList, .wpProQuiz_sortStringList, .wpProQuiz_sortStringList, .wpProQuiz_maxtrixSortCriterion, .wpProQuiz_resultsList {
@@ -108,7 +110,7 @@
 	margin-top: 5px !important;
 	margin-bottom: 5px !important;
 }
-.wpProQuiz_time_limit .progress {
+.wpProQuiz_time_limit .wpProQuiz_progress {
 	height: 10px !important;
 	background-color: blue !important;
 	margin-bottom: 5px !important;
@@ -121,13 +123,13 @@
 .wpProQuiz_question_text {
 	margin-bottom: 10px !important;
 }
-.wpProQuiz_tipp {
+.wpProQuiz_tipp > div {
 	padding: 10px !important;
 	background-color: #DDECFF !important;
 	border: 1px dotted #363636 !important;
 	border-radius: 10px !important;
 	position: absolute !important;
-	bottom: 35px !important;
+	bottom: 5px !important;
 	left: 5px !important;
 	right: 5px !important;
 	box-shadow: 2px 2px 5px 0px #313131 !important;
@@ -204,10 +206,93 @@
 	padding: 0 !important;
 	margin: 0 !important;	
 }
-.wpProQuiz_lock {
+.wpProQuiz_lock, .wpProQuiz_prerequisite {
 	border: 1px dotted #FFC3C3 !important;
 	background-color: #FFF7F7 !important;
 }
-.wpProQuiz_lock p {
+.wpProQuiz_lock p, .wpProQuiz_prerequisite p {
 	margin: 20px !important;
+	font-weight: bold !important;
+}
+.wpProQuiz_toplistTable {
+	width: 100% !important;
+	border: 1px solid #C3D1A3 !important;
+	border-collapse: collapse !important;
+}
+.wpProQuiz_toplistTable caption {
+	caption-side:top !important; 
+	text-align: right !important;
+	padding-bottom: 2px !important;
+	color: gray !important;
+	margin: 0 !important;
+	font-size: 11px !important;
+}
+.wpProQuiz_toplistTable thead tr {
+	background-color: rgb(155,187,89) !important; 
+	padding: 5px !important; 
+	color: white !important; 
+	font-weight: bold !important; 
+}
+.wpProQuiz_toplistTable tbody td:FIRST-CHILD{
+	font-weight: bold !important;
+}
+.wpProQuiz_toplistTable td, .wpProQuiz_toplistTable th {
+	padding: 5px !important;
+	text-align: center;
+}
+.wpProQuiz_toplistTrOdd {
+	 background-color: #EBF1DE !important; 
+}
+.wpProQuiz_addToplist {
+	margin-top: 10px !important;
+	background-color: #F5FAEA !important;
+	padding: 10px !important;
+	border: 1px solid #C3D1A3 !important;
+}
+.wpProQuiz_addToplistMessage {
+	border: 1px solid rgb(160, 160, 160) !important; 
+	background-color: #FCFFB3 !important; 
+	margin-bottom: 5px !important;
+	border-radius: 5px !important;
+	padding: 5px !important;
+	font-weight: bold !important;
+	color: dimGray !important;
+}
+.wpProQuiz_toplistButton, .wpProQuiz_toplistButton:hover {
+	background-color: lightGrey !important;
+	border: 1px solid rgb(194, 194, 194) !important;
+	text-shadow: 1px 1px 1px white !important;
+	margin-top: 5px !important;
+	color: black !important;
+}
+.wpProQuiz_resultTable {
+	 margin: 15px auto !important;
+	 width: 400px !important;
+	 border: 1px solid #C4C4C4 !important;
+	 padding: 15px !important;
+	 font-weight: bold !important; 
+}
+.wpProQuiz_resultTable table {
+	width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+}
+.wpProQuiz_resultName {
+	width: 100px !important;
+    border-right: 1px solid rgb(134, 134, 134) !important;
+    padding: 10px 0px !important;
+}
+.wpProQuiz_resultValue {
+	padding: 0 !important;
+}
+.wpProQuiz_resultValue div {
+    color: black !important;
+    text-align: right !important;
+    box-shadow: 1px 1px 3px 1px #C4C4C4 !important;
+    display: inline-block !important;
+    height: 18px  !important;
+    zoom: 1 !important;
+    *display: inline !important;
+    margin-right: 3px !important;
+    vertical-align: middle !important;
 }

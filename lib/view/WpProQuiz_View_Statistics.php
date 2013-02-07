@@ -73,8 +73,8 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 					<th class="wpProQuiz_cCorrect" style="color: green;"></th>
 					<th class="wpProQuiz_cIncorrect" style="color: red;"></th>
 					<th class="wpProQuiz_cTip"></th>
-					<th class="wpProQuiz_cCorrectAnswerPoints"></th>
-					<th><span style="display: none;" class="wpProQuiz_pointsAnswer"><?php echo $question->getPointsAnswer(); ?></span></th>
+					<th class="wpProQuiz_cPoints"></th>
+					<th></th>
 				</tr>
 			<?php } ?>
 			</tbody>
@@ -86,7 +86,7 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 					<th class="wpProQuiz_cCorrect" style="color: green;"></th>
 					<th class="wpProQuiz_cIncorrect" style="color: red;"></th>
 					<th class="wpProQuiz_cTip"></th>
-					<th class="wpProQuiz_cCorrectAnswerPoints"></th>
+					<th class="wpProQuiz_cPoints"></th>
 					<th class="wpProQuiz_cResult" style="font-weight: bold;"></th>
 				</tr>
 			</tfoot>

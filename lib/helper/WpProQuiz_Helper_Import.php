@@ -40,6 +40,11 @@ class WpProQuiz_Helper_Import {
 			$this->setError(__('File have wrong format', 'wp-pro-quiz'));			
 			return false;
 		}
+		
+		if($v2 < 3) {
+			$this->setError(__('File is not compatible with the current version'));
+			return false;
+		}
 	
 		return true;
 	}
@@ -84,14 +89,15 @@ class WpProQuiz_Helper_Import {
 		}
 		
 		switch($data['exportVersion']) {
-			case '1':
-			case '2':
-				return $this->importDataV1($data, $ids, $data['exportVersion']);
+			case '3':
+				return $this->importData($data, $ids);
 				break;
 		}
+		
+		return false;
 	}
 	
-	private function importDataV1($o, $ids = false, $version = '1') {
+	private function importData($o, $ids = false, $version = '1') {
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
 
@@ -120,11 +126,7 @@ class WpProQuiz_Helper_Import {
 				
 				$question->setQuizId($master->getId());
 				$question->setId(0);
-				
-				if($version == '1') {
-					$question->setPointsAnswer($question->getPoints());
-				}
-				
+								
 				$questionMapper->save($question);
 			}		
 		}

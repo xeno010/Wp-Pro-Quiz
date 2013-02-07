@@ -26,6 +26,126 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		}
 	}
 	
+	public function checkLock() {
+		
+		
+		if($userId > 0) {
+			$quizIds = $prerequisiteMapper->getNoPrerequisite($quizId, $userId);
+		} else {
+			$checkIds = $prerequisiteMapper->fetchQuizIds($quizId);
+			
+			if(isset($this->_post['wpProQuiz_result'])) {
+				$r = json_encode($this->_post['wpProQuiz_result'], true);
+				
+				if($r !== null && is_array($r)) {
+					foreach($checkIds as $id) {
+						if(!isset($r[$id]) || !$r[$id]) {
+							$quizIds[] = $id;
+						}
+					}					
+				}
+			} else {
+				$quizIds = $checkIds;
+			}
+		}
+		
+		$names = $quizMapper->fetchCol($quizIds, 'name');
+		
+	}
+	
+	public function isLockQuiz($quizId) {
+		$quizId = (int)$this->_post['quizId'];
+		$userId = get_current_user_id();
+		$data = array();
+		
+		$lockMapper = new WpProQuiz_Model_LockMapper();
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		$prerequisiteMapper = new WpProQuiz_Model_PrerequisiteMapper();
+	
+		$quiz = $quizMapper->fetch($this->_post['quizId']);
+	
+		if($quiz === null || $quiz->getId() <= 0) {
+			return null;
+		}
+	
+		if($this->isPreLockQuiz($quiz)) {
+			$lockIp = $lockMapper->isLock($this->_post['quizId'], $this->getIp(), $userId, WpProQuiz_Model_Lock::TYPE_QUIZ);
+			$lockCookie = false;
+			$cookieTime = $quiz->getQuizRunOnceTime();
+				
+			if(isset($this->_cookie['wpProQuiz_lock']) && $userId == 0 && $quiz->isQuizRunOnceCookie()) {
+				$cookieJson = json_decode($this->_cookie['wpProQuiz_lock'], true);
+					
+				if($cookieJson !== false) {
+					if(isset($cookieJson[$this->_post['quizId']]) && $cookieJson[$this->_post['quizId']] == $cookieTime) {
+						$lockCookie = true;
+					}
+				}
+			}
+			
+			$data['lock'] = array(
+				'is' => ($lockIp || $lockCookie), 
+				'pre' => true
+			);
+		}
+	
+		if($quiz->isPrerequisite()) {
+			$quizIds = array();
+			
+			if($userId > 0) {
+				$quizIds = $prerequisiteMapper->getNoPrerequisite($quizId, $userId);
+			} else {
+				$checkIds = $prerequisiteMapper->fetchQuizIds($quizId);
+					
+				if(isset($this->_cookie['wpProQuiz_result'])) {
+					$r = json_decode($this->_cookie['wpProQuiz_result'], true);
+
+					if($r !== null && is_array($r)) {
+						foreach($checkIds as $id) {
+							if(!isset($r[$id]) || !$r[$id]) {
+								$quizIds[] = $id;
+							}
+						}
+					}
+				} else {
+					$quizIds = $checkIds;
+				}
+			}
+			
+			if(!empty($quizIds)) {
+				$names = $quizMapper->fetchCol($quizIds, 'name');
+				
+				if(!empty($names)) {
+					$data['prerequisite'] = implode(', ', $names);
+				}
+			}
+			
+		}
+		
+		return $data;
+	}
+	
+	public function loadQuizData() {
+		$quizId = (int)$_POST['quizId'];
+		$userId = get_current_user_id();
+		
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		$toplistController = new WpProQuiz_Controller_Toplist();
+		$statisticController = new WpProQuiz_Controller_Statistics();
+		
+		$quiz = $quizMapper->fetch($quizId);
+		$data = array();
+		
+		if($quiz === null || $quiz->getId() <= 0) {
+			return array();
+		}
+			
+		$data['toplist'] = $toplistController->getAddToplist($quiz);
+		$data['averageResult'] = $statisticController->getAverageResult($quizId);
+		
+		return $data;
+	}
+	
 	private function resetLock($quizId) {
 		
 		if(!current_user_can('wpProQuiz_edit_quiz')) {
@@ -69,6 +189,9 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			wp_die(__('You do not have sufficient permissions to access this page.'));
 		}
 		
+		$prerequisiteMapper = new WpProQuiz_Model_PrerequisiteMapper();
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		
 		$this->view = new WpProQuiz_View_QuizEdit();
 		$this->view->header = __('Edit quiz', 'wp-pro-quiz');
 		
@@ -84,16 +207,24 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			if(isset($this->_post['resultGradeEnabled'])) {
 				$this->_post['result_text'] = $this->filterResultTextGrade($this->_post);
 			}
-						
-			$this->view->quiz = new WpProQuiz_Model_Quiz($this->_post);
-			$this->view->quiz->setId($id);
+			
+			$quiz = new WpProQuiz_Model_Quiz($this->_post);
+			$quiz->setId($id);
 					
 			if($this->checkValidit($this->_post)) {
 				
 				WpProQuiz_View_View::admin_notices(__('Quiz edited', 'wp-pro-quiz'), 'info');
 				
-				$this->view->quiz->getMapper()->save($this->view->quiz);
+				$prerequisiteMapper = new WpProQuiz_Model_PrerequisiteMapper();
 				
+				$prerequisiteMapper->delete($id);
+				
+				if($quiz->isPrerequisite() && !empty($this->_post['prerequisiteList'])) {
+					$prerequisiteMapper->save($id, $this->_post['prerequisiteList']);
+					$quizMapper->activateStatitic($this->_post['prerequisiteList'], 1440);
+				}
+				
+				$quizMapper->save($quiz);
 				
 				$this->showAction();
 				
@@ -102,9 +233,13 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 				WpProQuiz_View_View::admin_notices(__('Quiz title or quiz description are not filled', 'wp-pro-quiz'));
 			}
 		} else {
-			$this->view->quiz = $m->fetch($id);
+			$quiz = $m->fetch($id);
 		}
 		
+		$this->view->quiz = $quiz;
+		$this->view->prerequisiteQuizList = $prerequisiteMapper->fetchQuizIds($id);
+		$this->view->quizList = $m->fetchAllAsArray(array('id', 'name'), array($id));
+		$this->view->captchaIsInstalled = class_exists('ReallySimpleCaptcha');
 		$this->view->show();
 	}
 	
@@ -117,27 +252,42 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		$this->view = new WpProQuiz_View_QuizEdit();
 		$this->view->header = __('Create quiz', 'wp-pro-quiz');
 		
+		$m = new WpProQuiz_Model_QuizMapper();
+		
 		if(isset($this->_post['submit'])) {
 			
 			if(isset($this->_post['resultGradeEnabled'])) {
 				$this->_post['result_text'] = $this->filterResultTextGrade($this->_post);
 			}
 			
-			$this->view->quiz = new WpProQuiz_Model_Quiz($this->_post);
+			$quiz = new WpProQuiz_Model_Quiz($this->_post);
+			$quizMapper = new WpProQuiz_Model_QuizMapper();
 			
 			if($this->checkValidit($this->_post)) {
 				WpProQuiz_View_View::admin_notices(__('Create quiz', 'wp-pro-quiz'), 'info');
-				$this->view->quiz->getMapper()->save($this->view->quiz);
+				$quizMapper->save($quiz);
+				
+				$id = $quizMapper->getInsertId();
+				$prerequisiteMapper = new WpProQuiz_Model_PrerequisiteMapper();
+				
+				if($quiz->isPrerequisite() && !empty($this->_post['prerequisiteList'])) {
+					$prerequisiteMapper->save($id, $this->_post['prerequisiteList']);
+					$quizMapper->activateStatitic($this->_post['prerequisiteList'], 1440);
+				}
+				
 				$this->showAction();
 				return;
 			} else {
-				//add_action('admin_notices', array('WpProQuiz_View_View', 'admin_notices'));
 				WpProQuiz_View_View::admin_notices(__('Quiz title or quiz description are not filled', 'wp-pro-quiz'));
 			}
 		} else {
-			$this->view->quiz = new WpProQuiz_Model_Quiz();
+			$quiz = new WpProQuiz_Model_Quiz();
 		}
 		
+		$this->view->quiz = $quiz;
+		$this->view->prerequisiteQuizList = array();
+		$this->view->quizList = $m->fetchAllAsArray(array('id', 'name'));
+		$this->view->captchaIsInstalled = class_exists('ReallySimpleCaptcha');
 		$this->view->show();
 	}
 	
@@ -151,11 +301,15 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		$qm = new WpProQuiz_Model_QuestionMapper();
 		$lm = new WpProQuiz_Model_LockMapper();
 		$sm = new WpProQuiz_Model_StatisticMapper();
+		$pm = new WpProQuiz_Model_PrerequisiteMapper();
+		$tm = new WpProQuiz_Model_ToplistMapper();
 		
 		$m->delete($id);
 		$qm->deleteByQuizId($id);
 		$lm->deleteByQuizId($id);
 		$sm->deleteByQuiz($id);
+		$pm->delete($id);
+		$tm->delete($id);
 		
 		WpProQuiz_View_View::admin_notices(__('Quiz deleted', 'wp-pro-quiz'), 'info');
 		
@@ -174,14 +328,37 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			$result['text'][] = $post['resultTextGrade']['text'][$k];
 			$result['prozent'][] = (float)str_replace(',', '.', $post['resultTextGrade']['prozent'][$k]);
 		}
-		
+
 		return $result;				
+	}
+	
+	private function setResultCookie(WpProQuiz_Model_Quiz $quiz) {
+		$prerequisite = new WpProQuiz_Model_PrerequisiteMapper();
+		
+		if(get_current_user_id() == 0 && $prerequisite->isQuizId($quiz->getId())) {
+			$cookieData = array();
+			
+			if(isset($this->_cookie['wpProQuiz_result'])) {
+				$d = json_decode($this->_cookie['wpProQuiz_result'], true);
+				
+				if($d !== null && is_array($d)) {
+					$cookieData = $d;
+				}
+			}
+			
+			$cookieData[$quiz->getId()] = 1;
+			
+			$url = parse_url(get_bloginfo( 'url' ));
+		
+			setcookie('wpProQuiz_result', json_encode($cookieData), time() + 60*60*24*300, empty($url['path']) ? '/' : $url['path']);
+		}
 	}
 	
 	public function completedQuiz() {
 		
 		$lockMapper = new WpProQuiz_Model_LockMapper();
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		$userId = get_current_user_id();
 		
 		$quiz = $quizMapper->fetch($this->_post['quizId']);
 
@@ -189,6 +366,8 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			exit;
 		}
 
+		$this->setResultCookie($quiz);
+		
 		if(!$this->isPreLockQuiz($quiz)) {
 			$statistics = new WpProQuiz_Controller_Statistics();
 			$statistics->save();
@@ -208,7 +387,7 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		if(isset($this->_cookie['wpProQuiz_lock']) && get_current_user_id() == 0 && $quiz->isQuizRunOnceCookie()) {
 			$cookieJson = json_decode($this->_cookie['wpProQuiz_lock'], true);
 			
-			if($cookieJson !== false) {
+			if($cookieJson !== false) { 
 				if(isset($cookieJson[$this->_post['quizId']]) && $cookieJson[$this->_post['quizId']] == $cookieTime) {
 					$lockCookie = true;
 				}
@@ -265,36 +444,7 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		return false;
 	}
 	
-	public function isLockQuiz($quizId) {
-		$lockMapper = new WpProQuiz_Model_LockMapper();
-		$quizMapper = new WpProQuiz_Model_QuizMapper();
-		
-		$quiz = $quizMapper->fetch($this->_post['quizId']);
-		
-		if($quiz === null || $quiz->getId() <= 0) {
-			return array('is' => true, 'pre' => true);
-		}
-		
-		if($this->isPreLockQuiz($quiz)) {
-			$lockIp = $lockMapper->isLock($this->_post['quizId'], $this->getIp(), get_current_user_id(), WpProQuiz_Model_Lock::TYPE_QUIZ);
-			$lockCookie = false;
-			$cookieTime = $quiz->getQuizRunOnceTime();
-			
-			if(isset($this->_cookie['wpProQuiz_lock']) && get_current_user_id() == 0 && $quiz->isQuizRunOnceCookie()) {
-				$cookieJson = json_decode($this->_cookie['wpProQuiz_lock'], true);
-					
-				if($cookieJson !== false) {
-					if(isset($cookieJson[$this->_post['quizId']]) && $cookieJson[$this->_post['quizId']] == $cookieTime) {
-						$lockCookie = true;
-					}
-				}
-			}
-			
-			return array('is' => ($lockIp || $lockCookie), 'pre' => true);
-		}
-		
-		return array('is' => false, 'pre' => false);
-	}
+	
 	
 	private function getIp() {
 		if(get_current_user_id() > 0)

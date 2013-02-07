@@ -11,6 +11,7 @@ class WpProQuiz_Controller_Front {
 				
 		add_action('wp_enqueue_scripts', array($this, 'loadDefaultScripts'));
 		add_shortcode('WpProQuiz', array($this, 'shortcode'));
+		add_shortcode('WpProQuiz_toplist', array($this, 'shortcodeToplist'));
 	}
 	
 	public function loadDefaultScripts() {
@@ -24,18 +25,38 @@ class WpProQuiz_Controller_Front {
 		);
 		
 		if($this->_settings->isJsLoadInHead()) {
-			$this->loadJsScripts(false);
+			$this->loadJsScripts(false, true, true);
 		}
 	}
 	
-	private function loadJsScripts($footer = true) {
-		wp_enqueue_script(
-			'wpProQuiz_front_javascript',
-			plugins_url('js/wpProQuiz_front.min.js', WPPROQUIZ_FILE),
-			array('jquery-ui-sortable'),
-			WPPROQUIZ_VERSION,
-			$footer
-		);
+	private function loadJsScripts($footer = true, $quiz = true, $toplist = false) {
+		if($quiz) {
+			wp_enqueue_script(
+				'wpProQuiz_front_javascript',
+				plugins_url('js/wpProQuiz_front.min.js', WPPROQUIZ_FILE),
+				array('jquery-ui-sortable'),
+				WPPROQUIZ_VERSION,
+				$footer
+			);
+			
+			wp_localize_script('wpProQuiz_front_javascript', 'WpProQuizGlobal', array(
+				'ajaxurl' => admin_url('admin-ajax.php'),
+				'loadData' => __('Loading', 'wp-pro-quiz')
+			));
+		}
+		
+		if($toplist) {
+			wp_enqueue_script(
+				'wpProQuiz_front_javascript_toplist',
+				plugins_url('js/wpProQuiz_toplist.min.js', WPPROQUIZ_FILE),
+				array('jquery-ui-sortable'),
+				WPPROQUIZ_VERSION,
+				$footer
+			);
+			
+			if(!wp_script_is('wpProQuiz_front_javascript'))
+				wp_localize_script('wpProQuiz_front_javascript_toplist', 'WpProQuizGlobal', array('ajaxurl' => admin_url('admin-ajax.php')));
+		}
 		
 		if(!$this->_settings->isTouchLibraryDeactivate()) {
 			wp_enqueue_script(
@@ -107,6 +128,48 @@ class WpProQuiz_Controller_Front {
 		$view->question = $question;
 		
 		$view->show();		
+	}
+	
+	public function shortcodeToplist($attr) {
+		$id = $attr[0];
+		$content = '';
+
+		if(!$this->_settings->isJsLoadInHead()) {
+			$this->loadJsScripts(true, false, true);
+		}
+		
+		if(is_numeric($id)) {
+			ob_start();
+			
+			$this->handleShortCodeToplist($id, isset($attr['q']));
+				
+			$content = ob_get_contents();
+				
+			ob_end_clean();
+		}
+		
+		if($this->_settings->isAddRawShortcode() && !isset($attr['q'])) {
+			return '[raw]'.$content.'[/raw]';
+		}
+		
+		return $content;
+	}
+	
+	private function handleShortCodeToplist($quizId, $inQuiz = false) {
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		$view = new WpProQuiz_View_FrontToplist();
+		
+		$quiz = $quizMapper->fetch($quizId);
+		
+		if($quiz->getId() <= 0 || !$quiz->isToplistActivated()) {
+			echo '';
+			return;
+		}
+		
+		$view->quiz = $quiz;
+		$view->points = $quizMapper->sumQuestionPoints($quizId);
+		$view->inQuiz = $inQuiz;
+		$view->show();
 	}
 	
 	private function loadSettings() {

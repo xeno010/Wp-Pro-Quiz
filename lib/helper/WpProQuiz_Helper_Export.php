@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_Export {
 	
-	const WPPROQUIZ_EXPORT_VERSION = 2;
+	const WPPROQUIZ_EXPORT_VERSION = 3;
 	
 	public function export($ids) {
 		$export = array();

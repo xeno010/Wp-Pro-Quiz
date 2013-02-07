@@ -1,9 +1,10 @@
 === Wp-Pro-Quiz ===
 Contributors: xeno010
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N9B7S4FT8CE2N
 Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 0.18
+Tested up to: 3.5.1
+Stable tag: 0.19
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,9 +29,12 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Back-Button (optional)	
 *		Correct / incorrect response message for all questions (optional)
 *		Different valency for every question (optional)
+*		Different points for each answer
 *		Result text with gradations (optional)
 *		Preview-function
 *		Statistics
+*		Leaderboard
+*		Quiz requirements
 *		Hints
 *		Import / Export function
 *		Many configuration options
@@ -51,7 +55,7 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 
 = Special =
 * Support for "User Role Editor" etc.
-* Support for BodyPress achievements 2.x.x
+* Support for BuddyPress achievements 2.x.x
 
 = Support = 
 * English: http://wordpress.org/support/plugin/wp-pro-quiz
@@ -69,11 +73,13 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 3. Quiz demo - Multimedia
 4. Quiz demo - Results
 5. Quiz demo2 - Time limit and back button
-6. Adminmenu - Quiz overview
-7. Adminmenu - Create quiz
-8. Adminmenu - Quiz question overview
-9. Adminmenu - Create question
-10. Adminmenu - Question statistics
+6. Quiz demo - Leadboard
+7. Quiz demo - Average score
+8. Adminmenu - Quiz overview
+9. Adminmenu - Create quiz
+10. Adminmenu - Quiz question overview
+11. Adminmenu - Create question
+12. Adminmenu - Question statistics
 
 == Changelog ==
 
@@ -174,3 +180,15 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * Database: "sort" change to SMALLINT
 * Updated Norwegian translation
 * Updated Russian translation
+
+= 0.19 =
+* Leaderboard added
+* Quiz requirements added
+* Different points for each answer
+* "Matrix Sort" sort elements can now be created without criteria
+* Front-End javascript completely rewritten
+* Admin javascript revised
+* Average score can now be displayed in quiz
+* Cloze: different points can be assigned for every gap
+* Very many internal changes
+* several bugfixes

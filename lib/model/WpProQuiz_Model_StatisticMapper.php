@@ -40,12 +40,10 @@ class WpProQuiz_Model_StatisticMapper extends WpProQuiz_Model_Mapper {
 						SUM(s.`correct_count`) as correct_count,
 						SUM(s.`incorrect_count`) as incorrect_count,
 						SUM(s.`hint_count`) as hint_count,
-						SUM(q.`points_answer` * s.`correct_answer_count`) as points,
-						SUM(q.`points` * (s.`correct_count` + s.`incorrect_count`)) as total_points
+						SUM(s.`points`) as points
 					FROM 
 						`'.$this->_wpdb->users.'` AS u
 						'.($onlyCompleded ? 'INNER' : 'LEFT').' JOIN `'.$this->_tableStatistic.'` AS s ON ( s.user_id = u.ID AND s.`quiz_id` = %d )
-						LEFT JOIN `'.$this->_tableQuestion.'` AS q ON ( q.id = s.`question_id` )
 					GROUP BY u.ID 
 					ORDER BY u.`user_login`  
 					LIMIT %d , %d';
@@ -65,6 +63,20 @@ class WpProQuiz_Model_StatisticMapper extends WpProQuiz_Model_Mapper {
 		
 		return $a;	
 			
+	}
+	
+	public function fetchByQuiz($quizId) {
+		$sql = 'SELECT
+					(SUM(`correct_count`) + SUM(`incorrect_count`)) as count,
+					SUM(`points`) as points 
+				FROM 
+					'.$this->_tableStatistic.' 
+				WHERE 
+					quiz_id = %d';
+		
+		return $this->_wpdb->get_row(
+			$this->_wpdb->prepare($sql, $quizId),
+			ARRAY_A);
 	}
 	
 	public function countOverview($quizId, $onlyCompleded) {
@@ -109,6 +121,37 @@ class WpProQuiz_Model_StatisticMapper extends WpProQuiz_Model_Mapper {
 		return $this->_wpdb->delete($this->_tableStatistic, array('question_id' => $questionId), array('%d'));
 	}
 	
+	public function save($s) {
+		$values = array();
+		
+		foreach($s as $d) {
+			$values[] = '( '.implode(', ', array(
+				'quiz_id' => $d->getQuizId(),
+				'question_id' => $d->getQuestionId(),
+				'user_id' => $d->getUserId(),
+				'correct_count' => $d->getCorrectCount(),
+				'incorrect_count' => $d->getIncorrectCount(),
+				'hint_count' => $d->getHintCount(),
+				'points' => $d->getPoints()
+			)).' )';
+		}
+		
+		$this->_wpdb->query(
+			'INSERT INTO
+				'.$this->_tableStatistic.' (
+					quiz_id, question_id, user_id, correct_count, incorrect_count, hint_count, points
+				)
+			VALUES
+				'.implode(', ', $values).'
+  			ON DUPLICATE KEY UPDATE
+				correct_count =  correct_count + VALUES(correct_count),
+				incorrect_count =  incorrect_count + VALUES(incorrect_count),
+				hint_count =  hint_count + VALUES(hint_count),
+				points =  points + VALUES(points)'
+		);
+	}
+	
+	/*
 	public function save($quizId, $userId, $array) {
 		$ids = $this->_wpdb->get_col($this->_wpdb->prepare("SELECT id FROM {$this->_tableQuestion} WHERE quiz_id = %d", $quizId));
 	
@@ -161,4 +204,5 @@ class WpProQuiz_Model_StatisticMapper extends WpProQuiz_Model_Mapper {
 				correct_answer_count = correct_answer_count + VALUES(correct_answer_count)'
 		);
 	}
+	*/
 }

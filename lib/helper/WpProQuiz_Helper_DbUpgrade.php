@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 15;
+	const WPPROQUIZ_DB_VERSION = 16;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -42,6 +42,8 @@ class WpProQuiz_Helper_DbUpgrade {
 		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_question`');
 		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_lock`');
 		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_statistic`');
+		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_toplist`');
+		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_prerequisite`');
 	}
 	
 	private function install() {
@@ -129,6 +131,29 @@ class WpProQuiz_Helper_DbUpgrade {
 				  `correct_answer_count` int(10) unsigned NOT NULL,
 				  PRIMARY KEY (`quiz_id`,`question_id`,`user_id`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+		');
+		
+		$this->_wpdb->query('
+			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_prerequisite` (
+			 	`prerequisite_quiz_id` int(11) NOT NULL,
+			 	`quiz_id` int(11) NOT NULL,
+			  	PRIMARY KEY (`prerequisite_quiz_id`,`quiz_id`)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+		');
+		
+		$this->_wpdb->query('
+			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_toplist` (
+				  `toplist_id` int(11) NOT NULL AUTO_INCREMENT,
+				  `quiz_id` int(11) NOT NULL,
+				  `date` int(10) unsigned NOT NULL,
+				  `user_id` bigint(20) unsigned NOT NULL,
+				  `name` varchar(30) NOT NULL,
+				  `email` varchar(200) NOT NULL,
+				  `points` int(10) unsigned NOT NULL,
+				  `result` float unsigned NOT NULL,
+				  `ip` varchar(100) NOT NULL,
+				  PRIMARY KEY (`toplist_id`,`quiz_id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		');
 	}
 	
@@ -453,5 +478,185 @@ class WpProQuiz_Helper_DbUpgrade {
 		');
 		
 		return 15;
+	}
+	
+	private function upgradeDbV15() {
+		
+		$this->_wpdb->query('
+			ALTER TABLE `'.$this->_wpdb->prefix.'wp_pro_quiz_question` 
+				ADD	`answer_points_activated` tinyint(1) NOT NULL, 
+ 				ADD	`answer_data` longtext NOT NULL
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE `'.$this->_wpdb->prefix.'wp_pro_quiz_statistic`
+				ADD `points` int(10) unsigned NOT NULL 
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master`
+				ADD `toplist_activated` tinyint(1) NOT NULL, 
+  				ADD `toplist_data` text NOT NULL, 
+  				ADD `show_average_result` tinyint(1) NOT NULL,  
+  				ADD `prerequisite` tinyint(1) NOT NULL 
+		');
+		
+		$this->_wpdb->query('
+			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_prerequisite` (
+			 	`prerequisite_quiz_id` int(11) NOT NULL, 
+			 	`quiz_id` int(11) NOT NULL, 
+			  	PRIMARY KEY (`prerequisite_quiz_id`,`quiz_id`) 
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+		');
+		
+		$this->_wpdb->query('
+			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_toplist` (
+				  `toplist_id` int(11) NOT NULL AUTO_INCREMENT,
+				  `quiz_id` int(11) NOT NULL,
+				  `date` int(10) unsigned NOT NULL,
+				  `user_id` bigint(20) unsigned NOT NULL,
+				  `name` varchar(30) NOT NULL,
+				  `email` varchar(200) NOT NULL,
+				  `points` int(10) unsigned NOT NULL,
+				  `result` float unsigned NOT NULL,
+				  `ip` varchar(100) NOT NULL,
+				  PRIMARY KEY (`toplist_id`,`quiz_id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+		');
+		
+		
+		$results = $this->_wpdb->get_results('SELECT id, answer_type, answer_json, points_per_answer, points_answer  FROM `'.$this->_wpdb->prefix.'wp_pro_quiz_question`', ARRAY_A);
+		
+		foreach($results as $row) {
+			
+			$data = json_decode($row['answer_json'], true);
+			$newData = array();
+			
+			if($data === null) {
+				continue;
+			}
+			
+			if($row['answer_type'] == 'single' || $row['answer_type'] == 'multiple') {
+				foreach($data['classic_answer']['answer'] as $k => $v) {
+					$x = new WpProQuiz_Model_AnswerTypes();
+
+					$x->setAnswer($v);
+					
+					if(isset($data['classic_answer']['correct']) && in_array($k, $data['classic_answer']['correct'])) {
+						$x->setCorrect(true);
+						
+						if($row['points_per_answer']) {
+							$x->setPoints($row['points_answer']);
+						}
+						
+					} else {
+						$x->setCorrect(false);
+						
+						if($row['points_per_answer']) {
+							$x->setPoints(0);
+						}
+					}
+					
+					if(isset($data['classic_answer']['html']) && in_array($k, $data['classic_answer']['html'])) {
+						$x->setHtml(true);
+					} else {
+						$x->setHtml(false);
+					}
+					
+					$newData[] = $x;
+					
+				}
+			} elseif($row['answer_type'] == 'cloze_answer') {
+				$x = new WpProQuiz_Model_AnswerTypes();
+				
+				$x->setAnswer($data['answer_cloze']['text']);
+				
+				$newData[] = $x;
+			} elseif($row['answer_type'] == 'matrix_sort_answer') {
+				foreach($data['answer_matrix_sort']['answer'] as $k => $v) {
+					$x = new WpProQuiz_Model_AnswerTypes();
+					
+					$x->setAnswer($v);
+					$x->setSortString($data['answer_matrix_sort']['sort_string'][$k]);
+					
+					if($row['points_per_answer']) {
+						$x->setPoints($row['points_answer']);
+					}
+					
+					if(isset($data['answer_matrix_sort']['answer_html']) && in_array($k, $data['answer_matrix_sort']['answer_html'])) {
+						$x->setHtml(true);
+					} else {
+						$x->setHtml(false);
+					}
+					
+					if(isset($data['answer_matrix_sort']['sort_string_html']) && in_array($k, $data['answer_matrix_sort']['sort_string_html'])) {
+						$x->setSortStringHtml(true);
+					} else {
+						$x->setSortStringHtml(false);
+					}
+					
+					$newData[] = $x;
+					
+				}
+			} elseif($row['answer_type'] == 'free_answer') {
+				$x = new WpProQuiz_Model_AnswerTypes();
+				
+				$x->setAnswer($data['free_answer']['correct']);
+				
+				$newData[] = $x;
+			} elseif($row['answer_type'] == 'sort_answer') {
+				foreach($data['answer_sort']['answer'] as $k => $v) {
+					$x = new WpProQuiz_Model_AnswerTypes();
+						
+					$x->setAnswer($v);
+					
+					if($row['points_per_answer']) {
+						$x->setPoints($row['points_answer']);
+					}
+					
+					if(isset($data['answer_sort']['html']) && in_array($k, $data['answer_sort']['html'])) {
+						$x->setHtml(true);
+					} else {
+						$x->setHtml(false);
+					}
+					
+					$newData[] = $x;
+				}
+			}
+			
+			
+			$this->_wpdb->update(
+				$this->_wpdb->prefix.'wp_pro_quiz_question', 
+				array(
+					'answer_data' => serialize($newData)
+				), 
+				array(
+					'id' => $row['id']
+				)
+			);
+			
+		}
+		
+		$this->_wpdb->query(
+			'UPDATE '.$this->_wpdb->prefix.'wp_pro_quiz_question
+			SET
+				answer_points_activated = points_per_answer
+			WHERE
+				answer_type <> \'free_answer\''
+		);
+		
+		
+		//Statistics
+		$this->_wpdb->query(
+			'UPDATE 
+				'.$this->_wpdb->prefix.'wp_pro_quiz_statistic AS s
+			SET
+				s.points = ( SELECT q.points_answer FROM '.$this->_wpdb->prefix.'wp_pro_quiz_question AS q WHERE q.id = s.question_id ) * s.correct_answer_count
+			WHERE
+				s.correct_answer_count > 0'
+		);
+		
+		
+		return 16;
 	}
 }

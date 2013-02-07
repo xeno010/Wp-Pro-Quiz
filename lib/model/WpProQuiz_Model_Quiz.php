@@ -5,6 +5,18 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	const QUIZ_RUN_ONCE_TYPE_ONLY_USER = 2;
 	const QUIZ_RUN_ONCE_TYPE_ONLY_ANONYM = 3;
 	
+	const QUIZ_TOPLIST_TYPE_ALL = 1;
+	const QUIZ_TOPLIST_TYPE_ONLY_USER = 2;
+	const QUIZ_TOPLIST_TYPE_ONLY_ANONYM = 3;
+	
+	const QUIZ_TOPLIST_SORT_BEST = 1;
+	const QUIZ_TOPLIST_SORT_NEW = 2;
+	const QUIZ_TOPLIST_SORT_OLD = 3;
+	
+	const QUIZ_TOPLIST_SHOW_IN_NONE = 0;
+	const QUIZ_TOPLIST_SHOW_IN_NORMAL = 1;
+	const QUIZ_TOPLIST_SHOW_IN_BUTTON = 2;
+	
 	protected $_id;
 	protected $_name;
 	protected $_text;
@@ -32,6 +44,23 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_showMaxQuestion = false;
 	protected $_showMaxQuestionValue = 1;
 	protected $_showMaxQuestionPercent = false;
+	
+	//0.19
+	protected $_toplistActivated = false;
+	protected $_toplistDataAddPermissions = 1;
+	protected $_toplistDataSort = 1;
+	protected $_toplistDataAddMultiple = false;
+	protected $_toplistDataAddBlock = 1;
+	protected $_toplistDataShowLimit = 1;
+	protected $_toplistDataShowQuizResult = false;
+	protected $_toplistDataShowIn = 0;
+	protected $_toplistDataCaptcha = false;
+	
+	protected $_toplistData = array();
+	
+	protected $_showAverageResult = false;
+	
+	protected $_prerequisite = false;
 	
 	public function getId() {
 		return $this->_id;
@@ -286,5 +315,122 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
 	public function isShowMaxQuestionPercent() {
 		return $this->_showMaxQuestionPercent;
+	}
+	
+	public function setToplistActivated($_toplistActivated) {
+		$this->_toplistActivated = (bool)$_toplistActivated;
+		return $this;
+	}
+	
+	public function isToplistActivated() {
+		return $this->_toplistActivated;
+	}
+	
+	public function setToplistDataAddPermissions($_toplistDataAddPermissions) {
+		$this->_toplistDataAddPermissions = (int)$_toplistDataAddPermissions;
+		return $this;
+	}
+	
+	public function getToplistDataAddPermissions() {
+		return $this->_toplistDataAddPermissions;
+	}
+	
+	public function setToplistDataSort($_toplistDataSort) {
+		$this->_toplistDataSort = (int)$_toplistDataSort;
+		return $this;
+	}
+	
+	public function getToplistDataSort() {
+		return $this->_toplistDataSort;
+	}
+	
+	public function setToplistDataAddMultiple($_toplistDataAddMultiple) {
+		$this->_toplistDataAddMultiple = (bool)$_toplistDataAddMultiple;
+		return $this;
+	}
+	
+	public function isToplistDataAddMultiple() {
+		return $this->_toplistDataAddMultiple;
+	}
+	
+	public function setToplistDataAddBlock($_toplistDataAddBlock) {
+		$this->_toplistDataAddBlock = (int)$_toplistDataAddBlock;
+		return $this;
+	}
+	
+	public function getToplistDataAddBlock() {
+		return $this->_toplistDataAddBlock;
+	}
+	
+	public function setToplistDataShowLimit($_toplistDataShowLimit) {
+		$this->_toplistDataShowLimit = (int)$_toplistDataShowLimit;
+		return $this;
+	}
+	
+	public function getToplistDataShowLimit() {
+		return $this->_toplistDataShowLimit;
+	}
+	
+	public function setToplistData($_toplistData) {
+		if(!empty($_toplistData)) {
+			$d = unserialize($_toplistData);
+			
+			if($d !== false) {
+				$this->setModelData($d);			
+			}	
+		}
+			
+		return $this;
+	}
+	
+	public function getToplistData() {
+		
+		$a = array(
+			'toplistDataAddPermissions' => $this->getToplistDataAddPermissions(),
+			'toplistDataSort' => $this->getToplistDataSort(),
+			'toplistDataAddMultiple' => $this->isToplistDataAddMultiple(),
+			'toplistDataAddBlock' => $this->getToplistDataAddBlock(),
+			'toplistDataShowLimit' => $this->getToplistDataShowLimit(),
+			'toplistDataShowIn' => $this->getToplistDataShowIn(),
+			'toplistDataCaptcha' => $this->isToplistDataCaptcha()
+		);
+		
+		return serialize($a);
+	}
+	
+	public function setToplistDataShowIn($_toplistDataShowIn) {
+		$this->_toplistDataShowIn = (int)$_toplistDataShowIn;
+		return $this;
+	}
+	
+	public function getToplistDataShowIn() {
+		return $this->_toplistDataShowIn;
+	}
+	
+	public function setToplistDataCaptcha($_toplistDataCaptcha) {
+		$this->_toplistDataCaptcha = (bool)$_toplistDataCaptcha;
+		return $this;
+	}
+	
+	public function isToplistDataCaptcha() {
+		return $this->_toplistDataCaptcha;
+	}
+	
+	public function setShowAverageResult($_showAverageResult) {
+		$this->_showAverageResult = (bool)$_showAverageResult;
+		return $this;
+	}
+	
+	public function isShowAverageResult() {
+		return $this->_showAverageResult;
+	}
+	
+	public function setPrerequisite($_prerequisite) {
+		$this->_prerequisite = (bool)$_prerequisite;
+		return $this;
+	}
+	
+	public function isPrerequisite() {
+		return $this->_prerequisite;
 	}
 }

@@ -4,11 +4,16 @@ class WpProQuiz_Controller_Preview extends WpProQuiz_Controller_Controller {
 	public function route() {
 		
 		wp_enqueue_script(
-			'wpProQuiz_fron_javascript', 
+			'wpProQuiz_front_javascript', 
 			plugins_url('js/wpProQuiz_front.min.js', WPPROQUIZ_FILE),
 			array('jquery', 'jquery-ui-sortable'),
 			WPPROQUIZ_VERSION
 		);
+		
+		wp_localize_script('wpProQuiz_front_javascript', 'WpProQuizGlobal', array(
+			'ajaxurl' => admin_url('admin-ajax.php'),
+			'loadData' => __('Loading', 'wp-pro-quiz')
+		));
 		
 		wp_enqueue_style(
 			'wpProQuiz_front_style', 

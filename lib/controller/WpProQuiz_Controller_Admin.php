@@ -10,15 +10,59 @@ class WpProQuiz_Controller_Admin {
 		add_action('wp_ajax_wp_pro_quiz_statistics', array($this, 'loadStatistics'));
 		
 		add_action('wp_ajax_wp_pro_quiz_reset_lock', array($this, 'resetLock'));
+		
+		add_action('wp_ajax_wp_pro_quiz_load_toplist', array($this, 'adminToplist'));
 				
 		
 		add_action('wp_ajax_wp_pro_quiz_completed_quiz', array($this, 'completedQuiz'));
 		add_action('wp_ajax_nopriv_wp_pro_quiz_completed_quiz', array($this, 'completedQuiz'));
 		
-		add_action('wp_ajax_wp_pro_quiz_check_lock', array($this, 'QuizCheckLock'));
-		add_action('wp_ajax_nopriv_wp_pro_quiz_check_lock', array($this, 'QuizCheckLock'));
+		add_action('wp_ajax_wp_pro_quiz_check_lock', array($this, 'quizCheckLock'));
+		add_action('wp_ajax_nopriv_wp_pro_quiz_check_lock', array($this, 'quizCheckLock'));
+		
+		//0.19
+		add_action('wp_ajax_wp_pro_quiz_add_toplist', array($this, 'addInToplist'));
+		add_action('wp_ajax_nopriv_wp_pro_quiz_add_toplist', array($this, 'addInToplist'));
+		
+		add_action('wp_ajax_wp_pro_quiz_show_front_toplist', array($this, 'showFrontToplist'));
+		add_action('wp_ajax_nopriv_wp_pro_quiz_show_front_toplist', array($this, 'showFrontToplist'));
+		
+		add_action('wp_ajax_wp_pro_quiz_load_quiz_data', array($this, 'loadQuizData'));
+		add_action('wp_ajax_nopriv_wp_pro_quiz_load_quiz_data', array($this, 'loadQuizData'));
+		
 		
 		add_action('admin_menu', array($this, 'register_page'));
+	}
+	
+	public function loadQuizData() {
+		$q = new WpProQuiz_Controller_Quiz();
+		
+		echo json_encode($q->loadQuizData());
+		
+		exit;
+	}
+	
+	public function adminToplist() {
+		$t = new WpProQuiz_Controller_Toplist();
+		$t->route();
+		
+		exit;
+	}
+	
+	public function showFrontToplist() {
+		$t = new WpProQuiz_Controller_Toplist();
+		
+		$t->showFrontToplist();
+		
+		exit;
+	}
+	
+	public function addInToplist() {
+		$t = new WpProQuiz_Controller_Toplist();
+		
+		$t->addInToplist();
+		
+		exit;
 	}
 	
 	public function resetLock() {
@@ -26,7 +70,7 @@ class WpProQuiz_Controller_Admin {
 		$c->route();
 	}
 	
-	public function QuizCheckLock() {
+	public function quizCheckLock() {
 		$quizController = new WpProQuiz_Controller_Quiz();
 		
 		echo json_encode($quizController->isLockQuiz($_POST['quizId']));
@@ -59,8 +103,12 @@ class WpProQuiz_Controller_Admin {
 			'no_quiz_start_msg' => __('No quiz description filled!', 'wp-pro-quiz'),
 			'fail_grade_result' => __('The percent values in result text are incorrect.', 'wp-pro-quiz'),
 			'no_nummber_points' => __('No number in the field "Points" or less than 1', 'wp-pro-quiz'),
+			'no_nummber_points_new' => __('No number in the field "Points" or less than 0', 'wp-pro-quiz'),
 			'no_selected_quiz' => __('No quiz selected', 'wp-pro-quiz'),
-			'reset_statistics_msg' => __('Do you really want to reset the statistic?', 'wp-pro-quiz')
+			'reset_statistics_msg' => __('Do you really want to reset the statistic?', 'wp-pro-quiz'),
+			'no_data_available' => __('No data available', 'wp-pro-quiz'),
+			'no_sort_element_criterion' => __('No sort element in the criterion', 'wp-pro-quiz'),
+			'dif_points' => __('"Different points for every answer" is not possible at "Free" choice', 'wp-pro-quiz')
 		);
 		
 		wp_localize_script('wpProQuiz_admin_javascript', 'wpProQuizLocalize', $translation_array);
@@ -114,6 +162,12 @@ class WpProQuiz_Controller_Admin {
 				break;
 			case 'styleManager':
 				$c = new WpProQuiz_Controller_StyleManager();
+				break;
+			case 'toplist':
+				$c = new WpProQuiz_Controller_Toplist();
+				break;
+			case 'wpq_support':
+				$c = new WpProQuiz_Controller_WpqSupport();
 				break;
 		}
 

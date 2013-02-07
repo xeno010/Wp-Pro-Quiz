@@ -1,77 +1,40 @@
 <?php
 class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 	
-	private function parseJson($data) {
-		$r = array();
-		
-		foreach($data as $q) {
-			$a = array();
-			$a['answer_type'] = $q->getAnswerType();
-			$a['id'] = $q->getId();
-			$a['points'] = $q->getPoints();
-			$a['pointsPerAnswer'] = (int)$q->isPointsPerAnswer();
-			
-			if($q->isPointsPerAnswer()) {
-				$a['pointsAnswer'] = $q->getPointsAnswer();
-			}
-			
-			$j = $q->getAnswerJson();
-			
-			switch ($q->getAnswerType()) {
-				case 'single':
-				case 'multiple':
-					$a['correct'] = $j['classic_answer']['correct'];
-					break;
-				case 'sort_answer':
-					$a['correct'] = array_keys(array_values($j['answer_sort']['answer']));
-					break;
-				case 'free_answer':
-					$t = str_replace("\r\n", "\n", strtolower($j['free_answer']['correct']));
-					$t = str_replace("\r", "\n", $t);
-					$t = explode("\n", $t);
-					$a['correct'] = array_values(array_filter(array_map('trim', $t)));
-					break;
-				case 'matrix_sort_answer':
-					$a['correct'] = array_keys(array_values($j['answer_matrix_sort']['sort_string']));
-					break;
-			}
-			
-			$r[] = $a;
-		}
-
-		return $r;
+	private function getFreeCorrect($data) {
+		$t = str_replace("\r\n", "\n", strtolower($data->getAnswer()));
+		$t = str_replace("\r", "\n", $t);
+		$t = explode("\n", $t);
+		return array_values(array_filter(array_map('trim', $t)));
 	}
 	
 	public function show($preview = false) {
 
 		$question_count = count($this->question);
 		
-		$json = json_encode($this->parseJson($this->question));
+		$globalPoints = 0;
 		
 		$result = $this->quiz->getResultText();
 
 		if(!$this->quiz->isResultGradeEnabled()) {
-			$r = array();
-			$r['text'][] = $result;
-			$r['prozent'][] = 0;
-			
-			$result = $r;
+			$result = array(
+				'text' => array($result),
+				'prozent' => array(0)
+			);
 		}
 
 		$resultsProzent = json_encode($result['prozent']);
 		
-		$questionOnSinglePage = 0;
-		$checkAnswer = 0;
-		$backButton = 0;
-		
+		$mode = 0;
 		if($this->quiz->isQuestionOnSinglePage()) {
-			$questionOnSinglePage = 1;
+			$mode = 3;
 		} else if($this->quiz->isCheckAnswer()) {
-			$checkAnswer = 1;
+			$mode = 2;
 		} else if($this->quiz->isBackButton()) {
-			$backButton = 1;
+			$mode = 1;
 		}
-
+		
+		$json = array();
 ?>
 
 <div class="wpProQuiz_content" id="wpProQuiz_<?php echo $this->quiz->getId(); ?>">
@@ -83,18 +46,24 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			<?php echo do_shortcode(apply_filters('comment_text', $this->quiz->getText())); ?>
 		</p>
 		<div>
-			<input type="button" value="<?php _e('Start quiz', 'wp-pro-quiz'); ?>" name="startQuiz">
+			<input class="wpProQuiz_button" type="button" value="<?php _e('Start quiz', 'wp-pro-quiz'); ?>" name="startQuiz">
 		</div>
 	</div>
 	<div style="display: none;" class="wpProQuiz_lock">
-		<p style="font-weight: bold;">
+		<p>
 			<?php _e('You have already completed the quiz before. Hence you can not start it again.', 'wp-pro-quiz'); ?>
+		</p>
+	</div>
+	<div style="display: none;" class="wpProQuiz_prerequisite">
+		<p>
+			<?php _e('You have to finish following quiz, to start this quiz:', 'wp-pro-quiz'); ?> 
+			<span></span>
 		</p>
 	</div>
 	<div style="display: none;" class="wpProQuiz_results">
 		<h3><?php _e('Results', 'wp-pro-quiz'); ?></h3>
 		<p>
-			<?php printf(__('%s of %s questions answered correctly', 'wp-pro-quiz'), '<span class="wpProQuiz_correct_answer"></span>', '<span>'.$question_count.'</span>'); ?>
+			<?php printf(__('%s of %s questions answered correctly', 'wp-pro-quiz'), '<span class="wpProQuiz_correct_answer">0</span>', '<span>'.$question_count.'</span>'); ?>
 		</p>
 		<p class="wpProQuiz_quiz_time">
 			<?php _e('Your time: <span></span>', 'wp-pro-quiz'); ?>
@@ -103,8 +72,31 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			<?php _e('Time has elapsed', 'wp-pro-quiz'); ?>
 		</p>
 		<p class="wpProQuiz_points">
-			<?php _e('You have reached <span></span> of <span></span> points, (<span></span>%)', 'wp-pro-quiz'); ?>
+			<?php printf(__('You have reached %s of %s points, (%s)', 'wp-pro-quiz'), '<span>0</span>', '<span>0</span>', '<span>0</span>'); ?>
 		</p>
+		
+		<?php if($this->quiz->isShowAverageResult()) { ?>
+		<div class="wpProQuiz_resultTable">
+			<table>
+				<tbody>
+					<tr>
+						<td class="wpProQuiz_resultName"><?php _e('Average score', 'wp-pro-quiz'); ?></td>
+						<td class="wpProQuiz_resultValue">
+							<div style="background-color: #6CA54C;">&nbsp;</div>
+							<span>&nbsp;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="wpProQuiz_resultName"><?php _e('Your score', 'wp-pro-quiz'); ?></td>
+						<td class="wpProQuiz_resultValue">
+							<div style="background-color: #F79646;">&nbsp;</div>
+							<span>&nbsp;</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<?php } ?>
 		<div>
 			<ul class="wpProQuiz_resultsList">
 				<?php foreach($result['text'] as $resultText) { ?>
@@ -116,17 +108,35 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 				<?php } ?>
 			</ul>
 		</div>
+		<?php 
+			if($this->quiz->isToplistActivated()) {
+				if($this->quiz->getToplistDataShowIn() == WpProQuiz_Model_Quiz::QUIZ_TOPLIST_SHOW_IN_NORMAL) {
+					echo do_shortcode('[WpProQuiz_toplist '.$this->quiz->getId().' q="true"]');
+				}
+				
+				$this->showAddToplist();
+			}
+		?>
 		<div style="margin: 10px 0px;">
 			<?php if(!$this->quiz->isBtnRestartQuizHidden()) { ?>
-			<input type="button" name="restartQuiz" value="<?php _e('Restart quiz', 'wp-pro-quiz'); ?>" >
+			<input class="wpProQuiz_button" type="button" name="restartQuiz" value="<?php _e('Restart quiz', 'wp-pro-quiz'); ?>" >
 			<?php } if(!$this->quiz->isBtnViewQuestionHidden()) { ?>
-			<input type="button" name="reShowQuestion" value="<?php _e('View questions', 'wp-pro-quiz'); ?>">
+			<input class="wpProQuiz_button" type="button" name="reShowQuestion" value="<?php _e('View questions', 'wp-pro-quiz'); ?>">
+			<?php } ?>
+			<?php if($this->quiz->isToplistActivated() && $this->quiz->getToplistDataShowIn() == WpProQuiz_Model_Quiz::QUIZ_TOPLIST_SHOW_IN_BUTTON) { ?>
+			<input class="wpProQuiz_button" type="button" name="showToplist" value="<?php _e('Show leaderboard', 'wp-pro-quiz'); ?>">
 			<?php } ?>
 		</div>
 	</div>
+	<?php 
+	if($this->quiz->getToplistDataShowIn() == WpProQuiz_Model_Quiz::QUIZ_TOPLIST_SHOW_IN_BUTTON) { ?>
+	<div class="wpProQuiz_toplistShowInButton" style="display: none;">
+		<?php echo do_shortcode('[WpProQuiz_toplist '.$this->quiz->getId().' q="true"]'); ?>
+	</div>
+	<?php } ?>	
 	<div style="display: none;" class="wpProQuiz_time_limit">
 		<div class="time"><?php _e('Time limit', 'wp-pro-quiz'); ?>: <span>00:03:15</span></div>
-		<div class="progress"></div>
+		<div class="wpProQuiz_progress"></div>
 	</div>
 	<div style="display: none;" class="wpProQuiz_quiz">
 		<ol class="wpProQuiz_list">
@@ -134,9 +144,20 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			$index = 0; 
 			foreach($this->question as $question) { 
 				$index++;
-				$answerArray = $question->getAnswerJson();
+				$answerArray = $question->getAnswerData();
+				
+				$globalPoints += $question->getPoints();
+				
+				
+				$json[$question->getId()]['type'] = $question->getAnswerType();
+				$json[$question->getId()]['id'] = (int)$question->getId();
+				
+				if(!$question->isAnswerPointsActivated()) {
+					$json[$question->getId()]['points'] = $question->getPoints();
+				}
+				
 		?>
-			<li class="wpProQuiz_listItem">
+			<li class="wpProQuiz_listItem" style="display: none;">
 				<div class="wpProQuiz_question_page" <?php echo $this->quiz->isQuestionOnSinglePage() ? 'style="display: none;"' : ''; ?> >
 					<?php printf(__('Question %s of %s', 'wp-pro-quiz'), '<span>'.$index.'</span>', '<span>'.$question_count.'</span>'); ?>
 				</div>
@@ -158,84 +179,103 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 						<h3><?php _e('Sort elements', 'wp-pro-quiz'); ?></h3>
 						<ul class="wpProQuiz_sortStringList">
 						<?php
-						 	foreach($answerArray['answer_matrix_sort']['sort_string'] as $k => $v) {
+						 	foreach($answerArray as $k => $v) {
 						 ?>
-						 <li class="wpProQuiz_sortStringItem"><?php echo (isset($answerArray['answer_matrix_sort']['sort_string_html']) && in_array($k, $answerArray['answer_matrix_sort']['sort_string_html'])) ? $v : esc_html($v); ?></li>
+						 <li class="wpProQuiz_sortStringItem" data-pos="<?php echo $k; ?>"><?php echo $v->isSortStringHtml() ? $v->getSortString() : esc_html($v->getSortString()); ?></li>
 						<?php } ?>
 						</ul>
 						<div style="clear: both;"></div>
 					</div>
 					<?php } ?>
-					<ul class="wpProQuiz_questionList">
+					<ul class="wpProQuiz_questionList" data-question_id="<?php echo $question->getId(); ?>" data-type="<?php echo $question->getAnswerType(); ?>">
 					<?php
-						if($question->getAnswerType() === 'single' || $question->getAnswerType() === 'multiple') {
-							$answer_index = 1; 
-							foreach($answerArray['classic_answer']['answer'] as $k => $v) {
-								$answer_text = (isset($answerArray['classic_answer']['html']) && in_array($k, $answerArray['classic_answer']['html'])) ? $v : esc_html($v); 
+						$answer_index = 0;
+
+						foreach($answerArray as $v) {
+							$answer_text = $v->isHtml() ? $v->getAnswer() : esc_html($v->getAnswer()); 
+							
+							if($answer_text == '') {
+								continue;
+							}
+							
+							if($question->isAnswerPointsActivated()) {
+								$json[$question->getId()]['points'][] = $v->getPoints();
+							}
+							
 						?>
 							
-						<li class="wpProQuiz_questionListItem">
-							<span class="WpProQuiz_numberedAnswer"></span>
-							<label>
-								<input class="wpProQuiz_questionInput" type="<?php echo $question->getAnswerType() === 'single' ? 'radio' : 'checkbox'; ?>" name="question_<?php echo $this->quiz->getId(); ?>_<?php echo $question->getId(); ?>" value="<?php echo $answer_index; ?>"> <?php echo $answer_text; ?>
-							</label>
-						</li>
+							<li class="wpProQuiz_questionListItem" data-pos="<?php echo $answer_index;?>">
+							
+						<?php if($question->getAnswerType() === 'single' || $question->getAnswerType() === 'multiple') { ?>
+							<?php $json[$question->getId()]['correct'][] = (int)$v->isCorrect(); ?>
+								<span <?php $this->quiz->isNumberedAnswer() ? '' : 'style="display:none;"'?>></span>
+								<label>
+									<input class="wpProQuiz_questionInput" type="<?php echo $question->getAnswerType() === 'single' ? 'radio' : 'checkbox'; ?>" name="question_<?php echo $this->quiz->getId(); ?>_<?php echo $question->getId(); ?>" value="<?php echo ($answer_index+1); ?>"> <?php echo $answer_text; ?>
+								</label>
 						
-					<?php $answer_index++; } 
-						} else if($question->getAnswerType() === 'sort_answer') {
-							foreach($answerArray['answer_sort']['answer'] as $k => $v) {
-					 ?>
-						<li class="wpProQuiz_questionListItem">
-							<div class="wpProQuiz_sortable">
-								<?php echo (isset($answerArray['answer_sort']['html']) && in_array($k, $answerArray['answer_sort']['html'])) ? $v : esc_html($v); ?>
-							</div>
-						</li>
-					 <?php } } else if($question->getAnswerType() === 'free_answer') {
-					 		
-					 	?>
-					 	<li class="wpProQuiz_questionListItem">
-							<label>
-								<input class="wpProQuiz_questionInput" type="text" name="question_<?php echo $this->quiz->getId(); ?>_<?php echo $question->getId(); ?>" style="width: 300px;">
-							</label>
-						</li>
-					 <?php } else if($question->getAnswerType() === 'matrix_sort_answer') { 
-					 	foreach($answerArray['answer_matrix_sort']['answer'] as $k => $v) {
-							$ma = $answerArray['answer_matrix_sort'];
-					 	?>
-					 	
-					 	<li class="wpProQuiz_questionListItem">
-							<table>
-								<tbody>
-									<tr class="wpProQuiz_mextrixTr">
-										<td width="20%"><div class="wpProQuiz_maxtrixSortText" ><?php echo (isset($ma['answer_html']) && in_array($k, $ma['answer_html'])) ? $v : esc_html($v); ?></div></td>
-										<td width="80%" >
-											<ul class="wpProQuiz_maxtrixSortCriterion"></ul>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</li>
-					 <?php } } else if($question->getAnswerType() === 'cloze_answer') { ?>
-					 	<li class="wpProQuiz_questionListItem">
-					 		<?php 
-					 			$clozeText = $answerArray['answer_cloze']['text'];
-					 			
-					 			$clozeText = do_shortcode(apply_filters('comment_text', $clozeText));
+						<?php } else if($question->getAnswerType() === 'sort_answer') { ?>
+							<?php $json[$question->getId()]['correct'][] = (int)$answer_index; ?>
+								<div class="wpProQuiz_sortable">
+									<?php echo $answer_text; ?>
+								</div>
+					 	<?php } else if($question->getAnswerType() === 'free_answer') { ?>
+					 		<?php $json[$question->getId()]['correct'] = $this->getFreeCorrect($v); ?>
+								<label>
+									<input class="wpProQuiz_questionInput" type="text" name="question_<?php echo $this->quiz->getId(); ?>_<?php echo $question->getId(); ?>" style="width: 300px;">
+								</label>
+					 	<?php } else if($question->getAnswerType() === 'matrix_sort_answer') { ?>
+					 		<?php
+					 			$json[$question->getId()]['correct'][] = (int)$answer_index;
+					 		?>
+								<table>
+									<tbody>
+										<tr class="wpProQuiz_mextrixTr">
+											<td width="20%"><div class="wpProQuiz_maxtrixSortText" ><?php echo $answer_text; ?></div></td>
+											<td width="80%" >
+												<ul class="wpProQuiz_maxtrixSortCriterion"></ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								
+								
+						 <?php } else if($question->getAnswerType() === 'cloze_answer') {
+						 		$json[$question->getId()]['correct'] = array();
+						 		
+						 		if($question->isAnswerPointsActivated()) {
+									preg_match_all('#\{(.*?)(?:\|(\d+))?(?:[\s]+)?\}#im', $answer_text, $matches);
+
+									$json[$question->getId()]['points'] = array();
+									
+									foreach($matches[2] as $match) {
+										if(empty($match))
+											$match = 1;
+										
+										$json[$question->getId()]['points'][] = (int)$match;
+									}
+								}
+						 		
+					 			$clozeText = do_shortcode(apply_filters('comment_text', $answer_text));
 					 			
 					 			$input = '<span class="wpProQuiz_cloze"><input type="text" value="">'; 
 
-					 			$clozeText = preg_replace('#\{(.*?)\}#', $input.' <span class="wpProQuiz_clozeCorrect" style="display: none;">(\1)</span></span>', $clozeText);
+					 			$clozeText = preg_replace('#\{(.*?)(?:\|(\d+))?(?:[\s]+)?\}#im', $input.' <span class="wpProQuiz_clozeCorrect" style="display: none;">(\1)</span></span>', $clozeText);
 					 			
 					 			echo $clozeText;
-					 		?>
-					 	</li>
-					 <?php } ?>
+					 		} ?>
+					 		
+					 		
+					 		</li> 
+					 <?php
+					 	$answer_index++;
+						}  
+					 ?>
 					</ul>
 				</div>
 				<?php if(!$this->quiz->isHideAnswerMessageBox()) { ?>
 					<div class="wpProQuiz_response" style="display: none;">
 						<div style="display: none;" class="wpProQuiz_correct">
-							<?php if($question->isShowPointsInBox() && $question->isPointsPerAnswer()) { ?>
+							<?php if($question->isShowPointsInBox() && $question->isAnswerPointsActivated()) { ?>
 							<div>
 								<span style="float: left;">
 									<?php _e('Correct', 'wp-pro-quiz'); ?>
@@ -253,7 +293,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 							</p>
 						</div>
 						<div style="display: none;" class="wpProQuiz_incorrect">
-						<?php if($question->isShowPointsInBox() && $question->isPointsPerAnswer()) { ?>
+						<?php if($question->isShowPointsInBox() && $question->isAnswerPointsActivated()) { ?>
 							<div>
 								<span style="float: left;">
 									<?php _e('Incorrect', 'wp-pro-quiz'); ?>
@@ -280,20 +320,22 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 						</div>
 					</div>
 				<?php } ?>
-				<div class="wpProQuiz_tipp" style="display: none;">
-					<h3><?php _e('Hint', 'wp-pro-quiz'); ?></h3>
-					<?php 
-						if($question->isTipEnabled()) {
-							echo do_shortcode(apply_filters('comment_text', $question->getTipMsg()));
-						}
-					?>
+				
+				<?php if($question->isTipEnabled()) { ?>
+				<div class="wpProQuiz_tipp" style="display: none; position: relative;">
+					<div>
+						<h3 style="margin: 0px 0px 10px;"><?php _e('Hint', 'wp-pro-quiz'); ?></h3>
+						<?php  echo do_shortcode(apply_filters('comment_text', $question->getTipMsg())); ?>
+					</div>
 				</div>
-					<input type="button" name="check" value="<?php _e('Check', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left !important; margin-right: 10px !important; display: none;">
-					<input type="button" name="back" value="<?php _e('Back', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: left !important; margin-right: 10px !important; display: none;">
+				<?php } ?>
+				
+					<input type="button" name="check" value="<?php _e('Check', 'wp-pro-quiz'); ?>" class="wpProQuiz_button wpProQuiz_QuestionButton" style="float: left !important; margin-right: 10px !important; display: none;">
+					<input type="button" name="back" value="<?php _e('Back', 'wp-pro-quiz'); ?>" class="wpProQuiz_button wpProQuiz_QuestionButton" style="float: left !important; margin-right: 10px !important; display: none;">
 					<?php if($question->isTipEnabled()) { ?>
-						<input type="button" name="tip" value="<?php _e('Hint', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton wpProQuiz_TipButton" style="float: left !important; display: inline-block;">
+						<input type="button" name="tip" value="<?php _e('Hint', 'wp-pro-quiz'); ?>" class="wpProQuiz_button wpProQuiz_QuestionButton wpProQuiz_TipButton" style="float: left !important; display: inline-block;">
 					<?php } ?>
-					<input type="button" name="next" value="<?php _e('Next exercise', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" style="float: right; display: none;" >
+					<input type="button" name="next" value="<?php _e('Next exercise', 'wp-pro-quiz'); ?>" class="wpProQuiz_button wpProQuiz_QuestionButton" style="float: right; display: none;" >
 					<div style="clear: both;"></div>
 					
 				<?php if($this->quiz->isQuestionOnSinglePage()) { ?>
@@ -306,32 +348,71 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		</ol>
 		<?php if($this->quiz->isQuestionOnSinglePage()) { ?>
 			<div>
-				<input type="button" name="checkSingle" value="<?php _e('Finish quiz', 'wp-pro-quiz'); ?>" class="wpProQuiz_QuestionButton" >
+				<input type="button" name="checkSingle" value="<?php _e('Finish quiz', 'wp-pro-quiz'); ?>" class="wpProQuiz_button wpProQuiz_QuestionButton" >
 			</div>
 		<?php } ?>
 	</div>
 </div>
-<script>
+
+
+<?php 
+//Create Options
+
+$bo = 0;
+
+$bo |= ((int)$this->quiz->isAnswerRandom()) << 0;
+$bo |= ((int)$this->quiz->isQuestionRandom()) << 1;
+$bo |= ((int)$this->quiz->isDisabledAnswerMark()) << 2;
+$bo |= ((int)($this->quiz->isQuizRunOnce() || $this->quiz->isPrerequisite())) << 3;
+$bo |= ((int)$preview) << 4;
+$bo |= ((int)get_option('wpProQuiz_corsActivated')) << 5;
+
+?>
+
+<script type="text/javascript">
 jQuery(document).ready(function($) {
 	$('#wpProQuiz_<?php echo $this->quiz->getId(); ?>').wpProQuizFront({
-		questionRandom: <?php echo (int)$this->quiz->isQuestionRandom(); ?>,
-		answerRandom: <?php echo (int)$this->quiz->isAnswerRandom(); ?>,
-		timeLimit: <?php echo (int)$this->quiz->getTimeLimit(); ?>,
-		checkAnswer: <?php echo $checkAnswer; ?>,
-		backButton: <?php echo $backButton; ?>,
 		quizId: <?php echo (int)$this->quiz->getId(); ?>,
-		lock: <?php echo (int)$this->quiz->isQuizRunOnce(); ?>,
-		preview: <?php echo ($preview) ? 1 : 0; ?>,
-		numberedAnswer: <?php echo (int)$this->quiz->isnumberedAnswer(); ?>,
-		questionOnSinglePage: <?php echo $questionOnSinglePage; ?>,
-		url: '<?php echo admin_url('admin-ajax.php'); ?>',
+		mode: <?php echo (int)$mode; ?>,
+		globalPoints: <?php echo (int)$globalPoints; ?>,
+		timelimit: <?php echo (int)$this->quiz->getTimeLimit(); ?>,
 		resultsGrade: <?php echo $resultsProzent; ?>,
-		<?php echo get_option('wpProQuiz_corsActivated') ? 'cors: 1,' : ''; ?>
-		<?php echo $this->quiz->isDisabledAnswerMark() ? 'disabledAnswerMark: 1,' : ''; ?>
-		json: <?php echo $json; ?>
+		bo: <?php echo $bo ?>,
+		json: <?php echo json_encode($json); ?>
 	});
 });
 </script>	
 		<?php 
+	}
+	
+	private function showAddToplist() {
+?>
+		<div class="wpProQuiz_addToplist" style="display: none;">
+			<span style="font-weight: bold;"><?php _e('Your result entered into leaderboard', 'wp-pro-quiz'); ?></span>
+			<div style="margin-top: 6px;">
+				<div class="wpProQuiz_addToplistMessage" style="display: none;"><?php _e('Loading', 'wp-pro-quiz'); ?></div>
+				<div class="wpProQuiz_addBox">
+					<div>
+						<span>
+							<label>
+								<?php _e('Name', 'wp-pro-quiz'); ?>: <input type="text" placeholder="<?php _e('Name', 'wp-pro-quiz'); ?>" name="wpProQuiz_toplistName" maxlength="15" size="16" >
+							</label>
+							<label> 
+								<?php _e('E-Mail', 'wp-pro-quiz'); ?>: <input type="email" placeholder="<?php _e('E-Mail', 'wp-pro-quiz'); ?>" name="wpProQuiz_toplistEmail" size="20">
+							</label>
+						</span>
+						<div style="margin-top: 5px;">
+							<label>
+								<?php _e('Captcha', 'wp-pro-quiz'); ?>: <input type="text" placeholder="<?php _e('Captcha', 'wp-pro-quiz'); ?>" name="wpProQuiz_captcha" size="8">
+							</label>
+							<input type="hidden" name="wpProQuiz_captchaPrefix" value="0">
+							<img alt="captcha" src="" class="wpProQuiz_captchaImg" style="vertical-align: middle;">
+						</div>
+					</div>
+					<input class="wpProQuiz_toplistButton" type="submit" value="Abschicken" name="wpProQuiz_toplistAdd">
+				</div>
+			</div>
+		</div>
+<?php 
 	}
 }

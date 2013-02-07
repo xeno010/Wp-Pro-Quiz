@@ -7,24 +7,21 @@ class WpProQuiz_Model_Model {
 	protected $_mapper = null;
 	
 	public function __construct($array = null) {
+		$this->setModelData($array);
+	}
+	
+	public function setModelData($array) {
 		if($array != null) {
-// 			$a = get_object_vars($this);
-// 			foreach($array as $k => $v) {
-// 				if(array_key_exists('_'.$k, $a)) {
-// 					$this->{'_'.$k} = $v;
-// 				}
-// 			}
-			
 			foreach($array as $k => $v) {
-// 				if(array_key_exists('_'.$k, $a)) {
-// 					$this->{'_'.$k} = $v;
-// 				}
-				
 				if(strpos($k, '_') !== false) {
-					$k = str_replace(' ', '', ucwords(str_replace('_', ' ', $k)));
+// 					$k = str_replace(' ', '', ucwords(str_replace('_', ' ', $k)));
+					$k = implode('', array_map('ucfirst', explode('_', $k)));
+				} else {
+					$k = ucfirst($k);	
 				}
-				
-				$this->{'set'.ucfirst($k)}($v);
+		
+//				$this->{'set'.ucfirst($k)}($v);
+				$this->{'set'.$k}($v);
 			}
 		}
 	}

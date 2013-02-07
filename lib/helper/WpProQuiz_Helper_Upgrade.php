@@ -10,6 +10,7 @@ class WpProQuiz_Helper_Upgrade {
 		switch($oldVersion) {
 			case '0.17':
 			case '0.18':
+				WpProQuiz_Helper_Upgrade::updateV19();
 				break;
 			default:
 				WpProQuiz_Helper_Upgrade::install();
@@ -33,6 +34,7 @@ class WpProQuiz_Helper_Upgrade {
 		$role->add_cap('wpProQuiz_import');
 		$role->add_cap('wpProQuiz_export');
 		$role->add_cap('wpProQuiz_change_settings');
+		$role->add_cap('wpProQuiz_toplist_edit');
 
 		//ACHIEVEMENTS Version 2.x.x
 		if(defined('ACHIEVEMENTS_IS_INSTALLED') && ACHIEVEMENTS_IS_INSTALLED === 1 && defined('ACHIEVEMENTS_VERSION')) {
@@ -41,6 +43,12 @@ class WpProQuiz_Helper_Upgrade {
 				WpProQuiz_Plugin_BpAchievementsV2::install();
 			}
 		}
+	}
+	
+	private static function updateV19() {
+		$role = get_role('administrator');
+
+		$role->add_cap('wpProQuiz_toplist_edit');
 	}
 	
 	private static function updateDb() {

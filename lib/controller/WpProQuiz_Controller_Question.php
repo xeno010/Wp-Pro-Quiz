@@ -34,7 +34,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 				$this->deleteAction($_GET['id']);
 				break;
 			case 'save_sort':
-				$this->saveSort($_GET['id']);
+				$this->saveSort();
 				break;
 			case 'load_question':
 				$this->loadQuestion($_GET['quiz_id']);
@@ -107,7 +107,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		exit;
 	}
 	
-	public function saveSort($quizId) {
+	public function saveSort() {
 		
 		if(!current_user_can('wpProQuiz_edit_quiz')) {
 			exit;
@@ -145,6 +145,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		
 		$this->view	= new WpProQuiz_View_QuestionEdit();
 		$this->view->header = __('Edit question', 'wp-pro-quiz');
+		
 		$mapper 	= new WpProQuiz_Model_QuestionMapper();
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		
@@ -156,31 +157,34 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		}
 		
 		if(isset($this->_post['submit'])) {
-			$post = $this->clearPost($this->_post);
-			$post['id'] = $id;
+			$post = $this->_post;
 			
+			$post['id'] = $id;
 			$post['title'] = isset($post['title']) ? trim($post['title']) : '';
-				
+			
+			$clearPost = $this->clearPost($post);
+			
+			$post['answerData'] = $clearPost['answerData'];
+			
 			if(empty($post['title'])) {
 				$question = $mapper->fetch($id);
 
 				$post['title'] = sprintf(__('Question: %d', 'wp-pro-quiz'), $question->getSort()+1);
 			}
 
-			$post['pointsAnswer'] = $post['points'];
-			
-			if(isset($post['pointsPerAnswer'])) {
-				$post['points'] = $this->generatePointsAnswer($post);
+			if(isset($post['answerPointsActivated'])) {
+				$post['points'] = $clearPost['points'];
 			}
-			
+	
 			$mapper->save(new WpProQuiz_Model_Question($post));
 			WpProQuiz_View_View::admin_notices(__('Question edited', 'wp-pro-quiz'), 'info');
 		}
 		
 		$this->view->question = $mapper->fetch($id);
+		$this->view->data = $this->setAnswerObject($this->view->question);
 		
-		if($this->view->question->isPointsPerAnswer()) {
-			$this->view->question->setPoints($this->view->question->getPointsAnswer());
+		if($this->view->question->isAnswerPointsActivated()) {
+			$this->view->question->setPoints(1);
 		}
 		
 		$this->view->show();
@@ -194,18 +198,25 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		
 		$this->view = new WpProQuiz_View_QuestionEdit();
 		$this->view->header = __('New question', 'wp-pro-quiz');
+		
 		$post = null;
 		
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		
 		$this->view->quiz = $quizMapper->fetch($this->_quizId);
-		
+	
 		if(isset($this->_post['submit'])) {
-			$post = $this->clearPost($this->_post);
 			
 			$questionMapper = new WpProQuiz_Model_QuestionMapper();
 			
+			$post = $this->_post;
+			
 			$post['title'] = isset($post['title']) ? trim($post['title']) : '';
+			$post['quizId'] = $this->_quizId;
+			
+			$clearPost = $this->clearPost($post);
+
+			$post['answerData'] = $clearPost['answerData'];
 			
 			if(empty($post['title'])) {
 				$count = $questionMapper->count($this->_quizId);
@@ -213,10 +224,8 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 				$post['title'] = sprintf(__('Question: %d', 'wp-pro-quiz'), $count+1);
 			}
 			
-			$post['pointsAnswer'] = $post['points'];
-			
-			if(isset($post['pointsPerAnswer'])) {
-				$post['points'] = $this->generatePointsAnswer($post);
+			if(isset($post['answerPointsActivated'])) {
+				$post['points'] = $clearPost['points'];
 			}
 			
 			$questionMapper->save(new WpProQuiz_Model_Question($post));
@@ -224,51 +233,85 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			WpProQuiz_View_View::admin_notices(__('Question added', 'wp-pro-quiz'), 'info');
 			
 			$this->showAction();
+			
 			return;
 		}
 		
 		$this->view->question = new WpProQuiz_Model_Question($post);
+		$this->view->data = $this->setAnswerObject($this->view->question);
 		$this->view->question->setQuizId($this->_quizId);
 		
-		if($this->view->question->isPointsPerAnswer()) {
-			$this->view->question->setPoints($this->view->question->getPointsAnswer());
+		if($this->view->question->isAnswerPointsActivated()) {
+			$this->view->question->setPoints(1);
 		}
 		
 		$this->view->show();
 	}
 	
-	public function clearPost($post) {
-		$j = array();
+	private function setAnswerObject(WpProQuiz_Model_Question $question) {
+		//Defaults
+		$data = array(
+				'sort_answer' => array(new WpProQuiz_Model_AnswerTypes()),
+				'classic_answer' => array(new WpProQuiz_Model_AnswerTypes()),
+				'matrix_sort_answer' => array(new WpProQuiz_Model_AnswerTypes()),
+				'cloze_answer' => array(new WpProQuiz_Model_AnswerTypes()),
+				'free_answer' => array(new WpProQuiz_Model_AnswerTypes())
+		);
 		
-		switch($post['answerType']) {
+		$type = $question->getAnswerType();
+		$type = ($type == 'single' || $type == 'multiple') ? 'classic_answer' : $type;
+		$answerData = $question->getAnswerData();
+
+		if(isset($data[$type]) && $answerData !== null) {
+			$data[$type] = $question->getAnswerData();
+		}
+		
+		return $data;
+	}
+	
+	public function clearPost($post) {
+		
+		if($post['answerType'] == 'cloze_answer' && isset($post['answerData']['cloze'])) {
+			preg_match_all('#\{(.*?)(?:\|(\d+))?(?:[\s]+)?\}#im', $post['answerData']['cloze']['answer'], $matches);
 			
-			
-			case 'single':
-			case 'multiple':
-				$j = array('classic_answer' => $post['answerJson']['classic_answer']);
-				break;
-			case 'free_answer':
-				$j = array('free_answer' => $post['answerJson']['free_answer']);
-				break;
-			case 'sort_answer':
-				$j = array('answer_sort' => $post['answerJson']['answer_sort']);
-				break;
-			case 'matrix_sort_answer':
-				$j = array('answer_matrix_sort' => $post['answerJson']['answer_matrix_sort']);
-				break;
-			case 'cloze_answer':
-				$j = array('answer_cloze' => $post['answerJson']['answer_cloze']);
-				break;
+			$points = 0;
 					
+			foreach($matches[2] as $match) {
+				if(empty($match))
+					$match = 1;
+		
+				$points += $match;
+			}
+			
+			return array('points' => $points, 'answerData' => array(new WpProQuiz_Model_AnswerTypes($post['answerData']['cloze'])));
+		}
+		
+		unset($post['answerData']['cloze']);
+
+		if(isset($post['answerData']['none'])) {
+			unset($post['answerData']['none']);
+		}
+		
+		$answerData = array();
+		$points = 0;
+		
+		foreach($post['answerData'] as $k => $v) {			
+			if(trim($v['answer']) == '') {
+				if($post['answerType'] != 'matrix_sort_answer') {
+					continue;
+				} else {
+					if(trim($v['sort_string']) == '')
+						continue;
+				}
+			}
+			
+			$answerType = new WpProQuiz_Model_AnswerTypes($v);
+			$points += $answerType->getPoints();
+			
+			$answerData[] = $answerType;
 		}
 
-		unset($post['answerJson']);
-		
-		$post['answerJson'] = $j;			
-		$post['answerJson'] = $this->clear($post['answerJson']);
-		$post['quizId'] = $this->_quizId;
-		
-		return $post;
+		return array('points' => $points, 'answerData' => $answerData);
 	}
 	
 	public function clear($a) {
@@ -306,22 +349,5 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		$this->view->quiz = $m->fetch($this->_quizId);
 		$this->view->question = $mm->fetchAll($this->_quizId);
 		$this->view->show();
-	}
-	
-	private function generatePointsAnswer($post) {
-		switch($post['answerType']) {
-			case 'single':
-			case 'multiple':
-				return count($post['answerJson']['classic_answer']['correct']) * $post['pointsAnswer'];
-			case 'free_answer':
-				return $post['pointsAnswer'];
-			case 'sort_answer':
-				return count($post['answerJson']['answer_sort']['answer']) * $post['pointsAnswer'];
-			case 'matrix_sort_answer':
-				return count($post['answerJson']['answer_matrix_sort']['answer']) * $post['pointsAnswer'];
-			case 'cloze_answer':
-				return preg_match_all('#\{(.*?)\}#', $post['answerJson']['answer_cloze']['text']) * $post['pointsAnswer'];
-				break;
-		}
 	}
 }

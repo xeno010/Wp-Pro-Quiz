@@ -18,6 +18,8 @@ class WpProQuiz_Model_Mapper {
 	protected $_tableMaster;
 	protected $_tableLock;
 	protected $_tableStatistic;
+	protected $_tableToplist;
+	protected $_tablePrerequisite;
 	
 	
 	function __construct() {
@@ -30,5 +32,11 @@ class WpProQuiz_Model_Mapper {
 		$this->_tableMaster = $this->_prefix.'master';
 		$this->_tableLock = $this->_prefix.'lock';
 		$this->_tableStatistic = $this->_prefix.'statistic';
+		$this->_tableToplist = $this->_prefix.'toplist';
+		$this->_tablePrerequisite = $this->_prefix.'prerequisite';
+	}
+	
+	public function getInsertId() {
+		return $this->_wpdb->insert_id;
 	}
 }

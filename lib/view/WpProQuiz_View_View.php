@@ -22,4 +22,15 @@ class WpProQuiz_View_View {
 	public function redirect($url) {
 		
 	}
+	
+	public function checked($v, $check = true, $echo = true) {
+		
+		$r = ($v == $check) ? 'checked="checked"' : '';
+		
+		if($echo) {
+			echo $r;
+		} else {
+			return $r;
+		}
+	}
 }

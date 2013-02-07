@@ -88,7 +88,11 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'disabled_answer_mark' => (int)$data->isDisabledAnswerMark(),
 			'show_max_question' => (int)$data->isShowMaxQuestion(),
 			'show_max_question_value' => (int)$data->getShowMaxQuestionValue(),
-			'show_max_question_percent' => (int)$data->isShowMaxQuestionPercent()
+			'show_max_question_percent' => (int)$data->isShowMaxQuestionPercent(),
+			'toplist_activated' => (int)$data->isToplistActivated(),
+			'toplist_data' => $data->getToplistData(),
+			'show_average_result' => (int)$data->isShowAverageResult(),
+			'prerequisite' => (int)$data->isPrerequisite()
 		);
 		
 		if($data->getId() != 0) {
@@ -97,13 +101,13 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					array(
 							'id' => $data->getId()
 					),
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d'),
 					array('%d'));
 		} else {
 			
 			$result = $this->_wpdb->insert($this->_table,
 						$set,
-						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
+						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d'));
 
 			$data->setId($this->_wpdb->insert_id);
 		}
@@ -121,5 +125,34 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 	
 	public function countQuestion($id) {
 		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_tableQuestion} WHERE quiz_id = %d", $id));
+	}
+	
+	public function fetchAllAsArray($list, $outIds = array()) {
+		$where = ' 1 ';
+		
+		if(!empty($outIds)) {
+			$where .= ' AND id NOT IN('.implode(', ', array_map('intval', (array)$outIds)).') ';
+		}
+		
+		return $this->_wpdb->get_results(
+			"SELECT ".implode(', ', (array)$list)." FROM {$this->_tableMaster} WHERE $where ORDER BY name",
+			ARRAY_A
+		);
+	}
+	
+	public function fetchCol($ids, $col) {
+		$ids = implode(', ', array_map('intval', (array)$ids));
+		
+		return $this->_wpdb->get_col("SELECT {$col} FROM {$this->_tableMaster} WHERE id IN({$ids})");
+	}
+	
+	public function activateStatitic($quizIds, $lockIpTime) {
+		$quizIds = implode(', ', array_map('intval', (array)$quizIds));
+		
+		return $this->_wpdb->query($this->_wpdb->prepare(
+			"UPDATE {$this->_tableMaster} 
+			SET `statistics_on` = 1, `statistics_ip_lock` = %d 
+			WHERE `statistics_on` = 0 AND id IN(".$quizIds.")"
+			, $lockIpTime));
 	}
 }

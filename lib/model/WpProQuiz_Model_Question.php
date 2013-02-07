@@ -8,18 +8,16 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	protected $_correctMsg;
 	protected $_incorrectMsg;
 	protected $_answerType;
-	protected $_answerJson;
-	protected $_correctCount;
-	protected $_incorrectCount;
 	protected $_correctSameText = false;
 	protected $_tipEnabled = false;
 	protected $_tipMsg;
-	protected $_tipCount;
 	protected $_points = 1;
-	protected $_pointsPerAnswer = false;
-	protected $_pointsAnswer = 1;
 	protected $_showPointsInBox = false;
 	
+	//0.19
+	protected $_answerPointsActivated = false;
+	protected $_answerData = null;
+
 	public function setId($_id) {
 		$this->_id = $_id;
 		return $this;
@@ -92,37 +90,6 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_answerType;
 	}
 	
-	public function setAnswerJson($answerJson) {
-		$this->_answerJson = $answerJson;
-		
-		if(isset($this->_answerJson['answer_type']))
-			$this->setAnswerType($this->_answerJson['answer_type']);
-		
-		return $this;
-	}
-	
-	public function getAnswerJson() {
-		return $this->_answerJson;
-	}
-	
-	public function setCorrectCount($_correctCount) {
-		$this->_correctCount = $_correctCount;
-		return $this;
-	}
-	
-	public function getCorrectCount() {
-		return (int)$this->_correctCount;
-	}
-	
-	public function setIncorrectCount($_incorrectCount) {
-		$this->_incorrectCount = $_incorrectCount;
-		return $this;
-	}
-	
-	public function getIncorrectCount() {
-		return (int)$this->_incorrectCount;
-	}
-	
 	public function setCorrectSameText($_correctSameText) {
 		$this->_correctSameText = (bool)$_correctSameText;
 		return $this;
@@ -150,15 +117,6 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_tipMsg;
 	}
 	
-	public function setTipCount($_tipCount)	{
-		$this->_tipCount = (int)$_tipCount;
-		return $this;
-	}
-	
-	public function getTipCount() {
-		return $this->_tipCount;
-	}
-	
 	public function setPoints($_points) {
 		$this->_points = (int)$_points;
 		return $this;
@@ -168,24 +126,6 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		return $this->_points;
 	}
 	
-	public function setPointsPerAnswer($_pointsPerAnswer) {
-		$this->_pointsPerAnswer = (bool)$_pointsPerAnswer;
-		return $this;
-	}
-	
-	public function isPointsPerAnswer() {
-		return $this->_pointsPerAnswer;
-	}
-	
-	public function setPointsAnswer($_pointsAnswer)	{
-		$this->_pointsAnswer = (int)$_pointsAnswer;
-		return $this;
-	}
-	
-	public function getPointsAnswer() {
-		return $this->_pointsAnswer;
-	}
-	
 	public function setShowPointsInBox($_showPointsInBox) {
 		$this->_showPointsInBox = (bool)$_showPointsInBox;
 		return $this;
@@ -193,5 +133,41 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	
 	public function isShowPointsInBox() {
 		return $this->_showPointsInBox;
+	}
+	
+	public function setAnswerPointsActivated($_answerPointsActivated) {
+		$this->_answerPointsActivated = (bool)$_answerPointsActivated;
+		return $this;
+	}
+	
+	public function isAnswerPointsActivated() {
+		return $this->_answerPointsActivated;
+	}
+	
+	public function setAnswerData($_answerData) {
+		$this->_answerData = $_answerData;
+		
+		return $this;
+	}
+	
+	public function getAnswerData($serialize = false) {
+		if($this->_answerData === null)
+			return null;
+		
+		if(is_array($this->_answerData) || $this->_answerData instanceof WpProQuiz_Model_AnswerTypes) {
+			if($serialize) {
+				return @serialize($this->_answerData);
+			}
+		} else {
+			if(!$serialize) {
+				if(WpProQuiz_Helper_Until::saveUnserialize($this->_answerData, $into) === false) {
+					return null;
+				}
+				
+				$this->_answerData = $into;
+			}
+		}
+		
+		return $this->_answerData;
 	}
 }

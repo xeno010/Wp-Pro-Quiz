@@ -27,30 +27,45 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 				<th scope="col" style="width: 50px;"></th>
 				<th scope="col"><?php _e('Name', 'wp-pro-quiz'); ?></th>
 				<th scope="col"><?php _e('Points', 'wp-pro-quiz'); ?></th>
-				<th scope="col"><?php _e('Action', 'wp-pro-quiz'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php 
 			$index = 1;
 			$points = 0;
+
+			if(count($this->question)) {
+
 			foreach ($this->question as $question) {
 				$points += $question->getPoints();
+				
 			?>
 			<tr id="wpProQuiz_questionId_<?php echo $question->getId(); ?>">
 				<th><?php echo $index++; ?></th>
-				<th><?php echo $question->getTitle(); ?></th>
-				<th><?php echo $question->getPoints(); ?></th>
-				<th>
-					<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
-					<a class="button-secondary" href="admin.php?page=wpProQuiz&module=question&action=edit&quiz_id=<?php echo $this->quiz->getId(); ?>&id=<?php echo $question->getId(); ?>"><?php _e('Edit', 'wp-pro-quiz'); ?></a>
-					<?php } if(current_user_can('wpProQuiz_delete_quiz')) { ?> 
-					<a class="button-secondary wpProQuiz_delete" href="admin.php?page=wpProQuiz&module=question&action=delete&quiz_id=<?php echo $this->quiz->getId(); ?>&id=<?php echo $question->getId(); ?>"><?php _e('Delete', 'wp-pro-quiz'); ?></a>
-					<?php } if(current_user_can('wpProQuiz_edit_quiz')) { ?>
-					<a class="button-secondary wpProQuiz_move" href="#" style="cursor:move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
-					<?php } ?>
-				</th>
+				<td>
+					<strong><?php echo $question->getTitle(); ?></strong>
+					<div class="row-actions">
+						<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
+						<span>
+							<a href="admin.php?page=wpProQuiz&module=question&action=edit&quiz_id=<?php echo $this->quiz->getId(); ?>&id=<?php echo $question->getId(); ?>"><?php _e('Edit', 'wp-pro-quiz'); ?></a> | 
+						</span>
+						<?php } if(current_user_can('wpProQuiz_delete_quiz')) { ?>
+						<span>
+							<a style="color: red;" class="wpProQuiz_delete" href="admin.php?page=wpProQuiz&module=question&action=delete&quiz_id=<?php echo $this->quiz->getId(); ?>&id=<?php echo $question->getId(); ?>"><?php _e('Delete', 'wp-pro-quiz'); ?></a> | 
+						</span>
+						<?php } if(current_user_can('wpProQuiz_edit_quiz')) { ?>
+						<span>
+							<a class="wpProQuiz_move" href="#" style="cursor:move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
+						</span>
+						<?php } ?>
+					</div>
+				</td>
+				<td><?php echo $question->getPoints(); ?></td>
 			</tr>
+			<?php } } else { ?>
+				<tr>
+					<td colspan="3" style="text-align: center; font-weight: bold; padding: 10px;"><?php _e('No data available', 'wp-pro-quiz'); ?></td>
+				</tr>
 			<?php } ?>
 		</tbody>
 		<tfoot>
@@ -58,7 +73,6 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 				<th></th>
 				<th style="font-weight: bold;"><?php _e('Total', 'wp-pro-quiz'); ?></th>
 				<th style="font-weight: bold;"><?php echo $points; ?></th>
-				<th></th>
 			</tr>
 		</tfoot>
 	</table>

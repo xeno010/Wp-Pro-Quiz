@@ -17,6 +17,21 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		}
 	}
 	
+	public function getAverageResult($quizId) {
+		$statisticMapper = new WpProQuiz_Model_StatisticMapper();
+		$quizMapper = new WpProQuiz_Model_QuizMapper(); 
+		
+		$r = $statisticMapper->fetchByQuiz($quizId);
+		$maxPoints = $quizMapper->sumQuestionPoints($quizId);
+		$sumQuestion = $quizMapper->countQuestion($quizId);
+		
+		if($r['count'] > 0) {
+			return round((100 * $r['points'] / ($r['count'] * $maxPoints / $sumQuestion)), 2);
+		}
+		
+		return 0;
+	}
+	
 	private function loadStatistics($quizId) {
 		
 		if(!current_user_can('wpProQuiz_show_statistics')) {
@@ -30,30 +45,34 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 			exit;
 		}
 		
-		$questionMapper = new WpProQuiz_Model_StatisticMapper();
-		$questions = $questionMapper->fetchAll($quizId, $this->_post['userId']);
+		$statisticMapper = new WpProQuiz_Model_StatisticMapper();
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		$statistics = $statisticMapper->fetchAll($quizId, $this->_post['userId']);
 		
-		$data = array(	'global' => array('cCorrect' => 0, 'cIncorrect' => 0, 'pCorrect' => 0, 'pIncorrect' => 0, 'cTip' => 0, 'cCorrectAnswerPoints' => 0), 
+		$data = array(	'global' => array('cCorrect' => 0, 'cIncorrect' => 0, 'pCorrect' => 0, 'pIncorrect' => 0, 'cTip' => 0, 'cPoints' => 0, 'result' => 0), 
 						'items' => array());
 		
 		$data['clear'] = $data['global'];
+		
+		$maxPoints = $quizMapper->sumQuestionPoints($quizId);
+		$sumQuestion = $quizMapper->countQuestion($quizId);
 
-		foreach($questions as $question) {
-			$sum = $question->getCorrectCount() + $question->getIncorrectCount();
+		foreach($statistics as $statistic) {
+			$sum = $statistic->getCorrectCount() + $statistic->getIncorrectCount();
 			
-			$data['global']['cCorrect'] += $question->getCorrectCount();
-			$data['global']['cIncorrect'] += $question->getIncorrectCount();
-			$data['global']['cTip'] += $question->getHintCount();
-			$data['global']['cCorrectAnswerPoints'] += $question->getCorrectAnswerCount();
+			$data['global']['cCorrect'] += $statistic->getCorrectCount();
+			$data['global']['cIncorrect'] += $statistic->getIncorrectCount();
+			$data['global']['cTip'] += $statistic->getHintCount();
+			$data['global']['cPoints'] += $statistic->getPoints();
 
 			$data['items'][] = array(
-				'id' => $question->getQuestionId(),
-				'cCorrect' => $question->getCorrectCount(),
-				'cIncorrect' => $question->getIncorrectCount(),
-				'cTip' => $question->getHintCount(),
-				'pCorrect' => round((100 * $question->getCorrectCount() / $sum), 2),
-				'pIncorrect' => round((100 * $question->getIncorrectCount() / $sum), 2),
-				'cCorrectAnswerPoints' => $question->getCorrectAnswerCount()
+				'id' => $statistic->getQuestionId(),
+				'cCorrect' => $statistic->getCorrectCount(),
+				'cIncorrect' => $statistic->getIncorrectCount(),
+				'cTip' => $statistic->getHintCount(),
+				'pCorrect' => round((100 * $statistic->getCorrectCount() / $sum), 2),
+				'pIncorrect' => round((100 * $statistic->getIncorrectCount() / $sum), 2),
+				'cPoints' => $statistic->getPoints()
 			);
 		}
 		
@@ -62,6 +81,7 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		if($sum > 0) {
 			$data['global']['pCorrect'] = round((100 * $data['global']['cCorrect'] / $sum), 2);
 			$data['global']['pIncorrect'] = round((100 * $data['global']['cIncorrect'] / $sum), 2);
+			$data['global']['result'] = round((100 * $data['global']['cPoints'] / ($sum * $maxPoints / $sumQuestion)), 2);
 		}
 				
 		echo json_encode($data);
@@ -71,6 +91,7 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 	
 	private function loadStatisticsOverview($quizId) {
 		$m = new WpProQuiz_Model_StatisticMapper();
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
 	
 		$page = (isset($this->_post['page']) && $this->_post['page'] > 0) ? $this->_post['page'] : 1;
 		$limit = $this->_post['pageLimit'];
@@ -78,6 +99,9 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		
 		$s = $m->fetchOverview($quizId, (bool)$this->_post['onlyCompleted'], $start, $limit);
 		$data = array('items' => array());
+		
+		$maxPoints = $quizMapper->sumQuestionPoints($quizId);
+		$sumQuestion = $quizMapper->countQuestion($quizId);
 		
 		foreach($s as $r) {
 			
@@ -103,6 +127,7 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 				'cTip' => $r->getHintCount(),
 				'pCorrect' => round((100 * $r->getCorrectCount() / $sum), 2),
 				'pIncorrect' => round((100 * $r->getIncorrectCount() / $sum), 2),
+				'result' => round((100 * $r->getPoints() / ($sum * $maxPoints / $sumQuestion)), 2),
 				'completed' => true
 			);	
 		}
@@ -164,6 +189,7 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$quizId = $this->_post['quizId'];
 		$array = $this->_post['results'];
 		$lockIp = $this->getIp();
+		$userId = get_current_user_id();
 		
 		if($lockIp === false)
 			return false;
@@ -174,20 +200,24 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		if(!$quiz->isStatisticsOn() || $quiz->isShowMaxQuestion())		
 			return false;
 		
-		if($quiz->getStatisticsIpLock() > 0) {		
+		$values = $this->makeDataList($quizId, $array, $userId);
+		
+		if($values === false)
+			return;
+		
+		if($quiz->getStatisticsIpLock() > 0) {
 			$lockMapper = new WpProQuiz_Model_LockMapper();
 			$lockTime = $quiz->getStatisticsIpLock() * 60;
 			
-			
 			$lockMapper->deleteOldLock($lockTime, $quiz->getId(), time(), WpProQuiz_Model_Lock::TYPE_STATISTIC);
 
-			if($lockMapper->isLock($quizId, $lockIp, get_current_user_id(), WpProQuiz_Model_Lock::TYPE_STATISTIC))
+			if($lockMapper->isLock($quizId, $lockIp, $userId, WpProQuiz_Model_Lock::TYPE_STATISTIC))
 				return false;
 			
 			$lock = new WpProQuiz_Model_Lock();
 			$lock	->setQuizId($quizId)
 					->setLockIp($lockIp)
-					->setUserId(get_current_user_id())
+					->setUserId($userId)
 					->setLockType(WpProQuiz_Model_Lock::TYPE_STATISTIC)
 					->setLockDate(time());
 			
@@ -195,9 +225,51 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		}
 		
 		$questionMapper = new WpProQuiz_Model_StatisticMapper();
-		$questionMapper->save($quizId, get_current_user_id(), $array);
+		$questionMapper->save($values);
 		
 		return true;
+	}
+	
+	private function makeDataList($quizId, $array, $userId) {
+		
+		$questionMapper = new WpProQuiz_Model_QuestionMapper();
+		
+		$question = $questionMapper->fetchAllList($quizId, array('id', 'points'));
+
+		$ids = array();
+		
+		foreach($question as $q) {
+			$ids[] = $q['id'];
+			$v = $array[$q['id']];
+			
+			if(!isset($v) || $v['points'] > $q['points'] || $v['points'] < 0) {
+				return false;
+			}
+		}
+		
+		unset($array['comp']);
+		
+		$ak = array_keys($array);
+		
+		if(array_diff($ids, $ak) !== array_diff($ak, $ids))
+			return false;
+		
+		$values = array();
+		
+		foreach($array as $k => $v) {
+			$s = new WpProQuiz_Model_Statistic();
+			$s->setQuizId($quizId);
+			$s->setQuestionId($k);
+			$s->setUserId($userId);
+			$s->setHintCount(isset($v['tip']) ? 1 : 0);
+			$s->setCorrectCount($v['correct'] ? 1 : 0);
+			$s->setIncorrectCount($v['correct'] ? 0 : 1);
+			$s->setPoints($v['points']);	
+		
+			$values[] = $s;
+		}
+		
+		return $values;
 	}
 	
 	private function getIp() {
