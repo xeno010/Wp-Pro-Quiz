@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 0.20
+Stable tag: 0.21
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -197,3 +197,6 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * Bugfix: in "Cloze": not correctly points calculated
 * Bugfix: "Number answers" option broken. all answers are numbered
 * Bugfix: Database
+
+= 0.21 = 
+* Hard fail in version 0.21 (all question points reset)

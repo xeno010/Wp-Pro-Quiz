@@ -6,6 +6,10 @@ class WpProQuiz_Helper_Upgrade {
 		WpProQuiz_Helper_Upgrade::updateDb();
 		
 		$oldVersion = get_option('wpProQuiz_version');
+		
+		if($oldVersion == '0.20') {
+			WpProQuiz_Helper_Upgrade::updateV21();
+		}
 
 		switch($oldVersion) {
 			case '0.17':
@@ -13,6 +17,7 @@ class WpProQuiz_Helper_Upgrade {
 				WpProQuiz_Helper_Upgrade::updateV19();
 			case '0.19':
 				WpProQuiz_Helper_Upgrade::updateV20();
+			case '0.20':
 				break;
 			default:
 				WpProQuiz_Helper_Upgrade::install();
@@ -66,7 +71,7 @@ class WpProQuiz_Helper_Upgrade {
 		
 		$results = $wpdb->get_results("
 			SELECT id, answer_data 
-			FROM {$wpdb->prefix}wp_pro_quiz_question`
+			FROM {$wpdb->prefix}wp_pro_quiz_question
 			WHERE answer_type = 'cloze_answer' AND answer_points_activated = 1", ARRAY_A);
 		
 		
@@ -84,11 +89,54 @@ class WpProQuiz_Helper_Upgrade {
 						$points += $match;
 					}					
 				}
-				
+
 				$wpdb->update($wpdb->prefix.'wp_pro_quiz_question', array('points' => $points), array('id' => $row['id']));
 			}
 		}
 	} 
+	
+	private static function updateV21() {
+		global $wpdb;
+		
+		$results = $wpdb->get_results("
+				SELECT id, answer_data, answer_type, answer_points_activated, points
+				FROM {$wpdb->prefix}wp_pro_quiz_question", ARRAY_A);
+		
+		foreach($results as $row) {
+			if($row['points'])
+				continue;
+			
+			if(WpProQuiz_Helper_Until::saveUnserialize($row['answer_data'], $into)) {
+				
+				$points = 0;
+				
+				if($row['answer_points_activated']) {
+					$dPoints = 0;
+					
+					foreach($into as $c) {
+						if($row['answer_type'] == 'cloze_answer') {
+							preg_match_all('#\{(.*?)(?:\|(\d+))?(?:[\s]+)?\}#im', $c->getAnswer(), $matches);
+							
+							foreach($matches[2] as $match) {
+								if(empty($match))
+									$match = 1;
+									
+								$dPoints += $match;
+							}
+						} else {
+							$dPoints += $c->getPoints();
+						}
+					}
+					
+					$points = $dPoints;
+				} else {
+					$points = 1;
+				}
+				
+				$wpdb->update($wpdb->prefix.'wp_pro_quiz_question', array('points' => $points), array('id' => $row['id']));
+			}
+		}
+	}
 	
 	public static function deinstall() {
 		
