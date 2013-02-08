@@ -52,107 +52,114 @@ class WpProQuiz_Helper_DbUpgrade {
 		
 		$this->_wpdb->query('
 			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_master` (
-				  `id` int(11) NOT NULL AUTO_INCREMENT,
-				  `name` varchar(200) NOT NULL,
-				  `text` text NOT NULL,
-				  `result_text` text NOT NULL,
-				  `result_grade_enabled` tinyint(1) NOT NULL,
-				  `title_hidden` tinyint(1) NOT NULL,
-				  `btn_restart_quiz_hidden` tinyint(1) NOT NULL,
-				  `btn_view_question_hidden` tinyint(1) NOT NULL,
-				  `question_random` tinyint(1) NOT NULL,
-				  `answer_random` tinyint(1) NOT NULL,
-				  `check_answer` tinyint(1) NOT NULL,
-				  `back_button` tinyint(1) NOT NULL,
-				  `time_limit` int(11) NOT NULL,
-				  `statistics_on` tinyint(1) NOT NULL,
-				  `statistics_ip_lock` int(10) unsigned NOT NULL,
-				  `show_points` tinyint(1) NOT NULL,
-				  `quiz_run_once` tinyint(1) NOT NULL,
-				  `quiz_run_once_type` tinyint(4) NOT NULL,
-				  `quiz_run_once_cookie` tinyint(1) NOT NULL,
-				  `quiz_run_once_time` int(10) unsigned NOT NULL,
-				  `question_on_single_page` tinyint(1) NOT NULL,
-				  `numbered_answer` tinyint(1) NOT NULL,
-				  `hide_answer_message_box` tinyint(1) NOT NULL,
-				  `disabled_answer_mark` tinyint(1) NOT NULL,
-				  `show_max_question` tinyint(1) NOT NULL,
-				  `show_max_question_value` int(10) unsigned NOT NULL,
-				  `show_max_question_percent` tinyint(1) NOT NULL,
-				  PRIMARY KEY (`id`)
+			  `id` int(11) NOT NULL AUTO_INCREMENT,
+			  `name` varchar(200) NOT NULL,
+			  `text` text NOT NULL,
+			  `result_text` text NOT NULL,
+			  `result_grade_enabled` tinyint(1) NOT NULL,
+			  `title_hidden` tinyint(1) NOT NULL,
+			  `btn_restart_quiz_hidden` tinyint(1) NOT NULL,
+			  `btn_view_question_hidden` tinyint(1) NOT NULL,
+			  `question_random` tinyint(1) NOT NULL,
+			  `answer_random` tinyint(1) NOT NULL,
+			  `check_answer` tinyint(1) NOT NULL,
+			  `back_button` tinyint(1) NOT NULL,
+			  `time_limit` int(11) NOT NULL,
+			  `statistics_on` tinyint(1) NOT NULL,
+			  `statistics_ip_lock` int(10) unsigned NOT NULL,
+			  `show_points` tinyint(1) NOT NULL,
+			  `quiz_run_once` tinyint(1) NOT NULL,
+			  `quiz_run_once_type` tinyint(4) NOT NULL,
+			  `quiz_run_once_cookie` tinyint(1) NOT NULL,
+			  `quiz_run_once_time` int(10) unsigned NOT NULL,
+			  `question_on_single_page` tinyint(1) NOT NULL,
+			  `numbered_answer` tinyint(1) NOT NULL,
+			  `hide_answer_message_box` tinyint(1) NOT NULL,
+			  `disabled_answer_mark` tinyint(1) NOT NULL,
+			  `show_max_question` tinyint(1) NOT NULL,
+			  `show_max_question_value` int(10) unsigned NOT NULL,
+			  `show_max_question_percent` tinyint(1) NOT NULL,
+			  `toplist_activated` tinyint(1) NOT NULL,
+			  `toplist_data` text NOT NULL,
+			  `show_average_result` tinyint(1) NOT NULL,
+			  `prerequisite` tinyint(1) NOT NULL,
+			  PRIMARY KEY (`id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		');
 		
 		$this->_wpdb->query('
 			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_question` (
-				  `id` int(11) NOT NULL AUTO_INCREMENT,
-				  `quiz_id` int(11) NOT NULL,
-				  `sort` tinyint(3) unsigned NOT NULL,
-				  `title` varchar(200) NOT NULL,
-				  `points` int(11) NOT NULL,
-				  `question` text NOT NULL,
-				  `correct_msg` text NOT NULL,
-				  `incorrect_msg` text NOT NULL,
-				  `correct_same_text` tinyint(1) NOT NULL,
-				  `correct_count` int(10) unsigned NOT NULL,
-				  `incorrect_count` int(10) unsigned NOT NULL,
-				  `tip_enabled` tinyint(1) NOT NULL,
-				  `tip_msg` text NOT NULL,
-				  `tip_count` int(11) NOT NULL,
-				  `answer_type` varchar(50) NOT NULL,
-				  `answer_json` text NOT NULL,
-				  `points_per_answer` tinyint(1) NOT NULL,
-				  `points_answer` int(10) unsigned NOT NULL,
-				  `show_points_in_box` tinyint(1) NOT NULL,
-				  PRIMARY KEY (`id`),
-				  KEY `quiz_id` (`quiz_id`)
+			  `id` int(11) NOT NULL AUTO_INCREMENT,
+			  `quiz_id` int(11) NOT NULL,
+			  `sort` smallint(5) unsigned NOT NULL,
+			  `title` varchar(200) NOT NULL,
+			  `points` int(11) NOT NULL,
+			  `question` text NOT NULL,
+			  `correct_msg` text NOT NULL,
+			  `incorrect_msg` text NOT NULL,
+			  `correct_same_text` tinyint(1) NOT NULL,
+			  `correct_count` int(10) unsigned NOT NULL,
+			  `incorrect_count` int(10) unsigned NOT NULL,
+			  `tip_enabled` tinyint(1) NOT NULL,
+			  `tip_msg` text NOT NULL,
+			  `tip_count` int(11) NOT NULL,
+			  `answer_type` varchar(50) NOT NULL,
+			  `answer_json` text NOT NULL,
+			  `points_per_answer` tinyint(1) NOT NULL,
+			  `points_answer` int(10) unsigned NOT NULL,
+			  `show_points_in_box` tinyint(1) NOT NULL,
+			  `answer_points_activated` tinyint(1) NOT NULL,
+			  `answer_data` longtext NOT NULL,
+			  PRIMARY KEY (`id`),
+			  KEY `quiz_id` (`quiz_id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		');
 		
 		$this->_wpdb->query('
 			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_lock` (
-				  `quiz_id` int(11) NOT NULL,
-				  `lock_ip` varchar(100) NOT NULL,
-				  `user_id` bigint(20) unsigned NOT NULL,
-				  `lock_type` tinyint(3) unsigned NOT NULL,
-				  `lock_date` int(11) NOT NULL,
-				  PRIMARY KEY (`quiz_id`,`lock_ip`,`user_id`,`lock_type`)
+			  `quiz_id` int(11) NOT NULL,
+			  `lock_ip` varchar(100) NOT NULL,
+			  `user_id` bigint(20) unsigned NOT NULL,
+			  `lock_type` tinyint(3) unsigned NOT NULL,
+			  `lock_date` int(11) NOT NULL,
+			  PRIMARY KEY (`quiz_id`,`lock_ip`,`user_id`,`lock_type`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 		');
 		
 		$this->_wpdb->query('
 			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_statistic` (
-				  `quiz_id` int(11) NOT NULL,
-				  `question_id` int(11) NOT NULL,
-				  `user_id` bigint(20) unsigned NOT NULL,
-				  `correct_count` int(10) unsigned NOT NULL,
-				  `incorrect_count` int(10) unsigned NOT NULL,
-				  `hint_count` int(10) unsigned NOT NULL,
-				  `correct_answer_count` int(10) unsigned NOT NULL,
-				  PRIMARY KEY (`quiz_id`,`question_id`,`user_id`)
+			  `quiz_id` int(11) NOT NULL,
+			  `question_id` int(11) NOT NULL,
+			  `user_id` bigint(20) unsigned NOT NULL,
+			  `correct_count` int(10) unsigned NOT NULL,
+			  `incorrect_count` int(10) unsigned NOT NULL,
+			  `hint_count` int(10) unsigned NOT NULL,
+			  `correct_answer_count` int(10) unsigned NOT NULL,
+			  `points` int(10) unsigned NOT NULL,
+			  PRIMARY KEY (`quiz_id`,`question_id`,`user_id`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 		');
 		
 		$this->_wpdb->query('
 			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_prerequisite` (
-			 	`prerequisite_quiz_id` int(11) NOT NULL,
-			 	`quiz_id` int(11) NOT NULL,
-			  	PRIMARY KEY (`prerequisite_quiz_id`,`quiz_id`)
+			  `prerequisite_quiz_id` int(11) NOT NULL,
+			  `quiz_id` int(11) NOT NULL,
+			  PRIMARY KEY (`prerequisite_quiz_id`,`quiz_id`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 		');
 		
 		$this->_wpdb->query('
 			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_toplist` (
-				  `toplist_id` int(11) NOT NULL AUTO_INCREMENT,
-				  `quiz_id` int(11) NOT NULL,
-				  `date` int(10) unsigned NOT NULL,
-				  `user_id` bigint(20) unsigned NOT NULL,
-				  `name` varchar(30) NOT NULL,
-				  `email` varchar(200) NOT NULL,
-				  `points` int(10) unsigned NOT NULL,
-				  `result` float unsigned NOT NULL,
-				  `ip` varchar(100) NOT NULL,
-				  PRIMARY KEY (`toplist_id`,`quiz_id`)
+			  `toplist_id` int(11) NOT NULL AUTO_INCREMENT,
+			  `quiz_id` int(11) NOT NULL,
+			  `date` int(10) unsigned NOT NULL,
+			  `user_id` bigint(20) unsigned NOT NULL,
+			  `name` varchar(30) NOT NULL,
+			  `email` varchar(200) NOT NULL,
+			  `points` int(10) unsigned NOT NULL,
+			  `result` float unsigned NOT NULL,
+			  `ip` varchar(100) NOT NULL,
+			  PRIMARY KEY (`toplist_id`,`quiz_id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		');
 	}

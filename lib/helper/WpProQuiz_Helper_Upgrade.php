@@ -11,6 +11,8 @@ class WpProQuiz_Helper_Upgrade {
 			case '0.17':
 			case '0.18':
 				WpProQuiz_Helper_Upgrade::updateV19();
+			case '0.19':
+				WpProQuiz_Helper_Upgrade::updateV20();
 				break;
 			default:
 				WpProQuiz_Helper_Upgrade::install();
@@ -58,6 +60,35 @@ class WpProQuiz_Helper_Upgrade {
 		if(add_option('wpProQuiz_dbVersion', $v) === false)
 			update_option('wpProQuiz_dbVersion', $v);
 	}
+	
+	private static function updateV20() {
+		global $wpdb;
+		
+		$results = $wpdb->get_results("
+			SELECT id, answer_data 
+			FROM {$wpdb->prefix}wp_pro_quiz_question`
+			WHERE answer_type = 'cloze_answer' AND answer_points_activated = 1", ARRAY_A);
+		
+		
+		foreach($results as $row) {
+			if(WpProQuiz_Helper_Until::saveUnserialize($row['answer_data'], $into)) {
+				$points = 0;
+				
+				foreach($into as $c) {
+					preg_match_all('#\{(.*?)(?:\|(\d+))?(?:[\s]+)?\}#im', $c->getAnswer(), $matches);
+						
+					foreach($matches[2] as $match) {
+						if(empty($match))
+							$match = 1;
+					
+						$points += $match;
+					}					
+				}
+				
+				$wpdb->update($wpdb->prefix.'wp_pro_quiz_question', array('points' => $points), array('id' => $row['id']));
+			}
+		}
+	} 
 	
 	public static function deinstall() {
 		

@@ -208,7 +208,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 							
 						<?php if($question->getAnswerType() === 'single' || $question->getAnswerType() === 'multiple') { ?>
 							<?php $json[$question->getId()]['correct'][] = (int)$v->isCorrect(); ?>
-								<span <?php $this->quiz->isNumberedAnswer() ? '' : 'style="display:none;"'?>></span>
+								<span <?php echo $this->quiz->isNumberedAnswer() ? '' : 'style="display:none;"'?>></span>
 								<label>
 									<input class="wpProQuiz_questionInput" type="<?php echo $question->getAnswerType() === 'single' ? 'radio' : 'checkbox'; ?>" name="question_<?php echo $this->quiz->getId(); ?>_<?php echo $question->getId(); ?>" value="<?php echo ($answer_index+1); ?>"> <?php echo $answer_text; ?>
 								</label>
@@ -366,7 +366,6 @@ $bo |= ((int)$this->quiz->isDisabledAnswerMark()) << 2;
 $bo |= ((int)($this->quiz->isQuizRunOnce() || $this->quiz->isPrerequisite())) << 3;
 $bo |= ((int)$preview) << 4;
 $bo |= ((int)get_option('wpProQuiz_corsActivated')) << 5;
-
 ?>
 
 <script type="text/javascript">
