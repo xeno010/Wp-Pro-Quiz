@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 0.21
+Stable tag: 0.22
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,7 +47,7 @@ A powerful and beautiful quiz plugin for WordPress.
 * 		English (Thanks Alexander M.)
 *		German / deutsch
 *		Norwegian / norsk (Thanks Stein Ivar J.)
-*		Russian / русский (Thanks Sergei B.)
+*		Russian / русский (Thanks Sergei B. and Alex A.)
 *		Swedish / svenska (Thanks Martin J.)
 
 = Live Demo =
@@ -200,3 +200,11 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 
 = 0.21 = 
 * Hard fail in version 0.21 (all question points reset)
+
+= 0.22 = 
+* CSS Bugfixes
+* IIS bug fixed
+* Time limit improves (JS)
+* Updated norwegian translation
+* Updated russian translation
+* Updated dutch translation

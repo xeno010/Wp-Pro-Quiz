@@ -9,7 +9,6 @@ class WpProQuiz_Model_Statistic extends WpProQuiz_Model_Model {
 	protected $_userName = '';
 	protected $_points = 0;
 	protected $_totalPoints = 0;
-	protected $_correctAnswerCount = 0;
 	
 	public function setQuizId($_quizId) {
 		$this->_quizId = (int)$_quizId;
@@ -90,14 +89,5 @@ class WpProQuiz_Model_Statistic extends WpProQuiz_Model_Model {
 	
 	public function getTotalPoints() {
 		return $this->_totalPoints;
-	}
-	
-	public function setCorrectAnswerCount($_correctAnswerCount) {
-		$this->_correctAnswerCount = (int)$_correctAnswerCount;
-		return $this;
-	}
-	
-	public function getCorrectAnswerCount() {
-		return $this->_correctAnswerCount;
 	}
 }

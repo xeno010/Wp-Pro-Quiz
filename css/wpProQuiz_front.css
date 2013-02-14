@@ -200,6 +200,7 @@
 .wpProQuiz_questionListItem input, .wpProQuiz_questionListItem label {
 	margin: 0 !important;
 	font-weight: normal;
+	display: inline;
 }
 .wpProQuiz_resultsList > li {
 	background-image: none !important;
@@ -238,7 +239,8 @@
 }
 .wpProQuiz_toplistTable td, .wpProQuiz_toplistTable th {
 	padding: 5px !important;
-	text-align: center;
+	text-align: center !important;
+	border: 0 !important;
 }
 .wpProQuiz_toplistTrOdd {
 	 background-color: #EBF1DE !important; 
@@ -295,4 +297,10 @@
     *display: inline !important;
     margin-right: 3px !important;
     vertical-align: middle !important;
+}
+.wpProQuiz_addBox label {
+	display: inline !important;
+}
+.wpProQuiz_addBox input[type="text"] {
+	margin: 0 !important;
 }

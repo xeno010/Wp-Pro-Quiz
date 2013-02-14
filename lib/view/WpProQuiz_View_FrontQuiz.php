@@ -394,21 +394,21 @@ jQuery(document).ready(function($) {
 					<div>
 						<span>
 							<label>
-								<?php _e('Name', 'wp-pro-quiz'); ?>: <input type="text" placeholder="<?php _e('Name', 'wp-pro-quiz'); ?>" name="wpProQuiz_toplistName" maxlength="15" size="16" >
+								<?php _e('Name', 'wp-pro-quiz'); ?>: <input type="text" placeholder="<?php _e('Name', 'wp-pro-quiz'); ?>" name="wpProQuiz_toplistName" maxlength="15" size="16" style="width: 150px;" >
 							</label>
 							<label> 
-								<?php _e('E-Mail', 'wp-pro-quiz'); ?>: <input type="email" placeholder="<?php _e('E-Mail', 'wp-pro-quiz'); ?>" name="wpProQuiz_toplistEmail" size="20">
+								<?php _e('E-Mail', 'wp-pro-quiz'); ?>: <input type="email" placeholder="<?php _e('E-Mail', 'wp-pro-quiz'); ?>" name="wpProQuiz_toplistEmail" size="20" style="width: 150px;">
 							</label>
 						</span>
 						<div style="margin-top: 5px;">
 							<label>
-								<?php _e('Captcha', 'wp-pro-quiz'); ?>: <input type="text" placeholder="<?php _e('Captcha', 'wp-pro-quiz'); ?>" name="wpProQuiz_captcha" size="8">
+								<?php _e('Captcha', 'wp-pro-quiz'); ?>: <input type="text" name="wpProQuiz_captcha" size="8" style="width: 50px;">
 							</label>
 							<input type="hidden" name="wpProQuiz_captchaPrefix" value="0">
 							<img alt="captcha" src="" class="wpProQuiz_captchaImg" style="vertical-align: middle;">
 						</div>
 					</div>
-					<input class="wpProQuiz_toplistButton" type="submit" value="Abschicken" name="wpProQuiz_toplistAdd">
+					<input class="wpProQuiz_toplistButton" type="submit" value="<?php _e('Send', 'wp-pro-quiz'); ?>" name="wpProQuiz_toplistAdd">
 				</div>
 			</div>
 		</div>

@@ -18,6 +18,7 @@ class WpProQuiz_Helper_Upgrade {
 			case '0.19':
 				WpProQuiz_Helper_Upgrade::updateV20();
 			case '0.20':
+			case '0.21':
 				break;
 			default:
 				WpProQuiz_Helper_Upgrade::install();

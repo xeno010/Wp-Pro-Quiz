@@ -61,28 +61,32 @@
 				if(!_counter)
 					return;
 				
-				var t = _counter;
-				var c = t * 100;
-				var g = c;
+				var x = _counter * 1000;
 				
-				var $timeText = globalElements.timelimit.find('span');
+				var $timeText = globalElements.timelimit.find('span').text(plugin.methode.parseTime(_counter));
 				var $timeDiv = globalElements.timelimit.find('.wpProQuiz_progress');
 				
 				globalElements.timelimit.show();
 				
+				var beforeTime = +new  Date();
+				
 				_intervalId = window.setInterval(function() {
-					if(c % 100 == 0) {
-						$timeText.text(plugin.methode.parseTime(t--));
+					
+					var diff = (+new Date() - beforeTime);
+					var elapsedTime = x - diff;
+					
+					if(diff >= 500) {
+						$timeText.text(plugin.methode.parseTime(Math.ceil(elapsedTime / 1000)));
 					}
 					
-					$timeDiv.css('width', (c / g * 100) + '%');
+					$timeDiv.css('width', (elapsedTime / x * 100) + '%');
 					
-					if(c-- == 0) {
+					if(elapsedTime <= 0) {
 						instance.stop();
 						plugin.methode.finishQuiz(true);
 					}
 					
-				}, 10);
+				}, 16);
 			};
 			
 			return instance;

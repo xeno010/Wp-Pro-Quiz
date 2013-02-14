@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wp-Pro-Quiz\n"
-"POT-Creation-Date: 2013-02-07 20:46+0100\n"
-"PO-Revision-Date: 2013-02-07 20:46+0100\n"
+"POT-Creation-Date: 2013-02-09 12:29+0100\n"
+"PO-Revision-Date: 2013-02-09 12:29+0100\n"
 "Last-Translator: Julius Fischer <julius.f@gmx.net>\n"
 "Language-Team: abuhassan <sajja2002@hotmail.com>\n"
 "Language: Arabic\n"
@@ -77,7 +77,7 @@ msgstr ""
 #: lib/controller/WpProQuiz_Controller_Front.php:44
 #: lib/controller/WpProQuiz_Controller_Preview.php:15
 #: lib/view/WpProQuiz_View_AdminToplist.php:47
-#: lib/view/WpProQuiz_View_FrontQuiz.php:393
+#: lib/view/WpProQuiz_View_FrontQuiz.php:392
 #: lib/view/WpProQuiz_View_QuestionOverall.php:93
 #: lib/view/WpProQuiz_View_Statistics.php:45
 msgid "Loading"
@@ -278,7 +278,7 @@ msgid "User"
 msgstr ""
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:56
-#: lib/view/WpProQuiz_View_FrontQuiz.php:401
+#: lib/view/WpProQuiz_View_FrontQuiz.php:400
 msgid "E-Mail"
 msgstr ""
 
@@ -443,19 +443,23 @@ msgstr "Nästa fråga >>"
 msgid "Finish quiz"
 msgstr "Avsluta quiz"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:391
+#: lib/view/WpProQuiz_View_FrontQuiz.php:390
 msgid "Your result entered into leaderboard"
 msgstr ""
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:398
+#: lib/view/WpProQuiz_View_FrontQuiz.php:397
 #: lib/view/WpProQuiz_View_FrontToplist.php:15
 #: lib/view/WpProQuiz_View_QuestionOverall.php:28
 #: lib/view/WpProQuiz_View_QuizOverall.php:58
 msgid "Name"
 msgstr "Namn"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:406
+#: lib/view/WpProQuiz_View_FrontQuiz.php:405
 msgid "Captcha"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:411
+msgid "Send"
 msgstr ""
 
 #: lib/view/WpProQuiz_View_FrontToplist.php:11

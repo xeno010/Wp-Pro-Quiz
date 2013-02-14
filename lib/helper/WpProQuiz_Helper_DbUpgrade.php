@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 16;
+	const WPPROQUIZ_DB_VERSION = 17;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -98,15 +98,9 @@ class WpProQuiz_Helper_DbUpgrade {
 			  `correct_msg` text NOT NULL,
 			  `incorrect_msg` text NOT NULL,
 			  `correct_same_text` tinyint(1) NOT NULL,
-			  `correct_count` int(10) unsigned NOT NULL,
-			  `incorrect_count` int(10) unsigned NOT NULL,
 			  `tip_enabled` tinyint(1) NOT NULL,
 			  `tip_msg` text NOT NULL,
-			  `tip_count` int(11) NOT NULL,
 			  `answer_type` varchar(50) NOT NULL,
-			  `answer_json` text NOT NULL,
-			  `points_per_answer` tinyint(1) NOT NULL,
-			  `points_answer` int(10) unsigned NOT NULL,
 			  `show_points_in_box` tinyint(1) NOT NULL,
 			  `answer_points_activated` tinyint(1) NOT NULL,
 			  `answer_data` longtext NOT NULL,
@@ -134,7 +128,6 @@ class WpProQuiz_Helper_DbUpgrade {
 			  `correct_count` int(10) unsigned NOT NULL,
 			  `incorrect_count` int(10) unsigned NOT NULL,
 			  `hint_count` int(10) unsigned NOT NULL,
-			  `correct_answer_count` int(10) unsigned NOT NULL,
 			  `points` int(10) unsigned NOT NULL,
 			  PRIMARY KEY (`quiz_id`,`question_id`,`user_id`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -665,5 +658,24 @@ class WpProQuiz_Helper_DbUpgrade {
 		
 		
 		return 16;
+	}
+	
+	private function upgradeDbV16() {
+		$this->_wpdb->query('
+			ALTER TABLE '.$this->_wpdb->prefix.'wp_pro_quiz_question
+				DROP `correct_count`,
+				DROP `incorrect_count`,
+				DROP `tip_count`,
+				DROP `answer_json`,
+				DROP `points_per_answer`,
+				DROP `points_answer`;
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE '.$this->_wpdb->prefix.'wp_pro_quiz_statistic
+				DROP `correct_answer_count`;
+		');
+
+		return 17;
 	}
 }

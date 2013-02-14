@@ -45,10 +45,9 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 	<div style="margin: 8px 0px;">
 		<a class="button-primary" style="font-weight: bold; display: none;" href="admin.php?page=wpProQuiz&module=styleManager"><?php _e('Style Manager', 'wp-pro-quiz'); ?></a>
 		<?php if(current_user_can('wpProQuiz_change_settings')) { ?>
-		<a class="button-primary" style="font-weight: bold; float: left;" href="admin.php?page=wpProQuiz&module=globalSettings"><?php _e('Global settings', 'wp-pro-quiz'); ?></a>
+		<a class="button-primary" style="font-weight: bold;" href="admin.php?page=wpProQuiz&module=globalSettings"><?php _e('Global settings', 'wp-pro-quiz'); ?></a>
 		<?php } ?>
-		<a class="button-primary" style="font-weight: bold; float: right;" href="admin.php?page=wpProQuiz&module=wpq_support"><?php _e('Support WP-Pro-Quiz', 'wp-pro-quiz'); ?></a>
-		<div style="clear: both;"></div>
+		<a class="button-primary" style="font-weight: bold;" href="admin.php?page=wpProQuiz&module=wpq_support"><?php _e('Support WP-Pro-Quiz', 'wp-pro-quiz'); ?></a>
 	</div>
 	<table class="wp-list-table widefat">
 		<thead>

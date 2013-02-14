@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wp-Pro-Quiz\n"
-"POT-Creation-Date: 2013-02-07 20:46+0100\n"
-"PO-Revision-Date: 2013-02-07 20:47+0100\n"
+"POT-Creation-Date: 2013-02-14 20:57+0100\n"
+"PO-Revision-Date: 2013-02-14 20:57+0100\n"
 "Last-Translator: Julius Fischer <julius.f@gmx.net>\n"
 "Language-Team: Stein Ivar Johnsen\n"
 "Language: Norwegian\n"
@@ -63,21 +63,21 @@ msgstr "Vil du virkelig tilbakestille statistikken?"
 #: lib/view/WpProQuiz_View_QuestionOverall.php:67
 #: lib/view/WpProQuiz_View_QuizOverall.php:111
 msgid "No data available"
-msgstr ""
+msgstr "Ingen data tilgjengelig"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:110
 msgid "No sort element in the criterion"
-msgstr ""
+msgstr "Ingen sorterings element i kriteriet"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:111
 msgid ""
 "\"Different points for every answer\" is not possible at \"Free\" choice"
-msgstr ""
+msgstr "\"Ulike poeng for hvert svar\" er ikke tilgjengelig i \"Fritt\" valg"
 
 #: lib/controller/WpProQuiz_Controller_Front.php:44
 #: lib/controller/WpProQuiz_Controller_Preview.php:15
 #: lib/view/WpProQuiz_View_AdminToplist.php:47
-#: lib/view/WpProQuiz_View_FrontQuiz.php:393
+#: lib/view/WpProQuiz_View_FrontQuiz.php:392
 #: lib/view/WpProQuiz_View_QuestionOverall.php:93
 #: lib/view/WpProQuiz_View_Statistics.php:45
 msgid "Loading"
@@ -173,7 +173,7 @@ msgstr "Quiz slettet"
 
 #: lib/controller/WpProQuiz_Controller_Toplist.php:136
 msgid "You signing up successfully."
-msgstr ""
+msgstr "Du registrerte deg med hell."
 
 #: lib/controller/WpProQuiz_Controller_Toplist.php:144
 #: lib/controller/WpProQuiz_Controller_Toplist.php:148
@@ -181,24 +181,24 @@ msgstr ""
 #: lib/controller/WpProQuiz_Controller_Toplist.php:169
 #: lib/controller/WpProQuiz_Controller_Toplist.php:175
 msgid "An error has occurred."
-msgstr ""
+msgstr "En feil har oppstått."
 
 #: lib/controller/WpProQuiz_Controller_Toplist.php:186
 #: lib/controller/WpProQuiz_Controller_Toplist.php:195
 msgid "You can not enter again."
-msgstr ""
+msgstr "Du kan ikke starte på nytt."
 
 #: lib/controller/WpProQuiz_Controller_Toplist.php:199
 msgid "No name or e-mail entered."
-msgstr ""
+msgstr "Ingen navn eller e-post skrevet."
 
 #: lib/controller/WpProQuiz_Controller_Toplist.php:203
 msgid "Your name can not exceed 15 characters."
-msgstr ""
+msgstr "Navnet ditt kan ikke overskride 15 tegn."
 
 #: lib/controller/WpProQuiz_Controller_Toplist.php:211
 msgid "You entered wrong captcha code."
-msgstr ""
+msgstr "Du har tastet inn feil captcha kode."
 
 #: lib/helper/WpProQuiz_Helper_Import.php:9
 msgid "File was not uploaded"
@@ -210,7 +210,7 @@ msgstr "Fil har feil format"
 
 #: lib/helper/WpProQuiz_Helper_Import.php:45
 msgid "File is not compatible with the current version"
-msgstr ""
+msgstr "Filen ikke er kompatibel med den gjeldende versjonen"
 
 #: lib/plugin/WpProQuiz_Plugin_BpAchievementsV2.php:33
 msgid "The user completed a quiz."
@@ -222,7 +222,7 @@ msgstr "Brukeren fullførte en quiz."
 #: lib/view/WpProQuiz_View_QuizEdit.php:534
 #: lib/view/WpProQuiz_View_QuizOverall.php:96
 msgid "Leaderboard"
-msgstr ""
+msgstr "Leaderboard"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:8
 #: lib/view/WpProQuiz_View_GobalSettings.php:21
@@ -242,22 +242,22 @@ msgstr "Filtrer"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:16
 msgid "Sort by:"
-msgstr ""
+msgstr "Sorter etter:"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:18
 #: lib/view/WpProQuiz_View_QuizEdit.php:600
 msgid "best user"
-msgstr ""
+msgstr "beste bruker"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:19
 #: lib/view/WpProQuiz_View_QuizEdit.php:604
 msgid "newest entry"
-msgstr ""
+msgstr "nyeste oppføringen"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:20
 #: lib/view/WpProQuiz_View_QuizEdit.php:608
 msgid "oldest entry"
-msgstr ""
+msgstr "eldste oppføring"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:26
 #: lib/view/WpProQuiz_View_Statistics.php:126
@@ -267,11 +267,11 @@ msgstr "Hvor mange oppføringer som skal vises på én side:"
 #: lib/view/WpProQuiz_View_AdminToplist.php:38
 #: lib/view/WpProQuiz_View_AdminToplist.php:57
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:38
 msgid "UR = unregistered user, R = registered user"
-msgstr ""
+msgstr "UR = uregistrert bruker, R = registrert bruker"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:55
 #: lib/view/WpProQuiz_View_Statistics.php:145
@@ -279,14 +279,14 @@ msgid "User"
 msgstr "Bruker"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:56
-#: lib/view/WpProQuiz_View_FrontQuiz.php:401
+#: lib/view/WpProQuiz_View_FrontQuiz.php:400
 msgid "E-Mail"
-msgstr ""
+msgstr "E-Post"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:58
 #: lib/view/WpProQuiz_View_FrontToplist.php:16
 msgid "Entered on"
-msgstr ""
+msgstr "Lagt inn den"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:59
 #: lib/view/WpProQuiz_View_FrontQuiz.php:283
@@ -322,11 +322,11 @@ msgstr "Slett"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:82
 msgid "Apply"
-msgstr ""
+msgstr "Legg til"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:83
 msgid "Delete all entries"
-msgstr ""
+msgstr "Slett alle oppføringer"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:49
 msgid "Start quiz"
@@ -341,7 +341,7 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:59
 msgid "You have to finish following quiz, to start this quiz:"
-msgstr ""
+msgstr "Du må gjøre ferdig følgende quiz, for å starte denne quiz:"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:66
 #, php-format
@@ -363,11 +363,11 @@ msgstr "Du har nådd %s av %s poeng, (%s)"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:83
 msgid "Average score"
-msgstr ""
+msgstr "Gjennomsnittlig poeng"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:90
 msgid "Your score"
-msgstr ""
+msgstr "Poeng oppnådd"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:122
 msgid "Restart quiz"
@@ -379,7 +379,7 @@ msgstr "Vis spørsmål"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:127
 msgid "Show leaderboard"
-msgstr ""
+msgstr "Vis leaderboard"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:138
 #: lib/view/WpProQuiz_View_QuizEdit.php:132
@@ -445,37 +445,41 @@ msgstr "Neste spørsmål"
 msgid "Finish quiz"
 msgstr "Fullfør quiz"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:391
+#: lib/view/WpProQuiz_View_FrontQuiz.php:390
 msgid "Your result entered into leaderboard"
-msgstr ""
+msgstr "Ditt resultate er lagt inn i leaderboard"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:398
+#: lib/view/WpProQuiz_View_FrontQuiz.php:397
 #: lib/view/WpProQuiz_View_FrontToplist.php:15
 #: lib/view/WpProQuiz_View_QuestionOverall.php:28
 #: lib/view/WpProQuiz_View_QuizOverall.php:58
 msgid "Name"
 msgstr "Navn"
 
-#: lib/view/WpProQuiz_View_FrontQuiz.php:406
+#: lib/view/WpProQuiz_View_FrontQuiz.php:405
 msgid "Captcha"
+msgstr "Captcha"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:411
+msgid "Send"
 msgstr ""
 
 #: lib/view/WpProQuiz_View_FrontToplist.php:11
 #, php-format
 msgid "maximum of %s points"
-msgstr ""
+msgstr "maksimalt %s poeng"
 
 #: lib/view/WpProQuiz_View_FrontToplist.php:14
 msgid "Pos."
-msgstr ""
+msgstr "Pos."
 
 #: lib/view/WpProQuiz_View_FrontToplist.php:18
 msgid "Result"
-msgstr ""
+msgstr "Resultat"
 
 #: lib/view/WpProQuiz_View_FrontToplist.php:23
 msgid "Table is loading"
-msgstr ""
+msgstr "Tabell lastes"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:7
 msgid "to activate"
@@ -490,7 +494,7 @@ msgstr "for å ikke aktivere"
 #: lib/view/WpProQuiz_View_GobalSettings.php:31
 #: lib/view/WpProQuiz_View_QuizOverall.php:48
 msgid "Global settings"
-msgstr ""
+msgstr "Globale innstillinger"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:16
 #: lib/view/WpProQuiz_View_WpqSupport.php:50
@@ -512,15 +516,15 @@ msgstr "Innstillinger i tilfelle problemer"
 #: lib/view/WpProQuiz_View_GobalSettings.php:37
 #: lib/view/WpProQuiz_View_GobalSettings.php:42
 msgid "Leaderboard time format"
-msgstr ""
+msgstr "Leaderboard tidsformat"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:64
 msgid "Custom"
-msgstr ""
+msgstr "Egendefinert"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:68
 msgid "Documentation on date and time formatting"
-msgstr ""
+msgstr "Dokumentasjon på dato og klokkeslett formatering"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:84
 #: lib/view/WpProQuiz_View_GobalSettings.php:89
@@ -722,15 +726,18 @@ msgstr "Poeng for dette spørsmålet (Standard er 1 poeng)"
 msgid ""
 "This points will be rewarded, only if the user closes the question correctly."
 msgstr ""
+"Dette poeng vil bli belønnet, bare hvis brukeren lukker spørsmålet riktig."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:37
 msgid "Different points for each answer"
-msgstr ""
+msgstr "Forskjellige poeng for hvert svar"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:40
 msgid ""
 "If you enable this option, you can enter different points for every answer."
 msgstr ""
+"Hvis du aktiverer dette alternativet, kan du legge til forskjellige poeng "
+"for hvert svar"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:46
 msgid "Show reached points in the correct- and incorrect message?"
@@ -843,6 +850,8 @@ msgid ""
 "You can create sort elements with empty criteria, which can't be assigned by "
 "user."
 msgstr ""
+"Du kan opprette sorter elementer med tomme kriterier, som ikke kan tildeles "
+"av bruker."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:201
 #: lib/view/WpProQuiz_View_QuestionEdit.php:250
@@ -854,7 +863,7 @@ msgstr "Valg"
 #: lib/view/WpProQuiz_View_QuestionEdit.php:202
 #: lib/view/WpProQuiz_View_QuestionEdit.php:303
 msgid "Answer"
-msgstr ""
+msgstr "Svar"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:217
 #: lib/view/WpProQuiz_View_QuestionEdit.php:275
@@ -899,12 +908,16 @@ msgid ""
 "If mode \"Different points for every answer\" is activated, you can assign "
 "points with |POINTS. Otherwise 1 point will be awarded for every answer."
 msgstr ""
+"Hvis mode \"Ulike poeng for hvert svar\" er aktivert, kan du tildele poeng "
+"med |POENG. Ellers 1 poeng vil bli tildelt for alle svar."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:360
 msgid ""
 "e.g. \"I {play} soccer, with a {ball|3}\" - \"play\" gives 1 point and \"ball"
 "\" 3 points."
 msgstr ""
+"f.eks \"I {play} fotball, med en {ball | 3}\" - \"play\" gir 1 poeng og "
+"\"ball\" 3 poeng."
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:17
 msgid "Questions sorted"
@@ -1227,122 +1240,132 @@ msgstr "i prosent"
 #: lib/view/WpProQuiz_View_QuizEdit.php:433
 #: lib/view/WpProQuiz_View_QuizEdit.php:438
 msgid "Show average points"
-msgstr ""
+msgstr "Vis gjennomsnittlig poeng"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:445
 msgid "Statistics-function must be enabled."
-msgstr ""
+msgstr "Statistikk-funksjonen må være aktivert"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:458
 #: lib/view/WpProQuiz_View_QuizEdit.php:463
 msgid "Prerequisites"
-msgstr ""
+msgstr "Forutsetninger"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:470
 msgid ""
 "If you enable this option, you can choose quiz, which user have to finish "
 "before he can start this quiz."
 msgstr ""
+"Hvis du aktiverer dette alternativet, kan du velge quiz, som bruker må "
+"fullføre før han kan starte denne quizen."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:473
 msgid ""
 "In all selected quizzes statistic function have to be active. If it is not "
 "it will be activated automatically."
 msgstr ""
+"I alle valgte quizzer statistikk funksjon trenger å være aktiv. Om ikke  vil "
+"det bli aktivert automatisk."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:478
 msgid "Quiz"
-msgstr ""
+msgstr "Quiz"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:480
 msgid "Prerequisites (This quiz have to be finished)"
-msgstr ""
+msgstr "Forutsetninger (Denne quizen må være ferdig)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:525
 msgid ""
 "The leaderboard allows users to enter results in public list and to share "
 "the result this way."
 msgstr ""
+"Leaderboard lar brukerne skrive inn resultater i offentlig liste og dele "
+"resultatet på denne måten."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:528
 msgid "The leaderboard works independent from internal statistics function."
-msgstr ""
+msgstr "Leaderboard fungerer uavhengig av intern statistikk funksjon."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:545
 msgid "Who can sign up to the list"
-msgstr ""
+msgstr "Hvem kan melde seg til listen"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:561
 msgid ""
 "Not registered users have to enter name and e-mail (e-mail won't be "
 "displayed)"
 msgstr ""
+"Ikke registrerte brukere må skrive inn navn og e-post (e-post vil ikke bli "
+"vist)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:567
 msgid "display captcha"
-msgstr ""
+msgstr "vis captcha"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:575
 msgid ""
 "If you enable this option, additional captcha will be displayed for users "
 "who are not registered."
 msgstr ""
+"Hvis du aktiverer dette alternativet, vil ytterligere captcha vises for "
+"brukere som ikke er registrert."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:578
 msgid "This option requires additional plugin:"
-msgstr ""
+msgstr "Dette alternativet krever ekstra innstikk:"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:583
 msgid "Plugin has been detected."
-msgstr ""
+msgstr "Innstikk har blitt oppdaget."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:587
 msgid "Plugin is not installed."
-msgstr ""
+msgstr "Innstikk er ikke installert."
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:595
 msgid "Sort list by"
-msgstr ""
+msgstr "Sorter liste med"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:614
 msgid "Users can apply multiple times"
-msgstr ""
+msgstr "Brukere kan legge til flere ganger"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:625
 msgid "User can apply after:"
-msgstr ""
+msgstr "Bruker kan legge til etter:"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:627
 msgid "minute"
-msgstr ""
+msgstr "minutt"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:634
 msgid "How many entries should be displayed"
-msgstr ""
+msgstr "Hvor mange oppføringer som skal vises"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:640
 msgid "Entries"
-msgstr ""
+msgstr "Oppføringer"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:647
 msgid "Automatically display leaderboard in quiz result"
-msgstr ""
+msgstr "Automatisk vise leaderboard i quiz resultat"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:651
 msgid "Where should leaderboard be displayed:"
-msgstr ""
+msgstr "Hvor skal leaderboard vises:"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:654
 msgid "don't display"
-msgstr ""
+msgstr "ikke vis"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:658
 msgid "below the \"result text\""
-msgstr ""
+msgstr "under \"resultat tekst\""
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:668
 msgid "in a button"
-msgstr ""
+msgstr "i en knapp"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:711
 msgid "Quiz description"
@@ -1441,7 +1464,7 @@ msgstr "Stil Manager"
 #: lib/view/WpProQuiz_View_QuizOverall.php:50
 #: lib/view/WpProQuiz_View_WpqSupport.php:8
 msgid "Support WP-Pro-Quiz"
-msgstr ""
+msgstr "Support WP-Pro-Quiz"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:57
 msgid "ID"
@@ -1453,7 +1476,7 @@ msgstr "Kortkode"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:60
 msgid "Shortcode-Leaderboard"
-msgstr ""
+msgstr "Kortkode-Leaderboard"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:88
 msgid "Preview"
@@ -1551,77 +1574,84 @@ msgstr "Front"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:10
 msgid "Donate"
-msgstr ""
+msgstr "Doner"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:20
 msgid "WP-Pro-Quiz is small but nice free quiz plugin for WordPress."
-msgstr ""
+msgstr "WP-Pro-Quiz er liten, men hyggelig gratis quiz plugin for WordPress."
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:21
 msgid ""
 "I try to implement all wishes as fast as possible and help with problems."
 msgstr ""
+"Jeg prøver å implementere alle ønsker så raskt som mulig og hjelpe med "
+"problemer."
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:22
 msgid ""
 "Your donations can help to ensure that the project continues to remain free."
 msgstr ""
+"Dine donasjoner kan bidra til å sikre at prosjektet fortsetter å være gratis."
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:25
 msgid "Translate WP-Pro-Quiz"
-msgstr ""
+msgstr "Oversette WP-Pro-Quiz"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:27
 msgid "You need:"
-msgstr ""
+msgstr "Du trenger:"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:30
 msgid "Latest POT file"
-msgstr ""
+msgstr "Siste POT fil"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:35
 msgid "Open PoEdit"
-msgstr ""
+msgstr "Åpne PoEdit"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:36
 msgid "File - New catalogue from POT file..."
-msgstr ""
+msgstr "Fil - Ny katalog fra POT fil..."
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:37
 msgid "Choose wp-pro-quiz.pot"
-msgstr ""
+msgstr "Velg wp-pro-quiz.pot"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:38
 msgid "Set \"Translation properties\""
-msgstr ""
+msgstr "Sett \"Oversettelse egenskaper\""
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:39
 msgid "Save PO file - with the name \"wp-pro-qioz-de_DE.po\""
-msgstr ""
+msgstr "Lagre PO-fil - med navnet  \"wp-pro-qioz-nb_NO.po\""
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:41
 msgid "replace de_DE with your countries short code (e.g. en_US, nl_NL...)"
-msgstr ""
+msgstr "erstatte nb_NO med ditt lands kort kode (f.eks no, nl_NL ...)"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:44
 msgid "Translate"
-msgstr ""
+msgstr "Oversett"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:46
 msgid ""
 "Upload generated *.mo file to your server, to /wp-content/plugins/wp-pro-"
 "quiz/languages"
 msgstr ""
+"Opplast generert *.mo-fil til serveren din, til /wp-content/plugins/wp-pro-"
+"quiz/languages"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:47
 msgid "Finished"
-msgstr ""
+msgstr "Ferdig"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:51
 msgid ""
 "You can translate WP-Pro-Quiz from existing to existing language (e.g. "
 "english to english) e.g. to rename buttons."
 msgstr ""
+"Du kan oversette WP-Pro-Quiz fra eksisterende til eksisterende språk (f.eks "
+"engelsk til norsk), f.eks ved å endre navn knapper."
 
 #~ msgid "Points per correct answer"
 #~ msgstr "Poeng pr riktig svar"

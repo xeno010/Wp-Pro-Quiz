@@ -274,7 +274,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 											<span><?php _e('Statistics IP-lock', 'wp-pro-quiz'); ?></span>
 										</legend>
 										<label for="statistics_ip_lock">
-											<input type="text" id="statistics_ip_lock" value="<?php echo ($this->quiz->getStatisticsIpLock() === null) ? 1440 : $this->quiz->getStatisticsIpLock(); ?>" name="statisticsIpLock">
+											<input type="number" min="0" class="small-text" id="statistics_ip_lock" value="<?php echo ($this->quiz->getStatisticsIpLock() === null) ? 1440 : $this->quiz->getStatisticsIpLock(); ?>" name="statisticsIpLock">
 											<?php _e('in minutes (recommended 1440 minutes = 1 day)', 'wp-pro-quiz'); ?>
 										</label>
 										<p class="description">

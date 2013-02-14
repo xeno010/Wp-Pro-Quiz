@@ -12,7 +12,7 @@ class WpProQuiz_View_FrontToplist extends WpProQuiz_View_View {
 		<thead>
 			<tr>
 				<th style="width: 40px;"><?php _e('Pos.', 'wp-pro-quiz'); ?></th>
-				<th style="text-align: left;"><?php _e('Name', 'wp-pro-quiz'); ?></th>
+				<th style="text-align: left !important;"><?php _e('Name', 'wp-pro-quiz'); ?></th>
 				<th style="width: 140px;"><?php _e('Entered on', 'wp-pro-quiz'); ?></th>
 				<th style="width: 60px;"><?php _e('Points', 'wp-pro-quiz'); ?></th>
 				<th style="width: 75px;"><?php _e('Result', 'wp-pro-quiz'); ?></th>
@@ -27,7 +27,7 @@ class WpProQuiz_View_FrontToplist extends WpProQuiz_View_View {
 			</tr>
 			<tr style="display: none;">
 				<td></td>
-				<td style="text-align: left;"></td>
+				<td style="text-align: left !important;"></td>
 				<td style=" color: rgb(124, 124, 124); font-size: x-small;"></td>
 				<td></td>
 				<td></td>
