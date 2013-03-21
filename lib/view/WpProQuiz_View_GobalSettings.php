@@ -27,52 +27,11 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 	
 	<form method="post">
 		<div id="poststuff">
-			<div class="postbox" id="globalContent">
-				<h3 class="hndle"><?php _e('Global settings', 'wp-pro-quiz'); ?></h3>
-				<div class="wrap">
-					<table class="form-table">
-						<tbody>
-							<tr>
-								<th scope="row">
-									<?php _e('Leaderboard time format', 'wp-pro-quiz'); ?>
-								</th>
-								<td>
-									<fieldset>
-										<legend class="screen-reader-text">
-											<span><?php _e('Leaderboard time format', 'wp-pro-quiz'); ?></span>
-										</legend>
-										<label>
-											<input type="radio" name="toplist_date_format" value="d.m.Y H:i" <?php $this->checked($this->toplistDataFormat, 'd.m.Y H:i'); ?>> 06.11.2010 12:50
-										</label> <br>
-										<label>
-											<input type="radio" name="toplist_date_format" value="Y/m/d g:i A" <?php $this->checked($this->toplistDataFormat, 'Y/m/d g:i A'); ?>> 2010/11/06 12:50 AM
-										</label> <br>
-										<label>
-											<input type="radio" name="toplist_date_format" value="Y/m/d \a\t g:i A" <?php $this->checked($this->toplistDataFormat, 'Y/m/d \a\t g:i A'); ?>> 2010/11/06 at 12:50 AM
-										</label> <br>
-										<label>
-											<input type="radio" name="toplist_date_format" value="Y/m/d \a\t g:ia" <?php $this->checked($this->toplistDataFormat, 'Y/m/d \a\t g:ia'); ?>> 2010/11/06 at 12:50am
-										</label> <br>
-										<label>
-											<input type="radio" name="toplist_date_format" value="F j, Y g:i a" <?php $this->checked($this->toplistDataFormat, 'F j, Y g:i a'); ?>> November 6, 2010 12:50 am
-										</label> <br>
-										<label>
-											<input type="radio" name="toplist_date_format" value="M j, Y @ G:i" <?php $this->checked($this->toplistDataFormat, 'M j, Y @ G:i'); ?>> Nov 6, 2010 @ 0:50
-										</label> <br>
-										<label>
-											<input type="radio" name="toplist_date_format" value="custom" <?php echo in_array($this->toplistDataFormat, array('d.m.Y H:i', 'Y/m/d g:i A', 'Y/m/d \a\t g:i A', 'Y/m/d \a\t g:ia', 'F j, Y g:i a', 'M j, Y @ G:i')) ? '' : 'checked="checked"'; ?> >
-											<?php _e('Custom', 'wp-pro-quiz'); ?>:
-											<input class="medium-text" name="toplist_date_format_custom" style="width: 100px;" value="<?php echo $this->toplistDataFormat; ?>">
-										</label>
-										<p>
-											<a href="http://codex.wordpress.org/Formatting_Date_and_Time" target="_blank"><?php _e('Documentation on date and time formatting', 'wp-pro-quiz'); ?></a>
-										</p>
-									</fieldset>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+			<div id="globalContent">
+				
+				<?php $this->globalSettings(); ?>
+				<?php $this->emailSettings(); ?>
+				
 			</div>
 			<div class="postbox" id="problemContent" style="display: none;">
 				<h3 class="hndle"><?php _e('Settings in case of problems', 'wp-pro-quiz'); ?></h3>
@@ -187,6 +146,158 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 	</form>
 </div>
 		
-<?php		
+<?php 	
+	}
+	
+	private function globalSettings() {
+?>
+
+		<div class="postbox">
+			<h3 class="hndle"><?php _e('Global settings', 'wp-pro-quiz'); ?></h3>
+			<div class="wrap">
+				<table class="form-table">
+					<tbody>
+						<tr>
+							<th scope="row">
+								<?php _e('Leaderboard time format', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<fieldset>
+									<legend class="screen-reader-text">
+										<span><?php _e('Leaderboard time format', 'wp-pro-quiz'); ?></span>
+									</legend>
+									<label>
+										<input type="radio" name="toplist_date_format" value="d.m.Y H:i" <?php $this->checked($this->toplistDataFormat, 'd.m.Y H:i'); ?>> 06.11.2010 12:50
+									</label> <br>
+									<label>
+										<input type="radio" name="toplist_date_format" value="Y/m/d g:i A" <?php $this->checked($this->toplistDataFormat, 'Y/m/d g:i A'); ?>> 2010/11/06 12:50 AM
+									</label> <br>
+									<label>
+										<input type="radio" name="toplist_date_format" value="Y/m/d \a\t g:i A" <?php $this->checked($this->toplistDataFormat, 'Y/m/d \a\t g:i A'); ?>> 2010/11/06 at 12:50 AM
+									</label> <br>
+									<label>
+										<input type="radio" name="toplist_date_format" value="Y/m/d \a\t g:ia" <?php $this->checked($this->toplistDataFormat, 'Y/m/d \a\t g:ia'); ?>> 2010/11/06 at 12:50am
+									</label> <br>
+									<label>
+										<input type="radio" name="toplist_date_format" value="F j, Y g:i a" <?php $this->checked($this->toplistDataFormat, 'F j, Y g:i a'); ?>> November 6, 2010 12:50 am
+									</label> <br>
+									<label>
+										<input type="radio" name="toplist_date_format" value="M j, Y @ G:i" <?php $this->checked($this->toplistDataFormat, 'M j, Y @ G:i'); ?>> Nov 6, 2010 @ 0:50
+									</label> <br>
+									<label>
+										<input type="radio" name="toplist_date_format" value="custom" <?php echo in_array($this->toplistDataFormat, array('d.m.Y H:i', 'Y/m/d g:i A', 'Y/m/d \a\t g:i A', 'Y/m/d \a\t g:ia', 'F j, Y g:i a', 'M j, Y @ G:i')) ? '' : 'checked="checked"'; ?> >
+										<?php _e('Custom', 'wp-pro-quiz'); ?>:
+										<input class="medium-text" name="toplist_date_format_custom" style="width: 100px;" value="<?php echo $this->toplistDataFormat; ?>">
+									</label>
+									<p>
+										<a href="http://codex.wordpress.org/Formatting_Date_and_Time" target="_blank"><?php _e('Documentation on date and time formatting', 'wp-pro-quiz'); ?></a>
+									</p>
+								</fieldset>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('Category management', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<fieldset>
+									<legend class="screen-reader-text">
+										<span><?php _e('Category management', 'wp-pro-quiz'); ?></span>
+									</legend>
+									<select name="category">
+										<?php foreach($this->category as $cat) { 
+											echo '<option value="'.$cat->getCategoryId().'">'.$cat->getCategoryName().'</option>';
+											
+										} ?>
+									</select>
+									<div style="padding-top: 5px;">
+										<input type="text" value="" name="categoryEditText">
+									</div>
+									<div style="padding-top: 5px;">
+										<input type="button" value="<?php _e('Delete', 'wp-pro-quiz'); ?>" name="categoryDelete" class="button-secondary">
+										<input type="button" value="<?php _e('Edit', 'wp-pro-quiz'); ?>" name="categoryEdit" class="button-secondary">
+									</div>
+								</fieldset>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+<?php
+	}
+	private function emailSettings() {
+?>
+		<div class="postbox">
+			<h3 class="hndle"><?php _e('E-mail settings', 'wp-pro-quiz'); ?></h3>
+			<div class="wrap">
+				<table class="form-table">
+					<tbody>
+						<tr>
+							<th scope="row">
+								<?php _e('To:', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<label>
+									<input type="text" name="email[to]" value="<?php echo $this->email['to']; ?>" class="regular-text">
+								</label>
+								<p class="description">
+									<?php _e('Separate multiple email addresses with a comma, e.g. wp@test.com, test@test.com', 'wp-pro-quiz'); ?>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('From:', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<label>
+									<input type="text" name="email[from]" value="<?php echo $this->email['from']; ?>" class="regular-text">
+								</label>
+<!-- 								<p class="description"> -->
+									<?php //_e('Server-Adresse empfohlen, z.B. info@YOUR-PAGE.com', 'wp-pro-quiz'); ?>
+<!-- 								</p> -->
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('Subject:', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<label>
+									<input type="text" name="email[subject]" value="<?php echo $this->email['subject']; ?>" class="regular-text">
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('Message body:', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<label>
+									<textarea name="email[message]" class="large-text" rows="15"><?php echo $this->email['message']; ?></textarea>
+								</label>
+								
+								<div>
+									<h4><?php _e('Allowed variables', 'wp-pro-quiz'); ?>:</h4>
+									<ul>
+										<li><span>$userId</span> - <?php _e('User-ID', 'wp-pro-quiz'); ?></li>
+										<li><span>$username</span> - <?php _e('Username', 'wp-pro-quiz'); ?></li>
+										<li><span>$quizname</span> - <?php _e('Quiz-Name', 'wp-pro-quiz'); ?></li>
+										<li><span>$result</span> - <?php _e('Result in precent', 'wp-pro-quiz'); ?></li>
+										<li><span>$points</span> - <?php _e('Reached points', 'wp-pro-quiz'); ?></li>
+										<li><span>$ip</span> - <?php _e('IP-address of the user', 'wp-pro-quiz'); ?></li>
+									</ul>	
+								</div>
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	
+<?php 
 	}
 }

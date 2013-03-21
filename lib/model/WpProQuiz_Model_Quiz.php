@@ -17,6 +17,15 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	const QUIZ_TOPLIST_SHOW_IN_NORMAL = 1;
 	const QUIZ_TOPLIST_SHOW_IN_BUTTON = 2;
 	
+	const QUIZ_MODUS_NORMAL = 0;
+	const QUIZ_MODUS_BACK_BUTTON = 1;
+	const QUIZ_MODUS_CHECK = 2;
+	const QUIZ_MODUS_SINGLE = 3;
+	
+	const QUIZ_EMAIL_NOTE_NONE = 0;
+	const QUIZ_EMAIL_NOTE_REG_USER = 1;
+	const QUIZ_EMAIL_NOTE_ALL = 2;
+	
 	protected $_id;
 	protected $_name;
 	protected $_text;
@@ -27,8 +36,6 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_questionRandom;
 	protected $_answerRandom;
 	protected $_timeLimit = 0;
-	protected $_backButton;
-	protected $_checkAnswer;
 	protected $_statisticsOn;
 	protected $_statisticsIpLock;
 	protected $_resultGradeEnabled = false;
@@ -37,7 +44,6 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_quizRunOnceType = 0;
 	protected $_quizRunOnceCookie = false;
 	protected $_quizRunOnceTime = 0;
-	protected $_questionOnSinglePage = false;
 	protected $_numberedAnswer = false;
 	protected $_hideAnswerMessageBox = false;
 	protected $_disabledAnswerMark = false;
@@ -61,6 +67,14 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_showAverageResult = false;
 	
 	protected $_prerequisite = false;
+	
+	//0.22
+	protected $_toplistDataAddAutomatic = false;
+	protected $_quizModus = 0;
+	protected $_showReviewQuestion = false;
+	protected $_quizSummaryHide = false;
+	protected $_skipQuestionDisabled = false;
+	protected $_emailNotification = 0;
 	
 	public function getId() {
 		return $this->_id;
@@ -132,24 +146,6 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
 	public function getTimeLimit() {
 		return $this->_timeLimit;
-	}
-	
-	public function setBackButton($_backButton) {
-		$this->_backButton = (bool)$_backButton;
-		return $this;
-	}
-	
-	public function isBackButton() {
-		return $this->_backButton;
-	}
-	
-	public function setCheckAnswer($_checkAnswer) {
-		$this->_checkAnswer = (bool)$_checkAnswer;
-		return $this;
-	}
-	
-	public function isCheckAnswer() {
-		return $this->_checkAnswer;
 	}
 	
 	public function setStatisticsOn($_statisticsOn) {
@@ -252,15 +248,6 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
 	public function getQuizRunOnceTime() {
 		return $this->_quizRunOnceTime;
-	}
-	
-	public function setQuestionOnSinglePage($_questionOnSinglePage) {
-		$this->_questionOnSinglePage = (bool)$_questionOnSinglePage;
-		return $this;
-	}
-	
-	public function isQuestionOnSinglePage() {
-		return $this->_questionOnSinglePage;
 	}
 	
 	public function setNumberedAnswer($_numberedAnswer) {
@@ -392,7 +379,8 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 			'toplistDataAddBlock' => $this->getToplistDataAddBlock(),
 			'toplistDataShowLimit' => $this->getToplistDataShowLimit(),
 			'toplistDataShowIn' => $this->getToplistDataShowIn(),
-			'toplistDataCaptcha' => $this->isToplistDataCaptcha()
+			'toplistDataCaptcha' => $this->isToplistDataCaptcha(),
+			'toplistDataAddAutomatic' => $this->isToplistDataAddAutomatic()
 		);
 		
 		return serialize($a);
@@ -433,4 +421,59 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	public function isPrerequisite() {
 		return $this->_prerequisite;
 	}
+	
+	public function setToplistDataAddAutomatic($_toplistDataAddAutomatic) {
+		$this->_toplistDataAddAutomatic = (bool)$_toplistDataAddAutomatic;
+		return $this;
+	}
+	
+	public function isToplistDataAddAutomatic() {
+		return $this->_toplistDataAddAutomatic;
+	}
+	
+	public function setQuizModus($_quizModus) {
+		$this->_quizModus = (int)$_quizModus;
+		return $this;
+	}
+	
+	public function getQuizModus() {
+		return $this->_quizModus;
+	}
+	
+	public function setShowReviewQuestion($_showReviewQuestion) {
+		$this->_showReviewQuestion = (bool)$_showReviewQuestion;
+		return $this;
+	}
+	
+	public function isShowReviewQuestion() {
+		return $this->_showReviewQuestion;
+	}
+	
+	public function setQuizSummaryHide($_quizSummaryHide) {
+		$this->_quizSummaryHide = (bool)$_quizSummaryHide;
+		return $this;
+	}
+	
+	public function isQuizSummaryHide() {
+		return $this->_quizSummaryHide;
+	}
+	
+	public function setSkipQuestionDisabled($_skipQuestion) {
+		$this->_skipQuestionDisabled = (bool)$_skipQuestion;
+		return $this;
+	}
+	
+	public function isSkipQuestionDisabled() {
+		return $this->_skipQuestionDisabled;
+	}
+	
+	public function setEmailNotification($_emailNotification) {
+		$this->_emailNotification = (int)$_emailNotification;
+		return $this;
+	}
+	
+	public function getEmailNotification() {
+		return $this->_emailNotification;
+	}
+	
 }

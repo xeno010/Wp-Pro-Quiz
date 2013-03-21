@@ -17,6 +17,9 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	//0.19
 	protected $_answerPointsActivated = false;
 	protected $_answerData = null;
+	
+	//0.23
+	protected $_categoryId = 0;
 
 	public function setId($_id) {
 		$this->_id = $_id;
@@ -169,5 +172,14 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 		}
 		
 		return $this->_answerData;
+	}
+	
+	public function setCategoryId($_categoryId) {
+		$this->_categoryId = (int)$_categoryId;
+		return $this;
+	}
+	
+	public function getCategoryId() {
+		return $this->_categoryId;
 	}
 }

@@ -1,19 +1,22 @@
 <?php
 class WpProQuiz_Controller_Admin {
-		
+	
+	protected $_ajax;
+	
 	public function __construct() {
 		
+		$this->_ajax = new WpProQuiz_Controller_Ajax();
+		
+		$this->_ajax->init();
+		
+		//deprecated - use WpProQuiz_Controller_Ajax
 		add_action('wp_ajax_wp_pro_quiz_update_sort', array($this, 'updateSort'));
 		add_action('wp_ajax_wp_pro_quiz_load_question', array($this, 'updateSort'));
-		
-		add_action('wp_ajax_wp_pro_quiz_load_statistics', array($this, 'loadStatistics'));
-		add_action('wp_ajax_wp_pro_quiz_statistics', array($this, 'loadStatistics'));
 		
 		add_action('wp_ajax_wp_pro_quiz_reset_lock', array($this, 'resetLock'));
 		
 		add_action('wp_ajax_wp_pro_quiz_load_toplist', array($this, 'adminToplist'));
 				
-		
 		add_action('wp_ajax_wp_pro_quiz_completed_quiz', array($this, 'completedQuiz'));
 		add_action('wp_ajax_nopriv_wp_pro_quiz_completed_quiz', array($this, 'completedQuiz'));
 		
@@ -83,11 +86,6 @@ class WpProQuiz_Controller_Admin {
 		$c->route();
 	}
 	
-	public function loadStatistics() {
-		$c = new WpProQuiz_Controller_Statistics();
-		$c->route();
-	}
-	
 	public function completedQuiz() {
 		$quiz = new WpProQuiz_Controller_Quiz();
 		$quiz->completedQuiz();
@@ -108,7 +106,8 @@ class WpProQuiz_Controller_Admin {
 			'reset_statistics_msg' => __('Do you really want to reset the statistic?', 'wp-pro-quiz'),
 			'no_data_available' => __('No data available', 'wp-pro-quiz'),
 			'no_sort_element_criterion' => __('No sort element in the criterion', 'wp-pro-quiz'),
-			'dif_points' => __('"Different points for every answer" is not possible at "Free" choice', 'wp-pro-quiz')
+			'dif_points' => __('"Different points for every answer" is not possible at "Free" choice', 'wp-pro-quiz'),
+			'category_no_name' => __('You must specify a name.', 'wp-pro-quiz')
 		);
 		
 		wp_localize_script('wpProQuiz_admin_javascript', 'wpProQuizLocalize', $translation_array);
@@ -117,7 +116,7 @@ class WpProQuiz_Controller_Admin {
 	public function enqueueScript() {
 		wp_enqueue_script(
 			'wpProQuiz_admin_javascript', 
-			plugins_url('js/wpProQuiz_admin.min.js', WPPROQUIZ_FILE),
+			plugins_url('js/wpProQuiz_admin'.(WPPROQUIZ_DEV ? '' : '.min').'.js', WPPROQUIZ_FILE),
 			array('jquery', 'jquery-ui-sortable'),
 			WPPROQUIZ_VERSION
 		);

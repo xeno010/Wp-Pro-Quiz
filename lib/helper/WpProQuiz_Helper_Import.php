@@ -90,7 +90,8 @@ class WpProQuiz_Helper_Import {
 		
 		switch($data['exportVersion']) {
 			case '3':
-				return $this->importData($data, $ids);
+			case '4':
+				return $this->importData($data, $ids, $data['exportVersion']);
 				break;
 		}
 		
@@ -115,6 +116,18 @@ class WpProQuiz_Helper_Import {
 			}
 			
 			$master->setId(0);
+			
+			if($version == 3) {
+				if($master->isQuestionOnSinglePage()) {
+					$master->setQuizModus(WpProQuiz_Model_Quiz::QUIZ_MODUS_SINGLE);
+				} else if($master->isCheckAnswer()) {
+					$master->setQuizModus(WpProQuiz_Model_Quiz::QUIZ_MODUS_CHECK);
+				} else if($master->isBackButton()) {
+					$master->setQuizModus(WpProQuiz_Model_Quiz::QUIZ_MODUS_BACK_BUTTON);
+				} else {
+					$master->setQuizModus(WpProQuiz_Model_Quiz::QUIZ_MODUS_NORMAL);
+				}
+			}
 			
 			$quizMapper->save($master);
 			

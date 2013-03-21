@@ -68,7 +68,7 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 				<th class="wpProQuiz_exportCheck"><input type="checkbox" name="exportItems" value="<?php echo $quiz->getId(); ?>"></th>
 				<td><?php echo $quiz->getId(); ?></td>
 				<td class="wpProQuiz_quizName">
-					<strong><?php echo $quiz->getName(); ?></strong>
+					<strong><a href="admin.php?page=wpProQuiz&module=question&quiz_id=<?php echo $quiz->getId(); ?>"><?php echo $quiz->getName(); ?></a></strong>
 					<div class="row-actions">
 						<span>
 							<a href="admin.php?page=wpProQuiz&module=question&quiz_id=<?php echo $quiz->getId(); ?>"><?php _e('Questions', 'wp-pro-quiz'); ?></a> | 

@@ -71,8 +71,6 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'btn_view_question_hidden' => (int)$data->isBtnViewQuestionHidden(),
 			'question_random' => (int)$data->isQuestionRandom(),
 			'answer_random' => (int)$data->isAnswerRandom(),
-			'back_button' => (int)$data->isBackButton(),
-			'check_answer' => (int) $data->isCheckAnswer(),
 			'time_limit' => (int)$data->getTimeLimit(),
 			'statistics_on' => (int)$data->isStatisticsOn(),
 			'statistics_ip_lock' => (int)$data->getStatisticsIpLock(),
@@ -82,7 +80,6 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'quiz_run_once_type' => $data->getQuizRunOnceType(),
 			'quiz_run_once_cookie' => (int)$data->isQuizRunOnceCookie(),
 			'quiz_run_once_time' => (int)$data->getQuizRunOnceTime(),
-			'question_on_single_page' => (int)$data->isQuestionOnSinglePage(),
 			'numbered_answer' => (int)$data->isNumberedAnswer(),
 			'hide_answer_message_box' => (int)$data->isHideAnswerMessageBox(),
 			'disabled_answer_mark' => (int)$data->isDisabledAnswerMark(),
@@ -92,7 +89,12 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'toplist_activated' => (int)$data->isToplistActivated(),
 			'toplist_data' => $data->getToplistData(),
 			'show_average_result' => (int)$data->isShowAverageResult(),
-			'prerequisite' => (int)$data->isPrerequisite()
+			'prerequisite' => (int)$data->isPrerequisite(),
+			'quiz_modus' => (int)$data->getQuizModus(),
+			'show_review_question' => (int)$data->isShowReviewQuestion(),
+			'quiz_summary_hide' => (int)$data->isQuizSummaryHide(),
+			'skip_question_disabled' => (int)$data->isSkipQuestionDisabled(),
+			'email_notification' => $data->getEmailNotification()
 		);
 		
 		if($data->getId() != 0) {
@@ -101,13 +103,13 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					array(
 							'id' => $data->getId()
 					),
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d'),
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
 					array('%d'));
 		} else {
 			
 			$result = $this->_wpdb->insert($this->_table,
 						$set,
-						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d'));
+						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
 
 			$data->setId($this->_wpdb->insert_id);
 		}

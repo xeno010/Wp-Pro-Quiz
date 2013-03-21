@@ -3,6 +3,12 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 	
 	public function show() {
 ?>
+<style>
+.wpProQuiz_quizModus th, .wpProQuiz_quizModus td {
+	border-right: 1px solid #A0A0A0;
+	padding: 5px;
+}
+</style>
 <div class="wrap">
 	<h2 style="margin-bottom: 10px;"><?php echo $this->header; ?></h2>
 	<a class="button-secondary" href="admin.php?page=wpProQuiz"><?php _e('back to overview', 'wp-pro-quiz'); ?></a>
@@ -165,81 +171,6 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
 											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
 												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/numbering.png'; ?> ">
-											</div>
-										</div>
-									</fieldset>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<?php _e('Questions below each other', 'wp-pro-quiz'); ?>
-								</th>
-								<td>
-									<fieldset>
-										<legend class="screen-reader-text">
-											<span><?php _e('Questions below each other', 'wp-pro-quiz'); ?></span>
-										</legend>
-										<label>
-											<input type="checkbox" value="1" name="questionOnSinglePage" <?php echo $this->quiz->isQuestionOnSinglePage() ? 'checked="checked"' : ''; ?>>
-											<?php _e('Activate', 'wp-pro-quiz'); ?> 
-										</label>
-										<p class="description">
-											<?php _e('If this option is activated, all answers are displayed below each other, i.e. all questions are on a single page. Otherwise all questions are displayed one after the other.', 'wp-pro-quiz'); ?>
-										</p>
-										<div class="wpProQuiz_demoBox">
-											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
-											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
-												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/singlePage.png'; ?> ">
-											</div>
-										</div>
-									</fieldset>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<?php _e('Check -> continue', 'wp-pro-quiz'); ?>
-								</th>
-								<td>
-									<fieldset>
-										<legend class="screen-reader-text">
-											<span><?php _e('Check -> continue', 'wp-pro-quiz'); ?></span>
-										</legend>
-										<label for="check_next">
-											<input type="checkbox" id="check_next" value="1" name="checkAnswer" <?php echo $this->quiz->isCheckAnswer() ? 'checked="checked"' : ''; ?>>
-											<?php _e('Activate', 'wp-pro-quiz'); ?> 
-										</label>
-										<p class="description">
-											<?php _e('Shows "right or wrong" after each question. Otherwise the solutions will be displayed at the end. (Option will be ignored if "questions below each other" was used)', 'wp-pro-quiz'); ?>
-										</p>
-										<div class="wpProQuiz_demoBox">
-											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
-											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
-												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/checkCcontinue.png'; ?> ">
-											</div>
-										</div>
-									</fieldset>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<?php _e('Back button', 'wp-pro-quiz'); ?>
-								</th>
-								<td>
-									<fieldset>
-										<legend class="screen-reader-text">
-											<span><?php _e('Back button', 'wp-pro-quiz'); ?></span>
-										</legend>
-										<label for="back_button">
-											<input type="checkbox" id="back_button" value="1" name="backButton" <?php echo $this->quiz->isBackButton() ? 'checked="checked"' : ''; ?>>
-											<?php _e('Activate', 'wp-pro-quiz'); ?>
-										</label>
-										<p class="description">
-											<?php _e('Allows to use the back button in a question. (Option will be ignored if "Check -> Continue" or "questions below each other" was used)', 'wp-pro-quiz'); ?>
-										</p>
-										<div class="wpProQuiz_demoBox">
-											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
-											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
-												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/backButton.png'; ?> ">
 											</div>
 										</div>
 									</fieldset>
@@ -514,6 +445,179 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</fieldset>
 								</td>
 							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Question overview', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Question overview', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="showReviewQuestion" <?php $this->checked($this->quiz->isShowReviewQuestion()); ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('Add at the top of the quiz a question overview, which allows easy navigation. Additional questions can be marked "to review".', 'wp-pro-quiz'); ?>
+										</p>
+										<p class="description">
+											<?php _e('Additional quiz overview will be displayed, before quiz is finished.', 'wp-pro-quiz'); ?>
+										</p>
+										<div class="wpProQuiz_demoBox">
+											<?php _e('Question overview', 'wp-pro-quiz'); ?>: <a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/questionOverview.png'; ?> ">
+											</div>
+										</div>
+										<div class="wpProQuiz_demoBox">
+											<?php _e('Quiz-summary', 'wp-pro-quiz'); ?>: <a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/quizSummary.png'; ?> ">
+											</div>
+										</div>
+									</fieldset>
+								</td>
+							</tr>
+							<tr class="wpProQuiz_reviewQuestionOptions" style="display: none;">
+								<th scope="row">
+									<?php _e('Quiz-summary', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Quiz-summary', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="quizSummaryHide" <?php $this->checked($this->quiz->isQuizSummaryHide()); ?>>
+											<?php _e('Deactivate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enalbe this option, no quiz overview will be displayed, before finishing quiz.', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
+							<tr class="wpProQuiz_reviewQuestionOptions" style="display: none;">
+								<th scope="row">
+									<?php _e('Skip question', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Skip question', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="skipQuestionDisabled" <?php $this->checked($this->quiz->isSkipQuestionDisabled()); ?>>
+											<?php _e('Deactivate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, user won\'t be able to skip question. (only in "Overview -> next" mode). User still will be able to navigate over "Question-Overview"', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('E-mail notification', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('E-mail notification', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="radio" name="emailNotification" value="<?php echo WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_NONE; ?>" <?php $this->checked($this->quiz->getEmailNotification(), WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_NONE); ?>>
+											<?php _e('Deactivate', 'wp-pro-quiz'); ?>
+										</label>
+										<label>
+											<input type="radio" name="emailNotification" value="<?php echo WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER; ?>" <?php $this->checked($this->quiz->getEmailNotification(), WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER); ?>>
+											<?php _e('for registered users only', 'wp-pro-quiz'); ?>
+										</label>
+										<label>
+											<input type="radio" name="emailNotification" value="<?php echo WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_ALL; ?>" <?php $this->checked($this->quiz->getEmailNotification(), WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_ALL); ?>>
+											<?php _e('for all users', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, you will be informed if a user completes this quiz.', 'wp-pro-quiz'); ?>
+										</p>
+										<p class="description">
+											<?php _e('E-Mail settings can be edited in global settings.', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="postbox">
+				<h3 class="hndle"><?php _e('Quiz-Mode', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
+				<div class="inside">
+					<table style="width: 100%; border-collapse: collapse; border: 1px solid #A0A0A0;" class="wpProQuiz_quizModus">
+						<thead>
+							<tr>
+								<th style="width: 25%;"><?php _e('Normal', 'wp-pro-quiz'); ?></th>
+								<th style="width: 25%;"><?php _e('Normal + Back-Button', 'wp-pro-quiz'); ?></th>
+								<th style="width: 25%;"><?php _e('Check -> continue', 'wp-pro-quiz'); ?></th>
+								<th style="width: 25%;"><?php _e('Questions below each other', 'wp-pro-quiz'); ?></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><label><input type="radio" name="quizModus" value="0" <?php $this->checked($this->quiz->getQuizModus(), WpProQuiz_Model_Quiz::QUIZ_MODUS_NORMAL); ?>> <?php _e('Activate', 'wp-pro-quiz'); ?></label></td>
+								<td><label><input type="radio" name="quizModus" value="1" <?php $this->checked($this->quiz->getQuizModus(), WpProQuiz_Model_Quiz::QUIZ_MODUS_BACK_BUTTON); ?>> <?php _e('Activate', 'wp-pro-quiz'); ?></label></td>
+								<td><label><input type="radio" name="quizModus" value="2" <?php $this->checked($this->quiz->getQuizModus(), WpProQuiz_Model_Quiz::QUIZ_MODUS_CHECK); ?>> <?php _e('Activate', 'wp-pro-quiz'); ?></label></td>
+								<td><label><input type="radio" name="quizModus" value="3" <?php $this->checked($this->quiz->getQuizModus(), WpProQuiz_Model_Quiz::QUIZ_MODUS_SINGLE); ?>> <?php _e('Activate', 'wp-pro-quiz'); ?></label></td>
+							</tr>
+							<tr>
+								<td>
+									<?php _e('Displays all questions sequentially, "right" or "false" will be displayed at the end of the quiz.', 'wp-pro-quiz'); ?>
+								</td>
+								<td>
+									<?php _e('Allows to use the back button in a question.', 'wp-pro-quiz'); ?>
+								</td>
+								<td>
+									<?php _e('Shows "right or wrong" after each question.', 'wp-pro-quiz'); ?>
+								</td>
+								<td>
+									<?php _e('If this option is activated, all answers are displayed below each other, i.e. all questions are on a single page.', 'wp-pro-quiz'); ?>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="wpProQuiz_demoBox">
+										<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+										<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+											<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/normal.png'; ?> ">
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="wpProQuiz_demoBox">
+										<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+										<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+											<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/backButton.png'; ?> ">
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="wpProQuiz_demoBox" style="position: relative;">
+										<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+										<div style="z-index: 9999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+											<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/checkCcontinue.png'; ?> ">
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="wpProQuiz_demoBox" style="position: relative;">
+										<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+										<div style="z-index: 9999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+											<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/singlePage.png'; ?> ">
+										</div>
+									</div>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -559,6 +663,20 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</label>
 									<p class="description">
 										<?php _e('Not registered users have to enter name and e-mail (e-mail won\'t be displayed)', 'wp-pro-quiz'); ?>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('insert automatically', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<label>
+										<input name="toplistDataAddAutomatic" type="checkbox" value="1" <?php $this->checked($this->quiz->isToplistDataAddAutomatic()); ?>>
+										<?php _e('Activate', 'wp-pro-quiz'); ?>
+									</label>
+									<p class="description">
+										<?php _e('If you enable this option, logged in users will be automatically entered into leaderboard', 'wp-pro-quiz'); ?>
 									</p>
 								</td>
 							</tr>

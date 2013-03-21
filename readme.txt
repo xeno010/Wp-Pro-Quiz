@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: quiz, test, answer, question, learning
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 0.22
+Stable tag: 0.23
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,9 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Quiz requirements
 *		Hints
 *		Import / Export function
+*		E-mail notification
+*		Category support
+*		Quiz-summary
 *		Many configuration options
 *		Really nice standard design
 *		Mighty
@@ -46,8 +49,10 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Dutch / nederlands (Thanks Bas W.)
 * 		English (Thanks Alexander M.)
 *		German / deutsch
+*		Greek / ελληνικά (Thanks Ζαχαρίας Σ.)
 *		Norwegian / norsk (Thanks Stein Ivar J.)
 *		Russian / русский (Thanks Sergei B. and Alex A.)
+*		Spanish / español (Thanks Carlos R.)
 *		Swedish / svenska (Thanks Martin J.)
 
 = Live Demo =
@@ -208,3 +213,17 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * Updated norwegian translation
 * Updated russian translation
 * Updated dutch translation
+
+= 0.23 =
+* Automatically add to the leaderboard
+* Leaderboard is updated automatically
+* Cloze-Choice: several words per gap are possible
+* Quiz Summary added
+* Skip question  button added
+* Email notification added
+* Category support added
+* Review Question added
+* CSS-adjustments
+* Bug fixes
+* Translation for spanish have been added (Thanks Carlos R.)
+* Translation for greek have been added (Thanks Ζαχαρίας Σ.)

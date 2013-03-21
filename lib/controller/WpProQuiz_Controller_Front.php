@@ -19,7 +19,7 @@ class WpProQuiz_Controller_Front {
 		
 		wp_enqueue_style(
 			'wpProQuiz_front_style', 
-			plugins_url('css/wpProQuiz_front.min.css', WPPROQUIZ_FILE),
+			plugins_url('css/wpProQuiz_front'.(WPPROQUIZ_DEV ? '' : '.min').'.css', WPPROQUIZ_FILE),
 			array(),
 			WPPROQUIZ_VERSION
 		);
@@ -33,7 +33,7 @@ class WpProQuiz_Controller_Front {
 		if($quiz) {
 			wp_enqueue_script(
 				'wpProQuiz_front_javascript',
-				plugins_url('js/wpProQuiz_front.min.js', WPPROQUIZ_FILE),
+				plugins_url('js/wpProQuiz_front'.(WPPROQUIZ_DEV ? '' : '.min').'.js', WPPROQUIZ_FILE),
 				array('jquery-ui-sortable'),
 				WPPROQUIZ_VERSION,
 				$footer
@@ -48,7 +48,7 @@ class WpProQuiz_Controller_Front {
 		if($toplist) {
 			wp_enqueue_script(
 				'wpProQuiz_front_javascript_toplist',
-				plugins_url('js/wpProQuiz_toplist.min.js', WPPROQUIZ_FILE),
+				plugins_url('js/wpProQuiz_toplist'.(WPPROQUIZ_DEV ? '' : '.min').'.js', WPPROQUIZ_FILE),
 				array('jquery-ui-sortable'),
 				WPPROQUIZ_VERSION,
 				$footer

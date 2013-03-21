@@ -42,13 +42,14 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 						'answer_type' => $question->getAnswerType(),
 						'show_points_in_box' => (int)$question->isShowPointsInBox(),
 						'answer_points_activated' => (int)$question->isAnswerPointsActivated(),
-						'answer_data' => $question->getAnswerData(true)
+						'answer_data' => $question->getAnswerData(true),
+						'category_id' => $question->getCategoryId()
 					),
 					array('id' => $question->getId()),
-					array('%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s'),
+					array('%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s', '%d'),
 					array('%d'));
 		} else {
-			$id = $this->_wpdb->insert($this->_table, array(
+			$this->_wpdb->insert($this->_table, array(
 					'quiz_id' => $question->getQuizId(),
 					'sort' => $this->count($question->getQuizId()),
 					'title' => $question->getTitle(),
@@ -62,12 +63,13 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 					'answer_type' => $question->getAnswerType(),
 					'show_points_in_box' => (int)$question->isShowPointsInBox(),
 					'answer_points_activated' => (int)$question->isAnswerPointsActivated(),
-					'answer_data' => $question->getAnswerData(true)
+					'answer_data' => $question->getAnswerData(true),
+					'category_id' => $question->getCategoryId()
 				),
-				array('%d', '%d', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s')
+				array('%d', '%d', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s', '%d')
 			);
 			
-			$question->setId($id);
+			$question->setId($this->_wpdb->insert_id);
 		}
 		
 		return $question;

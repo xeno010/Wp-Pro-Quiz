@@ -12,13 +12,12 @@ class WpProQuiz_Controller_GlobalSettings extends WpProQuiz_Controller_Controlle
 		}
 		
 		$mapper = new WpProQuiz_Model_GlobalSettingsMapper();
+		$categoryMapper = new WpProQuiz_Model_CategoryMapper();
 		$view = new WpProQuiz_View_GobalSettings();
 		
 		if(isset($this->_post['submit'])) {
 			$mapper->save(new WpProQuiz_Model_GlobalSettings($this->_post));
 			WpProQuiz_View_View::admin_notices(__('Settings saved', 'wp-pro-quiz'), 'info');
-			
-			
 			
 			$toplistDateFormat = $this->_post['toplist_date_format'];
 			
@@ -29,10 +28,16 @@ class WpProQuiz_Controller_GlobalSettings extends WpProQuiz_Controller_Controlle
 			if(add_option('wpProQuiz_toplistDataFormat', $toplistDateFormat) === false) {
 				update_option('wpProQuiz_toplistDataFormat', $toplistDateFormat);
 			}
+			
+			//Email
+			$mapper->saveEmailSettiongs($this->_post['email']);
+			
 		}
-				
+		
 		$view->settings = $mapper->fetchAll();
 		$view->isRaw = !preg_match('[raw]', apply_filters('the_content', '[raw]a[/raw]'));
+		$view->category = $categoryMapper->fetchAll();
+		$view->email = $mapper->getEmailSettings();
 		
 		$view->toplistDataFormat = get_option('wpProQuiz_toplistDataFormat', 'Y/m/d g:i A');
 		

@@ -368,6 +368,8 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 
 		$this->setResultCookie($quiz);
 		
+		$this->emailNote($quiz, $this->_post['results']['comp']);
+		
 		if(!$this->isPreLockQuiz($quiz)) {
 			$statistics = new WpProQuiz_Controller_Statistics();
 			$statistics->save();
@@ -451,5 +453,41 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			return '0';
 		else
 			return filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
+	}
+	
+	private function emailNote(WpProQuiz_Model_Quiz $quiz, $result) {
+		if($quiz->getEmailNotification() == WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_NONE
+		 	|| (get_current_user_id() == 0 && $quiz->getEmailNotification() == WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER)) {
+			
+			return;
+		}
+		
+		$globalMapper = new WpProQuiz_Model_GlobalSettingsMapper();
+		$email = $globalMapper->getEmailSettings();
+		
+		$user = wp_get_current_user();
+		
+		$r = array(
+			'$userId' => $user->ID,
+			'$username' => $user->display_name,
+			'$quizname' => $quiz->getName(),
+			'$result' => $result['result'].'%',
+			'$points' => $result['points'],
+			'$ip' => filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP)
+		);
+		
+		if($user->ID == 0) {
+			$r['$username'] = $r['$ip'];
+		}
+		
+		$msg = str_replace(array_keys($r), $r, $email['message']);
+		
+		$headers = '';
+		
+		if(!empty($email['from'])) {
+			$headers = 'From: '.$email['from'];
+		}
+		
+		wp_mail($email['to'], $email['subject'], $msg, $headers);
 	}
 }

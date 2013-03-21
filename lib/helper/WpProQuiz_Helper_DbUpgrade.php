@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 17;
+	const WPPROQUIZ_DB_VERSION = 18;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -44,6 +44,7 @@ class WpProQuiz_Helper_DbUpgrade {
 		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_statistic`');
 		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_toplist`');
 		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_prerequisite`');
+		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_category`');
 	}
 	
 	private function install() {
@@ -83,6 +84,11 @@ class WpProQuiz_Helper_DbUpgrade {
 			  `toplist_data` text NOT NULL,
 			  `show_average_result` tinyint(1) NOT NULL,
 			  `prerequisite` tinyint(1) NOT NULL,
+			  `quiz_modus` tinyint(3) unsigned NOT NULL,
+			  `show_review_question` tinyint(1) NOT NULL,
+			  `quiz_summary_hide` tinyint(1) NOT NULL,
+			  `skip_question_disabled` tinyint(1) NOT NULL,
+			  `email_notification` tinyint(3) unsigned NOT NULL,
 			  PRIMARY KEY (`id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		');
@@ -104,8 +110,10 @@ class WpProQuiz_Helper_DbUpgrade {
 			  `show_points_in_box` tinyint(1) NOT NULL,
 			  `answer_points_activated` tinyint(1) NOT NULL,
 			  `answer_data` longtext NOT NULL,
+			  `category_id` int(10) unsigned NOT NULL,
 			  PRIMARY KEY (`id`),
-			  KEY `quiz_id` (`quiz_id`)
+			  KEY `quiz_id` (`quiz_id`),
+			  KEY `category_id` (`category_id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		');
 		
@@ -153,6 +161,14 @@ class WpProQuiz_Helper_DbUpgrade {
 			  `result` float unsigned NOT NULL,
 			  `ip` varchar(100) NOT NULL,
 			  PRIMARY KEY (`toplist_id`,`quiz_id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+		');
+		
+		$this->_wpdb->query('
+			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_category` (
+			  `category_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+			  `category_name` varchar(200) NOT NULL,
+			  PRIMARY KEY (`category_id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		');
 	}
@@ -677,5 +693,57 @@ class WpProQuiz_Helper_DbUpgrade {
 		');
 
 		return 17;
+	}
+	
+	private function upgradeDbV17() {
+		
+		$this->_wpdb->query('
+			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_category` (
+			  `category_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+			  `category_name` varchar(200) NOT NULL,
+			  PRIMARY KEY (`category_id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master`
+				ADD  `quiz_modus` TINYINT UNSIGNED NOT NULL ,
+				ADD  `show_review_question` TINYINT( 1 ) NOT NULL ,
+				ADD  `quiz_summary_hide` TINYINT( 1 ) NOT NULL ,
+				ADD  `skip_question_disabled` TINYINT( 1 ) NOT NULL ,
+				ADD  `email_notification` TINYINT UNSIGNED NOT NULL 
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_question`
+				ADD  `category_id` INT UNSIGNED NOT NULL ,
+				ADD INDEX (  `category_id` )
+		');
+		
+		$this->_wpdb->update($this->_wpdb->prefix.'wp_pro_quiz_master', 
+				array(
+					'quiz_modus' => WpProQuiz_Model_Quiz::QUIZ_MODUS_SINGLE,
+					'back_button' => 0,
+					'check_answer' => 0), 
+				array('question_on_single_page' => 1));
+		
+		$this->_wpdb->update($this->_wpdb->prefix.'wp_pro_quiz_master', 
+				array(
+					'quiz_modus' => WpProQuiz_Model_Quiz::QUIZ_MODUS_CHECK,
+					'back_button' => 0),
+				array('check_answer' => 1));
+		
+		$this->_wpdb->update($this->_wpdb->prefix.'wp_pro_quiz_master', 
+				array('quiz_modus' => WpProQuiz_Model_Quiz::QUIZ_MODUS_BACK_BUTTON), 
+				array('back_button' => 1));
+		
+		$this->_wpdb->query('
+			ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master`
+				 DROP `check_answer`, 
+				 DROP `back_button`, 
+				 DROP `question_on_single_page` 
+		');
+		
+		return 18;
 	}
 }

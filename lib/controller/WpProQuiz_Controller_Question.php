@@ -148,6 +148,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		
 		$mapper 	= new WpProQuiz_Model_QuestionMapper();
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		$cateoryMapper = new WpProQuiz_Model_CategoryMapper();
 		
 		$this->view->quiz = $quizMapper->fetch($id);
 		
@@ -175,6 +176,8 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			if(isset($post['answerPointsActivated'])) {
 				$post['points'] = $clearPost['points'];
 			}
+			
+			$post['categoryId'] = $post['category'] > 0 ? $post['category'] : 0;
 	
 			$mapper->save(new WpProQuiz_Model_Question($post));
 			WpProQuiz_View_View::admin_notices(__('Question edited', 'wp-pro-quiz'), 'info');
@@ -182,6 +185,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		
 		$this->view->question = $mapper->fetch($id);
 		$this->view->data = $this->setAnswerObject($this->view->question);
+		$this->view->categories = $cateoryMapper->fetchAll();
 		
 		if($this->view->question->isAnswerPointsActivated()) {
 			$this->view->question->setPoints(1);
@@ -199,9 +203,8 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		$this->view = new WpProQuiz_View_QuestionEdit();
 		$this->view->header = __('New question', 'wp-pro-quiz');
 		
-		$post = null;
-		
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		$cateoryMapper = new WpProQuiz_Model_CategoryMapper();
 		
 		$this->view->quiz = $quizMapper->fetch($this->_quizId);
 	
@@ -209,7 +212,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			
 			$questionMapper = new WpProQuiz_Model_QuestionMapper();
 			
-			$post = $this->_post;
+			$post = WpProQuiz_Controller_Request::getPost();
 			
 			$post['title'] = isset($post['title']) ? trim($post['title']) : '';
 			$post['quizId'] = $this->_quizId;
@@ -228,6 +231,8 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 				$post['points'] = $clearPost['points'];
 			}
 			
+			$post['categoryId'] = $post['category'] > 0 ? $post['category'] : 0;
+			
 			$questionMapper->save(new WpProQuiz_Model_Question($post));
 			
 			WpProQuiz_View_View::admin_notices(__('Question added', 'wp-pro-quiz'), 'info');
@@ -240,6 +245,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		$this->view->question = new WpProQuiz_Model_Question($post);
 		$this->view->data = $this->setAnswerObject($this->view->question);
 		$this->view->question->setQuizId($this->_quizId);
+		$this->view->categories = $cateoryMapper->fetchAll();
 		
 		if($this->view->question->isAnswerPointsActivated()) {
 			$this->view->question->setPoints(1);
