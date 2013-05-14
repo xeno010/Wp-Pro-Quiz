@@ -21,6 +21,7 @@ class WpProQuiz_Model_Mapper {
 	protected $_tableToplist;
 	protected $_tablePrerequisite;
 	protected $_tableCategory;
+	protected $_tableStatisticRef;
 	
 	
 	function __construct() {
@@ -36,6 +37,7 @@ class WpProQuiz_Model_Mapper {
 		$this->_tableToplist = $this->_prefix.'toplist';
 		$this->_tablePrerequisite = $this->_prefix.'prerequisite';
 		$this->_tableCategory = $this->_prefix.'category';
+		$this->_tableStatisticRef = $this->_prefix.'statistic_ref';
 	}
 	
 	public function getInsertId() {

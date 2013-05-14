@@ -1,19 +1,7 @@
-<?php
+	<?php
 class WpProQuiz_Model_StatisticMapper extends WpProQuiz_Model_Mapper {
 	
-	private $_table;
-
-	public function __construct() {
-		parent::__construct();
-		
-		$this->_table = $this->_prefix.'statistic';
-	}
-	
-	public function fetch($quizId, $questionId, $userId) {
-		
-	}
-	
-	public function fetchAll($quizId, $userId) {
+	public function fetchAllByRef($statisticRefId) {
 		$a = array();
 		
 		$results = $this->_wpdb->get_results(
@@ -21,10 +9,9 @@ class WpProQuiz_Model_StatisticMapper extends WpProQuiz_Model_Mapper {
 						'SELECT
 							*
 						FROM
-							'. $this->_table.'
+							'. $this->_tableStatistic.'
 						WHERE
-							quiz_id = %d AND
-							user_id = %d', $quizId, $userId),
+							statistic_ref_id = %d', $statisticRefId),
 				ARRAY_A);
 		
 		foreach($results as $row) {
@@ -34,95 +21,33 @@ class WpProQuiz_Model_StatisticMapper extends WpProQuiz_Model_Mapper {
 		return $a;
 	}
 	
-	public function fetchOverview($quizId, $onlyCompleded, $start, $limit) {
-			$sql = 'SELECT 
-						u.`user_login`, u.`display_name`, u.ID AS user_id,
-						SUM(s.`correct_count`) as correct_count,
-						SUM(s.`incorrect_count`) as incorrect_count,
-						SUM(s.`hint_count`) as hint_count,
-						SUM(s.`points`) as points
-					FROM 
-						`'.$this->_wpdb->users.'` AS u
-						'.($onlyCompleded ? 'INNER' : 'LEFT').' JOIN `'.$this->_tableStatistic.'` AS s ON ( s.user_id = u.ID AND s.`quiz_id` = %d )
-					GROUP BY u.ID 
-					ORDER BY u.`user_login`  
-					LIMIT %d , %d';
-			
-		$a = array();
-		
-		$results = $this->_wpdb->get_results(
-				$this->_wpdb->prepare($sql, $quizId, $start, $limit), 
-				ARRAY_A);
-		
-		foreach($results as $row) {
-			
-			$row['user_name'] = $row['user_login'] . ' ('. $row['display_name'] .')';
-			
-			$a[] = new WpProQuiz_Model_Statistic($row);
-		}
-		
-		return $a;	
-			
-	}
-	
-	public function fetchByQuiz($quizId) {
-		$sql = 'SELECT
-					(SUM(`correct_count`) + SUM(`incorrect_count`)) as count,
-					SUM(`points`) as points 
-				FROM 
-					'.$this->_tableStatistic.' 
-				WHERE 
-					quiz_id = %d';
-		
-		return $this->_wpdb->get_row(
-			$this->_wpdb->prepare($sql, $quizId),
-			ARRAY_A);
-	}
-	
-	public function countOverview($quizId, $onlyCompleded) {
-		
-		if($onlyCompleded) {
-			return $this->_wpdb->get_var(
-					$this->_wpdb->prepare(
-							"SELECT 
-								COUNT(ID)
-							FROM {$this->_wpdb->users} 
-							WHERE
-								ID IN(SELECT user_id FROM {$this->_tableStatistic} WHERE quiz_id = %d GROUP BY user_id)",
-							$quizId
-				)
-			);
-		} else {
-			return $this->_wpdb->get_var(
-				"SELECT COUNT(ID) FROM {$this->_wpdb->users}"
-			);
-		}
-	}
-	
-	public function delete($quizId, $userId) {
-		$this->_wpdb->delete($this->_table, array(
-			'quiz_id' => $quizId,
-			'user_id' => $userId
-		), array('%d', '%d'));
-	}
-	
-	/**
-	 * @deprecated
-	 */
-	public function deleteByQuiz($quizId) {
-		$this->deleteByQuizId($quizId);
-	}
-	
-	public function deleteByQuizId($quizId) {
-		return $this->_wpdb->delete($this->_tableStatistic, array('quiz_id' => $quizId), array('%d'));
-	}
-	
-	public function deleteByQuestionId($questionId) {
-		return $this->_wpdb->delete($this->_tableStatistic, array('question_id' => $questionId), array('%d'));
-	}
-	
+	/*
 	public function save($s) {
 		$values = array();
+		
+		
+		if($s->getUserId()) {
+			$refId = $this->_wpdb->get_var(
+				$this->_wpdb->prepare('
+					SELECT statistic_ref_id
+					FROM '.$this->_tableStatisticRef.'
+					WHERE quiz_id = %d AND user_id = %d
+				', $quiz_id, $user_id)
+			);
+			
+			if($refId === null) {
+				$this->_wpdb->insert($this->_tableStatisticRef, array(
+					'quiz_id' => 0,
+					'user_id' => 0,
+					'create_time' => 0,
+					'is_old' => 1
+				), array(
+					'%d', '%d', '%d', '%d'
+				));
+			}
+			
+		}
+		
 		
 		foreach($s as $d) {
 			$values[] = '( '.implode(', ', array(
@@ -150,6 +75,7 @@ class WpProQuiz_Model_StatisticMapper extends WpProQuiz_Model_Mapper {
 				points =  points + VALUES(points)'
 		);
 	}
+	*/
 	
 	/*
 	public function save($quizId, $userId, $array) {

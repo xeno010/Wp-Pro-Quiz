@@ -131,8 +131,8 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		$mapper = new WpProQuiz_Model_QuestionMapper();
 		$mapper->delete($id);
 		
-		$sm = new WpProQuiz_Model_StatisticMapper();
-		$sm->deleteByQuestionId($id);
+		$srm = new WpProQuiz_Model_StatisticRefMapper();
+		$srm->deleteQuestion($id);
 		
 		$this->showAction();
 	}
@@ -172,6 +172,10 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 
 				$post['title'] = sprintf(__('Question: %d', 'wp-pro-quiz'), $question->getSort()+1);
 			}
+			
+			if($post['answerType'] === 'assessment_answer') {
+				$post['answerPointsActivated'] = 1;
+			}
 
 			if(isset($post['answerPointsActivated'])) {
 				$post['points'] = $clearPost['points'];
@@ -207,6 +211,8 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		$cateoryMapper = new WpProQuiz_Model_CategoryMapper();
 		
 		$this->view->quiz = $quizMapper->fetch($this->_quizId);
+		
+		$post = null;
 	
 		if(isset($this->_post['submit'])) {
 			
@@ -218,13 +224,17 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			$post['quizId'] = $this->_quizId;
 			
 			$clearPost = $this->clearPost($post);
-
+			
 			$post['answerData'] = $clearPost['answerData'];
 			
 			if(empty($post['title'])) {
 				$count = $questionMapper->count($this->_quizId);
 
 				$post['title'] = sprintf(__('Question: %d', 'wp-pro-quiz'), $count+1);
+			}
+			
+			if($post['answerType'] === 'assessment_answer') {
+				$post['answerPointsActivated'] = 1;
 			}
 			
 			if(isset($post['answerPointsActivated'])) {
@@ -261,7 +271,8 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 				'classic_answer' => array(new WpProQuiz_Model_AnswerTypes()),
 				'matrix_sort_answer' => array(new WpProQuiz_Model_AnswerTypes()),
 				'cloze_answer' => array(new WpProQuiz_Model_AnswerTypes()),
-				'free_answer' => array(new WpProQuiz_Model_AnswerTypes())
+				'free_answer' => array(new WpProQuiz_Model_AnswerTypes()),
+				'assessment_answer' => array(new WpProQuiz_Model_AnswerTypes())
 		);
 		
 		$type = $question->getAnswerType();
@@ -292,7 +303,22 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			return array('points' => $points, 'answerData' => array(new WpProQuiz_Model_AnswerTypes($post['answerData']['cloze'])));
 		}
 		
+		if($post['answerType'] == 'assessment_answer' && isset($post['answerData']['assessment'])) {
+			preg_match_all('#\{(.*?)\}#im', $post['answerData']['assessment']['answer'], $matches);
+			
+			$points = 0;
+
+			foreach($matches[1] as $match) {
+				preg_match_all('#\[([^\|\]]+)(?:\|(\d+))?\]#im', $match, $ms);
+				
+				$points += count($ms[1]);
+			}
+			
+			return array('points' => $points, 'answerData' => array(new WpProQuiz_Model_AnswerTypes($post['answerData']['assessment'])));
+		}
+		
 		unset($post['answerData']['cloze']);
+		unset($post['answerData']['assessment']);
 
 		if(isset($post['answerData']['none'])) {
 			unset($post['answerData']['none']);

@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 18;
+	const WPPROQUIZ_DB_VERSION = 19;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -45,14 +45,15 @@ class WpProQuiz_Helper_DbUpgrade {
 		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_toplist`');
 		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_prerequisite`');
 		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_category`');
+		$this->_wpdb->query('DROP TABLE IF EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_statistic_ref`');
 	}
 	
 	private function install() {
 		
 		$this->delete();
 		
-		$this->_wpdb->query('
-			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_master` (
+		$this->_wpdb->query("
+			CREATE TABLE IF NOT EXISTS `".$this->_wpdb->prefix."wp_pro_quiz_master` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT,
 			  `name` varchar(200) NOT NULL,
 			  `text` text NOT NULL,
@@ -63,8 +64,6 @@ class WpProQuiz_Helper_DbUpgrade {
 			  `btn_view_question_hidden` tinyint(1) NOT NULL,
 			  `question_random` tinyint(1) NOT NULL,
 			  `answer_random` tinyint(1) NOT NULL,
-			  `check_answer` tinyint(1) NOT NULL,
-			  `back_button` tinyint(1) NOT NULL,
 			  `time_limit` int(11) NOT NULL,
 			  `statistics_on` tinyint(1) NOT NULL,
 			  `statistics_ip_lock` int(10) unsigned NOT NULL,
@@ -73,7 +72,6 @@ class WpProQuiz_Helper_DbUpgrade {
 			  `quiz_run_once_type` tinyint(4) NOT NULL,
 			  `quiz_run_once_cookie` tinyint(1) NOT NULL,
 			  `quiz_run_once_time` int(10) unsigned NOT NULL,
-			  `question_on_single_page` tinyint(1) NOT NULL,
 			  `numbered_answer` tinyint(1) NOT NULL,
 			  `hide_answer_message_box` tinyint(1) NOT NULL,
 			  `disabled_answer_mark` tinyint(1) NOT NULL,
@@ -89,9 +87,14 @@ class WpProQuiz_Helper_DbUpgrade {
 			  `quiz_summary_hide` tinyint(1) NOT NULL,
 			  `skip_question_disabled` tinyint(1) NOT NULL,
 			  `email_notification` tinyint(3) unsigned NOT NULL,
+			  `user_email_notification` tinyint(1) unsigned NOT NULL,
+			  `show_category_score` tinyint(1) unsigned NOT NULL,
+			  `hide_result_correct_question` tinyint(1) unsigned NOT NULL DEFAULT '0',
+			  `hide_result_quiz_time` tinyint(1) unsigned NOT NULL DEFAULT '0',
+			  `hide_result_points` tinyint(1) unsigned NOT NULL DEFAULT '0',
 			  PRIMARY KEY (`id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-		');
+		");
 		
 		$this->_wpdb->query('
 			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_question` (
@@ -130,14 +133,14 @@ class WpProQuiz_Helper_DbUpgrade {
 		
 		$this->_wpdb->query('
 			CREATE TABLE IF NOT EXISTS `'.$this->_wpdb->prefix.'wp_pro_quiz_statistic` (
-			  `quiz_id` int(11) NOT NULL,
+			  `statistic_ref_id` int(10) unsigned NOT NULL,
 			  `question_id` int(11) NOT NULL,
-			  `user_id` bigint(20) unsigned NOT NULL,
 			  `correct_count` int(10) unsigned NOT NULL,
 			  `incorrect_count` int(10) unsigned NOT NULL,
 			  `hint_count` int(10) unsigned NOT NULL,
 			  `points` int(10) unsigned NOT NULL,
-			  PRIMARY KEY (`quiz_id`,`question_id`,`user_id`)
+			  `question_time` int(10) unsigned NOT NULL,
+			  PRIMARY KEY (`statistic_ref_id`,`question_id`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 		');
 		
@@ -169,6 +172,19 @@ class WpProQuiz_Helper_DbUpgrade {
 			  `category_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 			  `category_name` varchar(200) NOT NULL,
 			  PRIMARY KEY (`category_id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+		');
+		
+		$this->_wpdb->query('
+			CREATE TABLE IF NOT EXISTS '.$this->_wpdb->prefix.'wp_pro_quiz_statistic_ref (
+			  `statistic_ref_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+			  `quiz_id` int(11) NOT NULL,
+			  `user_id` bigint(20) unsigned NOT NULL,
+			  `create_time` int(11) NOT NULL,
+			  `is_old` tinyint(1) unsigned NOT NULL,
+			  PRIMARY KEY (`statistic_ref_id`),
+			  KEY `quiz_id` (`quiz_id`,`user_id`),
+			  KEY `time` (`create_time`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		');
 	}
@@ -745,5 +761,95 @@ class WpProQuiz_Helper_DbUpgrade {
 		');
 		
 		return 18;
+	}
+	
+	private function upgradeDbV18() {
+		
+		//Clear
+		
+		$this->_wpdb->query('
+			DELETE s
+				FROM '.$this->_wpdb->prefix.'wp_pro_quiz_statistic AS s 
+					LEFT JOIN '.$this->_wpdb->prefix.'wp_pro_quiz_master AS m ON ( s.quiz_id = m.id ) 
+					LEFT JOIN '.$this->_wpdb->prefix.'wp_pro_quiz_question AS q ON ( s.question_id = q.id ) 
+			WHERE m.id IS NULL OR q.id IS NULL
+		');
+		
+		
+		//Start - Update Statistic
+		$this->_wpdb->query('
+			CREATE TABLE IF NOT EXISTS '.$this->_wpdb->prefix.'wp_pro_quiz_statistic_ref (
+			  `statistic_ref_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+			  `quiz_id` int(11) NOT NULL,
+			  `user_id` bigint(20) unsigned NOT NULL,
+			  `create_time` int(11) NOT NULL,
+			  `is_old` tinyint(1) unsigned NOT NULL,
+			  PRIMARY KEY (`statistic_ref_id`),
+			  KEY `quiz_id` (`quiz_id`,`user_id`),
+			  KEY `time` (`create_time`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+		');
+
+		$this->_wpdb->query('
+			ALTER TABLE  '.$this->_wpdb->prefix.'wp_pro_quiz_statistic 
+				ADD  `statistic_ref_id` INT UNSIGNED NOT NULL FIRST
+		');
+		
+		$this->_wpdb->query('
+			INSERT INTO '.$this->_wpdb->prefix.'wp_pro_quiz_statistic_ref
+				
+				(quiz_id, user_id, create_time, is_old)
+				
+				SELECT s.quiz_id, s.user_id, '.time().' AS create_time, 1 AS is_old
+				FROM '.$this->_wpdb->prefix.'wp_pro_quiz_statistic AS s
+				GROUP BY quiz_id, user_id
+		');
+		
+		$this->_wpdb->query('
+			UPDATE '.$this->_wpdb->prefix.'wp_pro_quiz_statistic AS s 
+				LEFT JOIN '.$this->_wpdb->prefix.'wp_pro_quiz_statistic_ref AS sf
+					ON s.quiz_id = sf.quiz_id AND s.user_id = sf.user_id
+				
+				SET s.statistic_ref_id = sf.statistic_ref_id 
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE  '.$this->_wpdb->prefix.'wp_pro_quiz_statistic 
+				DROP PRIMARY KEY , 
+				ADD PRIMARY KEY (  `statistic_ref_id` ,  `question_id` ) , 
+				DROP  `quiz_id` , 
+				DROP  `user_id` , 
+				ADD  `question_time` INT UNSIGNED NOT NULL 
+		');
+		
+		//end
+		
+		//Master
+		$this->_wpdb->query("
+			ALTER TABLE  ".$this->_wpdb->prefix."wp_pro_quiz_master 
+				ADD  `user_email_notification` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  '0', 
+				ADD  `show_category_score` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  '0', 
+				ADD  `hide_result_correct_question` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  '0',
+		 		ADD  `hide_result_quiz_time` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  '0',
+ 				ADD  `hide_result_points` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  '0'
+		");
+		
+		$this->_wpdb->query('SELECT * FROM '.$this->_wpdb->prefix.'wp_pro_quiz_master LIMIT 0,1');
+		
+		$names = $this->_wpdb->get_col_info('name');
+		
+		if(in_array('check_answer', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` DROP `check_answer` ');
+		}
+		
+		if(in_array('back_button', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` DROP `back_button` ');
+		}
+		
+		if(in_array('question_on_single_page', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` DROP `question_on_single_page` ');
+		}
+		
+		return 19;
 	}
 }

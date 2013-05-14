@@ -44,7 +44,8 @@ class WpProQuiz_Model_GlobalSettingsMapper extends WpProQuiz_Model_Mapper {
 		if($e === null) {
 			$e['to'] = '';
 			$e['from'] = '';
-			$e['subject'] = __('Wp-Pro-Quiz: One user completed a quiz', 'wp-pro-quiz');
+			$e['subject'] = __('Wp-Pro-Quiz: One user completed a quiz', 'wp-pro-quiz');#
+			$e['html'] = false;
 			$e['message'] = __('Wp-Pro-Quiz
 
 The user "$username" has completed "$quizname" the quiz.
@@ -60,8 +61,46 @@ Result: $result
 	}
 	
 	public function saveEmailSettiongs($data) {
+		if(isset($data['html']) && $data['html'])
+			$data['html'] = true;
+		else 
+			$data['html'] = false;
+		
 		if(add_option('wpProQuiz_emailSettings', $data, '', 'no') === false) {
 			update_option('wpProQuiz_emailSettings', $data);
+		}
+	}
+	
+	public function getUserEmailSettings() {
+		$e = get_option('wpProQuiz_userEmailSettings', null);
+		
+		if($e === null) {
+			$e['from'] = '';
+			$e['subject'] = __('Wp-Pro-Quiz: One user completed a quiz', 'wp-pro-quiz');
+			$e['html'] = false;
+			$e['message'] = __('Wp-Pro-Quiz
+
+You have completed the quiz "$quizname".
+
+Points: $points
+Result: $result
+
+', 'wp-pro-quiz');
+		
+		}
+		
+		return $e;
+		
+	}
+	
+	public function saveUserEmailSettiongs($data) {
+		if(isset($data['html']) && $data['html'])
+			$data['html'] = true;
+		else 
+			$data['html'] = false;
+		
+		if(add_option('wpProQuiz_userEmailSettings', $data, '', 'no') === false) {
+			update_option('wpProQuiz_userEmailSettings', $data);
 		}
 	}
 }

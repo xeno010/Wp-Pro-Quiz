@@ -55,7 +55,10 @@ class WpProQuiz_Controller_Front {
 			);
 			
 			if(!wp_script_is('wpProQuiz_front_javascript'))
-				wp_localize_script('wpProQuiz_front_javascript_toplist', 'WpProQuizGlobal', array('ajaxurl' => admin_url('admin-ajax.php')));
+				wp_localize_script('wpProQuiz_front_javascript_toplist', 'WpProQuizGlobal', array(
+					'ajaxurl' => admin_url('admin-ajax.php'),
+					'loadData' => __('Loading', 'wp-pro-quiz')
+				));
 		}
 		
 		if(!$this->_settings->isTouchLibraryDeactivate()) {
@@ -99,6 +102,7 @@ class WpProQuiz_Controller_Front {
 		
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
+		$categoryMapper = new WpProQuiz_Model_CategoryMapper();
 		
 		$quiz = $quizMapper->fetch($id);
 
@@ -126,6 +130,7 @@ class WpProQuiz_Controller_Front {
 		
 		$view->quiz = $quiz;
 		$view->question = $question;
+		$view->category = $categoryMapper->fetchByQuiz($quiz->getId());
 		
 		$view->show();		
 	}

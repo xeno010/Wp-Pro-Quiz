@@ -1,31 +1,14 @@
 <?php
-class WpProQuiz_Model_Statistic extends WpProQuiz_Model_Model {
+class WpProQuiz_Model_StatisticOverview extends WpProQuiz_Model_Model {
 
-	protected $_statisticRefId = 0;
-	protected $_questionId = 0;
 	protected $_correctCount = 0;
 	protected $_incorrectCount = 0;
 	protected $_hintCount = 0;
 	protected $_points = 0;
+	protected $_userName = '';
+	protected $_quizId = 0;
+	protected $_userId = 0;
 	protected $_questionTime = 0;
-
-	public function setStatisticRefId($_statisticRefId) {
-		$this->_statisticRefId = (int)$_statisticRefId;
-		return $this;
-	}
-
-	public function getStatisticRefId() {
-		return $this->_statisticRefId;
-	}
-
-	public function setQuestionId($_questionId) {
-		$this->_questionId = (int)$_questionId;
-		return $this;
-	}
-
-	public function getQuestionId() {
-		return $this->_questionId;
-	}
 
 	public function setCorrectCount($_correctCount) {
 		$this->_correctCount = (int)$_correctCount;
@@ -63,6 +46,33 @@ class WpProQuiz_Model_Statistic extends WpProQuiz_Model_Model {
 		return $this->_points;
 	}
 
+	public function setUserName($_userName) {
+		$this->_userName = (string)$_userName;
+		return $this;
+	}
+
+	public function getUserName() {
+		return $this->_userName;
+	}
+
+	public function setQuizId($_quizId) {
+		$this->_quizId = (int)$_quizId;
+		return $this;
+	}
+
+	public function getQuizId() {
+		return $this->_quizId;
+	}
+
+	public function setUserId($_userId) {
+		$this->_userId = (int)$_userId;
+		return $this;
+	}
+
+	public function getUserId() {
+		return $this->_userId;
+	}
+
 	public function setQuestionTime($_questionTime) {
 		$this->_questionTime = (int)$_questionTime;
 		return $this;
@@ -71,5 +81,4 @@ class WpProQuiz_Model_Statistic extends WpProQuiz_Model_Model {
 	public function getQuestionTime() {
 		return $this->_questionTime;
 	}
-
 }

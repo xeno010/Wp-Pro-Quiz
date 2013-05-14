@@ -7,6 +7,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 	public $quiz;
 	
 	private $_clozeTemp = array();
+	private $_assessmetTemp = array();
 	
 	private function getFreeCorrect($data) {
 		$t = str_replace("\r\n", "\n", strtolower($data->getAnswer()));
@@ -35,6 +36,8 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		$mode = $this->quiz->getQuizModus();
 			
 		$json = array();
+		$catPoints = array();
+		
 ?>
 
 <div class="wpProQuiz_content" id="wpProQuiz_<?php echo $this->quiz->getId(); ?>">
@@ -44,38 +47,6 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 	<div style="display: none;" class="wpProQuiz_time_limit">
 		<div class="time"><?php _e('Time limit', 'wp-pro-quiz'); ?>: <span>0</span></div>
 		<div class="wpProQuiz_progress"></div>
-	</div>
-	<div class="wpProQuiz_reviewDiv" style="display: none;">
-		<div class="wpProQuiz_reviewQuestion">
-			<ol>
-				<?php for($xy = 1; $xy <= $question_count; $xy++) { ?>
-					<li><?php echo $xy; ?></li>
-				<?php } ?>
-			</ol>
-			<div style="display: none;"></div>
-		</div>
-		<div class="wpProQuiz_reviewLegend">
-			<ol>
-				<li>
-					<span class="wpProQuiz_reviewColor" style="background-color: #6CA54C;"></span>
-					<span class="wpProQuiz_reviewText"><?php _e('Answered', 'wp-pro-quiz'); ?></span>
-				</li>
-				<li>
-					<span class="wpProQuiz_reviewColor" style="background-color: #FFB800;"></span>
-					<span class="wpProQuiz_reviewText"><?php _e('Review', 'wp-pro-quiz'); ?></span>
-				</li>
-			</ol>
-			<div style="clear: both;"></div>
-		</div>
-		<div>
-			<?php if($this->quiz->getQuizModus() != WpProQuiz_Model_Quiz::QUIZ_MODUS_SINGLE) { ?>
-			<input type="button" name="review" value="<?php _e('Review question', 'wp-pro-quiz'); ?>" class="wpProQuiz_button2" style="float: left; display: block;">
-			<?php if(!$this->quiz->isQuizSummaryHide()) { ?>
-				<input type="button" name="quizSummary" value="<?php _e('Quiz-summary', 'wp-pro-quiz'); ?>" class="wpProQuiz_button2" style="float: right;" >
-			<?php } ?>
-			<div style="clear: both;"></div>
-			<?php } ?>
-		</div>
 	</div>
 	<div class="wpProQuiz_checkPage" style="display: none;">
 		<h4 class="wpProQuiz_header"><?php _e('Quiz-summary', 'wp-pro-quiz'); ?></h4>
@@ -114,19 +85,23 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 	</div>
 	<div style="display: none;" class="wpProQuiz_results">
 		<h4 class="wpProQuiz_header"><?php _e('Results', 'wp-pro-quiz'); ?></h4>
+		<?php if(!$this->quiz->isHideResultCorrectQuestion()) { ?>
 		<p>
 			<?php printf(__('%s of %s questions answered correctly', 'wp-pro-quiz'), '<span class="wpProQuiz_correct_answer">0</span>', '<span>'.$question_count.'</span>'); ?>
 		</p>
+		<?php } if(!$this->quiz->isHideResultQuizTime()) { ?>
 		<p class="wpProQuiz_quiz_time">
 			<?php _e('Your time: <span></span>', 'wp-pro-quiz'); ?>
 		</p>
+		<?php } ?>
 		<p class="wpProQuiz_time_limit_expired" style="display: none;">
 			<?php _e('Time has elapsed', 'wp-pro-quiz'); ?>
 		</p>
+		<?php if(!$this->quiz->isHideResultPoints()) { ?>
 		<p class="wpProQuiz_points">
 			<?php printf(__('You have reached %s of %s points, (%s)', 'wp-pro-quiz'), '<span>0</span>', '<span>0</span>', '<span>0</span>'); ?>
 		</p>
-		
+		<?php } ?>
 		<?php if($this->quiz->isShowAverageResult()) { ?>
 		<div class="wpProQuiz_resultTable">
 			<table>
@@ -149,6 +124,23 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			</table>
 		</div>
 		<?php } ?>
+		<div class="wpProQuiz_catOverview" <?php $this->isDisplayNone($this->quiz->isShowCategoryScore()); ?>>
+			<h4><?php _e('Categories', 'wp-pro-quiz'); ?></h4>
+			<div style="margin-top: 10px;">
+				<ol>
+					<?php foreach($this->category as $cat) {
+						if(!$cat->getCategoryId()) {
+							$cat->setCategoryName(__('Not categorized', 'wp-pro-quiz'));
+						}
+					?>
+					<li data-category_id="<?php echo $cat->getCategoryId(); ?>">
+						<span class="wpProQuiz_catName"><?php echo $cat->getCategoryName(); ?></span>
+						<span class="wpProQuiz_catPercent">0%</span>
+					</li>
+					<?php } ?>
+				</ol>
+			</div>
+		</div>
 		<div>
 			<ul class="wpProQuiz_resultsList">
 				<?php foreach($result['text'] as $resultText) { ?>
@@ -186,6 +178,38 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		<?php echo do_shortcode('[WpProQuiz_toplist '.$this->quiz->getId().' q="true"]'); ?>
 	</div>
 	<?php } ?>	
+	<div class="wpProQuiz_reviewDiv" style="display: none;">
+		<div class="wpProQuiz_reviewQuestion">
+			<ol>
+				<?php for($xy = 1; $xy <= $question_count; $xy++) { ?>
+					<li><?php echo $xy; ?></li>
+				<?php } ?>
+			</ol>
+			<div style="display: none;"></div>
+		</div>
+		<div class="wpProQuiz_reviewLegend">
+			<ol>
+				<li>
+					<span class="wpProQuiz_reviewColor" style="background-color: #6CA54C;"></span>
+					<span class="wpProQuiz_reviewText"><?php _e('Answered', 'wp-pro-quiz'); ?></span>
+				</li>
+				<li>
+					<span class="wpProQuiz_reviewColor" style="background-color: #FFB800;"></span>
+					<span class="wpProQuiz_reviewText"><?php _e('Review', 'wp-pro-quiz'); ?></span>
+				</li>
+			</ol>
+			<div style="clear: both;"></div>
+		</div>
+		<div>
+			<?php if($this->quiz->getQuizModus() != WpProQuiz_Model_Quiz::QUIZ_MODUS_SINGLE) { ?>
+			<input type="button" name="review" value="<?php _e('Review question', 'wp-pro-quiz'); ?>" class="wpProQuiz_button2" style="float: left; display: block;">
+			<?php if(!$this->quiz->isQuizSummaryHide()) { ?>
+				<input type="button" name="quizSummary" value="<?php _e('Quiz-summary', 'wp-pro-quiz'); ?>" class="wpProQuiz_button2" style="float: right;" >
+			<?php } ?>
+			<div style="clear: both;"></div>
+			<?php } ?>
+		</div>
+	</div>
 	<div style="display: none;" class="wpProQuiz_quiz">
 		<ol class="wpProQuiz_list">
 		<?php 
@@ -199,9 +223,15 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 				
 				$json[$question->getId()]['type'] = $question->getAnswerType();
 				$json[$question->getId()]['id'] = (int)$question->getId();
+				$json[$question->getId()]['catId'] = (int)$question->getCategoryId();
+				
+				if(!isset($catPoints[$question->getCategoryId()]))
+					$catPoints[$question->getCategoryId()] = 0;
 				
 				if(!$question->isAnswerPointsActivated()) {
 					$json[$question->getId()]['points'] = $question->getPoints();
+					
+					$catPoints[$question->getCategoryId()] += $question->getPoints();
 				}
 				
 		?>
@@ -248,6 +278,8 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 							
 							if($question->isAnswerPointsActivated()) {
 								$json[$question->getId()]['points'][] = $v->getPoints();
+								
+								$catPoints[$question->getCategoryId()] += $question->getPoints();
 							}
 							
 						?>
@@ -301,6 +333,15 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 								$cloze = $clozeData['replace'];
 								
 								echo preg_replace_callback('#@@wpProQuizCloze@@#im', array($this, 'clozeCallback'), $cloze);
+					 		} else if($question->getAnswerType() === 'assessment_answer') {
+					 			$assessmentData = $this->fetchAssessment($v->getAnswer(), $this->quiz->getId(), $question->getId());
+					 			
+					 			
+					 			
+					 			$assessment = do_shortcode(apply_filters('comment_text', $assessmentData['replace']));
+					 			
+					 			echo preg_replace_callback('#@@wpProQuizAssessment@@#im', array($this, 'assessmentCallback'), $assessment);
+					 			
 					 		} ?>
 					 		</li> 
 					 <?php
@@ -375,7 +416,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 						<input type="button" name="tip" value="<?php _e('Hint', 'wp-pro-quiz'); ?>" class="wpProQuiz_button wpProQuiz_QuestionButton wpProQuiz_TipButton" style="float: left !important; display: inline-block; margin-right: 10px !important;">
 					<?php } ?>
 					<input type="button" name="check" value="<?php _e('Check', 'wp-pro-quiz'); ?>" class="wpProQuiz_button wpProQuiz_QuestionButton" style="float: right !important; margin-right: 10px !important; display: none;">
-					<input type="button" name="next" value="<?php _e('Next exercise', 'wp-pro-quiz'); ?>" class="wpProQuiz_button wpProQuiz_QuestionButton" style="float: right; display: none;" >
+					<input type="button" name="next" value="<?php _e('Next', 'wp-pro-quiz'); ?>" class="wpProQuiz_button wpProQuiz_QuestionButton" style="float: right; display: none;" >
 					<div style="clear: both;"></div>
 					
 				<?php if($this->quiz->getQuizModus() == WpProQuiz_Model_Quiz::QUIZ_MODUS_SINGLE) { ?>
@@ -424,6 +465,8 @@ jQuery(document).ready(function($) {
 		timelimit: <?php echo (int)$this->quiz->getTimeLimit(); ?>,
 		resultsGrade: <?php echo $resultsProzent; ?>,
 		bo: <?php echo $bo ?>,
+		catPoints: <?php echo json_encode($catPoints); ?>,
+		lbn: <?php echo json_encode(($this->quiz->isShowReviewQuestion() && !$this->quiz->isQuizSummaryHide()) ? __('Quiz-summary', 'wp-pro-quiz') : __('Finish quiz', 'wp-pro-quiz')); ?>,
 		json: <?php echo json_encode($json); ?>
 	});
 });
@@ -434,7 +477,7 @@ jQuery(document).ready(function($) {
 	private function showAddToplist() {
 ?>
 		<div class="wpProQuiz_addToplist" style="display: none;">
-			<span style="font-weight: bold;"><?php _e('Your result entered into leaderboard', 'wp-pro-quiz'); ?></span>
+			<span style="font-weight: bold;"><?php _e('Your result has been entered into leaderboard', 'wp-pro-quiz'); ?></span>
 			<div style="margin-top: 6px;">
 				<div class="wpProQuiz_addToplistMessage" style="display: none;"><?php _e('Loading', 'wp-pro-quiz'); ?></div>
 				<div class="wpProQuiz_addBox">
@@ -505,6 +548,43 @@ jQuery(document).ready(function($) {
 	private function clozeCallback($t) {
 		$a = array_shift($this->_clozeTemp);
 		
+		return $a === null ? '' : $a;
+	}
+	
+	private function fetchAssessment($answerText, $quizId, $questionId) {
+		preg_match_all('#\{(.*?)\}#im', $answerText, $matches);
+		
+		$this->_assessmetTemp = array();
+		$data = array();
+
+		for($i = 0, $ci = count($matches[1]); $i < $ci; $i++) {
+			$match = $matches[1][$i];
+			
+			preg_match_all('#\[([^\|\]]+)(?:\|(\d+))?\]#im', $match, $ms);
+			
+			$a = '';
+			
+			for($j = 0, $cj = count($ms[1]); $j < $cj; $j++) {
+				$v = $ms[1][$j];
+
+				$a .= '<label>
+					<input type="radio" value="'.($j+1).'" name="question_'.$quizId.'_'.$questionId.'_'.$i.'" class="wpProQuiz_questionInput">
+					'.$v.'
+				</label>';
+				
+			}
+			
+			$this->_assessmetTemp[] = $a;
+		}
+		
+		$data['replace'] = preg_replace('#\{(.*?)\}#im', '@@wpProQuizAssessment@@', $answerText);
+		
+		return $data;
+	}
+	
+	private function assessmentCallback($t) {
+		$a = array_shift($this->_assessmetTemp);
+	
 		return $a === null ? '' : $a;
 	}
 }

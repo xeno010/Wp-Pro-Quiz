@@ -17,3 +17,4 @@ delete_option('wpProQuiz_touchLibraryDeactivate');
 delete_option('wpProQuiz_corsActivated');
 delete_option('wpProQuiz_toplistDataFormat');
 delete_option('wpProQuiz_emailSettings');
+delete_option('wpProQuiz_statisticTimeFormat');

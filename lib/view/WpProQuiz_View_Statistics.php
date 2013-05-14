@@ -41,19 +41,51 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 	</div>
 	
 	<div id="wpProQuiz_content" style="display: none;">
-		<div id="wpProQuiz_tabUsers" class="wpProQuiz_tabContent">
+		
+		<?php $this->tabUser(); ?>
+		<?php $this->tabOverview(); ?>
+		
+	</div>
+	
+</div>
+
+<?php 		
+	}
+	
+	private function tabUser() {
+?>
+	<div id="wpProQuiz_tabUsers" class="wpProQuiz_tabContent">
 			<div class="wpProQuiz_blueBox" id="wpProQuiz_userBox" style="margin-bottom: 20px;">
-				<span>
-					<?php _e('Please select user name:', 'wp-pro-quiz'); ?>
-					<select name="userSelect" id="userSelect">
-						<?php foreach($this->users as $user) { 
-							if($user->ID == 0)
-								echo '<option value="0">=== ', __('Anonymous user', 'wp-pro-quiz'),' ===</option>';
-							else
-								echo '<option value="', $user->ID, '">', $user->user_login, ' (', $user->display_name, ')</option>';
-						} ?>
-					</select>
-				</span>
+				<div style="float: left;">
+					<div style="padding-top: 6px;">
+						<?php _e('Please select user name:', 'wp-pro-quiz'); ?>
+					</div>
+					
+					<div style="padding-top: 6px;">
+						<?php _e('Select a test:', 'wp-pro-quiz'); ?>
+					</div>
+					
+				</div>
+				
+				<div style="float: left;">
+					<div>
+						<select name="userSelect" id="userSelect">
+							<?php foreach($this->users as $user) { 
+								if($user->ID == 0)
+									echo '<option value="0">=== ', __('Anonymous user', 'wp-pro-quiz'),' ===</option>';
+								else
+									echo '<option value="', $user->ID, '">', $user->user_login, ' (', $user->display_name, ')</option>';
+							} ?>
+						</select>
+					</div>
+					
+					<div>
+						<select id="testSelect">
+							<option value="0">=== <?php _e('average', 'wp-pro-quiz'); ?> ===</option>
+						</select>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
 			</div>
 			
 			<table class="wp-list-table widefat">
@@ -65,6 +97,7 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 						<th scope="col" style="width: 100px;"><?php _e('Correct', 'wp-pro-quiz'); ?></th>
 						<th scope="col" style="width: 100px;"><?php _e('Incorrect', 'wp-pro-quiz'); ?></th>
 						<th scope="col" style="width: 100px;"><?php _e('Hints used', 'wp-pro-quiz'); ?></th>
+						<th scope="col" style="width: 100px;"><?php _e('Time', 'wp-pro-quiz'); ?> <span style="font-size: x-small;">(hh:mm:ss)</span></th>
 						<th scope="col" style="width: 100px;"><?php _e('Points scored', 'wp-pro-quiz'); ?></th>
 						<th scope="col" style="width: 60px;"><?php _e('Results', 'wp-pro-quiz'); ?></th>
 					</tr>
@@ -78,7 +111,7 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 				?>
 				
 					<tr class="categoryTr">
-						<th colspan="8">
+						<th colspan="9">
 							<span><?php _e('Category', 'wp-pro-quiz'); ?>:</span> 
 							<span style="font-weight: bold;"><?php echo $this->categoryList[$k]->getCategoryName(); ?></span>
 						</th>
@@ -95,6 +128,7 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 							<th class="wpProQuiz_cCorrect" style="color: green;"></th>
 							<th class="wpProQuiz_cIncorrect" style="color: red;"></th>
 							<th class="wpProQuiz_cTip"></th>
+							<th class="wpProQuiz_cTime"></th>
 							<th class="wpProQuiz_cPoints"></th>
 							<th></th>
 						</tr>
@@ -108,12 +142,13 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 						<th class="wpProQuiz_cCorrect" style="color: green;"></th>
 						<th class="wpProQuiz_cIncorrect" style="color: red;"></th>
 						<th class="wpProQuiz_cTip"></th>
+						<th class="wpProQuiz_cTime"></th>
 						<th class="wpProQuiz_cPoints"></th>
 						<th class="wpProQuiz_cResult" style="font-weight: bold;"></th>
 					</tr>
 					
 					<tr>
-						<th colspan="8"></th>
+						<th colspan="9"></th>
 					</tr>
 					
 				<?php } ?>
@@ -127,6 +162,7 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 						<th class="wpProQuiz_cCorrect" style="color: green;"></th>
 						<th class="wpProQuiz_cIncorrect" style="color: red;"></th>
 						<th class="wpProQuiz_cTip"></th>
+						<th class="wpProQuiz_cTime"></th>
 						<th class="wpProQuiz_cPoints"></th>
 						<th class="wpProQuiz_cResult" style="font-weight: bold;"></th>
 					</tr>
@@ -135,20 +171,26 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 		
 			<div style="margin-top: 10px;">
 				<div style="float: left;">
-					<?php if(current_user_can('wpProQuiz_reset_statistics')) { ?>
-					<a class="button-secondary" href="#" id="wpProQuiz_reset"><?php _e('Reset statistics', 'wp-pro-quiz'); ?></a>
-					<?php } ?>
 					<a class="button-secondary wpProQuiz_update" href="#"><?php _e('Refresh', 'wp-pro-quiz'); ?></a>
 				</div>
 				<div style="float: right;">
 					<?php if(current_user_can('wpProQuiz_reset_statistics')) { ?>
-					<a class="button-secondary wpProQuiz_resetComplete" href="#"><?php _e('Reset entire statistic', 'wp-pro-quiz'); ?></a>
+						<a class="button-secondary" href="#" id="wpProQuiz_reset"><?php _e('Reset statistics', 'wp-pro-quiz'); ?></a>
+						<a class="button-secondary" href="#" id="wpProQuiz_resetUser"><?php _e('Reset user statistics', 'wp-pro-quiz'); ?></a>
+						<a class="button-secondary wpProQuiz_resetComplete" href="#"><?php _e('Reset entire statistic', 'wp-pro-quiz'); ?></a>
 					<?php } ?>
 				</div>
 				<div style="clear: both;"></div>
 			</div>
 		</div>
-		
+
+<?php
+	}
+	
+	private function tabOverview() {
+
+?>
+
 		<div id="wpProQuiz_tabOverview" class="wpProQuiz_tabContent" style="display: none;">
 		
 			<input type="hidden" value="<?php echo 0; ?>" name="gPoints" id="wpProQuiz_gPoints">
@@ -190,6 +232,7 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 						<th scope="col" style="width: 100px;"><?php _e('Correct', 'wp-pro-quiz'); ?></th>
 						<th scope="col" style="width: 100px;"><?php _e('Incorrect', 'wp-pro-quiz'); ?></th>
 						<th scope="col" style="width: 100px;"><?php _e('Hints used', 'wp-pro-quiz'); ?></th>
+						<th scope="col" style="width: 100px;"><?php _e('Time', 'wp-pro-quiz'); ?> <span style="font-size: x-small;">(hh:mm:ss)</span></th>
 						<th scope="col" style="width: 60px;"><?php _e('Results', 'wp-pro-quiz'); ?></th>
 					</tr>
 				</thead>
@@ -200,6 +243,7 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 						<th class="wpProQuiz_cCorrect" style="color: green;"></th>
 						<th class="wpProQuiz_cIncorrect" style="color: red;"></th>
 						<th class="wpProQuiz_cTip"></th>
+						<th class="wpProQuiz_cTime"></th>
 						<th class="wpProQuiz_cResult" style="font-weight: bold;"></th>
 					</tr>
 				</tbody>
@@ -221,11 +265,7 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 			</div>
 		
 		</div>
-		
-	</div>
-	
-</div>
 
-<?php 		
+<?php 
 	}
 }

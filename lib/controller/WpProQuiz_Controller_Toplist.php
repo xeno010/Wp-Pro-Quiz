@@ -52,7 +52,7 @@ class WpProQuiz_Controller_Toplist extends WpProQuiz_Controller_Controller {
 					'name' => $tp->getName(),
 					'email' => $tp->getEmail(),
 					'type' => $tp->getUserId() ? 'R' : 'UR',
-					'date' =>  date_i18n(get_option('wpProQuiz_toplistDataFormat', 'Y/m/d g:i A'), $tp->getDate()),
+					'date' => WpProQuiz_Helper_Until::convertTime($tp->getDate(), get_option('wpProQuiz_toplistDataFormat', 'Y/m/d g:i A')),
 					'points' => $tp->getPoints(),
 					'result' => $tp->getResult()
 			);
@@ -69,6 +69,18 @@ class WpProQuiz_Controller_Toplist extends WpProQuiz_Controller_Controller {
 		}
 		
 		echo json_encode($j);
+	}
+	
+	private function editAdminToplist() {
+		$toplistId = $this->_post['toplistId'];
+		$username = trim($this->_post['name']);
+		$email = trim($this->_post['email']);
+		
+		if(empty($name) || empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+			return array('error' => __('No name or e-mail entered.', 'wp-pro-quiz'));
+		}
+		
+		
 	}
 	
 	private function showAdminToplist($quizId) {
@@ -133,7 +145,7 @@ class WpProQuiz_Controller_Toplist extends WpProQuiz_Controller_Controller {
 		}
 		
 		if($r === true) 
-			$r = array('text' => __('You signing up successfully.', 'wp-pro-quiz'), 'clear' => true);
+			$r = array('text' => __('You signed up successfully.', 'wp-pro-quiz'), 'clear' => true);
 		
 		
 		echo json_encode($r);
@@ -259,7 +271,7 @@ class WpProQuiz_Controller_Toplist extends WpProQuiz_Controller_Controller {
 			foreach($toplist as $tp) {
 				$j[$quizId][] = array(
 					'name' => $tp->getName(),
-					'date' =>  date_i18n(get_option('wpProQuiz_toplistDataFormat', 'Y/m/d g:i A'), $tp->getDate()),
+					'date' =>  WpProQuiz_Helper_Until::convertTime($tp->getDate(), get_option('wpProQuiz_toplistDataFormat', 'Y/m/d g:i A')),
 					'points' => $tp->getPoints(),
 					'result' => $tp->getResult()
 				);

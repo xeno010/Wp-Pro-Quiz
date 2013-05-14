@@ -12,6 +12,10 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 	public $question;
 	
 	public function show() {
+		
+		wp_enqueue_script('media-upload');
+		wp_enqueue_script('thickbox');
+		
 ?>
 <div class="wrap wpProQuiz_questionEdit">
 	<h2 style="margin-bottom: 10px;"><?php echo $this->header; ?></h2>
@@ -182,6 +186,10 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 						<input type="radio" name="answerType" value="cloze_answer" <?php echo ($type === 'cloze_answer') ? 'checked="checked"' : ''; ?>>
 						<?php _e('Cloze', 'wp-pro-quiz'); ?>
 					</label>
+					<label style="padding-right: 10px;">
+						<input type="radio" name="answerType" value="assessment_answer" <?php echo ($type === 'assessment_answer') ? 'checked="checked"' : ''; ?>>
+						<?php _e('Assessment', 'wp-pro-quiz'); ?>
+					</label>
 				</div>
 			</div>
 			<div class="postbox">
@@ -219,6 +227,9 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 					</div>
 					<div class="cloze_answer">
 						<?php $this->clozeChoice($this->data['cloze_answer']); ?>
+					</div>
+					<div class="assessment_answer">
+						<?php $this->assessmentChoice($this->data['assessment_answer']); ?>
 					</div>
 				</div>
 			</div>
@@ -272,6 +283,7 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 		</table>
 		
 		<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete answer', 'wp-pro-quiz'); ?>">
+		<input type="button" class="button-secondary addMedia" value="<?php _e('Add Media'); ?>">
 		<a href="#" class="button-secondary wpProQuiz_move" style="cursor: move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
 		
 	</li>
@@ -326,6 +338,7 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 				</table>
 				
 				<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete answer', 'wp-pro-quiz'); ?>">
+				<input type="button" class="button-secondary addMedia" value="<?php _e('Add Media'); ?>">
 				<a href="#" class="button-secondary wpProQuiz_move" style="cursor: move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
 			</li>
 <?php 
@@ -367,6 +380,7 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 				</table>
 				
 				<input type="button" name="submit" class="button-primary deleteAnswer" value="<?php _e('Delete answer', 'wp-pro-quiz'); ?>">
+				<input type="button" class="button-secondary addMedia" value="<?php _e('Add Media'); ?>">
 				<a href="#" class="button-secondary wpProQuiz_move" style="cursor: move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
 			</li>
 <?php 
@@ -404,6 +418,45 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 		</p>
 		<?php
 			wp_editor($single->getAnswer(), 'cloze', array('textarea_rows' => 10, 'textarea_name' => 'answerData[cloze][answer]'));
+		?>
+<?php 
+	}
+	
+	private function assessmentChoice($data) {
+		$single = $data[0];
+?>
+		<p class="description">
+			<?php _e('Here you can create an assessment question.', 'wp-pro-quiz'); ?>
+		</p>
+		<p class="description">
+			<?php _e('Enclose a assesment with {}. The individual assessments are marked with [].', 'wp-pro-quiz'); ?>
+			<br>
+			<?php _e('The number of options in the maximum score.', 'wp-pro-quiz'); ?>
+		</p>
+		<p>
+			<?php _e('Examples:', 'wp-pro-quiz'); ?>
+			<br>
+			* <?php _e('less true { [1] [2] [3] [4] [5] } more true', 'wp-pro-quiz'); ?>
+		</p>
+		<div class="wpProQuiz_demoImgBox">
+			<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+			<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+				<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/assessmentDemo1.png'; ?> ">
+			</div>
+		</div>
+		<p>
+			* <?php _e('less true { [a] [b] [c] } more true', 'wp-pro-quiz'); ?>
+		</p>
+		<div class="wpProQuiz_demoImgBox">
+			<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+			<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+				<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/assessmentDemo2.png'; ?> ">
+			</div>
+		</div>
+		<p></p>
+	
+		<?php
+			wp_editor($single->getAnswer(), 'assessment', array('textarea_rows' => 10, 'textarea_name' => 'answerData[assessment][answer]'));
 		?>
 <?php 
 	}

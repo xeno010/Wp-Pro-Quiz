@@ -1,12 +1,19 @@
 (function($) {
+	/**
+	 * @memberOf $
+	 */
 	$.wpProQuizFront = function(element, options) {
+		
 		var $e = $(element);
 		var config = options;
 		var plugin = this;
 		var results = new Object();
+		var catResults = new Object();
 		var startTime = 0;
 		var currentQuestion = null;
 		var quizSolved = [];
+		var lastButtonValue = "";
+		var inViewQuestions = false;
 
 		var bitOptions = {
 			randomAnswer: 0, 
@@ -43,7 +50,8 @@
 			results: $e.find('.wpProQuiz_results'),
 			quizStartPage: $e.find('.wpProQuiz_text'),
 			timelimit: $e.find('.wpProQuiz_time_limit'),
-			toplistShowInButton: $e.find('.wpProQuiz_toplistShowInButton')
+			toplistShowInButton: $e.find('.wpProQuiz_toplistShowInButton'),
+			listItems: $()
 		};
 		
 		var toplistData = {
@@ -51,7 +59,9 @@
 			isUser: 0
 		};
 		
-		
+		/**
+		 * @memberOf timelimit
+		 */
 		var timelimit = (function() {
 			var _counter = config.timelimit;
 			var _intervalId = 0;
@@ -100,7 +110,12 @@
 			
 		})();
 		
+		
+		/**
+		 * @memberOf reviewBox
+		 */
 		var reviewBox = new function() {
+			
 			var $contain = [], $cursor = [], $list = [], $items = [];
 			var x = 0, offset = 0, diff = 0, top = 0, max = 0;
 			var itemsStatus = [];
@@ -172,8 +187,13 @@
 				if(bitOptions.reviewQustion)
 					$contain.parent().show();
 				
+				$e.find('.wpProQuiz_reviewDiv .wpProQuiz_button2').show();
+				
 				if(save)
 					return;
+				
+				$list.attr('style', 'margin-top: 0px !important');
+				$cursor.css({top: 0});
 				
 				var h = $list.outerHeight();
 				var c = $contain.height();
@@ -193,6 +213,30 @@
 			
 			this.hide = function() {
 				$contain.parent().hide();
+			};
+			
+			this.toggle = function() {
+				if(bitOptions.reviewQustion) {
+					$contain.parent().toggle();
+					$items.removeClass('wpProQuiz_reviewQuestionTarget');
+					$e.find('.wpProQuiz_reviewDiv .wpProQuiz_button2').hide();
+					
+					$list.attr('style', 'margin-top: 0px !important');
+					$cursor.css({top: 0});
+					
+					var h = $list.outerHeight();
+					var c = $contain.height();
+					x = c - $cursor.height();
+					offset = 0;
+					max = h-c;
+					diff = max / x;
+					
+					if(h > 100) {
+						$cursor.show();
+					}
+					
+					top = $cursor.offset().top;
+				}
 			};
 			
 			this.reset = function() {
@@ -261,6 +305,58 @@
 			}
 		};
 		
+		
+		function QuestionTimer() {
+			var questionStartTime = 0;
+			var currentQuestionId = -1;
+			
+			var quizStartTimer = 0;
+			var isQuizStart = false;
+			
+			this.questionStart = function(questionId) {
+				if(currentQuestionId != -1)
+					this.questionStop();
+				
+				currentQuestionId = questionId;
+				questionStartTime = +new Date();
+			};
+			
+			this.questionStop = function() {
+				if(currentQuestionId == -1)
+					return;
+				
+				results[currentQuestionId].time += Math.round((new Date() - questionStartTime) / 1000);
+				
+				currentQuestionId = -1;
+			};
+			
+			this.startQuiz = function() {
+				if(isQuizStart)
+					this.stopQuiz();
+				
+				quizStartTimer = +new Date();
+				isQuizStart = true;
+			};
+			
+			this.stopQuiz = function() {
+				if(!isQuizStart)
+					return;
+				
+				results['comp'].quizTime += Math.round((new Date() - quizStartTimer) / 1000);
+				isQuizStart = false;
+			};
+			
+			this.init = function() {
+				
+			};
+			
+		};
+
+		var questionTimer = new QuestionTimer();
+		
+		/**
+		 * @memberOf checker
+		 */
 		var checker = function(name, data, $question, $questionList) {
 			var correct = true;
 			var points = 0;
@@ -402,6 +498,18 @@
 						
 						input.attr('disabled', 'disabled');
 					});
+				},
+				
+				assessment_answer: function() {
+					correct = true;
+					var $input = $questionList.find('.wpProQuiz_questionInput').attr('disabled', 'disabled');
+					var val = 0;
+					
+					$input.filter(':checked').each(function() {
+						val += parseInt($(this).val());
+					});
+					
+					points = val;
 				}
 			};
 			
@@ -415,6 +523,10 @@
 		}; 
 		
 		plugin.methode = {
+			/**
+			 * @memberOf plugin.methode
+			 */
+				
 			parseBitOptions: function() {
 				if(config.bo) {
 					bitOptions.randomAnswer = config.bo & (1 << 0);
@@ -499,6 +611,7 @@
 						e.addClass('wpProQuiz_answerIncorrect');
 					}
 				}
+				
 			},
 			
 			startQuiz: function() {
@@ -545,6 +658,8 @@
 					});
 				});
 				
+				globalElements.next = $e.find(globalNames.next);
+				
 				switch (config.mode) {
 					case 3:
 						$e.find('input[name="checkSingle"]').show();
@@ -564,14 +679,25 @@
 						break;
 				}
 				
+				//Change last name
+				var $lastButton = globalElements.next.last();
+				lastButtonValue = $lastButton.val();
+				$lastButton.val(config.lbn);
+				
 				var $listItem = globalElements.questionList.children();
+				
+				globalElements.listItems = $e.find('.wpProQuiz_list > li');
 				
 				if(config.mode == 3) {
 					$listItem.show();
 				} else {
 					currentQuestion = $listItem.eq(0).show();
-					$e.trigger({type: 'changeQuestion', values: {item: currentQuestion, index: currentQuestion.index()}});
+					
+					var questionId = currentQuestion.find(globalNames.questionList).data('question_id');
+					questionTimer.questionStart(questionId);
 				}
+				
+				questionTimer.startQuiz();
 				
 				$e.find('.wpProQuiz_sortable').parents('ul').sortable({
 					update: function( event, ui ) {
@@ -597,49 +723,92 @@
 				
 				startTime = +new Date();
 				
-				results = {comp: {points: 0, correctQuestions: 0}};
+				results = {comp: {points: 0, correctQuestions: 0, quizTime: 0}};
+				
+				$e.find('.wpProQuiz_questionList').each(function() {
+					var questionId = $(this).data('question_id');
+					
+					results[questionId] = {time: 0};
+				});
+				
+				catResults = {};
+				
+				$.each(options.catPoints, function(i, v) {
+					catResults[i] = 0;
+				});
 				
 				globalElements.quizStartPage.hide();
 				globalElements.quiz.show();
 				reviewBox.show();
+				
+				if(config.mode != 3) {
+					$e.trigger({type: 'changeQuestion', values: {item: currentQuestion, index: currentQuestion.index()}});
+				}
 			},
 			
 			nextQuestion: function() {
-				currentQuestion = currentQuestion.hide().next().show();
+//				currentQuestion = currentQuestion.hide().next().show();
+//				
+//				plugin.methode.scrollTo(globalElements.quiz);
+//				
+//				$e.trigger({type: 'changeQuestion', values: {item: currentQuestion, index: currentQuestion.index()}});
+//				
+//				if(!currentQuestion.length) {
+//					plugin.methode.showQuizSummary();			
+//				}
+				
+				this.showQuestionObject(currentQuestion.next());
+			},
+			
+			prevQuestion: function() {
+//				currentQuestion = currentQuestion.hide().prev().show();
+//				
+//				plugin.methode.scrollTo(globalElements.quiz);
+//				
+//				$e.trigger({type: 'changeQuestion', values: {item: currentQuestion, index: currentQuestion.index()}});
+//				
+				this.showQuestionObject(currentQuestion.prev());
+			},
+			
+			showQuestion: function(index) {
+				var $element = globalElements.listItems.eq(index);
+				
+				if(config.mode == 3 || inViewQuestions) {
+//					plugin.methode.scrollTo($e.find('.wpProQuiz_list > li').eq(index), 1);
+					plugin.methode.scrollTo($element, 1);
+					questionTimer.startQuiz();
+					return;
+				}
+				
+//				currentQuestion.hide();
+//				
+//				currentQuestion = $element.show();
+//				
+//				plugin.methode.scrollTo(globalElements.quiz);
+//				
+//				$e.trigger({type: 'changeQuestion', values: {item: currentQuestion, index: currentQuestion.index()}});
+//				
+//				if(!currentQuestion.length)
+//					plugin.methode.showQuizSummary();
+				
+				this.showQuestionObject($element);
+			},
+			
+			showQuestionObject: function(obj) {
+				currentQuestion.hide();
+
+				currentQuestion = obj.show();
 				
 				plugin.methode.scrollTo(globalElements.quiz);
 				
 				$e.trigger({type: 'changeQuestion', values: {item: currentQuestion, index: currentQuestion.index()}});
 				
 				if(!currentQuestion.length) {
-					plugin.methode.showQuizSummary();			
-				}
-			},
-			
-			prevQuestion: function() {
-				currentQuestion = currentQuestion.hide().prev().show();
-				
-				plugin.methode.scrollTo(globalElements.quiz);
-				
-				$e.trigger({type: 'changeQuestion', values: {item: currentQuestion, index: currentQuestion.index()}});
-			},
-			
-			showQuestion: function(index) {
-				if(config.mode == 3) {
-					plugin.methode.scrollTo($e.find('.wpProQuiz_list > li').eq(index), 1);
-					return;
-				}
-				
-				currentQuestion.hide();
-				
-				currentQuestion = $e.find('.wpProQuiz_list > li').eq(index).show();
-				
-				plugin.methode.scrollTo(globalElements.quiz);
-				
-				$e.trigger({type: 'changeQuestion', values: {item: currentQuestion, index: currentQuestion.index()}});
-				
-				if(!currentQuestion.length)
 					plugin.methode.showQuizSummary();
+				} else {
+					var questionId = currentQuestion.find(globalNames.questionList).data('question_id');
+					questionTimer.questionStart(questionId);
+				}
 			},
 			
 			skipQuestion: function() {
@@ -653,6 +822,9 @@
 			},
 			
 			showQuizSummary: function() {
+				questionTimer.questionStop();
+				questionTimer.stopQuiz();
+				
 				if(bitOptions.quizSummeryHide || !bitOptions.reviewQustion) {
 					plugin.methode.finishQuiz();
 					return;
@@ -689,7 +861,8 @@
 			},
 			
 			finishQuiz: function(timeover) {
-				
+				questionTimer.questionStop();
+				questionTimer.stopQuiz();
 				timelimit.stop();
 				
 				var time = (+new Date() - startTime) / 1000;
@@ -701,7 +874,7 @@
 					globalElements.results.find('.wpProQuiz_time_limit_expired').show();
 				}
 				
-				plugin.methode.checkQuestion(globalElements.questionList.children());
+				plugin.methode.checkQuestion(globalElements.questionList.children(), true);
 				
 				$e.find('.wpProQuiz_correct_answer').text(results.comp.correctQuestions);
 				
@@ -717,6 +890,8 @@
 				
 				plugin.methode.setAverageResult(results.comp.result, false);
 				
+				this.setCategoryOverview();
+				
 				plugin.methode.sendCompletedQuiz();
 				
 				if(bitOptions.isAddAutomatic && toplistData.isUser) {
@@ -730,6 +905,16 @@
 				globalElements.results.show();
 				
 				plugin.methode.scrollTo(globalElements.results);
+			},
+			
+			setCategoryOverview: function() {
+				$e.find('.wpProQuiz_catOverview li').each(function() {
+					var $this = $(this);
+					var catId = $this.data('category_id');
+					var r = Math.round(catResults[catId] / config.catPoints[catId] * 100 * 100) / 100;
+					
+					$this.find('.wpProQuiz_catPercent').text(r + '%');
+				});
 			},
 			
 			questionSolved: function(e) {
@@ -765,10 +950,12 @@
 			},
 			
 			showQustionList: function() {
+				inViewQuestions = !inViewQuestions;
 				globalElements.toplistShowInButton.hide();
 				globalElements.quiz.toggle();
 				$e.find('.wpProQuiz_QuestionButton').hide();
 				globalElements.questionList.children().show();
+				reviewBox.toggle();
 				
 				$e.find('.wpProQuiz_question_page').hide();
 			},
@@ -788,9 +975,12 @@
 				globalElements.quizStartPage.show();
 				globalElements.questionList.children().hide();
 				globalElements.toplistShowInButton.hide();
+				reviewBox.hide();
 				
 				$e.find('.wpProQuiz_questionInput, .wpProQuiz_cloze input').removeAttr('disabled').removeAttr('checked')
-					.val('').css('background-color', '');
+					.css('background-color', '');
+				
+				$e.find('.wpProQuiz_cloze input').val('');
 				
 				$e.find('.wpProQuiz_answerCorrect, .wpProQuiz_answerIncorrect').removeClass('wpProQuiz_answerCorrect wpProQuiz_answerIncorrect');
 				
@@ -805,9 +995,15 @@
 				$e.find('.wpProQuiz_clozeCorrect, .wpProQuiz_QuestionButton, .wpProQuiz_resultsList > li').hide();
 				
 				$e.find('.wpProQuiz_question_page, input[name="tip"]').show();
+				
+				globalElements.results.find('.wpProQuiz_time_limit_expired').hide();
+				
+				globalElements.next.last().val(lastButtonValue);
+				
+				inViewQuestions = false;
 			},
 			
-			checkQuestion: function(list) {
+			checkQuestion: function(list, endCheck) {
 				list = (list == undefined) ? currentQuestion : list;
 				
 				list.each(function() {
@@ -815,6 +1011,8 @@
 					var $questionList = $this.find(globalNames.questionList);
 					var data = config.json[$questionList.data('question_id')];
 					var name = data.type;
+					
+					questionTimer.questionStop();
 					
 					if($this.data('check')) {
 						return true;
@@ -831,13 +1029,11 @@
 					$this.find(globalNames.skip).hide();
 					$this.find(globalNames.next).show();
 					
-					if(results[data.id] == undefined) {
-						results[data.id] = new Object();
-					}
-					
 					results[data.id].points = result.p;
 					results[data.id].correct = Number(result.c);
 					results['comp'].points += result.p;
+					
+					catResults[data.catId] += result.p;
 					
 					if(result.c) {
 						$this.find('.wpProQuiz_correct').show();
@@ -850,7 +1046,8 @@
 					
 					$this.data('check', true);
 					
-					$e.trigger({type: 'questionSolved', values: {item: $this, index: $this.index(), solved: true}});
+					if(!endCheck)
+						$e.trigger({type: 'questionSolved', values: {item: $this, index: $this.index(), solved: true}});
 				});
 			},
 			
@@ -859,10 +1056,6 @@
 				var id = $this.siblings('.wpProQuiz_question').find(globalNames.questionList).data('question_id');
 
 				$this.siblings('.wpProQuiz_tipp').toggle('fast');
-				
-				if(results[id] == undefined) {
-					results[id] = new Object();
-				}
 				
 				results[id].tip = 1;
 				
@@ -1046,7 +1239,7 @@
 					$e.trigger({type: 'questionSolved', values: {item: $p, index: $p.index(), solved: s}});
 				});
 				
-				$e.find('.wpProQuiz_questionList[data-type="single"] .wpProQuiz_questionInput').change(function(e) {
+				$e.find('.wpProQuiz_questionList[data-type="single"] .wpProQuiz_questionInput, .wpProQuiz_questionList[data-type="assessment_answer"] .wpProQuiz_questionInput').change(function(e) {
 					var $this = $(this);
 					var $p = $this.parents('.wpProQuiz_listItem');
 					var s = this.checked;
@@ -1085,6 +1278,9 @@
 			}
 		};
 
+		/**
+		 * @memberOf plugin
+		 */
 		plugin.init = function() {
 			plugin.methode.parseBitOptions();
 			plugin.methode.setClozeStyle();

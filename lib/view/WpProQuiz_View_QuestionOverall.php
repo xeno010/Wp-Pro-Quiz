@@ -26,6 +26,7 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 			<tr>
 				<th scope="col" style="width: 50px;"></th>
 				<th scope="col"><?php _e('Name', 'wp-pro-quiz'); ?></th>
+				<th scope="col"><?php _e('Category', 'wp-pro-quiz'); ?></th>
 				<th scope="col"><?php _e('Points', 'wp-pro-quiz'); ?></th>
 			</tr>
 		</thead>
@@ -60,11 +61,14 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 						<?php } ?>
 					</div>
 				</td>
+				<td>
+					<?php echo $question->getCategoryName(); ?>
+				</td>
 				<td><?php echo $question->getPoints(); ?></td>
 			</tr>
 			<?php } } else { ?>
 				<tr>
-					<td colspan="3" style="text-align: center; font-weight: bold; padding: 10px;"><?php _e('No data available', 'wp-pro-quiz'); ?></td>
+					<td colspan="4" style="text-align: center; font-weight: bold; padding: 10px;"><?php _e('No data available', 'wp-pro-quiz'); ?></td>
 				</tr>
 			<?php } ?>
 		</tbody>
@@ -72,6 +76,7 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 			<tr>
 				<th></th>
 				<th style="font-weight: bold;"><?php _e('Total', 'wp-pro-quiz'); ?></th>
+				<th></th>
 				<th style="font-weight: bold;"><?php echo $points; ?></th>
 			</tr>
 		</tfoot>

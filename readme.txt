@@ -1,10 +1,10 @@
 === Wp-Pro-Quiz ===
 Contributors: xeno010
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N9B7S4FT8CE2N
-Tags: quiz, test, answer, question, learning
+Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 0.23
+Stable tag: 0.24
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,7 @@ A powerful and beautiful quiz plugin for WordPress.
 *		"Free" Choice
 *       "Matrix Sorting" Choice
 *		Cloze function
+*		Assessment
 *		Timelimit
 *		Random Answer (optional)
 *		Random Question (optional)
@@ -46,8 +47,10 @@ A powerful and beautiful quiz plugin for WordPress.
 
 = Translations =
 *		Arabic / عربي (Thanks Abuhassan)
-*		Dutch / nederlands (Thanks Bas W.)
+*		Danish / dansk (Thanks Kenneth D.)
+*		Dutch / nederlands (Thanks Bas W. and Jurriën van den H.)
 * 		English (Thanks Alexander M.)
+*		French / français (Thanks Aurélien C.)
 *		German / deutsch
 *		Greek / ελληνικά (Thanks Ζαχαρίας Σ.)
 *		Norwegian / norsk (Thanks Stein Ivar J.)
@@ -60,7 +63,7 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 
 = Special =
 * Support for "User Role Editor" etc.
-* Support for BuddyPress achievements 2.x.x
+* Support for BuddyPress achievements 3.x.x
 
 = Support = 
 * English: http://wordpress.org/support/plugin/wp-pro-quiz
@@ -227,3 +230,27 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * Bug fixes
 * Translation for spanish have been added (Thanks Carlos R.)
 * Translation for greek have been added (Thanks Ζαχαρίας Σ.)
+
+= 0.24 =
+* Support for Achievements V3 added
+* Support for Achievements V2 removed
+* Improvement of statistics function
+* TinyMCE editor added to E-Mail settings
+* Assessment choice added
+* Time logger for each question added
+* Option "Show category score" added in Quiz-result-site
+* User e-mail support added (send an email with quiz-result to the user)
+* "Question overview" in "View questions" will now be displayed
+* Rename button "next exercise" to "next"
+* Rename last button "next exercise" to "Finish quiz" or "Quiz-summary"
+* Bugfix for IIS
+* Adminmenu: "Media add" button in "answers" (edit/new question) added
+* Adminmenu: show question-category in question overview
+* Adminmenu: option "Hide correct questions - display" added 
+* Adminmenu: option "Hide quiz time - display" added
+* Adminmenu: option "Hide score - display" added
+* Updated russian translation
+* Updated dutch translation
+* Updated greek translation
+* Translation for danish have been added (Thanks Kenneth D.)
+* Translation for french have been added (Thanks Aurélien C.)

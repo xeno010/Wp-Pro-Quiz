@@ -33,4 +33,8 @@ class WpProQuiz_View_View {
 			return $r;
 		}
 	}
+	
+	public function isDisplayNone($v) {
+		echo $v ? '' : 'style="display:none;"';
+	}
 }

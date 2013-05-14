@@ -13,6 +13,31 @@ class WpProQuiz_Model_CategoryMapper extends WpProQuiz_Model_Mapper {
 		return $r;
 	}
 	
+	public function fetchByQuiz($quizId) {
+		$r = array();
+		
+		$results = $this->_wpdb->get_results($this->_wpdb->prepare('
+			SELECT 
+				c.*
+			FROM
+				'.$this->_tableCategory.' AS c
+				RIGHT JOIN '.$this->_tableQuestion.' AS q
+			        	ON c.category_id = q.category_id
+			WHERE
+				q.quiz_id = %d
+			GROUP BY
+		          q.category_id
+			ORDER BY
+       			c.category_name
+		', $quizId), ARRAY_A);
+		
+		foreach($results as $row) {
+			$r[] = new WpProQuiz_Model_Category($row);
+		}
+		
+		return $r;
+	}
+	
 	public function save(WpProQuiz_Model_Category $category) {
 		$data = array('category_name' => $category->getCategoryName());
 		$format = array('%s');

@@ -115,4 +115,5 @@ class WpProQuiz_Model_ToplistMapper extends WpProQuiz_Model_Mapper {
 		
 		return $this->_wpdb->query("DELETE FROM {$this->_tableToplist} WHERE quiz_id = {$quizId} AND toplist_id IN(".implode(', ', $ids).")");
 	}
+	
 }

@@ -300,14 +300,14 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		$m = new WpProQuiz_Model_QuizMapper();
 		$qm = new WpProQuiz_Model_QuestionMapper();
 		$lm = new WpProQuiz_Model_LockMapper();
-		$sm = new WpProQuiz_Model_StatisticMapper();
+		$srm = new WpProQuiz_Model_StatisticRefMapper();
 		$pm = new WpProQuiz_Model_PrerequisiteMapper();
 		$tm = new WpProQuiz_Model_ToplistMapper();
 		
 		$m->delete($id);
 		$qm->deleteByQuizId($id);
 		$lm->deleteByQuizId($id);
-		$sm->deleteByQuiz($id);
+		$srm->deleteAll($id);
 		$pm->delete($id);
 		$tm->delete($id);
 		
@@ -360,6 +360,8 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$userId = get_current_user_id();
 		
+		$is100P = $this->_post['results']['comp']['result'] == 100;
+		
 		$quiz = $quizMapper->fetch($this->_post['quizId']);
 
 		if($quiz === null || $quiz->getId() <= 0) {
@@ -375,6 +377,9 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			$statistics->save();
 			
 			do_action('wp_pro_quiz_completed_quiz');
+			
+			if($is100P)
+				do_action('wp_pro_quiz_completed_quiz_100_percent');
 			
 			exit;
 		}
@@ -401,6 +406,9 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			$statistics->save();
 
 			do_action('wp_pro_quiz_completed_quiz');
+			
+			if($is100P)
+				do_action('wp_pro_quiz_completed_quiz_100_percent');
 
 			if(get_current_user_id() == 0 && $quiz->isQuizRunOnceCookie()) {
 				$cookieData = array();
@@ -446,8 +454,6 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		return false;
 	}
 	
-	
-	
 	private function getIp() {
 		if(get_current_user_id() > 0)
 			return '0';
@@ -456,14 +462,10 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 	}
 	
 	private function emailNote(WpProQuiz_Model_Quiz $quiz, $result) {
-		if($quiz->getEmailNotification() == WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_NONE
-		 	|| (get_current_user_id() == 0 && $quiz->getEmailNotification() == WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER)) {
-			
-			return;
-		}
-		
 		$globalMapper = new WpProQuiz_Model_GlobalSettingsMapper();
-		$email = $globalMapper->getEmailSettings();
+		
+		$adminEmail = $globalMapper->getEmailSettings();
+		$userEmail = $globalMapper->getUserEmailSettings();
 		
 		$user = wp_get_current_user();
 		
@@ -480,14 +482,46 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			$r['$username'] = $r['$ip'];
 		}
 		
-		$msg = str_replace(array_keys($r), $r, $email['message']);
-		
-		$headers = '';
-		
-		if(!empty($email['from'])) {
-			$headers = 'From: '.$email['from'];
+		if($quiz->isUserEmailNotification()) {
+			$msg = str_replace(array_keys($r), $r, $userEmail['message']);
+				
+			$headers = '';
+				
+			if(!empty($userEmail['from'])) {
+				$headers = 'From: '.$userEmail['from'];
+			}
+
+			if($userEmail['html'])
+				add_filter('wp_mail_content_type', array($this, 'htmlEmailContent'));
+			
+			wp_mail($user->user_email, $userEmail['subject'], $msg, $headers);
+			
+			if($userEmail['html'])
+				remove_filter('wp_mail_content_type', array($this, 'htmlEmailContent'));
 		}
 		
-		wp_mail($email['to'], $email['subject'], $msg, $headers);
+		if($quiz->getEmailNotification() != WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_NONE || ( get_current_user_id() == 0 
+			&& $quiz->getEmailNotification() != WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER)) {
+			
+			$msg = str_replace(array_keys($r), $r, $adminEmail['message']);
+			
+			$headers = '';
+			
+			if(!empty($adminEmail['from'])) {
+				$headers = 'From: '.$adminEmail['from'];
+			}
+			
+			if(isset($adminEmail['html']) && $adminEmail['html'])
+				add_filter('wp_mail_content_type', array($this, 'htmlEmailContent'));
+			
+			wp_mail($adminEmail['to'], $adminEmail['subject'], $msg, $headers);
+			
+			if(isset($adminEmail['html']) && $adminEmail['html'])
+				remove_filter('wp_mail_content_type', array($this, 'htmlEmailContent'));
+		}
+	}
+	
+	public function htmlEmailContent($contentType) {
+		return 'text/html';
 	}
 }

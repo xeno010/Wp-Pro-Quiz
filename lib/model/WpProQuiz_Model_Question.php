@@ -20,6 +20,9 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	
 	//0.23
 	protected $_categoryId = 0;
+	
+	//0.24
+	protected $_categoryName = '';
 
 	public function setId($_id) {
 		$this->_id = $_id;
@@ -181,5 +184,14 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	
 	public function getCategoryId() {
 		return $this->_categoryId;
+	}
+	
+	public function setCategoryName($_categoryName) {
+		$this->_categoryName = (string)$_categoryName;
+		return $this;
+	}
+	
+	public function getCategoryName() {
+		return $this->_categoryName;
 	}
 }

@@ -63,8 +63,28 @@ class WpProQuiz_View_AdminToplist extends WpProQuiz_View_View {
 			<tbody id="">
 				<tr style="display: none;">
 					<td><input type="checkbox" name="checkedData[]"></td>
-					<td></td>
-					<td></td>
+					<td>
+						<strong class="wpProQuiz_username"></strong>
+						<input name="inline_editUsername" class="inline_editUsername" type="text" value="" style="display: none;">
+						<div class="row-actions">
+													
+							<span style="display: none;">
+								<a class="wpProQuiz_edit" href="#"><?php _e('Edit', 'wp-pro-quiz'); ?></a> | 
+							</span>
+							<span>
+								<a style="color: red;" class="wpProQuiz_delete" href="#"><?php _e('Delete', 'wp-pro-quiz'); ?></a>
+							</span>
+							
+						</div>
+						<div class="inline-edit" style="margin-top: 10px; display: none;">
+							<input type="button" value="<?php _e('save', 'wp-pro-quiz'); ?>" class="button-secondary inline_editSave">
+							<input type="button" value="<?php _e('cancel', 'wp-pro-quiz'); ?>" class="button-secondary inline_editCancel">
+						</div>
+					</td>
+					<td>
+						<span class="wpProQuiz_email"></span>
+						<input name="inline_editEmail" class="inline_editEmail" value="" type="text" style="display: none;">
+					</td>
 					<td></td>
 					<td></td>
 					<td></td>

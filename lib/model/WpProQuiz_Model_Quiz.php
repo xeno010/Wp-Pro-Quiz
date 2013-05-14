@@ -76,6 +76,13 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_skipQuestionDisabled = false;
 	protected $_emailNotification = 0;
 	
+	//0.24
+	protected $_userEmailNotification = false;
+	protected $_showCategoryScore = false;
+	protected $_hideResultCorrectQuestion = false;
+	protected $_hideResultQuizTime = false;
+	protected $_hideResultPoints = false;
+	
 	public function getId() {
 		return $this->_id;
 	}
@@ -476,4 +483,48 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 		return $this->_emailNotification;
 	}
 	
+	public function setUserEmailNotification($_userEmailNotification) {
+		$this->_userEmailNotification = (bool)$_userEmailNotification;
+		return $this;
+	}
+	
+	public function isUserEmailNotification() {
+		return $this->_userEmailNotification;
+	}
+	
+	public function setShowCategoryScore($_showCategoryScore) {
+		$this->_showCategoryScore = (bool)$_showCategoryScore;
+		return $this;
+	}
+	
+	public function isShowCategoryScore() {
+		return $this->_showCategoryScore;
+	}
+	
+	public function setHideResultCorrectQuestion($_hideResultCorrectQuestion) {
+		$this->_hideResultCorrectQuestion = (bool)$_hideResultCorrectQuestion;
+		return $this;
+	}
+	
+	public function isHideResultCorrectQuestion() {
+		return $this->_hideResultCorrectQuestion;
+	}
+	
+	public function setHideResultQuizTime($_hideResultQuizTime) {
+		$this->_hideResultQuizTime = (bool)$_hideResultQuizTime;
+		return $this;
+	}
+	
+	public function isHideResultQuizTime() {
+		return $this->_hideResultQuizTime;
+	}
+	
+	public function setHideResultPoints($_hideResultPoints) {
+		$this->_hideResultPoints = (bool)$_hideResultPoints;
+		return $this;
+	}
+	
+	public function isHideResultPoints() {
+		return $this->_hideResultPoints;
+	}
 }

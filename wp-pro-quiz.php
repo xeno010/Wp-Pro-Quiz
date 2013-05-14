@@ -3,14 +3,14 @@
 Plugin Name: WP-Pro-Quiz
 Plugin URI: http://wordpress.org/extend/plugins/wp-pro-quiz
 Description: A powerful and beautiful quiz plugin for WordPress.
-Version: 0.23
+Version: 0.24
 Author: Julius Fischer
 Author URI: http://www.it-gecko.de
 Text Domain: wp-pro-quiz
 Domain Path: /languages
 */
 
-define('WPPROQUIZ_VERSION', '0.23');
+define('WPPROQUIZ_VERSION', '0.24');
 
 define('WPPROQUIZ_DEV', false);
 
@@ -77,20 +77,31 @@ function wpProQuiz_pluginLoaded() {
 		WpProQuiz_Helper_Upgrade::upgrade();
 	}
 	
-	//ACHIEVEMENTS Version 2.x.x
-	if(defined('ACHIEVEMENTS_IS_INSTALLED') && ACHIEVEMENTS_IS_INSTALLED === 1 && defined('ACHIEVEMENTS_VERSION')) {
-		$version = ACHIEVEMENTS_VERSION;
-		if($version{0} == '2') {
-			new WpProQuiz_Plugin_BpAchievementsV2();
-		}
-	}
+	
+	
+// 	//ACHIEVEMENTS Version 2.x.x
+// 	if(defined('ACHIEVEMENTS_IS_INSTALLED') && ACHIEVEMENTS_IS_INSTALLED === 1 && defined('ACHIEVEMENTS_VERSION')) {
+// 		$version = ACHIEVEMENTS_VERSION;
+// 		if($version{0} == '2') {
+// 			new WpProQuiz_Plugin_BpAchievementsV2();
+// 		}
+// 	}
+
+	
 }
 
+function wpProQuiz_achievementsV3() {
+	achievements()->extensions->wp_pro_quiz = new WpProQuiz_Plugin_BpAchievementsV3();
 
-//ACHIEVEMENTS Version 2.x.x
-$bpAchievementsV2_path = realpath(ABSPATH.PLUGINDIR.'/achievements/loader.php');
-
-if($bpAchievementsV2_path !== false) {
-	register_deactivation_hook($bpAchievementsV2_path, array('WpProQuiz_Plugin_BpAchievementsV2', 'deinstall'));
-	register_activation_hook($bpAchievementsV2_path, array('WpProQuiz_Plugin_BpAchievementsV2', 'install'));
+	do_action('wpProQuiz_achievementsV3');
 }
+
+add_action('dpa_ready', 'wpProQuiz_achievementsV3');
+
+// //ACHIEVEMENTS Version 2.x.x
+// $bpAchievementsV2_path = realpath(ABSPATH.PLUGINDIR.'/achievements/loader.php');
+
+// if($bpAchievementsV2_path !== false) {
+// 	register_deactivation_hook($bpAchievementsV2_path, array('WpProQuiz_Plugin_BpAchievementsV2', 'deinstall'));
+// 	register_activation_hook($bpAchievementsV2_path, array('WpProQuiz_Plugin_BpAchievementsV2', 'install'));
+// }

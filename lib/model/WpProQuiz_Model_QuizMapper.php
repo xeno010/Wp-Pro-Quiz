@@ -94,7 +94,12 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'show_review_question' => (int)$data->isShowReviewQuestion(),
 			'quiz_summary_hide' => (int)$data->isQuizSummaryHide(),
 			'skip_question_disabled' => (int)$data->isSkipQuestionDisabled(),
-			'email_notification' => $data->getEmailNotification()
+			'email_notification' => $data->getEmailNotification(),
+			'user_email_notification' => (int)$data->isUserEmailNotification(),
+			'show_category_score' => (int)$data->isShowCategoryScore(),
+			'hide_result_correct_question' => (int)$data->isHideResultCorrectQuestion(),
+			'hide_result_quiz_time' => (int)$data->isHideResultQuizTime(),
+			'hide_result_points' => (int)$data->isHideResultPoints()
 		);
 		
 		if($data->getId() != 0) {
@@ -103,13 +108,13 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					array(
 							'id' => $data->getId()
 					),
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
 					array('%d'));
 		} else {
 			
 			$result = $this->_wpdb->insert($this->_table,
 						$set,
-						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
+						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
 
 			$data->setId($this->_wpdb->insert_id);
 		}

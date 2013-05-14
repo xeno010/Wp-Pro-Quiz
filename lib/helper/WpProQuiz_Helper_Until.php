@@ -11,4 +11,10 @@ class WpProQuiz_Helper_Until {
 		
 		return $into !== false || rtrim($str) === $serializefalse;
 	}
+	
+	public static function convertTime($time, $format) {
+		$time = $time + get_option('gmt_offset') * 60 * 60;
+		
+		return date_i18n($format, $time);
+	}
 }

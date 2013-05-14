@@ -138,9 +138,12 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 		$results = $this->_wpdb->get_results(
 				$this->_wpdb->prepare(
 							'SELECT 
-								* 
+								q.*,
+								c.category_name 
 							FROM 
-								'. $this->_table.'
+								'. $this->_table.' AS q
+								LEFT JOIN '.$this->_tableCategory.' AS c
+									ON c.category_id = q.category_id
 							WHERE
 								quiz_id = %d 
 							'.$orderBy.' 
