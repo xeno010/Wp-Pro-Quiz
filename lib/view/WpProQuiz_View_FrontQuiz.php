@@ -225,21 +225,31 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 				$json[$question->getId()]['id'] = (int)$question->getId();
 				$json[$question->getId()]['catId'] = (int)$question->getCategoryId();
 				
+				if($question->isAnswerPointsActivated() && $question->isAnswerPointsDiffModusActivated() && $question->isDisableCorrect()) {
+					$json[$question->getId()]['disCorrect'] = (int)$question->isDisableCorrect();
+				}
+				
 				if(!isset($catPoints[$question->getCategoryId()]))
 					$catPoints[$question->getCategoryId()] = 0;
 				
+				$catPoints[$question->getCategoryId()] += $question->getPoints();
+				
 				if(!$question->isAnswerPointsActivated()) {
 					$json[$question->getId()]['points'] = $question->getPoints();
-					
-					$catPoints[$question->getCategoryId()] += $question->getPoints();
+// 					$catPoints[$question->getCategoryId()] += $question->getPoints();
+				}
+				
+				if($question->isAnswerPointsActivated() && $question->isAnswerPointsDiffModusActivated()) {
+// 					$catPoints[$question->getCategoryId()] += $question->getPoints();
+					$json[$question->getId()]['diffMode'] = 1;
 				}
 				
 		?>
 			<li class="wpProQuiz_listItem" style="display: none;">
-				<div class="wpProQuiz_question_page" <?php echo $this->quiz->getQuizModus() == WpProQuiz_Model_Quiz::QUIZ_MODUS_SINGLE ? 'style="display: none;"' : ''; ?> >
+				<div class="wpProQuiz_question_page" <?php $this->isDisplayNone($this->quiz->getQuizModus() != WpProQuiz_Model_Quiz::QUIZ_MODUS_SINGLE && !$this->quiz->isHideQuestionPositionOverview()); ?> >
 					<?php printf(__('Question %s of %s', 'wp-pro-quiz'), '<span>'.$index.'</span>', '<span>'.$question_count.'</span>'); ?>
 				</div>
-				<h5 style="display: inline-block;" class="wpProQuiz_header">
+				<h5 style="<?php echo $this->quiz->isHideQuestionNumbering() ? 'display: none;' : 'display: inline-block;'?>" class="wpProQuiz_header">
 					<span><?php echo $index; ?></span>. <?php _e('Question', 'wp-pro-quiz'); ?>
 				</h5>
 				
@@ -279,7 +289,8 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 							if($question->isAnswerPointsActivated()) {
 								$json[$question->getId()]['points'][] = $v->getPoints();
 								
-								$catPoints[$question->getCategoryId()] += $question->getPoints();
+// 								if(!$question->isAnswerPointsDiffModusActivated())
+// 									$catPoints[$question->getCategoryId()] += $question->getPoints();
 							}
 							
 						?>
@@ -455,6 +466,9 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 	$bo |= ((int)$this->quiz->isShowReviewQuestion()) << 7;
 	$bo |= ((int)$this->quiz->isQuizSummaryHide()) << 8;
 	$bo |= ((int)($this->quiz->isSkipQuestion() && $this->quiz->isShowReviewQuestion())) << 9;
+	$bo |= ((int)$this->quiz->isAutostart()) << 10;
+	$bo |= ((int)$this->quiz->isForcingQuestionSolve()) << 11;
+	$bo |= ((int)$this->quiz->isHideQuestionPositionOverview()) << 12;
 ?>
 <script type="text/javascript">
 jQuery(document).ready(function($) {

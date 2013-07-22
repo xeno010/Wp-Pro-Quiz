@@ -23,6 +23,10 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	
 	//0.24
 	protected $_categoryName = '';
+	
+	//0.25
+	protected $_answerPointsDiffModusActivated = false;
+	protected $_disableCorrect = false;
 
 	public function setId($_id) {
 		$this->_id = $_id;
@@ -193,5 +197,23 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model {
 	
 	public function getCategoryName() {
 		return $this->_categoryName;
+	}
+	
+	public function setAnswerPointsDiffModusActivated($_answerPointsDiffModusActivated) {
+		$this->_answerPointsDiffModusActivated = (bool)$_answerPointsDiffModusActivated;
+		return $this;
+	}
+	
+	public function isAnswerPointsDiffModusActivated() {
+		return $this->_answerPointsDiffModusActivated;
+	}
+	
+	public function setDisableCorrect($_disableCorrect) {
+		$this->_disableCorrect = (bool)$_disableCorrect;
+		return $this;
+	}
+	
+	public function isDisableCorrect() {
+		return $this->_disableCorrect;
 	}
 }

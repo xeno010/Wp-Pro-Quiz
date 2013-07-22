@@ -1731,7 +1731,10 @@ jQuery(document).ready(function($) {
 							return false;
 						}
 						
-						if(!findCorrect) {
+						if(!findCorrect && !($('input[name="disableCorrect"]').is(':checked')
+								&& $('input[name="answerPointsDiffModusActivated"]').is(':checked')
+								&& $('input[name="answerPointsActivated"]').is(':checked')
+								&& $('input[name="answerType"]:checked').val() == 'single')) {
 							alert(wpProQuizLocalize.no_correct_msg);
 							return false;
 						}
@@ -1866,6 +1869,14 @@ jQuery(document).ready(function($) {
 						elements.answerChildren.hide();
 						var v = this.value;
 
+						if(v == 'single') {
+							$('#singleChoiceOptions').show();
+							$('input[name="disableCorrect"]').change();
+						} else {
+							$('#singleChoiceOptions').hide();
+							$('.classic_answer .wpProQuiz_classCorrect').parent().parent().show();
+						}
+						
 						if(v == 'single' || v == 'multiple') {
 							var type = (v == 'single') ? 'radio' : 'checkbox';
 							v = 'classic_answer';
@@ -1920,6 +1931,15 @@ jQuery(document).ready(function($) {
 						global.displayChecked(this, $('.wpProQuiz_answerPoints'));
 						global.displayChecked(this, $('#wpProQuiz_showPointsBox'));
 						global.displayChecked(this, elements.gPoints, false, true);
+						global.displayChecked(this, $('input[name="answerPointsDiffModusActivated"]'), true, true);
+						
+						if(this.checked) {
+							$('input[name="answerPointsDiffModusActivated"]').change();
+							$('input[name="disableCorrect"]').change();
+						} else {
+							$('.classic_answer .wpProQuiz_classCorrect').parent().parent().show();
+							$('input[name="disableCorrect"]').attr('disabled', 'disabled');
+						}
 					}).change();
 					
 					$('select[name="category"]').change(function() {
@@ -1938,6 +1958,25 @@ jQuery(document).ready(function($) {
 					});
 					
 					$('.addMedia').click(methode.addMediaClick);
+					
+					$('input[name="answerPointsDiffModusActivated"]').change(function() {
+						global.displayChecked(this, $('input[name="disableCorrect"]'), true, true);
+						
+						if(this.checked)
+							$('input[name="disableCorrect"]').change();
+						else 
+							$('.classic_answer .wpProQuiz_classCorrect').parent().parent().show();
+					}).change();
+					
+					$('input[name="disableCorrect"]').change(function() {
+						global.displayChecked(this, $('.classic_answer .wpProQuiz_classCorrect').parent().parent(), true);
+					}).change();
+					
+					$('#clickPointDia').click(function() {
+						$('.pointDia').toggle('fast');
+						
+						return false;
+					});
 				};
 				
 				var init = function() {

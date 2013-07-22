@@ -3,8 +3,8 @@ Contributors: xeno010
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N9B7S4FT8CE2N
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
-Tested up to: 3.5.1
-Stable tag: 0.24
+Tested up to: 3.5.2
+Stable tag: 0.25
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,15 +23,15 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Cloze function
 *		Assessment
 *		Timelimit
-*		Random Answer (optional)
-*		Random Question (optional)
-*		HTML in questions and answers is allowed  (optional)	
+*		Random Answer
+*		Random Question
+*		HTML in questions and answers is allowed
 *		Multimedia in questions
-*		Back-Button (optional)	
-*		Correct / incorrect response message for all questions (optional)
-*		Different valency for every question (optional)
+*		Back-Button
+*		Correct / incorrect response message for all questions
+*		Different valency for every question
 *		Different points for each answer
-*		Result text with gradations (optional)
+*		Result text with gradations
 *		Preview-function
 *		Statistics
 *		Leaderboard
@@ -49,6 +49,7 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Arabic / عربي (Thanks Abuhassan)
 *		Danish / dansk (Thanks Kenneth D.)
 *		Dutch / nederlands (Thanks Bas W. and Jurriën van den H.)
+*		Czech / čeština (Thanks Petr Š.)
 * 		English (Thanks Alexander M.)
 *		French / français (Thanks Aurélien C.)
 *		German / deutsch
@@ -254,3 +255,15 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * Updated greek translation
 * Translation for danish have been added (Thanks Kenneth D.)
 * Translation for french have been added (Thanks Aurélien C.)
+
+= 0.25 =
+* Categories overview in the email
+* Autostart option added
+* Support for XML import and exports added
+* Force user to answer a question
+* New point calculation for single choice (new option "different points - mode 2" added)
+* Option "hide question position overview" added
+* Option "hide question numbering" added
+* Updated greek translation
+* Updated dutch translation
+* Translation for czech have been added (Thanks Petr Š.)

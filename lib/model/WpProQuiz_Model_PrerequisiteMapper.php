@@ -40,7 +40,7 @@ class WpProQuiz_Model_PrerequisiteMapper extends WpProQuiz_Model_Mapper {
 						FROM 
 							{$this->_tablePrerequisite} AS p  
 						LEFT JOIN 
-							{$this->_tableStatistic} AS s 
+							{$this->_tableStatisticRef} AS s 
 								ON ( s.quiz_id = p.quiz_id AND s.user_id = %d ) 
 						WHERE 
 							s.user_id IS NULL AND p.prerequisite_quiz_id = %d 

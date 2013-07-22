@@ -220,6 +220,7 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 										<li><span>$result</span> - <?php _e('Result in precent', 'wp-pro-quiz'); ?></li>
 										<li><span>$points</span> - <?php _e('Reached points', 'wp-pro-quiz'); ?></li>
 										<li><span>$ip</span> - <?php _e('IP-address of the user', 'wp-pro-quiz'); ?></li>
+										<li><span>$categories</span> - <?php _e('Category-Overview', 'wp-pro-quiz'); ?></li>
 									</ul>	
 								</div>
 								
@@ -288,6 +289,7 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 										<li><span>$result</span> - <?php _e('Result in precent', 'wp-pro-quiz'); ?></li>
 										<li><span>$points</span> - <?php _e('Reached points', 'wp-pro-quiz'); ?></li>
 										<li><span>$ip</span> - <?php _e('IP-address of the user', 'wp-pro-quiz'); ?></li>
+										<li><span>$categories</span> - <?php _e('Category-Overview', 'wp-pro-quiz'); ?></li>
 									</ul>	
 								</div>
 								

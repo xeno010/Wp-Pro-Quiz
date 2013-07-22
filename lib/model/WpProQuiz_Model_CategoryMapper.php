@@ -62,4 +62,16 @@ class WpProQuiz_Model_CategoryMapper extends WpProQuiz_Model_Mapper {
 		
 		return $this->_wpdb->delete($this->_tableCategory, array('category_id' => $categoryId), array('%d'));
 	}
+	
+	public function getCategoryArrayForImport() {
+		$r = array();
+		
+		$results = $this->_wpdb->get_results("SELECT * FROM {$this->_tableCategory}", ARRAY_A);
+		
+		foreach ($results as $row) {
+			$r[strtolower($row['category_name'])] = (int)$row['category_id'];
+		}
+		
+		return $r;
+	}
 }

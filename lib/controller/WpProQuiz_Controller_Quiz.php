@@ -358,9 +358,11 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		
 		$lockMapper = new WpProQuiz_Model_LockMapper();
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
-		$userId = get_current_user_id();
+		$categoryMapper = new WpProQuiz_Model_CategoryMapper();
 		
 		$is100P = $this->_post['results']['comp']['result'] == 100;
+		
+		$userId = get_current_user_id();
 		
 		$quiz = $quizMapper->fetch($this->_post['quizId']);
 
@@ -368,9 +370,11 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			exit;
 		}
 
+		$categories = $categoryMapper->fetchByQuiz($quiz->getId());
+		
 		$this->setResultCookie($quiz);
 		
-		$this->emailNote($quiz, $this->_post['results']['comp']);
+		$this->emailNote($quiz, $this->_post['results']['comp'], $categories);
 		
 		if(!$this->isPreLockQuiz($quiz)) {
 			$statistics = new WpProQuiz_Controller_Statistics();
@@ -461,7 +465,7 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			return filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
 	}
 	
-	private function emailNote(WpProQuiz_Model_Quiz $quiz, $result) {
+	private function emailNote(WpProQuiz_Model_Quiz $quiz, $result, $categories) {
 		$globalMapper = new WpProQuiz_Model_GlobalSettingsMapper();
 		
 		$adminEmail = $globalMapper->getEmailSettings();
@@ -475,7 +479,8 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			'$quizname' => $quiz->getName(),
 			'$result' => $result['result'].'%',
 			'$points' => $result['points'],
-			'$ip' => filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP)
+			'$ip' => filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP),
+			'$categories' => empty($result['cats']) ? '' : $this->setCategoryOverview($result['cats'], $categories)
 		);
 		
 		if($user->ID == 0) {
@@ -523,5 +528,30 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 	
 	public function htmlEmailContent($contentType) {
 		return 'text/html';
+	}
+	
+	private function setCategoryOverview($catArray, $categories) {
+		$cats = array();
+		
+		foreach($categories as $cat) {
+			/* @var $cat WpProQuiz_Model_Category */
+			
+			if(!$cat->getCategoryId()) {
+				$cat->setCategoryName(__('Not categorized', 'wp-pro-quiz'));
+			}
+			
+			$cats[$cat->getCategoryId()] = $cat->getCategoryName();
+		}
+		
+		$a = __('Categories', 'wp-pro-quiz').":\n";
+		
+		foreach($catArray as $id => $value) {
+			if(!isset($cats[$id]))
+				continue;
+			
+			$a .= '* '.str_pad($cats[$id], 35, '.').((float)$value)."%\n";
+		}
+		
+		return $a;
 	}
 }

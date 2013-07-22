@@ -23,11 +23,15 @@ class WpProQuiz_Controller_ImportExport extends WpProQuiz_Controller_Controller 
 			wp_die(__('You do not have sufficient permissions to access this page.'));
 		}
 		
-		$export = new WpProQuiz_Helper_Export();
+		if(isset($this->_post ['exportType']) && $this->_post ['exportType'] == 'xml') {
+			$export = new WpProQuiz_Helper_ExportXml();
+			$filename = 'WpProQuiz_export_'.time().'.xml';
+		} else {
+			$export = new WpProQuiz_Helper_Export();
+			$filename = 'WpProQuiz_export_'.time().'.wpq';
+		}
 		
 		$a = $export->export($this->_post['exportIds']);
-		
-		$filename = 'WpProQuiz_export_'.time().'.wpq';
 		
 		header('Content-Type: application/octet-stream');
 		header('Content-Disposition: attachment; filename="'.$filename.'"');
@@ -45,8 +49,16 @@ class WpProQuiz_Controller_ImportExport extends WpProQuiz_Controller_Controller 
 		
 		$this->view = new WpProQuiz_View_Import();
 		$this->view->error = false;
-
-		$import = new WpProQuiz_Helper_Import();
+		
+		if(isset($_FILES, $_FILES['import']) && substr($_FILES['import']['name'], -3) == 'xml' || isset($this->_post['importType']) && $this->_post['importType'] == 'xml') {
+			$import = new WpProQuiz_Helper_ImportXml();
+			$importType = 'xml';			
+		} else {
+			$import = new WpProQuiz_Helper_Import();
+			$importType = 'wpq';			
+		}
+		
+		$this->view->importType = $importType;
 		
 		if(isset($_FILES, $_FILES['import']) && $_FILES['import']['error'] == 0) {
 			if($import->setImportFileUpload($_FILES['import']) === false) {

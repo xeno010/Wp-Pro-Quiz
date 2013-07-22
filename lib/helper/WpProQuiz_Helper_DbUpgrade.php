@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 19;
+	const WPPROQUIZ_DB_VERSION = 20;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -851,5 +851,23 @@ class WpProQuiz_Helper_DbUpgrade {
 		}
 		
 		return 19;
+	}
+	
+	private function upgradeDbV19() {
+		$this->_wpdb->query('
+			ALTER TABLE  '.$this->_wpdb->prefix.'wp_pro_quiz_question
+				ADD `answer_points_diff_modus_activated` TINYINT( 1 ) UNSIGNED NOT NULL, 
+				ADD `disable_correct` TINYINT( 1 ) UNSIGNED NOT NULL 
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE  '.$this->_wpdb->prefix.'wp_pro_quiz_master
+				ADD  `autostart` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  \'0\' ,
+				ADD  `forcing_question_solve` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  \'0\',
+				ADD  `hide_question_position_overview` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  \'0\',
+				ADD  `hide_question_numbering` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  \'0\'
+		');
+		
+		return 20;
 	}
 }

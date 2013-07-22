@@ -178,7 +178,11 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			}
 
 			if(isset($post['answerPointsActivated'])) {
-				$post['points'] = $clearPost['points'];
+				if(isset($post['answerPointsDiffModusActivated'])) {
+					$post['points']	= $clearPost['maxPoints'];			
+				} else {
+					$post['points'] = $clearPost['points'];
+				}
 			}
 			
 			$post['categoryId'] = $post['category'] > 0 ? $post['category'] : 0;
@@ -238,7 +242,11 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			}
 			
 			if(isset($post['answerPointsActivated'])) {
-				$post['points'] = $clearPost['points'];
+				if(isset($post['answerPointsDiffModusActivated'])) {
+					$post['points']	= $clearPost['maxPoints'];
+				} else {
+					$post['points'] = $clearPost['points'];
+				}
 			}
 			
 			$post['categoryId'] = $post['category'] > 0 ? $post['category'] : 0;
@@ -292,29 +300,33 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			preg_match_all('#\{(.*?)(?:\|(\d+))?(?:[\s]+)?\}#im', $post['answerData']['cloze']['answer'], $matches);
 			
 			$points = 0;
-					
+			$maxPoints = 0;
+			
 			foreach($matches[2] as $match) {
 				if(empty($match))
 					$match = 1;
 		
 				$points += $match;
+				$maxPoints = max($maxPoints, $answerType->getPoints());
 			}
 			
-			return array('points' => $points, 'answerData' => array(new WpProQuiz_Model_AnswerTypes($post['answerData']['cloze'])));
+			return array('points' => $points, 'maxPoints' => $maxPoints, 'answerData' => array(new WpProQuiz_Model_AnswerTypes($post['answerData']['cloze'])));
 		}
 		
 		if($post['answerType'] == 'assessment_answer' && isset($post['answerData']['assessment'])) {
 			preg_match_all('#\{(.*?)\}#im', $post['answerData']['assessment']['answer'], $matches);
 			
 			$points = 0;
-
+			$maxPoints = 0;
+			
 			foreach($matches[1] as $match) {
 				preg_match_all('#\[([^\|\]]+)(?:\|(\d+))?\]#im', $match, $ms);
 				
 				$points += count($ms[1]);
+				$maxPoints = max($maxPoints, $answerType->getPoints());
 			}
 			
-			return array('points' => $points, 'answerData' => array(new WpProQuiz_Model_AnswerTypes($post['answerData']['assessment'])));
+			return array('points' => $points, 'maxPoints' => $maxPoints, 'answerData' => array(new WpProQuiz_Model_AnswerTypes($post['answerData']['assessment'])));
 		}
 		
 		unset($post['answerData']['cloze']);
@@ -326,6 +338,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		
 		$answerData = array();
 		$points = 0;
+		$maxPoints = 0;
 		
 		foreach($post['answerData'] as $k => $v) {			
 			if(trim($v['answer']) == '') {
@@ -340,10 +353,12 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			$answerType = new WpProQuiz_Model_AnswerTypes($v);
 			$points += $answerType->getPoints();
 			
+			$maxPoints = max($maxPoints, $answerType->getPoints());
+			
 			$answerData[] = $answerType;
 		}
 
-		return array('points' => $points, 'answerData' => $answerData);
+		return array('points' => $points, 'maxPoints' => $maxPoints, 'answerData' => $answerData);
 	}
 	
 	public function clear($a) {

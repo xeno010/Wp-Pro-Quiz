@@ -450,6 +450,25 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</fieldset>
 								</td>
 							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Autostart', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Autostart', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" name="autostart" value="1" <?php $this->checked($this->quiz->isAutostart()); ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, the quiz will start automatically after the page is loaded.', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -786,6 +805,76 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
 											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
 												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/mark.png'; ?> ">
+											</div>
+										</div>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Force user to answer each question', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Force user to answer each question', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="forcingQuestionSolve" <?php $this->checked($this->quiz->isForcingQuestionSolve()); ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, the user is forced to answer each question.', 'wp-pro-quiz'); ?> <br>
+											<?php _e('If the option "Question overview" is activated, this notification will appear after end of the quiz, otherwise after each question.', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Hide question position overview', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Hide question position overview', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="hideQuestionPositionOverview" <?php $this->checked($this->quiz->isHideQuestionPositionOverview()); ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, the question position overview is hidden.', 'wp-pro-quiz'); ?>
+										</p>
+										<div class="wpProQuiz_demoBox">
+											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/hideQuestionPositionOverview.png'; ?> ">
+											</div>
+										</div>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Hide question numbering', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Hide question numbering', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="hideQuestionNumbering" <?php $this->checked($this->quiz->isHideQuestionNumbering()); ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, the question numbering is hidden.', 'wp-pro-quiz'); ?>
+										</p>
+										<div class="wpProQuiz_demoBox">
+											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/hideQuestionNumbering.png'; ?> ">
 											</div>
 										</div>
 									</fieldset>

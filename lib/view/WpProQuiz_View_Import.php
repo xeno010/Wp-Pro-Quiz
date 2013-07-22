@@ -53,9 +53,10 @@ class WpProQuiz_View_Import extends WpProQuiz_View_View {
 					<th><?php echo $master->getName(); ?></th>
 					<th>
 						<ul class="wpProQuiz_importList">
+						<?php if(isset($this->import['question'][$master->getId()])) { ?>
 						<?php foreach($this->import['question'][$master->getId()] as $question) { ?>
 							<li><?php echo $question->getTitle(); ?></li>
-						<?php } ?>
+						<?php } } ?>
 						</ul>
 						<div style="clear: both;"></div>
 					</th>
@@ -64,6 +65,7 @@ class WpProQuiz_View_Import extends WpProQuiz_View_View {
 			</tbody>
 		</table>
 		<input name="importData" value="<?php echo $this->importData; ?>" type="hidden">
+		<input name="importType" value="<?php echo $this->importType; ?>" type="hidden">
 		<input style="margin-top: 20px;" class="button-primary" name="importSave" value="<?php echo __('Start import', 'wp-pro-quiz'); ?>" type="submit">
 	</form>
 	<?php } ?>

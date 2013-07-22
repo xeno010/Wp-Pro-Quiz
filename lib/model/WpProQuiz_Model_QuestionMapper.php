@@ -43,10 +43,12 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 						'show_points_in_box' => (int)$question->isShowPointsInBox(),
 						'answer_points_activated' => (int)$question->isAnswerPointsActivated(),
 						'answer_data' => $question->getAnswerData(true),
-						'category_id' => $question->getCategoryId()
+						'category_id' => $question->getCategoryId(),
+						'answer_points_diff_modus_activated' => (int)$question->isAnswerPointsDiffModusActivated(),
+						'disable_correct' => (int)$question->isDisableCorrect()
 					),
 					array('id' => $question->getId()),
-					array('%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s', '%d'),
+					array('%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s', '%d', '%d', '%d'),
 					array('%d'));
 		} else {
 			$this->_wpdb->insert($this->_table, array(
@@ -64,9 +66,11 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 					'show_points_in_box' => (int)$question->isShowPointsInBox(),
 					'answer_points_activated' => (int)$question->isAnswerPointsActivated(),
 					'answer_data' => $question->getAnswerData(true),
-					'category_id' => $question->getCategoryId()
+					'category_id' => $question->getCategoryId(),
+					'answer_points_diff_modus_activated' => (int)$question->isAnswerPointsDiffModusActivated(),
+					'disable_correct' => (int)$question->isDisableCorrect()
 				),
-				array('%d', '%d', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s', '%d')
+				array('%d', '%d', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s', '%d', '%d', '%d')
 			);
 			
 			$question->setId($this->_wpdb->insert_id);
@@ -181,5 +185,22 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 	
 	public function exists($id) {
 		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_table} WHERE id = %d", $id));
-	}	
+	}
+	
+	public function fetchCategoryPoints($quizId) {
+		$results = $this->_wpdb->get_results(
+				$this->_wpdb->prepare(
+						'SELECT SUM( points ) AS sum_points , category_id
+						FROM '.$this->_tableQuestion.'
+						WHERE quiz_id = %d 
+						GROUP BY category_id', $quizId));
+		
+		$a = array();
+		
+		foreach($results as $result) {
+			$a[$result['category_id']] = $result['sum_points'];
+		}
+		
+		return $a;
+	}
 }

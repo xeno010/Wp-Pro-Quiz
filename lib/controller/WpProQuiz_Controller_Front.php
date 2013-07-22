@@ -41,7 +41,9 @@ class WpProQuiz_Controller_Front {
 			
 			wp_localize_script('wpProQuiz_front_javascript', 'WpProQuizGlobal', array(
 				'ajaxurl' => admin_url('admin-ajax.php'),
-				'loadData' => __('Loading', 'wp-pro-quiz')
+				'loadData' => __('Loading', 'wp-pro-quiz'),
+				'questionNotSolved' => __('You must answer this question.', 'wp-pro-quiz'),
+				'questionsNotSolved' => __('You must answer all questions before you can completed the quiz.', 'wp-pro-quiz')
 			));
 		}
 		
@@ -57,7 +59,9 @@ class WpProQuiz_Controller_Front {
 			if(!wp_script_is('wpProQuiz_front_javascript'))
 				wp_localize_script('wpProQuiz_front_javascript_toplist', 'WpProQuizGlobal', array(
 					'ajaxurl' => admin_url('admin-ajax.php'),
-					'loadData' => __('Loading', 'wp-pro-quiz')
+					'loadData' => __('Loading', 'wp-pro-quiz'),
+					'questionNotSolved' => __('You must answer this question.', 'wp-pro-quiz'),
+					'questionsNotSolved' => __('You must answer all questions before you can completed the quiz.', 'wp-pro-quiz')
 				));
 		}
 		

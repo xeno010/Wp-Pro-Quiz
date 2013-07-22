@@ -192,6 +192,7 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 					</label>
 				</div>
 			</div>
+			<?php $this->singleChoiceOptions($this->data['classic_answer']); ?>
 			<div class="postbox">
 				<h3 class="hndle"><?php _e('Answers', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside answer_felder">
@@ -459,5 +460,225 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 			wp_editor($single->getAnswer(), 'assessment', array('textarea_rows' => 10, 'textarea_name' => 'answerData[assessment][answer]'));
 		?>
 <?php 
+	}
+	
+	private function singleChoiceOptions($data) {
+?>
+	<div class="postbox" id="singleChoiceOptions">
+		<h3 class="hndle"><?php _e('Single choice options', 'wp-pro-quiz'); ?></h3>
+		<div class="inside">
+			<p class="description">
+				<?php _e('If "Different points for each answer" is activated, you can activate a special mode.<br> This changes the calculation of the points', 'wp-pro-quiz'); ?>
+			</p>
+			<label>
+				<input type="checkbox" name="answerPointsDiffModusActivated" value="1" <?php $this->checked($this->question->isAnswerPointsDiffModusActivated()); ?>>
+				<?php _e('Different points - modus 2 activate', 'wp-pro-quiz'); ?>
+			</label>
+			<br><br>
+			<p class="description">
+				<?php _e('Disables the distinction between correct and incorrect.', 'wp-pro-quiz'); ?><br>
+			</p>
+			<label>
+				<input type="checkbox" name=disableCorrect value="1" <?php $this->checked($this->question->isDisableCorrect()); ?>>
+				<?php _e('disable correct and incorrent', 'wp-pro-quiz'); ?>
+			</label>
+			
+			<div style="padding-top: 20px;">
+				<a href="#" id="clickPointDia"><?php _e('Explanation of points calculation', 'wp-pro-quiz'); ?></a>
+				<?php $this->answerPointDia(); ?>
+			</div>
+		</div>
+	</div>
+
+<?php
+	}
+	
+	private function answerPointDia() {
+?>
+<style>
+.pointDia td {
+	border: 1px solid #9E9E9E;
+	padding: 8px;
+}
+</style>
+	<table style="border-collapse: collapse; display: none; margin-top: 10px;" class="pointDia">
+	  <tr>
+	    <th>
+	    	<?php _e('"Different points for each answer" enabled'); ?> 
+	    	<br>
+	    	<?php _e('"Different points - mode 2" disable', 'wp-pro-quiz'); ?>
+	    </th>
+	    <th>
+	    	<?php _e('"Different points for each answer" enabled'); ?> 
+	    	<br>
+	    	<?php _e('"Different points - mode 2" enabled', 'wp-pro-quiz'); ?>
+	    </th>
+	  </tr>
+	  <tr>
+	  	<td>
+	  		<?php 
+	    	echo nl2br('Question - Single Choice - 3 Answers - Diff points mode
+
+			A=3 Points [correct]
+			B=2 Points [incorrect]
+			C=1 Point [incorrect]
+			
+			= 6 Points
+			'); ?>
+	  	
+	  	</td>
+	  	<td>
+	  		<?php 
+	    	echo nl2br('Question - Single Choice - 3 Answers - Modus 2
+
+			A=3 Points [correct]
+			B=2 Points [incorrect]
+			C=1 Point [incorrect]
+			
+			= 3 Points
+			'); ?>
+	  	</td>
+	  </tr>
+	  <tr>
+	  	<td>
+	  		<?php 
+	    	echo nl2br('~~~ User 1: ~~~
+			
+			A=checked
+			B=unchecked
+			C=unchecked
+			
+			Result:
+			A=correct and checked (correct) = 3 Points
+			B=incorrect and unchecked (correct) = 2 Points
+			C=incorrect and unchecked (correct) = 1 Points
+			
+			= 6 / 6 Points 100%
+			'); ?>
+	  	
+	  	</td>
+	  	<td>
+	  		<?php 
+	    	echo nl2br('~~~ User 1: ~~~
+			
+			A=checked
+			B=unchecked
+			C=unchecked
+			
+			Result:
+			A=checked = 3 Points
+			B=unchecked = 0 Points
+			C=unchecked = 0 Points
+			
+			= 3 / 3 Points 100%'); ?>
+	  	</td>
+	  </tr>
+	  <tr>
+	  	<td>
+	  		<?php 
+	    	echo nl2br('~~~ User 2: ~~~
+			
+			A=unchecked
+			B=checked
+			C=unchecked
+			
+			Result:
+			A=correct and unchecked (incorrect) = 0 Points
+			B=incorrect and checked (incorrect) = 0 Points
+			C=incorrect and uncecked (correct) = 1 Points
+			
+			= 1 / 6 Points 16.67%
+			'); ?>
+	  	
+	  	</td>
+	  	<td>
+	  		<?php 
+	    	echo nl2br('~~~ User 2: ~~~
+			
+			A=unchecked
+			B=checked
+			C=unchecked
+			
+			Result:
+			A=unchecked = 0 Points
+			B=checked = 2 Points
+			C=uncecked = 0 Points
+			
+			= 2 / 3 Points 66,67%'); ?>
+	  	</td>
+	  </tr>
+	  <tr>
+	  	<td>
+	  		<?php 
+	    	echo nl2br('~~~ User 3: ~~~
+			
+			A=unchecked
+			B=unchecked
+			C=checked
+			
+			Result:
+			A=correct and unchecked (incorrect) = 0 Points
+			B=incorrect and unchecked (correct) = 2 Points
+			C=incorrect and checked (incorrect) = 0 Points
+			
+			= 2 / 6 Points 33.33%
+			'); ?>
+	  	
+	  	</td>
+	  	<td>
+	  		<?php 
+	    	echo nl2br('~~~ User 3: ~~~
+			
+			A=unchecked
+			B=unchecked
+			C=checked
+			
+			Result:
+			A=unchecked = 0 Points
+			B=unchecked = 0 Points
+			C=checked = 1 Points
+			
+			= 1 / 3 Points 33,33%'); ?>
+	  	</td>
+	  </tr>
+	  <tr>
+	  	<td>
+	  		<?php 
+	    	echo nl2br('~~~ User 4: ~~~
+			
+			A=unchecked
+			B=unchecked
+			C=unchecked
+			
+			Result:
+			A=correct and unchecked (incorrect) = 0 Points
+			B=incorrect and unchecked (correct) = 2 Points
+			C=incorrect and unchecked (correct) = 1 Points
+			
+			= 3 / 6 Points 50%
+			'); ?>
+	  	
+	  	</td>
+	  	<td>
+	  		<?php 
+	    	echo nl2br('~~~ User 4: ~~~
+			
+			A=unchecked
+			B=unchecked
+			C=unchecked
+			
+			Result:
+			A=unchecked = 0 Points
+			B=unchecked = 0 Points
+			C=unchecked = 0 Points
+			
+			= 0 / 3 Points 0%'); ?>
+	  	</td>
+	  </tr>
+	</table>
+
+
+
+<?php
 	}
 }

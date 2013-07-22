@@ -83,6 +83,12 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_hideResultQuizTime = false;
 	protected $_hideResultPoints = false;
 	
+	//0.25
+	protected $_autostart = false;
+	protected $_forcingQuestionSolve = false;
+	protected $_hideQuestionPositionOverview = false;
+	protected $_hideQuestionNumbering = false;
+	
 	public function getId() {
 		return $this->_id;
 	}
@@ -97,12 +103,12 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	}
 	
 	public function setName($name) {
-		$this->_name = $name;
+		$this->_name = (string)$name;
 		return $this;
 	}
 
 	public function setText($text) {
-		$this->_text = $text;
+		$this->_text = (string)$text;
 		return $this;
 	}
 	
@@ -147,7 +153,7 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	}
 	
 	public function setTimeLimit($_timeLimit) {
-		$this->_timeLimit = $_timeLimit;
+		$this->_timeLimit = (int)$_timeLimit;
 		return $this;
 	}
 	
@@ -526,5 +532,41 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
 	public function isHideResultPoints() {
 		return $this->_hideResultPoints;
+	}
+	
+	public function setAutostart($_autostart) {
+		$this->_autostart = (bool)$_autostart;
+		return $this;
+	}
+	
+	public function isAutostart() {
+		return $this->_autostart;
+	}
+	
+	public function setForcingQuestionSolve($_forcingQuestionSolve) {
+		$this->_forcingQuestionSolve = (bool)$_forcingQuestionSolve;
+		return $this;
+	}
+	
+	public function isForcingQuestionSolve() {
+		return $this->_forcingQuestionSolve;
+	}
+	
+	public function setHideQuestionPositionOverview($_hideQuestionPositionOverview) {
+		$this->_hideQuestionPositionOverview = (bool)$_hideQuestionPositionOverview;
+		return $this;
+	}
+	
+	public function isHideQuestionPositionOverview() {
+		return $this->_hideQuestionPositionOverview;
+	}
+	
+	public function setHideQuestionNumbering($_hideQuestionNumbering) {
+		$this->_hideQuestionNumbering = (bool)$_hideQuestionNumbering;
+		return $this;
+	}
+	
+	public function isHideQuestionNumbering() {
+		return $this->_hideQuestionNumbering;
 	}
 }

@@ -25,7 +25,10 @@
 			isAddAutomatic: 0,
 			quizSummeryHide: 0,
 			skipButton: 0,
-			reviewQustion: 0
+			reviewQustion: 0,
+			autoStart: 0,
+			forcingQuestionSolve: 0,
+			hideQuestionPositionOverview: 0
 		};
 		
 		var quizStatus = {
@@ -365,6 +368,7 @@
 			var func = {
 				singleMulti: function() {
 					var input = $questionList.find('.wpProQuiz_questionInput').attr('disabled', 'disabled');
+					var isDiffMode = data.diffMode;
 					
 					$questionList.children().each(function(i) {
 						var $item = $(this);
@@ -372,21 +376,36 @@
 						var checked = input.eq(i).is(':checked');
 						
 						if(data.correct[index]) {
-							plugin.methode.marker($item, true);
-							
 							if(!checked) {
 								correct = false;
 							} else {
 								if(isDiffPoints) {
-									points += data.points[index];
+									if(isDiffMode)
+										points = data.points[index];
+									else
+										points += data.points[index];
 								}
 							}
+							
+							if(data.disCorrect) {
+								correct = true;
+							} else {
+								plugin.methode.marker($item, true);
+							}
+							
 						} else {
 							if(checked) {
-								plugin.methode.marker($item, false);
-								correct = false;
+								if(!data.disCorrect) {
+									plugin.methode.marker($item, false);
+									correct = false;
+								} else {
+									correct = true;
+								}
+								
+								if(isDiffMode)
+									points = data.points[index];
 							} else {
-								if(isDiffPoints) {
+								if(isDiffPoints && !isDiffMode) {
 									points += data.points[index];
 								}
 							}
@@ -538,6 +557,9 @@
 					bitOptions.reviewQustion = config.bo & ( 1 << 7);
 					bitOptions.quizSummeryHide = config.bo & (1 << 8);
 					bitOptions.skipButton = config.bo & (1 << 9);
+					bitOptions.autoStart = config.bo & (1 << 10);
+					bitOptions.forcingQuestionSolve = config.bo & (1 << 11);
+					bitOptions.hideQuestionPositionOverview = config.bo & (1 << 12);
 					
 					var cors = config.bo & (1 << 5);
 					
@@ -663,7 +685,6 @@
 				switch (config.mode) {
 					case 3:
 						$e.find('input[name="checkSingle"]').show();
-						$e.find('.wpProQuiz_question_page').hide();
 						break;
 					case 2:
 						$e.find(globalNames.check).show();
@@ -678,6 +699,9 @@
 						globalElements.next.show();
 						break;
 				}
+				
+				if(bitOptions.hideQuestionPositionOverview || config.mode == 3)
+					$e.find('.wpProQuiz_question_page').hide();
 				
 				//Change last name
 				var $lastButton = globalElements.next.last();
@@ -795,6 +819,15 @@
 			},
 			
 			showQuestionObject: function(obj) {
+				if(!obj.length && bitOptions.forcingQuestionSolve && bitOptions.quizSummeryHide && bitOptions.reviewQustion) {
+					for(var i = 0, c = $e.find('.wpProQuiz_listItem').length; i < c; i++) {
+						if(!quizSolved[i]) {
+							alert(WpProQuizGlobal.questionsNotSolved);
+							return false;
+						}
+					}
+				}
+				
 				currentQuestion.hide();
 
 				currentQuestion = obj.show();
@@ -908,10 +941,14 @@
 			},
 			
 			setCategoryOverview: function() {
+				results.comp.cats = {};
+					
 				$e.find('.wpProQuiz_catOverview li').each(function() {
 					var $this = $(this);
 					var catId = $this.data('category_id');
 					var r = Math.round(catResults[catId] / config.catPoints[catId] * 100 * 100) / 100;
+					
+					results.comp.cats[catId] = r;
 					
 					$this.find('.wpProQuiz_catPercent').text(r + '%');
 				});
@@ -1297,6 +1334,13 @@
 			});
 			
 			globalElements.next.click(function() {
+				if(bitOptions.forcingQuestionSolve && !quizSolved[currentQuestion.index()]
+						&& (bitOptions.quizSummeryHide || !bitOptions.reviewQustion)) {
+					
+					alert(WpProQuizGlobal.questionNotSolved);
+					return false;
+				}
+				
 				plugin.methode.nextQuestion();
 			});
 			
@@ -1313,10 +1357,26 @@
 			});
 			
 			$e.find(globalNames.check).click(function() {
+				if(bitOptions.forcingQuestionSolve && !quizSolved[currentQuestion.index()] 
+						&& (bitOptions.quizSummeryHide || !bitOptions.reviewQustion)) {
+					
+					alert(WpProQuizGlobal.questionNotSolved);
+					return false;
+				}
+				
 				plugin.methode.checkQuestion();
 			});
 			
 			$e.find('input[name="checkSingle"]').click(function() {
+				if(bitOptions.forcingQuestionSolve	&& (bitOptions.quizSummeryHide || !bitOptions.reviewQustion)) {
+					for(var i = 0, c = $e.find('.wpProQuiz_listItem').length; i < c; i++) {
+						if(!quizSolved[i]) {
+							alert(WpProQuizGlobal.questionsNotSolved);
+							return false;
+						}
+					}
+				}
+				
 				plugin.methode.showQuizSummary();
 			});
 			
@@ -1331,6 +1391,15 @@
 			$e.find('input[name="quizSummary"]').click(plugin.methode.showQuizSummary);
 			
 			$e.find('input[name="endQuizSummary"]').click(function() {
+				if(bitOptions.forcingQuestionSolve) {
+					for(var i = 0, c = $e.find('.wpProQuiz_listItem').length; i < c; i++) {
+						if(!quizSolved[i]) {
+							alert(WpProQuizGlobal.questionsNotSolved);
+							return false;
+						}
+					}
+				}
+				
 				plugin.methode.finishQuiz();
 			});
 			
@@ -1343,6 +1412,9 @@
 		};
 
 		plugin.init();
+		
+		if(bitOptions.autoStart)
+			plugin.methode.startQuiz();
 	};
 	
 	$.fn.wpProQuizFront = function(options) {

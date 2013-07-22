@@ -28,7 +28,7 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 	display: none;
 }
 </style>
-<div class="wrap wpProQuiz_quizOverall">
+<div class="wrap wpProQuiz_quizOverall" style="position: relative;">
 	<h2><?php _e('Quiz overview', 'wp-pro-quiz'); ?></h2>
 	<div class="updated" style="display: none;">
 		<h3><?php _e('In case of problems', 'wp-pro-quiz'); ?></h3>
@@ -49,6 +49,17 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 		<?php } ?>
 		<a class="button-primary" style="font-weight: bold;" href="admin.php?page=wpProQuiz&module=wpq_support"><?php _e('Support WP-Pro-Quiz', 'wp-pro-quiz'); ?></a>
 	</div>
+	
+	<div style="position: absolute; top: 10px; right: 0px; background-color: #FFFBCC; padding: 3px 35px; border: 1px solid #E6DB55;">
+		<span style="font-weight: bold; margin-left: 15px;"><?php _e('WP-Pro-Quiz', 'wp-pro-quiz'); ?></span>
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="N9B7S4FT8CE2N">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+		</form>
+	</div>
+	
 	<table class="wp-list-table widefat">
 		<thead>
 			<tr>
@@ -126,15 +137,21 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 			<h3 style="margin-top: 0;"><?php _e('Export', 'wp-pro-quiz'); ?></h3>
 			<p><?php echo __('Choose the respective question, which you would like to export and press on "Start export"', 'wp-pro-quiz'); ?></p>
 			<ul></ul>
-			<div style="clear: both; margin-bottom: 15px;"></div>
+			<div style="clear: both; margin-bottom: 10px;"></div>
 			<div id="exportHidden"></div>
+			<div style="margin-bottom: 15px;">
+				<?php _e('Format:'); ?> 
+				<label><input type="radio" name="exportType" value="wpq" checked="checked"> <?php _e('*.wpq'); ?></label>
+				<?php _e('or'); ?> 
+				<label><input type="radio" name="exportType" value="xml"> <?php _e('*.xml'); ?></label>
+			</div>
 			<input class="button-primary" name="exportStart" id="exportStart" value="<?php echo __('Start export', 'wp-pro-quiz'); ?>" type="submit">
 		</form>
 	</div>
 	<div class="wpProQuiz_importList">
 		<form action="admin.php?page=wpProQuiz&module=importExport&action=import" method="POST" enctype="multipart/form-data">
 			<h3 style="margin-top: 0;"><?php _e('Import', 'wp-pro-quiz'); ?></h3>
-			<p><?php echo __('Import only *.wpq files from known and trusted sources.', 'wp-pro-quiz'); ?></p>
+			<p><?php _e('Import only *.wpq or *.xml files from known and trusted sources.', 'wp-pro-quiz'); ?></p>
 			<div style="margin-bottom: 10px">
 			<?php 
 				$maxUpload = (int)(ini_get('upload_max_filesize'));
@@ -142,9 +159,9 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 				$memoryLimit = (int)(ini_get('memory_limit'));
 				$uploadMB = min($maxUpload, $maxPost, $memoryLimit);
 			?>
-				<input type="file" name="import" accept=".wpq" required="required"> <?php printf(__('Maximal %d MiB', 'wp-pro-quiz'), $uploadMB); ?>
+				<input type="file" name="import" accept=".wpq,.xml" required="required"> <?php printf(__('Maximal %d MiB', 'wp-pro-quiz'), $uploadMB); ?>
 			</div>
-			<input class="button-primary" name="exportStart" id="exportStart" value="<?php echo __('Start import', 'wp-pro-quiz'); ?>" type="submit">
+			<input class="button-primary" name="exportStart" id="exportStart" value="<?php _e('Start import', 'wp-pro-quiz'); ?>" type="submit">
 		</form>
 	</div>
 </div>
