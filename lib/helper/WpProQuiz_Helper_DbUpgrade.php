@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 20;
+	const WPPROQUIZ_DB_VERSION = 21;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -92,6 +92,10 @@ class WpProQuiz_Helper_DbUpgrade {
 			  `hide_result_correct_question` tinyint(1) unsigned NOT NULL DEFAULT '0',
 			  `hide_result_quiz_time` tinyint(1) unsigned NOT NULL DEFAULT '0',
 			  `hide_result_points` tinyint(1) unsigned NOT NULL DEFAULT '0',
+			  `autostart` tinyint(1) unsigned NOT NULL DEFAULT '0',
+			  `forcing_question_solve` tinyint(1) unsigned NOT NULL DEFAULT '0',
+			  `hide_question_position_overview` tinyint(1) unsigned NOT NULL DEFAULT '0',
+			  `hide_question_numbering` tinyint(1) unsigned NOT NULL DEFAULT '0',
 			  PRIMARY KEY (`id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		");
@@ -114,6 +118,8 @@ class WpProQuiz_Helper_DbUpgrade {
 			  `answer_points_activated` tinyint(1) NOT NULL,
 			  `answer_data` longtext NOT NULL,
 			  `category_id` int(10) unsigned NOT NULL,
+			  `answer_points_diff_modus_activated` tinyint(1) unsigned NOT NULL,
+			  `disable_correct` tinyint(1) unsigned NOT NULL,
 			  PRIMARY KEY (`id`),
 			  KEY `quiz_id` (`quiz_id`),
 			  KEY `category_id` (`category_id`)
@@ -869,5 +875,47 @@ class WpProQuiz_Helper_DbUpgrade {
 		');
 		
 		return 20;
+	}
+	
+	private function upgradeDbV20() {
+		$this->_wpdb->query('SELECT * FROM '.$this->_wpdb->prefix.'wp_pro_quiz_master LIMIT 0,1');
+		
+		$names = $this->_wpdb->get_col_info('name');
+		
+		if(!in_array('autostart', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` 
+									ADD  `autostart` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  \'0\' ');
+		}
+		
+		if(!in_array('forcing_question_solve', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` 
+									ADD  `forcing_question_solve` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  \'0\' ');
+		}
+		
+		if(!in_array('hide_question_position_overview', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` 
+									ADD  `hide_question_position_overview` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  \'0\' ');
+		}
+		
+		if(!in_array('hide_question_numbering', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_master` 
+									ADD  `hide_question_numbering` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  \'0\' ');
+		}
+		
+		$this->_wpdb->query('SELECT * FROM '.$this->_wpdb->prefix.'wp_pro_quiz_question LIMIT 0,1');
+		
+		$names = $this->_wpdb->get_col_info('name');
+		
+		if(!in_array('answer_points_diff_modus_activated', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_question` 
+									ADD `answer_points_diff_modus_activated` TINYINT( 1 ) UNSIGNED NOT NULL ');
+		}
+		
+		if(!in_array('disable_correct', $names)) {
+			$this->_wpdb->query('ALTER TABLE  `'.$this->_wpdb->prefix.'wp_pro_quiz_question` 
+									ADD `disable_correct` TINYINT( 1 ) UNSIGNED NOT NULL ');
+		}
+		
+		return 21;
 	}
 }

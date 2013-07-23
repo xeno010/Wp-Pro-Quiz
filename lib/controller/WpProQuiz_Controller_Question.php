@@ -307,7 +307,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 					$match = 1;
 		
 				$points += $match;
-				$maxPoints = max($maxPoints, $answerType->getPoints());
+				$maxPoints = max($maxPoints, $match);
 			}
 			
 			return array('points' => $points, 'maxPoints' => $maxPoints, 'answerData' => array(new WpProQuiz_Model_AnswerTypes($post['answerData']['cloze'])));
@@ -323,7 +323,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 				preg_match_all('#\[([^\|\]]+)(?:\|(\d+))?\]#im', $match, $ms);
 				
 				$points += count($ms[1]);
-				$maxPoints = max($maxPoints, $answerType->getPoints());
+				$maxPoints = max($maxPoints, count($ms[1]));
 			}
 			
 			return array('points' => $points, 'maxPoints' => $maxPoints, 'answerData' => array(new WpProQuiz_Model_AnswerTypes($post['answerData']['assessment'])));

@@ -505,8 +505,8 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 				remove_filter('wp_mail_content_type', array($this, 'htmlEmailContent'));
 		}
 		
-		if($quiz->getEmailNotification() != WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_NONE || ( get_current_user_id() == 0 
-			&& $quiz->getEmailNotification() != WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER)) {
+		if($quiz->getEmailNotification() == WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_ALL 
+			|| (get_current_user_id() > 0 && $quiz->getEmailNotification() == WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER)) {
 			
 			$msg = str_replace(array_keys($r), $r, $adminEmail['message']);
 			

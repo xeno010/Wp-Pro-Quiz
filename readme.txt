@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
 Tested up to: 3.5.2
-Stable tag: 0.25
+Stable tag: 0.26
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -267,3 +267,7 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * Updated greek translation
 * Updated dutch translation
 * Translation for czech have been added (Thanks Petr Š.)
+
+= 0.26 =
+* Bugfix: Cloze choice and assessment
+* Bugfix: Email sending
