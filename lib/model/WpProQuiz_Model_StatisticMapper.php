@@ -21,6 +21,19 @@ class WpProQuiz_Model_StatisticMapper extends WpProQuiz_Model_Mapper {
 		return $a;
 	}
 	
+	public function isStatisticByQuestionId($questionId) {
+		return $this->_wpdb->get_var(
+			$this->_wpdb->prepare(
+				"SELECT 
+					COUNT(*) 
+				FROM 
+					{$this->_tableStatistic}
+				WHERE
+					question_id = %d",
+			$questionId)
+		);
+	}
+	
 	/*
 	public function save($s) {
 		$values = array();

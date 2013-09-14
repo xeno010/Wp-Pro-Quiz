@@ -18,6 +18,7 @@ class WpProQuiz_Helper_Export {
 		
 		foreach($export['master'] as $master) {
 			$export['question'][$master->getId()] = $this->getQuestion($master->getId());
+			$export['forms'][$master->getId()] = $this->getForms($master->getId());
 		}
 		
 		return $code.base64_encode(serialize($export));
@@ -43,5 +44,11 @@ class WpProQuiz_Helper_Export {
 		$m = new WpProQuiz_Model_QuestionMapper();
 		
 		return $m->fetchAll($quizId);
+	}
+	
+	private function getForms($quizId) {
+		$formMapper = new WpProQuiz_Model_FormMapper();
+
+		return $formMapper->fetch($quizId);
 	}
 }

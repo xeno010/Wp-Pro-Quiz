@@ -92,6 +92,10 @@ class WpProQuiz_Controller_Admin {
 	}
 	
 	private function localizeScript() {
+		global $wp_locale;
+		
+		$isRtl = isset($wp_locale->is_rtl) ? $wp_locale->is_rtl : false;
+		
 		$translation_array = array(
 			'delete_msg' => __('Do you really want to delete the quiz/question?', 'wp-pro-quiz'),
 			'no_title_msg' => __('Title is not filled!', 'wp-pro-quiz'),
@@ -109,8 +113,24 @@ class WpProQuiz_Controller_Admin {
 			'dif_points' => __('"Different points for every answer" is not possible at "Free" choice', 'wp-pro-quiz'),
 			'category_no_name' => __('You must specify a name.', 'wp-pro-quiz'),
 			'confirm_delete_entry' => __('This entry should really be deleted?', 'wp-pro-quiz'),
-			'not_all_fields_completed' => __('Not all fields completed.', 'wp-pro-quiz')
+			'not_all_fields_completed' => __('Not all fields completed.', 'wp-pro-quiz'),
+			'temploate_no_name' => __('You must specify a template name.', 'wp-pro-quiz'),
+				
+				
+			'closeText'         => __('Close', 'wp-pro-quiz'),
+			'currentText'       => __('Today', 'wp-pro-quiz'),
+			'monthNames'        => array_values($wp_locale->month),
+			'monthNamesShort'   => array_values($wp_locale->month_abbrev),
+			'dayNames'          => array_values($wp_locale->weekday),
+			'dayNamesShort'     => array_values($wp_locale->weekday_abbrev),
+			'dayNamesMin'       => array_values($wp_locale->weekday_initial),
+			'dateFormat'        => WpProQuiz_Helper_Until::convertPHPDateFormatToJS(get_option('date_format', 'm/d/Y')),
+			'firstDay'          => get_option('start_of_week'),
+			'isRTL'             => $isRtl
 		);
+		
+		
+		
 		
 		wp_localize_script('wpProQuiz_admin_javascript', 'wpProQuizLocalize', $translation_array);
 	}
@@ -119,7 +139,7 @@ class WpProQuiz_Controller_Admin {
 		wp_enqueue_script(
 			'wpProQuiz_admin_javascript', 
 			plugins_url('js/wpProQuiz_admin'.(WPPROQUIZ_DEV ? '' : '.min').'.js', WPPROQUIZ_FILE),
-			array('jquery', 'jquery-ui-sortable'),
+			array('jquery', 'jquery-ui-sortable', 'jquery-ui-datepicker'),
 			WPPROQUIZ_VERSION
 		);
 		

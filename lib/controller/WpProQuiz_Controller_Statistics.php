@@ -13,29 +13,41 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 	
 	public function getAverageResult($quizId) {
 		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
-		$quizMapper = new WpProQuiz_Model_QuizMapper(); 
+// 		$quizMapper = new WpProQuiz_Model_QuizMapper(); 
 		
-		$r = $statisticRefMapper->fetchByQuiz($quizId);
-		$maxPoints = $quizMapper->sumQuestionPoints($quizId);
-		$sumQuestion = $quizMapper->countQuestion($quizId);
+// 		$r = $statisticRefMapper->fetchByQuiz($quizId);
+// 		$maxPoints = $quizMapper->sumQuestionPoints($quizId);
+// 		$sumQuestion = $quizMapper->countQuestion($quizId);
+
+// 		if($r['count'] > 0) {
+// 			return round((100 * $r['points'] / ($r['count'] * $maxPoints / $sumQuestion)), 2);
+// 		}
+
+		$result = $statisticRefMapper->fetchFrontAvg($quizId);
 		
-		if($r['count'] > 0) {
-			return round((100 * $r['points'] / ($r['count'] * $maxPoints / $sumQuestion)), 2);
-		}
+		if(isset($result['g_points']) && $result['g_points'])
+			return round(100 * $result['points'] / $result['g_points'], 2);
 		
 		return 0;
 	}
 	
+	/**
+	 * @deprecated
+	 */
 	private function show($quizId) {
 		
 		if(!current_user_can('wpProQuiz_show_statistics')) {
 			wp_die(__('You do not have sufficient permissions to access this page.'));
 		}
 		
+		$this->showNew($quizId);
+		return;
+		
 		$view = new WpProQuiz_View_Statistics();
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$categoryMapper = new WpProQuiz_Model_CategoryMapper();
+		$formMapper = new WpProQuiz_Model_FormMapper();
 		
 		$questions = $questionMapper->fetchAll($quizId);
 		$category = $categoryMapper->fetchAll();
@@ -60,6 +72,7 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$view->quiz = $quizMapper->fetch($quizId);
 		$view->questionList = $list;
 		$view->categoryList = $cats;
+		$view->forms = $formMapper->fetch($quizId);
 		
 		if(has_action('pre_user_query', 'ure_exclude_administrators')) {
 			remove_action('pre_user_query', 'ure_exclude_administrators');
@@ -78,7 +91,35 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$view->show();
 	}
 	
-	public function save() {
+	private function showNew($quizId) {
+		$view = new WpProQuiz_View_StatisticsNew();
+		
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		
+		$quiz = $quizMapper->fetch($quizId);
+		
+		if(has_action('pre_user_query', 'ure_exclude_administrators')) {
+			remove_action('pre_user_query', 'ure_exclude_administrators');
+		
+			$users = get_users(array('fields' => array('ID','user_login','display_name')));
+				
+			add_action('pre_user_query', 'ure_exclude_administrators');
+				
+		} else {
+			$users = get_users(array('fields' => array('ID','user_login','display_name')));
+		}
+		
+		$view->quiz = $quiz;
+		$view->users = $users;
+		$view->show();
+	}
+	
+	/**
+	 * 
+	 * @param WpProQuiz_Model_Quiz $quiz
+	 * @return void|boolean
+	 */
+	public function save($quiz = null) {
 		$quizId = $this->_post['quizId'];
 		$array = $this->_post['results'];
 		$lockIp = $this->getIp();
@@ -87,13 +128,16 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		if($lockIp === false)
 			return false;
 		
-		$quizMapper = new WpProQuiz_Model_QuizMapper();
-		$quiz = $quizMapper->fetch($quizId);
+		if($quiz === null) {
+			$quizMapper = new WpProQuiz_Model_QuizMapper();
+			$quiz = $quizMapper->fetch($quizId);
+		}
 		
-		if(!$quiz->isStatisticsOn() || $quiz->isShowMaxQuestion())		
+		if(!$quiz->isStatisticsOn())
 			return false;
 		
 		$values = $this->makeDataList($quizId, $array, $userId, $quiz->getQuizModus());
+		$formValues = $this->makeFormData($quiz, $userId, isset($this->_post['forms']) ? $this->_post['forms'] : null);
 		
 		if($values === false)
 			return;
@@ -122,11 +166,52 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$statisticRefModel->setCreateTime(time());
 		$statisticRefModel->setUserId($userId);
 		$statisticRefModel->setQuizId($quizId);
+		$statisticRefModel->setFormData($formValues);
 		
 		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
 		$statisticRefMapper->statisticSave($statisticRefModel, $values);
 		
 		return true;
+	}
+	
+	/**
+	 * @param WpProQuiz_Model_Quiz $quiz
+	 * @param int $userId
+	 */
+	private function makeFormData($quiz, $userId, $data) {
+		if(!$quiz->isFormActivated() || empty($data))
+			return null;
+		
+		$formMapper = new WpProQuiz_Model_FormMapper();
+		
+		$forms = $formMapper->fetch($quiz->getId());
+		
+		if(empty($forms))
+			return null;
+		
+		$formArray = array();
+		
+		foreach($forms as $form) {
+			if($form->getType() != WpProQuiz_Model_Form::FORM_TYPE_DATE) {
+				$str = isset($data[$form->getFormId()]) ? $data[$form->getFormId()] : '';
+				
+				if(!WpProQuiz_Helper_Form::valid($form, $str))
+					return null;
+				
+				$formArray[$form->getFormId()] = trim($str);
+			} else {
+				$date = isset($data[$form->getFormId()]) ? $data[$form->getFormId()] : array();
+				
+				$dateStr = WpProQuiz_Helper_Form::validData($form, $date);
+
+				if($dateStr === null)
+					return null;
+				
+				$formArray[$form->getFormId()] = $dateStr;
+			}
+		}
+		
+		return $formArray;
 	}
 	
 	private function makeDataList($quizId, $array, $userId, $modus) {
@@ -138,6 +223,9 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$ids = array();
 		
 		foreach($question as $q) {
+			if(!isset($array[$q['id']]))
+				continue;
+			
 			$ids[] = $q['id'];
 			$v = $array[$q['id']];
 			
@@ -171,10 +259,11 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 			$s->setIncorrectCount($v['correct'] ? 0 : 1);
 			$s->setPoints($v['points']);
 			$s->setQuestionTime($avgTime === null ? $v['time'] : $avgTime);
+			$s->setAnswerData(isset($v['data']) ? $v['data'] : null);
 		
 			$values[] = $s;
 		}
-		
+
 		return $values;
 	}
 	
@@ -185,6 +274,9 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 			return filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
 	}
 	
+	/**
+	 * @deprecated
+	 */
 	public static function ajaxLoadStatistic($data, $func) {
 		if(!current_user_can('wpProQuiz_show_statistics')) {
 			return json_encode(array());
@@ -203,11 +295,13 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$categoryList = array();
 		$testJson = array();
 		
+		$formData = null;
+		
 		$statisticMapper = new WpProQuiz_Model_StatisticMapper();
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
 		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
 		
-		$tests = $statisticRefMapper->fetchAll($quizId, $userId);
+		$tests = $statisticRefMapper->fetchAll($quizId, $userId, $testId);
 		
 		$i = 1;
 		foreach($tests as $test) {
@@ -224,10 +318,13 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 			$data['testId'] = $testId = 0;
 		}
 		
-		if(!$testId)
+		if(!$testId) {
 			$statistics = $statisticRefMapper->fetchAvg($quizId, $userId);
-		else 
+		} else {
 			$statistics = $statisticMapper->fetchAllByRef($testId);
+			$refModel = $statisticRefMapper->fetchByRefId($testId);
+			$formData = $refModel->getFormData();
+		} 
 			
 		$questionData = $questionMapper->fetchAllList($quizId, array('id', 'category_id', 'points'));
 		
@@ -316,10 +413,14 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 			'question' => $sa,
 			'category' => $ca,
 			'tests' => $testJson,
-			'testId' => $data['testId']
+			'testId' => $data['testId'],
+			'formData' => $formData
 		));
 	}
 	
+	/**
+	 * @deprecated
+	 */
 	public static function ajaxReset($data, $func) {
 		if(!current_user_can('wpProQuiz_reset_statistics')) {
 			return;
@@ -344,6 +445,9 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		}
 	}
 	
+	/**
+	 * @deprecated
+	 */
 	public static function ajaxLoadStatsticOverview($data, $func) {
 		if(!current_user_can('wpProQuiz_show_statistics')) {
 			return json_encode(array());
@@ -403,6 +507,9 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		
 	}
 	
+	/**
+	 * @deprecated
+	 */
 	private static function calcTotal($a, $maxPoints = null, $sumQuestion = null) {
 		$s = $a['correct'] + $a['incorrect'];
 		
@@ -421,6 +528,9 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		return $a;
 	}
 	
+	/**
+	 * @deprecated
+	 */
 	private static function convertToTimeString($s) {
 		$h = floor($s / 3600);
 		$s -= $h * 3600;
@@ -428,5 +538,218 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$s -= $m * 60;
 		
 		return sprintf("%02d:%02d:%02d", $h, $m, $s);
+	}
+	
+	/**
+	 * @deprecated
+	 */
+	public static function ajaxLoadFormOverview($data, $func) {
+		
+		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		
+		$quizId = $data['quizId'];
+		
+		$page = (isset($data['page']) && $data['page'] > 0) ? $data['page'] : 1;
+		$limit = $data['pageLimit'];
+		$start = $limit * ($page - 1);
+		
+		$statisticModel = $statisticRefMapper->fetchFormOverview($quizId, $start, $limit, $data['onlyUser']);
+		
+		$items = array();
+		
+		$maxPoints = $quizMapper->sumQuestionPoints($quizId);
+		$sumQuestion = $quizMapper->countQuestion($quizId);
+
+		foreach($statisticModel as $model) {
+			/*@var $model WpProQuiz_Model_StatisticFormOverview */
+			
+			if(!$model->getUserId())
+				$model->setUserName(__('Anonymous', 'wp-pro-quiz'));
+			
+			$sum = $model->getCorrectCount() + $model->getIncorrectCount();
+			$result = round((100 * $model->getPoints() / ($sum * $maxPoints / $sumQuestion)), 2).'%';
+			
+			$items[] = array(
+				'userName' => $model->getUserName(),
+				'userId' => $model->getUserId(),
+				'testId' => $model->getStatisticRefId(),
+				'date' => WpProQuiz_Helper_Until::convertTime($model->getCreateTime(), get_option('wpProQuiz_statisticTimeFormat', 'Y/m/d g:i A')),
+				'result' => $result
+			);
+		}
+		
+		$d = array('items' => $items);
+		
+		if(isset($data['nav']) && $data['nav']) {
+			$count = $statisticRefMapper->countFormOverview($quizId, $data['onlyUser']);
+			$d['page'] = ceil(($count > 0 ? $count : 1) / $limit);
+		}
+		
+		return json_encode($d);
+	}
+	
+	public static function ajaxLoadHistory($data, $func) {
+		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		
+		$quizId = $data['quizId'];
+		
+		$page = (isset($data['page']) && $data['page'] > 0) ? $data['page'] : 1;
+		$limit = $data['pageLimit'];
+		$start = $limit * ($page - 1);
+		
+		$startTime = (int)$data['dateFrom'];
+		$endTime = (int)$data['dateTo'] ? $data['dateTo'] + 86400 : 0;
+		
+		$statisticModel = $statisticRefMapper->fetchHistory($quizId, $start, $limit, $data['users'], $startTime, $endTime);
+		
+		foreach($statisticModel as $model) {
+			/*@var $model WpProQuiz_Model_StatisticHistory */
+			
+			if(!$model->getUserId())
+				$model->setUserName(__('Anonymous', 'wp-pro-quiz'));
+			else if($model->getUserName() == '')
+				$model->setUserName(__('Deleted user', 'wp-pro-quiz'));
+			
+			$sum = $model->getCorrectCount() + $model->getIncorrectCount();
+			$result = round(100 * $model->getPoints() / $model->getGPoints(), 2).'%';
+			
+			$model->setResult($result);
+			$model->setFormatTime(WpProQuiz_Helper_Until::convertTime($model->getCreateTime(), get_option('wpProQuiz_statisticTimeFormat', 'Y/m/d g:i A')));
+			
+			$model->setFormatCorrect($model->getCorrectCount().' ('.round(100 * $model->getCorrectCount() / $sum, 2).'%)');
+			$model->setFormatIncorrect($model->getIncorrectCount().' ('.round(100 * $model->getIncorrectCount() / $sum, 2).'%)');
+		}
+		
+		$view = new WpProQuiz_View_StatisticsAjax();
+		$view->historyModel = $statisticModel;
+		
+		$html = $view->getHistoryTable();
+		$navi = null;
+		
+		if(isset($data['generateNav']) && $data['generateNav']) {
+			$count = $statisticRefMapper->countHistory($quizId, $data['users'], $startTime, $endTime);
+			$navi = ceil(($count > 0 ? $count : 1) / $limit);
+		}
+		
+		return json_encode(array(
+				'html' => $html,
+				'navi' => $navi
+		));
+	}
+	
+	public static function ajaxLoadStatisticUser($data, $func) {
+		$quizId = $data['quizId'];
+		$userId = $data['userId'];
+		$refId = $data['refId'];
+		$avg = (bool)$data['avg'];
+		$refIdUserId = $avg ? $userId : $refId;
+		
+		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
+		$statisticUserMapper = new WpProQuiz_Model_StatisticUserMapper();
+		$formMapper = new WpProQuiz_Model_FormMapper();
+
+		$statisticUsers = $statisticUserMapper->fetchUserStatistic($refIdUserId, $quizId, $avg);
+
+		$output = array();
+		
+		foreach($statisticUsers as $statistic) {
+			if(!isset($output[$statistic->getCategoryId()])) {
+				$output[$statistic->getCategoryId()] = array(
+					'questions' => array(),
+					'categoryId' => $statistic->getCategoryId(),
+					'categoryName' => $statistic->getCategoryId() ? $statistic->getCategoryName() : __('No category', 'wp-pro-quiz')
+				);
+			}
+			
+			$o = &$output[$statistic->getCategoryId()];
+			
+			$o['questions'][] = array(
+				'correct' => $statistic->getCorrectCount(),
+				'incorrect' => $statistic->getIncorrectCount(),
+				'hintCount' => $statistic->getIncorrectCount(),
+				'time' => $statistic->getQuestionTime(),
+				'points' => $statistic->getPoints(),
+				'gPoints' => $statistic->getGPoints(),
+				'statistcAnswerData' => $statistic->getStatisticAnswerData(),
+				'questionName' => $statistic->getQuestionName(),
+				'questionAnswerData' => $statistic->getQuestionAnswerData(),
+				'answerType' => $statistic->getAnswerType()
+			);
+		}
+		
+		$view = new WpProQuiz_View_StatisticsAjax();
+		
+		$view->avg = $avg;
+		$view->statisticModel = $statisticRefMapper->fetchByRefId($refIdUserId, $quizId, $avg);
+		
+		$view->userName = __('Anonymous', 'wp-pro-quiz');
+		
+		if($view->statisticModel->getUserId()) {
+			$userInfo = get_userdata($view->statisticModel->getUserId());
+			
+			if($userInfo !== false)
+				$view->userName = $userInfo->user_login.' ('.$userInfo->display_name.')';
+			else 
+				$view->userName = __('Deleted user', 'wp-pro-quiz');
+		}
+		
+		if(!$avg) {
+			$view->forms = $formMapper->fetch($quizId);
+		}
+		
+		$view->userStatistic = $output;
+		
+		$html = $view->getUserTable();
+		
+		return json_encode(array(
+				'html' => $html
+		));
+	}
+	
+	public static function ajaxRestStatistic($data, $func) {
+		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
+		
+		switch ($data['type']) {
+			case 0: //RefId or UserId
+				if($data['refId'])
+					$statisticRefMapper->deleteByRefId($data['refId']);
+				else
+					$statisticRefMapper->deleteByUserIdQuizId($data['userId'], $data['quizId']);
+				break;
+			case 1: //alles
+				$statisticRefMapper->deleteAll($data['quizId']);
+				break;
+		}
+	}
+	
+	public static function ajaxLoadStatsticOverviewNew($data, $func) {
+		
+		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		
+		$quizId = $data['quizId'];
+		
+		$page = (isset($data['page']) && $data['page'] > 0) ? $data['page'] : 1;
+		$limit = $data['pageLimit'];
+		$start = $limit * ($page - 1);
+		
+		$statisticModel = $statisticRefMapper->fetchStatisticOverview($quizId, $data['onlyCompleted'], $start, $limit);
+		
+		$view = new WpProQuiz_View_StatisticsAjax();
+		$view->statisticModel = $statisticModel;
+		
+		$navi = null;
+		
+		if(isset($data['generateNav']) && $data['generateNav']) {
+			$count = $statisticRefMapper->countOverviewNew($quizId, $data['onlyCompleted']);
+			$navi = ceil(($count > 0 ? $count : 1) / $limit);
+		}
+		
+		return json_encode(array(
+			'navi' => $navi,
+			'html' => $view->getOverviewTable()
+		));
 	}
 }

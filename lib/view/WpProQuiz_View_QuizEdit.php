@@ -1,6 +1,11 @@
 <?php
 class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 	
+	/**
+	 * @var WpProQuiz_Model_Quiz
+	 */
+	public $quiz;
+	
 	public function show() {
 ?>
 <style>
@@ -11,8 +16,19 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 </style>
 <div class="wrap wpProQuiz_quizEdit">
 	<h2 style="margin-bottom: 10px;"><?php echo $this->header; ?></h2>
-	<a class="button-secondary" href="admin.php?page=wpProQuiz"><?php _e('back to overview', 'wp-pro-quiz'); ?></a>
-	<form method="post">
+	<form method="post" action="admin.php?page=wpProQuiz&action=addEdit&quizId=<?php echo $this->quiz->getId(); ?>">
+		<a style="float: left;" class="button-secondary" href="admin.php?page=wpProQuiz"><?php _e('back to overview', 'wp-pro-quiz'); ?></a>
+		<div style="float: right;">
+			<select name="templateLoadId">
+				<?php 
+					foreach($this->templates as $template) {
+						echo '<option value="', $template->getTemplateId(), '">', esc_html($template->getName()), '</option>';
+					}
+				?>
+			</select>
+			<input type="submit" name="templateLoad" value="<?php _e('load template', 'wp-pro-quiz'); ?>" class="button-primary">
+		</div>
+		<div style="clear: both;"></div>
 		<div id="poststuff">
 			<div class="postbox">
 				<h3 class="hndle"><?php _e('Quiz title', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
@@ -111,6 +127,25 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 											<input type="checkbox" id="answer_random" value="1" name="answerRandom" <?php echo $this->quiz->isAnswerRandom() ? 'checked="checked"' : '' ?> >
 											<?php _e('Activate', 'wp-pro-quiz'); ?>
 										</label>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Sort questions by category', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Sort questions by category', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="sortCategories" <?php $this->checked($this->quiz->isSortCategories()); ?> >
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('Also works in conjunction with the "display randomly question" option.', 'wp-pro-quiz'); ?>
+										</p>
 									</fieldset>
 								</td>
 							</tr>
@@ -245,12 +280,6 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 										</label>
 										<p class="description">
 											<?php _e('If you enable this option, maximum number of displayed questions will be X from X questions. (The output of questions is random)', 'wp-pro-quiz'); ?>
-										</p>
-										<p class="description">
-											<?php _e('The statistics function is not available in this option.', 'wp-pro-quiz'); ?>
-										</p>
-										<p style="font-weight: bold;" class="description">
-											<?php _e('This option doesn\'t work reliable in connection with Frontend-Cache-Plugins.', 'wp-pro-quiz'); ?>
 										</p>
 										<div id="wpProQuiz_showMaxBox" style="display: none;">
 											<label>
@@ -469,6 +498,25 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</fieldset>
 								</td>
 							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Only registered users are allowed to start the quiz', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Only registered users are allowed to start the quiz', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" name="startOnlyRegisteredUser" value="1" <?php $this->checked($this->quiz->isStartOnlyRegisteredUser()); ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, only registered users allowed start the quiz.', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -477,6 +525,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 			<?php $this->resultOptions(); ?>
 			<?php $this->quizMode(); ?>
 			<?php $this->leaderboardOptions(); ?>
+			<?php $this->form(); ?>
 			<div class="postbox">
 				<h3 class="hndle"><?php _e('Quiz description', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
@@ -557,7 +606,23 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 					</div>
 				</div>
 			</div>
-		<input type="submit" name="submit" class="button-primary" id="wpProQuiz_save" value="<?php _e('Save', 'wp-pro-quiz'); ?>">
+		<div style="float: left;">
+			<input type="submit" name="submit" class="button-primary" id="wpProQuiz_save" value="<?php _e('Save', 'wp-pro-quiz'); ?>">
+		</div>
+		<div style="float: right;">
+			<input type="text" placeholder="<?php _e('template name', 'wp-pro-quiz'); ?>" class="regular-text" name="templateName" style="border: 1px solid rgb(255, 134, 134);">
+			<select name="templateSaveList">
+				<option value="0">=== <?php _e('Create new template', 'wp-pro-quiz'); ?> === </option>
+				<?php 
+					foreach($this->templates as $template) {
+						echo '<option value="', $template->getTemplateId(), '">', esc_html($template->getName()), '</option>';
+					}
+				?>
+			</select>
+			
+			<input type="submit" name="template" class="button-primary" id="wpProQuiz_saveTemplate" value="<?php _e('Save as template', 'wp-pro-quiz'); ?>">
+		</div>
+		<div style="clear: both;"></div>
 		</div>
 	</form>
 </div>
@@ -880,6 +945,31 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</fieldset>
 								</td>
 							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Display category', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Display category', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="showCategory" <?php $this->checked($this->quiz->isShowCategory()); ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, category will be displayed in the question.', 'wp-pro-quiz'); ?>
+										</p>
+										<div class="wpProQuiz_demoBox">
+											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/showCategory.png'; ?> ">
+											</div>
+										</div>
+									</fieldset>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -1138,10 +1228,183 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</div>
 								</td>
 							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>
+									<?php _e('How many questions to be displayed on a page:', 'wp-pro-quiz'); ?><br>
+									<input type="number" name="questionsPerPage" value="<?php echo $this->quiz->getQuestionsPerPage(); ?>" min="0">
+									<span class="description">
+										<?php _e('(0 = All on one page)', 'wp-pro-quiz'); ?>
+									</span>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
 	<?php
 	}
+	
+    private function form() {
+		$forms = $this->forms;
+		$index = 0;
+		
+		if(!count($forms))
+			$forms = array(new WpProQuiz_Model_Form(), new WpProQuiz_Model_Form());
+		else
+			array_unshift($forms, new WpProQuiz_Model_Form());
+		
+    	?>
+        <div class="postbox">
+				<h3 class="hndle"><?php _e('Custom fields', 'wp-pro-quiz'); ?></h3>
+				<div class="inside">
+					
+					<p class="description">
+						<?php _e('You can create custom fields, e.g. to request the name or the e-mail address of the users.', 'wp-pro-quiz'); ?>
+					</p>
+					<p class="description">
+						<?php _e('The statistic function have to be enabled.', 'wp-pro-quiz'); ?>
+					</p>
+					
+					<table class="form-table">
+						<tbody>
+							<tr>
+								<th scope="row">
+									<?php _e('Custom fields enable', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Custom fields enable', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" id="formActivated" value="1" name="formActivated" <?php $this->checked($this->quiz->isFormActivated()); ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, custom fields are enabled.', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<?php _e('Display position', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Display position', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<?php _e('Where should the fileds be displayed:', 'wp-pro-quiz'); ?> 
+										<label>
+											<input type="radio" value="<?php echo WpProQuiz_Model_Quiz::QUIZ_FORM_POSITION_START; ?>" name="formShowPosition" <?php $this->checked($this->quiz->getFormShowPosition(), WpProQuiz_Model_Quiz::QUIZ_FORM_POSITION_START); ?>>
+											<?php _e('On the quiz startpage', 'wp-pro-quiz'); ?>
+											
+											<div style="display: inline-block;" class="wpProQuiz_demoBox">
+												<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+												<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+													<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/customFieldsFront.png'; ?> ">
+												</div>
+											</div>
+											
+										</label>
+										<label>
+											<input type="radio" value="<?php echo WpProQuiz_Model_Quiz::QUIZ_FORM_POSITION_END; ?>" name="formShowPosition" <?php $this->checked($this->quiz->getFormShowPosition(), WpProQuiz_Model_Quiz::QUIZ_FORM_POSITION_END); ?> >
+											<?php _e('At the end of the quiz (before the quiz result)', 'wp-pro-quiz'); ?>
+											
+											<div style="display: inline-block;" class="wpProQuiz_demoBox">
+												<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+												<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+													<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/customFieldsEnd1.png'; ?> ">
+												</div>
+											</div>
+											
+											<div style="display: inline-block;" class="wpProQuiz_demoBox">
+												<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+												<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+													<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/customFieldsEnd2.png'; ?> ">
+												</div>
+											</div>
+											
+										</label>
+									</fieldset>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<div style="margin-top: 10px; padding: 10px; border: 1px solid #C2C2C2;">
+						<table style=" width: 100%; text-align: left; " id="form_table">
+							<thead>
+								<tr>
+									<th><?php _e('Field name', 'wp-pro-quiz'); ?></th>
+									<th><?php _e('Type', 'wp-pro-quiz'); ?></th>
+									<th><?php _e('Required?', 'wp-pro-quiz'); ?></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach($forms as $form) {
+									$checkType = $this->selectedArray($form->getType(), array(
+										WpProQuiz_Model_Form::FORM_TYPE_TEXT, WpProQuiz_Model_Form::FORM_TYPE_TEXTAREA, 
+										WpProQuiz_Model_Form::FORM_TYPE_CHECKBOX, WpProQuiz_Model_Form::FORM_TYPE_SELECT,
+										WpProQuiz_Model_Form::FORM_TYPE_RADIO, WpProQuiz_Model_Form::FORM_TYPE_NUMBER,
+										WpProQuiz_Model_Form::FORM_TYPE_EMAIL, WpProQuiz_Model_Form::FORM_TYPE_YES_NO,
+										WpProQuiz_Model_Form::FORM_TYPE_DATE
+									));
+								?>
+								<tr <?php echo $index++ == 0 ? 'style="display: none;"' : '' ?>>
+									<td>
+										<input type="text" name="form[][fieldname]" value="<?php echo esc_attr($form->getFieldname()); ?>" class="regular-text"/>
+									</td>
+									<td style="position: relative;">
+										<select name="form[][type]">
+											<option value="<?php echo WpProQuiz_Model_Form::FORM_TYPE_TEXT; ?>" <?php echo $checkType[0]; ?>><?php _e('Text', 'wp-pro-quiz'); ?></option>
+											<option value="<?php echo WpProQuiz_Model_Form::FORM_TYPE_TEXTAREA; ?>" <?php echo $checkType[1]; ?>><?php _e('Textarea', 'wp-pro-quiz'); ?></option>
+											<option value="<?php echo WpProQuiz_Model_Form::FORM_TYPE_CHECKBOX; ?>" <?php echo $checkType[2]; ?>><?php _e('Checkbox', 'wp-pro-quiz'); ?></option>
+											<option value="<?php echo WpProQuiz_Model_Form::FORM_TYPE_SELECT; ?>" <?php echo $checkType[3]; ?>><?php _e('Drop-Down menu', 'wp-pro-quiz'); ?></option>
+											<option value="<?php echo WpProQuiz_Model_Form::FORM_TYPE_RADIO; ?>" <?php echo $checkType[4]; ?>><?php _e('Radio', 'wp-pro-quiz'); ?></option>
+											<option value="<?php echo WpProQuiz_Model_Form::FORM_TYPE_NUMBER; ?>" <?php echo $checkType[5]; ?>><?php _e('Number', 'wp-pro-quiz'); ?></option>
+											<option value="<?php echo WpProQuiz_Model_Form::FORM_TYPE_EMAIL; ?>" <?php echo $checkType[6]; ?>><?php _e('Email', 'wp-pro-quiz'); ?></option>
+											<option value="<?php echo WpProQuiz_Model_Form::FORM_TYPE_YES_NO; ?>" <?php echo $checkType[7]; ?>><?php _e('Yes/No', 'wp-pro-quiz'); ?></option>
+											<option value="<?php echo WpProQuiz_Model_Form::FORM_TYPE_DATE; ?>" <?php echo $checkType[8]; ?>><?php _e('Date', 'wp-pro-quiz'); ?></option>
+										</select>
+										
+										<a href="#" class="editDropDown"><?php _e('Edit list', 'wp-pro-quiz'); ?></a>
+											
+										<div class="dropDownEditBox" style="position: absolute; border: 1px solid #AFAFAF; background: #EBEBEB; padding: 5px; bottom: 0;right: 0;box-shadow: 1px 1px 1px 1px #AFAFAF; display: none;">
+											<h4><?php _e('One entry per line', 'wp-pro-quiz'); ?></h4>
+											<div>
+												<textarea rows="5" cols="50" name="form[][data]"><?php echo $form->getData() === null ? '' : esc_textarea(implode("\n", $form->getData())); ?></textarea>
+											</div>
+											
+											<input type="button" value="<?php _e('OK', 'wp-pro-quiz'); ?>" class="button-primary">
+										</div>
+									</td>
+									<td>
+										<input type="checkbox" name="form[][required]" value="1" <?php $this->checked($form->isRequired()); ?>>
+									</td>
+									<td>
+										<input type="button" name="form_delete" value="<?php _e('Delete', 'wp-pro-quiz'); ?>" class="button-secondary">
+										<a class="form_move button-secondary" href="#" style="cursor:move;"><?php _e('Move', 'wp-pro-quiz'); ?></a>
+										
+										<input type="hidden" name="form[][form_id]" value="<?php echo $form->getFormId(); ?>">
+										<input type="hidden" name="form[][form_delete]" value="0">
+									</td>
+								</tr>
+								<?php } ?>
+							</tbody>
+						</table>
+						
+						<div style="margin-top: 10px;">
+							<input type="button" name="form_add" id="form_add" value="<?php _e('Add field', 'wp-pro-quiz'); ?>" class="button-secondary">
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php
+    }
 }

@@ -1,6 +1,11 @@
 <?php
 class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
-
+	/**
+	 * @var WpProQuiz_Model_Quiz
+	 */
+	public $quiz;
+	
+	
 	public function show() {
 
 ?>
@@ -26,13 +31,14 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 	<?php if(!$this->quiz->isStatisticsOn()) { ?>
 	<p style="padding: 30px; background: #F7E4E4; border: 1px dotted; width: 300px;">
 		<span style="font-weight: bold; padding-right: 10px;"><?php _e('Stats not enabled', 'wp-pro-quiz'); ?></span>
-		<a class="button-secondary" href="admin.php?page=wpProQuiz&action=edit&id=<?php echo $this->quiz->getId(); ?>"><?php _e('Activate statistics', 'wp-pro-quiz'); ?></a>
+		<a class="button-secondary" href="admin.php?page=wpProQuiz&action=addEdit&quizId=<?php echo $this->quiz->getId(); ?>"><?php _e('Activate statistics', 'wp-pro-quiz'); ?></a>
 	</p>
 	<?php return; } ?>
 	
 	<div style="padding: 10px 0px;">
 		<a class="button-primary wpProQuiz_tab" id="wpProQuiz_typeUser" href="#"><?php _e('Users', 'wp-pro-quiz'); ?></a>
 		<a class="button-secondary wpProQuiz_tab" id="wpProQuiz_typeOverview" href="#"><?php _e('Overview', 'wp-pro-quiz'); ?></a>
+		<a class="button-secondary wpProQuiz_tab" id="wpProQuiz_typeForm" href="#"><?php _e('Custom fields', 'wp-pro-quiz'); ?></a>
 	</div>
 	
 	<div id="wpProQuiz_loadData" class="wpProQuiz_blueBox" style="background-color: #F8F5A8; display: none;">
@@ -44,6 +50,7 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 		
 		<?php $this->tabUser(); ?>
 		<?php $this->tabOverview(); ?>
+		<?php $this->tabForms(); ?>
 		
 	</div>
 	
@@ -87,6 +94,8 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 				</div>
 				<div style="clear: both;"></div>
 			</div>
+			
+			<?php $this->formTable(); ?>
 			
 			<table class="wp-list-table widefat">
 				<thead>
@@ -267,5 +276,109 @@ class WpProQuiz_View_Statistics extends WpProQuiz_View_View {
 		</div>
 
 <?php 
+	}
+	
+	private function tabForms() {
+	?>
+	
+		<div id="wpProQuiz_tabFormOverview" class="wpProQuiz_tabContent" style="display: none;">
+			
+			<div id="poststuff">
+				<div class="postbox">
+					<h3 class="hndle"><?php _e('Filter', 'wp-pro-quiz'); ?></h3>
+					<div class="inside">
+						<ul>
+							<li>
+								<label>
+									<?php _e('Which users should be displayed:', 'wp-pro-quiz'); ?>
+									<select id="wpProQuiz_formUser">
+										<option value="0"><?php _e('all', 'wp-pro-quiz'); ?></option>
+										<option value="1"><?php _e('only registered users', 'wp-pro-quiz'); ?></option>
+										<option value="2"><?php _e('only anonymous users', 'wp-pro-quiz'); ?></option>
+									</select>
+								</label>
+							</li>
+							<li>
+								<label>
+									<?php _e('How many entries should be shown on one page:', 'wp-pro-quiz'); ?>
+									<select id="wpProQuiz_fromPageLimit">
+										<option>1</option>
+										<option>10</option>
+										<option>50</option>
+										<option selected="selected">100</option>
+										<option>500</option>
+										<option>1000</option>
+									</select>
+								</label>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<table class="wp-list-table widefat">
+				<thead>
+					<tr>
+						<th scope="col"><?php _e('Username', 'wp-pro-quiz'); ?></th>
+						<th scope="col" style="width: 200px;"><?php _e('Date', 'wp-pro-quiz'); ?></th>
+						<th scope="col" style="width: 60px;"><?php _e('Results', 'wp-pro-quiz'); ?></th>
+					</tr>
+				</thead>
+				<tbody id="wpProQuiz_statistics_form_data">
+					<tr style="display: none;">
+						<th><a href="#" class="wpProQuiz_cUsername"></a></th>
+						<th class="wpProQuiz_cCreateTime"></th>
+						<th class="wpProQuiz_cResult" style="font-weight: bold;"></th>
+					</tr>
+				</tbody>
+			</table>
+			
+			<div style="margin-top: 10px;">
+				<div style="float: left;">
+					<input style="font-weight: bold;" class="button-secondary" value="&lt;" type="button" id="wpProQuiz_formPageLeft">
+					<select id="wpProQuiz_formCurrentPage"><option value="1">1</option></select>
+					<input style="font-weight: bold;" class="button-secondary"value="&gt;" type="button" id="wpProQuiz_formPageRight">
+				</div>
+				<div style="float: right;">
+					<a class="button-secondary wpProQuiz_update" href="#"><?php _e('Refresh', 'wp-pro-quiz'); ?></a>
+					<?php if(current_user_can('wpProQuiz_reset_statistics')) { ?>
+					<a class="button-secondary wpProQuiz_resetComplete" href="#"><?php _e('Reset entire statistic', 'wp-pro-quiz'); ?></a>
+					<?php } ?>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+		</div>
+
+	
+	<?php 
+	}
+	
+	private function formTable() {
+		if(!$this->quiz->isFormActivated())
+			return;
+	?>
+		<div id="wpProQuiz_form_box">
+			<div id="poststuff">
+				<div class="postbox">
+					<h3 class="hndle"><?php _e('Custom fields', 'wp-pro-quiz'); ?></h3>
+					<div class="inside">
+						<table>
+							<tbody>
+								<?php foreach($this->forms as $form) { 
+									/* @var $form WpProQuiz_Model_Form */
+								?>
+									<tr>
+										<td style="padding: 5px;"><?php echo esc_html($form->getFieldname()); ?></td>
+										<td id="form_id_<?php echo $form->getFormId();?>">asdfffffffffffffffffffffsadfsdfa sf asd fas</td>
+									</tr>
+								<?php  } ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php 
 	}
 }

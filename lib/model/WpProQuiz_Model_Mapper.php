@@ -22,6 +22,8 @@ class WpProQuiz_Model_Mapper {
 	protected $_tablePrerequisite;
 	protected $_tableCategory;
 	protected $_tableStatisticRef;
+	protected $_tableForm;
+	protected $_tableTemplate;
 	
 	
 	function __construct() {
@@ -38,6 +40,8 @@ class WpProQuiz_Model_Mapper {
 		$this->_tablePrerequisite = $this->_prefix.'prerequisite';
 		$this->_tableCategory = $this->_prefix.'category';
 		$this->_tableStatisticRef = $this->_prefix.'statistic_ref';
+		$this->_tableForm = $this->_prefix.'form';
+		$this->_tableTemplate = $this->_prefix.'template';
 	}
 	
 	public function getInsertId() {

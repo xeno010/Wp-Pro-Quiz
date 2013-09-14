@@ -19,8 +19,22 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 ?>
 <div class="wrap wpProQuiz_questionEdit">
 	<h2 style="margin-bottom: 10px;"><?php echo $this->header; ?></h2>
-	<a class="button-secondary" href="admin.php?page=wpProQuiz&module=question&action=show&quiz_id=<?php echo $this->question->getQuizId(); ?>"><?php _e('back to overview', 'wp-pro-quiz'); ?></a>
-	<form action="" method="POST">
+	<!-- <form action="admin.php?page=wpProQuiz&module=question&action=show&quiz_id=<?php echo $this->quiz->getId(); ?>" method="POST"> -->
+	<form action="admin.php?page=wpProQuiz&module=question&action=addEdit&quiz_id=<?php echo $this->quiz->getId(); ?>&questionId=<?php echo $this->question->getId(); ?>" method="POST">
+		<a style="float: left;" class="button-secondary" href="admin.php?page=wpProQuiz&module=question&action=show&quiz_id=<?php echo $this->quiz->getId(); ?>"><?php _e('back to overview', 'wp-pro-quiz'); ?></a>
+		<div style="float: right;">
+			<select name="templateLoadId">
+				<?php 
+					foreach($this->templates as $template) {
+						echo '<option value="', $template->getTemplateId(), '">', esc_html($template->getName()), '</option>';
+					}
+				?>
+			</select>
+			<input type="submit" name="templateLoad" value="<?php _e('load template', 'wp-pro-quiz'); ?>" class="button-primary">
+		</div>
+		<div style="clear: both;"></div>
+		<!-- <input type="hidden" value="edit" name="hidden_action">
+		<input type="hidden" value="<?php echo $this->question->getId(); ?>" name="questionId">-->
 		<div id="poststuff">
 			<div class="postbox">
 				<h3 class="hndle"><?php _e('Title', 'wp-pro-quiz'); ?> <?php _e('(optional)', 'wp-pro-quiz'); ?></h3>
@@ -221,6 +235,16 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 						<p class="description">
 							<?php _e('You can create sort elements with empty criteria, which can\'t be assigned by user.', 'wp-pro-quiz'); ?>
 						</p>
+						<br>
+						<label>
+							<?php _e('Percentage width of criteria table column:', 'wp-pro-quiz'); ?>
+							<?php $msacwValue = $this->question->getMatrixSortAnswerCriteriaWidth() > 0 ? $this->question->getMatrixSortAnswerCriteriaWidth() : 20; ?>
+							<input type="number" min="1" max="99" step="1" name="matrixSortAnswerCriteriaWidth" value="<?php echo $msacwValue; ?>">%
+						</label>
+						<p class="description">
+							<?php _e('Allows adjustment of the left column\'s width, and the right column will auto-fill the rest of the available space. Increase this to allow accommodate longer criterion text. Defaults to 20%.', 'wp-pro-quiz'); ?>
+						</p>
+						<br>
 						<ul class="answerList">
 							<?php $this->matrixSortingChoice($this->data['matrix_sort_answer']); ?>
 						</ul>
@@ -234,7 +258,25 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 					</div>
 				</div>
 			</div>
-			<input type="submit" name="submit" id="saveQuestion" class="button-primary" value="<?php _e('Save', 'wp-pro-quiz'); ?>">			
+			
+			<div style="float: left;">
+				<input type="submit" name="submit" id="saveQuestion" class="button-primary" value="<?php _e('Save', 'wp-pro-quiz'); ?>">
+			</div>
+			<div style="float: right;">
+				<input type="text" placeholder="<?php _e('template name', 'wp-pro-quiz'); ?>" class="regular-text" name="templateName" style="border: 1px solid rgb(255, 134, 134);">
+				<select name="templateSaveList">
+					<option value="0">=== <?php _e('Create new template', 'wp-pro-quiz'); ?> === </option>
+					<?php 
+						foreach($this->templates as $template) {
+							echo '<option value="', $template->getTemplateId(), '">', esc_html($template->getName()), '</option>';
+						}
+					?>
+				</select>
+				
+				<input type="submit" name="template" class="button-primary" id="wpProQuiz_saveTemplate" value="<?php _e('Save as template', 'wp-pro-quiz'); ?>">
+			</div>
+			<div style="clear: both;"></div>
+					
 		</div>
 	</form>
 </div>
@@ -676,9 +718,6 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View {
 	  	</td>
 	  </tr>
 	</table>
-
-
-
 <?php
 	}
 }

@@ -101,6 +101,7 @@ class WpProQuiz_Helper_Import {
 	private function importData($o, $ids = false, $version = '1') {
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
+		$formMapper = new WpProQuiz_Model_FormMapper();
 
 		foreach($o['master'] as $master) {
 			if(get_class($master) !== 'WpProQuiz_Model_Quiz') {
@@ -130,6 +131,17 @@ class WpProQuiz_Helper_Import {
 			}
 			
 			$quizMapper->save($master);
+
+			if(isset($o['forms']) && isset($o['forms'][$oldId])) {
+				foreach($o['forms'][$oldId] as $form) {
+					/** @var WpProQuiz_Model_Form $form **/
+					
+					$form->setFormId(0);
+					$form->setQuizId($master->getId());
+				}
+				
+				$formMapper->update($o['forms'][$oldId]);
+			}
 			
 			foreach($o['question'][$oldId] as $question) {
 				

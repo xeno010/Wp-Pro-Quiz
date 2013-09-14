@@ -103,7 +103,13 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'autostart' => (int)$data->isAutostart(),
 			'forcing_question_solve' => (int)$data->isForcingQuestionSolve(),
 			'hide_question_position_overview' => (int)$data->isHideQuestionPositionOverview(),
-			'hide_question_numbering' => (int)$data->isHideQuestionNumbering()
+			'hide_question_numbering' => (int)$data->isHideQuestionNumbering(),
+			'form_activated' => (int)$data->isFormActivated(),
+			'form_show_position' => $data->getFormShowPosition(),
+			'start_only_registered_user' => (int)$data->isStartOnlyRegisteredUser(),
+			'questions_per_page' => $data->getQuestionsPerPage(),
+			'sort_categories' => (int)$data->isSortCategories(),
+			'show_category' => (int)$data->isShowCategory()
 		);
 		
 		if($data->getId() != 0) {
@@ -112,13 +118,13 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					array(
 							'id' => $data->getId()
 					),
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
 					array('%d'));
 		} else {
 			
 			$result = $this->_wpdb->insert($this->_table,
 						$set,
-						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
+						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
 
 			$data->setId($this->_wpdb->insert_id);
 		}
@@ -131,11 +137,11 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 	}
 	
 	public function sumQuestionPoints($id) {
-		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT SUM(points) FROM {$this->_tableQuestion} WHERE quiz_id = %d", $id));
+		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT SUM(points) FROM {$this->_tableQuestion} WHERE quiz_id = %d AND online = 1", $id));
 	}
 	
 	public function countQuestion($id) {
-		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_tableQuestion} WHERE quiz_id = %d", $id));
+		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_tableQuestion} WHERE quiz_id = %d AND online = 1", $id));
 	}
 	
 	public function fetchAllAsArray($list, $outIds = array()) {
@@ -165,5 +171,25 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			SET `statistics_on` = 1, `statistics_ip_lock` = %d 
 			WHERE `statistics_on` = 0 AND id IN(".$quizIds.")"
 			, $lockIpTime));
+	}
+	
+	public function deleteAll($quizId) {
+		return $this->_wpdb->query(
+			$this->_wpdb->prepare(
+				"DELETE 
+					m, q, l, p, t, f, sr, s 
+				FROM 
+					{$this->_tableMaster} AS m 
+					LEFT JOIN {$this->_tableQuestion} AS q ON(q.quiz_id = m.id) 
+					LEFT JOIN {$this->_tableLock} AS l ON(l.quiz_id = m.id) 
+					LEFT JOIN {$this->_tablePrerequisite} AS p ON(p.prerequisite_quiz_id = m.id) 
+					LEFT JOIN {$this->_tableToplist} AS t ON(t.quiz_id = m.id) 
+					LEFT JOIN {$this->_tableForm} AS f ON(f.quiz_id = m.id)
+					LEFT JOIN {$this->_tableStatisticRef} AS sr ON(sr.quiz_id = m.id) 
+						LEFT JOIN {$this->_tableStatistic} AS s ON(s.statistic_ref_id = sr.statistic_ref_id) 
+				WHERE 
+					m.id = %d"
+			, $quizId)
+		);
 	}
 }

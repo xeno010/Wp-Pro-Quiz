@@ -14,7 +14,8 @@ class WpProQuiz_Controller_Preview extends WpProQuiz_Controller_Controller {
 			'ajaxurl' => admin_url('admin-ajax.php'),
 			'loadData' => __('Loading', 'wp-pro-quiz'),
 			'questionNotSolved' => __('You must answer this question.', 'wp-pro-quiz'),
-			'questionsNotSolved' => __('You must answer all questions before you can completed the quiz.', 'wp-pro-quiz')
+			'questionsNotSolved' => __('You must answer all questions before you can completed the quiz.', 'wp-pro-quiz'),
+			'fieldsNotFilled' => __('All fields have to be filled.', 'wp-pro-quiz')
 		));
 		
 		wp_enqueue_style(
@@ -33,6 +34,7 @@ class WpProQuiz_Controller_Preview extends WpProQuiz_Controller_Controller {
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
 		$categoryMapper = new WpProQuiz_Model_CategoryMapper();
+		$formMapper = new WpProQuiz_Model_FormMapper();
 		
 		$quiz = $quizMapper->fetch($id);
 		
@@ -55,6 +57,8 @@ class WpProQuiz_Controller_Preview extends WpProQuiz_Controller_Controller {
 		$view->quiz = $quiz;
 		$view->question = $question;
 		$view->category = $categoryMapper->fetchByQuiz($quiz->getId());
+		$view->forms = $formMapper->fetch($quiz->getId());
+		
 		$view->show(true);
 	}
 }

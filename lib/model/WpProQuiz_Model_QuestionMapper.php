@@ -26,7 +26,33 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 				array('%d'));
 	}
 	
-	public function save(WpProQuiz_Model_Question $question) {
+	public function setOnlineOff($questionId) {
+		return $this->_wpdb->update($this->_tableQuestion, array('online' => 0), array('id' => $questionId), null, array('%d'));
+	}
+	
+	public function getQuizId($questionId) {
+		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT quiz_id FROM {$this->_tableQuestion} WHERE id = %d", $questionId));
+	}
+	
+	public function getMaxSort($quizId) {
+		return $this->_wpdb->get_var($this->_wpdb->prepare(
+			"SELECT MAX(sort) AS max_sort FROM {$this->_tableQuestion} WHERE quiz_id = %d AND online = 1", $quizId));
+	}
+	
+	public function save(WpProQuiz_Model_Question $question, $auto = false) {
+		$sort = null;
+		
+		if($auto && $question->getId()) {
+			$statisticMapper = new WpProQuiz_Model_StatisticMapper();
+			
+			if($statisticMapper->isStatisticByQuestionId($question->getId())) {
+				$this->setOnlineOff($question->getId());
+				$question->setQuizId($this->getQuizId($question->getId()));
+				$question->setId(0);
+				$sort = $question->getSort();
+			}
+		}
+		
 		if($question->getId() != 0) {
 			$this->_wpdb->update(
 					$this->_table, 
@@ -45,15 +71,17 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 						'answer_data' => $question->getAnswerData(true),
 						'category_id' => $question->getCategoryId(),
 						'answer_points_diff_modus_activated' => (int)$question->isAnswerPointsDiffModusActivated(),
-						'disable_correct' => (int)$question->isDisableCorrect()
+						'disable_correct' => (int)$question->isDisableCorrect(),
+						'matrix_sort_answer_criteria_width' => $question->getMatrixSortAnswerCriteriaWidth()
 					),
 					array('id' => $question->getId()),
-					array('%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s', '%d', '%d', '%d'),
+					array('%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s', '%d', '%d', '%d', '%d'),
 					array('%d'));
 		} else {
 			$this->_wpdb->insert($this->_table, array(
 					'quiz_id' => $question->getQuizId(),
-					'sort' => $this->count($question->getQuizId()),
+					'online' => 1,
+					'sort' => $sort !== null ? $sort : ($this->getMaxSort($question->getQuizId()) + 1),
 					'title' => $question->getTitle(),
 					'points' => $question->getPoints(),
 					'question' => $question->getQuestion(),
@@ -68,9 +96,10 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 					'answer_data' => $question->getAnswerData(true),
 					'category_id' => $question->getCategoryId(),
 					'answer_points_diff_modus_activated' => (int)$question->isAnswerPointsDiffModusActivated(),
-					'disable_correct' => (int)$question->isDisableCorrect()
+					'disable_correct' => (int)$question->isDisableCorrect(),
+					'matrix_sort_answer_criteria_width' => $question->getMatrixSortAnswerCriteriaWidth()
 				),
-				array('%d', '%d', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s', '%d', '%d', '%d')
+				array('%d', '%d', '%d', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s', '%d', '%d', '%d', '%d')
 			);
 			
 			$question->setId($this->_wpdb->insert_id);
@@ -88,7 +117,7 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 				FROM
 					". $this->_table. "
 				WHERE
-					id = %d",
+					id = %d AND online = 1",
 				$id),
 			ARRAY_A
 		);
@@ -112,7 +141,7 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 				FROM
 					". $this->_table. "
 				WHERE
-					id IN(".implode(', ', $ids).")",
+					id IN(".implode(', ', $ids).") AND online = 1",
 				ARRAY_A
 		);
 		
@@ -149,7 +178,7 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 								LEFT JOIN '.$this->_tableCategory.' AS c
 									ON c.category_id = q.category_id
 							WHERE
-								quiz_id = %d 
+								quiz_id = %d AND q.online = 1
 							'.$orderBy.' 
 							'.$limit
 						, $quizId),
@@ -172,7 +201,7 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 							FROM
 								'. $this->_tableQuestion.'
 							WHERE
-								quiz_id = %d'
+								quiz_id = %d AND online = 1'
 						, $quizId),
 				ARRAY_A);
 		
@@ -180,11 +209,15 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 	}
 	
 	public function count($quizId) {
-		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_table} WHERE quiz_id = %d", $quizId));
+		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_table} WHERE quiz_id = %d AND online = 1", $quizId));
 	}
 	
 	public function exists($id) {
-		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_table} WHERE id = %d", $id));
+		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_table} WHERE id = %d AND online = 1", $id));
+	}
+	
+	public function existsAndWritable($id) {
+		return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_table} WHERE id = %d AND online = 1", $id));
 	}
 	
 	public function fetchCategoryPoints($quizId) {
@@ -192,7 +225,7 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 				$this->_wpdb->prepare(
 						'SELECT SUM( points ) AS sum_points , category_id
 						FROM '.$this->_tableQuestion.'
-						WHERE quiz_id = %d 
+						WHERE quiz_id = %d AND online = 1
 						GROUP BY category_id', $quizId));
 		
 		$a = array();

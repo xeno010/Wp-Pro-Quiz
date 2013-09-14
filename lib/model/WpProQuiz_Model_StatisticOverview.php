@@ -9,6 +9,7 @@ class WpProQuiz_Model_StatisticOverview extends WpProQuiz_Model_Model {
 	protected $_quizId = 0;
 	protected $_userId = 0;
 	protected $_questionTime = 0;
+	protected $_gPoints = 0;
 
 	public function setCorrectCount($_correctCount) {
 		$this->_correctCount = (int)$_correctCount;
@@ -81,4 +82,14 @@ class WpProQuiz_Model_StatisticOverview extends WpProQuiz_Model_Model {
 	public function getQuestionTime() {
 		return $this->_questionTime;
 	}
+	
+	public function setGPoints($_gPoints) {
+		$this->_gPoints = (int)$_gPoints;
+		return $this;
+	}
+	
+	public function getGPoints() {
+		return $this->_gPoints;
+	}
+	
 }

@@ -13,6 +13,8 @@ class WpProQuiz_Controller_GlobalSettings extends WpProQuiz_Controller_Controlle
 		
 		$mapper = new WpProQuiz_Model_GlobalSettingsMapper();
 		$categoryMapper = new WpProQuiz_Model_CategoryMapper();
+		$templateMapper = new WpProQuiz_Model_TemplateMapper();
+		
 		$view = new WpProQuiz_View_GobalSettings();
 		
 		if(isset($this->_post['submit'])) {
@@ -40,6 +42,11 @@ class WpProQuiz_Controller_GlobalSettings extends WpProQuiz_Controller_Controlle
 			
 			$mapper->saveUserEmailSettiongs($this->_post['userEmail']);
 			
+		} else if(isset($this->_post['databaseFix'])) {
+			WpProQuiz_View_View::admin_notices(__('Database repaired', 'wp-pro-quiz'), 'info');
+			
+			$DbUpgradeHelper = new WpProQuiz_Helper_DbUpgrade();
+			$DbUpgradeHelper->databaseDelta();
 		}
 		
 		$view->settings = $mapper->fetchAll();
@@ -47,6 +54,8 @@ class WpProQuiz_Controller_GlobalSettings extends WpProQuiz_Controller_Controlle
 		$view->category = $categoryMapper->fetchAll();
 		$view->email = $mapper->getEmailSettings();
 		$view->userEmail = $mapper->getUserEmailSettings();
+		$view->templateQuiz = $templateMapper->fetchAll(WpProQuiz_Model_Template::TEMPLATE_TYPE_QUIZ, false);
+		$view->templateQuestion = $templateMapper->fetchAll(WpProQuiz_Model_Template::TEMPLATE_TYPE_QUESTION, false);
 		
 		$view->toplistDataFormat = get_option('wpProQuiz_toplistDataFormat', 'Y/m/d g:i A');
 		$view->statisticTimeFormat = get_option('wpProQuiz_statisticTimeFormat', 'Y/m/d g:i A');

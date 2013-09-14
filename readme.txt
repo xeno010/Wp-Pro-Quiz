@@ -3,8 +3,8 @@ Contributors: xeno010
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N9B7S4FT8CE2N
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
-Tested up to: 3.5.2
-Stable tag: 0.26
+Tested up to: 3.6.1
+Stable tag: 0.27
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,7 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Leaderboard
 *		Quiz requirements
 *		Hints
+*		Custom fields
 *		Import / Export function
 *		E-mail notification
 *		Category support
@@ -44,17 +45,21 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Many configuration options
 *		Really nice standard design
 *		Mighty
+*		Fully compatible with cache plugins (e.g. WP-Super-Cache or W3 Total Cache)
+
 
 = Translations =
 *		Arabic / عربي (Thanks Abuhassan)
+*		Brazilian Portuguese / Português do Brasil (Thanks Gabriel V.)
+*		Czech / čeština (Thanks Petr Š.)
 *		Danish / dansk (Thanks Kenneth D.)
 *		Dutch / nederlands (Thanks Bas W. and Jurriën van den H.)
-*		Czech / čeština (Thanks Petr Š.)
 * 		English (Thanks Alexander M.)
 *		French / français (Thanks Aurélien C.)
 *		German / deutsch
 *		Greek / ελληνικά (Thanks Ζαχαρίας Σ.)
 *		Norwegian / norsk (Thanks Stein Ivar J.)
+*		Persian / فارسی (Thanks Behrooz N.)
 *		Russian / русский (Thanks Sergei B. and Alex A.)
 *		Spanish / español (Thanks Carlos R.)
 *		Swedish / svenska (Thanks Martin J.)
@@ -271,3 +276,19 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 = 0.26 =
 * Bugfix: Cloze choice and assessment
 * Bugfix: Email sending
+
+= 0.27 =
+* Statistics function has been completely overworked.
+ - All answers from users are stored now. 
+ - Edit, delete or add questions has no effect on existing results.
+* Statistics function can also be actived with the option "Show only specific number of questions" now.
+* The "Show only specific number of questions" option now works with cache plugins.
+* added custom fields
+* Quiz mode "Questions below eachother" can now be divided into pages.
+* Quiz: added option "Sort questions by category" - Sort questions by category.
+* Quiz: added option "Display category" - Category is displayed in the questions.
+* Repair Database - Added button in the global settings
+* Improved matrix-sorting question type by allowing sort elements to be dragged into any criterion having the same text as the correct answer. (For example, if there are 6 unique sort elements and only 2 unique criterion, then dragging a sort element into any criterion with the same correct name will validate as correct.) 
+ - Thanks Grant K Norwood (grantnorwood)
+* Added ability to set the table column width for matrix sorting criteria in order to allow longer criteria text. The option is displayed only when matrix sorting is selected as the answer type.
+ - Thanks Grant K Norwood (grantnorwood)

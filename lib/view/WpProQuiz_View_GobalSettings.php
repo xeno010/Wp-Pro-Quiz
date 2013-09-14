@@ -142,6 +142,56 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 								</fieldset>
 							</td>
 						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('Quiz template management', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<fieldset>
+									<legend class="screen-reader-text">
+										<span><?php _e('Quiz template management', 'wp-pro-quiz'); ?></span>
+									</legend>
+									<select name="templateQuiz">
+										<?php foreach($this->templateQuiz as $templateQuiz) { 
+											echo '<option value="'.$templateQuiz->getTemplateId().'">'.esc_html($templateQuiz->getName()).'</option>';
+											
+										} ?>
+									</select>
+									<div style="padding-top: 5px;">
+										<input type="text" value="" name="templateQuizEditText">
+									</div>
+									<div style="padding-top: 5px;">
+										<input type="button" value="<?php _e('Delete', 'wp-pro-quiz'); ?>" name="templateQuizDelete" class="button-secondary">
+										<input type="button" value="<?php _e('Edit', 'wp-pro-quiz'); ?>" name="templateQuizEdit" class="button-secondary">
+									</div>
+								</fieldset>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('Question template management', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<fieldset>
+									<legend class="screen-reader-text">
+										<span><?php _e('Question template management', 'wp-pro-quiz'); ?></span>
+									</legend>
+									<select name="templateQuestion">
+										<?php foreach($this->templateQuestion as $templateQuestion) { 
+											echo '<option value="'.$templateQuestion->getTemplateId().'">'.esc_html($templateQuestion->getName()).'</option>';
+											
+										} ?>
+									</select>
+									<div style="padding-top: 5px;">
+										<input type="text" value="" name="templateQuestionEditText">
+									</div>
+									<div style="padding-top: 5px;">
+										<input type="button" value="<?php _e('Delete', 'wp-pro-quiz'); ?>" name="templateQuestionDelete" class="button-secondary">
+										<input type="button" value="<?php _e('Edit', 'wp-pro-quiz'); ?>" name="templateQuestionEdit" class="button-secondary">
+									</div>
+								</fieldset>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -417,6 +467,22 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 								</p>
 								<p class="description">
 									<?php _e('e.g. Domain with special characters in combination with IE', 'wp-pro-quiz'); ?>
+								</p>
+							</fieldset>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							<?php _e('Repair database', 'wp-pro-quiz'); ?>
+						</th>
+						<td>
+							<fieldset>
+								<legend class="screen-reader-text">
+									<span><?php _e('Repair database', 'wp-pro-quiz'); ?></span>
+								</legend>
+								<input type="submit" name="databaseFix" class="button-primary" value="<?php _e('Repair database', 'wp-pro-quiz');?>">
+								<p class="description">
+									<?php _e('No date will be deleted. Only WP-Pro-Quiz tables will be repaired.', 'wp-pro-quiz'); ?>
 								</p>
 							</fieldset>
 						</td>

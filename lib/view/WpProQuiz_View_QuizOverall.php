@@ -87,7 +87,7 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 						
 						<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
 						<span>
-							<a href="admin.php?page=wpProQuiz&action=edit&id=<?php echo $quiz->getId(); ?>"><?php _e('Edit', 'wp-pro-quiz'); ?></a> | 
+							<a href="admin.php?page=wpProQuiz&action=addEdit&quizId=<?php echo $quiz->getId(); ?>"><?php _e('Edit', 'wp-pro-quiz'); ?></a> | 
 						</span> 
 						<?php } if(current_user_can('wpProQuiz_delete_quiz')) { ?>
 						<span>
@@ -125,7 +125,7 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 	</table>
 	<p>
 		<?php if(current_user_can('wpProQuiz_add_quiz')) { ?>
-		<a class="button-secondary" href="admin.php?page=wpProQuiz&action=add"><?php echo __('Add quiz', 'wp-pro-quiz'); ?></a>
+		<a class="button-secondary" href="admin.php?page=wpProQuiz&action=addEdit"><?php echo __('Add quiz', 'wp-pro-quiz'); ?></a>
 		<?php } if(current_user_can('wpProQuiz_import')) { ?>
 		<a class="button-secondary wpProQuiz_import" href="#"><?php echo __('Import', 'wp-pro-quiz'); ?></a>
 		<?php } if(current_user_can('wpProQuiz_export') && count($this->quiz)) { ?>

@@ -34,6 +34,25 @@ class WpProQuiz_View_View {
 		}
 	}
 	
+	public function selected($v, $check = true, $echo = true) {
+		$r = ($v == $check) ? 'selected="selected"' : '';
+		
+		if($echo) {
+			echo $r;
+		} else {
+			return $r;
+		}
+	}
+	
+	public function selectedArray($v, $check) {
+		$a = array();
+		
+		foreach($check as $c)
+			$a[] = ($v == $c) ? 'selected="selected"' : '';
+		
+		return $a;
+	}
+	
 	public function isDisplayNone($v) {
 		echo $v ? '' : 'style="display:none;"';
 	}

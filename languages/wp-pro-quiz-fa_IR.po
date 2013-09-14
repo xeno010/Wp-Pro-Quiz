@@ -1,0 +1,2612 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP-Pro-Quiz\n"
+"POT-Creation-Date: 2013-09-14 18:49+0100\n"
+"PO-Revision-Date: 2013-09-14 18:49+0100\n"
+"Last-Translator: Julius Fischer <webmaster@it-gecko.de>\n"
+"Language-Team: ityurd <behrooz.nuri@yahoo.com>\n"
+"Language: FA_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:100
+msgid "Do you really want to delete the quiz/question?"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:101
+msgid "Title is not filled!"
+msgstr "عنوان خالی می باشد!"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:102
+msgid "No question deposited!"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:103
+msgid "Correct answer was not selected!"
+msgstr "پاسخ صحیح انتخاب نشده است!"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:104
+msgid "No answer deposited!"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:105
+msgid "No quiz description filled!"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:106
+msgid "The percent values in result text are incorrect."
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:107
+msgid "No number in the field \"Points\" or less than 1"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:108
+msgid "No number in the field \"Points\" or less than 0"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:109
+msgid "No quiz selected"
+msgstr "آزمونی انتخاب نشده است"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:110
+msgid "Do you really want to reset the statistic?"
+msgstr "آیا شما واقعاً میخواهید آمار را مجدداً تنظیم کنید"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:111
+#: lib/view/WpProQuiz_View_FrontToplist.php:26
+#: lib/view/WpProQuiz_View_QuestionOverall.php:71
+#: lib/view/WpProQuiz_View_QuizOverall.php:121
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:33
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:597
+msgid "No data available"
+msgstr "بدون اطلاعات موجود"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:112
+msgid "No sort element in the criterion"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:113
+msgid ""
+"\"Different points for every answer\" is not possible at \"Free\" choice"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:114
+msgid "You must specify a name."
+msgstr "شما باید یک نام را مشخص کنید."
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:115
+msgid "This entry should really be deleted?"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:116
+msgid "Not all fields completed."
+msgstr "تمام فیلدها کامل نشده اند."
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:117
+msgid "You must specify a template name."
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:120
+#: lib/view/WpProQuiz_View_StatisticsNew.php:181
+msgid "Close"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:121
+msgid "Today"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Front.php:44
+#: lib/controller/WpProQuiz_Controller_Front.php:63
+#: lib/controller/WpProQuiz_Controller_Preview.php:15
+#: lib/view/WpProQuiz_View_AdminToplist.php:47
+#: lib/view/WpProQuiz_View_FrontQuiz.php:191
+#: lib/view/WpProQuiz_View_QuestionOverall.php:98
+#: lib/view/WpProQuiz_View_Statistics.php:46
+#: lib/view/WpProQuiz_View_StatisticsNew.php:73
+#: lib/view/WpProQuiz_View_StatisticsNew.php:149
+#: lib/view/WpProQuiz_View_StatisticsNew.php:187
+#: lib/view/WpProQuiz_View_StatisticsNew.php:233
+msgid "Loading"
+msgstr "در حال بارگیری"
+
+#: lib/controller/WpProQuiz_Controller_Front.php:45
+#: lib/controller/WpProQuiz_Controller_Front.php:64
+#: lib/controller/WpProQuiz_Controller_Preview.php:16
+msgid "You must answer this question."
+msgstr "شما باید به این سوال پاسخ دهید"
+
+#: lib/controller/WpProQuiz_Controller_Front.php:46
+#: lib/controller/WpProQuiz_Controller_Front.php:65
+#: lib/controller/WpProQuiz_Controller_Preview.php:17
+msgid "You must answer all questions before you can completed the quiz."
+msgstr "جهت اتمام آزمون شما باید به کلیه سوالات پاسخ دهید."
+
+#: lib/controller/WpProQuiz_Controller_Front.php:47
+#: lib/controller/WpProQuiz_Controller_Front.php:66
+#: lib/controller/WpProQuiz_Controller_Preview.php:18
+msgid "All fields have to be filled."
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_GlobalSettings.php:11
+#: lib/controller/WpProQuiz_Controller_ImportExport.php:23
+#: lib/controller/WpProQuiz_Controller_ImportExport.php:47
+#: lib/controller/WpProQuiz_Controller_Question.php:64
+#: lib/controller/WpProQuiz_Controller_Question.php:68
+#: lib/controller/WpProQuiz_Controller_Question.php:189
+#: lib/controller/WpProQuiz_Controller_Question.php:266
+#: lib/controller/WpProQuiz_Controller_Question.php:281
+#: lib/controller/WpProQuiz_Controller_Question.php:358
+#: lib/controller/WpProQuiz_Controller_Question.php:540
+#: lib/controller/WpProQuiz_Controller_Quiz.php:37
+#: lib/controller/WpProQuiz_Controller_Quiz.php:41
+#: lib/controller/WpProQuiz_Controller_Quiz.php:282
+#: lib/controller/WpProQuiz_Controller_Quiz.php:296
+#: lib/controller/WpProQuiz_Controller_Quiz.php:380
+#: lib/controller/WpProQuiz_Controller_Quiz.php:585
+#: lib/controller/WpProQuiz_Controller_Statistics.php:40
+#: lib/controller/WpProQuiz_Controller_Toplist.php:88
+msgid "You do not have sufficient permissions to access this page."
+msgstr "شما مجوز کافی برای دسترسی به این صفحه را ندارید."
+
+#: lib/controller/WpProQuiz_Controller_GlobalSettings.php:22
+msgid "Settings saved"
+msgstr "تنظیمات ذخیره شد"
+
+#: lib/controller/WpProQuiz_Controller_GlobalSettings.php:46
+msgid "Database repaired"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_ImportExport.php:91
+#: lib/helper/WpProQuiz_Helper_Import.php:59
+#: lib/helper/WpProQuiz_Helper_Import.php:68
+#: lib/helper/WpProQuiz_Helper_Import.php:75
+msgid "File cannot be processed"
+msgstr "فایل نمی تواند پردازش شود"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:9
+#: lib/controller/WpProQuiz_Controller_Question.php:19
+#: lib/controller/WpProQuiz_Controller_Quiz.php:56
+#: lib/controller/WpProQuiz_Controller_Quiz.php:313
+msgid "Quiz not found"
+msgstr "آزمونی یافت نشد"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:78
+msgid "Question not found"
+msgstr "سوال یافت نشد"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:100
+#: lib/controller/WpProQuiz_Controller_Question.php:348
+msgid "Question edited"
+msgstr "ویرایش سوال"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:102
+msgid "Question added"
+msgstr "اضافه کردن سوال"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:120
+#: lib/controller/WpProQuiz_Controller_Question.php:302
+msgid "Edit question"
+msgstr "ویرایش سوال"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:120
+#: lib/controller/WpProQuiz_Controller_Question.php:416
+msgid "New question"
+msgstr "سوال جدید"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:166
+#: lib/controller/WpProQuiz_Controller_Question.php:330
+#, php-format
+msgid "Question: %d"
+msgstr "سوال: %d"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:203
+msgid "questions copied"
+msgstr "سوالات کپی شده اند"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:87
+#: lib/controller/WpProQuiz_Controller_Quiz.php:328
+msgid "Quiz edited"
+msgstr "ویرایش آزمون"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:89
+msgid "quiz created"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:111
+#: lib/controller/WpProQuiz_Controller_Quiz.php:349
+#: lib/controller/WpProQuiz_Controller_Quiz.php:421
+msgid "Quiz title or quiz description are not filled"
+msgstr "عنوان آزمون یا توضیحات آزمون کامل پر نشده است"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:128
+#: lib/controller/WpProQuiz_Controller_Quiz.php:306
+#: lib/view/WpProQuiz_View_QuestionOverall.php:21
+msgid "Edit quiz"
+msgstr "ویرایش آزمون"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:128
+#: lib/controller/WpProQuiz_Controller_Quiz.php:384
+#: lib/controller/WpProQuiz_Controller_Quiz.php:402
+msgid "Create quiz"
+msgstr "ایجاد کردن آزمون"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:499
+msgid "Template stored"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:604
+msgid "Quiz deleted"
+msgstr "حذف امتحان"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:830
+#: lib/controller/WpProQuiz_Controller_QuizCompleted.php:190
+#: lib/view/WpProQuiz_View_FrontQuiz.php:609
+msgid "Not categorized"
+msgstr "دسته بندی نشده"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:836
+#: lib/controller/WpProQuiz_Controller_QuizCompleted.php:196
+#: lib/view/WpProQuiz_View_FrontQuiz.php:604
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+#: lib/controller/WpProQuiz_Controller_Statistics.php:56
+#: lib/controller/WpProQuiz_Controller_Statistics.php:662
+#: lib/view/WpProQuiz_View_QuestionEdit.php:91
+msgid "No category"
+msgstr "بدون دسته بندی"
+
+#: lib/controller/WpProQuiz_Controller_Statistics.php:568
+#: lib/controller/WpProQuiz_Controller_Statistics.php:611
+#: lib/controller/WpProQuiz_Controller_Statistics.php:687
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:606
+msgid "Anonymous"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Statistics.php:613
+#: lib/controller/WpProQuiz_Controller_Statistics.php:695
+msgid "Deleted user"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:80
+#: lib/controller/WpProQuiz_Controller_Toplist.php:211
+msgid "No name or e-mail entered."
+msgstr "هیچ نام کاربری یا پست الکترونیک وارد نشده است."
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:148
+msgid "You signed up successfully."
+msgstr "ثبت نام شما با موفقیت انجام شد."
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:156
+#: lib/controller/WpProQuiz_Controller_Toplist.php:160
+#: lib/controller/WpProQuiz_Controller_Toplist.php:177
+#: lib/controller/WpProQuiz_Controller_Toplist.php:181
+#: lib/controller/WpProQuiz_Controller_Toplist.php:187
+msgid "An error has occurred."
+msgstr "یک خطایی رخ داده است"
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:198
+#: lib/controller/WpProQuiz_Controller_Toplist.php:207
+msgid "You can not enter again."
+msgstr "شما نمی توانید دوباره وارد کنید."
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:215
+msgid "Your name can not exceed 15 characters."
+msgstr "شما نمی توانید بیش از 15 حرف تایپ کنید"
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:223
+msgid "You entered wrong captcha code."
+msgstr "کد تصویر امنیتی را وارد کنید."
+
+#: lib/helper/WpProQuiz_Helper_Import.php:9
+#: lib/helper/WpProQuiz_Helper_ImportXml.php:8
+msgid "File was not uploaded"
+msgstr "فایل آپلود نشده است"
+
+#: lib/helper/WpProQuiz_Helper_Import.php:40
+msgid "File have wrong format"
+msgstr "فرمت فایل اشتباه است"
+
+#: lib/helper/WpProQuiz_Helper_Import.php:45
+msgid "File is not compatible with the current version"
+msgstr "File is not compatible with the current version"
+
+#: lib/helper/WpProQuiz_Helper_ImportXml.php:27
+#: lib/helper/WpProQuiz_Helper_ImportXml.php:40
+msgid "XML could not be loaded."
+msgstr "فایل XML نمی تواند بارگذاری می شود."
+
+#: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:47
+#: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:79
+msgid "Wp-Pro-Quiz: One user completed a quiz"
+msgstr "آزمون ساز: یک کاربر مسابقه را به اتمام رساند"
+
+#: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:49
+msgid ""
+"Wp-Pro-Quiz\n"
+"\n"
+"The user \"$username\" has completed \"$quizname\" the quiz.\n"
+"\n"
+"Points: $points\n"
+"Result: $result\n"
+"\n"
+msgstr ""
+
+#: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:81
+msgid ""
+"Wp-Pro-Quiz\n"
+"\n"
+"You have completed the quiz \"$quizname\".\n"
+"\n"
+"Points: $points\n"
+"Result: $result\n"
+"\n"
+msgstr ""
+
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV2.php:33
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:6
+msgid "The user completed a quiz."
+msgstr " کاربر عزیز مسابقه به پایان رسید"
+
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:7
+msgid "The user completed a quiz with 100 percent."
+msgstr "کاربر عزیز مسابقه با 100 درصد است."
+
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:18
+msgid "A powerful and beautiful quiz plugin for WordPress."
+msgstr "پلاگین آزمون ساز قدرتمند و بسیار زیبا برای وردپرس"
+
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:21
+#: lib/view/WpProQuiz_View_QuizOverall.php:54
+msgid "WP-Pro-Quiz"
+msgstr "آزمون ساز"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:7
+#: lib/view/WpProQuiz_View_FrontToplist.php:8
+#: lib/view/WpProQuiz_View_QuizEdit.php:984
+#: lib/view/WpProQuiz_View_QuizEdit.php:996
+#: lib/view/WpProQuiz_View_QuizOverall.php:106
+msgid "Leaderboard"
+msgstr "قهرمانی"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:8
+#: lib/view/WpProQuiz_View_GobalSettings.php:9
+#: lib/view/WpProQuiz_View_Import.php:22
+#: lib/view/WpProQuiz_View_QuestionEdit.php:24
+#: lib/view/WpProQuiz_View_QuestionOverall.php:19
+#: lib/view/WpProQuiz_View_QuizEdit.php:20
+#: lib/view/WpProQuiz_View_Statistics.php:29
+#: lib/view/WpProQuiz_View_StatisticsNew.php:57
+#: lib/view/WpProQuiz_View_StyleManager.php:11
+msgid "back to overview"
+msgstr "بازگشت به نمای کلی"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:11
+#: lib/view/WpProQuiz_View_Statistics.php:209
+#: lib/view/WpProQuiz_View_Statistics.php:288
+#: lib/view/WpProQuiz_View_StatisticsNew.php:94
+#: lib/view/WpProQuiz_View_StatisticsNew.php:140
+#: lib/view/WpProQuiz_View_StatisticsNew.php:201
+#: lib/view/WpProQuiz_View_StatisticsNew.php:224
+msgid "Filter"
+msgstr "فیلتر کردن"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:16
+msgid "Sort by:"
+msgstr "ب سازی بر اساس:"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:18
+#: lib/view/WpProQuiz_View_QuizEdit.php:1076
+msgid "best user"
+msgstr "بهترین کاربر"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:19
+#: lib/view/WpProQuiz_View_QuizEdit.php:1080
+msgid "newest entry"
+msgstr "جدیدترین ورودی"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:20
+#: lib/view/WpProQuiz_View_QuizEdit.php:1084
+msgid "oldest entry"
+msgstr "قدیمی ترین ورودی"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:26
+#: lib/view/WpProQuiz_View_Statistics.php:220
+#: lib/view/WpProQuiz_View_Statistics.php:303
+#: lib/view/WpProQuiz_View_StatisticsNew.php:120
+#: lib/view/WpProQuiz_View_StatisticsNew.php:212
+msgid "How many entries should be shown on one page:"
+msgstr "چگونه همه نوشته ها در یک صفحه نشان داده شود:"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:38
+#: lib/view/WpProQuiz_View_AdminToplist.php:57
+#: lib/view/WpProQuiz_View_QuizEdit.php:1344
+msgid "Type"
+msgstr "نوع"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:38
+msgid "UR = unregistered user, R = registered user"
+msgstr "UR = کاربر ثبت نام نشده, R = کاربر ثبت نام شده"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:55
+#: lib/view/WpProQuiz_View_Statistics.php:239
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:585
+#: lib/view/WpProQuiz_View_StatisticsNew.php:107
+msgid "User"
+msgstr "کاربر"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:56
+#: lib/view/WpProQuiz_View_FrontQuiz.php:199
+msgid "E-Mail"
+msgstr "ایمیل"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:58
+#: lib/view/WpProQuiz_View_FrontToplist.php:16
+msgid "Entered on"
+msgstr "وارد شده در"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:59
+#: lib/view/WpProQuiz_View_FrontQuiz.php:849
+#: lib/view/WpProQuiz_View_FrontQuiz.php:867
+#: lib/view/WpProQuiz_View_FrontToplist.php:17
+#: lib/view/WpProQuiz_View_QuestionEdit.php:49
+#: lib/view/WpProQuiz_View_QuestionEdit.php:56
+#: lib/view/WpProQuiz_View_QuestionEdit.php:317
+#: lib/view/WpProQuiz_View_QuestionEdit.php:355
+#: lib/view/WpProQuiz_View_QuestionEdit.php:414
+#: lib/view/WpProQuiz_View_QuestionOverall.php:30
+#: lib/view/WpProQuiz_View_Statistics.php:105
+#: lib/view/WpProQuiz_View_Statistics.php:240
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:26
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:156
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:586
+msgid "Points"
+msgstr "امتیاز"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:60
+#: lib/view/WpProQuiz_View_FrontQuiz.php:563
+#: lib/view/WpProQuiz_View_Statistics.php:111
+#: lib/view/WpProQuiz_View_Statistics.php:245
+#: lib/view/WpProQuiz_View_Statistics.php:324
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:27
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:162
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:591
+msgid "Results"
+msgstr "نتیجه"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:72
+#: lib/view/WpProQuiz_View_GobalSettings.php:140
+#: lib/view/WpProQuiz_View_GobalSettings.php:165
+#: lib/view/WpProQuiz_View_GobalSettings.php:190
+#: lib/view/WpProQuiz_View_QuestionOverall.php:51
+#: lib/view/WpProQuiz_View_QuizOverall.php:90
+msgid "Edit"
+msgstr "ویرایش"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:75
+#: lib/view/WpProQuiz_View_AdminToplist.php:100
+#: lib/view/WpProQuiz_View_GobalSettings.php:139
+#: lib/view/WpProQuiz_View_GobalSettings.php:164
+#: lib/view/WpProQuiz_View_GobalSettings.php:189
+#: lib/view/WpProQuiz_View_QuestionOverall.php:55
+#: lib/view/WpProQuiz_View_QuizEdit.php:1391
+#: lib/view/WpProQuiz_View_QuizOverall.php:94
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:43
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:631
+msgid "Delete"
+msgstr "حذف"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:80
+msgid "save"
+msgstr "ذخیره کردن"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:81
+msgid "cancel"
+msgstr "لغو کردن"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:99
+msgid "Action"
+msgstr "اعمال کردن"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:102
+msgid "Apply"
+msgstr "اعمال کردن"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:103
+msgid "Delete all entries"
+msgstr "حذف تمام ورودی ها"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:77
+#: lib/view/WpProQuiz_View_FrontQuiz.php:161
+#: lib/view/WpProQuiz_View_FrontQuiz.php:447
+#: lib/view/WpProQuiz_View_FrontQuiz.php:551
+#: lib/view/WpProQuiz_View_FrontQuiz.php:924
+#: lib/view/WpProQuiz_View_QuizEdit.php:384
+#: lib/view/WpProQuiz_View_QuizEdit.php:394
+#: lib/view/WpProQuiz_View_QuizEdit.php:399
+msgid "Quiz-summary"
+msgstr "خلاصه آزمون"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:77
+#: lib/view/WpProQuiz_View_FrontQuiz.php:161
+#: lib/view/WpProQuiz_View_FrontQuiz.php:473
+#: lib/view/WpProQuiz_View_FrontQuiz.php:490
+#: lib/view/WpProQuiz_View_FrontQuiz.php:926
+msgid "Finish quiz"
+msgstr "پایان آزمون"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:189
+msgid "Your result has been entered into leaderboard"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:196
+#: lib/view/WpProQuiz_View_FrontToplist.php:15
+#: lib/view/WpProQuiz_View_QuestionOverall.php:28
+#: lib/view/WpProQuiz_View_QuizOverall.php:68
+msgid "Name"
+msgstr "نام"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:204
+msgid "Captcha"
+msgstr "کپچا"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:210
+msgid "Send"
+msgstr "ارسال"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:301
+#: lib/view/WpProQuiz_View_FrontQuiz.php:400
+msgid "You must fill out this field."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:304
+msgid "You must specify a number."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:305
+msgid "You must specify a text."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:306
+msgid "You must specify an email address."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:307
+msgid "You must specify a date."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:386
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:549
+msgid "Yes"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:391
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:549
+msgid "No"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:417
+msgid ""
+"You have already completed the quiz before. Hence you can not start it again."
+msgstr ""
+"در حال حاضر آزمون به پایان رسیده است. شما نیز میتوانید دوباره شروع کنید."
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:427
+msgid "You must sign in or sign up to start the quiz."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:437
+msgid "You have to finish following quiz, to start this quiz:"
+msgstr "شما برای به پایان رساندن آزمون، روی گزینه شروع آزمون باید کلیک کنید:"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:449
+#, php-format
+msgid "%s of %s questions completed"
+msgstr "%s از  %s سوالات تکمیل شده است."
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:451
+#: lib/view/WpProQuiz_View_Import.php:44
+#: lib/view/WpProQuiz_View_QuizOverall.php:85
+msgid "Questions"
+msgstr "پرسش و پاسخ"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:466
+#: lib/view/WpProQuiz_View_FrontQuiz.php:481
+msgid "Information"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:508
+msgid "Start quiz"
+msgstr "شروع آزمون"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:517
+#: lib/view/WpProQuiz_View_QuizEdit.php:154
+#: lib/view/WpProQuiz_View_QuizEdit.php:159
+msgid "Time limit"
+msgstr "محدوده زمانی"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:538
+msgid "Answered"
+msgstr "پاسخ داد:"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:542
+msgid "Review"
+msgstr "مرور"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:549
+msgid "Review question"
+msgstr "مرور کردن سوال"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:566
+#, php-format
+msgid "%s of %s questions answered correctly"
+msgstr "%s از %s به سوالات به درستی جواب داد"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:570
+msgid "Your time: <span></span>"
+msgstr " وقت شما: <span></span>"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:574
+msgid "Time has elapsed"
+msgstr "زمان سپری شده است"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:578
+#, php-format
+msgid "You have reached %s of %s points, (%s)"
+msgstr "امتیاز شما %s از %s است ,  (%s)"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:586
+msgid "Average score"
+msgstr "میانگین امتیاز"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:593
+msgid "Your score"
+msgstr "امتیاز شما"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:642
+msgid "Restart quiz"
+msgstr "راه اندازی مجددی آزمون"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:644
+msgid "View questions"
+msgstr "نمایش سوالات آزمون"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:647
+msgid "Show leaderboard"
+msgstr "نمایش رهبران"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:704
+#, php-format
+msgid "Question %s of %s"
+msgstr "سوال  %s  از %s"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:707
+#: lib/view/WpProQuiz_View_QuestionEdit.php:110
+#: lib/view/WpProQuiz_View_Statistics.php:104
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:155
+msgid "Question"
+msgstr "سوال"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:711
+#, php-format
+msgid "%d points"
+msgstr "%d امتیاز"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:717
+#, php-format
+msgid "Category: %s"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:726
+#: lib/view/WpProQuiz_View_QuestionEdit.php:347
+msgid "Sort elements"
+msgstr "مرتب سازی عناصر"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:847
+#: lib/view/WpProQuiz_View_FrontQuiz.php:854
+#: lib/view/WpProQuiz_View_QuestionEdit.php:305
+#: lib/view/WpProQuiz_View_Statistics.php:106
+#: lib/view/WpProQuiz_View_Statistics.php:241
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:24
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:157
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:336
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:587
+msgid "Correct"
+msgstr "صحیح"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:865
+#: lib/view/WpProQuiz_View_FrontQuiz.php:872
+#: lib/view/WpProQuiz_View_Statistics.php:107
+#: lib/view/WpProQuiz_View_Statistics.php:242
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:25
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:158
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:588
+msgid "Incorrect"
+msgstr "غلط"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:893
+#: lib/view/WpProQuiz_View_FrontQuiz.php:904
+#: lib/view/WpProQuiz_View_QuestionEdit.php:154
+msgid "Hint"
+msgstr "اشاره"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:900
+#: lib/view/WpProQuiz_View_QuizEdit.php:413
+#: lib/view/WpProQuiz_View_QuizEdit.php:418
+msgid "Skip question"
+msgstr "نادیده گرفتن سوال"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:902
+msgid "Back"
+msgstr "مرحله قبل"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:906
+msgid "Check"
+msgstr "بررسی کردن"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:907
+msgid "Next"
+msgstr "مرحله بعد"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:920
+#: lib/view/WpProQuiz_View_FrontQuiz.php:921
+#, php-format
+msgid "Page %d"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:942
+msgid "Quiz is loading..."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontToplist.php:11
+#, php-format
+msgid "maximum of %s points"
+msgstr "بیشترین از %s امتیاز"
+
+#: lib/view/WpProQuiz_View_FrontToplist.php:14
+msgid "Pos."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_FrontToplist.php:18
+msgid "Result"
+msgstr "نتیجه"
+
+#: lib/view/WpProQuiz_View_FrontToplist.php:23
+msgid "Table is loading"
+msgstr "جدول در حال بارگذاری است"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:7
+#: lib/view/WpProQuiz_View_GobalSettings.php:12
+#: lib/view/WpProQuiz_View_GobalSettings.php:42
+#: lib/view/WpProQuiz_View_QuizOverall.php:48
+msgid "Global settings"
+msgstr "تنظیمات کلی"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:13
+msgid "E-Mail settings"
+msgstr "تنظیمات ایمیل"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:14
+#: lib/view/WpProQuiz_View_GobalSettings.php:371
+msgid "Settings in case of problems"
+msgstr "تنظیم در صورت بروز مشکل"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:30
+#: lib/view/WpProQuiz_View_QuestionEdit.php:263
+#: lib/view/WpProQuiz_View_QuizEdit.php:610
+#: lib/view/WpProQuiz_View_WpqSupport.php:45
+msgid "Save"
+msgstr "ذخیره کردن"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:48
+#: lib/view/WpProQuiz_View_GobalSettings.php:53
+msgid "Leaderboard time format"
+msgstr "فرمت زمان پایان آزمون"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:75
+msgid "Custom"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:79
+#: lib/view/WpProQuiz_View_GobalSettings.php:113
+msgid "Documentation on date and time formatting"
+msgstr "مستندات قالب بندی تاریخ و ساعت"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:87
+#: lib/view/WpProQuiz_View_GobalSettings.php:92
+msgid "Statistic time format"
+msgstr "فرمت زمان آمارگیر"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:96
+msgid "Select example:"
+msgstr "مثال را انتخاب کنید:"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:109
+msgid "Time format:"
+msgstr "فرمت زمان:"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:122
+#: lib/view/WpProQuiz_View_GobalSettings.php:127
+msgid "Category management"
+msgstr "مدیریت دسته ها"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:147
+#: lib/view/WpProQuiz_View_GobalSettings.php:152
+msgid "Quiz template management"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:172
+#: lib/view/WpProQuiz_View_GobalSettings.php:177
+msgid "Question template management"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:205
+#: lib/view/WpProQuiz_View_GobalSettings.php:501
+msgid "Admin e-mail settings"
+msgstr "تنظیم ایمیل مدیر"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:211
+msgid "To:"
+msgstr "به:"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:218
+msgid ""
+"Separate multiple email addresses with a comma, e.g. wp@test.com, test@test."
+"com"
+msgstr ""
+"برای جداسازی آدرس ایمیل از کاما استفاده کنید، به عنوان مثال wp@test.com، "
+"test@test.com"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:224
+#: lib/view/WpProQuiz_View_GobalSettings.php:296
+msgid "From:"
+msgstr "از:"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:237
+#: lib/view/WpProQuiz_View_GobalSettings.php:306
+msgid "Subject:"
+msgstr "موضوع:"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:247
+#: lib/view/WpProQuiz_View_GobalSettings.php:316
+msgid "HTML"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:251
+#: lib/view/WpProQuiz_View_GobalSettings.php:320
+#: lib/view/WpProQuiz_View_GobalSettings.php:386
+#: lib/view/WpProQuiz_View_GobalSettings.php:408
+#: lib/view/WpProQuiz_View_GobalSettings.php:460
+#: lib/view/WpProQuiz_View_QuizEdit.php:55
+#: lib/view/WpProQuiz_View_QuizEdit.php:74
+#: lib/view/WpProQuiz_View_QuizEdit.php:93
+#: lib/view/WpProQuiz_View_QuizEdit.php:112
+#: lib/view/WpProQuiz_View_QuizEdit.php:128
+#: lib/view/WpProQuiz_View_QuizEdit.php:144
+#: lib/view/WpProQuiz_View_QuizEdit.php:181
+#: lib/view/WpProQuiz_View_QuizEdit.php:221
+#: lib/view/WpProQuiz_View_QuizEdit.php:279
+#: lib/view/WpProQuiz_View_QuizEdit.php:308
+#: lib/view/WpProQuiz_View_QuizEdit.php:369
+#: lib/view/WpProQuiz_View_QuizEdit.php:471
+#: lib/view/WpProQuiz_View_QuizEdit.php:493
+#: lib/view/WpProQuiz_View_QuizEdit.php:512
+#: lib/view/WpProQuiz_View_QuizEdit.php:650
+#: lib/view/WpProQuiz_View_QuizEdit.php:675
+#: lib/view/WpProQuiz_View_QuizEdit.php:701
+#: lib/view/WpProQuiz_View_QuizEdit.php:727
+#: lib/view/WpProQuiz_View_QuizEdit.php:753
+#: lib/view/WpProQuiz_View_QuizEdit.php:795
+#: lib/view/WpProQuiz_View_QuizEdit.php:814
+#: lib/view/WpProQuiz_View_QuizEdit.php:839
+#: lib/view/WpProQuiz_View_QuizEdit.php:889
+#: lib/view/WpProQuiz_View_QuizEdit.php:909
+#: lib/view/WpProQuiz_View_QuizEdit.php:934
+#: lib/view/WpProQuiz_View_QuizEdit.php:959
+#: lib/view/WpProQuiz_View_QuizEdit.php:1001
+#: lib/view/WpProQuiz_View_QuizEdit.php:1034
+#: lib/view/WpProQuiz_View_QuizEdit.php:1048
+#: lib/view/WpProQuiz_View_QuizEdit.php:1096
+#: lib/view/WpProQuiz_View_QuizEdit.php:1178
+#: lib/view/WpProQuiz_View_QuizEdit.php:1179
+#: lib/view/WpProQuiz_View_QuizEdit.php:1180
+#: lib/view/WpProQuiz_View_QuizEdit.php:1181
+#: lib/view/WpProQuiz_View_QuizEdit.php:1284
+msgid "Activate"
+msgstr "فعال کردن"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:257
+#: lib/view/WpProQuiz_View_GobalSettings.php:326
+msgid "Message body:"
+msgstr "متن پیام:"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:265
+#: lib/view/WpProQuiz_View_GobalSettings.php:334
+msgid "Allowed variables"
+msgstr "متغیرهای مجاز"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:267
+#: lib/view/WpProQuiz_View_GobalSettings.php:336
+msgid "User-ID"
+msgstr "شماره کاربری"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:268
+#: lib/view/WpProQuiz_View_GobalSettings.php:337
+#: lib/view/WpProQuiz_View_Statistics.php:322
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:22
+msgid "Username"
+msgstr "نام کاربری"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:269
+#: lib/view/WpProQuiz_View_GobalSettings.php:338
+msgid "Quiz-Name"
+msgstr "نام آزمون"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:270
+#: lib/view/WpProQuiz_View_GobalSettings.php:339
+msgid "Result in precent"
+msgstr "نتیجه درصد"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:271
+#: lib/view/WpProQuiz_View_GobalSettings.php:340
+msgid "Reached points"
+msgstr "امتیاز رسید"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:272
+#: lib/view/WpProQuiz_View_GobalSettings.php:341
+msgid "IP-address of the user"
+msgstr "آدرس آی پی کاربر"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:273
+#: lib/view/WpProQuiz_View_GobalSettings.php:342
+msgid "Category-Overview"
+msgstr "بازنگری دسته"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:290
+#: lib/view/WpProQuiz_View_GobalSettings.php:502
+msgid "User e-mail settings"
+msgstr "تنظیمات ایمیل کاربر"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:357
+msgid "to activate"
+msgstr "فعال کردن"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:359
+msgid "not to activate"
+msgstr "فعال نیست"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:365
+#: lib/view/WpProQuiz_View_WpqSupport.php:50
+msgid "Please note"
+msgstr "لطفا یادداشت کنید"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:367
+msgid ""
+"These settings should only be set in cases of problems with Wp-Pro-Quiz."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:377
+#: lib/view/WpProQuiz_View_GobalSettings.php:382
+msgid "Automatically add [raw] shortcode"
+msgstr "اضافه کردن خودکار کد کوتاه [raw]"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:386
+#, php-format
+msgid "It is recommended %s this option on your system."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:389
+msgid ""
+"If this option is activated, a [raw] shortcode is automatically set around "
+"WpProQuiz shortcode ( [WpProQuiz X] ) into [raw] [WpProQuiz X] [/raw]"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:392
+#: lib/view/WpProQuiz_View_QuizOverall.php:42
+msgid ""
+"Own themes changes internal  order of filters, what causes the problems. "
+"With additional shortcode [raw] this is prevented."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:399
+#: lib/view/WpProQuiz_View_GobalSettings.php:404
+msgid "Do not load the Javascript-files in the footer"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:411
+msgid ""
+"Generally all WpProQuiz-Javascript files are loaded in the footer and only "
+"when they are really needed."
+msgstr ""
+"به طور کلی تمامی فایل های آزمون ساز جاوا اسکریپت در بالا و پایین صفحه و تنها "
+"زمانی که آنها واقعا مورد نیاز لود خواهد شد."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:414
+msgid "In very old Wordpress themes this can lead to problems."
+msgstr "در بسیاری از قالبهای قدیمی وردپرس می تواند بامشکل مواجه شود."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:417
+msgid ""
+"If you activate this option, all WpProQuiz-Javascript files are loaded in "
+"the header even if they are not needed."
+msgstr ""
+"اگر شما این گزینه را فعال کنید، تمامی فایل های آزمون ساز، جاوا اسکریپت در "
+"زمان نمایش حتی اگر لازم نباشد لود می شود."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:420
+#, php-format
+msgid ""
+"Anyone who wants to learn more about this topic should read through the "
+"following websites %s and %s."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:429
+#: lib/view/WpProQuiz_View_GobalSettings.php:434
+msgid "Touch Library"
+msgstr "دسترسی به کتابخانه"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:438
+#: lib/view/WpProQuiz_View_QuizEdit.php:403
+#: lib/view/WpProQuiz_View_QuizEdit.php:422
+#: lib/view/WpProQuiz_View_QuizEdit.php:441
+#: lib/view/WpProQuiz_View_QuizEdit.php:864
+msgid "Deactivate"
+msgstr "غیرفعال کردن"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:441
+msgid "In Version 0.13 a new Touch Library was added for mobile devices."
+msgstr ""
+"در نسخه 0.13 یک کتابخانه لمسی جدید برای دستگاه های تلفن همراه اضافه شده است."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:444
+msgid "If you have any problems with the Touch Library, please deactivate it."
+msgstr "اگر شما هر گونه مشکل با کتابخانه لمسی دارد، لطفا آن را غیر فعال کنید."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:451
+#: lib/view/WpProQuiz_View_GobalSettings.php:456
+msgid "jQuery support cors"
+msgstr "پشتیبانی از jQuery, cors"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:463
+msgid "Is required only in rare cases."
+msgstr "تنها در برخی موارد مورد نیاز است."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:466
+msgid "If you have problems with the front ajax, please activate it."
+msgstr "اگر شما دچار مشکل با آژاکس شدید،  لطفا آن را فعال کنید."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:469
+msgid "e.g. Domain with special characters in combination with IE"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:476
+#: lib/view/WpProQuiz_View_GobalSettings.php:481
+#: lib/view/WpProQuiz_View_GobalSettings.php:483
+msgid "Repair database"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:485
+msgid "No date will be deleted. Only WP-Pro-Quiz tables will be repaired."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_Import.php:21
+#: lib/view/WpProQuiz_View_QuizOverall.php:130
+#: lib/view/WpProQuiz_View_QuizOverall.php:153
+msgid "Import"
+msgstr "درون ریزی"
+
+#: lib/view/WpProQuiz_View_Import.php:25
+msgid "Error"
+msgstr "خطا"
+
+#: lib/view/WpProQuiz_View_Import.php:32
+msgid "Successfully"
+msgstr "موفقیت"
+
+#: lib/view/WpProQuiz_View_Import.php:34
+msgid "Import completed successfully"
+msgstr "درون ریزی با موفقیت کامل به پایان رسید"
+
+#: lib/view/WpProQuiz_View_Import.php:43
+msgid "Quiz name"
+msgstr "نام آزمون"
+
+#: lib/view/WpProQuiz_View_Import.php:69
+#: lib/view/WpProQuiz_View_QuizOverall.php:164
+msgid "Start import"
+msgstr "شروع درون ریزی"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:33
+#: lib/view/WpProQuiz_View_QuizEdit.php:29
+msgid "load template"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:40
+msgid "Title"
+msgstr "عنوان"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:40
+#: lib/view/WpProQuiz_View_QuestionEdit.php:80
+#: lib/view/WpProQuiz_View_QuestionEdit.php:125
+#: lib/view/WpProQuiz_View_QuestionEdit.php:142
+#: lib/view/WpProQuiz_View_QuestionEdit.php:154
+#: lib/view/WpProQuiz_View_QuizEdit.php:541
+#: lib/view/WpProQuiz_View_QuizEdit.php:984
+msgid "(optional)"
+msgstr "(اختیاری)"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:43
+msgid ""
+"The title is used for overview, it is not visible in quiz. If you leave the "
+"title field empty, a title will be generated."
+msgstr ""
+"عنوان برای مورد کلی استفاده میشودد، و در نمایش آزمون قابل رویت نیست. اگر شما "
+"عنوان را خالی بگذارید بصورت خودکار عنوانی تولید خواهد شد."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:49
+#: lib/view/WpProQuiz_View_QuestionEdit.php:110
+#: lib/view/WpProQuiz_View_QuestionEdit.php:211
+#: lib/view/WpProQuiz_View_QuizEdit.php:34
+#: lib/view/WpProQuiz_View_QuizEdit.php:530
+#: lib/view/WpProQuiz_View_QuizEdit.php:1165
+msgid "(required)"
+msgstr "(لازم)"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:53
+msgid "Points for this question (Standard is 1 point)"
+msgstr "امتیاز برای این سوال (استاندارد 1 امتیاز)"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:59
+msgid ""
+"This points will be rewarded, only if the user closes the question correctly."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:65
+msgid "Different points for each answer"
+msgstr "امتیاز مختلف برای هر پاسخ"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:68
+msgid ""
+"If you enable this option, you can enter different points for every answer."
+msgstr ""
+"اگر شما این گزینه را فعال کنید، شما می توانید امتیاز مختلف برای هر جواب را "
+"وارد کنید."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:74
+msgid "Show reached points in the correct- and incorrect message?"
+msgstr "نمایش امتیاز دریافت شده در پیام درست و نادرست؟"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:80
+#: lib/view/WpProQuiz_View_QuestionOverall.php:29
+#: lib/view/WpProQuiz_View_Statistics.php:124
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:174
+msgid "Category"
+msgstr "دسته بندی"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:83
+msgid ""
+"You can assign classify category for a question. Categories are e.g. visible "
+"in statistics function."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:86
+msgid "You can manage categories in global settings."
+msgstr "برای مدیریت دسته بندی از تنظیمات کلی استفاده کنید."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:90
+#: lib/view/WpProQuiz_View_QuestionEdit.php:100
+msgid "Create new category"
+msgstr "ایجاد دسته جدید"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:102
+msgid "Create"
+msgstr "ایجاد کردن"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:118
+msgid "Message with the correct / incorrect answer"
+msgstr "پیام با پاسخ درست / نادرست."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:120
+msgid "Deactivated in quiz settings."
+msgstr "در تنظیمات آزمون غیرفعال می باشد"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:125
+msgid "Message with the correct answer"
+msgstr "پیام با پاسخ درست"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:128
+msgid ""
+"This text will be visible if answered correctly. It can be used as "
+"explanation for complex questions. The message \"Right\" or \"Wrong\" is "
+"always displayed automatically."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:132
+msgid "Same text for correct- and incorrect-message?"
+msgstr "متن مشابه برای پیام درست و نادرست؟"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:142
+msgid "Message with the incorrect answer"
+msgstr "پیام پاسخ نادرست"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:145
+msgid ""
+"This text will be visible if answered incorrectly. It can be used as "
+"explanation for complex questions. The message \"Right\" or \"Wrong\" is "
+"always displayed automatically."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:157
+msgid "Here you can enter solution hint."
+msgstr "در این بخش می توانید راه حلی را ارائه دهید."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:161
+msgid "Activate hint for this question?"
+msgstr "فعال کردن راه حل برای این سوال؟"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:173
+msgid "Answer type"
+msgstr "نوع پاسخ"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:181
+msgid "Single choice"
+msgstr "انتخاب کردن تک گزینه ای"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:185
+msgid "Multiple choice"
+msgstr "انتخاب کردن چند گزینه ای"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:189
+msgid "\"Free\" choice"
+msgstr "\"رایگان \" انتخاب"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:193
+msgid "\"Sorting\" choice"
+msgstr "\"مرتب سازی\" انتخاب"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:197
+msgid "\"Matrix Sorting\" choice"
+msgstr "\"مرتب سازی ماتریکسی\" انتخاب"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:201
+msgid "Cloze"
+msgstr "همراهی"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:205
+msgid "Assessment"
+msgstr "ارزیابی"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:211
+msgid "Answers"
+msgstr "پاسخ"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:218
+msgid ""
+"Please sort the answers in right order with the \"Move\" - Button. The "
+"answers will be displayed randomly."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:223
+#: lib/view/WpProQuiz_View_QuestionEdit.php:229
+#: lib/view/WpProQuiz_View_QuestionEdit.php:251
+msgid "Add new answer"
+msgstr "اضافه کردن پاسخ جدید"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:233
+msgid ""
+"In this mode, not a list have to be sorted, but elements must be assigned to "
+"matching criterion."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:236
+msgid ""
+"You can create sort elements with empty criteria, which can't be assigned by "
+"user."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:240
+msgid "Percentage width of criteria table column:"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:245
+msgid ""
+"Allows adjustment of the left column's width, and the right column will auto-"
+"fill the rest of the available space. Increase this to allow accommodate "
+"longer criterion text. Defaults to 20%."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:266
+#: lib/view/WpProQuiz_View_QuizEdit.php:613
+msgid "template name"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:268
+#: lib/view/WpProQuiz_View_QuizEdit.php:615
+msgid "Create new template"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:276
+#: lib/view/WpProQuiz_View_QuizEdit.php:623
+msgid "Save as template"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:295
+#: lib/view/WpProQuiz_View_QuestionEdit.php:345
+#: lib/view/WpProQuiz_View_QuestionEdit.php:398
+#: lib/view/WpProQuiz_View_QuizEdit.php:40
+msgid "Options"
+msgstr "گزینه ها"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:296
+#: lib/view/WpProQuiz_View_QuestionEdit.php:399
+msgid "Answer"
+msgstr "پاسخ"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:311
+#: lib/view/WpProQuiz_View_QuestionEdit.php:370
+#: lib/view/WpProQuiz_View_QuestionEdit.php:376
+#: lib/view/WpProQuiz_View_QuestionEdit.php:408
+msgid "Allow HTML"
+msgstr "HTML اجازه می دهد"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:328
+#: lib/view/WpProQuiz_View_QuestionEdit.php:383
+#: lib/view/WpProQuiz_View_QuestionEdit.php:425
+msgid "Delete answer"
+msgstr "حذف پاسخ"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:329
+#: lib/view/WpProQuiz_View_QuestionEdit.php:384
+#: lib/view/WpProQuiz_View_QuestionEdit.php:426
+msgid "Add Media"
+msgstr "افزودن رسانه"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:330
+#: lib/view/WpProQuiz_View_QuestionEdit.php:385
+#: lib/view/WpProQuiz_View_QuestionEdit.php:427
+#: lib/view/WpProQuiz_View_QuestionOverall.php:59
+#: lib/view/WpProQuiz_View_QuizEdit.php:1392
+msgid "Move"
+msgstr "جابجایی"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:346
+msgid "Criterion"
+msgstr "معیار"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:438
+msgid ""
+"correct answers (one per line) (answers will be converted to lower case)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:451
+msgid ""
+"Enclose the searched words with { } e.g. \"I {play} soccer\". Capital and "
+"small letters will be ignored."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:454
+msgid ""
+"You can specify multiple options for a search word. Enclose the word with "
+"[ ] e.g. <span style=\"font-style: normal; letter-spacing: 2px;\"> \"I "
+"{[play][love][hate]} soccer\" </span>. In this case answers play, love OR "
+"hate are correct."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:457
+msgid ""
+"If mode \"Different points for every answer\" is activated, you can assign "
+"points with |POINTS. Otherwise 1 point will be awarded for every answer."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:460
+msgid ""
+"e.g. \"I {play} soccer, with a {ball|3}\" - \"play\" gives 1 point and \"ball"
+"\" 3 points."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:472
+msgid "Here you can create an assessment question."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:475
+msgid ""
+"Enclose a assesment with {}. The individual assessments are marked with []."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:477
+msgid "The number of options in the maximum score."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:480
+msgid "Examples:"
+msgstr "مثال:"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:482
+msgid "less true { [1] [2] [3] [4] [5] } more true"
+msgstr "کمترین { [1] [2] [3] [4] [5] } بیشترین"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:485
+#: lib/view/WpProQuiz_View_QuestionEdit.php:494
+#: lib/view/WpProQuiz_View_QuizEdit.php:378
+#: lib/view/WpProQuiz_View_QuizEdit.php:384
+#: lib/view/WpProQuiz_View_QuizEdit.php:656
+#: lib/view/WpProQuiz_View_QuizEdit.php:683
+#: lib/view/WpProQuiz_View_QuizEdit.php:709
+#: lib/view/WpProQuiz_View_QuizEdit.php:735
+#: lib/view/WpProQuiz_View_QuizEdit.php:761
+#: lib/view/WpProQuiz_View_QuizEdit.php:820
+#: lib/view/WpProQuiz_View_QuizEdit.php:845
+#: lib/view/WpProQuiz_View_QuizEdit.php:870
+#: lib/view/WpProQuiz_View_QuizEdit.php:915
+#: lib/view/WpProQuiz_View_QuizEdit.php:940
+#: lib/view/WpProQuiz_View_QuizEdit.php:965
+#: lib/view/WpProQuiz_View_QuizEdit.php:1137
+#: lib/view/WpProQuiz_View_QuizEdit.php:1147
+#: lib/view/WpProQuiz_View_QuizEdit.php:1200
+#: lib/view/WpProQuiz_View_QuizEdit.php:1208
+#: lib/view/WpProQuiz_View_QuizEdit.php:1216
+#: lib/view/WpProQuiz_View_QuizEdit.php:1224
+#: lib/view/WpProQuiz_View_QuizEdit.php:1307
+#: lib/view/WpProQuiz_View_QuizEdit.php:1319
+#: lib/view/WpProQuiz_View_QuizEdit.php:1326
+msgid "Demo"
+msgstr "آزمایشی"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:491
+msgid "less true { [a] [b] [c] } more true"
+msgstr "کمترین  { [a] [b] [c] }  بیشترین"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:510
+msgid "Single choice options"
+msgstr "انتخاب یک گزینه"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:513
+msgid ""
+"If \"Different points for each answer\" is activated, you can activate a "
+"special mode.<br> This changes the calculation of the points"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:517
+msgid "Different points - modus 2 activate"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:521
+msgid "Disables the distinction between correct and incorrect."
+msgstr "غیرفعال کردن فرق درست و نادرست"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:525
+msgid "disable correct and incorrent"
+msgstr "غیر فعال کردن درست و نادرست"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:529
+msgid "Explanation of points calculation"
+msgstr "محاسبه امتیاز و توضیحات آن"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:549
+#: lib/view/WpProQuiz_View_QuestionEdit.php:554
+msgid "\"Different points for each answer\" enabled"
+msgstr " فعال کردن\"امتیاز متفاوت برای هر پاسخ\""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:551
+msgid "\"Different points - mode 2\" disable"
+msgstr " غیر فعال کردن\"امتیاز متفاوت حالت 2\""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:556
+msgid "\"Different points - mode 2\" enabled"
+msgstr "فعال کردن\"امتیاز متفاوت حالت 2\""
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:17
+msgid "Questions sorted"
+msgstr "طبقه بندی کردن سوالات"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:78
+#: lib/view/WpProQuiz_View_Statistics.php:169
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:255
+msgid "Total"
+msgstr "کل"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:86
+msgid "Add question"
+msgstr "اضافه کردن سوال جدید"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:87
+msgid "Save order"
+msgstr "ذخیره سفارشی"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:88
+#: lib/view/WpProQuiz_View_QuestionOverall.php:93
+msgid "Copy questions from another Quiz"
+msgstr "کپی کردن سوالات از یک آزمون دیگر"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:94
+msgid ""
+"Here you can copy questions from another quiz into this quiz. (Multiple "
+"selection enabled)"
+msgstr ""
+"در اینجا شما می توانید سوالات از آزمون دیگر را به این آزمون کپی کنید. "
+"(انتخاب چندگانه فعال شده)"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:106
+msgid "Copy questions"
+msgstr "کپی کردن سوالات"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:34
+msgid "Quiz title"
+msgstr "عنوان آزمون"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:46
+msgid "Hide quiz title"
+msgstr "پنهان کردن عنوان آزمون"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:51
+msgid "Hide title"
+msgstr "پنهان کردن عنوان"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:58
+msgid "The title serves as quiz heading."
+msgstr "عنوان آزمون غیر فعال می شود."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:65
+#: lib/view/WpProQuiz_View_QuizEdit.php:70
+msgid "Hide \"Restart quiz\" button"
+msgstr "مخفی کردن دکمه \"راه اندازی مجدد آزمون \""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:77
+msgid "Hide the \"Restart quiz\" button in the Frontend."
+msgstr "پنهان کردن دکمه  \"راه اندازی مجدد مسابقه\" ."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:84
+#: lib/view/WpProQuiz_View_QuizEdit.php:89
+msgid "Hide \"View question\" button"
+msgstr "مخفی کردن دکمه \"مشاهده سوالات\" "
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:96
+msgid "Hide the \"View question\" button in the Frontend."
+msgstr "مخفی کردن دکمه \"نمایش سوال\""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:103
+#: lib/view/WpProQuiz_View_QuizEdit.php:108
+msgid "Display question randomly"
+msgstr "نمایش سوال به صورت تصادفی"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:119
+#: lib/view/WpProQuiz_View_QuizEdit.php:124
+msgid "Display answers randomly"
+msgstr "نمایش پاسخ به صورت تصادفی"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:135
+#: lib/view/WpProQuiz_View_QuizEdit.php:140
+msgid "Sort questions by category"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:147
+msgid ""
+"Also works in conjunction with the \"display randomly question\" option."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:162
+msgid "Seconds"
+msgstr "ثانیه"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:165
+msgid "0 = no limit"
+msgstr "0 = نامحدود"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:172
+#: lib/view/WpProQuiz_View_QuizEdit.php:177
+#: lib/view/WpProQuiz_View_QuizOverall.php:102
+msgid "Statistics"
+msgstr "آمار"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:184
+msgid ""
+"Statistics about right or wrong answers. Statistics will be saved by "
+"completed quiz, not after every question. The statistics is only visible "
+"over administration menu. (internal statistics)"
+msgstr ""
+"آمار در مورد پاسخ پاسخ آزمونها می باشد. آمار بعد از اینکه آزمون به پایان "
+"رسید قابل رویت برای مدیر سایت از بخش مدیریت می باشد. (آمار داخلی)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:191
+#: lib/view/WpProQuiz_View_QuizEdit.php:196
+msgid "Statistics IP-lock"
+msgstr "قفل آمار آی پی"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:200
+msgid "in minutes (recommended 1440 minutes = 1 day)"
+msgstr "در عرض چند دقیقه ) توصیه میشود  1440 دقیقه = 1 روز)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:203
+msgid ""
+"Protect the statistics from spam. Result will only be saved every X minutes "
+"from same IP. (0 = deactivated)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:210
+#: lib/view/WpProQuiz_View_QuizEdit.php:216
+msgid "Execute quiz only once"
+msgstr "اجرای آزمون فقط یکبار"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:224
+msgid ""
+"If you activate this option, the user can complete the quiz only once. "
+"Afterwards the quiz is blocked for this user."
+msgstr ""
+"اگر شما این گزینه را فعال کنید، کاربر می تواند فقط یک بار آزمون را کامل "
+"کند.  پس از آن آزمون برای این کاربر مسدود خواهد شد."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:228
+msgid "This option applies to:"
+msgstr "این گزینه شامل:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:236
+#: lib/view/WpProQuiz_View_QuizEdit.php:1012
+#: lib/view/WpProQuiz_View_StatisticsNew.php:102
+msgid "all users"
+msgstr "همه کاربران"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:240
+#: lib/view/WpProQuiz_View_QuizEdit.php:1016
+msgid "registered useres only"
+msgstr "فقط کاربران ثبت نام شده"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:244
+#: lib/view/WpProQuiz_View_QuizEdit.php:1020
+msgid "anonymous users only"
+msgstr "تنها کاربران ناشناس"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:250
+msgid "user identification by cookie"
+msgstr "شناسایی کاربر توسط کوکی"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:253
+msgid ""
+"If you activate this option, a cookie is set additionally for unregistrated "
+"(anonymous) users. This ensures a longer assignment of the user than the "
+"simple assignment by the IP address."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:258
+msgid "Reset the user identification"
+msgstr "تنظیم مجدد شناسایی کاربر"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:259
+msgid "User identification has been reset."
+msgstr "تنظیم مجدد شناسایی کاربر فعال شد."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:261
+msgid "Resets user identification for all users."
+msgstr "تنظیم مجدد شناسایی کاربر برای همه کاربرها."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:270
+#: lib/view/WpProQuiz_View_QuizEdit.php:275
+msgid "Show only specific number of questions"
+msgstr "نمایش تعداد خاصی از سوالات"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:282
+msgid ""
+"If you enable this option, maximum number of displayed questions will be X "
+"from X questions. (The output of questions is random)"
+msgstr ""
+"اگر شما این گزینه را فعال کنید، حداکثر تعداد سوالات نمایش داده خواهد شد X "
+"from X سوال. (خروجی سوالات تصادفی است)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:286
+msgid "How many questions should be displayed simultaneously:"
+msgstr "چگونه بسیاری از سوالات به طور همزمان نمایش داده شوند:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:291
+msgid "in percent"
+msgstr "درصد"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:299
+#: lib/view/WpProQuiz_View_QuizEdit.php:304
+msgid "Prerequisites"
+msgstr "پیش نیازها"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:311
+msgid ""
+"If you enable this option, you can choose quiz, which user have to finish "
+"before he can start this quiz."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:314
+msgid ""
+"In all selected quizzes statistic function have to be active. If it is not "
+"it will be activated automatically."
+msgstr ""
+"در تمام انتخاب آزمونها تابع آماری فعال باشد. اگر فعال نیست آن را به طور "
+"خودکار فعال  شود."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:319
+msgid "Quiz"
+msgstr "آزمون"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:321
+msgid "Prerequisites (This quiz have to be finished)"
+msgstr "شرط لازم (این آزمون  به پایان رسید)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:360
+#: lib/view/WpProQuiz_View_QuizEdit.php:365
+#: lib/view/WpProQuiz_View_QuizEdit.php:378
+msgid "Question overview"
+msgstr "مرور کل سوال"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:372
+msgid ""
+"Add at the top of the quiz a question overview, which allows easy "
+"navigation. Additional questions can be marked \"to review\"."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:375
+msgid "Additional quiz overview will be displayed, before quiz is finished."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:406
+msgid ""
+"If you enalbe this option, no quiz overview will be displayed, before "
+"finishing quiz."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:425
+msgid ""
+"If you enable this option, user won't be able to skip question. (only in "
+"\"Overview -> next\" mode). User still will be able to navigate over "
+"\"Question-Overview\""
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:432
+#: lib/view/WpProQuiz_View_QuizEdit.php:437
+msgid "Admin e-mail notification"
+msgstr "آگاه کردن مدیر از طریق ایمیل"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:445
+msgid "for registered users only"
+msgstr "فقط کاربران ثبت نام شده"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:449
+msgid "for all users"
+msgstr "برای همه کاربران"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:452
+msgid ""
+"If you enable this option, you will be informed if a user completes this "
+"quiz."
+msgstr ""
+"اگر شما این گزینه را فعال کنید، بعد از اتمام آزمون کاربر به شما اطلاع داده "
+"می شود."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:455
+#: lib/view/WpProQuiz_View_QuizEdit.php:477
+msgid "E-Mail settings can be edited in global settings."
+msgstr "تنظیمات ایمیل را می توان از بخش تنظیمات کلی ویرایش کرد."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:462
+#: lib/view/WpProQuiz_View_QuizEdit.php:467
+msgid "User e-mail notification"
+msgstr "آگاه شدن کاربر از طریق ایمیل"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:474
+msgid ""
+"If you enable this option, an email is sent with his quiz result to the "
+"user. (only registered users)"
+msgstr ""
+"اگر شما این گزینه را فعال کنید، یک ایمیل با نتیجه آزمون به کاربر فرستاده می "
+"شود. (تنها مخصوص کاربران عضو شده)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:484
+#: lib/view/WpProQuiz_View_QuizEdit.php:489
+msgid "Autostart"
+msgstr "شروع خودکار"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:496
+msgid ""
+"If you enable this option, the quiz will start automatically after the page "
+"is loaded."
+msgstr ""
+"اگر شما این گزینه را فعال کنید، این مسابقه به طور خودکار شروع خواهد شد بعد "
+"از لود صفحه آزمون."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:503
+#: lib/view/WpProQuiz_View_QuizEdit.php:508
+msgid "Only registered users are allowed to start the quiz"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:515
+msgid ""
+"If you enable this option, only registered users allowed start the quiz."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:530
+msgid "Quiz description"
+msgstr "توضیحات آزمون"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:533
+msgid "This text will be displayed before start of the quiz."
+msgstr "این متن قبل از شروع مسابقه، نمایش داده خواهد شد."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:541
+msgid "Results text"
+msgstr "نتیجه متن"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:544
+msgid ""
+"This text will be displayed at the end of the quiz (in results). (this text "
+"is optional)"
+msgstr ""
+"این متن در پایان این آزمون در نتایج نمایش داده می شود. (این متن اختیاری است)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:548
+msgid "Activate graduation"
+msgstr "فعال کردن فارغ التحصیلی"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:554
+msgid "Hint:"
+msgstr "نکته:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:556
+msgid "Maximal 15 levels"
+msgstr "حداکثر 15 مرحله"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:558
+#, php-format
+msgid ""
+"Percentages refer to the total score of the quiz. (Current total %d points "
+"in %d questions."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:561
+msgid "Values can also be mixed up"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:562
+msgid "10,15% or 10.15% allowed (max. two digits after the decimal point)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:578
+#: lib/view/WpProQuiz_View_QuizEdit.php:589
+msgid "from:"
+msgstr "از:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:578
+#: lib/view/WpProQuiz_View_QuizEdit.php:589
+msgid "percent"
+msgstr "درصد"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:578
+#: lib/view/WpProQuiz_View_QuizEdit.php:589
+#, php-format
+msgid ""
+"(Will be displayed, when result-percent is >= <span class=\"resultProzent\">"
+"%s</span>%%)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:579
+#: lib/view/WpProQuiz_View_QuizEdit.php:590
+msgid "Delete graduation"
+msgstr "حذف فارغ التحصیلی"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:597
+msgid "Add graduation"
+msgstr "اضافه کردن فارغ التحصیلی"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:635
+msgid "Result-Options"
+msgstr "نتیجه - گزینه"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:641
+#: lib/view/WpProQuiz_View_QuizEdit.php:646
+msgid "Show average points"
+msgstr "نمایش متوسط امتیاز"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:653
+msgid "Statistics-function must be enabled."
+msgstr "آمار عملکرد باید فعال باشد."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:666
+#: lib/view/WpProQuiz_View_QuizEdit.php:671
+msgid "Show category score"
+msgstr "نمایش نمره دسته "
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:678
+msgid ""
+"If you enable this option, the results of each category is displayed on the "
+"results page."
+msgstr ""
+"اگر شما این گزینه را فعال کنید، نتایج هر بخش در صفحه نتایج نمایش داده می شود."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:692
+#: lib/view/WpProQuiz_View_QuizEdit.php:697
+msgid "Hide correct questions - display"
+msgstr "پنهان کردن سوالات درست - نمایش"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:704
+msgid ""
+"If you select this option, no longer the number of correctly answered "
+"questions are displayed on the results page."
+msgstr ""
+"اگر شما این گزینه را انتخاب کنید، تعدادی از سوالات به درستی پاسخ داده شده در "
+"صفحه نتایج نمایش داده می شود."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:718
+#: lib/view/WpProQuiz_View_QuizEdit.php:723
+msgid "Hide quiz time - display"
+msgstr "پنهان کردن زمان مسابقه - صفحه نمایش"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:730
+msgid ""
+"If you enable this option, the time for finishing the quiz won't be "
+"displayed on the results page anymore."
+msgstr ""
+"اگر شما این گزینه را فعال کنید، زمان به پایان رسیدن آزمون در صفحه نتایج "
+"نمایش داده خواهد شد."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:744
+#: lib/view/WpProQuiz_View_QuizEdit.php:749
+msgid "Hide score - display"
+msgstr "پنهان کردن نمره - نمایش"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:756
+msgid ""
+"If you enable this option, final score won't be displayed on the results "
+"page anymore."
+msgstr ""
+"اگر شما این گزینه را فعال کنید، نمره نهایی در صفحه نتایج نمایش داده خواهد شد."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:780
+msgid "Question-Options"
+msgstr "تنظیمات سوالات"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:786
+#: lib/view/WpProQuiz_View_QuizEdit.php:791
+msgid "Show points"
+msgstr "نمایش امتیازات"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:798
+msgid "Shows in quiz, how many points are reachable for respective question."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:805
+#: lib/view/WpProQuiz_View_QuizEdit.php:810
+msgid "Number answers"
+msgstr "پاسخ شماره"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:817
+msgid ""
+"If this option is activated, all answers are numbered (only single and "
+"multiple choice)"
+msgstr ""
+"اگر این گزینه فعال باشد، تمام پاسخ شماره فعال خواهد بود (تنها انتخاب تک و "
+"چندگانه)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:830
+#: lib/view/WpProQuiz_View_QuizEdit.php:835
+msgid "Hide correct- and incorrect message"
+msgstr "مخفی کردن پیام درست و نادرست"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:842
+msgid ""
+"If you enable this option, no correct- or incorrect message will be "
+"displayed."
+msgstr ""
+"اگر شما این گزینه را فعال کنید، پیام درست یا نادرست نمایش داده نخواهد شد."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:855
+#: lib/view/WpProQuiz_View_QuizEdit.php:860
+msgid "Correct and incorrect answer mark"
+msgstr "علامت پاسخ درست و نادرست"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:867
+msgid ""
+"If you enable this option, answers won't be color highlighted as correct or "
+"incorrect. "
+msgstr ""
+"اگر شما این گزینه را فعال کنید، پاسخ درست یا نادرست بصورت رنگی نمایش داده "
+"خواهد شد."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:880
+#: lib/view/WpProQuiz_View_QuizEdit.php:885
+msgid "Force user to answer each question"
+msgstr "قدرت کاربر برای پاسخ به هر سوال"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:892
+msgid "If you enable this option, the user is forced to answer each question."
+msgstr ""
+"اگر شما این گزینه را فعال کنید، کاربر مجبور به پاسخ دادن به هر سوال می شود."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:893
+msgid ""
+"If the option \"Question overview\" is activated, this notification will "
+"appear after end of the quiz, otherwise after each question."
+msgstr "اگر این گزینه فعال شود پس پایان هر آزمون سوالات آزمون ظاهر می شود."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:900
+#: lib/view/WpProQuiz_View_QuizEdit.php:905
+msgid "Hide question position overview"
+msgstr "مخفی کردن موقعیت سوالات"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:912
+msgid "If you enable this option, the question position overview is hidden."
+msgstr ""
+"اگر شما این گزینه را فعال کنید،موقعیت نمایش و مرور سوالات مخفی می ماند."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:925
+#: lib/view/WpProQuiz_View_QuizEdit.php:930
+msgid "Hide question numbering"
+msgstr "مخفی کردن شماره سوال"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:937
+msgid "If you enable this option, the question numbering is hidden."
+msgstr "اگر شما این گزینه را فعال کنید، شماره سوالات پنهان میشود."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:950
+#: lib/view/WpProQuiz_View_QuizEdit.php:955
+msgid "Display category"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:962
+msgid "If you enable this option, category will be displayed in the question."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:987
+msgid ""
+"The leaderboard allows users to enter results in public list and to share "
+"the result this way."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:990
+msgid "The leaderboard works independent from internal statistics function."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1007
+msgid "Who can sign up to the list"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1023
+msgid ""
+"Not registered users have to enter name and e-mail (e-mail won't be "
+"displayed)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1029
+msgid "insert automatically"
+msgstr "وارد کردن بطور خودکار"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1037
+msgid ""
+"If you enable this option, logged in users will be automatically entered "
+"into leaderboard"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1043
+msgid "display captcha"
+msgstr "نمایش کپچا"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1051
+msgid ""
+"If you enable this option, additional captcha will be displayed for users "
+"who are not registered."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1054
+msgid "This option requires additional plugin:"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1059
+msgid "Plugin has been detected."
+msgstr "پلاگین تشخیص داده شده است."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1063
+msgid "Plugin is not installed."
+msgstr "پلاگین نصب نشده است."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1071
+msgid "Sort list by"
+msgstr "مرتب سازی بر اساس لیست"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1090
+msgid "Users can apply multiple times"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1101
+msgid "User can apply after:"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1103
+msgid "minute"
+msgstr "دقیقه"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1110
+msgid "How many entries should be displayed"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1116
+msgid "Entries"
+msgstr "نوشته"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1123
+msgid "Automatically display leaderboard in quiz result"
+msgstr "نمایش نتیجه آزمون بصورت خودکار در زمان پایان مسابقه"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1127
+msgid "Where should leaderboard be displayed:"
+msgstr "از کجا باید رهبران نمایش داده می شود:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1130
+msgid "don't display"
+msgstr "قابل نمایش نمی باشد"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1134
+msgid "below the \"result text\""
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1144
+msgid "in a button"
+msgstr "در یک دکمه"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1165
+msgid "Quiz-Mode"
+msgstr "حالت آزمون"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1170
+msgid "Normal"
+msgstr "عادی"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1171
+msgid "Normal + Back-Button"
+msgstr "عادی + دکمه بازگشت"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1172
+msgid "Check -> continue"
+msgstr "بررسی کنید -> ادامه"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1173
+msgid "Questions below each other"
+msgstr "سوالات زیر همدیگر"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1185
+msgid ""
+"Displays all questions sequentially, \"right\" or \"false\" will be "
+"displayed at the end of the quiz."
+msgstr ""
+"نمایش تمام سوالات بصورت پی در پی و نتیجه صحیح یا غلط بودن در پایان آزمون "
+"نمایش داده خواهد شد."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1188
+msgid "Allows to use the back button in a question."
+msgstr ""
+"اجازه می دهد کاربر با استفاده از دکمه بازگشت پاسخ انتخابی را تغییر دهد."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1191
+msgid "Shows \"right or wrong\" after each question."
+msgstr "صحیح یا غلط بودن را بعد از جواب دادن به هر سوال نمایش داده می شود."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1194
+msgid ""
+"If this option is activated, all answers are displayed below each other, i."
+"e. all questions are on a single page."
+msgstr ""
+"اگر این گزینه فعال باشد، تمام پاسخ ها در زیر یکدیگر نمایش داده می شوند، یعنی "
+"تمام سوالات در یک صفحه خواهند بود."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1236
+msgid "How many questions to be displayed on a page:"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1239
+msgid "(0 = All on one page)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1261
+#: lib/view/WpProQuiz_View_Statistics.php:41
+#: lib/view/WpProQuiz_View_Statistics.php:364
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:520
+msgid "Custom fields"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1265
+msgid ""
+"You can create custom fields, e.g. to request the name or the e-mail address "
+"of the users."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1268
+msgid "The statistic function have to be enabled."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1275
+#: lib/view/WpProQuiz_View_QuizEdit.php:1280
+msgid "Custom fields enable"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1287
+msgid "If you enable this option, custom fields are enabled."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1294
+#: lib/view/WpProQuiz_View_QuizEdit.php:1299
+msgid "Display position"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1301
+msgid "Where should the fileds be displayed:"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1304
+msgid "On the quiz startpage"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1316
+msgid "At the end of the quiz (before the quiz result)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1343
+msgid "Field name"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1345
+msgid "Required?"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1365
+msgid "Text"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1366
+msgid "Textarea"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1367
+msgid "Checkbox"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1368
+msgid "Drop-Down menu"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1369
+msgid "Radio"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1370
+msgid "Number"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1371
+msgid "Email"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1372
+msgid "Yes/No"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1373
+#: lib/view/WpProQuiz_View_Statistics.php:323
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:23
+msgid "Date"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1376
+msgid "Edit list"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1379
+msgid "One entry per line"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1384
+msgid "OK"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1403
+msgid "Add field"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:32
+msgid "Quiz overview"
+msgstr "مرور کردن آزمون"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:34
+msgid "In case of problems"
+msgstr "در صورت بروز مشکل"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:36
+msgid "If quiz doesn't work in front-end, please try following:"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:46
+msgid "Style Manager"
+msgstr "سبک مدیریت"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:50
+#: lib/view/WpProQuiz_View_WpqSupport.php:8
+msgid "Support WP-Pro-Quiz"
+msgstr "پشتیبان  WP-Pro-Quiz"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:67
+msgid "ID"
+msgstr "شماره"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:69
+msgid "Shortcode"
+msgstr "کد کوتاه"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:70
+msgid "Shortcode-Leaderboard"
+msgstr "کد کوتاه قهرمانی"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:98
+msgid "Preview"
+msgstr "نمایش"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:128
+msgid "Add quiz"
+msgstr "افزودن آزمون"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:132
+#: lib/view/WpProQuiz_View_QuizOverall.php:137
+msgid "Export"
+msgstr "برون بری"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:138
+msgid ""
+"Choose the respective question, which you would like to export and press on "
+"\"Start export\""
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:143
+msgid "Format:"
+msgstr "نوع:"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:144
+msgid "*.wpq"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:145
+msgid "or"
+msgstr "یا"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:146
+msgid "*.xml"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:148
+msgid "Start export"
+msgstr "آغاز برون بری"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:154
+msgid "Import only *.wpq or *.xml files from known and trusted sources."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:162
+#, php-format
+msgid "Maximal %d MiB"
+msgstr "حداکثر %d MiB"
+
+#: lib/view/WpProQuiz_View_Statistics.php:28
+#: lib/view/WpProQuiz_View_StatisticsNew.php:56
+#, php-format
+msgid "Quiz: %s - Statistics"
+msgstr "آزمون:  %s - آمار"
+
+#: lib/view/WpProQuiz_View_Statistics.php:33
+#: lib/view/WpProQuiz_View_StatisticsNew.php:61
+msgid "Stats not enabled"
+msgstr "آمار فعال نیست"
+
+#: lib/view/WpProQuiz_View_Statistics.php:34
+#: lib/view/WpProQuiz_View_StatisticsNew.php:62
+msgid "Activate statistics"
+msgstr "فعال کردن آمار"
+
+#: lib/view/WpProQuiz_View_Statistics.php:39
+msgid "Users"
+msgstr "کاربران"
+
+#: lib/view/WpProQuiz_View_Statistics.php:40
+#: lib/view/WpProQuiz_View_StatisticsNew.php:68
+msgid "Overview"
+msgstr "بازبینی"
+
+#: lib/view/WpProQuiz_View_Statistics.php:68
+msgid "Please select user name:"
+msgstr "لطفا نام کاربری را انتخاب کنید:"
+
+#: lib/view/WpProQuiz_View_Statistics.php:72
+msgid "Select a test:"
+msgstr "انتخاب یک آزمون:"
+
+#: lib/view/WpProQuiz_View_Statistics.php:82
+msgid "Anonymous user"
+msgstr "کاربر ناشناس"
+
+#: lib/view/WpProQuiz_View_Statistics.php:91
+msgid "average"
+msgstr "میانگین"
+
+#: lib/view/WpProQuiz_View_Statistics.php:108
+#: lib/view/WpProQuiz_View_Statistics.php:243
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:159
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:589
+msgid "Hints used"
+msgstr "نکات مورد استفاده"
+
+#: lib/view/WpProQuiz_View_Statistics.php:109
+#: lib/view/WpProQuiz_View_Statistics.php:244
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:160
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:590
+msgid "Time"
+msgstr "زمان"
+
+#: lib/view/WpProQuiz_View_Statistics.php:110
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:161
+msgid "Points scored"
+msgstr "حساب کردن امتیاز"
+
+#: lib/view/WpProQuiz_View_Statistics.php:148
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:223
+msgid "Sub-Total: "
+msgstr "زیر - کل:"
+
+#: lib/view/WpProQuiz_View_Statistics.php:183
+#: lib/view/WpProQuiz_View_Statistics.php:268
+#: lib/view/WpProQuiz_View_Statistics.php:343
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:269
+#: lib/view/WpProQuiz_View_StatisticsNew.php:163
+#: lib/view/WpProQuiz_View_StatisticsNew.php:247
+msgid "Refresh"
+msgstr "به روز رسانی"
+
+#: lib/view/WpProQuiz_View_Statistics.php:187
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:273
+msgid "Reset statistics"
+msgstr "تنظیم مجدد امار"
+
+#: lib/view/WpProQuiz_View_Statistics.php:188
+msgid "Reset user statistics"
+msgstr "تنظیم مجدد آمار کاربر"
+
+#: lib/view/WpProQuiz_View_Statistics.php:189
+#: lib/view/WpProQuiz_View_Statistics.php:270
+#: lib/view/WpProQuiz_View_Statistics.php:345
+#: lib/view/WpProQuiz_View_StatisticsNew.php:165
+#: lib/view/WpProQuiz_View_StatisticsNew.php:249
+msgid "Reset entire statistic"
+msgstr "تنظیم مجدد کل آمار"
+
+#: lib/view/WpProQuiz_View_Statistics.php:214
+#: lib/view/WpProQuiz_View_StatisticsNew.php:206
+msgid "Show only users, who solved the quiz:"
+msgstr "فقط نمایش کاربرانی، که مسابقه را حل کرده اند:"
+
+#: lib/view/WpProQuiz_View_Statistics.php:293
+#: lib/view/WpProQuiz_View_StatisticsNew.php:99
+msgid "Which users should be displayed:"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_Statistics.php:295
+msgid "all"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_Statistics.php:296
+#: lib/view/WpProQuiz_View_StatisticsNew.php:103
+msgid "only registered users"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_Statistics.php:297
+#: lib/view/WpProQuiz_View_StatisticsNew.php:104
+msgid "only anonymous users"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:138
+#, php-format
+msgid "User statistics: %s"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:546
+msgid "ticked"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:546
+msgid "not ticked"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_StatisticsNew.php:67
+msgid "History"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_StatisticsNew.php:101
+msgid "special filter"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_StatisticsNew.php:136
+#, php-format
+msgid "Search to date limit from %s to %s"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_StyleManager.php:15
+msgid "Front"
+msgstr "جلو"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:10
+msgid "Donate"
+msgstr "کمک کردن"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:20
+msgid "WP-Pro-Quiz is small but nice free quiz plugin for WordPress."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:21
+msgid ""
+"I try to implement all wishes as fast as possible and help with problems."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:22
+msgid ""
+"Your donations can help to ensure that the project continues to remain free."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:25
+msgid "Translate WP-Pro-Quiz"
+msgstr "ترجمه آزمون ساز"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:27
+msgid "You need:"
+msgstr "شما نیاز دارید:"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:30
+msgid "Latest POT file"
+msgstr "جدیدترین فایل POT"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:35
+msgid "Open PoEdit"
+msgstr "بازکردن  PoEdit"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:36
+msgid "File - New catalogue from POT file..."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:37
+msgid "Choose wp-pro-quiz.pot"
+msgstr "انتخاب wp-pro-quiz.pot"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:38
+msgid "Set \"Translation properties\""
+msgstr ""
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:39
+msgid "Save PO file - with the name \"wp-pro-qioz-de_DE.po\""
+msgstr ""
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:41
+msgid "replace de_DE with your countries short code (e.g. en_US, nl_NL...)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:44
+msgid "Translate"
+msgstr "ترجمه"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:46
+msgid ""
+"Upload generated *.mo file to your server, to /wp-content/plugins/wp-pro-"
+"quiz/languages"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:47
+msgid "Finished"
+msgstr "پایان"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:51
+msgid ""
+"You can translate WP-Pro-Quiz from existing to existing language (e.g. "
+"english to english) e.g. to rename buttons."
+msgstr ""
+
+#~ msgid "The statistics function is not available in this option."
+#~ msgstr "آمارگیر در این گزینه در دسترس نیست."

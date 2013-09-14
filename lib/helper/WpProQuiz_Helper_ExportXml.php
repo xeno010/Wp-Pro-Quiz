@@ -18,6 +18,7 @@ class WpProQuiz_Helper_ExportXml {
 		
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
+		$formMapper = new WpProQuiz_Model_FormMapper();
 
 		foreach($ids as $id) {
 			$quizModel = $quizMapper->fetch($id);
@@ -26,8 +27,12 @@ class WpProQuiz_Helper_ExportXml {
 				continue;
 			
 			$questionModel = $questionMapper->fetchAll($quizModel->getId());
+			$forms = array();
 			
-			$quizElement = $this->getQuizElement($dom, $quizModel);
+			if($quizModel->isFormActivated())
+				$forms = $formMapper->fetch($quizModel->getId());
+			
+			$quizElement = $this->getQuizElement($dom, $quizModel, $forms);
 			
 			$quizElement->appendChild($questionsElement = $dom->createElement('questions'));
 			
@@ -48,7 +53,7 @@ class WpProQuiz_Helper_ExportXml {
 	 * @param DOMDocument $dom
 	 * @param WpProQuiz_Model_Quiz $quiz
 	 */
-	private function getQuizElement($dom, $quiz) {
+	private function getQuizElement($dom, $quiz, $forms) {
 		$quizElement = $dom->createElement('quiz');
 		
 		$title = $dom->createElement('title');
@@ -125,7 +130,6 @@ class WpProQuiz_Helper_ExportXml {
 		
 		$quizElement->appendChild($dom->createElement('showAverageResult', $this->booleanToTrueOrFalse($quiz->isShowAverageResult())));
 		$quizElement->appendChild($dom->createElement('prerequisite', $this->booleanToTrueOrFalse($quiz->isPrerequisite())));
-		$quizElement->appendChild($dom->createElement('quizModus', $quiz->getQuizModus()));
 		$quizElement->appendChild($dom->createElement('showReviewQuestion', $this->booleanToTrueOrFalse($quiz->isShowReviewQuestion())));
 		$quizElement->appendChild($dom->createElement('quizSummaryHide', $this->booleanToTrueOrFalse($quiz->isQuizSummaryHide())));
 		$quizElement->appendChild($dom->createElement('skipQuestionDisabled', $this->booleanToTrueOrFalse($quiz->isSkipQuestionDisabled())));
@@ -139,6 +143,41 @@ class WpProQuiz_Helper_ExportXml {
 		$quizElement->appendChild($dom->createElement('forcingQuestionSolve', $this->booleanToTrueOrFalse($quiz->isForcingQuestionSolve())));
 		$quizElement->appendChild($dom->createElement('hideQuestionPositionOverview', $this->booleanToTrueOrFalse($quiz->isHideQuestionPositionOverview())));
 		$quizElement->appendChild($dom->createElement('hideQuestionNumbering', $this->booleanToTrueOrFalse($quiz->isHideQuestionNumbering())));
+		
+		//0.27
+		$quizElement->appendChild($dom->createElement('sortCategories', $this->booleanToTrueOrFalse($quiz->isSortCategories())));
+		$quizElement->appendChild($dom->createElement('showCategory', $this->booleanToTrueOrFalse($quiz->isShowCategory())));
+		$quizModus = $dom->createElement('quizModus', $quiz->getQuizModus());
+		$quizModus->setAttribute('questionsPerPage', $quiz->getQuestionsPerPage());
+		$quizElement->appendChild($quizModus);
+		
+		$quizElement->appendChild($dom->createElement('startOnlyRegisteredUser', $this->booleanToTrueOrFalse($quiz->isStartOnlyRegisteredUser())));
+		
+		$formsElement = $dom->createElement('forms');
+		$formsElement->setAttribute('activated', $this->booleanToTrueOrFalse($quiz->isFormActivated()));
+		$formsElement->setAttribute('position', $quiz->getFormShowPosition());
+		
+		foreach($forms as $form) {
+			/** @var WpProQuiz_Model_Form $form  **/
+			
+			$formElement = $dom->createElement('form');
+			$formElement->setAttribute('type', $form->getType());
+			$formElement->setAttribute('required', $this->booleanToTrueOrFalse($form->isRequired()));
+			$formElement->setAttribute('fieldname', $form->getFieldname());
+			
+			if($form->getData() !== null) {
+				$data = $form->getData();
+				
+				foreach($data as $d) {
+					$formDataElement = $dom->createElement('formData', $d);
+					$formElement->appendChild($formDataElement);
+				}
+			}
+			
+			$formsElement->appendChild($formElement);
+		}
+		
+		$quizElement->appendChild($formsElement);
 		
 		return $quizElement;
 	}

@@ -8,6 +8,7 @@ class WpProQuiz_Model_Statistic extends WpProQuiz_Model_Model {
 	protected $_hintCount = 0;
 	protected $_points = 0;
 	protected $_questionTime = 0;
+	protected $_answerData = null;
 
 	public function setStatisticRefId($_statisticRefId) {
 		$this->_statisticRefId = (int)$_statisticRefId;
@@ -72,4 +73,12 @@ class WpProQuiz_Model_Statistic extends WpProQuiz_Model_Model {
 		return $this->_questionTime;
 	}
 
+	public function setAnswerData($_answerData) {
+		$this->_answerData = $_answerData;
+		return $this;
+	}
+	
+	public function getAnswerData() {
+		return $this->_answerData;
+	}
 }

@@ -15,7 +15,7 @@ class WpProQuiz_Helper_ImportXml {
 	}
 	
 	public function setImportString($str) {
-		$this->_content = base64_decode($str);
+		$this->_content = gzuncompress(base64_decode($str));
 		
 		return true;
 	}
@@ -33,7 +33,7 @@ class WpProQuiz_Helper_ImportXml {
 	
 	public function getImportData() {
 		$xml = @simplexml_load_string($this->_content, 'SimpleXMLElement', LIBXML_NOCDATA);
-		$a = array('master' => array(), 'question' => array());
+		$a = array('master' => array(), 'question' => array(), 'forms' => array());
 		$i = 0;
 		
 		if($xml === false) {
@@ -49,6 +49,12 @@ class WpProQuiz_Helper_ImportXml {
 					$quizModel->setId($i++);
 					
 					$a['master'][] = $quizModel;
+					
+					if($quiz->forms->form) {
+						foreach ($quiz->forms->form as $form) {
+							$a['forms'][$quizModel->getId()][] = $this->createFormModel($form);
+						}
+					}
 					
 					if(isset($quiz->questions)) {
 						foreach ($quiz->questions->question as $question) {
@@ -66,13 +72,14 @@ class WpProQuiz_Helper_ImportXml {
 	}
 	
 	public function getContent() {
-		return base64_encode($this->_content);
+		return base64_encode(gzcompress($this->_content));
 	}
 	
 	public function saveImport($ids) {
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
 		$categoryMapper = new WpProQuiz_Model_CategoryMapper();
+		$formMapper = new WpProQuiz_Model_FormMapper();
 		
 		$data = $this->getImportData();
 		$categoryArray = $categoryMapper->getCategoryArrayForImport();
@@ -89,6 +96,17 @@ class WpProQuiz_Helper_ImportXml {
 			$quiz->setId(0);
 			
 			$quizMapper->save($quiz);
+			
+			if(isset($data['forms']) && isset($data['forms'][$oldId])) {
+				$sort = 0;
+				
+				foreach($data['forms'][$oldId] as $form) {
+					$form->setQuizId($quiz->getId());
+					$form->setSort($sort++);
+				}
+				
+				$formMapper->update($data['forms'][$oldId]);
+			}
 			
 			$sort = 0;
 			
@@ -124,6 +142,33 @@ class WpProQuiz_Helper_ImportXml {
 	
 	public function getError() {
 		return $this->_error;
+	}
+	
+	private function createFormModel($xml) {
+		$form = new WpProQuiz_Model_Form();
+		
+		$attr = $xml->attributes();
+		
+		if($attr !== null) {
+			$form->setType($attr->type);
+			$form->setRequired($attr->required == 'true');
+			$form->setFieldname($attr->fieldname);
+		}
+		
+		if(isset($xml->formData)) {
+			$d = array();
+			
+			foreach($xml->formData as $data) {
+				$v = trim((string)$data);
+
+				if($v !== '')
+					$d[] = $v;
+			}
+			
+			$form->setData($d);
+		}
+		
+		return $form;
 	}
 	
 	private function createQuizModel($xml) {
@@ -227,6 +272,27 @@ class WpProQuiz_Helper_ImportXml {
 		$model->setForcingQuestionSolve($xml->forcingQuestionSolve == 'true');
 		$model->setHideQuestionPositionOverview($xml->hideQuestionPositionOverview == 'true');
 		$model->setHideQuestionNumbering($xml->hideQuestionNumbering == 'true');
+		
+		//0.27
+		$model->setStartOnlyRegisteredUser($xml->startOnlyRegisteredUser == 'true');
+		$model->setSortCategories($xml->sortCategories == 'true');
+		$model->setShowCategory($xml->showCategory == 'true');
+		
+		if(isset($xml->quizModus)) {
+			$attr = $xml->quizModus->attributes();
+				
+			if($attr !== null) {
+				$model->setQuestionsPerPage($attr->questionsPerPage);
+			}
+		}
+		
+		if(isset($xml->forms)) {
+			$attr = $xml->forms->attributes();
+			
+			$model->setFormActivated($attr->activated == 'true');
+			$model->setFormShowPosition($attr->position);
+		}
+		
 		
 		//Check
 		if($model->getName() == '')

@@ -18,7 +18,7 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 	<p>
 		<a class="button-secondary" href="admin.php?page=wpProQuiz"><?php _e('back to overview', 'wp-pro-quiz'); ?></a>
 		<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
-			<a class="button-secondary" href="admin.php?page=wpProQuiz&action=edit&id=<?php echo $this->quiz->getId(); ?>"><?php _e('Edit quiz', 'wp-pro-quiz'); ?></a> 
+			<a class="button-secondary" href="admin.php?page=wpProQuiz&action=addEdit&quizId=<?php echo $this->quiz->getId(); ?>"><?php _e('Edit quiz', 'wp-pro-quiz'); ?></a> 
 		<?php } ?>
 	</p>
 	<table class="wp-list-table widefat">
@@ -48,7 +48,7 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 					<div class="row-actions">
 						<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
 						<span>
-							<a href="admin.php?page=wpProQuiz&module=question&action=edit&quiz_id=<?php echo $this->quiz->getId(); ?>&id=<?php echo $question->getId(); ?>"><?php _e('Edit', 'wp-pro-quiz'); ?></a> | 
+							<a href="admin.php?page=wpProQuiz&module=question&action=addEdit&quiz_id=<?php echo $this->quiz->getId(); ?>&questionId=<?php echo $question->getId(); ?>"><?php _e('Edit', 'wp-pro-quiz'); ?></a> | 
 						</span>
 						<?php } if(current_user_can('wpProQuiz_delete_quiz')) { ?>
 						<span>
@@ -83,7 +83,7 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 	</table>
 	<p>
 		<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
-		<a class="button-secondary" href="admin.php?page=wpProQuiz&module=question&action=add&quiz_id=<?php echo $this->quiz->getId(); ?>"><?php _e('Add question', 'wp-pro-quiz'); ?></a>
+		<a class="button-secondary" href="admin.php?page=wpProQuiz&module=question&action=addEdit&quiz_id=<?php echo $this->quiz->getId(); ?>"><?php _e('Add question', 'wp-pro-quiz'); ?></a>
 		<a class="button-secondary" href="#" id="wpProQuiz_saveSort"><?php _e('Save order', 'wp-pro-quiz'); ?></a>
 		<a class="button-secondary" href="#" id="wpProQuiz_questionCopy"><?php _e('Copy questions from another Quiz', 'wp-pro-quiz'); ?></a>
 		<?php } ?>
