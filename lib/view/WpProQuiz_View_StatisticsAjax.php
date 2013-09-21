@@ -626,7 +626,7 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View {
 							echo esc_html($model->getUserName());
 						} ?>
 						
-						<div class="row-actions">
+						<div <?php echo $sum ? 'class="row-actions"' : 'style="visibility: hidden;"'; ?>>
 							<span>
 								<a style="color: red;" class="wpProQuiz_delete" href="#"><?php _e('Delete', 'wp-pro-quiz'); ?></a>
 							</span>

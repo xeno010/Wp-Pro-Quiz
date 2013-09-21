@@ -544,6 +544,9 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 	 * @deprecated
 	 */
 	public static function ajaxLoadFormOverview($data, $func) {
+		if(!current_user_can('wpProQuiz_show_statistics')) {
+			return json_encode(array());
+		}
 		
 		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
@@ -590,6 +593,10 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 	}
 	
 	public static function ajaxLoadHistory($data, $func) {
+		if(!current_user_can('wpProQuiz_show_statistics')) {
+			return json_encode(array());
+		}
+		
 		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		
@@ -640,6 +647,10 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 	}
 	
 	public static function ajaxLoadStatisticUser($data, $func) {
+		if(!current_user_can('wpProQuiz_show_statistics')) {
+			return json_encode(array());
+		}
+		
 		$quizId = $data['quizId'];
 		$userId = $data['userId'];
 		$refId = $data['refId'];
@@ -709,13 +720,17 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 	}
 	
 	public static function ajaxRestStatistic($data, $func) {
+		if(!current_user_can('wpProQuiz_reset_statistics')) {
+			return;
+		}
+		
 		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
 		
 		switch ($data['type']) {
 			case 0: //RefId or UserId
 				if($data['refId'])
 					$statisticRefMapper->deleteByRefId($data['refId']);
-				else
+				else if($data['userId'] != '')
 					$statisticRefMapper->deleteByUserIdQuizId($data['userId'], $data['quizId']);
 				break;
 			case 1: //alles
@@ -725,6 +740,9 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 	}
 	
 	public static function ajaxLoadStatsticOverviewNew($data, $func) {
+		if(!current_user_can('wpProQuiz_show_statistics')) {
+			return json_encode(array());
+		}
 		
 		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
 		$quizMapper = new WpProQuiz_Model_QuizMapper();

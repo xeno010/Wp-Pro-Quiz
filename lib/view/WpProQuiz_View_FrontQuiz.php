@@ -460,11 +460,11 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			
 			<?php 
 			if($this->quiz->isFormActivated() && $this->quiz->getFormShowPosition() == WpProQuiz_Model_Quiz::QUIZ_FORM_POSITION_END
-					&& ($this->quiz->isShowReviewQuestion() || !$this->quiz->isQuizSummaryHide())) {
+					&& ($this->quiz->isShowReviewQuestion() && !$this->quiz->isQuizSummaryHide())) {
 	
 			?>
 				<h4 class="wpProQuiz_header"><?php _e('Information', 'wp-pro-quiz'); ?></h4>
-			<?php 
+			<?php
 				$this->showFormBox();
 			}
 	

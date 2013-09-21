@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
 Tested up to: 3.6.1
-Stable tag: 0.27
+Stable tag: 0.28
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,7 @@ A powerful and beautiful quiz plugin for WordPress.
 *		French / français (Thanks Aurélien C.)
 *		German / deutsch
 *		Greek / ελληνικά (Thanks Ζαχαρίας Σ.)
+*		Indonesian / Bahasa Indonesia (Thanks dieka91 and Creative Computer Club)
 *		Norwegian / norsk (Thanks Stein Ivar J.)
 *		Persian / فارسی (Thanks Behrooz N.)
 *		Russian / русский (Thanks Sergei B. and Alex A.)
@@ -292,3 +293,8 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
  - Thanks Grant K Norwood (grantnorwood)
 * Added ability to set the table column width for matrix sorting criteria in order to allow longer criteria text. The option is displayed only when matrix sorting is selected as the answer type.
  - Thanks Grant K Norwood (grantnorwood)
+ 
+ = 0.28 =
+ * Bugfix in custom field at the option "Display position - At the end of the quiz"
+ * Bugfix in Statistc-function
+ * Translation for indonesian have been added (Thanks dieka91 and Creative Computer Club)

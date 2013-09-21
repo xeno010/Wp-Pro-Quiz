@@ -54,6 +54,7 @@
 	background-image: none !important;
 	margin-left: 0 !important;
 	list-style: none !important;
+	border: 0 !important;
 }
 
 .wpProQuiz_questionListItem > table{
@@ -68,6 +69,9 @@
 	padding: 0 !important;
 	margin: 0 !important;
 }
+.wpProQuiz_list {
+	border: 0 !important;
+}
 .wpProQuiz_questionList {
 	margin-bottom: 10px !important;
 	background: #F8FAF5 !important;
@@ -76,7 +80,9 @@
 	list-style: none !important;
 }
 .wpProQuiz_listItem {
-	position: relative !important;	
+	position: relative !important;
+	border: 0 !important;
+	background-image: none !important;
 }
 .wpProQuiz_response {
 	background: #F8FAF5 !important;
@@ -147,6 +153,7 @@
 }
 .wpProQuiz_sortStringList {
 	padding: 10px !important;
+	border: 0 !important;
 }
 .wpProQuiz_sortStringList > li {
 	float: left !important;
@@ -207,11 +214,15 @@
 	float: none !important;
 	display: inline !important;
 }
+.wpProQuiz_resultsList {
+	border: 0 !important;
+}
 .wpProQuiz_resultsList > li {
 	background-image: none !important;
 	padding: 0 !important;
 	margin: 0 !important;
 	list-style-type: none !important;
+	border: 0 !important;
 }
 .wpProQuiz_lock, .wpProQuiz_prerequisite, .wpProQuiz_startOnlyRegisteredUser, .wpProQuiz_loadQuiz {
 	border: 1px dotted #FFC3C3 !important;
@@ -332,6 +343,7 @@
 	padding: 5px 12px 0 5px !important;
 	zoom: 1 !important;
 	position: relative !important;
+	border: 0 !important;
 }
 .wpProQuiz_reviewQuestion ol:after {
 	content: ".";
@@ -355,6 +367,7 @@
 	background-color: white;
 	cursor: pointer !important;
 	list-style-type: none !important;
+	background-image: none !important;
 }
 
 .wpProQuiz_reviewQuestion div {
@@ -376,12 +389,15 @@
  	list-style-type: none !important;
 	padding: 0 !important;
 	margin: 0 !important;
+	border: 0 !important;
  }
  .wpProQuiz_reviewLegend li {
  	float: left !important;
 	padding-right: 5px !important;
 	list-style-type: none !important;
 	margin: 0 !important;
+	border: 0 !important;
+	background-image: none !important;
  }
  .wpProQuiz_reviewColor {
 	height: 10px !important;
