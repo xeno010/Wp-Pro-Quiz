@@ -10,7 +10,7 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 	
 	<div class="wpProQuiz_tab_wrapper" style="padding: 10px 0px;">
 		<a class="button-primary" href="#" data-tab="#globalContent"><?php _e('Global settings', 'wp-pro-quiz'); ?></a>
-		<a class="button-secondary" href="#" data-tab="#emailSettingsTab"><?php _e('E-Mail settings', 'wp-pro-quiz'); ?></a>
+		<!-- <a class="button-secondary" href="#" data-tab="#emailSettingsTab"><?php //_e('E-Mail settings', 'wp-pro-quiz'); ?></a> -->
 		<a class="button-secondary" href="#" data-tab="#problemContent"><?php _e('Settings in case of problems', 'wp-pro-quiz'); ?></a>
 	</div>
 	
@@ -21,9 +21,9 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 				<?php $this->globalSettings(); ?>
 				
 			</div>
-			<div id="emailSettingsTab" style="display: none;">
-				<?php $this->emailSettingsTab(); ?>
-			</div>
+			<!-- <div id="emailSettingsTab" style="display: none;">
+				<?php //$this->emailSettingsTab(); ?>
+			</div>  -->
 			<div class="postbox" id="problemContent" style="display: none;">
 				<?php $this->problemSettings(); ?>
 			</div>
@@ -40,7 +40,7 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 ?>
 		<div class="postbox">
 			<h3 class="hndle"><?php _e('Global settings', 'wp-pro-quiz'); ?></h3>
-			<div class="wrap">
+			<div class="inside">
 				<table class="form-table">
 					<tbody>
 						<tr>
@@ -143,6 +143,33 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 							</td>
 						</tr>
 						<tr>
+						
+							<th scope="row">
+								<?php _e('Quiz Category management', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<fieldset>
+									<legend class="screen-reader-text">
+										<span><?php _e('Quiz Category management', 'wp-pro-quiz'); ?></span>
+									</legend>
+									<select name="categoryQuiz">
+										<?php foreach($this->categoryQuiz as $cat) { 
+											echo '<option value="'.$cat->getCategoryId().'">'.$cat->getCategoryName().'</option>';
+											
+										} ?>
+									</select>
+									<div style="padding-top: 5px;">
+										<input type="text" value="" name="categoryQuizEditText">
+									</div>
+									<div style="padding-top: 5px;">
+										<input type="button" value="<?php _e('Delete', 'wp-pro-quiz'); ?>" name="categoryQuizDelete" class="button-secondary">
+										<input type="button" value="<?php _e('Edit', 'wp-pro-quiz'); ?>" name="categoryQuizEdit" class="button-secondary">
+									</div>
+								</fieldset>
+							</td>
+						</tr>
+						
+						<tr>
 							<th scope="row">
 								<?php _e('Quiz template management', 'wp-pro-quiz'); ?>
 							</th>
@@ -203,7 +230,7 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 ?>
 		<div class="postbox" id="adminEmailSettings">
 			<h3 class="hndle"><?php _e('Admin e-mail settings', 'wp-pro-quiz'); ?></h3>
-			<div class="wrap">
+			<div class="inside">
 				<table class="form-table">
 					<tbody>
 						<tr>
@@ -288,7 +315,7 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 ?>
 		<div class="postbox" id="userEmailSettings" style="display: none;">
 			<h3 class="hndle"><?php _e('User e-mail settings', 'wp-pro-quiz'); ?></h3>
-			<div class="wrap">
+			<div class="inside">
 				<table class="form-table">
 					<tbody>
 						<tr>
@@ -369,7 +396,7 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View {
 		</div>
 		
 		<h3 class="hndle"><?php _e('Settings in case of problems', 'wp-pro-quiz'); ?></h3>
-		<div class="wrap">
+		<div class="inside">
 			<table class="form-table">
 				<tbody>
 					<tr>

@@ -56,7 +56,9 @@ class WpProQuiz_Controller_Ajax {
 			'templateEdit' => array('WpProQuiz_Controller_Template', 'ajaxEditTemplate'),
 			'templateDelete' => array('WpProQuiz_Controller_Template', 'ajaxDeleteTemplate'),
 				
-			'quizLoadData' => array('WpProQuiz_Controller_Front', 'ajaxQuizLoadData')
+			'quizLoadData' => array('WpProQuiz_Controller_Front', 'ajaxQuizLoadData'),
+				
+			'setQuizMultipleCategories' => array('WpProQuiz_Controller_Quiz', 'ajaxSetQuizMultipleCategories')
 		);
 		
 		//nopriv

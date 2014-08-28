@@ -37,8 +37,38 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 				</div>
 			</div>
 			<div class="postbox">
+				<h3 class="hndle"><?php _e('Category', 'wp-pro-quiz'); ?> <?php _e('(optional)', 'wp-pro-quiz'); ?></h3>
+				<div class="inside">
+					<p class="description">
+						<?php _e('You can assign classify category for a quiz.', 'wp-pro-quiz'); ?>
+					</p>
+					<p class="description">
+						<?php _e('You can manage categories in global settings.', 'wp-pro-quiz'); ?>
+					</p>
+					<div>
+						<select name="category">
+							<option value="-1">--- <?php _e('Create new category', 'wp-pro-quiz'); ?> ----</option>
+							<option value="0" <?php echo $this->quiz->getCategoryId() == 0 ? 'selected="selected"' : ''; ?>>--- <?php _e('No category', 'wp-pro-quiz'); ?> ---</option>
+							<?php 
+								foreach($this->categories as $cat) {
+									echo '<option '.($this->quiz->getCategoryId() == $cat->getCategoryId() ? 'selected="selected"' : '').' value="'.$cat->getCategoryId().'">'.$cat->getCategoryName().'</option>';
+								}
+							?>
+						</select>
+					</div>
+					<div style="display: none;" id="categoryAddBox">
+						<h4><?php _e('Create new category', 'wp-pro-quiz'); ?></h4>
+						<input type="text" name="categoryAdd" value=""> 
+						<input type="button" class="button-secondary" name="" id="categoryAddBtn" value="<?php _e('Create', 'wp-pro-quiz'); ?>"> 	
+					</div>
+					<div id="categoryMsgBox" style="display:none; padding: 5px; border: 1px solid rgb(160, 160, 160); background-color: rgb(255, 255, 168); font-weight: bold; margin: 5px; ">
+						Kategorie gespeichert
+					</div>
+				</div>
+			</div>
+			<div class="postbox">
 				<h3 class="hndle"><?php _e('Options', 'wp-pro-quiz'); ?></h3>
-				<div class="wrap">
+				<div class="inside">
 					<table class="form-table">
 						<tbody>
 							<tr>
@@ -427,6 +457,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</fieldset>
 								</td>
 							</tr>
+							<!-- 
 							<tr>
 								<th scope="row">
 									<?php _e('Admin e-mail notification', 'wp-pro-quiz'); ?>
@@ -457,6 +488,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</fieldset>
 								</td>
 							</tr>
+							
 							<tr>
 								<th scope="row">
 									<?php _e('User e-mail notification', 'wp-pro-quiz'); ?>
@@ -479,6 +511,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</fieldset>
 								</td>
 							</tr>
+							 -->
 							<tr>
 								<th scope="row">
 									<?php _e('Autostart', 'wp-pro-quiz'); ?>
@@ -526,6 +559,8 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 			<?php $this->quizMode(); ?>
 			<?php $this->leaderboardOptions(); ?>
 			<?php $this->form(); ?>
+			<?php $this->adminEmailOption(); ?>
+			<?php $this->userEmailOption(); ?>
 			<div class="postbox">
 				<h3 class="hndle"><?php _e('Quiz description', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
@@ -604,6 +639,10 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 							wp_editor($resultText, 'resultText', array('textarea_rows' => 10));
 						?>
 					</div>
+					
+					<h4><?php _e('Custom fields - Variables', 'wp-pro-quiz'); ?></h4>
+					<ul class="formVariables"></ul>
+					
 				</div>
 			</div>
 		<div style="float: left;">
@@ -633,7 +672,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 ?>
 			<div class="postbox">
 				<h3 class="hndle"><?php _e('Result-Options', 'wp-pro-quiz'); ?></h3>
-				<div class="wrap">
+				<div class="inside">
 					<table class="form-table">
 						<tbody>
 							<tr>
@@ -778,7 +817,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 		
 		<div class="postbox">
 				<h3 class="hndle"><?php _e('Question-Options', 'wp-pro-quiz'); ?></h3>
-				<div class="wrap">
+				<div class="inside">
 					<table class="form-table">
 						<tbody>
 							<tr>
@@ -1340,6 +1379,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 						<table style=" width: 100%; text-align: left; " id="form_table">
 							<thead>
 								<tr>
+									<th>#ID</th>
 									<th><?php _e('Field name', 'wp-pro-quiz'); ?></th>
 									<th><?php _e('Type', 'wp-pro-quiz'); ?></th>
 									<th><?php _e('Required?', 'wp-pro-quiz'); ?></th>
@@ -1358,7 +1398,10 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 								?>
 								<tr <?php echo $index++ == 0 ? 'style="display: none;"' : '' ?>>
 									<td>
-										<input type="text" name="form[][fieldname]" value="<?php echo esc_attr($form->getFieldname()); ?>" class="regular-text"/>
+										<?php echo $index-2; ?>
+									</td>
+									<td>
+										<input type="text" name="form[][fieldname]" value="<?php echo esc_attr($form->getFieldname()); ?>" class="regular-text formFieldName" />
 									</td>
 									<td style="position: relative;">
 										<select name="form[][type]">
@@ -1407,4 +1450,274 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 			</div>
 		<?php
     }
+    
+    private function adminEmailOption() {
+		/** @var WpProQuiz_Model_Email **/
+		$email = $this->quiz->getAdminEmail();
+		$email = $email === null ? WpProQuiz_Model_Email::getDefault(true) : $email;
+?>
+		<div class="postbox" id="adminEmailSettings">
+			<h3 class="hndle"><?php _e('Admin e-mail settings', 'wp-pro-quiz'); ?></h3>
+			<div class="inside">
+				<table class="form-table">
+					<tbody>
+					<tr>
+								<th scope="row">
+									<?php _e('Admin e-mail notification', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('Admin e-mail notification', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="radio" name="emailNotification" value="<?php echo WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_NONE; ?>" <?php $this->checked($this->quiz->getEmailNotification(), WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_NONE); ?>>
+											<?php _e('Deactivate', 'wp-pro-quiz'); ?>
+										</label>
+										<label>
+											<input type="radio" name="emailNotification" value="<?php echo WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER; ?>" <?php $this->checked($this->quiz->getEmailNotification(), WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER); ?>>
+											<?php _e('for registered users only', 'wp-pro-quiz'); ?>
+										</label>
+										<label>
+											<input type="radio" name="emailNotification" value="<?php echo WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_ALL; ?>" <?php $this->checked($this->quiz->getEmailNotification(), WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_ALL); ?>>
+											<?php _e('for all users', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, you will be informed if a user completes this quiz.', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('To:', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<label>
+									<input type="text" name="adminEmail[to]" value="<?php echo $email->getTo(); ?>" class="regular-text">
+								</label>
+								<p class="description">
+									<?php _e('Separate multiple email addresses with a comma, e.g. wp@test.com, test@test.com', 'wp-pro-quiz'); ?>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('From:', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<label>
+									<input type="text" name="adminEmail[from]" value="<?php echo $email->getFrom(); ?>" class="regular-text">
+								</label>
+<!-- 								<p class="description"> -->
+									<?php //_e('Server-Adresse empfohlen, z.B. info@YOUR-PAGE.com', 'wp-pro-quiz'); ?>
+<!-- 								</p> -->
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('Subject:', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<label>
+									<input type="text" name="adminEmail[subject]" value="<?php echo $email->getSubject(); ?>" class="regular-text">
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('HTML', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<label>
+									<input type="checkbox" name="adminEmail[html]" value="1" <?php $this->checked($email->isHtml()); ?>> <?php _e('Activate', 'wp-pro-quiz'); ?>
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('Message body:', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<?php
+									wp_editor($email->getMessage(), 'adminEmailEditor', array('textarea_rows' => 20, 'textarea_name' => 'adminEmail[message]'));
+								?>
+								
+								<div style="padding-top: 10px;">
+									<table style="width: 100%;">
+										<thead>
+											<tr>
+												<th style="padding: 0;">
+													<?php _e('Allowed variables', 'wp-pro-quiz'); ?>
+												</th>
+												<th style="padding: 0;">
+													<?php _e('Custom fields - Variables', 'wp-pro-quiz'); ?>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td style="vertical-align: top;">
+													<ul>
+														<li><span>$userId</span> - <?php _e('User-ID', 'wp-pro-quiz'); ?></li>
+														<li><span>$username</span> - <?php _e('Username', 'wp-pro-quiz'); ?></li>
+														<li><span>$quizname</span> - <?php _e('Quiz-Name', 'wp-pro-quiz'); ?></li>
+														<li><span>$result</span> - <?php _e('Result in precent', 'wp-pro-quiz'); ?></li>
+														<li><span>$points</span> - <?php _e('Reached points', 'wp-pro-quiz'); ?></li>
+														<li><span>$ip</span> - <?php _e('IP-address of the user', 'wp-pro-quiz'); ?></li>
+														<li><span>$categories</span> - <?php _e('Category-Overview', 'wp-pro-quiz'); ?></li>
+													</ul>
+												</td>
+												<td style="vertical-align: top;">
+													<ul class="formVariables"></ul>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									
+								</div>
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	
+
+<?php 
+
+	}
+    private function userEmailOption() {
+		/** @var WpProQuiz_Model_Email **/
+		$email = $this->quiz->getUserEmail();
+		$email = $email === null ? WpProQuiz_Model_Email::getDefault(false) : $email;
+		$to = $email->getTo();
+		
+?>
+		<div class="postbox" id="userEmailSettings">
+			<h3 class="hndle"><?php _e('User e-mail settings', 'wp-pro-quiz'); ?></h3>
+			<div class="inside">
+				<table class="form-table">
+					<tbody>
+					<tr>
+							<th scope="row">
+								<?php _e('User e-mail notification', 'wp-pro-quiz'); ?>
+							</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('User e-mail notification', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" name="userEmailNotification" value="1" <?php $this->checked($this->quiz->isUserEmailNotification()); ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, an email is sent with his quiz result to the user.', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+							<th scope="row">
+								<?php _e('To:', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<label>
+									<input type="checkbox" name="userEmail[toUser]" value="1" <?php $this->checked($email->isToUser()); ?>>
+									<?php _e('User Email-Address (only registered users)', 'wp-pro-quiz'); ?>
+								</label><br>
+								<label>
+									<input type="checkbox" name="userEmail[toForm]" value="1" <?php $this->checked($email->isToForm()); ?>>
+									<?php _e('Custom fields', 'wp-pro-quiz'); ?> :
+									<select name="userEmail[to]" class="emailFormVariables" data-default="<?php echo empty($to) ? -1 : $email->getTo(); ?>">
+										<option value="1">gfsdfg</option>										
+									</select>
+									<?php _e('(Type Email)', 'wp-pro-quiz'); ?>
+								</label>
+								
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('From:', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<label>
+									<input type="text" name="userEmail[from]" value="<?php echo $email->getFrom(); ?>" class="regular-text">
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('Subject:', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<label>
+									<input type="text" name="userEmail[subject]" value="<?php echo $email->getSubject(); ?>" class="regular-text">
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('HTML', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<label>
+									<input type="checkbox" name="userEmail[html]" value="1" <?php $this->checked($email->isHtml()); ?>> <?php _e('Activate', 'wp-pro-quiz'); ?>
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<?php _e('Message body:', 'wp-pro-quiz'); ?>
+							</th>
+							<td>
+								<?php
+									wp_editor($email->getMessage(), 'userEmailEditor', array('textarea_rows' => 20, 'textarea_name' => 'userEmail[message]'));
+								?>
+								
+								<div style="padding-top: 10px;">
+									<table style="width: 100%;">
+										<thead>
+											<tr>
+												<th style="padding: 0;">
+													<?php _e('Allowed variables', 'wp-pro-quiz'); ?>
+												</th>
+												<th style="padding: 0;">
+													<?php _e('Custom fields - Variables', 'wp-pro-quiz'); ?>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td style="vertical-align: top;">
+													<ul>
+														<li><span>$userId</span> - <?php _e('User-ID', 'wp-pro-quiz'); ?></li>
+														<li><span>$username</span> - <?php _e('Username', 'wp-pro-quiz'); ?></li>
+														<li><span>$quizname</span> - <?php _e('Quiz-Name', 'wp-pro-quiz'); ?></li>
+														<li><span>$result</span> - <?php _e('Result in precent', 'wp-pro-quiz'); ?></li>
+														<li><span>$points</span> - <?php _e('Reached points', 'wp-pro-quiz'); ?></li>
+														<li><span>$ip</span> - <?php _e('IP-address of the user', 'wp-pro-quiz'); ?></li>
+														<li><span>$categories</span> - <?php _e('Category-Overview', 'wp-pro-quiz'); ?></li>
+													</ul>
+												</td>
+												<td style="vertical-align: top;">
+													<ul class="formVariables"></ul>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									
+								</div>
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+<?php 
+	}
 }

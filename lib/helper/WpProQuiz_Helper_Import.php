@@ -101,7 +101,11 @@ class WpProQuiz_Helper_Import {
 	private function importData($o, $ids = false, $version = '1') {
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$questionMapper = new WpProQuiz_Model_QuestionMapper();
+		$categoryMapper = new WpProQuiz_Model_CategoryMapper();
 		$formMapper = new WpProQuiz_Model_FormMapper();
+		
+		$categoryArray = $categoryMapper->getCategoryArrayForImport();
+		$categoryArrayQuiz = $categoryMapper->getCategoryArrayForImport(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);
 
 		foreach($o['master'] as $master) {
 			if(get_class($master) !== 'WpProQuiz_Model_Quiz') {
@@ -130,6 +134,24 @@ class WpProQuiz_Helper_Import {
 				}
 			}
 			
+			$master->setCategoryId(0);
+				
+			if(trim($master->getCategoryName()) != '') {
+				if(isset($categoryArrayQuiz[strtolower($master->getCategoryName())])) {
+					$master->setCategoryId($categoryArrayQuiz[strtolower($master->getCategoryName())]);
+				} else {
+					$categoryModel = new WpProQuiz_Model_Category();
+					$categoryModel->setCategoryName($master->getCategoryName());
+					$categoryModel->setType(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);
+						
+					$categoryMapper->save($categoryModel);
+						
+					$master->setCategoryId($categoryModel->getCategoryId());
+						
+					$categoryArrayQuiz[strtolower($master->getCategoryName())] = $categoryModel->getCategoryId();
+				}
+			}
+			
 			$quizMapper->save($master);
 
 			if(isset($o['forms']) && isset($o['forms'][$oldId])) {
@@ -143,6 +165,8 @@ class WpProQuiz_Helper_Import {
 				$formMapper->update($o['forms'][$oldId]);
 			}
 			
+			$sort = 0;
+			
 			foreach($o['question'][$oldId] as $question) {
 				
 				if(get_class($question) !== 'WpProQuiz_Model_Question') {
@@ -151,6 +175,22 @@ class WpProQuiz_Helper_Import {
 				
 				$question->setQuizId($master->getId());
 				$question->setId(0);
+				$question->setSort($sort++);
+				$question->setCategoryId(0);
+				
+				if(trim($question->getCategoryName()) != '') {
+					if(isset($categoryArray[strtolower($question->getCategoryName())])) {
+						$question->setCategoryId($categoryArray[strtolower($question->getCategoryName())]);
+					} else {
+						$categoryModel = new WpProQuiz_Model_Category();
+						$categoryModel->setCategoryName($question->getCategoryName());
+						$categoryMapper->save($categoryModel);
+				
+						$question->setCategoryId($categoryModel->getCategoryId());
+				
+						$categoryArray[strtolower($question->getCategoryName())] = $categoryModel->getCategoryId();
+					}
+				}
 								
 				$questionMapper->save($question);
 			}		

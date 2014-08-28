@@ -1252,7 +1252,26 @@
 				$pointFields.eq(1).text(config.globalPoints);
 				$pointFields.eq(2).text(results.comp.result + '%');
 				
-				$e.find('.wpProQuiz_resultsList > li').eq(plugin.methode.findResultIndex(results.comp.result)).show();
+				//Result-Text START
+				var $resultText = $e.find('.wpProQuiz_resultsList > li').eq(plugin.methode.findResultIndex(results.comp.result));
+				
+				var formData = formClass.getFormData();
+				
+				$resultText.find('.wpProQuiz_resultForm').each(function() {
+					var $this = $(this);
+					var formId = $this.data('form_id');
+					var data = formData[formId];
+					
+					if(typeof data === 'object') {
+						data = data['day'] + '-' + data['month'] + '-' + data['year'];
+					}
+					
+					$this.text(data).show();								
+				});
+				
+				$resultText.show();
+				
+				//Result-Text END
 				
 				plugin.methode.setAverageResult(results.comp.result, false);
 				
@@ -1390,6 +1409,7 @@
 				$e.find('.wpProQuiz_clozeCorrect, .wpProQuiz_QuestionButton, .wpProQuiz_resultsList > li').hide();
 				
 				$e.find('.wpProQuiz_question_page, input[name="tip"]').show();
+				$e.find('.wpProQuiz_resultForm').text('').hide();
 				
 				globalElements.results.find('.wpProQuiz_time_limit_expired').hide();
 				

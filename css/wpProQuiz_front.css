@@ -487,3 +487,6 @@ span.wpProQuiz_catPercent {
 .wpProQuiz_forms select {
 	width: auto !important;
 }
+.wpProQuiz_resultForm {
+	display: none;
+}

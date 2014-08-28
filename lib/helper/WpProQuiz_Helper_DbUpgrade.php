@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 22;
+	const WPPROQUIZ_DB_VERSION = 24;
 	
 	private $_wpdb;
 	private $_prefix;
@@ -65,7 +65,8 @@ class WpProQuiz_Helper_DbUpgrade {
 		dbDelta("
 			CREATE TABLE {$this->_wpdb->prefix}wp_pro_quiz_category (
 			  category_id int(10) unsigned NOT NULL AUTO_INCREMENT,
-			  category_name varchar(200) NOT NULL,
+			  category_name varchar(200) NOT NULL, 
+			  type enum('QUESTION','QUIZ') NOT NULL DEFAULT 'QUESTION',
 			  PRIMARY KEY  (category_id)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 			
@@ -139,6 +140,9 @@ class WpProQuiz_Helper_DbUpgrade {
 			  questions_per_page tinyint(3) unsigned NOT NULL,
 			  sort_categories tinyint(1) unsigned NOT NULL,
 			  show_category tinyint(1) unsigned NOT NULL,
+			  category_id int(10) unsigned NOT NULL,
+			  admin_email text NOT NULL,
+  			  user_email text NOT NULL,
 			  PRIMARY KEY  (id)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 			
@@ -1003,5 +1007,68 @@ class WpProQuiz_Helper_DbUpgrade {
 				SET online = 1');
 		
 		return 22;
+	}
+	
+	private function upgradeDbV22() {
+		$this->_wpdb->query('
+			ALTER TABLE  '.$this->_wpdb->prefix.'wp_pro_quiz_category  
+				ADD  `type` ENUM(  \'QUESTION\',  \'QUIZ\' ) NOT NULL DEFAULT  \'QUESTION\';
+		');
+		
+		$this->_wpdb->query('
+			ALTER TABLE  '.$this->_wpdb->prefix.'wp_pro_quiz_master  
+				ADD  `category_id` INT UNSIGNED NOT NULL ;
+		');
+		
+		$this->_wpdb->query('UPDATE '.$this->_wpdb->prefix.'wp_pro_quiz_master 
+				SET category_id = 0');
+		
+		$this->_wpdb->query('UPDATE '.$this->_wpdb->prefix.'wp_pro_quiz_category 
+				SET type = \'QUESTION\'');
+		
+		return 23;
+	}
+	
+	private function upgradeDbV23() {
+		$this->_wpdb->query('
+			ALTER TABLE  '.$this->_wpdb->prefix.'wp_pro_quiz_master  
+				ADD  `admin_email` TEXT NOT NULL ,
+				ADD  `user_email` TEXT NOT NULL ;
+		');
+		
+		$mapper = new WpProQuiz_Model_GlobalSettingsMapper();
+		$adminEmail = $mapper->getEmailSettings();
+		$userEmail = $mapper->getUserEmailSettings();
+		
+		$adminEmailNew = new WpProQuiz_Model_Email();
+		$adminEmailNew->setTo($adminEmail['to']);
+		$adminEmailNew->setFrom($adminEmail['from']);
+		$adminEmailNew->setSubject($adminEmail['subject']);
+		$adminEmailNew->setHtml($adminEmail['html']);
+		$adminEmailNew->setMessage($adminEmail['message']);
+		
+		$userEmailNew = new WpProQuiz_Model_Email();
+		$userEmailNew->setFrom($userEmail['from']);
+		$userEmailNew->setToUser(true);
+		$userEmailNew->setSubject($userEmail['subject']);
+		$userEmailNew->setHtml($userEmail['html']);
+		$userEmailNew->setMessage($userEmail['message']);
+		
+		$this->_wpdb->update($this->_wpdb->prefix.'wp_pro_quiz_master', 
+				array('admin_email' => @serialize($adminEmailNew)), 
+				array('email_notification' => 1),
+				array('%s'), array('%d'));
+		
+		$this->_wpdb->update($this->_wpdb->prefix.'wp_pro_quiz_master', 
+				array('admin_email' => @serialize($adminEmailNew)), 
+				array('email_notification' => 2),
+				array('%s'), array('%d'));
+		
+		$this->_wpdb->update($this->_wpdb->prefix.'wp_pro_quiz_master', 
+				array('user_email' => @serialize($userEmailNew)), 
+				array('user_email_notification' => 1),
+				array('%s'), array('%d'));
+		
+		return 24;
 	}
 }

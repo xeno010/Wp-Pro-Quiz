@@ -46,6 +46,7 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		$quizMapper 		= new WpProQuiz_Model_QuizMapper();
 		$formMapper 		= new WpProQuiz_Model_FormMapper();
 		$templateMapper 	= new WpProQuiz_Model_TemplateMapper();
+		$cateoryMapper 		= new WpProQuiz_Model_CategoryMapper();
 		
 		$quiz = new WpProQuiz_Model_Quiz();
 		$forms = null;
@@ -65,7 +66,7 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 				$template = $templateMapper->fetchById($this->_post['templateLoadId']);
 		
 			$data = $template->getData();
-			
+
 			if($data !== null) {
 				$quiz = $data['quiz'];
 				$quiz->setId($quizId);
@@ -78,7 +79,12 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			if(isset($this->_post['resultGradeEnabled'])) {
 				$this->_post['result_text'] = $this->filterResultTextGrade($this->_post);
 			}
-				
+
+			$this->_post['categoryId'] = $this->_post['category'] > 0 ? $this->_post['category'] : 0;
+			
+			$this->_post['adminEmail'] = new WpProQuiz_Model_Email($this->_post['adminEmail']);
+			$this->_post['userEmail'] = new WpProQuiz_Model_Email($this->_post['userEmail']);
+			
 			$quiz = new WpProQuiz_Model_Quiz($this->_post);
 			$quiz->setId($quizId);
 				
@@ -124,6 +130,7 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		$this->view->templates 				= $templateMapper->fetchAll(WpProQuiz_Model_Template::TEMPLATE_TYPE_QUIZ, false);
 		$this->view->quizList 				= $quizMapper->fetchAllAsArray(array('id', 'name'), $quizId ? array($quizId) : array());
 		$this->view->captchaIsInstalled 	= class_exists('ReallySimpleCaptcha');
+		$this->view->categories				= $cateoryMapper->fetchAll(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);
 		
 		$this->view->header = $quizId ? __('Edit quiz', 'wp-pro-quiz') : __('Create quiz', 'wp-pro-quiz');
 
@@ -285,7 +292,10 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		$this->view = new WpProQuiz_View_QuizOverall();
 		
 		$m = new WpProQuiz_Model_QuizMapper();
+		$categoryMapper = new WpProQuiz_Model_CategoryMapper();
+		
 		$this->view->quiz = $m->fetchAll();
+		$this->view->categories = $categoryMapper->fetchAll(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);
 		
 		$this->view->show();
 	}
@@ -452,7 +462,12 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		if(isset($this->_post['resultGradeEnabled'])) {
 			$this->_post['result_text'] = $this->filterResultTextGrade($this->_post);
 		}
+		
+		$this->_post['categoryId'] = $this->_post['category'] > 0 ? $this->_post['category'] : 0;
 			
+		$this->_post['adminEmail'] = new WpProQuiz_Model_Email($this->_post['adminEmail']);
+		$this->_post['userEmail'] = new WpProQuiz_Model_Email($this->_post['userEmail']);
+		
 		$quiz = new WpProQuiz_Model_Quiz($this->_post);
 			
 		if($quiz->isPrerequisite() && !empty($this->_post['prerequisiteList']) && !$quiz->isStatisticsOn()) {
@@ -495,7 +510,7 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 				
 			$forms[] = new WpProQuiz_Model_Form($f);
 		}
-		
+	
 		WpProQuiz_View_View::admin_notices(__('Template stored', 'wp-pro-quiz'), 'info');
 		
 		$data = array(
@@ -649,6 +664,7 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		$lockMapper = new WpProQuiz_Model_LockMapper();
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
 		$categoryMapper = new WpProQuiz_Model_CategoryMapper();
+		$formMapper = new WpProQuiz_Model_FormMapper();
 		
 		$is100P = $this->_post['results']['comp']['result'] == 100;
 		
@@ -661,10 +677,12 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		}
 
 		$categories = $categoryMapper->fetchByQuiz($quiz->getId());
+		$forms = $formMapper->fetch($quiz->getId());
 		
 		$this->setResultCookie($quiz);
 		
-		$this->emailNote($quiz, $this->_post['results']['comp'], $categories);
+		$this->emailNote($quiz, $this->_post['results']['comp'], $categories, $forms, 
+				isset($this->_post['forms']) ? $this->_post['forms'] : array());
 		
 		if(!$this->isPreLockQuiz($quiz)) {
 			$statistics = new WpProQuiz_Controller_Statistics();
@@ -755,12 +773,7 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			return filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
 	}
 	
-	private function emailNote(WpProQuiz_Model_Quiz $quiz, $result, $categories) {
-		$globalMapper = new WpProQuiz_Model_GlobalSettingsMapper();
-		
-		$adminEmail = $globalMapper->getEmailSettings();
-		$userEmail = $globalMapper->getUserEmailSettings();
-		
+	private function emailNote(WpProQuiz_Model_Quiz $quiz, $result, $categories, $forms, $inputForms) {
 		$user = wp_get_current_user();
 		
 		$r = array(
@@ -773,45 +786,85 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			'$categories' => empty($result['cats']) ? '' : $this->setCategoryOverview($result['cats'], $categories)
 		);
 		
+		if($quiz->isFormActivated() && $forms !== null) {
+			foreach($forms as $form) {
+				$value = '';
+				
+				if($form->getType() == WpProQuiz_Model_Form::FORM_TYPE_DATE) {
+					if(isset($inputForms[$form->getFormId()]))
+						$value = $inputForms[$form->getFormId()]['day'].'-'.$inputForms[$form->getFormId()]['month']
+								.'-'.$inputForms[$form->getFormId()]['year'];
+				} else {
+					$value = isset($inputForms[$form->getFormId()]) ? $inputForms[$form->getFormId()] : '';
+				}
+				
+				$r['$form{'.$form->getSort().'}'] = esc_html($value);
+			}
+		}
+		
 		if($user->ID == 0) {
 			$r['$username'] = $r['$ip'];
 		}
 		
 		if($quiz->isUserEmailNotification()) {
-			$msg = str_replace(array_keys($r), $r, $userEmail['message']);
-				
-			$headers = '';
-				
-			if(!empty($userEmail['from'])) {
-				$headers = 'From: '.$userEmail['from'];
+			$userEmail = $quiz->getUserEmail();
+			
+			$userAdress = null;
+			
+			if($userEmail->isToUser() && get_current_user_id() > 0) {
+				$userAdress = $user->user_email;
+			} else if($userEmail->isToForm() && $quiz->isFormActivated()) {
+				foreach($forms as $form) {
+					if($form->getSort() == $userEmail->getTo()) {
+						if(isset($inputForms[$form->getFormId()])) {
+							$userAdress = $inputForms[$form->getFormId()];
+						}
+						
+						break;
+					}
+				}
 			}
+			
+			if(!empty($userAdress) && filter_var($userAdress, FILTER_VALIDATE_EMAIL) !== false) {
+				$msg = str_replace(array_keys($r), $r, $userEmail->getMessage());
 
-			if($userEmail['html'])
-				add_filter('wp_mail_content_type', array($this, 'htmlEmailContent'));
-			
-			wp_mail($user->user_email, $userEmail['subject'], $msg, $headers);
-			
-			if($userEmail['html'])
-				remove_filter('wp_mail_content_type', array($this, 'htmlEmailContent'));
+				$headers = '';
+				$email = $userEmail->getFrom();
+				
+				if(!empty($email)) {
+					$headers = 'From: '.$userEmail->getFrom();
+				}
+	
+				if($userEmail->isHtml())
+					add_filter('wp_mail_content_type', array($this, 'htmlEmailContent'));
+				
+				wp_mail($userAdress, $userEmail->getSubject(), $msg, $headers);
+				
+				if($userEmail->isHtml())
+					remove_filter('wp_mail_content_type', array($this, 'htmlEmailContent'));
+			}
 		}
 		
 		if($quiz->getEmailNotification() == WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_ALL 
 			|| (get_current_user_id() > 0 && $quiz->getEmailNotification() == WpProQuiz_Model_Quiz::QUIZ_EMAIL_NOTE_REG_USER)) {
 			
-			$msg = str_replace(array_keys($r), $r, $adminEmail['message']);
+			$adminEmail = $quiz->getAdminEmail();
+			
+			$msg = str_replace(array_keys($r), $r, $adminEmail->getMessage());
 			
 			$headers = '';
+			$email = $userEmail->getFrom();
 			
-			if(!empty($adminEmail['from'])) {
-				$headers = 'From: '.$adminEmail['from'];
+			if(!empty($email)) {
+				$headers = 'From: '.$adminEmail->getFrom();
 			}
-			
-			if(isset($adminEmail['html']) && $adminEmail['html'])
+	
+			if($adminEmail->isHtml())
 				add_filter('wp_mail_content_type', array($this, 'htmlEmailContent'));
 			
-			wp_mail($adminEmail['to'], $adminEmail['subject'], $msg, $headers);
-			
-			if(isset($adminEmail['html']) && $adminEmail['html'])
+			wp_mail($adminEmail->getTo(), $adminEmail->getSubject(), $msg, $headers);
+	
+			if($adminEmail->isHtml())
 				remove_filter('wp_mail_content_type', array($this, 'htmlEmailContent'));
 		}
 	}
@@ -843,5 +896,17 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		}
 		
 		return $a;
+	}
+	
+	public static function ajaxSetQuizMultipleCategories($data, $func) {
+		if(!current_user_can('wpProQuiz_edit_quiz')) {
+			return json_encode(array());
+		}
+		
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		
+		$quizMapper->setMultipeCategories($data['quizIds'], $data['categoryId']);
+		
+		return json_encode(array());
 	}
 }

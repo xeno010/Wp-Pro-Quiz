@@ -190,6 +190,9 @@ class WpProQuiz_Controller_Admin {
 			case 'wpq_support':
 				$c = new WpProQuiz_Controller_WpqSupport();
 				break;
+			case 'info_adaptation':
+				$c = new WpProQuiz_Controller_InfoAdaptation();
+				break;
 		}
 
 		if($c !== null) {

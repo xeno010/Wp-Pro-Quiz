@@ -30,6 +30,17 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		}
 
 		$resultsProzent = json_encode($result['prozent']);
+		
+		$resultReplace = array();
+		
+		foreach($this->forms as $form) {
+			$resultReplace['$form{'. $form->getSort() .'}'] = '<span class="wpProQuiz_resultForm" data-form_id="'.$form->getFormId().'"></span>';
+		}
+
+		foreach($result['text'] as &$text) {
+			$text = str_replace(array_keys($resultReplace), $resultReplace, $text);
+		}
+
 		?>
 		<div class="wpProQuiz_content" id="wpProQuiz_<?php echo $this->quiz->getId(); ?>">
 		<?php 
@@ -843,14 +854,14 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 							<div style="display: none;" class="wpProQuiz_correct">
 								<?php if($question->isShowPointsInBox() && $question->isAnswerPointsActivated()) { ?>
 								<div>
-									<span style="float: left;">
+									<span style="float: left;" class="wpProQuiz_respone_span">
 										<?php _e('Correct', 'wp-pro-quiz'); ?>
 									</span>
 									<span style="float: right;"><?php echo $question->getPoints().' / '.$question->getPoints(); ?> <?php _e('Points', 'wp-pro-quiz'); ?></span>
 									<div style="clear: both;"></div>
 								</div>		
 							<?php } else { ?>
-								<span>
+								<span class="wpProQuiz_respone_span">
 									<?php _e('Correct', 'wp-pro-quiz'); ?>
 								</span>
 							<?php } ?>
@@ -861,14 +872,14 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 							<div style="display: none;" class="wpProQuiz_incorrect">
 							<?php if($question->isShowPointsInBox() && $question->isAnswerPointsActivated()) { ?>
 								<div>
-									<span style="float: left;">
+									<span style="float: left;" class="wpProQuiz_respone_span">
 										<?php _e('Incorrect', 'wp-pro-quiz'); ?>
 									</span>
 									<span style="float: right;"><span class="wpProQuiz_responsePoints"></span> / <?php echo $question->getPoints(); ?> <?php _e('Points', 'wp-pro-quiz'); ?></span>
 									<div style="clear: both;"></div>
 								</div>		
 							<?php } else { ?>
-								<span>
+								<span class="wpProQuiz_respone_span">
 									<?php _e('Incorrect', 'wp-pro-quiz'); ?>
 								</span>
 							<?php } ?>

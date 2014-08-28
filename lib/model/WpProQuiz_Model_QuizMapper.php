@@ -23,9 +23,12 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 		$results = $this->_wpdb->get_row(
 					$this->_wpdb->prepare(
 								"SELECT 
-									* 
+									m.*,
+									c.category_name  
 								FROM
-									{$this->_table}
+									{$this->_table} AS m
+									LEFT JOIN {$this->_tableCategory} AS c
+										ON c.category_id = m.category_id
 								WHERE
 									id = %d",
 								$id),
@@ -41,8 +44,18 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 	public function fetchAll() {
 		$r = array();
 		
-		$results = $this->_wpdb->get_results("SELECT * FROM {$this->_table}", ARRAY_A);
-
+		$results = $this->_wpdb->get_results(
+			"
+				SELECT 
+					m.*,
+					c.category_name 
+				FROM 
+					{$this->_table} AS m
+					LEFT JOIN {$this->_tableCategory} AS c
+						ON c.category_id = m.category_id
+			"
+		, ARRAY_A);
+		
 		foreach ($results as $row) {
 			
 			if($row['result_grade_enabled'])
@@ -109,7 +122,10 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'start_only_registered_user' => (int)$data->isStartOnlyRegisteredUser(),
 			'questions_per_page' => $data->getQuestionsPerPage(),
 			'sort_categories' => (int)$data->isSortCategories(),
-			'show_category' => (int)$data->isShowCategory()
+			'show_category' => (int)$data->isShowCategory(),
+			'category_id' => (int)$data->getCategoryId(),
+			'admin_email' => $data->getAdminEmail(true),
+			'user_email' => $data->getUserEmail(true)
 		);
 		
 		if($data->getId() != 0) {
@@ -118,13 +134,13 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					array(
 							'id' => $data->getId()
 					),
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'),
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%s'),
 					array('%d'));
 		} else {
 			
 			$result = $this->_wpdb->insert($this->_table,
 						$set,
-						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'));
+						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%s'));
 
 			$data->setId($this->_wpdb->insert_id);
 		}
@@ -191,5 +207,19 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					m.id = %d"
 			, $quizId)
 		);
+	}
+	
+	public function setMultipeCategories($quizIds, $categoryId) {
+		$categoryId < 0 ? 0 : $categoryId;
+		
+		$quizIds = implode(', ', array_map('intval', (array)$quizIds));
+		
+		return $this->_wpdb->query($this->_wpdb->prepare(
+				"UPDATE 
+					{$this->_tableMaster}
+				SET 
+					`category_id` = %d
+				WHERE id IN(".$quizIds.")"
+		, $categoryId));
 	}
 }

@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Wp-Pro-Quiz\n"
+"Project-Id-Version: WP-Pro-Quiz\n"
 "POT-Creation-Date: 2014-08-28 12:09+0100\n"
 "PO-Revision-Date: 2014-08-28 12:09+0100\n"
 "Last-Translator: Julius Fischer <webmaster@it-gecko.de>\n"
-"Language-Team: Julius Fischer\n"
-"Language: de\n"
+"Language-Team: 新竹市立茄苳國小 <dinno0307@gmail.com>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,47 +16,47 @@ msgstr ""
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:100
 msgid "Do you really want to delete the quiz/question?"
-msgstr "Weet u zeker dat u de quiz/vragen wilt verwijderen?"
+msgstr "確定刪除測驗/問題嗎？"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:101
 msgid "Title is not filled!"
-msgstr "Titel niet ingevuld!"
+msgstr "標題未填寫！"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:102
 msgid "No question deposited!"
-msgstr "Geen vraag ingevuld!"
+msgstr "尚未布題！"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:103
 msgid "Correct answer was not selected!"
-msgstr "Het goede antwoord is niet geselecteerd!"
+msgstr "尚未選擇正確答案！"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:104
 msgid "No answer deposited!"
-msgstr "Geen antwoord ingevuld!"
+msgstr "尚未設定答案！"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:105
 msgid "No quiz description filled!"
-msgstr "Quiz-beschrijving niet ingevuld!"
+msgstr "測驗描述未填寫！"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:106
 msgid "The percent values in result text are incorrect."
-msgstr "De procentuele waardes in de resultaten zijn incorrect."
+msgstr "結果欄位的百分比值錯誤。"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:107
 msgid "No number in the field \"Points\" or less than 1"
-msgstr "Geen getal in het veld \"Punten\" of kleiner dan 1"
+msgstr "配分欄尚未填入數字或填入值小於1"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:108
 msgid "No number in the field \"Points\" or less than 0"
-msgstr "Geen getal in het veld  \"Punten\" of lager dan 0"
+msgstr "配分欄尚未填入數字或填入值小於0"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:109
 msgid "No quiz selected"
-msgstr "Geen quiz geselecteerd"
+msgstr "未選擇測驗"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:110
 msgid "Do you really want to reset the statistic?"
-msgstr "Weet u zeker dat u de statistieken opnieuw wilt instellen?"
+msgstr "確定重設統計表？"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:111
 #: lib/view/WpProQuiz_View_FrontToplist.php:26
@@ -65,43 +65,41 @@ msgstr "Weet u zeker dat u de statistieken opnieuw wilt instellen?"
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:33
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:597
 msgid "No data available"
-msgstr "Geen data beschikbaar"
+msgstr "無可用資料"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:112
 msgid "No sort element in the criterion"
-msgstr "Geen sorteer elementen in de criteria"
+msgstr "沒有排序的標準"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:113
 msgid ""
 "\"Different points for every answer\" is not possible at \"Free\" choice"
-msgstr ""
-"\"Verschillende punten voor ieder antwoord\" is niet mogelijk bij \"Vrije\" "
-"keuze"
+msgstr "自由選項無法為每個答案設置不同配分"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:114
 msgid "You must specify a name."
-msgstr "U dient een naam in te voeren"
+msgstr "必須指定一個名稱。"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:115
 msgid "This entry should really be deleted?"
-msgstr "Moet deze post echt verwijderd worden?"
+msgstr "確定刪除此項目？"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:116
 msgid "Not all fields completed."
-msgstr "Niet alle velden zijn ingevuld."
+msgstr "有欄位未完成。"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:117
 msgid "You must specify a template name."
-msgstr "Je moet een template naam opgeven."
+msgstr "必須指定一個樣板名稱。"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:120
 #: lib/view/WpProQuiz_View_StatisticsNew.php:181
 msgid "Close"
-msgstr "Sluit"
+msgstr "關閉"
 
 #: lib/controller/WpProQuiz_Controller_Admin.php:121
 msgid "Today"
-msgstr "Vandaag"
+msgstr "今日"
 
 #: lib/controller/WpProQuiz_Controller_Front.php:47
 #: lib/controller/WpProQuiz_Controller_Front.php:66
@@ -115,27 +113,26 @@ msgstr "Vandaag"
 #: lib/view/WpProQuiz_View_StatisticsNew.php:187
 #: lib/view/WpProQuiz_View_StatisticsNew.php:233
 msgid "Loading"
-msgstr "Laden"
+msgstr "載入中"
 
 #: lib/controller/WpProQuiz_Controller_Front.php:48
 #: lib/controller/WpProQuiz_Controller_Front.php:67
 #: lib/controller/WpProQuiz_Controller_Preview.php:16
 msgid "You must answer this question."
-msgstr "Je moet deze vraag beantwoorden."
+msgstr "您必須回答這個問題。"
 
 #: lib/controller/WpProQuiz_Controller_Front.php:49
 #: lib/controller/WpProQuiz_Controller_Front.php:68
 #: lib/controller/WpProQuiz_Controller_Preview.php:17
 msgid "You must answer all questions before you can completed the quiz."
-msgstr "Je moet alle vragen beantwoorden voordat je de quiz kan voltooien."
+msgstr "您必須回答所有問題才能完成測驗。"
 
 #: lib/controller/WpProQuiz_Controller_Front.php:50
 #: lib/controller/WpProQuiz_Controller_Front.php:69
 #: lib/controller/WpProQuiz_Controller_Preview.php:18
 msgid "All fields have to be filled."
-msgstr "Alle velden moet ingevuld zijn."
+msgstr "所有欄位必填。"
 
-# Must not be translated
 #: lib/controller/WpProQuiz_Controller_GlobalSettings.php:11
 #: lib/controller/WpProQuiz_Controller_ImportExport.php:23
 #: lib/controller/WpProQuiz_Controller_ImportExport.php:47
@@ -155,109 +152,109 @@ msgstr "Alle velden moet ingevuld zijn."
 #: lib/controller/WpProQuiz_Controller_Statistics.php:40
 #: lib/controller/WpProQuiz_Controller_Toplist.php:88
 msgid "You do not have sufficient permissions to access this page."
-msgstr "U heeft niet voldoende rechten om deze pagina te bekijken."
+msgstr "您沒有足夠的權限登入頁面。"
 
 #: lib/controller/WpProQuiz_Controller_GlobalSettings.php:22
 msgid "Settings saved"
-msgstr "Instellingen opgeslagen"
+msgstr "設定已儲存"
 
 #: lib/controller/WpProQuiz_Controller_GlobalSettings.php:46
 msgid "Database repaired"
-msgstr "Database gerepareerd"
+msgstr "資料庫已修復"
 
 #: lib/controller/WpProQuiz_Controller_ImportExport.php:91
 #: lib/helper/WpProQuiz_Helper_Import.php:59
 #: lib/helper/WpProQuiz_Helper_Import.php:68
 #: lib/helper/WpProQuiz_Helper_Import.php:75
 msgid "File cannot be processed"
-msgstr "Het bestand kan niet worden verwerkt"
+msgstr "檔案無法處理"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:9
 #: lib/controller/WpProQuiz_Controller_Question.php:19
 #: lib/controller/WpProQuiz_Controller_Quiz.php:57
 #: lib/controller/WpProQuiz_Controller_Quiz.php:323
 msgid "Quiz not found"
-msgstr "Quiz niet gevonden"
+msgstr "找不到測驗"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:78
 msgid "Question not found"
-msgstr "Antwoord niet gevonden"
+msgstr "找不到問題"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:100
 #: lib/controller/WpProQuiz_Controller_Question.php:348
 msgid "Question edited"
-msgstr "Vraag bewerkt"
+msgstr "問題已編輯"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:102
 msgid "Question added"
-msgstr "Vraag toegevoegd"
+msgstr "問題已加入"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:120
 #: lib/controller/WpProQuiz_Controller_Question.php:302
 msgid "Edit question"
-msgstr "Vraag bewerken"
+msgstr "編輯問題"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:120
 #: lib/controller/WpProQuiz_Controller_Question.php:416
 msgid "New question"
-msgstr "Nieuwe vraag"
+msgstr "新問題"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:166
 #: lib/controller/WpProQuiz_Controller_Question.php:330
 #, php-format
 msgid "Question: %d"
-msgstr "Vraag: %d"
+msgstr "問題： %d"
 
 #: lib/controller/WpProQuiz_Controller_Question.php:203
 msgid "questions copied"
-msgstr "Vragen gekopieërd"
+msgstr "問題已複製"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:93
 #: lib/controller/WpProQuiz_Controller_Quiz.php:338
 msgid "Quiz edited"
-msgstr "Quiz bewerkt"
+msgstr "測驗已編輯"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:95
 msgid "quiz created"
-msgstr "quiz gemaakt"
+msgstr "測驗已建立"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:117
 #: lib/controller/WpProQuiz_Controller_Quiz.php:359
 #: lib/controller/WpProQuiz_Controller_Quiz.php:431
 msgid "Quiz title or quiz description are not filled"
-msgstr "Quiz titel of quiz beschrijving niet ingevuld"
+msgstr "測驗標題或測驗描述未填寫"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:135
 #: lib/controller/WpProQuiz_Controller_Quiz.php:316
 #: lib/view/WpProQuiz_View_QuestionOverall.php:21
 msgid "Edit quiz"
-msgstr "Quiz bewerken"
+msgstr "編輯測驗"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:135
 #: lib/controller/WpProQuiz_Controller_Quiz.php:394
 #: lib/controller/WpProQuiz_Controller_Quiz.php:412
 msgid "Create quiz"
-msgstr "Quiz aanmaken"
+msgstr "建立測驗"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:514
 msgid "Template stored"
-msgstr "Template opgeslagen"
+msgstr "樣版已儲存"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:619
 msgid "Quiz deleted"
-msgstr "Quiz verwijderd"
+msgstr "測驗已刪除"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:881
 #: lib/controller/WpProQuiz_Controller_QuizCompleted.php:190
 #: lib/view/WpProQuiz_View_FrontQuiz.php:620
 msgid "Not categorized"
-msgstr "Niet gecategoriseerd"
+msgstr "未分類"
 
 #: lib/controller/WpProQuiz_Controller_Quiz.php:887
 #: lib/controller/WpProQuiz_Controller_QuizCompleted.php:196
 #: lib/view/WpProQuiz_View_FrontQuiz.php:615
 msgid "Categories"
-msgstr "Categorieën"
+msgstr "類別"
 
 #: lib/controller/WpProQuiz_Controller_Statistics.php:56
 #: lib/controller/WpProQuiz_Controller_Statistics.php:673
@@ -265,28 +262,28 @@ msgstr "Categorieën"
 #: lib/view/WpProQuiz_View_QuizEdit.php:51
 #: lib/view/WpProQuiz_View_QuizOverall.php:203
 msgid "No category"
-msgstr "Geen categorie"
+msgstr "無分類"
 
 #: lib/controller/WpProQuiz_Controller_Statistics.php:571
 #: lib/controller/WpProQuiz_Controller_Statistics.php:618
 #: lib/controller/WpProQuiz_Controller_Statistics.php:698
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:606
 msgid "Anonymous"
-msgstr "Anoniem"
+msgstr "匿名"
 
 #: lib/controller/WpProQuiz_Controller_Statistics.php:620
 #: lib/controller/WpProQuiz_Controller_Statistics.php:706
 msgid "Deleted user"
-msgstr "Verwijderde gebruiker"
+msgstr "已刪除的使用者"
 
 #: lib/controller/WpProQuiz_Controller_Toplist.php:80
 #: lib/controller/WpProQuiz_Controller_Toplist.php:211
 msgid "No name or e-mail entered."
-msgstr "Geen naam of e-mail ingevuld."
+msgstr "名稱或電子郵件未輸入。"
 
 #: lib/controller/WpProQuiz_Controller_Toplist.php:148
 msgid "You signed up successfully."
-msgstr "Je bent succesvol ingeschreven."
+msgstr "登入成功。"
 
 #: lib/controller/WpProQuiz_Controller_Toplist.php:156
 #: lib/controller/WpProQuiz_Controller_Toplist.php:160
@@ -294,45 +291,45 @@ msgstr "Je bent succesvol ingeschreven."
 #: lib/controller/WpProQuiz_Controller_Toplist.php:181
 #: lib/controller/WpProQuiz_Controller_Toplist.php:187
 msgid "An error has occurred."
-msgstr "Er is een fout opgetreden."
+msgstr "發生一個錯誤。"
 
 #: lib/controller/WpProQuiz_Controller_Toplist.php:198
 #: lib/controller/WpProQuiz_Controller_Toplist.php:207
 msgid "You can not enter again."
-msgstr "U mag niet nog eens meedoen."
+msgstr "您不能輸入兩次。"
 
 #: lib/controller/WpProQuiz_Controller_Toplist.php:215
 msgid "Your name can not exceed 15 characters."
-msgstr "U naam mag niet langer zijn dan 15 tekens."
+msgstr "您的名稱不能超過15個字元。"
 
 #: lib/controller/WpProQuiz_Controller_Toplist.php:223
 msgid "You entered wrong captcha code."
-msgstr "U heeft de verkeerde captcha code ingevuld."
+msgstr "驗證碼輸入錯誤。"
 
 #: lib/helper/WpProQuiz_Helper_Import.php:9
 #: lib/helper/WpProQuiz_Helper_ImportXml.php:8
 msgid "File was not uploaded"
-msgstr "Bestand is niet geupload"
+msgstr "檔案未上傳"
 
 #: lib/helper/WpProQuiz_Helper_Import.php:40
 msgid "File have wrong format"
-msgstr "Bestand heeft verkeerde formaat"
+msgstr "檔案格式錯誤"
 
 #: lib/helper/WpProQuiz_Helper_Import.php:45
 msgid "File is not compatible with the current version"
-msgstr "Bestand is niet compatibel met de huidige versie"
+msgstr "檔案無法相容目前版本"
 
 #: lib/helper/WpProQuiz_Helper_ImportXml.php:27
 #: lib/helper/WpProQuiz_Helper_ImportXml.php:40
 msgid "XML could not be loaded."
-msgstr "XML kon niet geladen worden."
+msgstr "XML 無法載入。"
 
 #: lib/model/WpProQuiz_Model_Email.php:78
 #: lib/model/WpProQuiz_Model_Email.php:88
 #: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:47
 #: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:79
 msgid "Wp-Pro-Quiz: One user completed a quiz"
-msgstr "Wp-Pro-Quiz: Een gebruiker heeft de quiz afgerond"
+msgstr "Wp-Pro-Quiz: 有一個使用者完成測驗"
 
 #: lib/model/WpProQuiz_Model_Email.php:79
 #: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:49
@@ -347,10 +344,10 @@ msgid ""
 msgstr ""
 "Wp-Pro-Quiz\n"
 "\n"
-"De gebruiker \"$username\" heeft de quiz \"$quizname\" afgerond.\n"
+"使用者 \"$username\" 已完成 \"$quizname\" 測驗。\n"
 "\n"
-"Punten: $points\n"
-"Resultaat: $result\n"
+"分數： $points\n"
+"結果： $result\n"
 "\n"
 
 #: lib/model/WpProQuiz_Model_Email.php:89
@@ -366,24 +363,24 @@ msgid ""
 msgstr ""
 "Wp-Pro-Quiz\n"
 "\n"
-"Je hebt de \"$quizname\" quiz voltooid.\n"
+"您已完成測驗 \"$quizname\".\n"
 "\n"
-"Punten: $points\n"
-"Result: $result\n"
+"分數： $points\n"
+"結果： $result\n"
 "\n"
 
 #: lib/plugin/WpProQuiz_Plugin_BpAchievementsV2.php:33
 #: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:6
 msgid "The user completed a quiz."
-msgstr "De gebruiker heeft de quiz afgerond"
+msgstr "使用者完成測驗。"
 
 #: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:7
 msgid "The user completed a quiz with 100 percent."
-msgstr "De gebruiker heeft de quiz voltooid met 100 procent voltooing."
+msgstr "使用者完成一項 100% 測驗。"
 
 #: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:18
 msgid "A powerful and beautiful quiz plugin for WordPress."
-msgstr "Een krachtige en mooie quiz plugin voor WordPress."
+msgstr "功能與外觀兼具的 WordPress 外掛。"
 
 #: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:21
 #: lib/view/WpProQuiz_View_QuizOverall.php:61
@@ -396,7 +393,7 @@ msgstr "WP-Pro-Quiz"
 #: lib/view/WpProQuiz_View_QuizEdit.php:1035
 #: lib/view/WpProQuiz_View_QuizOverall.php:118
 msgid "Leaderboard"
-msgstr "Scorebord"
+msgstr "排行榜"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:8
 #: lib/view/WpProQuiz_View_GobalSettings.php:9
@@ -408,7 +405,7 @@ msgstr "Scorebord"
 #: lib/view/WpProQuiz_View_StatisticsNew.php:57
 #: lib/view/WpProQuiz_View_StyleManager.php:11
 msgid "back to overview"
-msgstr "terug naar overzicht"
+msgstr "返回概觀"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:11
 #: lib/view/WpProQuiz_View_Statistics.php:209
@@ -418,26 +415,26 @@ msgstr "terug naar overzicht"
 #: lib/view/WpProQuiz_View_StatisticsNew.php:201
 #: lib/view/WpProQuiz_View_StatisticsNew.php:224
 msgid "Filter"
-msgstr "Filter"
+msgstr "篩選"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:16
 msgid "Sort by:"
-msgstr "Sorteer op:"
+msgstr "排序："
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:18
 #: lib/view/WpProQuiz_View_QuizEdit.php:1115
 msgid "best user"
-msgstr "Beste deelnemer"
+msgstr "使用者分數"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:19
 #: lib/view/WpProQuiz_View_QuizEdit.php:1119
 msgid "newest entry"
-msgstr "Nieuwste inschrijving"
+msgstr "新項目"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:20
 #: lib/view/WpProQuiz_View_QuizEdit.php:1123
 msgid "oldest entry"
-msgstr "Oudste inschrijving"
+msgstr "舊項目"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:26
 #: lib/view/WpProQuiz_View_Statistics.php:220
@@ -445,34 +442,34 @@ msgstr "Oudste inschrijving"
 #: lib/view/WpProQuiz_View_StatisticsNew.php:120
 #: lib/view/WpProQuiz_View_StatisticsNew.php:212
 msgid "How many entries should be shown on one page:"
-msgstr "Hoeveel gebruikers wilt u weergeven op één pagina:"
+msgstr "一頁顯示多少項目："
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:38
 #: lib/view/WpProQuiz_View_AdminToplist.php:57
 #: lib/view/WpProQuiz_View_QuizEdit.php:1384
 msgid "Type"
-msgstr "Type"
+msgstr "格式"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:38
 msgid "UR = unregistered user, R = registered user"
-msgstr "UR = ongeregistreerde gebruiker, R = geregistreerde gebruiker"
+msgstr "UR = 未註冊使用者, R = 已註冊使用者"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:55
 #: lib/view/WpProQuiz_View_Statistics.php:239
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:585
 #: lib/view/WpProQuiz_View_StatisticsNew.php:107
 msgid "User"
-msgstr "Gebruiker"
+msgstr "使用者"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:56
 #: lib/view/WpProQuiz_View_FrontQuiz.php:210
 msgid "E-Mail"
-msgstr "E-Mail"
+msgstr "電子信箱"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:58
 #: lib/view/WpProQuiz_View_FrontToplist.php:16
 msgid "Entered on"
-msgstr "Ingeschreven op"
+msgstr "登入"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:59
 #: lib/view/WpProQuiz_View_FrontQuiz.php:860
@@ -490,7 +487,7 @@ msgstr "Ingeschreven op"
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:156
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:586
 msgid "Points"
-msgstr "Punten"
+msgstr "得分"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:60
 #: lib/view/WpProQuiz_View_FrontQuiz.php:574
@@ -501,7 +498,7 @@ msgstr "Punten"
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:162
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:591
 msgid "Results"
-msgstr "Resultaten"
+msgstr "百分比"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:72
 #: lib/view/WpProQuiz_View_GobalSettings.php:140
@@ -511,7 +508,7 @@ msgstr "Resultaten"
 #: lib/view/WpProQuiz_View_QuestionOverall.php:51
 #: lib/view/WpProQuiz_View_QuizOverall.php:102
 msgid "Edit"
-msgstr "Bewerken"
+msgstr "編輯"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:75
 #: lib/view/WpProQuiz_View_AdminToplist.php:100
@@ -525,27 +522,27 @@ msgstr "Bewerken"
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:43
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:631
 msgid "Delete"
-msgstr "Verwijderen"
+msgstr "刪除"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:80
 msgid "save"
-msgstr "sla op"
+msgstr "儲存"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:81
 msgid "cancel"
-msgstr "annuleer"
+msgstr "取消"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:99
 msgid "Action"
-msgstr "Actie"
+msgstr "動作"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:102
 msgid "Apply"
-msgstr "Toepassen"
+msgstr "套用"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:103
 msgid "Delete all entries"
-msgstr "Verwijder alle deelnemers"
+msgstr "刪除全部項目"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:88
 #: lib/view/WpProQuiz_View_FrontQuiz.php:172
@@ -556,7 +553,7 @@ msgstr "Verwijder alle deelnemers"
 #: lib/view/WpProQuiz_View_QuizEdit.php:424
 #: lib/view/WpProQuiz_View_QuizEdit.php:429
 msgid "Quiz-summary"
-msgstr "Quiz samenvatting"
+msgstr "測驗概述"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:88
 #: lib/view/WpProQuiz_View_FrontQuiz.php:172
@@ -564,174 +561,173 @@ msgstr "Quiz samenvatting"
 #: lib/view/WpProQuiz_View_FrontQuiz.php:501
 #: lib/view/WpProQuiz_View_FrontQuiz.php:937
 msgid "Finish quiz"
-msgstr "Quiz beëindigen"
+msgstr "完成測驗"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:200
 msgid "Your result has been entered into leaderboard"
-msgstr "Je resultaat is in het scorebord ingevuld"
+msgstr "成績是否列入排行？"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:207
 #: lib/view/WpProQuiz_View_FrontToplist.php:15
 #: lib/view/WpProQuiz_View_QuestionOverall.php:28
 #: lib/view/WpProQuiz_View_QuizOverall.php:79
 msgid "Name"
-msgstr "Naam"
+msgstr "名稱"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:215
 msgid "Captcha"
-msgstr "Captcha"
+msgstr "驗證碼"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:221
 msgid "Send"
-msgstr "Versturen"
+msgstr "送出"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:312
 #: lib/view/WpProQuiz_View_FrontQuiz.php:411
 msgid "You must fill out this field."
-msgstr "Je moet dit veld invullen."
+msgstr "此欄位必填。"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:315
 msgid "You must specify a number."
-msgstr "Je moet een nummer opgeven."
+msgstr "您必須指定一個數字。"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:316
 msgid "You must specify a text."
-msgstr "Je moet een tekst opgeven."
+msgstr "您必須指定一段文字。"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:317
 msgid "You must specify an email address."
-msgstr "Je moet een e-mailadres opgeven."
+msgstr "您必須指定一個電子信箱。"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:318
 msgid "You must specify a date."
-msgstr "Je moet een datum opgeven."
+msgstr "您必須指定一個日期。"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:397
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:549
 msgid "Yes"
-msgstr "Ja"
+msgstr "是"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:402
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:549
 msgid "No"
-msgstr "Nee"
+msgstr "否"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:428
 msgid ""
 "You have already completed the quiz before. Hence you can not start it again."
-msgstr ""
-"U heeft de quiz al eerder gemaakt. Daarom kunt u de quiz niet nog eens maken."
+msgstr "您已完成過測驗，因此您不能再測驗。"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:438
 msgid "You must sign in or sign up to start the quiz."
-msgstr "Je moet een account aanmaken of inloggen om de quiz te beginnen."
+msgstr "您必須登入或註冊才能開始測驗。"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:448
 msgid "You have to finish following quiz, to start this quiz:"
-msgstr "De volgende quiz moet afgerond zijn alvorens deze te beginnen:"
+msgstr "您必須先完成以下測驗才能開始："
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:460
 #, php-format
 msgid "%s of %s questions completed"
-msgstr "%s van %s vragen beantwoord"
+msgstr "已完成 %s/%s 個問題"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:462
 #: lib/view/WpProQuiz_View_Import.php:44
 #: lib/view/WpProQuiz_View_QuizOverall.php:97
 msgid "Questions"
-msgstr "Vragen"
+msgstr "問題"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:477
 #: lib/view/WpProQuiz_View_FrontQuiz.php:492
 msgid "Information"
-msgstr "Informatie"
+msgstr "資訊"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:519
 msgid "Start quiz"
-msgstr "Quiz starten"
+msgstr "開始測驗"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:528
 #: lib/view/WpProQuiz_View_QuizEdit.php:184
 #: lib/view/WpProQuiz_View_QuizEdit.php:189
 msgid "Time limit"
-msgstr "Tijdslimiet"
+msgstr "時間限制"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:549
 msgid "Answered"
-msgstr "Beantwoord"
+msgstr "已答"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:553
 msgid "Review"
-msgstr "Beoordeling"
+msgstr "回顧"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:560
 msgid "Review question"
-msgstr "Beoordeel vraag"
+msgstr "回顧問題"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:577
 #, php-format
 msgid "%s of %s questions answered correctly"
-msgstr "%s van %s vragen correct beantwoord"
+msgstr "答對 %s/%s 個問題"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:581
 msgid "Your time: <span></span>"
-msgstr "Uw tijd: <span></span>"
+msgstr "答題時間： <span></span>"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:585
 msgid "Time has elapsed"
-msgstr "Tijd voorbij"
+msgstr "時間已花費"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:589
 #, php-format
 msgid "You have reached %s of %s points, (%s)"
-msgstr "U heeft %s van %s punten gehaald (%s)"
+msgstr "您獲得 %s/%s 分數 (%s)"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:597
 msgid "Average score"
-msgstr "Gemiddelde score"
+msgstr "平均分數"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:604
 msgid "Your score"
-msgstr "Uw score"
+msgstr "您的成績"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:653
 msgid "Restart quiz"
-msgstr "Quiz opnieuw starten"
+msgstr "重新測驗"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:655
 msgid "View questions"
-msgstr "Bekijk vragen"
+msgstr "檢視問題"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:658
 msgid "Show leaderboard"
-msgstr "Geef scorebord weer"
+msgstr "顯示排行榜"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:715
 #, php-format
 msgid "Question %s of %s"
-msgstr "Vraag %s van %s"
+msgstr "%s/%s問題"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:718
 #: lib/view/WpProQuiz_View_QuestionEdit.php:110
 #: lib/view/WpProQuiz_View_Statistics.php:104
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:155
 msgid "Question"
-msgstr "Vraag"
+msgstr "問題"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:722
 #, php-format
 msgid "%d points"
-msgstr "%d punten"
+msgstr "%d 分"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:728
 #, php-format
 msgid "Category: %s"
-msgstr "Categorie: %s"
+msgstr "類別： %s"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:737
 #: lib/view/WpProQuiz_View_QuestionEdit.php:347
 msgid "Sort elements"
-msgstr "Sorteer elementen"
+msgstr "排序內容"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:858
 #: lib/view/WpProQuiz_View_FrontQuiz.php:865
@@ -743,7 +739,7 @@ msgstr "Sorteer elementen"
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:336
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:587
 msgid "Correct"
-msgstr "Correct"
+msgstr "正確"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:876
 #: lib/view/WpProQuiz_View_FrontQuiz.php:883
@@ -753,70 +749,70 @@ msgstr "Correct"
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:158
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:588
 msgid "Incorrect"
-msgstr "Incorrect"
+msgstr "錯誤"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:904
 #: lib/view/WpProQuiz_View_FrontQuiz.php:915
 #: lib/view/WpProQuiz_View_QuestionEdit.php:154
 msgid "Hint"
-msgstr "Hint"
+msgstr "提示"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:911
 #: lib/view/WpProQuiz_View_QuizEdit.php:443
 #: lib/view/WpProQuiz_View_QuizEdit.php:448
 msgid "Skip question"
-msgstr "Sla vraag over"
+msgstr "跳過問題"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:913
 msgid "Back"
-msgstr "Terug"
+msgstr "上一題"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:917
 msgid "Check"
-msgstr "Controleren"
+msgstr "檢查"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:918
 msgid "Next"
-msgstr "Volgende"
+msgstr "下一題"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:931
 #: lib/view/WpProQuiz_View_FrontQuiz.php:932
 #, php-format
 msgid "Page %d"
-msgstr "Pagina %d"
+msgstr "頁 %d"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:953
 msgid "Quiz is loading..."
-msgstr "De quiz wordt geladen..."
+msgstr "測驗載入中..."
 
 #: lib/view/WpProQuiz_View_FrontToplist.php:11
 #, php-format
 msgid "maximum of %s points"
-msgstr "maximale van %s punten"
+msgstr "滿分%s 分"
 
 #: lib/view/WpProQuiz_View_FrontToplist.php:14
 msgid "Pos."
-msgstr "Pos."
+msgstr "編號"
 
 #: lib/view/WpProQuiz_View_FrontToplist.php:18
 msgid "Result"
-msgstr "Resultaten"
+msgstr "百分比"
 
 #: lib/view/WpProQuiz_View_FrontToplist.php:23
 msgid "Table is loading"
-msgstr "Tabel wordt geladen"
+msgstr "表格載入中"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:7
 #: lib/view/WpProQuiz_View_GobalSettings.php:12
 #: lib/view/WpProQuiz_View_GobalSettings.php:42
 #: lib/view/WpProQuiz_View_QuizOverall.php:48
 msgid "Global settings"
-msgstr "Overige instellingen"
+msgstr "全域設定"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:14
 #: lib/view/WpProQuiz_View_GobalSettings.php:398
 msgid "Settings in case of problems"
-msgstr "Instellingen in geval van problemen"
+msgstr "預防問題的設定"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:30
 #: lib/view/WpProQuiz_View_QuestionEdit.php:263
@@ -824,39 +820,39 @@ msgstr "Instellingen in geval van problemen"
 #: lib/view/WpProQuiz_View_QuizOverall.php:221
 #: lib/view/WpProQuiz_View_WpqSupport.php:45
 msgid "Save"
-msgstr "Opslaan"
+msgstr "儲存"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:48
 #: lib/view/WpProQuiz_View_GobalSettings.php:53
 msgid "Leaderboard time format"
-msgstr "Scorebord tijd opmaak"
+msgstr "排行榜時間格式"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:75
 msgid "Custom"
-msgstr "Aangepast"
+msgstr "自訂"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:79
 #: lib/view/WpProQuiz_View_GobalSettings.php:113
 msgid "Documentation on date and time formatting"
-msgstr "Documentatie voor de opmaak van datum en tijd"
+msgstr "文件以日期和時間格式"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:87
 #: lib/view/WpProQuiz_View_GobalSettings.php:92
 msgid "Statistic time format"
-msgstr "Statistieken tijd formaat"
+msgstr "統計表時間格式"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:96
 msgid "Select example:"
-msgstr "Selecteer voorbeeld:"
+msgstr "選擇範例："
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:109
 msgid "Time format:"
-msgstr "Tijd formaat:"
+msgstr "時間格式："
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:122
 #: lib/view/WpProQuiz_View_GobalSettings.php:127
 msgid "Category management"
-msgstr "Beheer categorieën"
+msgstr "類別管理"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:148
 #: lib/view/WpProQuiz_View_GobalSettings.php:153
@@ -866,47 +862,45 @@ msgstr ""
 #: lib/view/WpProQuiz_View_GobalSettings.php:174
 #: lib/view/WpProQuiz_View_GobalSettings.php:179
 msgid "Quiz template management"
-msgstr "Quiz template beheer"
+msgstr "測驗樣版管理"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:199
 #: lib/view/WpProQuiz_View_GobalSettings.php:204
 msgid "Question template management"
-msgstr "Vraag template beheer"
+msgstr "問題樣版管理"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:232
 #: lib/view/WpProQuiz_View_GobalSettings.php:528
 #: lib/view/WpProQuiz_View_QuizEdit.php:1460
 msgid "Admin e-mail settings"
-msgstr "Admin e-mail instellingen"
+msgstr "管理者電子信箱設定"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:238
 #: lib/view/WpProQuiz_View_QuizEdit.php:1493
 #: lib/view/WpProQuiz_View_QuizEdit.php:1624
 msgid "To:"
-msgstr "Aan:"
+msgstr "致："
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:245
 #: lib/view/WpProQuiz_View_QuizEdit.php:1500
 msgid ""
 "Separate multiple email addresses with a comma, e.g. wp@test.com, test@test."
 "com"
-msgstr ""
-"Gebruik een komma om meerdere adressen te scheiden, bijv: wp@test.com, "
-"test@test.com"
+msgstr "以逗號分隔多個電子郵件，例如 wp@test.com, test@test.com"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:251
 #: lib/view/WpProQuiz_View_GobalSettings.php:323
 #: lib/view/WpProQuiz_View_QuizEdit.php:1506
 #: lib/view/WpProQuiz_View_QuizEdit.php:1644
 msgid "From:"
-msgstr "Van:"
+msgstr "從："
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:264
 #: lib/view/WpProQuiz_View_GobalSettings.php:333
 #: lib/view/WpProQuiz_View_QuizEdit.php:1519
 #: lib/view/WpProQuiz_View_QuizEdit.php:1654
 msgid "Subject:"
-msgstr "Onderwerp:"
+msgstr "主旨："
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:274
 #: lib/view/WpProQuiz_View_GobalSettings.php:343
@@ -959,28 +953,28 @@ msgstr "HTML"
 #: lib/view/WpProQuiz_View_QuizEdit.php:1614
 #: lib/view/WpProQuiz_View_QuizEdit.php:1668
 msgid "Activate"
-msgstr "Activeren"
+msgstr "啟用"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:284
 #: lib/view/WpProQuiz_View_GobalSettings.php:353
 #: lib/view/WpProQuiz_View_QuizEdit.php:1539
 #: lib/view/WpProQuiz_View_QuizEdit.php:1674
 msgid "Message body:"
-msgstr "Berichttekst:"
+msgstr "訊息內容："
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:292
 #: lib/view/WpProQuiz_View_GobalSettings.php:361
 #: lib/view/WpProQuiz_View_QuizEdit.php:1551
 #: lib/view/WpProQuiz_View_QuizEdit.php:1686
 msgid "Allowed variables"
-msgstr "Toegestane variabelen"
+msgstr "可允許變數"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:294
 #: lib/view/WpProQuiz_View_GobalSettings.php:363
 #: lib/view/WpProQuiz_View_QuizEdit.php:1562
 #: lib/view/WpProQuiz_View_QuizEdit.php:1697
 msgid "User-ID"
-msgstr "Gebruiker-ID"
+msgstr "使用者ID"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:295
 #: lib/view/WpProQuiz_View_GobalSettings.php:364
@@ -989,133 +983,126 @@ msgstr "Gebruiker-ID"
 #: lib/view/WpProQuiz_View_Statistics.php:322
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:22
 msgid "Username"
-msgstr "Gebruikersnaam"
+msgstr "使用者名稱"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:296
 #: lib/view/WpProQuiz_View_GobalSettings.php:365
 #: lib/view/WpProQuiz_View_QuizEdit.php:1564
 #: lib/view/WpProQuiz_View_QuizEdit.php:1699
 msgid "Quiz-Name"
-msgstr "Quiz naam"
+msgstr "測驗名稱"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:297
 #: lib/view/WpProQuiz_View_GobalSettings.php:366
 #: lib/view/WpProQuiz_View_QuizEdit.php:1565
 #: lib/view/WpProQuiz_View_QuizEdit.php:1700
 msgid "Result in precent"
-msgstr "Resultaat in procenten"
+msgstr "以百分比顯示"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:298
 #: lib/view/WpProQuiz_View_GobalSettings.php:367
 #: lib/view/WpProQuiz_View_QuizEdit.php:1566
 #: lib/view/WpProQuiz_View_QuizEdit.php:1701
 msgid "Reached points"
-msgstr "Behaalde punten"
+msgstr "已達成分數"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:299
 #: lib/view/WpProQuiz_View_GobalSettings.php:368
 #: lib/view/WpProQuiz_View_QuizEdit.php:1567
 #: lib/view/WpProQuiz_View_QuizEdit.php:1702
 msgid "IP-address of the user"
-msgstr "IP-adres van de gebruiker"
+msgstr "使用者IP位址"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:300
 #: lib/view/WpProQuiz_View_GobalSettings.php:369
 #: lib/view/WpProQuiz_View_QuizEdit.php:1568
 #: lib/view/WpProQuiz_View_QuizEdit.php:1703
 msgid "Category-Overview"
-msgstr "Categorie-Overzicht"
+msgstr "類別概觀"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:317
 #: lib/view/WpProQuiz_View_GobalSettings.php:529
 #: lib/view/WpProQuiz_View_QuizEdit.php:1599
 msgid "User e-mail settings"
-msgstr "Gebruiker e-mail instellingen"
+msgstr "使用者電子信箱設定"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:384
 msgid "to activate"
-msgstr "activeren"
+msgstr "以啟用"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:386
 msgid "not to activate"
-msgstr "niet activeren"
+msgstr "不啟用"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:392
 #: lib/view/WpProQuiz_View_WpqSupport.php:50
 msgid "Please note"
-msgstr "Let op"
+msgstr "請注意"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:394
 msgid ""
 "These settings should only be set in cases of problems with Wp-Pro-Quiz."
-msgstr "Deze instellingen alleen instellen bij problemen met Wp-Pro-Quiz."
+msgstr "只有在預防 Wp-Pro-Quiz 發生問題才需要進行設定。"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:404
 #: lib/view/WpProQuiz_View_GobalSettings.php:409
 msgid "Automatically add [raw] shortcode"
-msgstr "Voeg automatisch [raw] shortcode toe"
+msgstr "自訂加入 [raw] 短碼"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:413
 #, php-format
 msgid "It is recommended %s this option on your system."
-msgstr "Het wordt aanbevolen %s  deze optie op uw systeem."
+msgstr "建議 %s 選項在您的系統上。"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:416
 msgid ""
 "If this option is activated, a [raw] shortcode is automatically set around "
 "WpProQuiz shortcode ( [WpProQuiz X] ) into [raw] [WpProQuiz X] [/raw]"
 msgstr ""
-"Wanneer deze optie geactiveerd is, wordt er een [raw] shortcode om de "
-"WpProQuiz Shortcode ( [WpProQuiz X] ) geplaatst ( [raw] [WpProQuiz X] [/"
-"raw] )."
+"若該選項啟動，一個 [raw] 短碼會自動將 WpProQuiz 短碼 ( [WpProQuiz X] ) 變成 "
+"[raw] [WpProQuiz X] [/raw]"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:419
 #: lib/view/WpProQuiz_View_QuizOverall.php:42
 msgid ""
 "Own themes changes internal  order of filters, what causes the problems. "
 "With additional shortcode [raw] this is prevented."
-msgstr ""
-"Eigen thema heeft de interne orde van de filter veranderd,dit heeft het "
-"probleem veroorzaakt. Met de extra shortcode [raw] wordt dit verholpen."
+msgstr "使用額外 [raw] 短碼可避免自有佈景主題變更內部篩選順序問題。"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:426
 #: lib/view/WpProQuiz_View_GobalSettings.php:431
 msgid "Do not load the Javascript-files in the footer"
-msgstr "Javascript-bestand is niet geladen in de footer"
+msgstr "請勿於頁尾載入 Javascript 檔案"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:438
 msgid ""
 "Generally all WpProQuiz-Javascript files are loaded in the footer and only "
 "when they are really needed."
-msgstr ""
-"Standaard worden alle WpProQuiz-Javascript-bestanden geladen in de footer en "
-"alleen gebruikt wanneer ze werkelijk nodig zijn."
+msgstr "只有在真的需要時才可在頁尾載入 Javascript 檔案。"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:441
 msgid "In very old Wordpress themes this can lead to problems."
-msgstr "Dit kan leiden tot problemen bij erg oude Wordpress thema's."
+msgstr "在較舊的 Wordpress 佈景主題可能會造成問題。"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:444
 msgid ""
 "If you activate this option, all WpProQuiz-Javascript files are loaded in "
 "the header even if they are not needed."
 msgstr ""
-"Wanneer u deze optie activeert, worden alle WpProQuiz-Javascript-bestanden "
-"geladen in de header, ook als ze niet nodig zijn."
+"當啟用該選項，所有的 WpProQuiz-Javascript 檔案將會被載入至頁首，即便不需要這"
+"些檔案。"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:447
 #, php-format
 msgid ""
 "Anyone who wants to learn more about this topic should read through the "
 "following websites %s and %s."
-msgstr ""
-"Wie meer wil weten over deze onderwerpen moet de volgende websites %s en %s "
-"raadplegen."
+msgstr "想學習更多 關於這個主題的內容請詳閱以下網站 %s 與 %s。"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:456
 #: lib/view/WpProQuiz_View_GobalSettings.php:461
 msgid "Touch Library"
-msgstr "Touch Library"
+msgstr "觸控功能"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:465
 #: lib/view/WpProQuiz_View_QuizEdit.php:433
@@ -1124,75 +1111,69 @@ msgstr "Touch Library"
 #: lib/view/WpProQuiz_View_QuizEdit.php:903
 #: lib/view/WpProQuiz_View_QuizEdit.php:1475
 msgid "Deactivate"
-msgstr "Deactiveren"
+msgstr "關閉"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:468
 msgid "In Version 0.13 a new Touch Library was added for mobile devices."
-msgstr ""
-"In versie 0.13 is een nieuwe Touch Library voor mobiele apparaten toegevoegd."
+msgstr "版本 0.13 加入新觸控功能以支援行動裝置。"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:471
 msgid "If you have any problems with the Touch Library, please deactivate it."
-msgstr ""
-"Wanneer u problemen ondervindt met Touch Library, kunt u die hier "
-"deactiveren."
+msgstr "如果您對觸控功能有任何問題，請關閉它。"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:478
 #: lib/view/WpProQuiz_View_GobalSettings.php:483
 msgid "jQuery support cors"
-msgstr "jQuery support cors"
+msgstr "jQuery 支援 cors"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:490
 msgid "Is required only in rare cases."
-msgstr "Nodig in zeldzame gevallen."
+msgstr "只有在特殊情況才需要。"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:493
 msgid "If you have problems with the front ajax, please activate it."
-msgstr ""
-"Wanneer u problemen ondervindt met front AJAX, activeer het alstublieft."
+msgstr "如果您對前台的 ajax 有任何問題，請關閉它。"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:496
 msgid "e.g. Domain with special characters in combination with IE"
-msgstr "bv. Domein met speciale tekens in combinatie met IE."
+msgstr "例如 使用 IE 瀏覽器時網址含有特殊字元組合。"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:503
 #: lib/view/WpProQuiz_View_GobalSettings.php:508
 #: lib/view/WpProQuiz_View_GobalSettings.php:510
 msgid "Repair database"
-msgstr "Repareer database"
+msgstr "修復資料庫"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:512
 msgid "No date will be deleted. Only WP-Pro-Quiz tables will be repaired."
-msgstr ""
-"Geen datum zal worden verwijderd. Alleen WP-Pro-Quiz tabellen zullen worden "
-"gerepareerd."
+msgstr "沒有日期被刪除。只有 WP-Pro-Quiz 資料庫表格被修復。"
 
 #: lib/view/WpProQuiz_View_Import.php:21
 #: lib/view/WpProQuiz_View_QuizOverall.php:144
 #: lib/view/WpProQuiz_View_QuizOverall.php:169
 msgid "Import"
-msgstr "Importeren"
+msgstr "輸入"
 
 #: lib/view/WpProQuiz_View_Import.php:25
 msgid "Error"
-msgstr "Error"
+msgstr "錯誤"
 
 #: lib/view/WpProQuiz_View_Import.php:32
 msgid "Successfully"
-msgstr "Succesvol"
+msgstr "成功"
 
 #: lib/view/WpProQuiz_View_Import.php:34
 msgid "Import completed successfully"
-msgstr "Import succesvol voltooid"
+msgstr "全部輸入成功"
 
 #: lib/view/WpProQuiz_View_Import.php:43
 msgid "Quiz name"
-msgstr "Quiz naam"
+msgstr "測驗名稱"
 
 #: lib/view/WpProQuiz_View_Import.php:69
 #: lib/view/WpProQuiz_View_QuizOverall.php:180
 msgid "Start import"
-msgstr "Importeren starten"
+msgstr "開始輸入"
 
 #: lib/view/WpProQuiz_View_InfoAdaptation.php:7
 msgid "WP-Pro-Quiz special modification"
@@ -1263,11 +1244,11 @@ msgstr ""
 #: lib/view/WpProQuiz_View_QuestionEdit.php:33
 #: lib/view/WpProQuiz_View_QuizEdit.php:29
 msgid "load template"
-msgstr "laad template"
+msgstr "載入樣板"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:40
 msgid "Title"
-msgstr "Titel"
+msgstr "題目"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:40
 #: lib/view/WpProQuiz_View_QuestionEdit.php:80
@@ -1278,15 +1259,15 @@ msgstr "Titel"
 #: lib/view/WpProQuiz_View_QuizEdit.php:576
 #: lib/view/WpProQuiz_View_QuizEdit.php:1023
 msgid "(optional)"
-msgstr "(optioneel)"
+msgstr "(非必要)"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:43
 msgid ""
 "The title is used for overview, it is not visible in quiz. If you leave the "
 "title field empty, a title will be generated."
 msgstr ""
-"De titel wordt gebruikt in het overzicht en is niet zichtbaar in de quiz. "
-"Een titel wordt gegenereerd wanneer u het titelveld leeg laat."
+"此標題為敘述用，不會顯示在測驗裡。如果您標題欄位保持空白，系統會自動產生一個"
+"標題。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:49
 #: lib/view/WpProQuiz_View_QuestionEdit.php:110
@@ -1295,33 +1276,29 @@ msgstr ""
 #: lib/view/WpProQuiz_View_QuizEdit.php:565
 #: lib/view/WpProQuiz_View_QuizEdit.php:1204
 msgid "(required)"
-msgstr "(verplicht)"
+msgstr "(必填)"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:53
 msgid "Points for this question (Standard is 1 point)"
-msgstr "Punten voor deze vraag (Standaard is 1 punt)"
+msgstr "問題分數 (標準是1分)"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:59
 msgid ""
 "This points will be rewarded, only if the user closes the question correctly."
-msgstr ""
-"Deze punten worden toegekend, alleen wanneer de gebruiker de vraag correct "
-"afsluit."
+msgstr "只有當使用者選擇正確答案才會獲得分數。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:65
 msgid "Different points for each answer"
-msgstr "Verschillende punten voor elk antwoord"
+msgstr "不同答案給予不同分數"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:68
 msgid ""
 "If you enable this option, you can enter different points for every answer."
-msgstr ""
-"Wanneer deze optie is ingeschakeld, kunt u verschillende punten toekennen "
-"aan iedere vraag."
+msgstr "如果您啟用該選項，您可以針對每個答案給予不同的分數。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:74
 msgid "Show reached points in the correct- and incorrect message?"
-msgstr "Het aantal punten weergeven in het correct- en incorrect bericht?"
+msgstr "以正確和錯誤的訊息顯示獲得的分數。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:80
 #: lib/view/WpProQuiz_View_QuestionOverall.php:29
@@ -1330,21 +1307,19 @@ msgstr "Het aantal punten weergeven in het correct- en incorrect bericht?"
 #: lib/view/WpProQuiz_View_Statistics.php:124
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:174
 msgid "Category"
-msgstr "Categorie"
+msgstr "類別"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:83
 msgid ""
 "You can assign classify category for a question. Categories are e.g. visible "
 "in statistics function."
-msgstr ""
-"U kunt categorieën toekennen aan vragen. Categorieën zijn bijv. zichtbaar in "
-"statistieken."
+msgstr "您可以對一個問題指派類別等級。類別定義可從「狀態功能」內檢視。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:86
 #: lib/view/WpProQuiz_View_QuizEdit.php:46
 #: lib/view/WpProQuiz_View_QuizOverall.php:198
 msgid "You can manage categories in global settings."
-msgstr "Beheer categorieën via Algemene instellingen."
+msgstr "您可以從「全域設定」中管理類別。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:90
 #: lib/view/WpProQuiz_View_QuestionEdit.php:100
@@ -1353,25 +1328,25 @@ msgstr "Beheer categorieën via Algemene instellingen."
 #: lib/view/WpProQuiz_View_QuizOverall.php:202
 #: lib/view/WpProQuiz_View_QuizOverall.php:212
 msgid "Create new category"
-msgstr "Creëer een nieuwe categorie"
+msgstr "建立新類別"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:102
 #: lib/view/WpProQuiz_View_QuizEdit.php:62
 #: lib/view/WpProQuiz_View_QuizOverall.php:214
 msgid "Create"
-msgstr "Creëer"
+msgstr "建立"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:118
 msgid "Message with the correct / incorrect answer"
-msgstr "Bericht met het correct / incorrect antwoord"
+msgstr "提供正確或錯誤答案的訊息"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:120
 msgid "Deactivated in quiz settings."
-msgstr "Gedeactiveerd in de quiz instellingen."
+msgstr "測驗設定內不啟用。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:125
 msgid "Message with the correct answer"
-msgstr "Melding bij het juiste antwoord"
+msgstr "正確答案訊息"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:128
 msgid ""
@@ -1379,17 +1354,16 @@ msgid ""
 "explanation for complex questions. The message \"Right\" or \"Wrong\" is "
 "always displayed automatically."
 msgstr ""
-"Deze tekst wordt zichtbaar bij een correct antwoord. Het kan gebruikt worden "
-"als uitleg bij complexe vragen. Het bericht \"Goed\" or \"Fout\" wordt "
-"altijd automatisch weergegeven."
+"當回答正確時會顯示這段文字，提供複雜問題的說明。 訊息 \"正確\" 或 \"錯誤\" 則"
+"會自動顯示。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:132
 msgid "Same text for correct- and incorrect-message?"
-msgstr "Dezelfde tekst bij correct- en incorrecte-melding?"
+msgstr "正確和錯誤訊息使用相同文字？"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:142
 msgid "Message with the incorrect answer"
-msgstr "Melding bij het foute antwoord"
+msgstr "錯誤達案訊息"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:145
 msgid ""
@@ -1397,87 +1371,80 @@ msgid ""
 "explanation for complex questions. The message \"Right\" or \"Wrong\" is "
 "always displayed automatically."
 msgstr ""
-"Deze tekst wordt zichtbaar bij incorrecte antwoorden. Het kan gebruikt "
-"worden als uitleg bij complexe vragen. Het bericht \"Goed\" or \"Fout\" "
-"wordt altijd automatisch weergegeven."
+"當回答錯誤時會顯示這段文字，提供複雜問題的說明。 訊息 \"正確\" or \"錯誤\" 則"
+"會自動顯示。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:157
 msgid "Here you can enter solution hint."
-msgstr "Hier kunt u een hint plaatsen."
+msgstr "您可以在此輸入問題提示。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:161
 msgid "Activate hint for this question?"
-msgstr "Een hint voor deze vraag activeren?"
+msgstr "針對問題啟用提示？"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:173
 msgid "Answer type"
-msgstr "Type antwoord?"
+msgstr "答案型式"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:181
 msgid "Single choice"
-msgstr "Enkele keuze"
+msgstr "單選"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:185
 msgid "Multiple choice"
-msgstr "Meerkeuze"
+msgstr "多選"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:189
 msgid "\"Free\" choice"
-msgstr "\"Open\" vraag"
+msgstr "\"自由\" 作答"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:193
 msgid "\"Sorting\" choice"
-msgstr "\"Sorteer\" antwoorden"
+msgstr "\"排序\" 作答"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:197
 msgid "\"Matrix Sorting\" choice"
-msgstr "\"Matrix Sorting\" choice"
+msgstr "\"矩陣排序\" 作答"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:201
 msgid "Cloze"
-msgstr "Cloze"
+msgstr "填充"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:205
 msgid "Assessment"
-msgstr "Beoordeling"
+msgstr "評估"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:211
 msgid "Answers"
-msgstr "Antwoorden"
+msgstr "答案"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:218
 msgid ""
 "Please sort the answers in right order with the \"Move\" - Button. The "
 "answers will be displayed randomly."
-msgstr ""
-"Alstublieft de antwoorden in de juiste volgorde plaatsen met de \"Move\" - "
-"knop. De antwoorden worden willekeurig weergegeven."
+msgstr "請使用 \"移動\" 按鈕排序答案的正確順序。答案會隨機排列顯示。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:223
 #: lib/view/WpProQuiz_View_QuestionEdit.php:229
 #: lib/view/WpProQuiz_View_QuestionEdit.php:251
 msgid "Add new answer"
-msgstr "Nieuw antwoord toevoegen"
+msgstr "加入新答案"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:233
 msgid ""
 "In this mode, not a list have to be sorted, but elements must be assigned to "
 "matching criterion."
-msgstr ""
-"In deze modus moet een lijst niet gesorteerd worden maar moeten de elementen "
-"bij het juiste criterium gevonden worden."
+msgstr "在此模式內，並非排序一個清單，必須將「要素」指派至標準答案。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:236
 msgid ""
 "You can create sort elements with empty criteria, which can't be assigned by "
 "user."
-msgstr ""
-"U kunt sorteer elementen aanmaken met lege criteria, die door de gebruiken "
-"niet toegekend kunnen worden."
+msgstr "您可以建立新標準以排序元素，並非由使用者指派。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:240
 msgid "Percentage width of criteria table column:"
-msgstr "Breedte percentage van de criteria tabel kolom:"
+msgstr "標準表格欄位寬度百分比："
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:245
 msgid ""
@@ -1485,55 +1452,54 @@ msgid ""
 "fill the rest of the available space. Increase this to allow accommodate "
 "longer criterion text. Defaults to 20%."
 msgstr ""
-"Staat het aanpassen van de breedte van de linkerkolom toe en de rechterkolom "
-"vult de rest van de ruimte op. Verhoog dit om een langere criteria tekst in "
-"te passen. De standaardwaarde is 20%."
+"允許調整左側欄位寬度，右側欄位會自動補足剩下的空間。增加此項目以容納更多標準"
+"文字，預設是到 20% 。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:266
 #: lib/view/WpProQuiz_View_QuizEdit.php:652
 msgid "template name"
-msgstr "template naam"
+msgstr "樣板名稱"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:268
 #: lib/view/WpProQuiz_View_QuizEdit.php:654
 msgid "Create new template"
-msgstr "Maak nieuwe template"
+msgstr "建立新樣板"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:276
 #: lib/view/WpProQuiz_View_QuizEdit.php:662
 msgid "Save as template"
-msgstr "Sla op als template"
+msgstr "儲存為樣板"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:295
 #: lib/view/WpProQuiz_View_QuestionEdit.php:345
 #: lib/view/WpProQuiz_View_QuestionEdit.php:398
 #: lib/view/WpProQuiz_View_QuizEdit.php:70
 msgid "Options"
-msgstr "Opties"
+msgstr "選項"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:296
 #: lib/view/WpProQuiz_View_QuestionEdit.php:399
 msgid "Answer"
-msgstr "Antwoord"
+msgstr "答案"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:311
 #: lib/view/WpProQuiz_View_QuestionEdit.php:370
 #: lib/view/WpProQuiz_View_QuestionEdit.php:376
 #: lib/view/WpProQuiz_View_QuestionEdit.php:408
 msgid "Allow HTML"
-msgstr "HTML toestaan"
+msgstr "允許 HTML"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:328
 #: lib/view/WpProQuiz_View_QuestionEdit.php:383
 #: lib/view/WpProQuiz_View_QuestionEdit.php:425
 msgid "Delete answer"
-msgstr "Antwoord verwijderen"
+msgstr "刪除答案"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:329
 #: lib/view/WpProQuiz_View_QuestionEdit.php:384
 #: lib/view/WpProQuiz_View_QuestionEdit.php:426
 msgid "Add Media"
-msgstr "Voeg media toe"
+msgstr "增加媒材"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:330
 #: lib/view/WpProQuiz_View_QuestionEdit.php:385
@@ -1541,26 +1507,22 @@ msgstr "Voeg media toe"
 #: lib/view/WpProQuiz_View_QuestionOverall.php:59
 #: lib/view/WpProQuiz_View_QuizEdit.php:1435
 msgid "Move"
-msgstr "Verplaatsen"
+msgstr "移動"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:346
 msgid "Criterion"
-msgstr "Criterium"
+msgstr "標準"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:438
 msgid ""
 "correct answers (one per line) (answers will be converted to lower case)"
-msgstr ""
-"Correcte antwoorden (een per regel) (antwoorden worden omgezet naar kleine "
-"letters)"
+msgstr "正確答案(每行一個) (答案會被轉換為小寫)"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:451
 msgid ""
 "Enclose the searched words with { } e.g. \"I {play} soccer\". Capital and "
 "small letters will be ignored."
-msgstr ""
-"Omsluit de gezochte woorden met { } bv. \"Ik {speel} voetbal\". Hoofdletters "
-"en kleine letters worden genegeerd."
+msgstr "以 { } 符號圈選搜尋字，例如 \"我 {玩} 足球\"。英文字母大小寫將被忽略。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:454
 msgid ""
@@ -1569,50 +1531,45 @@ msgid ""
 "{[play][love][hate]} soccer\" </span>. In this case answers play, love OR "
 "hate are correct."
 msgstr ""
-"U kunt meerdere opties voor een zoekterm opgeven. Zet bijv. blokhaken [ ] om "
-"het woord <span style=\"font-style: normal; letter-spacing: 2px;\"> \"Ik "
-"{[speel][houd van][haat]} voetbal\" </span>. In dit geval zijn de antwoorden "
-"speel, houd van OF haat correct."
+"您可以針對搜尋字指定多個答案選項，使用 [ ] 符號圈選該字，例如 <span style="
+"\"font-style: normal; letter-spacing: 2px;\"> \"我 {[玩][愛][恨]} 足球\" </"
+"span>。 在此情況回答玩、愛或恨都是正確的。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:457
 msgid ""
 "If mode \"Different points for every answer\" is activated, you can assign "
 "points with |POINTS. Otherwise 1 point will be awarded for every answer."
 msgstr ""
-"Wanneer de modus \"Verschillende punten voor ieder antwoord\" is "
-"geactiveerd, kunt u punten toekennen met |PUNTEN. Anders wordt er 1 punt "
-"toegekend voor ieder antwoord."
+"如果模式 \"每個答案不同配分\" 已啟用，您可以使用 \"|分數\" 來配分。否則每個答"
+"案只會分配 1 分。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:460
 msgid ""
 "e.g. \"I {play} soccer, with a {ball|3}\" - \"play\" gives 1 point and \"ball"
 "\" 3 points."
 msgstr ""
-"bijv. \"Ik {speel} voetbal, met een {bal|3}\" - \"speel\" geeft 1 punt en "
-"\"bal\" 3 punten."
+"例如 \"我 用一個 {球|3} {玩} 足球\" - \"玩\" 分配 1 分， \"球\" 則分配 3 分。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:472
 msgid "Here you can create an assessment question."
-msgstr "Hier kan je een beoordelingsvraag toevoegen."
+msgstr "您可以在此建立一個評估問題。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:475
 msgid ""
 "Enclose a assesment with {}. The individual assessments are marked with []."
-msgstr ""
-"Omsluit een beoordeling met accolades ({}). De individuele beoordelingen "
-"zijn gemarkeerd met blokhaken ([])."
+msgstr "使用 {} 符號圈選一個評估。 獨立的評估會以 [] 符號註記。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:477
 msgid "The number of options in the maximum score."
-msgstr "Het aantal opties in de maximum score."
+msgstr "選項數量的最大分數。"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:480
 msgid "Examples:"
-msgstr "Voorbeelden:"
+msgstr "例如："
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:482
 msgid "less true { [1] [2] [3] [4] [5] } more true"
-msgstr "minder waar { [1] [2] [3] [4] [5] } meer waar"
+msgstr "更少 { [1] [2] [3] [4] [5] } 更多"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:485
 #: lib/view/WpProQuiz_View_QuestionEdit.php:494
@@ -1639,91 +1596,89 @@ msgstr "minder waar { [1] [2] [3] [4] [5] } meer waar"
 #: lib/view/WpProQuiz_View_QuizEdit.php:1358
 #: lib/view/WpProQuiz_View_QuizEdit.php:1365
 msgid "Demo"
-msgstr "Demo"
+msgstr "展示"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:491
 msgid "less true { [a] [b] [c] } more true"
-msgstr "minder waar { [a] [b] [c] } meer waar"
+msgstr "更少 { [a] [b] [c] } 更多"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:510
 msgid "Single choice options"
-msgstr "Enkele keuze opties"
+msgstr "單選選項"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:513
 msgid ""
 "If \"Different points for each answer\" is activated, you can activate a "
 "special mode.<br> This changes the calculation of the points"
 msgstr ""
-"Als \"Verschillende punten voor elk antwoord\" is geactiveerd dan kun je "
-"een  speciale modus activeren.<br> Dit veranderd de berekening van punten"
+"如果 \"每個答案不同配分\" 已啟用，您可以啟用一個特別模式。<br> 這會改變分數的"
+"計算"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:517
 msgid "Different points - modus 2 activate"
-msgstr "Verschillende punten - modus 2 geactiveerd"
+msgstr "不同配分 - 模式 2 啟用"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:521
 msgid "Disables the distinction between correct and incorrect."
-msgstr "Deactiveert het verschil tussen correct en incorrect."
+msgstr "關閉正確與錯誤的區別"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:525
 msgid "disable correct and incorrent"
-msgstr "deactiveer correct en incorrect"
+msgstr "關閉正確與錯誤"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:529
 msgid "Explanation of points calculation"
-msgstr "Uitleg over punten berekening"
+msgstr "分數計算解釋"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:549
 #: lib/view/WpProQuiz_View_QuestionEdit.php:554
 msgid "\"Different points for each answer\" enabled"
-msgstr "\"Verschillende punten voor elk antwoord\" staat aan"
+msgstr "\"每個答案不同配分\" 開啟"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:551
 msgid "\"Different points - mode 2\" disable"
-msgstr "\"Verschillende punten - modus 2\" staat uit"
+msgstr "\"不同配分 - 模式 2\" 關閉"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:556
 msgid "\"Different points - mode 2\" enabled"
-msgstr "\"Verschillende punten - modus 2\" staat aan"
+msgstr "\"不同配分 - 模式 2\" 開啟"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:17
 msgid "Questions sorted"
-msgstr "Vragen gesorteerd"
+msgstr "問題排序"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:78
 #: lib/view/WpProQuiz_View_Statistics.php:169
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:255
 msgid "Total"
-msgstr "Totaal"
+msgstr "總合"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:86
 msgid "Add question"
-msgstr "Vraag toevoegen"
+msgstr "加入問題"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:87
 msgid "Save order"
-msgstr "Ordening opslaan"
+msgstr "儲存排序"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:88
 #: lib/view/WpProQuiz_View_QuestionOverall.php:93
 msgid "Copy questions from another Quiz"
-msgstr "Kopiëer vragen uit een andere Quiz"
+msgstr "從其他測驗複製問題"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:94
 msgid ""
 "Here you can copy questions from another quiz into this quiz. (Multiple "
 "selection enabled)"
-msgstr ""
-"Hier kunt u vragen uit een andere quiz kopiëren naar deze quiz. (Meervoudige "
-"selectie ingeschakeld)"
+msgstr "您可以在此複製其他測驗的問題到這次測驗。 (允許多選)"
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:106
 msgid "Copy questions"
-msgstr "Vragen kopieëren"
+msgstr "複製問題"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:34
 msgid "Quiz title"
-msgstr "Quiz titel"
+msgstr "測驗名稱"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:43
 #: lib/view/WpProQuiz_View_QuizOverall.php:195
@@ -1732,68 +1687,67 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:76
 msgid "Hide quiz title"
-msgstr "Quiz titel verbergen"
+msgstr "隱藏測驗名稱"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:81
 msgid "Hide title"
-msgstr "Titel verbergen"
+msgstr "隱藏名稱"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:88
 msgid "The title serves as quiz heading."
-msgstr "De titel dient als een quiz titel."
+msgstr "用來當作測驗標題。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:95
 #: lib/view/WpProQuiz_View_QuizEdit.php:100
 msgid "Hide \"Restart quiz\" button"
-msgstr "Verberg \"Quiz opnieuw starten\" knop"
+msgstr "隱藏 \"重新測驗\" 按鈕"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:107
 msgid "Hide the \"Restart quiz\" button in the Frontend."
-msgstr "Verberg \"Quiz opnieuw starten\" in de gebruikersomgeving."
+msgstr "隱藏 \"重新測驗\" 前台按鈕。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:114
 #: lib/view/WpProQuiz_View_QuizEdit.php:119
 msgid "Hide \"View question\" button"
-msgstr "Verberg \"Bekijk vraag\" knop"
+msgstr "隱藏 \"檢視問題\" 按鈕"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:126
 msgid "Hide the \"View question\" button in the Frontend."
-msgstr "Verberg de \"Bekijk vraag\" knop in de gebruikersomgeving."
+msgstr "隱藏 \"檢視問題\" 前台按鈕。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:133
 #: lib/view/WpProQuiz_View_QuizEdit.php:138
 msgid "Display question randomly"
-msgstr "Vragen willekeurig weergeven"
+msgstr "隨機顯示問題"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:149
 #: lib/view/WpProQuiz_View_QuizEdit.php:154
 msgid "Display answers randomly"
-msgstr "Antwoorden willekeurig weergeven"
+msgstr "隨機顯示答案"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:165
 #: lib/view/WpProQuiz_View_QuizEdit.php:170
 msgid "Sort questions by category"
-msgstr "Sorteer vragen op categorie"
+msgstr "以類別排序問題"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:177
 msgid ""
 "Also works in conjunction with the \"display randomly question\" option."
-msgstr ""
-"Werkt ook in samenwerking met de \"weergeef willekeurige vraag\" optie."
+msgstr "能與 \"隨機顯示問題\" 選項一道執行。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:192
 msgid "Seconds"
-msgstr "Seconden"
+msgstr "秒"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:195
 msgid "0 = no limit"
-msgstr "0 = geen limiet"
+msgstr "0 = 沒有限制"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:202
 #: lib/view/WpProQuiz_View_QuizEdit.php:207
 #: lib/view/WpProQuiz_View_QuizOverall.php:114
 msgid "Statistics"
-msgstr "Statistieken"
+msgstr "狀態"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:214
 msgid ""
@@ -1801,63 +1755,59 @@ msgid ""
 "completed quiz, not after every question. The statistics is only visible "
 "over administration menu. (internal statistics)"
 msgstr ""
-"Statistieken voor goede en foute antwoorden. Statistieken worden opgeslagen "
-"bij het afsluiten van de quiz, niet na iedere vraag. De statistieken zijn "
-"alleen zichtbaar in het administratie menu. (interne statistieken)"
+"記錄正確或錯誤答案的狀態功能。當使用者完成測驗後才會儲存作答狀態，狀態資訊只"
+"能透過管理介面看見(內部狀態)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:221
 #: lib/view/WpProQuiz_View_QuizEdit.php:226
 msgid "Statistics IP-lock"
-msgstr "Statistiek IP-slot"
+msgstr "狀態 IP-鎖定"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:230
 msgid "in minutes (recommended 1440 minutes = 1 day)"
-msgstr "in minuten (aanbevolen: 1440 minuten = 1 dag)"
+msgstr "以分鐘表示 (建議 1440 分鐘 = 1 天)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:233
 msgid ""
 "Protect the statistics from spam. Result will only be saved every X minutes "
 "from same IP. (0 = deactivated)"
 msgstr ""
-"Bescherm de statitistieken van spam. Resultaten worden alleen opgeslagen "
-"iedere X minuten van hetzelfde IP. (0 = deactiveren)"
+"保護狀態避免垃圾機器人攻擊。同一個 IP 每隔多少分鐘才會儲存結果 (0 = 不啟用)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:240
 #: lib/view/WpProQuiz_View_QuizEdit.php:246
 msgid "Execute quiz only once"
-msgstr "Quiz eenmalig uitvoeren"
+msgstr "只執行一次測驗"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:254
 msgid ""
 "If you activate this option, the user can complete the quiz only once. "
 "Afterwards the quiz is blocked for this user."
-msgstr ""
-"Wanneer deze optie geactiveerd is kan de gebruiker de quiz maar eenmalig "
-"maken, daarna wordt de quiz geblokkeerd voor deze gebruiker."
+msgstr "如果您啟用這個選項，使用者只能做一次測驗，之後測驗就會封鎖該使用者。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:258
 msgid "This option applies to:"
-msgstr "Deze optie is geldig voor:"
+msgstr "選項適用於："
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:266
 #: lib/view/WpProQuiz_View_QuizEdit.php:1051
 #: lib/view/WpProQuiz_View_StatisticsNew.php:102
 msgid "all users"
-msgstr "Alle gebruikers"
+msgstr "全部使用者"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:270
 #: lib/view/WpProQuiz_View_QuizEdit.php:1055
 msgid "registered useres only"
-msgstr "alleen geregistreerde gebruikers"
+msgstr "只限已註冊使用者"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:274
 #: lib/view/WpProQuiz_View_QuizEdit.php:1059
 msgid "anonymous users only"
-msgstr "alleen anonieme gebruikers"
+msgstr "只限匿名使用者"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:280
 msgid "user identification by cookie"
-msgstr "gebruikersidentificatie m.b.v. cookie"
+msgstr "使用 cookie 識別使用者"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:283
 msgid ""
@@ -1865,97 +1815,90 @@ msgid ""
 "(anonymous) users. This ensures a longer assignment of the user than the "
 "simple assignment by the IP address."
 msgstr ""
-"Wanneer deze optie geactiveerd is, wordt er bovendien een cookie gebruikt "
-"voor niet geregistreerde (anonieme) gebruikers. Dit waarborgt een betere "
-"vaststelling van de gebruiker dan vasstelling bij IP adres."
+"如果您啟用這個選項，對於未註冊 (匿名) 的使用者會額外設定一個 cookie。 用來保"
+"證比透過 IP 位址簡單指派使用者來得更長。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:288
 msgid "Reset the user identification"
-msgstr "Reset de gebruikersidentificatie"
+msgstr "重設使用者識別"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:289
 msgid "User identification has been reset."
-msgstr "Gebruikers identificatie is gereset."
+msgstr "使用者識別已重設。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:291
 msgid "Resets user identification for all users."
-msgstr "Stelt gebruikers identificatie opnieuw in voor alle gebruikers."
+msgstr "重設所有使用者識別。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:300
 #: lib/view/WpProQuiz_View_QuizEdit.php:305
 msgid "Show only specific number of questions"
-msgstr "Geef alleen een specifiek aantal vragen weer"
+msgstr "只顯示特定數量的問題"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:312
 msgid ""
 "If you enable this option, maximum number of displayed questions will be X "
 "from X questions. (The output of questions is random)"
 msgstr ""
-"Wanneer deze optie is ingeschakeld wordt het maximale aantal weer te geven "
-"vragen van X tot X vragen. (De vragen worden willekeurig weergegeven)"
+"如果您啟用這個選項， 會從全部問題中選出數個問題來進行測驗。(問題以隨機方式輸"
+"出)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:316
 msgid "How many questions should be displayed simultaneously:"
-msgstr "Hoeveel vragen moeten er weergegeven worden:"
+msgstr "多少問題應該要同時顯示："
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:321
 msgid "in percent"
-msgstr "in procenten"
+msgstr "以百分比"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:329
 #: lib/view/WpProQuiz_View_QuizEdit.php:334
 msgid "Prerequisites"
-msgstr "Voorwaarden"
+msgstr "先決條件"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:341
 msgid ""
 "If you enable this option, you can choose quiz, which user have to finish "
 "before he can start this quiz."
 msgstr ""
-"Wanneer deze optie is ingeschakeld, kunt u een quiz instellen die de "
-"gebruiker volbracht moet hebben alvorens deze quiz te kunnen starten."
+"如果您啟用這個選項，您可以讓使用者在進行正式測驗前先完成您所挑選的測驗。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:344
 msgid ""
 "In all selected quizzes statistic function have to be active. If it is not "
 "it will be activated automatically."
-msgstr ""
-"Alle geselecteerde quizen moeten de statistiek functies geactiveerd hebben. "
-"Zo niet, dan worden deze automatisch geactiveerd."
+msgstr "在所有被選擇的測驗狀態功能必須被啟用，否則將會自動啟用。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:349
 msgid "Quiz"
-msgstr "Quiz"
+msgstr "測驗"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:351
 msgid "Prerequisites (This quiz have to be finished)"
-msgstr "Voorwaarden (Deze quiz moet afgemaakt worden)"
+msgstr "必備條件(必須完成測驗)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:390
 #: lib/view/WpProQuiz_View_QuizEdit.php:395
 #: lib/view/WpProQuiz_View_QuizEdit.php:408
 msgid "Question overview"
-msgstr "Vragenoverzicht"
+msgstr "問題概覽"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:402
 msgid ""
 "Add at the top of the quiz a question overview, which allows easy "
 "navigation. Additional questions can be marked \"to review\"."
 msgstr ""
-"Voeg bovenaan de quiz een vragenoverzicht toe, om makkelijker te navigeren. "
-"Extra vragen kunnen met \"te beoordelen\" gemarkeerd worden."
+"在測驗上方加上問題概覽，提供簡單導覽。額外的問題可以被標註為 \"檢視\"。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:405
 msgid "Additional quiz overview will be displayed, before quiz is finished."
-msgstr "Een extra quiz overzicht wordt getoond voordat de quiz is afgelopen."
+msgstr "在測驗完成前，會額外顯示測驗概覽。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:436
 msgid ""
 "If you enalbe this option, no quiz overview will be displayed, before "
 "finishing quiz."
-msgstr ""
-"Als u deze optie inschakelt, wordt er geen quiz overzicht getoond, voordat "
-"de quiz is afgelopen."
+msgstr "如果您啟用該選項，在完成測驗前不會顯示測驗概覽。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:455
 msgid ""
@@ -1963,139 +1906,126 @@ msgid ""
 "\"Overview -> next\" mode). User still will be able to navigate over "
 "\"Question-Overview\""
 msgstr ""
-"Als u deze optie inschakelt kan de gebruiker geen vragen overslaan (alleen "
-"in \"Overzicht -> volgende\" modus). Gebruikers kunnen nog wel navigeren "
-"naar \"Vragenoverzicht\""
+"如果您啟用該選項，使用者無法跳過問題。 (只有在 \"概覽 -> 下一個\" 模式)。使用"
+"者仍然可以導覽 \"問題概覽\""
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:463
 #: lib/view/WpProQuiz_View_QuizEdit.php:468
 #: lib/view/WpProQuiz_View_QuizEdit.php:1466
 #: lib/view/WpProQuiz_View_QuizEdit.php:1471
 msgid "Admin e-mail notification"
-msgstr "Admin e-mail notificatie"
+msgstr "管理者郵件通知"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:476
 #: lib/view/WpProQuiz_View_QuizEdit.php:1479
 msgid "for registered users only"
-msgstr "alleen voor geregistreerde gebruikers"
+msgstr "只針對已註冊使用者"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:480
 #: lib/view/WpProQuiz_View_QuizEdit.php:1483
 msgid "for all users"
-msgstr "voor alle gebruikers"
+msgstr "針對全部使用者"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:483
 #: lib/view/WpProQuiz_View_QuizEdit.php:1486
 msgid ""
 "If you enable this option, you will be informed if a user completes this "
 "quiz."
-msgstr ""
-"Als u deze optie inschakelt wordt u geïnformeerd zodra een gebruiker de quiz "
-"heeft afgerond."
+msgstr "如果您啟用該選項，當使用者完成測驗時會知會您。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:486
 #: lib/view/WpProQuiz_View_QuizEdit.php:509
 msgid "E-Mail settings can be edited in global settings."
-msgstr "E-mail instellingen kunnen aangepast worden via Algemene instellingen."
+msgstr "電子郵件設定可以在「全域設定」中編輯"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:494
 #: lib/view/WpProQuiz_View_QuizEdit.php:499
 #: lib/view/WpProQuiz_View_QuizEdit.php:1605
 #: lib/view/WpProQuiz_View_QuizEdit.php:1610
 msgid "User e-mail notification"
-msgstr "Gebruiker e-mail notificatie"
+msgstr "使用者郵件通知"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:506
 msgid ""
 "If you enable this option, an email is sent with his quiz result to the "
 "user. (only registered users)"
-msgstr ""
-"Als je deze optie aan zet dan wordt er een mail gestuurd naar de gebruiker "
-"met de resultaten van de quiz. (Alleen voor geregistreerde gebruikers)"
+msgstr "如果您啟用該選項，將會寄送測驗結果郵件給使用者。(只有註冊的使用者)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:517
 #: lib/view/WpProQuiz_View_QuizEdit.php:522
 msgid "Autostart"
-msgstr "Autostart"
+msgstr "自動開始"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:529
 msgid ""
 "If you enable this option, the quiz will start automatically after the page "
 "is loaded."
-msgstr ""
-"Als je deze optie aan zet dan wordt de quiz automatisch gestart nadat de "
-"pagina is geladen."
+msgstr "如果您啟用該選項，測驗將會在網頁載入後自動開始。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:536
 #: lib/view/WpProQuiz_View_QuizEdit.php:541
 msgid "Only registered users are allowed to start the quiz"
-msgstr "Alleen geregistreerde gebruikers mogen de quiz starten"
+msgstr "只有註冊的使用者能被允許開始測驗"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:548
 msgid ""
 "If you enable this option, only registered users allowed start the quiz."
-msgstr ""
-"Als je deze optie aan zet, dan mogen enkel geregistreerde gebruikers de quiz "
-"starten."
+msgstr "如果您啟用該選項，只有註冊的使用者能被允許開始測驗。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:565
 msgid "Quiz description"
-msgstr "Quiz beschrijving"
+msgstr "問題描述"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:568
 msgid "This text will be displayed before start of the quiz."
-msgstr "Deze tekst wordt weergegeven voordat de quiz begint."
+msgstr "在測驗開始前顯示以下文字。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:576
 msgid "Results text"
-msgstr "Resultaten tekst"
+msgstr "測驗結果"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:579
 msgid ""
 "This text will be displayed at the end of the quiz (in results). (this text "
 "is optional)"
-msgstr ""
-"Deze tekst wordt weergegeven nadat de quiz is afgelopen (in resultaten). "
-"(deze tekst is optioneel)"
+msgstr "在測驗結尾顯示以下文字 (在測驗結果內)。 (非必填)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:583
 msgid "Activate graduation"
-msgstr "Gradatie instellen"
+msgstr "啟用刻度"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:589
 msgid "Hint:"
-msgstr "Hint:"
+msgstr "提示："
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:591
 msgid "Maximal 15 levels"
-msgstr "Maximaal 15 niveaus"
+msgstr "最大 15 級"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:593
 #, php-format
 msgid ""
 "Percentages refer to the total score of the quiz. (Current total %d points "
 "in %d questions."
-msgstr ""
-"Procenten verwijzen naar de totale score van de quiz. (Huidige aantal %d "
-"punten uit %d vragen)"
+msgstr "參考測驗全部分數的百分比。 (目前全部 %d 分， %d 個問題)。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:596
 msgid "Values can also be mixed up"
-msgstr "Waarden kunnen ook worden gemengd"
+msgstr "數值也可混合"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:597
 msgid "10,15% or 10.15% allowed (max. two digits after the decimal point)"
-msgstr "10,15% of  10.15% toegestaan (maximaal twee cijfers achter de komma)"
+msgstr "允許 10,15% 或 10.15% (最多，小數點後兩位數)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:613
 #: lib/view/WpProQuiz_View_QuizEdit.php:624
 msgid "from:"
-msgstr "van:"
+msgstr "從："
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:613
 #: lib/view/WpProQuiz_View_QuizEdit.php:624
 msgid "percent"
-msgstr "procent"
+msgstr "百分比"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:613
 #: lib/view/WpProQuiz_View_QuizEdit.php:624
@@ -2103,18 +2033,16 @@ msgstr "procent"
 msgid ""
 "(Will be displayed, when result-percent is >= <span class=\"resultProzent\">"
 "%s</span>%%)"
-msgstr ""
-"(wordt weergegeven wanneer resultaat-procenten is >= <span class="
-"\"resultProzent\">%s</span>%%)"
+msgstr "(將會顯示，當百分比 >= <span class=\"resultProzent\">%s</span>%%)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:614
 #: lib/view/WpProQuiz_View_QuizEdit.php:625
 msgid "Delete graduation"
-msgstr "Verwijder gradatie"
+msgstr "刪除刻度"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:632
 msgid "Add graduation"
-msgstr "Gradatie toevoegen"
+msgstr "增加刻度"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:643
 #: lib/view/WpProQuiz_View_QuizEdit.php:1554
@@ -2124,325 +2052,294 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:674
 msgid "Result-Options"
-msgstr "Resultaat-Opties"
+msgstr "結果選項"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:680
 #: lib/view/WpProQuiz_View_QuizEdit.php:685
 msgid "Show average points"
-msgstr "Geef gemiddelde punten weer"
+msgstr "顯示平均分數"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:692
 msgid "Statistics-function must be enabled."
-msgstr "Statistiek functie moet ingeschakeld zijn."
+msgstr "狀態功能必須啟用。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:705
 #: lib/view/WpProQuiz_View_QuizEdit.php:710
 msgid "Show category score"
-msgstr "Toon categorie score"
+msgstr "顯示分類分數"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:717
 msgid ""
 "If you enable this option, the results of each category is displayed on the "
 "results page."
-msgstr ""
-"Als je deze optie aan zet dan wordt het resultaat van elke categorie "
-"weergegeven op de categorie pagina."
+msgstr "如果您啟用該選項，每個分類的結果會顯示在結果頁面。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:731
 #: lib/view/WpProQuiz_View_QuizEdit.php:736
 msgid "Hide correct questions - display"
-msgstr "Verberg correcte vragen - weergave"
+msgstr "隱藏正確問題 - 顯示"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:743
 msgid ""
 "If you select this option, no longer the number of correctly answered "
 "questions are displayed on the results page."
-msgstr ""
-"Als je deze optie aan zet dan wordt niet langer het aantal correct "
-"beantwoord vragen weergegeven op de resultaten pagina."
+msgstr "如果您選擇該選項，不管答對幾題都會顯示在結果頁面。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:757
 #: lib/view/WpProQuiz_View_QuizEdit.php:762
 msgid "Hide quiz time - display"
-msgstr "Verberg quiz tijd - weergave"
+msgstr "隱藏測驗時間 - 顯示"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:769
 msgid ""
 "If you enable this option, the time for finishing the quiz won't be "
 "displayed on the results page anymore."
-msgstr ""
-"Als je deze optie aanzet dan wordt de tijd om de quiz in te vullen niet "
-"weergeven op de resultaten pagina."
+msgstr "如果您啟用該選項，完成測驗的時間將不再顯示在結果頁面。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:783
 #: lib/view/WpProQuiz_View_QuizEdit.php:788
 msgid "Hide score - display"
-msgstr "Verberg score - weergave"
+msgstr "隱藏分數 - 顯示"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:795
 msgid ""
 "If you enable this option, final score won't be displayed on the results "
 "page anymore."
-msgstr ""
-"Als je deze optie aanzet wordt de uiteindelijke score niet weergegeven op de "
-"resultaten pagina."
+msgstr "如果您啟用該選項，最後分數將不再顯示在結果頁面。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:819
 msgid "Question-Options"
-msgstr "Vragen-Opties"
+msgstr "問題選項"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:825
 #: lib/view/WpProQuiz_View_QuizEdit.php:830
 msgid "Show points"
-msgstr "Toon punten"
+msgstr "顯示分數"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:837
 msgid "Shows in quiz, how many points are reachable for respective question."
-msgstr ""
-"Wordt weergegeven in de quiz en geeft het aantal te verkrijgen punten weer "
-"voor de betreffende vraag."
+msgstr "在測驗中顯示，對各別問題已得到多少分數。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:844
 #: lib/view/WpProQuiz_View_QuizEdit.php:849
 msgid "Number answers"
-msgstr "Nummer antwoorden"
+msgstr "答案編號"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:856
 msgid ""
 "If this option is activated, all answers are numbered (only single and "
 "multiple choice)"
-msgstr ""
-"Wanneer deze optie geactiveerd is, worden alle antwoorden genummerd (alleen "
-"in enkel en meerkeuze vragen)"
+msgstr "如果這個選項已啟用，全部答案會被編號 (只有單選與多選)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:869
 #: lib/view/WpProQuiz_View_QuizEdit.php:874
 msgid "Hide correct- and incorrect message"
-msgstr "Verberg correct- en incorrect berichten"
+msgstr "隱藏正確與錯誤訊息"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:881
 msgid ""
 "If you enable this option, no correct- or incorrect message will be "
 "displayed."
-msgstr ""
-"Wanneer deze optie is ingeschakeld, wordt er geen correct- of incorrect "
-"bericht weergegeven."
+msgstr "如果您啟用該選項，正確或錯誤訊息將不再顯示。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:894
 #: lib/view/WpProQuiz_View_QuizEdit.php:899
 msgid "Correct and incorrect answer mark"
-msgstr "Correcte en incorrecte antwoorden markering"
+msgstr "標示正確與錯誤答案"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:906
 msgid ""
 "If you enable this option, answers won't be color highlighted as correct or "
 "incorrect. "
-msgstr ""
-"Wanneer deze optie is ingeschakeld, antwoorden worden niet gemarkeerd als "
-"correct of incorrect."
+msgstr "如果您啟用該選項，答案將不會以顏色區分正確或錯誤。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:919
 #: lib/view/WpProQuiz_View_QuizEdit.php:924
 msgid "Force user to answer each question"
-msgstr "Dwing elke gebruiker om elke vraag in te vullen"
+msgstr "要求使用者回答每個問題"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:931
 msgid "If you enable this option, the user is forced to answer each question."
-msgstr ""
-"Als je deze optie aanzet dan moet de gebruiker elke vraag beantwoorden."
+msgstr "如果您啟用該選項，使用者必須回答每個問題。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:932
 msgid ""
 "If the option \"Question overview\" is activated, this notification will "
 "appear after end of the quiz, otherwise after each question."
 msgstr ""
-"Als de optie \"Vraag overzicht\" geactiveerd is dan zal deze notificatie "
-"worden weergeven na het eind van de quiz, anders na elke vraag."
+"如果 \"問題概覽\" 選項已啟動，將會在測驗結尾出現說明，否則就是在每個問題之"
+"後。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:939
 #: lib/view/WpProQuiz_View_QuizEdit.php:944
 msgid "Hide question position overview"
-msgstr "Verberg vraag positie overzicht"
+msgstr "隱藏問題位置概覽"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:951
 msgid "If you enable this option, the question position overview is hidden."
-msgstr ""
-"Als je deze optie aan zet dan wordt het vraag positie overzicht verborgen."
+msgstr "如果您啟用該選項，問題概覽位置會隱藏。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:964
 #: lib/view/WpProQuiz_View_QuizEdit.php:969
 msgid "Hide question numbering"
-msgstr "Verberg vraag nummering"
+msgstr "隱藏問題計數"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:976
 msgid "If you enable this option, the question numbering is hidden."
-msgstr "Als je deze optie aan zet dan wordt de vraag nummering verborgen."
+msgstr "如果您啟用該選項，會隱藏問題計數。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:989
 #: lib/view/WpProQuiz_View_QuizEdit.php:994
 msgid "Display category"
-msgstr "Weergeef categorie"
+msgstr "顯示分類"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1001
 msgid "If you enable this option, category will be displayed in the question."
-msgstr ""
-"Als je deze optie aan zet dan wordt de categorie weergeven bij de vraag."
+msgstr "如果您啟用該選項，將會在問題內顯示類別。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1026
 msgid ""
 "The leaderboard allows users to enter results in public list and to share "
 "the result this way."
-msgstr ""
-"Het scorebord laat gebruikers hun resultaten weergeven in een publieke lijst "
-"om zodoende hun resultaten te delen."
+msgstr "排行榜提供使用者在公開列表中輸入與分享測驗結果。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1029
 msgid "The leaderboard works independent from internal statistics function."
-msgstr "Het scorebord werkt onafhankelijk van de interne statistiek functie."
+msgstr "排行榜獨立運作，不受內部狀態功能影響。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1046
 msgid "Who can sign up to the list"
-msgstr "Wie kan zich inschrijven voor de lijst"
+msgstr "誰能登入排行榜"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1062
 msgid ""
 "Not registered users have to enter name and e-mail (e-mail won't be "
 "displayed)"
-msgstr ""
-"Niet geregistreerde gebruikers moeten naam en e-mail invoeren (e-mail wordt "
-"niet weergegeven)"
+msgstr "未註冊使用者必須輸入名稱與電子郵件(電子郵件不會顯示)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1068
 msgid "insert automatically"
-msgstr "automatisch invoegen"
+msgstr "自動插入"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1076
 msgid ""
 "If you enable this option, logged in users will be automatically entered "
 "into leaderboard"
-msgstr ""
-"Als u deze optie inschakelt worden ingelogde gebruikers automatisch aan de "
-"ranglijst toegevoegd"
+msgstr "如果您啟用該選項，使用者登入後會自動進入排行榜"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1082
 msgid "display captcha"
-msgstr "Plaats captcha"
+msgstr "顯示驗證碼"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1090
 msgid ""
 "If you enable this option, additional captcha will be displayed for users "
 "who are not registered."
-msgstr ""
-"Wanneer u deze optie aanzet, wordt een extra captcha weergegeven voor niet "
-"geregistreerde gebruikers."
+msgstr "如果您啟用該選項，未註冊的使用者將會要求輸入驗證碼。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1093
 msgid "This option requires additional plugin:"
-msgstr "Deze optie vereist een extra plugin:"
+msgstr "此選項需要安裝額外的外掛："
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1098
 msgid "Plugin has been detected."
-msgstr "Plugin is gevonden"
+msgstr "已偵測到的外掛。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1102
 msgid "Plugin is not installed."
-msgstr "Plugin is niet geïnstalleerd"
+msgstr "外掛未安裝。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1110
 msgid "Sort list by"
-msgstr "Sorteer lijst op"
+msgstr "排序列表以"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1129
 msgid "Users can apply multiple times"
-msgstr "Gebruikers kan meerdere keren deelenemen"
+msgstr "使用者可以重複進行測驗"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1140
 msgid "User can apply after:"
-msgstr "Gebruiker kan deelnemen na:"
+msgstr "使用者可以進行測驗："
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1142
 msgid "minute"
-msgstr "minuut"
+msgstr "分"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1149
 msgid "How many entries should be displayed"
-msgstr "Hoeveel deelnemers moeten worden weergegeven"
+msgstr "顯示多少登記數"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1155
 msgid "Entries"
-msgstr "Deelnemers"
+msgstr "登記數"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1162
 msgid "Automatically display leaderboard in quiz result"
-msgstr "Plaats automatisch het scorebord in de resultaten van de quiz"
+msgstr "測驗結果自動顯示排行榜"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1166
 msgid "Where should leaderboard be displayed:"
-msgstr "Waar moet het scorebord worden geplaatst:"
+msgstr "排行榜顯示位置："
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1169
 msgid "don't display"
-msgstr "niet weergeven"
+msgstr "不顯示"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1173
 msgid "below the \"result text\""
-msgstr "onder de \"resultaten tekst\""
+msgstr "在 \"結果文字\" 下"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1183
 msgid "in a button"
-msgstr "in een knop"
+msgstr "在按鈕之下"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1204
 msgid "Quiz-Mode"
-msgstr "Quiz-mode"
+msgstr "測驗模式"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1209
 msgid "Normal"
-msgstr "Normaal"
+msgstr "一般"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1210
 msgid "Normal + Back-Button"
-msgstr "Normaal + Terug-knop"
+msgstr "一般 + 後退按鈕"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1211
 msgid "Check -> continue"
-msgstr "Controleer -> doorgaan"
+msgstr "檢查 -> 繼續"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1212
 msgid "Questions below each other"
-msgstr "Vragen onder elkaar"
+msgstr "問題清單"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1224
 msgid ""
 "Displays all questions sequentially, \"right\" or \"false\" will be "
 "displayed at the end of the quiz."
-msgstr ""
-"Toont alle vragen als reeks, \"goed\" of \"fout\" wordt getoond aan het "
-"einde van de quiz."
+msgstr "依序顯示所有問題，測驗結束後將顯示 \"對\" 或 \"錯\"。 "
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1227
 msgid "Allows to use the back button in a question."
-msgstr "Staar het gebruikt van de terug knop in vragen toe."
+msgstr "在問題內允許使用後退按鈕(回上一題)。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1230
 msgid "Shows \"right or wrong\" after each question."
-msgstr "Toont \"goed of fout\" na elke vraag."
+msgstr "每個問題後顯示 \"對或錯\" 。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1233
 msgid ""
 "If this option is activated, all answers are displayed below each other, i."
 "e. all questions are on a single page."
-msgstr ""
-"Als u deze optie inschakelt, worden alle antwoorden onder elkaar getoond (d."
-"w.z. alle vragen staan op 1 pagina)."
+msgstr "如果啟用該選項，問題會以清單方式顯示，例如單一頁面顯示全部問題。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1275
 msgid "How many questions to be displayed on a page:"
-msgstr "Hoeveel vragen moet er weergegeven worden op een pagina:"
+msgstr "單一頁面顯示多少問題："
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1278
 msgid "(0 = All on one page)"
-msgstr "(0 = Alles op één pagina)"
+msgstr "(0 = 全部同一頁)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1300
 #: lib/view/WpProQuiz_View_QuizEdit.php:1633
@@ -2450,107 +2347,105 @@ msgstr "(0 = Alles op één pagina)"
 #: lib/view/WpProQuiz_View_Statistics.php:364
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:520
 msgid "Custom fields"
-msgstr "Aangepast velden"
+msgstr "自訂欄位"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1304
 msgid ""
 "You can create custom fields, e.g. to request the name or the e-mail address "
 "of the users."
-msgstr ""
-"Je kan aangepast velden creëren, bijvoorbeeld om de naam of het e-mailadres "
-"van de gebruiker op te vragen."
+msgstr "您可以建立自訂欄位，例如要求使用者輸入名稱或電子郵件。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1307
 msgid "The statistic function have to be enabled."
-msgstr "De statistieken functie moet worden aangezet."
+msgstr "狀態功能必須先啟用。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1314
 #: lib/view/WpProQuiz_View_QuizEdit.php:1319
 msgid "Custom fields enable"
-msgstr "Aangepaste velden geactiveerd"
+msgstr "自訂欄位啟用"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1326
 msgid "If you enable this option, custom fields are enabled."
-msgstr "Als je deze optie aan zet dan worden aangepaste velden geactiveerd."
+msgstr "如果您啟用該選項，自訂欄位將會啟用。"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1333
 #: lib/view/WpProQuiz_View_QuizEdit.php:1338
 msgid "Display position"
-msgstr "Weergeef positie"
+msgstr "顯示位置"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1340
 msgid "Where should the fileds be displayed:"
-msgstr "Waar moeten de velden worden weergegeven:"
+msgstr "欄位顯示位置："
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1343
 msgid "On the quiz startpage"
-msgstr "Op de quiz beginpagina"
+msgstr "在測驗開始頁面"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1355
 msgid "At the end of the quiz (before the quiz result)"
-msgstr "Aan het einde van de quiz (voor het quiz resultaat)"
+msgstr "在測驗結束後(在測驗結果前)"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1383
 msgid "Field name"
-msgstr "Veld naam"
+msgstr "名稱欄位"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1385
 msgid "Required?"
-msgstr "Verplicht?"
+msgstr "必填？"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1408
 msgid "Text"
-msgstr "Tekst"
+msgstr "文字"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1409
 msgid "Textarea"
-msgstr "Tekstveld"
+msgstr "文字區塊"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1410
 msgid "Checkbox"
-msgstr "Selectievakje"
+msgstr "勾選欄"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1411
 msgid "Drop-Down menu"
-msgstr "Uitschuif lijst menu"
+msgstr "下拉選單"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1412
 msgid "Radio"
-msgstr "Keuzevakjes"
+msgstr "單選欄"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1413
 msgid "Number"
-msgstr "Nummer"
+msgstr "數量"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1414
 msgid "Email"
-msgstr "E-mail"
+msgstr "電子郵件"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1415
 msgid "Yes/No"
-msgstr "Ja/Nee"
+msgstr "是/否"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1416
 #: lib/view/WpProQuiz_View_Statistics.php:323
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:23
 msgid "Date"
-msgstr "Datum"
+msgstr "日期"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1419
 msgid "Edit list"
-msgstr "Bewerk lijst"
+msgstr "編輯列表"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1422
 msgid "One entry per line"
-msgstr "Een invulling per regel"
+msgstr "每橫列一個項目"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1427
 msgid "OK"
-msgstr "OK"
+msgstr "好"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1446
 msgid "Add field"
-msgstr "Voeg veld toe"
+msgstr "加入欄位"
 
 #: lib/view/WpProQuiz_View_QuizEdit.php:1617
 msgid ""
@@ -2567,26 +2462,24 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:32
 msgid "Quiz overview"
-msgstr "Quiz overzicht"
+msgstr "測驗總覽"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:34
 msgid "In case of problems"
-msgstr "Bij problemen"
+msgstr "預防問題"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:36
 msgid "If quiz doesn't work in front-end, please try following:"
-msgstr ""
-"Wanneer de quiz niet werkt in de gebruikersomgeving, probeer dan het "
-"volgende:"
+msgstr "如果前台測驗無法運作，請嘗試以下步驟："
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:46
 msgid "Style Manager"
-msgstr "Style Manager"
+msgstr "風格管理"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:50
 #: lib/view/WpProQuiz_View_WpqSupport.php:8
 msgid "Support WP-Pro-Quiz"
-msgstr "Steun WP-Pro-Quiz"
+msgstr "支持 WP-Pro-Quiz"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:57
 msgid "Learn more"
@@ -2594,28 +2487,28 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:78
 msgid "ID"
-msgstr "ID"
+msgstr "編號"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:81
 msgid "Shortcode"
-msgstr "Shortcode"
+msgstr "簡碼"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:82
 msgid "Shortcode-Leaderboard"
-msgstr "Shortcode-Scorebord"
+msgstr "簡碼-排行榜"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:110
 msgid "Preview"
-msgstr "Voorbeeld"
+msgstr "預覽"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:142
 msgid "Add quiz"
-msgstr "Quiz toevoegen"
+msgstr "加入測驗"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:146
 #: lib/view/WpProQuiz_View_QuizOverall.php:153
 msgid "Export"
-msgstr "Exporteren"
+msgstr "輸出"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:148
 #: lib/view/WpProQuiz_View_QuizOverall.php:185
@@ -2626,12 +2519,11 @@ msgstr ""
 msgid ""
 "Choose the respective question, which you would like to export and press on "
 "\"Start export\""
-msgstr ""
-"Kies de vragen die u wilt exporteren en klik op,  \"Exporteren starten\""
+msgstr "選擇您想要輸出的問題然後按下 \"開始輸出\""
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:159
 msgid "Format:"
-msgstr "Formaat:"
+msgstr "格示："
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:160
 msgid "*.wpq"
@@ -2639,7 +2531,7 @@ msgstr "*.wpq"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:161
 msgid "or"
-msgstr "of"
+msgstr "或"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:162
 msgid "*.xml"
@@ -2647,17 +2539,16 @@ msgstr "*.xml"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:164
 msgid "Start export"
-msgstr "Exporteren starten"
+msgstr "開始輸出"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:170
 msgid "Import only *.wpq or *.xml files from known and trusted sources."
-msgstr ""
-"Importeer enkel *.wpq of *.xml bestanden van bekende en vertrouwde bronnen."
+msgstr "只從已知與可信的來源匯入 *.wpq 或 *.xml 檔案。"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:178
 #, php-format
 msgid "Maximal %d MiB"
-msgstr "Maximaal %d MiB"
+msgstr "最大 %d MiB"
 
 #: lib/view/WpProQuiz_View_QuizOverall.php:186
 msgid "Sets multiple quiz categories "
@@ -2667,66 +2558,66 @@ msgstr ""
 #: lib/view/WpProQuiz_View_StatisticsNew.php:56
 #, php-format
 msgid "Quiz: %s - Statistics"
-msgstr "Quiz: %s - statistieken"
+msgstr "測驗： %s - 狀態"
 
 #: lib/view/WpProQuiz_View_Statistics.php:33
 #: lib/view/WpProQuiz_View_StatisticsNew.php:61
 msgid "Stats not enabled"
-msgstr "Statistieken niet geactiveerd"
+msgstr "狀態未啟用"
 
 #: lib/view/WpProQuiz_View_Statistics.php:34
 #: lib/view/WpProQuiz_View_StatisticsNew.php:62
 msgid "Activate statistics"
-msgstr "Activeer statistieken"
+msgstr "啟用狀態"
 
 #: lib/view/WpProQuiz_View_Statistics.php:39
 msgid "Users"
-msgstr "Gebruikers"
+msgstr "使用者"
 
 #: lib/view/WpProQuiz_View_Statistics.php:40
 #: lib/view/WpProQuiz_View_StatisticsNew.php:68
 msgid "Overview"
-msgstr "Overzicht"
+msgstr "總覽"
 
 #: lib/view/WpProQuiz_View_Statistics.php:68
 msgid "Please select user name:"
-msgstr "Selecteer een gebruikersnaam:"
+msgstr "請選擇使用者名稱："
 
 #: lib/view/WpProQuiz_View_Statistics.php:72
 msgid "Select a test:"
-msgstr "Selecteer een test:"
+msgstr "選擇測驗："
 
 #: lib/view/WpProQuiz_View_Statistics.php:82
 msgid "Anonymous user"
-msgstr "Anonieme gebruiker"
+msgstr "匿名使用者"
 
 #: lib/view/WpProQuiz_View_Statistics.php:91
 msgid "average"
-msgstr "gemiddelde"
+msgstr "平均"
 
 #: lib/view/WpProQuiz_View_Statistics.php:108
 #: lib/view/WpProQuiz_View_Statistics.php:243
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:159
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:589
 msgid "Hints used"
-msgstr "Hints gebruikt"
+msgstr "使用提示數"
 
 #: lib/view/WpProQuiz_View_Statistics.php:109
 #: lib/view/WpProQuiz_View_Statistics.php:244
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:160
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:590
 msgid "Time"
-msgstr "Tijd"
+msgstr "時間"
 
 #: lib/view/WpProQuiz_View_Statistics.php:110
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:161
 msgid "Points scored"
-msgstr "Punten gescoord"
+msgstr "已獲得分數"
 
 #: lib/view/WpProQuiz_View_Statistics.php:148
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:223
 msgid "Sub-Total: "
-msgstr "Subtotaal"
+msgstr "小計："
 
 #: lib/view/WpProQuiz_View_Statistics.php:183
 #: lib/view/WpProQuiz_View_Statistics.php:268
@@ -2735,16 +2626,16 @@ msgstr "Subtotaal"
 #: lib/view/WpProQuiz_View_StatisticsNew.php:163
 #: lib/view/WpProQuiz_View_StatisticsNew.php:247
 msgid "Refresh"
-msgstr "Vernieuwen"
+msgstr "更新"
 
 #: lib/view/WpProQuiz_View_Statistics.php:187
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:273
 msgid "Reset statistics"
-msgstr "Reset statistieken"
+msgstr "重置狀態"
 
 #: lib/view/WpProQuiz_View_Statistics.php:188
 msgid "Reset user statistics"
-msgstr "Reset gebruiker statistieken"
+msgstr "重置使用者狀態"
 
 #: lib/view/WpProQuiz_View_Statistics.php:189
 #: lib/view/WpProQuiz_View_Statistics.php:270
@@ -2752,201 +2643,139 @@ msgstr "Reset gebruiker statistieken"
 #: lib/view/WpProQuiz_View_StatisticsNew.php:165
 #: lib/view/WpProQuiz_View_StatisticsNew.php:249
 msgid "Reset entire statistic"
-msgstr "Reset alle statistieken"
+msgstr "重置全部狀態"
 
 #: lib/view/WpProQuiz_View_Statistics.php:214
 #: lib/view/WpProQuiz_View_StatisticsNew.php:206
 msgid "Show only users, who solved the quiz:"
-msgstr "Geef alleen de gebruikers weer die de quiz voltooid hebben:"
+msgstr "只顯示完成測驗的使用者："
 
 #: lib/view/WpProQuiz_View_Statistics.php:293
 #: lib/view/WpProQuiz_View_StatisticsNew.php:99
 msgid "Which users should be displayed:"
-msgstr "Welke gebruikers moeten worden weergegeven:"
+msgstr "使用者顯示方式："
 
 #: lib/view/WpProQuiz_View_Statistics.php:295
 msgid "all"
-msgstr "alle"
+msgstr "全部"
 
 #: lib/view/WpProQuiz_View_Statistics.php:296
 #: lib/view/WpProQuiz_View_StatisticsNew.php:103
 msgid "only registered users"
-msgstr "alleen geregistreerde gebruikers"
+msgstr "只有註冊使用者"
 
 #: lib/view/WpProQuiz_View_Statistics.php:297
 #: lib/view/WpProQuiz_View_StatisticsNew.php:104
 msgid "only anonymous users"
-msgstr "alleen anonieme gebruikers"
+msgstr "只有匿名使用者"
 
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:138
 #, php-format
 msgid "User statistics: %s"
-msgstr "Gebruiker statistieken: %s"
+msgstr "使用者狀態：%s"
 
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:546
 msgid "ticked"
-msgstr "ingevuld"
+msgstr "記號"
 
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:546
 msgid "not ticked"
-msgstr "niet ingevuld"
+msgstr "未記號"
 
 #: lib/view/WpProQuiz_View_StatisticsNew.php:67
 msgid "History"
-msgstr "Historie"
+msgstr "歷程"
 
 #: lib/view/WpProQuiz_View_StatisticsNew.php:101
 msgid "special filter"
-msgstr "speciaal filter"
+msgstr "特別篩選"
 
 #: lib/view/WpProQuiz_View_StatisticsNew.php:136
 #, php-format
 msgid "Search to date limit from %s to %s"
-msgstr "Zoek vanaf datum %s tot en met %s"
+msgstr "以日期搜尋從 %s 至 %s"
 
 #: lib/view/WpProQuiz_View_StyleManager.php:15
 msgid "Front"
-msgstr "Voorkant"
+msgstr "前端"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:10
 msgid "Donate"
-msgstr "Doneer"
+msgstr "贊助"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:20
 msgid "WP-Pro-Quiz is small but nice free quiz plugin for WordPress."
-msgstr ""
-"WP-Pro-Quiz is een kleine maar mooie gratis quiz plugin voor WordPress."
+msgstr "WP-Pro-Quiz 雖小但卻是免費好用的 WordPress 外掛。"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:21
 msgid ""
 "I try to implement all wishes as fast as possible and help with problems."
-msgstr ""
-"Ik probeer alle wensen zo snel mogelijk te implementeren en waar nodig "
-"problemen op te lossen."
+msgstr "我嘗試盡可能快速實現所有功能並幫助解決問題。"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:22
 msgid ""
 "Your donations can help to ensure that the project continues to remain free."
-msgstr "Uw donaties kunnen ervoor zorgen dat het project gratis blijft."
+msgstr "您的贊助可以幫助此項專案持續免費釋出。"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:25
 msgid "Translate WP-Pro-Quiz"
-msgstr "Vertaal WP-Pro-Quiz"
+msgstr "翻譯 WP-Pro-Quiz"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:27
 msgid "You need:"
-msgstr "Benodigdheden:"
+msgstr "您需要："
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:30
 msgid "Latest POT file"
-msgstr "Laatste POT file"
+msgstr "最新的 POT 檔"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:35
 msgid "Open PoEdit"
-msgstr "Open PoEdit"
+msgstr "開啟 PoEdit"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:36
 msgid "File - New catalogue from POT file..."
-msgstr "Bestand - Nieuw bestand van POT bestand..."
+msgstr "檔案 - 從 POT 檔新增編目檔..."
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:37
 msgid "Choose wp-pro-quiz.pot"
-msgstr "Kies wp-pro-quiz.pot"
+msgstr "選擇 wp-pro-quiz.pot"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:38
 msgid "Set \"Translation properties\""
-msgstr "Stel  \"Vertaal eigenschappen\" in"
+msgstr "設定 \"專案資訊\""
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:39
 msgid "Save PO file - with the name \"wp-pro-qioz-de_DE.po\""
-msgstr "Bewaar PO bestand - met de naam \"wp-pro-qioz-de_DE.po\""
+msgstr "儲存 PO 檔 - 以 \"wp-pro-quiz-zh_TW.po\" 檔名"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:41
 msgid "replace de_DE with your countries short code (e.g. en_US, nl_NL...)"
-msgstr "vervang de_DE met uw land short code (bijv. en_US, nl_NL...)"
+msgstr "翻譯檔案必須使用您國家的代碼，例如 zh_TW(台灣)"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:44
 msgid "Translate"
-msgstr "Vertaal"
+msgstr "翻譯"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:46
 msgid ""
 "Upload generated *.mo file to your server, to /wp-content/plugins/wp-pro-"
 "quiz/languages"
 msgstr ""
-"Upload het gegenereerde *.mo bestand naar /wp-content/plugins/wp-pro-quiz/"
-"languages op uw server"
+"上傳產生出的 *.mo 檔到您的伺服器上，放在 /wp-content/plugins/wp-pro-quiz/"
+"languages 資料夾內"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:47
 msgid "Finished"
-msgstr "Afgerond"
+msgstr "完成"
 
 #: lib/view/WpProQuiz_View_WpqSupport.php:51
 msgid ""
 "You can translate WP-Pro-Quiz from existing to existing language (e.g. "
 "english to english) e.g. to rename buttons."
 msgstr ""
-"U kunt WP-Pro-Quiz vertalen van huidige naar huidige taal (bijv. Nederlands "
-"naar Nederlands) bijv. om de knoppen te hernoemen."
+"您可以從已存在的語言檔翻譯 WP-Pro-Quiz 至相同的語言檔(例如英文至英文) 例如重"
+"新命名按鈕。"
 
 #~ msgid "E-Mail settings"
-#~ msgstr "E-mail instellingen"
-
-#~ msgid "The statistics function is not available in this option."
-#~ msgstr "De statistiek functie is niet beschikbaar met deze optie."
-
-#~ msgid ""
-#~ "This option doesn't work reliable in connection with Frontend-Cache-"
-#~ "Plugins."
-#~ msgstr ""
-#~ "Deze optie werkt onbetrouwbaar in verband met Frontend-Cache-Plugins."
-
-#~ msgid "Next exercise"
-#~ msgstr "Volgende vraag"
-
-#~ msgid ""
-#~ "Shows \"right or wrong\" after each question. Otherwise the solutions "
-#~ "will be displayed at the end. (Option will be ignored if \"questions "
-#~ "below each other\" was used)"
-#~ msgstr ""
-#~ "Geeft \"goed of fout\" weer na iedere vraag. Anders worden de antwoorden "
-#~ "op het einde weergegeven. (Optie wordt genegeerd wanneer \"vragen onder "
-#~ "elkaar\" gebruikt wordt)"
-
-#~ msgid "Back button"
-#~ msgstr "Terug knop"
-
-#~ msgid ""
-#~ "Allows to use the back button in a question. (Option will be ignored if "
-#~ "\"Check -> Continue\" or \"questions below each other\" was used)"
-#~ msgstr ""
-#~ "Maakt het gebruik van de terug knop bij een vraag mogelijk. (Optie wordt "
-#~ "genegeerd wanneer \"Controleer -> doorgaan\" of \"vragen onder elkaar\" "
-#~ "gebruikt wordt)"
-
-#~ msgid "Points per correct answer"
-#~ msgstr "Punten per correct antwoord"
-
-#~ msgid ""
-#~ "If you enable this option, for every correct answer user will receive X "
-#~ "points. Otherwise he will receive points only if the question was solved "
-#~ "completely."
-#~ msgstr ""
-#~ "Wanneer u deze optie activeerd ontvangt de gebruiker voor ieder correct "
-#~ "antwoord X points. Anders ontvangt de gebruiker alleen punten wanneer de "
-#~ "vraag compleet is opgelost."
-
-#~ msgid "correct?"
-#~ msgstr "correct?"
-
-#~ msgid "One question is one point"
-#~ msgstr "Eine Frage ist 1 Punkt"
-
-#~ msgid "Right"
-#~ msgstr "Richtig"
-
-#~ msgid "Wrong"
-#~ msgstr "Falsch"
-
-#~ msgid "Tip"
-#~ msgstr "Tipp"
+#~ msgstr "電子信箱設定"

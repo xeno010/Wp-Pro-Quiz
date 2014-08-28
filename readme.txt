@@ -1,10 +1,10 @@
 === Wp-Pro-Quiz ===
 Contributors: xeno010
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N9B7S4FT8CE2N
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BF9JT56N7FAQG
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
-Tested up to: 3.6.1
-Stable tag: 0.28
+Tested up to: 3.9.2
+Stable tag: 0.29
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,7 @@ A powerful and beautiful quiz plugin for WordPress.
 = Translations =
 *		Arabic / عربي (Thanks Abuhassan)
 *		Brazilian Portuguese / Português do Brasil (Thanks Gabriel V.)
+*		Chinese (Traditional) (Thanks Dinno Lin)
 *		Czech / čeština (Thanks Petr Š.)
 *		Danish / dansk (Thanks Kenneth D.)
 *		Dutch / nederlands (Thanks Bas W. and Jurriën van den H.)
@@ -64,6 +65,7 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Russian / русский (Thanks Sergei B. and Alex A.)
 *		Spanish / español (Thanks Carlos R.)
 *		Swedish / svenska (Thanks Martin J.)
+*		Turkish / Türkçe (Thanks Nsaral)
 
 = Live Demo =
 http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "Demo")
@@ -298,3 +300,13 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
  * Bugfix in custom field at the option "Display position - At the end of the quiz"
  * Bugfix in Statistc-function
  * Translation for indonesian have been added (Thanks dieka91 and Creative Computer Club)
+ 
+ = 0.29 =
+ * Quiz categories added
+ * Support for custom fields (variables) in Email and "quiz result"
+ * Translation for chinese (traditional)  have been added (Thanks Dinno Lin)
+ * Translation for turkish have been added (Thanks Nsaral)
+ * Updated spanish translation (Thanks Carlos Ruiz)
+ * Updated greek translation (Thanks Ζαχαρίας Σδρέγας)
+ * Updated russian translation (Thanks Сергей Бондаренко)
+ * Updated dutch translation (Thanks Anton Timmermans)

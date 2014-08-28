@@ -38,9 +38,9 @@ class WpProQuiz_Controller_GlobalSettings extends WpProQuiz_Controller_Controlle
 			}
 			
 			//Email
-			$mapper->saveEmailSettiongs($this->_post['email']);
+			//$mapper->saveEmailSettiongs($this->_post['email']);
 			
-			$mapper->saveUserEmailSettiongs($this->_post['userEmail']);
+			//$mapper->saveUserEmailSettiongs($this->_post['userEmail']);
 			
 		} else if(isset($this->_post['databaseFix'])) {
 			WpProQuiz_View_View::admin_notices(__('Database repaired', 'wp-pro-quiz'), 'info');
@@ -52,6 +52,7 @@ class WpProQuiz_Controller_GlobalSettings extends WpProQuiz_Controller_Controlle
 		$view->settings = $mapper->fetchAll();
 		$view->isRaw = !preg_match('[raw]', apply_filters('the_content', '[raw]a[/raw]'));
 		$view->category = $categoryMapper->fetchAll();
+		$view->categoryQuiz = $categoryMapper->fetchAll(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);
 		$view->email = $mapper->getEmailSettings();
 		$view->userEmail = $mapper->getUserEmailSettings();
 		$view->templateQuiz = $templateMapper->fetchAll(WpProQuiz_Model_Template::TEMPLATE_TYPE_QUIZ, false);

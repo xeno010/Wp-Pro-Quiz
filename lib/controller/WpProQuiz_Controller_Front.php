@@ -17,12 +17,15 @@ class WpProQuiz_Controller_Front {
 	public function loadDefaultScripts() {
 		wp_enqueue_script('jquery');
 		
-		wp_enqueue_style(
-			'wpProQuiz_front_style', 
-			plugins_url('css/wpProQuiz_front'.(WPPROQUIZ_DEV ? '' : '.min').'.css', WPPROQUIZ_FILE),
-			array(),
-			WPPROQUIZ_VERSION
+		$data = array(
+			'src' => plugins_url('css/wpProQuiz_front'.(WPPROQUIZ_DEV ? '' : '.min').'.css', WPPROQUIZ_FILE),
+			'deps' => array(),
+			'ver' => WPPROQUIZ_VERSION,
 		);
+			
+		$data = apply_filters('wpProQuiz_front_style', $data);
+		
+		wp_enqueue_style('wpProQuiz_front_style', $data['src'], $data['deps'], $data['ver']);
 		
 		if($this->_settings->isJsLoadInHead()) {
 			$this->loadJsScripts(false, true, true);

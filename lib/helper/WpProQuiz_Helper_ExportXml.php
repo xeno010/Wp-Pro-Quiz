@@ -64,6 +64,8 @@ class WpProQuiz_Helper_ExportXml {
 		$quizElement->appendChild($text = $dom->createElement('text'));
 		$text->appendChild($dom->createCDATASection($quiz->getText()));
 		
+		$quizElement->appendChild($dom->createElement('category', $quiz->getCategoryName()));
+		
 		if(is_array($quiz->getResultText())) {
 			$resultArray = $quiz->getResultText();
 			$result = $dom->createElement('resultText');
@@ -156,6 +158,44 @@ class WpProQuiz_Helper_ExportXml {
 		$formsElement = $dom->createElement('forms');
 		$formsElement->setAttribute('activated', $this->booleanToTrueOrFalse($quiz->isFormActivated()));
 		$formsElement->setAttribute('position', $quiz->getFormShowPosition());
+		
+		//0.29
+		if($quiz->getAdminEmail() !== null) {
+			/* @var $adminEmail WpProQuiz_Model_Email */
+			$adminEmail = $quiz->getAdminEmail();
+			$adminEmailXml = $dom->createElement('adminEmail');
+			
+			/*
+			 * $qElement->appendChild($title = $dom->createElement('title'));
+		$title->appendChild($dom->createCDATASection($question->getTitle()));
+			 */
+			
+			$adminEmailXml->appendChild($dom->createElement('to', $adminEmail->getTo()));
+			$adminEmailXml->appendChild($dom->createElement('form', $adminEmail->getFrom()));
+			$adminEmailXml->appendChild($dom->createElement('subject', $adminEmail->getSubject()));
+			$adminEmailXml->appendChild($dom->createElement('html', $this->booleanToTrueOrFalse($adminEmail->isHtml())));
+			$adminEmailXml->appendChild($message = $dom->createElement('message'));
+			$message->appendChild($dom->createCDATASection($adminEmail->getMessage()));
+			
+			$quizElement->appendChild($adminEmailXml);
+		}
+		
+		if($quiz->getUserEmail() !== null) {
+			/* @var $adminEmail WpProQuiz_Model_Email */
+			$userEmail = $quiz->getUserEmail();
+			$userEmaillXml = $dom->createElement('userEmail');
+			
+			$userEmaillXml->appendChild($dom->createElement('to', $userEmail->getTo()));
+			$userEmaillXml->appendChild($dom->createElement('toUser',  $this->booleanToTrueOrFalse($userEmail->isToUser())));
+			$userEmaillXml->appendChild($dom->createElement('toForm',  $this->booleanToTrueOrFalse($userEmail->isToForm())));
+			$userEmaillXml->appendChild($dom->createElement('form', $userEmail->getFrom()));
+			$userEmaillXml->appendChild($dom->createElement('subject', $userEmail->getSubject()));
+			$userEmaillXml->appendChild($dom->createElement('html', $this->booleanToTrueOrFalse($userEmail->isHtml())));
+			$userEmaillXml->appendChild($message = $dom->createElement('message'));
+			$message->appendChild($dom->createCDATASection($userEmail->getMessage()));
+			
+			$quizElement->appendChild($userEmaillXml);
+		}
 		
 		foreach($forms as $form) {
 			/** @var WpProQuiz_Model_Form $form  **/

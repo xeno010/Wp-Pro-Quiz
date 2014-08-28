@@ -100,6 +100,12 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_sortCategories = false;
 	protected $_showCategory = false;
 	
+	//0.29
+	protected $_categoryId = 0;
+	protected $_categoryName = '';
+	protected $_adminEmail = null;
+	protected $_userEmail = null;
+	
 	public function setId($_id) {
 		$this->_id = (int)$_id;
 		return $this;
@@ -633,5 +639,77 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
 	public function isShowCategory() {
 		return $this->_showCategory;
+	}
+	
+	public function setCategoryId($_categoryId) {
+		$this->_categoryId = (int)$_categoryId;
+		return $this;
+	}
+	
+	public function getCategoryId() {
+		return $this->_categoryId;
+	}
+	
+	public function setCategoryName($_categoryName) {
+		$this->_categoryName = (string)$_categoryName;
+		return $this;
+	}
+	
+	public function getCategoryName() {
+		return $this->_categoryName;
+	}
+	
+	public function setAdminEmail($_adminEmail) {
+		$this->_adminEmail = $_adminEmail;
+	
+		return $this;
+	}
+	
+	public function getAdminEmail($serialize = false) {
+		if($this->_adminEmail === null)
+			return null;
+	
+		if(is_object($this->_adminEmail) || $this->_adminEmail instanceof WpProQuiz_Model_Email) {
+			if($serialize) {
+				return @serialize($this->_adminEmail);
+			}
+		} else {
+			if(!$serialize) {
+				if(WpProQuiz_Helper_Until::saveUnserialize($this->_adminEmail, $into) === false) {
+					return null;
+				}
+	
+				$this->_adminEmail = $into;
+			}
+		}
+	
+		return $this->_adminEmail;
+	}
+	
+	public function setUserEmail($_userEmail) {
+		$this->_userEmail = $_userEmail;
+	
+		return $this;
+	}
+	
+	public function getUserEmail($serialize = false) {
+		if($this->_userEmail === null)
+			return null;
+	
+		if(is_object($this->_userEmail) || $this->_userEmail instanceof WpProQuiz_Model_Email) {
+			if($serialize) {
+				return @serialize($this->_userEmail);
+			}
+		} else {
+			if(!$serialize) {
+				if(WpProQuiz_Helper_Until::saveUnserialize($this->_userEmail, $into) === false) {
+					return null;
+				}
+	
+				$this->_userEmail = $into;
+			}
+		}
+	
+		return $this->_userEmail;
 	}
 }

@@ -83,6 +83,7 @@ class WpProQuiz_Helper_ImportXml {
 		
 		$data = $this->getImportData();
 		$categoryArray = $categoryMapper->getCategoryArrayForImport();
+		$categoryArrayQuiz = $categoryMapper->getCategoryArrayForImport(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);
 		
 		foreach($data['master'] as $quiz) {
 			if(get_class($quiz) !== 'WpProQuiz_Model_Quiz')
@@ -94,6 +95,23 @@ class WpProQuiz_Helper_ImportXml {
 				continue;
 			
 			$quiz->setId(0);
+			$quiz->setCategoryId(0);
+			
+			if(trim($quiz->getCategoryName()) != '') {
+				if(isset($categoryArrayQuiz[strtolower($quiz->getCategoryName())])) {
+					$quiz->setCategoryId($categoryArrayQuiz[strtolower($quiz->getCategoryName())]);
+				} else {
+					$categoryModel = new WpProQuiz_Model_Category();
+					$categoryModel->setCategoryName($quiz->getCategoryName());
+					$categoryModel->setType(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);
+					
+					$categoryMapper->save($categoryModel);
+			
+					$quiz->setCategoryId($categoryModel->getCategoryId());
+			
+					$categoryArrayQuiz[strtolower($quiz->getCategoryName())] = $categoryModel->getCategoryId();
+				}
+			}
 			
 			$quizMapper->save($quiz);
 			
@@ -184,6 +202,8 @@ class WpProQuiz_Helper_ImportXml {
 		
 		$model->setResultText($xml->resultText);
 		$model->setResultGradeEnabled($xml->resultText);
+		
+		$model->setCategoryName(trim($xml->category));
 		
 		if(isset($xml->resultText)) {
 			$attr = $xml->resultText->attributes();
@@ -293,6 +313,30 @@ class WpProQuiz_Helper_ImportXml {
 			$model->setFormShowPosition($attr->position);
 		}
 		
+		//0.29
+		if(isset($xml->adminEmail)) {
+			$adminEmail = new WpProQuiz_Model_Email();
+			$adminEmail->setTo($xml->adminEmail->to);
+			$adminEmail->setFrom($xml->adminEmail->form);
+			$adminEmail->setSubject($xml->adminEmail->subject);
+			$adminEmail->setHtml($xml->adminEmail->html == 'true');
+			$adminEmail->setMessage($xml->adminEmail->message);
+			
+			$model->setAdminEmail($adminEmail);
+		}
+		
+		if(isset($xml->userEmail)) {
+			$userEmail = new WpProQuiz_Model_Email();
+			$userEmail->setTo($xml->userEmail->to);
+			$userEmail->setToUser($xml->userEmail->toUser == 'true');
+			$userEmail->setToForm($xml->userEmail->toForm == 'true');
+			$userEmail->setFrom($xml->userEmail->form);
+			$userEmail->setSubject($xml->userEmail->subject);
+			$userEmail->setHtml($xml->userEmail->html == 'true');
+			$userEmail->setMessage($xml->userEmail->message);
+			
+			$model->setUserEmail($userEmail);
+		}
 		
 		//Check
 		if($model->getName() == '')
