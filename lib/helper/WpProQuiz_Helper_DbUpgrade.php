@@ -2,13 +2,13 @@
 class WpProQuiz_Helper_DbUpgrade {
 	
 	const WPPROQUIZ_DB_VERSION = 24;
-	
+
 	private $_wpdb;
 	private $_prefix;
 
 	public function __construct() {
 		global $wpdb;
-		
+
 		$this->_wpdb = $wpdb;
 	}
 	

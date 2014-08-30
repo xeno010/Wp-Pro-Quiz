@@ -137,32 +137,32 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		$this->view->show();
 	}
 	
-	public function checkLock() {
-		
-		
-		if($userId > 0) {
-			$quizIds = $prerequisiteMapper->getNoPrerequisite($quizId, $userId);
-		} else {
-			$checkIds = $prerequisiteMapper->fetchQuizIds($quizId);
-			
-			if(isset($this->_post['wpProQuiz_result'])) {
-				$r = json_encode($this->_post['wpProQuiz_result'], true);
-				
-				if($r !== null && is_array($r)) {
-					foreach($checkIds as $id) {
-						if(!isset($r[$id]) || !$r[$id]) {
-							$quizIds[] = $id;
-						}
-					}					
-				}
-			} else {
-				$quizIds = $checkIds;
-			}
-		}
-		
-		$names = $quizMapper->fetchCol($quizIds, 'name');
-		
-	}
+//	public function checkLock() {
+//
+//
+//		if($userId > 0) {
+//			$quizIds = $prerequisiteMapper->getNoPrerequisite($quizId, $userId);
+//		} else {
+//			$checkIds = $prerequisiteMapper->fetchQuizIds($quizId);
+//
+//			if(isset($this->_post['wpProQuiz_result'])) {
+//				$r = json_encode($this->_post['wpProQuiz_result'], true);
+//
+//				if($r !== null && is_array($r)) {
+//					foreach($checkIds as $id) {
+//						if(!isset($r[$id]) || !$r[$id]) {
+//							$quizIds[] = $id;
+//						}
+//					}
+//				}
+//			} else {
+//				$quizIds = $checkIds;
+//			}
+//		}
+//
+//		$names = $quizMapper->fetchCol($quizIds, 'name');
+//
+//	}
 	
 	public function isLockQuiz($quizId) {
 		$quizId = (int)$this->_post['quizId'];
@@ -853,7 +853,7 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			$msg = str_replace(array_keys($r), $r, $adminEmail->getMessage());
 			
 			$headers = '';
-			$email = $userEmail->getFrom();
+			$email = $adminEmail->getFrom();
 			
 			if(!empty($email)) {
 				$headers = 'From: '.$adminEmail->getFrom();

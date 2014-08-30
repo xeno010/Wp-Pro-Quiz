@@ -10,7 +10,7 @@ Text Domain: wp-pro-quiz
 Domain Path: /languages
 */
 
-define('WPPROQUIZ_VERSION', '0.29');
+define('WPPROQUIZ_VERSION', '0.30');
 
 define('WPPROQUIZ_DEV', false);
 
