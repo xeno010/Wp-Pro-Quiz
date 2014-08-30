@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
 Tested up to: 3.9.2
-Stable tag: 0.30
+Stable tag: 0.31
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -312,4 +312,7 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
  * Updated dutch translation (Thanks Anton Timmermans)
 
 = 0.30 =
+* small bugfix
+
+= 0.31 =
 * small bugfix

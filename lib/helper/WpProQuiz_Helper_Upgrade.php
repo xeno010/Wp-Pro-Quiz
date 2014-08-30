@@ -27,6 +27,7 @@ class WpProQuiz_Helper_Upgrade {
 			case '0.27':
 			case '0.28':
 			case '0.29':
+			case '0.30':
 				break;
 			default:
 				WpProQuiz_Helper_Upgrade::install();
