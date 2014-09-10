@@ -10,13 +10,11 @@ class WpProQuiz_Helper_Import {
 			return false;
 		}
 		
-		$this->_content = file_get_contents($file['tmp_name']);
-		
-		return $this->checkCode();
+		return $this->setImportString(file_get_contents($file['tmp_name']));
 	}
 	
 	public function setImportString($str) {
-		$this->_content = $str;
+		$this->_content = trim($str);
 		
 		return $this->checkCode();
 	}

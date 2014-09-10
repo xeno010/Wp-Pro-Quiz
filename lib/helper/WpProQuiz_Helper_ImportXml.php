@@ -9,13 +9,13 @@ class WpProQuiz_Helper_ImportXml {
 			return false;
 		}
 	
-		$this->_content = file_get_contents($file['tmp_name']);
+		$this->_content = trim(file_get_contents($file['tmp_name']));
 	
 		return $this->checkCode();
 	}
 	
 	public function setImportString($str) {
-		$this->_content = gzuncompress(base64_decode($str));
+		$this->_content = gzuncompress(base64_decode(trim($str)));
 		
 		return true;
 	}
