@@ -124,7 +124,9 @@ class WpProQuiz_Controller_Admin {
 			'dayNames'          => array_values($wp_locale->weekday),
 			'dayNamesShort'     => array_values($wp_locale->weekday_abbrev),
 			'dayNamesMin'       => array_values($wp_locale->weekday_initial),
-			'dateFormat'        => WpProQuiz_Helper_Until::convertPHPDateFormatToJS(get_option('date_format', 'm/d/Y')),
+//			'dateFormat'        => WpProQuiz_Helper_Until::convertPHPDateFormatToJS(get_option('date_format', 'm/d/Y')),
+									//e.g. "9 de setembro de 2014" -> change to "hard" dateformat
+			'dateFormat'        => 'mm/dd/yy',
 			'firstDay'          => get_option('start_of_week'),
 			'isRTL'             => $isRtl
 		);
@@ -142,6 +144,8 @@ class WpProQuiz_Controller_Admin {
 			array('jquery', 'jquery-ui-sortable', 'jquery-ui-datepicker'),
 			WPPROQUIZ_VERSION
 		);
+
+		wp_enqueue_style('jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
 		
 		$this->localizeScript();		
 	}

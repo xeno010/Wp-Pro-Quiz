@@ -880,6 +880,10 @@ jQuery(document).ready(function($) {
 					var fieldName = $(this).find('.formFieldName').val();
 					var type = $(this).find('[name="form[][type]"] option:selected');
 					var name = $(this).find('[name="form[][fieldname]"]').val();
+
+					//is deleted?
+					if($(this).find('input[name="form[][form_delete]"]').val() == 1)
+						return;
 					
 					if(index >= 0 && !isEmpty(fieldName))
 						$formVariables.append($('<li><span>$form{' + index + '}</span> - ' + fieldName + '</li>'));

@@ -1593,7 +1593,6 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 		$email = $this->quiz->getUserEmail();
 		$email = $email === null ? WpProQuiz_Model_Email::getDefault(false) : $email;
 		$to = $email->getTo();
-		
 ?>
 		<div class="postbox" id="userEmailSettings">
 			<h3 class="hndle"><?php _e('User e-mail settings', 'wp-pro-quiz'); ?></h3>
@@ -1631,9 +1630,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 								<label>
 									<input type="checkbox" name="userEmail[toForm]" value="1" <?php $this->checked($email->isToForm()); ?>>
 									<?php _e('Custom fields', 'wp-pro-quiz'); ?> :
-									<select name="userEmail[to]" class="emailFormVariables" data-default="<?php echo empty($to) ? -1 : $email->getTo(); ?>">
-										<option value="1">gfsdfg</option>										
-									</select>
+									<select name="userEmail[to]" class="emailFormVariables" data-default="<?php echo empty($to) && $to != 0 ? -1 : $email->getTo(); ?>"></select>
 									<?php _e('(Type Email)', 'wp-pro-quiz'); ?>
 								</label>
 								
