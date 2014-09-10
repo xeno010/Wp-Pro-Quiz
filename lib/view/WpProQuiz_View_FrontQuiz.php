@@ -5,6 +5,16 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 	 * @var WpProQuiz_Model_Quiz
 	 */
 	public $quiz;
+
+	/**
+	 * @var WpProQuiz_Model_Question[]
+	 */
+	public $question;
+
+	/**
+	 * @var WpProQuiz_Model_Category[]
+	 */
+	public $category;
 	
 	private $_clozeTemp = array();
 	private $_assessmetTemp = array();
@@ -863,11 +873,15 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 							<?php } else { ?>
 								<span class="wpProQuiz_respone_span">
 									<?php _e('Correct', 'wp-pro-quiz'); ?>
-								</span>
-							<?php } ?>
-								<p>
-									<?php echo do_shortcode(apply_filters('comment_text', $question->getCorrectMsg())); ?>
-								</p>
+								</span><br>
+							<?php }
+								$_correctMsg = trim(do_shortcode(apply_filters('comment_text', $question->getCorrectMsg())));
+
+								if(strpos($_correctMsg, '<p') === 0)
+									echo $_correctMsg;
+								else
+									echo '<p>', $_correctMsg, '</p>';
+								?>
 							</div>
 							<div style="display: none;" class="wpProQuiz_incorrect">
 							<?php if($question->isShowPointsInBox() && $question->isAnswerPointsActivated()) { ?>
@@ -881,19 +895,21 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 							<?php } else { ?>
 								<span class="wpProQuiz_respone_span">
 									<?php _e('Incorrect', 'wp-pro-quiz'); ?>
-								</span>
-							<?php } ?>
-								<p>
-									<?php 
-									
-										if($question->isCorrectSameText()) {
-											echo do_shortcode(apply_filters('comment_text', $question->getCorrectMsg()));
-										} else {
-											echo do_shortcode(apply_filters('comment_text', $question->getIncorrectMsg())); 
-										}
-									
-									?>
-								</p>
+								</span><br>
+							<?php }
+
+								if($question->isCorrectSameText()) {
+									$_incorrectMsg = do_shortcode(apply_filters('comment_text', $question->getCorrectMsg()));
+								} else {
+									$_incorrectMsg = do_shortcode(apply_filters('comment_text', $question->getIncorrectMsg()));
+								}
+
+								if(strpos($_incorrectMsg, '<p') === 0)
+									echo $_incorrectMsg;
+								else
+									echo '<p>', $_incorrectMsg, '</p>';
+
+								?>
 							</div>
 						</div>
 					<?php } ?>
