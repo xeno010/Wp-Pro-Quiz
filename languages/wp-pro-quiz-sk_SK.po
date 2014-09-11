@@ -1,0 +1,2873 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP-Pro-Quiz Slovak\n"
+"POT-Creation-Date: 2014-09-11 10:41+0100\n"
+"PO-Revision-Date: 2014-09-11 10:41+0100\n"
+"Last-Translator: Julius Fischer <webmaster@it-gecko.de>\n"
+"Language-Team: Petr Štěpán <p.stepan@vlastenci.cz>\n"
+"Language: sk_SK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:100
+msgid "Do you really want to delete the quiz/question?"
+msgstr "Ozaj chcete odstrániť kvíz/otázku?"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:101
+msgid "Title is not filled!"
+msgstr "Musíte vyplniť titulok!"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:102
+msgid "No question deposited!"
+msgstr "Nepoložili ste žiadnu otázku!"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:103
+msgid "Correct answer was not selected!"
+msgstr "Musíte vybrat správnu odpoveď!"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:104
+msgid "No answer deposited!"
+msgstr "Nevyplnili ste žiadnu odpoveď!"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:105
+msgid "No quiz description filled!"
+msgstr "Musíte vyplniť popis kvízu!"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:106
+msgid "The percent values in result text are incorrect."
+msgstr "Percentuálne hodnoty v popisu výsledkov sú nesprávne."
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:107
+msgid "No number in the field \"Points\" or less than 1"
+msgstr "V poli \"Body\" ste nevyplnli žiadne číslo (alebo je menšie ako 1)"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:108
+msgid "No number in the field \"Points\" or less than 0"
+msgstr "Nevyplnili ste číslo v poli  \"Body\", alebo je menšie ako 0"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:109
+msgid "No quiz selected"
+msgstr "Nevybrali ste žiadný kvíz"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:110
+msgid "Do you really want to reset the statistic?"
+msgstr "Ozaj chcete vynulovať štatistiky?"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:111
+#: lib/view/WpProQuiz_View_FrontToplist.php:26
+#: lib/view/WpProQuiz_View_QuestionOverall.php:71
+#: lib/view/WpProQuiz_View_QuizOverall.php:141
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:33
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:597
+msgid "No data available"
+msgstr "Žiadne dáta"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:112
+msgid "No sort element in the criterion"
+msgstr "Množina musí mať prvok!"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:113
+msgid ""
+"\"Different points for every answer\" is not possible at \"Free\" choice"
+msgstr ""
+"\"Odlišný počet bodov pre každú odpoveď.\" nedá sa použiť pre voľbu \"Voľná "
+"odpoveď\""
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:114
+msgid "You must specify a name."
+msgstr "Musíte upresniť názov (meno)."
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:115
+msgid "This entry should really be deleted?"
+msgstr "Ozaj chcete odstrániť tento výsledok?"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:116
+msgid "Not all fields completed."
+msgstr "Nevyplnili ste všetky polia."
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:117
+msgid "You must specify a template name."
+msgstr "Musíte špecifikovať meno šablóny."
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:120
+#: lib/view/WpProQuiz_View_StatisticsNew.php:181
+msgid "Close"
+msgstr "Zatvoriť"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:121
+msgid "Today"
+msgstr "Dnes"
+
+#: lib/controller/WpProQuiz_Controller_Front.php:47
+#: lib/controller/WpProQuiz_Controller_Front.php:66
+#: lib/controller/WpProQuiz_Controller_Preview.php:15
+#: lib/view/WpProQuiz_View_AdminToplist.php:47
+#: lib/view/WpProQuiz_View_FrontQuiz.php:212
+#: lib/view/WpProQuiz_View_QuestionOverall.php:98
+#: lib/view/WpProQuiz_View_Statistics.php:46
+#: lib/view/WpProQuiz_View_StatisticsNew.php:73
+#: lib/view/WpProQuiz_View_StatisticsNew.php:149
+#: lib/view/WpProQuiz_View_StatisticsNew.php:187
+#: lib/view/WpProQuiz_View_StatisticsNew.php:233
+msgid "Loading"
+msgstr "Načítavam"
+
+#: lib/controller/WpProQuiz_Controller_Front.php:48
+#: lib/controller/WpProQuiz_Controller_Front.php:67
+#: lib/controller/WpProQuiz_Controller_Preview.php:16
+msgid "You must answer this question."
+msgstr "Musíte zodpovedať túto otázku."
+
+#: lib/controller/WpProQuiz_Controller_Front.php:49
+#: lib/controller/WpProQuiz_Controller_Front.php:68
+#: lib/controller/WpProQuiz_Controller_Preview.php:17
+msgid "You must answer all questions before you can completed the quiz."
+msgstr "Musíte zodpovedať všetky otázky predtým, ako môžete ukončiť kvíz."
+
+#: lib/controller/WpProQuiz_Controller_Front.php:50
+#: lib/controller/WpProQuiz_Controller_Front.php:69
+#: lib/controller/WpProQuiz_Controller_Preview.php:18
+msgid "All fields have to be filled."
+msgstr "Všetky polia musia byť vyplnené."
+
+#: lib/controller/WpProQuiz_Controller_GlobalSettings.php:11
+#: lib/controller/WpProQuiz_Controller_ImportExport.php:23
+#: lib/controller/WpProQuiz_Controller_ImportExport.php:47
+#: lib/controller/WpProQuiz_Controller_Question.php:64
+#: lib/controller/WpProQuiz_Controller_Question.php:68
+#: lib/controller/WpProQuiz_Controller_Question.php:189
+#: lib/controller/WpProQuiz_Controller_Question.php:266
+#: lib/controller/WpProQuiz_Controller_Question.php:281
+#: lib/controller/WpProQuiz_Controller_Question.php:358
+#: lib/controller/WpProQuiz_Controller_Question.php:540
+#: lib/controller/WpProQuiz_Controller_Quiz.php:37
+#: lib/controller/WpProQuiz_Controller_Quiz.php:41
+#: lib/controller/WpProQuiz_Controller_Quiz.php:289
+#: lib/controller/WpProQuiz_Controller_Quiz.php:306
+#: lib/controller/WpProQuiz_Controller_Quiz.php:390
+#: lib/controller/WpProQuiz_Controller_Quiz.php:600
+#: lib/controller/WpProQuiz_Controller_Statistics.php:40
+#: lib/controller/WpProQuiz_Controller_Toplist.php:88
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Nemáte dostatečné oprávnenie k prístupu na túto stránku."
+
+#: lib/controller/WpProQuiz_Controller_GlobalSettings.php:22
+msgid "Settings saved"
+msgstr "Nastavenia uložené"
+
+#: lib/controller/WpProQuiz_Controller_GlobalSettings.php:46
+msgid "Database repaired"
+msgstr "Databáza opravená"
+
+#: lib/controller/WpProQuiz_Controller_ImportExport.php:91
+#: lib/helper/WpProQuiz_Helper_Import.php:57
+#: lib/helper/WpProQuiz_Helper_Import.php:66
+#: lib/helper/WpProQuiz_Helper_Import.php:73
+msgid "File cannot be processed"
+msgstr "Súbor sa nedá nahrať"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:9
+#: lib/controller/WpProQuiz_Controller_Question.php:19
+#: lib/controller/WpProQuiz_Controller_Quiz.php:57
+#: lib/controller/WpProQuiz_Controller_Quiz.php:323
+msgid "Quiz not found"
+msgstr "Kvíz nenájdený"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:78
+msgid "Question not found"
+msgstr "Otázka nenájdená"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:100
+#: lib/controller/WpProQuiz_Controller_Question.php:348
+msgid "Question edited"
+msgstr "Otázka upravená"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:102
+msgid "Question added"
+msgstr "Otázka pridaná"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:120
+#: lib/controller/WpProQuiz_Controller_Question.php:302
+msgid "Edit question"
+msgstr "Upraviť otázku"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:120
+#: lib/controller/WpProQuiz_Controller_Question.php:416
+msgid "New question"
+msgstr "Nová otázka"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:166
+#: lib/controller/WpProQuiz_Controller_Question.php:330
+#, php-format
+msgid "Question: %d"
+msgstr "Otázka: %d"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:203
+msgid "questions copied"
+msgstr "otázky skopírované"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:93
+#: lib/controller/WpProQuiz_Controller_Quiz.php:338
+msgid "Quiz edited"
+msgstr "Kvíz upravený"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:95
+msgid "quiz created"
+msgstr "kvíz vytvorený"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:117
+#: lib/controller/WpProQuiz_Controller_Quiz.php:359
+#: lib/controller/WpProQuiz_Controller_Quiz.php:431
+msgid "Quiz title or quiz description are not filled"
+msgstr "Názov kvízu alebo jeho popis niesú vyplnené"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:135
+#: lib/controller/WpProQuiz_Controller_Quiz.php:316
+#: lib/view/WpProQuiz_View_QuestionOverall.php:21
+msgid "Edit quiz"
+msgstr "Upraviť kvíz"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:135
+#: lib/controller/WpProQuiz_Controller_Quiz.php:394
+#: lib/controller/WpProQuiz_Controller_Quiz.php:412
+msgid "Create quiz"
+msgstr "Nový kvíz"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:514
+msgid "Template stored"
+msgstr "šablóna uložená"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:619
+msgid "Quiz deleted"
+msgstr "Kvíz zmazáný"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:883
+#: lib/controller/WpProQuiz_Controller_QuizCompleted.php:190
+#: lib/view/WpProQuiz_View_FrontQuiz.php:630
+msgid "Not categorized"
+msgstr "Nekategorizované"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:889
+#: lib/controller/WpProQuiz_Controller_QuizCompleted.php:196
+#: lib/view/WpProQuiz_View_FrontQuiz.php:625
+msgid "Categories"
+msgstr "Kategórie"
+
+#: lib/controller/WpProQuiz_Controller_Statistics.php:56
+#: lib/controller/WpProQuiz_Controller_Statistics.php:673
+#: lib/view/WpProQuiz_View_QuestionEdit.php:91
+#: lib/view/WpProQuiz_View_QuizEdit.php:51
+#: lib/view/WpProQuiz_View_QuizOverall.php:209
+msgid "No category"
+msgstr "Žiadna kategória"
+
+#: lib/controller/WpProQuiz_Controller_Statistics.php:571
+#: lib/controller/WpProQuiz_Controller_Statistics.php:618
+#: lib/controller/WpProQuiz_Controller_Statistics.php:698
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:606
+msgid "Anonymous"
+msgstr "Anonymná/ý"
+
+#: lib/controller/WpProQuiz_Controller_Statistics.php:620
+#: lib/controller/WpProQuiz_Controller_Statistics.php:706
+msgid "Deleted user"
+msgstr "Zmazaný užívateľ"
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:80
+#: lib/controller/WpProQuiz_Controller_Toplist.php:211
+msgid "No name or e-mail entered."
+msgstr "Musíte vyplniť meno alebo e-mail!"
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:148
+msgid "You signed up successfully."
+msgstr "Zápis prebehol v poriadku. "
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:156
+#: lib/controller/WpProQuiz_Controller_Toplist.php:160
+#: lib/controller/WpProQuiz_Controller_Toplist.php:177
+#: lib/controller/WpProQuiz_Controller_Toplist.php:181
+#: lib/controller/WpProQuiz_Controller_Toplist.php:187
+msgid "An error has occurred."
+msgstr "Vyskytla sa chyba."
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:198
+#: lib/controller/WpProQuiz_Controller_Toplist.php:207
+msgid "You can not enter again."
+msgstr "Nedá sa znova vložiť."
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:215
+msgid "Your name can not exceed 15 characters."
+msgstr "Vaše meno nesmie presiahnúť 15 znakov."
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:223
+msgid "You entered wrong captcha code."
+msgstr "Nesprávne ste opísali kód z obrázku."
+
+#: lib/helper/WpProQuiz_Helper_Import.php:9
+#: lib/helper/WpProQuiz_Helper_ImportXml.php:8
+msgid "File was not uploaded"
+msgstr "Súbor nebol nahraný."
+
+#: lib/helper/WpProQuiz_Helper_Import.php:38
+msgid "File have wrong format"
+msgstr "Súbor má nesprávny formát."
+
+#: lib/helper/WpProQuiz_Helper_Import.php:43
+msgid "File is not compatible with the current version"
+msgstr "Súbor nieje kompatibilný so súčasnou verziou."
+
+#: lib/helper/WpProQuiz_Helper_ImportXml.php:27
+#: lib/helper/WpProQuiz_Helper_ImportXml.php:40
+msgid "XML could not be loaded."
+msgstr "XML nemohol byť nahraný."
+
+#: lib/model/WpProQuiz_Model_Email.php:78
+#: lib/model/WpProQuiz_Model_Email.php:88
+#: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:47
+#: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:79
+msgid "Wp-Pro-Quiz: One user completed a quiz"
+msgstr "Wp-Pro-Quiz: Užívateľ dokončil kvíz"
+
+#: lib/model/WpProQuiz_Model_Email.php:79
+#: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:49
+msgid ""
+"Wp-Pro-Quiz\n"
+"\n"
+"The user \"$username\" has completed \"$quizname\" the quiz.\n"
+"\n"
+"Points: $points\n"
+"Result: $result\n"
+"\n"
+msgstr ""
+"Wp-Pro-Quiz\n"
+"\n"
+"Užívateľ \"$username\" dokončil kvíz \"$quizname\" .\n"
+"\n"
+"Počet bodov: $points\n"
+"Výsledok: $result\n"
+"\n"
+
+#: lib/model/WpProQuiz_Model_Email.php:89
+#: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:81
+msgid ""
+"Wp-Pro-Quiz\n"
+"\n"
+"You have completed the quiz \"$quizname\".\n"
+"\n"
+"Points: $points\n"
+"Result: $result\n"
+"\n"
+msgstr ""
+"Wp-Pro-Quiz\n"
+"\n"
+"Užívateľ \"$username\" dokončil kvíz \"$quizname\" .\n"
+"\n"
+"Počet bodov: $points\n"
+"Výsledok: $result\n"
+"\n"
+
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV2.php:33
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:6
+msgid "The user completed a quiz."
+msgstr "Užívateľ dokončil kvíz."
+
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:7
+msgid "The user completed a quiz with 100 percent."
+msgstr "Užívateľ dokončil kvíz na 100 percent."
+
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:18
+msgid "A powerful and beautiful quiz plugin for WordPress."
+msgstr "WP-Pro-Quiz je prepracovaný a jednoduchý plugin pre WordPress."
+
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:21
+#: lib/view/WpProQuiz_View_QuizOverall.php:64
+msgid "WP-Pro-Quiz"
+msgstr "WP-Pro-Quiz"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:7
+#: lib/view/WpProQuiz_View_FrontToplist.php:8
+#: lib/view/WpProQuiz_View_QuizEdit.php:1023
+#: lib/view/WpProQuiz_View_QuizEdit.php:1035
+#: lib/view/WpProQuiz_View_QuizOverall.php:124
+msgid "Leaderboard"
+msgstr "Rebríček"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:8
+#: lib/view/WpProQuiz_View_GobalSettings.php:9
+#: lib/view/WpProQuiz_View_Import.php:22
+#: lib/view/WpProQuiz_View_QuestionEdit.php:24
+#: lib/view/WpProQuiz_View_QuestionOverall.php:19
+#: lib/view/WpProQuiz_View_QuizEdit.php:20
+#: lib/view/WpProQuiz_View_Statistics.php:29
+#: lib/view/WpProQuiz_View_StatisticsNew.php:57
+#: lib/view/WpProQuiz_View_StyleManager.php:11
+msgid "back to overview"
+msgstr "Späť na prehľad"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:11
+#: lib/view/WpProQuiz_View_Statistics.php:209
+#: lib/view/WpProQuiz_View_Statistics.php:288
+#: lib/view/WpProQuiz_View_StatisticsNew.php:94
+#: lib/view/WpProQuiz_View_StatisticsNew.php:140
+#: lib/view/WpProQuiz_View_StatisticsNew.php:201
+#: lib/view/WpProQuiz_View_StatisticsNew.php:224
+msgid "Filter"
+msgstr "Filter"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:16
+msgid "Sort by:"
+msgstr "Zoradiť podľa:"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:18
+#: lib/view/WpProQuiz_View_QuizEdit.php:1115
+msgid "best user"
+msgstr "najlepší užívateľ"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:19
+#: lib/view/WpProQuiz_View_QuizEdit.php:1119
+msgid "newest entry"
+msgstr "najnovší výsledok"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:20
+#: lib/view/WpProQuiz_View_QuizEdit.php:1123
+msgid "oldest entry"
+msgstr "najstarší výsledok"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:26
+#: lib/view/WpProQuiz_View_Statistics.php:220
+#: lib/view/WpProQuiz_View_Statistics.php:303
+#: lib/view/WpProQuiz_View_StatisticsNew.php:120
+#: lib/view/WpProQuiz_View_StatisticsNew.php:212
+msgid "How many entries should be shown on one page:"
+msgstr "Koľko výsledkov sa má zobraziť na jednej stránke:"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:38
+#: lib/view/WpProQuiz_View_AdminToplist.php:57
+#: lib/view/WpProQuiz_View_QuizEdit.php:1384
+msgid "Type"
+msgstr "Typ"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:38
+msgid "UR = unregistered user, R = registered user"
+msgstr "UR = neregistrovaný užľvateľ, R = registrovaný užívateľ"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:55
+#: lib/view/WpProQuiz_View_Statistics.php:239
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:585
+#: lib/view/WpProQuiz_View_StatisticsNew.php:107
+msgid "User"
+msgstr "Užívateľ"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:56
+#: lib/view/WpProQuiz_View_FrontQuiz.php:220
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:58
+#: lib/view/WpProQuiz_View_FrontToplist.php:16
+msgid "Entered on"
+msgstr "Zapísaný dňa"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:59
+#: lib/view/WpProQuiz_View_FrontQuiz.php:870
+#: lib/view/WpProQuiz_View_FrontQuiz.php:892
+#: lib/view/WpProQuiz_View_FrontToplist.php:17
+#: lib/view/WpProQuiz_View_QuestionEdit.php:49
+#: lib/view/WpProQuiz_View_QuestionEdit.php:56
+#: lib/view/WpProQuiz_View_QuestionEdit.php:317
+#: lib/view/WpProQuiz_View_QuestionEdit.php:355
+#: lib/view/WpProQuiz_View_QuestionEdit.php:414
+#: lib/view/WpProQuiz_View_QuestionOverall.php:30
+#: lib/view/WpProQuiz_View_Statistics.php:105
+#: lib/view/WpProQuiz_View_Statistics.php:240
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:26
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:156
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:586
+msgid "Points"
+msgstr "Body"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:60
+#: lib/view/WpProQuiz_View_FrontQuiz.php:584
+#: lib/view/WpProQuiz_View_Statistics.php:111
+#: lib/view/WpProQuiz_View_Statistics.php:245
+#: lib/view/WpProQuiz_View_Statistics.php:324
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:27
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:162
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:591
+msgid "Results"
+msgstr "Výsledky"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:72
+#: lib/view/WpProQuiz_View_GobalSettings.php:140
+#: lib/view/WpProQuiz_View_GobalSettings.php:166
+#: lib/view/WpProQuiz_View_GobalSettings.php:192
+#: lib/view/WpProQuiz_View_GobalSettings.php:217
+#: lib/view/WpProQuiz_View_QuestionOverall.php:51
+#: lib/view/WpProQuiz_View_QuizOverall.php:108
+msgid "Edit"
+msgstr "Upraviť"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:75
+#: lib/view/WpProQuiz_View_AdminToplist.php:100
+#: lib/view/WpProQuiz_View_GobalSettings.php:139
+#: lib/view/WpProQuiz_View_GobalSettings.php:165
+#: lib/view/WpProQuiz_View_GobalSettings.php:191
+#: lib/view/WpProQuiz_View_GobalSettings.php:216
+#: lib/view/WpProQuiz_View_QuestionOverall.php:55
+#: lib/view/WpProQuiz_View_QuizEdit.php:1434
+#: lib/view/WpProQuiz_View_QuizOverall.php:112
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:43
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:631
+msgid "Delete"
+msgstr "Zmazať"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:80
+msgid "save"
+msgstr "uložiť"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:81
+msgid "cancel"
+msgstr "zrušiť"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:99
+msgid "Action"
+msgstr "Upraviť"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:102
+msgid "Apply"
+msgstr "Použiť"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:103
+msgid "Delete all entries"
+msgstr "Zmazať všetky výsledky"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:98
+#: lib/view/WpProQuiz_View_FrontQuiz.php:182
+#: lib/view/WpProQuiz_View_FrontQuiz.php:468
+#: lib/view/WpProQuiz_View_FrontQuiz.php:572
+#: lib/view/WpProQuiz_View_FrontQuiz.php:951
+#: lib/view/WpProQuiz_View_QuizEdit.php:414
+#: lib/view/WpProQuiz_View_QuizEdit.php:424
+#: lib/view/WpProQuiz_View_QuizEdit.php:429
+msgid "Quiz-summary"
+msgstr "Záverečný prehľad"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:98
+#: lib/view/WpProQuiz_View_FrontQuiz.php:182
+#: lib/view/WpProQuiz_View_FrontQuiz.php:494
+#: lib/view/WpProQuiz_View_FrontQuiz.php:511
+#: lib/view/WpProQuiz_View_FrontQuiz.php:953
+msgid "Finish quiz"
+msgstr "Dokončiť kvíz"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:210
+msgid "Your result has been entered into leaderboard"
+msgstr "Vaše výsledky boli vložené do rebríčka."
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:217
+#: lib/view/WpProQuiz_View_FrontToplist.php:15
+#: lib/view/WpProQuiz_View_QuestionOverall.php:28
+#: lib/view/WpProQuiz_View_QuizOverall.php:85
+msgid "Name"
+msgstr "Meno"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:225
+msgid "Captcha"
+msgstr "Opíšte kód"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:231
+msgid "Send"
+msgstr "Odoslať"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:322
+#: lib/view/WpProQuiz_View_FrontQuiz.php:421
+msgid "You must fill out this field."
+msgstr "Musíte vyplniť toto pole."
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:325
+msgid "You must specify a number."
+msgstr "Musíte špecifikovať číslo."
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:326
+msgid "You must specify a text."
+msgstr "Musíte udať text."
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:327
+msgid "You must specify an email address."
+msgstr "Musíte napísať emailovú adresu."
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:328
+msgid "You must specify a date."
+msgstr "Musíte zadať dátum."
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:407
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:549
+msgid "Yes"
+msgstr "Áno"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:412
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:549
+msgid "No"
+msgstr "Nie"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:438
+msgid ""
+"You have already completed the quiz before. Hence you can not start it again."
+msgstr "Je nám ľúto, tento kvíz môžete skúsiť iba raz."
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:448
+msgid "You must sign in or sign up to start the quiz."
+msgstr "Musíte sa prihlásiť, aby ste mohli začať kvíz."
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:458
+msgid "You have to finish following quiz, to start this quiz:"
+msgstr "Aby ste mohli vyplniť tento kvíz, musíte najprv spraviť tento:"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:470
+#, php-format
+msgid "%s of %s questions completed"
+msgstr "Správne zodpovedaných %s z %s otázok"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:472
+#: lib/view/WpProQuiz_View_Import.php:44
+#: lib/view/WpProQuiz_View_QuizOverall.php:103
+msgid "Questions"
+msgstr "Otázky"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:487
+#: lib/view/WpProQuiz_View_FrontQuiz.php:502
+msgid "Information"
+msgstr "Informácie"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:529
+msgid "Start quiz"
+msgstr "Začať kvíz"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:538
+#: lib/view/WpProQuiz_View_QuizEdit.php:184
+#: lib/view/WpProQuiz_View_QuizEdit.php:189
+msgid "Time limit"
+msgstr "Časový limit"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:559
+msgid "Answered"
+msgstr "Zodpovedané"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:563
+msgid "Review"
+msgstr "Označené otázky"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:570
+msgid "Review question"
+msgstr "Poznačiť túto otázku"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:587
+#, php-format
+msgid "%s of %s questions answered correctly"
+msgstr "Odpovedali ste správne na %s z %s otázok"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:591
+msgid "Your time: <span></span>"
+msgstr "Váš čas: <span></span>"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:595
+msgid "Time has elapsed"
+msgstr "Čas vypršal"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:599
+#, php-format
+msgid "You have reached %s of %s points, (%s)"
+msgstr "Získali ste %s z %s bodov, (%s)"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:607
+msgid "Average score"
+msgstr "Priemerný výsledok"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:614
+msgid "Your score"
+msgstr "Váš výsledok"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:663
+msgid "Restart quiz"
+msgstr "Reštart kvízu"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:665
+msgid "View questions"
+msgstr "Zobraziť moje odpovede"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:668
+msgid "Show leaderboard"
+msgstr "Zobraziť rebríček"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:725
+#, php-format
+msgid "Question %s of %s"
+msgstr "Otázka %s / %s"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:728
+#: lib/view/WpProQuiz_View_QuestionEdit.php:110
+#: lib/view/WpProQuiz_View_Statistics.php:104
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:155
+msgid "Question"
+msgstr "Otázka"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:732
+#, php-format
+msgid "%d points"
+msgstr "Bodové ohodnotenie: %d"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:738
+#, php-format
+msgid "Category: %s"
+msgstr "Kategória: %s"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:747
+#: lib/view/WpProQuiz_View_QuestionEdit.php:347
+msgid "Sort elements"
+msgstr "Zoraď prvky"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:868
+#: lib/view/WpProQuiz_View_FrontQuiz.php:875
+#: lib/view/WpProQuiz_View_QuestionEdit.php:305
+#: lib/view/WpProQuiz_View_Statistics.php:106
+#: lib/view/WpProQuiz_View_Statistics.php:241
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:24
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:157
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:336
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:587
+msgid "Correct"
+msgstr "Správne"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:890
+#: lib/view/WpProQuiz_View_FrontQuiz.php:897
+#: lib/view/WpProQuiz_View_Statistics.php:107
+#: lib/view/WpProQuiz_View_Statistics.php:242
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:25
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:158
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:588
+msgid "Incorrect"
+msgstr "Nesprávne"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:920
+#: lib/view/WpProQuiz_View_FrontQuiz.php:931
+#: lib/view/WpProQuiz_View_QuestionEdit.php:154
+msgid "Hint"
+msgstr "Nápoveda"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:927
+#: lib/view/WpProQuiz_View_QuizEdit.php:443
+#: lib/view/WpProQuiz_View_QuizEdit.php:448
+msgid "Skip question"
+msgstr "Preskočiť otázku"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:929
+msgid "Back"
+msgstr "Späť"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:933
+msgid "Check"
+msgstr "Skontrolovať"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:934
+msgid "Next"
+msgstr "Ďalšia"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:947
+#: lib/view/WpProQuiz_View_FrontQuiz.php:948
+#, php-format
+msgid "Page %d"
+msgstr "Strana %d"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:969
+msgid "Quiz is loading..."
+msgstr "Kvíz sa spúšťa..."
+
+#: lib/view/WpProQuiz_View_FrontToplist.php:11
+#, php-format
+msgid "maximum of %s points"
+msgstr "maximum z %s bodov"
+
+#: lib/view/WpProQuiz_View_FrontToplist.php:14
+msgid "Pos."
+msgstr "Umiestnenie"
+
+#: lib/view/WpProQuiz_View_FrontToplist.php:18
+msgid "Result"
+msgstr "Výsledok"
+
+#: lib/view/WpProQuiz_View_FrontToplist.php:23
+msgid "Table is loading"
+msgstr "Tabuľka sa načítava"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:7
+#: lib/view/WpProQuiz_View_GobalSettings.php:12
+#: lib/view/WpProQuiz_View_GobalSettings.php:42
+#: lib/view/WpProQuiz_View_QuizOverall.php:51
+msgid "Global settings"
+msgstr "Všeobecné nastavenia"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:14
+#: lib/view/WpProQuiz_View_GobalSettings.php:398
+msgid "Settings in case of problems"
+msgstr "Nastavenia, ak sa objavili problémy"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:30
+#: lib/view/WpProQuiz_View_QuestionEdit.php:263
+#: lib/view/WpProQuiz_View_QuizEdit.php:649
+#: lib/view/WpProQuiz_View_QuizOverall.php:227
+#: lib/view/WpProQuiz_View_WpqSupport.php:45
+msgid "Save"
+msgstr "Uložiť"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:48
+#: lib/view/WpProQuiz_View_GobalSettings.php:53
+msgid "Leaderboard time format"
+msgstr "Časový formát rebríčka"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:75
+msgid "Custom"
+msgstr "Vlastné"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:79
+#: lib/view/WpProQuiz_View_GobalSettings.php:113
+msgid "Documentation on date and time formatting"
+msgstr "Dokumentácia k formátovaniu dátumu a času"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:87
+#: lib/view/WpProQuiz_View_GobalSettings.php:92
+msgid "Statistic time format"
+msgstr "Formát času v štatistikách"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:96
+msgid "Select example:"
+msgstr "Prednastavený príklad:"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:109
+msgid "Time format:"
+msgstr "Formát dátumu a času"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:122
+#: lib/view/WpProQuiz_View_GobalSettings.php:127
+msgid "Category management"
+msgstr "Správa kategórií"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:148
+#: lib/view/WpProQuiz_View_GobalSettings.php:153
+msgid "Quiz Category management"
+msgstr "Správa kategórií kvízu"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:174
+#: lib/view/WpProQuiz_View_GobalSettings.php:179
+msgid "Quiz template management"
+msgstr "Správa šablón kvízu"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:199
+#: lib/view/WpProQuiz_View_GobalSettings.php:204
+msgid "Question template management"
+msgstr "Správa šablón otázok"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:232
+#: lib/view/WpProQuiz_View_GobalSettings.php:528
+#: lib/view/WpProQuiz_View_QuizEdit.php:1460
+msgid "Admin e-mail settings"
+msgstr "Nastavenie e-mailu pre admina"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:238
+#: lib/view/WpProQuiz_View_QuizEdit.php:1493
+#: lib/view/WpProQuiz_View_QuizEdit.php:1623
+msgid "To:"
+msgstr "Pre:"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:245
+#: lib/view/WpProQuiz_View_QuizEdit.php:1500
+msgid ""
+"Separate multiple email addresses with a comma, e.g. wp@test.com, test@test."
+"com"
+msgstr "Oddeľte jednotlivé adresy čiarkou. Napr.: wp@test.com, wp@test.com"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:251
+#: lib/view/WpProQuiz_View_GobalSettings.php:323
+#: lib/view/WpProQuiz_View_QuizEdit.php:1506
+#: lib/view/WpProQuiz_View_QuizEdit.php:1641
+msgid "From:"
+msgstr "Od:"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:264
+#: lib/view/WpProQuiz_View_GobalSettings.php:333
+#: lib/view/WpProQuiz_View_QuizEdit.php:1519
+#: lib/view/WpProQuiz_View_QuizEdit.php:1651
+msgid "Subject:"
+msgstr "Predmet:"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:274
+#: lib/view/WpProQuiz_View_GobalSettings.php:343
+#: lib/view/WpProQuiz_View_QuizEdit.php:1529
+#: lib/view/WpProQuiz_View_QuizEdit.php:1661
+msgid "HTML"
+msgstr "HTML"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:278
+#: lib/view/WpProQuiz_View_GobalSettings.php:347
+#: lib/view/WpProQuiz_View_GobalSettings.php:413
+#: lib/view/WpProQuiz_View_GobalSettings.php:435
+#: lib/view/WpProQuiz_View_GobalSettings.php:487
+#: lib/view/WpProQuiz_View_QuizEdit.php:85
+#: lib/view/WpProQuiz_View_QuizEdit.php:104
+#: lib/view/WpProQuiz_View_QuizEdit.php:123
+#: lib/view/WpProQuiz_View_QuizEdit.php:142
+#: lib/view/WpProQuiz_View_QuizEdit.php:158
+#: lib/view/WpProQuiz_View_QuizEdit.php:174
+#: lib/view/WpProQuiz_View_QuizEdit.php:211
+#: lib/view/WpProQuiz_View_QuizEdit.php:251
+#: lib/view/WpProQuiz_View_QuizEdit.php:309
+#: lib/view/WpProQuiz_View_QuizEdit.php:338
+#: lib/view/WpProQuiz_View_QuizEdit.php:399
+#: lib/view/WpProQuiz_View_QuizEdit.php:503
+#: lib/view/WpProQuiz_View_QuizEdit.php:526
+#: lib/view/WpProQuiz_View_QuizEdit.php:545
+#: lib/view/WpProQuiz_View_QuizEdit.php:689
+#: lib/view/WpProQuiz_View_QuizEdit.php:714
+#: lib/view/WpProQuiz_View_QuizEdit.php:740
+#: lib/view/WpProQuiz_View_QuizEdit.php:766
+#: lib/view/WpProQuiz_View_QuizEdit.php:792
+#: lib/view/WpProQuiz_View_QuizEdit.php:834
+#: lib/view/WpProQuiz_View_QuizEdit.php:853
+#: lib/view/WpProQuiz_View_QuizEdit.php:878
+#: lib/view/WpProQuiz_View_QuizEdit.php:928
+#: lib/view/WpProQuiz_View_QuizEdit.php:948
+#: lib/view/WpProQuiz_View_QuizEdit.php:973
+#: lib/view/WpProQuiz_View_QuizEdit.php:998
+#: lib/view/WpProQuiz_View_QuizEdit.php:1040
+#: lib/view/WpProQuiz_View_QuizEdit.php:1073
+#: lib/view/WpProQuiz_View_QuizEdit.php:1087
+#: lib/view/WpProQuiz_View_QuizEdit.php:1135
+#: lib/view/WpProQuiz_View_QuizEdit.php:1217
+#: lib/view/WpProQuiz_View_QuizEdit.php:1218
+#: lib/view/WpProQuiz_View_QuizEdit.php:1219
+#: lib/view/WpProQuiz_View_QuizEdit.php:1220
+#: lib/view/WpProQuiz_View_QuizEdit.php:1323
+#: lib/view/WpProQuiz_View_QuizEdit.php:1533
+#: lib/view/WpProQuiz_View_QuizEdit.php:1613
+#: lib/view/WpProQuiz_View_QuizEdit.php:1665
+msgid "Activate"
+msgstr "Zapnúť"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:284
+#: lib/view/WpProQuiz_View_GobalSettings.php:353
+#: lib/view/WpProQuiz_View_QuizEdit.php:1539
+#: lib/view/WpProQuiz_View_QuizEdit.php:1671
+msgid "Message body:"
+msgstr "Obsah správy:"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:292
+#: lib/view/WpProQuiz_View_GobalSettings.php:361
+#: lib/view/WpProQuiz_View_QuizEdit.php:1551
+#: lib/view/WpProQuiz_View_QuizEdit.php:1683
+msgid "Allowed variables"
+msgstr "Povolené premenné"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:294
+#: lib/view/WpProQuiz_View_GobalSettings.php:363
+#: lib/view/WpProQuiz_View_QuizEdit.php:1562
+#: lib/view/WpProQuiz_View_QuizEdit.php:1694
+msgid "User-ID"
+msgstr "ID užívateľa"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:295
+#: lib/view/WpProQuiz_View_GobalSettings.php:364
+#: lib/view/WpProQuiz_View_QuizEdit.php:1563
+#: lib/view/WpProQuiz_View_QuizEdit.php:1695
+#: lib/view/WpProQuiz_View_Statistics.php:322
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:22
+msgid "Username"
+msgstr "Užívateľské meno"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:296
+#: lib/view/WpProQuiz_View_GobalSettings.php:365
+#: lib/view/WpProQuiz_View_QuizEdit.php:1564
+#: lib/view/WpProQuiz_View_QuizEdit.php:1696
+msgid "Quiz-Name"
+msgstr "Názov kvízu"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:297
+#: lib/view/WpProQuiz_View_GobalSettings.php:366
+#: lib/view/WpProQuiz_View_QuizEdit.php:1565
+#: lib/view/WpProQuiz_View_QuizEdit.php:1697
+msgid "Result in precent"
+msgstr "Výsledok v percentách"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:298
+#: lib/view/WpProQuiz_View_GobalSettings.php:367
+#: lib/view/WpProQuiz_View_QuizEdit.php:1566
+#: lib/view/WpProQuiz_View_QuizEdit.php:1698
+msgid "Reached points"
+msgstr "Získané body"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:299
+#: lib/view/WpProQuiz_View_GobalSettings.php:368
+#: lib/view/WpProQuiz_View_QuizEdit.php:1567
+#: lib/view/WpProQuiz_View_QuizEdit.php:1699
+msgid "IP-address of the user"
+msgstr "IP adresa užívateľa"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:300
+#: lib/view/WpProQuiz_View_GobalSettings.php:369
+#: lib/view/WpProQuiz_View_QuizEdit.php:1568
+#: lib/view/WpProQuiz_View_QuizEdit.php:1700
+msgid "Category-Overview"
+msgstr "Prehľad kategórie"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:317
+#: lib/view/WpProQuiz_View_GobalSettings.php:529
+#: lib/view/WpProQuiz_View_QuizEdit.php:1598
+msgid "User e-mail settings"
+msgstr "Nastavenie e-mailu pre užívateľa"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:384
+msgid "to activate"
+msgstr "aktivovať"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:386
+msgid "not to activate"
+msgstr "nezapínať"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:392
+#: lib/view/WpProQuiz_View_WpqSupport.php:50
+msgid "Please note"
+msgstr "Poznámka"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:394
+msgid ""
+"These settings should only be set in cases of problems with Wp-Pro-Quiz."
+msgstr ""
+"Tieto nastavenia použijte iba v prípade problémov s fungovaním pluginu Wp-"
+"Pro-Quiz."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:404
+#: lib/view/WpProQuiz_View_GobalSettings.php:409
+msgid "Automatically add [raw] shortcode"
+msgstr "Automaticky pridávať shortcode skratku[raw]"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:413
+#, php-format
+msgid "It is recommended %s this option on your system."
+msgstr "Pre Váš systém je doporučené %s toto nastavenie."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:416
+msgid ""
+"If this option is activated, a [raw] shortcode is automatically set around "
+"WpProQuiz shortcode ( [WpProQuiz X] ) into [raw] [WpProQuiz X] [/raw]"
+msgstr ""
+"Keď toto nastavenie zapnete, shortcode skratka [raw] sa automaticky vloží "
+"okolo kódu WpProQuiz, ( [WpProQuiz X] ) sa zmení na [raw] [WpProQuiz X] [/"
+"raw]"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:419
+#: lib/view/WpProQuiz_View_QuizOverall.php:42
+msgid ""
+"Own themes changes internal  order of filters, what causes the problems. "
+"With additional shortcode [raw] this is prevented."
+msgstr ""
+"Vlastné témy menia poradie filtrov, které zpôsobujú problémy. Pridáním "
+"shortcodu skratky [raw] sa tomu dá predísť."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:426
+#: lib/view/WpProQuiz_View_GobalSettings.php:431
+msgid "Do not load the Javascript-files in the footer"
+msgstr "Nenačítať Javascript v päte"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:438
+msgid ""
+"Generally all WpProQuiz-Javascript files are loaded in the footer and only "
+"when they are really needed."
+msgstr ""
+"Všeobecne sa všetky súbory Javascriptu pre WpProQuiz načítajú v päte, ale "
+"iba ak je to ozaj potrebné."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:441
+msgid "In very old Wordpress themes this can lead to problems."
+msgstr "V ozaj starých šablonách to môže spôsobovať problémy."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:444
+msgid ""
+"If you activate this option, all WpProQuiz-Javascript files are loaded in "
+"the header even if they are not needed."
+msgstr ""
+"Keď túto možnosť aktivujete, všetky Javascripty WpProQuizu sa budú načítavať "
+"v hlavičke (header), aj keď to nebude potrebné."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:447
+#, php-format
+msgid ""
+"Anyone who wants to learn more about this topic should read through the "
+"following websites %s and %s."
+msgstr ""
+"Keď sa chcete o tomto probléme dočítať viac, informácie nájdete na týchto "
+"stránkach: %s a %s"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:456
+#: lib/view/WpProQuiz_View_GobalSettings.php:461
+msgid "Touch Library"
+msgstr "Dotyková knižnica (Touch Library)"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:465
+#: lib/view/WpProQuiz_View_QuizEdit.php:433
+#: lib/view/WpProQuiz_View_QuizEdit.php:452
+#: lib/view/WpProQuiz_View_QuizEdit.php:472
+#: lib/view/WpProQuiz_View_QuizEdit.php:903
+#: lib/view/WpProQuiz_View_QuizEdit.php:1475
+msgid "Deactivate"
+msgstr "Vypnúť"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:468
+msgid "In Version 0.13 a new Touch Library was added for mobile devices."
+msgstr ""
+"Vo verzii 0.13 bola pridaná nová knihovňa Touch Library pre potreby "
+"mobilných zariadení."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:471
+msgid "If you have any problems with the Touch Library, please deactivate it."
+msgstr ""
+"Ak máte akékoľvek problémy s knihovňou Touch Library, prosím, vypnite ju."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:478
+#: lib/view/WpProQuiz_View_GobalSettings.php:483
+msgid "jQuery support cors"
+msgstr "jQuery podporujúce cors"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:490
+msgid "Is required only in rare cases."
+msgstr "Je nutné zapnúť iba v ojedinelých prípadoch."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:493
+msgid "If you have problems with the front ajax, please activate it."
+msgstr "Ak máte problémy s ajaxom, prosím, aktivujte ho."
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:496
+msgid "e.g. Domain with special characters in combination with IE"
+msgstr "Napr.: Doména s netypickými znakmi v prehliadači Internet Explorer"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:503
+#: lib/view/WpProQuiz_View_GobalSettings.php:508
+#: lib/view/WpProQuiz_View_GobalSettings.php:510
+msgid "Repair database"
+msgstr "Opraviť databázu"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:512
+msgid "No date will be deleted. Only WP-Pro-Quiz tables will be repaired."
+msgstr "Žiaden dátum nebude zmazaný. Iba WP-Pro-Quiz tabuľky budú opravené"
+
+#: lib/view/WpProQuiz_View_Import.php:21
+#: lib/view/WpProQuiz_View_QuizOverall.php:150
+#: lib/view/WpProQuiz_View_QuizOverall.php:175
+msgid "Import"
+msgstr "Importovať"
+
+#: lib/view/WpProQuiz_View_Import.php:25
+msgid "Error"
+msgstr "Chyba"
+
+#: lib/view/WpProQuiz_View_Import.php:32
+msgid "Successfully"
+msgstr "Úspešne"
+
+#: lib/view/WpProQuiz_View_Import.php:34
+msgid "Import completed successfully"
+msgstr "Importovanie prebehlo úspešne"
+
+#: lib/view/WpProQuiz_View_Import.php:43
+msgid "Quiz name"
+msgstr "Názov kvízu"
+
+#: lib/view/WpProQuiz_View_Import.php:69
+#: lib/view/WpProQuiz_View_QuizOverall.php:186
+msgid "Start import"
+msgstr "Začať importovať"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:7
+msgid "WP-Pro-Quiz special modification"
+msgstr "WP-Pro-Quiz špeciálna úprava"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:9
+#: lib/view/WpProQuiz_View_QuizOverall.php:59
+msgid "You need special WP-Pro-Quiz modification for your website?"
+msgstr "Potrebujete špeciálnu úpravu WP-Pro-Quiz pre Vašu webstránku?"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:11
+msgid "We offer you:"
+msgstr "Ponúkame Vám:"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:13
+msgid "Design adaption for your theme"
+msgstr "Adaptívny dizajn pre Vašu Tému"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:14
+msgid "Creation of additional modules for your needs"
+msgstr "Vytvorenie prídavných modulov pre Vaše potreby"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:15
+msgid "Premium Support"
+msgstr "Prémiová podpora"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:18
+msgid "Contact us:"
+msgstr "Kontaktujte nás:"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:20
+msgid "Send us an e-mail"
+msgstr "Pošlite nám e-mail"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:21
+msgid "The e-mail must be written in english or german"
+msgstr "E-mail musí byť napísaný v Angličtine alebo v Nemčine"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:22
+msgid "Explain your wish detailed and exactly as possible"
+msgstr "Vysvetlite v ňom Vaše prianie detailne a presne ako sa len dá"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:24
+msgid "You can send us screenshots, sketches and attachments"
+msgstr "Môžete nám poslať aj screenshoty, nákresy a prílohy"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:27
+msgid "Send us your full name and your web address (webpage-URL)"
+msgstr "Pošlite nám Vaše celé meno a webovú adresu (webpage-URL)"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:28
+msgid ""
+"If you wish design adaption, we additionally need the name of your theme"
+msgstr "Ak si želáte dizajnové prispôsobenie, pridajte aj názov Vašej Témy"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:32
+msgid ""
+"After receiving your e-mail we will verify your request on feasibility. "
+"After this you will receive e-mail from us with further details and offer."
+msgstr "Slovenský preklad pre WP-Pro-Quiz"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:35
+msgid ""
+"Extended support in first 6 months. Reported bugs and updates of WP Pro Quiz "
+"are supported. Exception are major releases (update of main version)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:33
+#: lib/view/WpProQuiz_View_QuizEdit.php:29
+msgid "load template"
+msgstr "načítať šablónu"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:40
+msgid "Title"
+msgstr "Názov"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:40
+#: lib/view/WpProQuiz_View_QuestionEdit.php:80
+#: lib/view/WpProQuiz_View_QuestionEdit.php:125
+#: lib/view/WpProQuiz_View_QuestionEdit.php:142
+#: lib/view/WpProQuiz_View_QuestionEdit.php:154
+#: lib/view/WpProQuiz_View_QuizEdit.php:40
+#: lib/view/WpProQuiz_View_QuizEdit.php:576
+#: lib/view/WpProQuiz_View_QuizEdit.php:1023
+msgid "(optional)"
+msgstr "(voliteľné)"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:43
+msgid ""
+"The title is used for overview, it is not visible in quiz. If you leave the "
+"title field empty, a title will be generated."
+msgstr ""
+"Titulok sa používa iba v zozname kvízov, v samotnom kvíze nie je zobrazený. "
+"Ak pole nevyplníte, obsah sa vygeneruje."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:49
+#: lib/view/WpProQuiz_View_QuestionEdit.php:110
+#: lib/view/WpProQuiz_View_QuestionEdit.php:211
+#: lib/view/WpProQuiz_View_QuizEdit.php:34
+#: lib/view/WpProQuiz_View_QuizEdit.php:565
+#: lib/view/WpProQuiz_View_QuizEdit.php:1204
+msgid "(required)"
+msgstr "(povinné)"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:53
+msgid "Points for this question (Standard is 1 point)"
+msgstr "Počet bodov za túto otázku (obvykle 1 bod)"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:59
+msgid ""
+"This points will be rewarded, only if the user closes the question correctly."
+msgstr "Užívateľ získa body iba v prípade, že na otázku odpovie správne."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:65
+msgid "Different points for each answer"
+msgstr "Odlišný počet bodov pre každú odpoveď."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:68
+msgid ""
+"If you enable this option, you can enter different points for every answer."
+msgstr ""
+"Ak zapnete túto možnosť, môžete vložiť odlišný počet bodov pre každou "
+"odpoveď."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:74
+msgid "Show reached points in the correct- and incorrect message?"
+msgstr "Zobraziť počet získaných bodov v správe o dobrých, či zlých odpovedí?"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:80
+#: lib/view/WpProQuiz_View_QuestionOverall.php:29
+#: lib/view/WpProQuiz_View_QuizEdit.php:40
+#: lib/view/WpProQuiz_View_QuizOverall.php:86
+#: lib/view/WpProQuiz_View_Statistics.php:124
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:174
+msgid "Category"
+msgstr "Kategória"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:83
+msgid ""
+"You can assign classify category for a question. Categories are e.g. visible "
+"in statistics function."
+msgstr ""
+"Môžete vložiť kategóriu pre otázku. Kategória sa zohľadňuje napríklad v "
+"štatistikách."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:86
+#: lib/view/WpProQuiz_View_QuizEdit.php:46
+#: lib/view/WpProQuiz_View_QuizOverall.php:204
+msgid "You can manage categories in global settings."
+msgstr "Kategórie môžete spravovať vo všeobecných nastaveniach."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:90
+#: lib/view/WpProQuiz_View_QuestionEdit.php:100
+#: lib/view/WpProQuiz_View_QuizEdit.php:50
+#: lib/view/WpProQuiz_View_QuizEdit.php:60
+#: lib/view/WpProQuiz_View_QuizOverall.php:208
+#: lib/view/WpProQuiz_View_QuizOverall.php:218
+msgid "Create new category"
+msgstr "Vytvoriť novú kategóriu"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:102
+#: lib/view/WpProQuiz_View_QuizEdit.php:62
+#: lib/view/WpProQuiz_View_QuizOverall.php:220
+msgid "Create"
+msgstr "Vytvoriť"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:118
+msgid "Message with the correct / incorrect answer"
+msgstr "Správa pre dobrú, či zlú odpoveď."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:120
+msgid "Deactivated in quiz settings."
+msgstr "Vypnuté v nastaveniach kvízu."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:125
+msgid "Message with the correct answer"
+msgstr "Správa pre správnu odpověď."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:128
+msgid ""
+"This text will be visible if answered correctly. It can be used as "
+"explanation for complex questions. The message \"Right\" or \"Wrong\" is "
+"always displayed automatically."
+msgstr ""
+"Tento text sa zobrazí, ak užívateľ odpovie správne. Najvhodnajšie je to pre "
+"zložité otázky. Označenie \"Správne\", alebo \"Nesprávne\" sa zobrazí vždy "
+"automaticky."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:132
+msgid "Same text for correct- and incorrect-message?"
+msgstr "Má sa zobraziť rovnaký text pre správne aj nesprávne odpovede?"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:142
+msgid "Message with the incorrect answer"
+msgstr "Správa pre nesprávnu odpoveď."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:145
+msgid ""
+"This text will be visible if answered incorrectly. It can be used as "
+"explanation for complex questions. The message \"Right\" or \"Wrong\" is "
+"always displayed automatically."
+msgstr ""
+"Tento text sa zobrazí, keď užívateľ odpovie nesprávne. Najvhodnejšie je to "
+"pre zložité otázky. Označenie \"Správne\", alebo \"Nesprávne\" sa zobrazí "
+"vždy automaticky."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:157
+msgid "Here you can enter solution hint."
+msgstr "Tu môžete napísať nápovedu."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:161
+msgid "Activate hint for this question?"
+msgstr "Použíť nápovedu pri tejto otázke?"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:173
+msgid "Answer type"
+msgstr "Spôsob odpovedí"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:181
+msgid "Single choice"
+msgstr "Jedna správná odpoveď"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:185
+msgid "Multiple choice"
+msgstr "Viac správných odpovedí"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:189
+msgid "\"Free\" choice"
+msgstr " Voľná odpoveď"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:193
+msgid "\"Sorting\" choice"
+msgstr "Radenie odpovedí"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:197
+msgid "\"Matrix Sorting\" choice"
+msgstr "Spojovanie odpovedí"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:201
+msgid "Cloze"
+msgstr "Doplňovanie"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:205
+msgid "Assessment"
+msgstr "Hodnotenie"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:211
+msgid "Answers"
+msgstr "Odpovede"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:218
+msgid ""
+"Please sort the answers in right order with the \"Move\" - Button. The "
+"answers will be displayed randomly."
+msgstr ""
+"Prosím zoraďte odpovede v správnom poradí za pomoci tlačítka \"Posunúť\". "
+"Odpovede sa v kvíze zobrazia náhodne."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:223
+#: lib/view/WpProQuiz_View_QuestionEdit.php:229
+#: lib/view/WpProQuiz_View_QuestionEdit.php:251
+msgid "Add new answer"
+msgstr "Pridat novú odpoveď"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:233
+msgid ""
+"In this mode, not a list have to be sorted, but elements must be assigned to "
+"matching criterion."
+msgstr "Užívateľ musí priradiť prvky vpravo k množinám vľavo."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:236
+msgid ""
+"You can create sort elements with empty criteria, which can't be assigned by "
+"user."
+msgstr ""
+"Môžete vytvoriť prvky bez dvojice, ktoré sa nedajú priradiť užívateľom."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:240
+msgid "Percentage width of criteria table column:"
+msgstr "Percentuálna šírka tabuľky stlpca kritérii:"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:245
+msgid ""
+"Allows adjustment of the left column's width, and the right column will auto-"
+"fill the rest of the available space. Increase this to allow accommodate "
+"longer criterion text. Defaults to 20%."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:266
+#: lib/view/WpProQuiz_View_QuizEdit.php:652
+msgid "template name"
+msgstr "meno šablóny"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:268
+#: lib/view/WpProQuiz_View_QuizEdit.php:654
+msgid "Create new template"
+msgstr "vytvoriť novú šablónu"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:276
+#: lib/view/WpProQuiz_View_QuizEdit.php:662
+msgid "Save as template"
+msgstr "Uložiť ako šablónu"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:295
+#: lib/view/WpProQuiz_View_QuestionEdit.php:345
+#: lib/view/WpProQuiz_View_QuestionEdit.php:398
+#: lib/view/WpProQuiz_View_QuizEdit.php:70
+msgid "Options"
+msgstr "Nastavenia"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:296
+#: lib/view/WpProQuiz_View_QuestionEdit.php:399
+msgid "Answer"
+msgstr "Odpoveď"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:311
+#: lib/view/WpProQuiz_View_QuestionEdit.php:370
+#: lib/view/WpProQuiz_View_QuestionEdit.php:376
+#: lib/view/WpProQuiz_View_QuestionEdit.php:408
+msgid "Allow HTML"
+msgstr "Povoliť HTML"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:328
+#: lib/view/WpProQuiz_View_QuestionEdit.php:383
+#: lib/view/WpProQuiz_View_QuestionEdit.php:425
+msgid "Delete answer"
+msgstr "Zmazať odpoveď"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:329
+#: lib/view/WpProQuiz_View_QuestionEdit.php:384
+#: lib/view/WpProQuiz_View_QuestionEdit.php:426
+msgid "Add Media"
+msgstr "Vložiť mediálny súbor"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:330
+#: lib/view/WpProQuiz_View_QuestionEdit.php:385
+#: lib/view/WpProQuiz_View_QuestionEdit.php:427
+#: lib/view/WpProQuiz_View_QuestionOverall.php:59
+#: lib/view/WpProQuiz_View_QuizEdit.php:1435
+msgid "Move"
+msgstr "Posunúť"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:346
+msgid "Criterion"
+msgstr "Množina"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:438
+msgid ""
+"correct answers (one per line) (answers will be converted to lower case)"
+msgstr ""
+"správne odpovede (jedna na riadok) (odpovede sa prevedú na malé písmena)"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:451
+msgid ""
+"Enclose the searched words with { } e.g. \"I {play} soccer\". Capital and "
+"small letters will be ignored."
+msgstr ""
+"Ohraničte doplňované slová/písmená zloženými zátvorkami { }. Napr.: "
+"\"Chlap{i}piekl{i} koláče.\". Na veľkosť písmen sa nebude brať ohľad."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:454
+msgid ""
+"You can specify multiple options for a search word. Enclose the word with "
+"[ ] e.g. <span style=\"font-style: normal; letter-spacing: 2px;\"> \"I "
+"{[play][love][hate]} soccer\" </span>. In this case answers play, love OR "
+"hate are correct."
+msgstr ""
+"Pre každé doplňované pole môžete použíť viac možností. Uzavriete možnosti "
+"hranatými zátvorkami [], napr.: <span style=\"font-style: normal; letter-"
+"spacing: 2px;\"> \"K našim národním farbám patrí {[modrá][červená][biela]}."
+"\" </span>. V tomto prípade slova \"modrá\", \"červená\" i \"biela\" budú "
+"hodnotene ako správná (bodovaná) odpoveď."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:457
+msgid ""
+"If mode \"Different points for every answer\" is activated, you can assign "
+"points with |POINTS. Otherwise 1 point will be awarded for every answer."
+msgstr ""
+"Ak zaškrtnete \"Odlišný počet bodov pre každú odpoveď.\" (hore), môžete k "
+"správnej opovedi priradiť počet bodov pomocou znaku | a čísla. V ostatných "
+"prípadoch bude za každú správnu odpoveď udelený 1 bod."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:460
+msgid ""
+"e.g. \"I {play} soccer, with a {ball|3}\" - \"play\" gives 1 point and \"ball"
+"\" 3 points."
+msgstr ""
+"Např.: \"Chlap{i} {po|5}zreli film.\" - Napsat správně \"i\" je za 5 bodov, "
+"protože to nevie každý. Napísať \"po\" ve slove zhlédnout je za 1 bod, "
+"pretože veľa lidí to píše správne s \"po\"."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:472
+msgid "Here you can create an assessment question."
+msgstr "Tu môžete vložiť hodnotiacu otázku."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:475
+msgid ""
+"Enclose a assesment with {}. The individual assessments are marked with []."
+msgstr ""
+"Vložte odpovede do zložených závoriek {}. Jednotlivé odpovede musia býť v "
+"hranatých zátvorkách []."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:477
+msgid "The number of options in the maximum score."
+msgstr "Maximálne skóre sa rovná počtu možností."
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:480
+msgid "Examples:"
+msgstr "Príklady:"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:482
+msgid "less true { [1] [2] [3] [4] [5] } more true"
+msgstr "menej pravdivé { [1] [2] [3] [4] [5] } viac pravdivé"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:485
+#: lib/view/WpProQuiz_View_QuestionEdit.php:494
+#: lib/view/WpProQuiz_View_QuizEdit.php:408
+#: lib/view/WpProQuiz_View_QuizEdit.php:414
+#: lib/view/WpProQuiz_View_QuizEdit.php:695
+#: lib/view/WpProQuiz_View_QuizEdit.php:722
+#: lib/view/WpProQuiz_View_QuizEdit.php:748
+#: lib/view/WpProQuiz_View_QuizEdit.php:774
+#: lib/view/WpProQuiz_View_QuizEdit.php:800
+#: lib/view/WpProQuiz_View_QuizEdit.php:859
+#: lib/view/WpProQuiz_View_QuizEdit.php:884
+#: lib/view/WpProQuiz_View_QuizEdit.php:909
+#: lib/view/WpProQuiz_View_QuizEdit.php:954
+#: lib/view/WpProQuiz_View_QuizEdit.php:979
+#: lib/view/WpProQuiz_View_QuizEdit.php:1004
+#: lib/view/WpProQuiz_View_QuizEdit.php:1176
+#: lib/view/WpProQuiz_View_QuizEdit.php:1186
+#: lib/view/WpProQuiz_View_QuizEdit.php:1239
+#: lib/view/WpProQuiz_View_QuizEdit.php:1247
+#: lib/view/WpProQuiz_View_QuizEdit.php:1255
+#: lib/view/WpProQuiz_View_QuizEdit.php:1263
+#: lib/view/WpProQuiz_View_QuizEdit.php:1346
+#: lib/view/WpProQuiz_View_QuizEdit.php:1358
+#: lib/view/WpProQuiz_View_QuizEdit.php:1365
+msgid "Demo"
+msgstr "Ukážka"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:491
+msgid "less true { [a] [b] [c] } more true"
+msgstr "menej pravdivé { [a] [b] [c] } viac pravdivé"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:510
+msgid "Single choice options"
+msgstr "Otázka s jednou správnou odpoveďou"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:513
+msgid ""
+"If \"Different points for each answer\" is activated, you can activate a "
+"special mode.<br> This changes the calculation of the points"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:517
+msgid "Different points - modus 2 activate"
+msgstr "Rôzne body - modus 2 aktivovať"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:521
+msgid "Disables the distinction between correct and incorrect."
+msgstr "Vypnúť rozdiel medzi správnym a nesprávnym"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:525
+msgid "disable correct and incorrent"
+msgstr "vypnúť správne a nesprávne"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:529
+msgid "Explanation of points calculation"
+msgstr "Vysvetlenie bodovej kalkulácie"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:549
+#: lib/view/WpProQuiz_View_QuestionEdit.php:554
+msgid "\"Different points for each answer\" enabled"
+msgstr "\"Rozdielne body za každú odpoveď\" umožniť"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:551
+msgid "\"Different points - mode 2\" disable"
+msgstr "\"Rôzne body - mode 2\" neumožniť"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:556
+msgid "\"Different points - mode 2\" enabled"
+msgstr "\"Rôzne body - mode 2\" umožniť"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:17
+msgid "Questions sorted"
+msgstr "Poradie uložené"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:78
+#: lib/view/WpProQuiz_View_Statistics.php:169
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:255
+msgid "Total"
+msgstr "Spolu"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:86
+msgid "Add question"
+msgstr "Pridať otázku"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:87
+msgid "Save order"
+msgstr "Uložiť poradie"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:88
+#: lib/view/WpProQuiz_View_QuestionOverall.php:93
+msgid "Copy questions from another Quiz"
+msgstr "Skopírovať otázky z iného kvízu"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:94
+msgid ""
+"Here you can copy questions from another quiz into this quiz. (Multiple "
+"selection enabled)"
+msgstr ""
+"Tu môžete skopírovat otázky z iného kvízu do tohto kvízu. (Dá sa označiť "
+"viac otázok)"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:106
+msgid "Copy questions"
+msgstr "Skopírovať otázky"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:34
+msgid "Quiz title"
+msgstr "Titulok kvízu"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:43
+#: lib/view/WpProQuiz_View_QuizOverall.php:201
+msgid "You can assign classify category for a quiz."
+msgstr "Môžete priradiť klasifikačnú kategóriu pre kvíz."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:76
+msgid "Hide quiz title"
+msgstr "Skryť titulok kvízu"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:81
+msgid "Hide title"
+msgstr "Skryť titulok"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:88
+msgid "The title serves as quiz heading."
+msgstr "Titulok je zobrazený v hlavičke kvízu ako nadpis."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:95
+#: lib/view/WpProQuiz_View_QuizEdit.php:100
+msgid "Hide \"Restart quiz\" button"
+msgstr "Skryť tlačítko \"Reštart Kvízu\""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:107
+msgid "Hide the \"Restart quiz\" button in the Frontend."
+msgstr "Skryť tlačítko \"Reštart kvúzu\" na záverečnej obrazovke."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:114
+#: lib/view/WpProQuiz_View_QuizEdit.php:119
+msgid "Hide \"View question\" button"
+msgstr "Skryť tlačítko \"Zobraziť moje odpovede\""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:126
+msgid "Hide the \"View question\" button in the Frontend."
+msgstr "Skryť tlačítko \"Zobrazit moje odpovede\" na záverečnej obrazovke."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:133
+#: lib/view/WpProQuiz_View_QuizEdit.php:138
+msgid "Display question randomly"
+msgstr "Zoradiť otázky náhodne"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:149
+#: lib/view/WpProQuiz_View_QuizEdit.php:154
+msgid "Display answers randomly"
+msgstr "Zoradiť odpovede náhodne"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:165
+#: lib/view/WpProQuiz_View_QuizEdit.php:170
+msgid "Sort questions by category"
+msgstr "Rozdeliť otázky podľa kategórie"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:177
+msgid ""
+"Also works in conjunction with the \"display randomly question\" option."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:192
+msgid "Seconds"
+msgstr "sekundy"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:195
+msgid "0 = no limit"
+msgstr "0 = bez limitu"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:202
+#: lib/view/WpProQuiz_View_QuizEdit.php:207
+#: lib/view/WpProQuiz_View_QuizOverall.php:120
+msgid "Statistics"
+msgstr "Štatistika"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:214
+msgid ""
+"Statistics about right or wrong answers. Statistics will be saved by "
+"completed quiz, not after every question. The statistics is only visible "
+"over administration menu. (internal statistics)"
+msgstr ""
+"Štatistika správnych a nesprávnych odpovedí. Údaje sa uložia po dokončení "
+"celého kvízu, nie po zodpovedaní každej otázky. Štatistiky sú viditeľné iba "
+"v administrácii. (interná štatistika)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:221
+#: lib/view/WpProQuiz_View_QuizEdit.php:226
+msgid "Statistics IP-lock"
+msgstr "Obmedzenie vkládania štatistík pre jednu IP adresu"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:230
+msgid "in minutes (recommended 1440 minutes = 1 day)"
+msgstr "v minutách (doporučuje sa 1440 minut = 1 den)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:233
+msgid ""
+"Protect the statistics from spam. Result will only be saved every X minutes "
+"from same IP. (0 = deactivated)"
+msgstr ""
+"Chráni databázu a štatistiku pred spamom. Výsledky z jedného počítača (IP "
+"adresy) sa uložia iba po každých X minutách. (0 = vypnuto)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:240
+#: lib/view/WpProQuiz_View_QuizEdit.php:246
+msgid "Execute quiz only once"
+msgstr "Kvíz sa môže vyplniť iba raz"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:254
+msgid ""
+"If you activate this option, the user can complete the quiz only once. "
+"Afterwards the quiz is blocked for this user."
+msgstr ""
+"Keď zapnete túto možnosť, užívateľ môže vyplniť kvíz iba raz. Potom sa pre "
+"neho zablokuje."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:258
+msgid "This option applies to:"
+msgstr "Táto možnosť platí pre:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:266
+#: lib/view/WpProQuiz_View_QuizEdit.php:1051
+#: lib/view/WpProQuiz_View_StatisticsNew.php:102
+msgid "all users"
+msgstr "všetci užívatelia"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:270
+#: lib/view/WpProQuiz_View_QuizEdit.php:1055
+msgid "registered useres only"
+msgstr "iba registrovaní"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:274
+#: lib/view/WpProQuiz_View_QuizEdit.php:1059
+msgid "anonymous users only"
+msgstr "iba neregistrovaní (anonymní)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:280
+msgid "user identification by cookie"
+msgstr "identifikácia uživateľa pomocou cookies"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:283
+msgid ""
+"If you activate this option, a cookie is set additionally for unregistrated "
+"(anonymous) users. This ensures a longer assignment of the user than the "
+"simple assignment by the IP address."
+msgstr ""
+"Ak aktivujete túto možnosť, neregistrovaným (anonymom) sa pridelí cookies. "
+"Lepšie sa tak dá rozeznať jednotlivý užívateľ než pomocou IP adresy."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:288
+msgid "Reset the user identification"
+msgstr "Vynulovať identifikáciu uživateľou"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:289
+msgid "User identification has been reset."
+msgstr "Identifikácia o uživateľoch vynulovaná."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:291
+msgid "Resets user identification for all users."
+msgstr "Vynulovať identifikáciu pre všetkých užívateľov."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:300
+#: lib/view/WpProQuiz_View_QuizEdit.php:305
+msgid "Show only specific number of questions"
+msgstr "Zobraziť určitý počet otázok"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:312
+msgid ""
+"If you enable this option, maximum number of displayed questions will be X "
+"from X questions. (The output of questions is random)"
+msgstr ""
+"Ak zapnete túto možnosť, maximálny počet ponúknutých otázok bude môcť byť "
+"nižší než celkový počet otázok (systém vyberie otázky náhodne)."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:316
+msgid "How many questions should be displayed simultaneously:"
+msgstr "Kolik otázek by malo byť zobrazených súčasne:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:321
+msgid "in percent"
+msgstr "v percentách"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:329
+#: lib/view/WpProQuiz_View_QuizEdit.php:334
+msgid "Prerequisites"
+msgstr "Predpoklady"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:341
+msgid ""
+"If you enable this option, you can choose quiz, which user have to finish "
+"before he can start this quiz."
+msgstr ""
+"Ak zapnete túto možnosť, môžete vybrať kvíz či kvízy, které musí uživateľ "
+"dokončit pred tým, než môže vyplniť tento kvíz."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:344
+msgid ""
+"In all selected quizzes statistic function have to be active. If it is not "
+"it will be activated automatically."
+msgstr ""
+"Vo všetkých zvolených kvízoch musí býť zapnutá štatistika. Ak nieje, zapne "
+"sa automaticky."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:349
+msgid "Quiz"
+msgstr "Kvíz"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:351
+msgid "Prerequisites (This quiz have to be finished)"
+msgstr "Predpoklady (Užívateľ musí dokončiť následujíce kvízy)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:390
+#: lib/view/WpProQuiz_View_QuizEdit.php:395
+#: lib/view/WpProQuiz_View_QuizEdit.php:408
+msgid "Question overview"
+msgstr "Prehľad otázok"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:402
+msgid ""
+"Add at the top of the quiz a question overview, which allows easy "
+"navigation. Additional questions can be marked \"to review\"."
+msgstr ""
+"Pridá prehľad otázok do hornej části kvízu. Zlepší sa tak navigácia celým "
+"kvízom. Užívateľ si tak môže poznačit otázky, kterými si nieje istý."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:405
+msgid "Additional quiz overview will be displayed, before quiz is finished."
+msgstr "Záverečný prehľad zobraziť ešte pred zodpovedaním všetkých otázok."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:436
+msgid ""
+"If you enalbe this option, no quiz overview will be displayed, before "
+"finishing quiz."
+msgstr ""
+"Ak vypnete túto možnosť, užívateľ sa nedostane na záverečný prehľad, kým "
+"nezodpovie všetky otázky."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:455
+msgid ""
+"If you enable this option, user won't be able to skip question. (only in "
+"\"Overview -> next\" mode). User still will be able to navigate over "
+"\"Question-Overview\""
+msgstr ""
+"Ak zapnete túto možnosť, uživateľ nebude môcť preskočiť otázku. (Iba v móde "
+"\"Skontrolovať -> ďalej\"). Užívateľ sa naďalej bude môcť orientovať pomocou "
+"\"Prehľadu otázok\" "
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:463
+#: lib/view/WpProQuiz_View_QuizEdit.php:468
+#: lib/view/WpProQuiz_View_QuizEdit.php:1466
+#: lib/view/WpProQuiz_View_QuizEdit.php:1471
+msgid "Admin e-mail notification"
+msgstr "Upozornenie na e-mail adminovi"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:476
+#: lib/view/WpProQuiz_View_QuizEdit.php:1479
+msgid "for registered users only"
+msgstr "iba pre registrovaných užívateľe"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:480
+#: lib/view/WpProQuiz_View_QuizEdit.php:1483
+msgid "for all users"
+msgstr "pre všetkých uživateľov"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:483
+#: lib/view/WpProQuiz_View_QuizEdit.php:1486
+msgid ""
+"If you enable this option, you will be informed if a user completes this "
+"quiz."
+msgstr ""
+"Ak zapnete túto možnosť, dostanete upozornenie, ak niekto dokončí kvíz."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:486
+#: lib/view/WpProQuiz_View_QuizEdit.php:509
+msgid "E-Mail settings can be edited in global settings."
+msgstr "Nastavenie e-mailu môžete upraviť vo všeobecných nastaveniach."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:494
+#: lib/view/WpProQuiz_View_QuizEdit.php:499
+#: lib/view/WpProQuiz_View_QuizEdit.php:1604
+#: lib/view/WpProQuiz_View_QuizEdit.php:1609
+msgid "User e-mail notification"
+msgstr "Upozornenie na e-mail uživateľa"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:506
+msgid ""
+"If you enable this option, an email is sent with his quiz result to the "
+"user. (only registered users)"
+msgstr ""
+"Ak zapnete túto možnosť, uživateľom príde e-mail s výsledkami kvízu (iba pre "
+"registrovaných)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:517
+#: lib/view/WpProQuiz_View_QuizEdit.php:522
+msgid "Autostart"
+msgstr "Automatické spustenie"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:529
+msgid ""
+"If you enable this option, the quiz will start automatically after the page "
+"is loaded."
+msgstr "Ak zapnete túto možnosť, kvíz začne automaticky po načítaní stránky."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:536
+#: lib/view/WpProQuiz_View_QuizEdit.php:541
+msgid "Only registered users are allowed to start the quiz"
+msgstr "Iba registrovaní užívatelia môžu spustiť kvíz"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:548
+msgid ""
+"If you enable this option, only registered users allowed start the quiz."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:565
+msgid "Quiz description"
+msgstr "Popis kvízu"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:568
+msgid "This text will be displayed before start of the quiz."
+msgstr "Tento text sa zobrazí na začiatku kvízu."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:576
+msgid "Results text"
+msgstr "Text k výsledkom"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:579
+msgid ""
+"This text will be displayed at the end of the quiz (in results). (this text "
+"is optional)"
+msgstr ""
+"Tento text sa zobrazí po ukončení kvízu (vo výsledkoch). (vyplniť toto pole "
+"nieje povinné)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:583
+msgid "Activate graduation"
+msgstr "Viac slovných ohodnotení v závislosti na dosiahnutých výsledkov"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:589
+msgid "Hint:"
+msgstr "Nápoveda:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:591
+msgid "Maximal 15 levels"
+msgstr "Vložiť najviac 15 slovných ohodnotení"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:593
+#, php-format
+msgid ""
+"Percentages refer to the total score of the quiz. (Current total %d points "
+"in %d questions."
+msgstr ""
+"Percentá znamenajú celkové skóre v kvízu. (Splnených %d bodov z %d otázok.)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:596
+msgid "Values can also be mixed up"
+msgstr "Hodnoty sa môžu prekrývať"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:597
+msgid "10,15% or 10.15% allowed (max. two digits after the decimal point)"
+msgstr ""
+"Je povoleý formát ako 10,15 %, tak aj 10.15 % (pozor: maximálne dve čísla po "
+"desatinnej čiarke)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:613
+#: lib/view/WpProQuiz_View_QuizEdit.php:624
+msgid "from:"
+msgstr "Od:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:613
+#: lib/view/WpProQuiz_View_QuizEdit.php:624
+msgid "percent"
+msgstr "percent"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:613
+#: lib/view/WpProQuiz_View_QuizEdit.php:624
+#, php-format
+msgid ""
+"(Will be displayed, when result-percent is >= <span class=\"resultProzent\">"
+"%s</span>%%)"
+msgstr ""
+"(Text sa zobrazí, ak je percentuálny výsledok vetší či rovný <span class="
+"\"resultProzent\">%s</span>%%)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:614
+#: lib/view/WpProQuiz_View_QuizEdit.php:625
+msgid "Delete graduation"
+msgstr "Zmazať slovné hodnotenie"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:632
+msgid "Add graduation"
+msgstr "Pridať slovné hodnotenie"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:643
+#: lib/view/WpProQuiz_View_QuizEdit.php:1554
+#: lib/view/WpProQuiz_View_QuizEdit.php:1686
+msgid "Custom fields - Variables"
+msgstr "Vlastné polia - Variabilné"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:674
+msgid "Result-Options"
+msgstr "Nastavenie výsledkov"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:680
+#: lib/view/WpProQuiz_View_QuizEdit.php:685
+msgid "Show average points"
+msgstr "Ukázať priemerný počet dosiahnutých bodov"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:692
+msgid "Statistics-function must be enabled."
+msgstr "V tomto prípade musíte zapnúť štatistiku."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:705
+#: lib/view/WpProQuiz_View_QuizEdit.php:710
+msgid "Show category score"
+msgstr "Triediť skóre podľa kategórií"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:717
+msgid ""
+"If you enable this option, the results of each category is displayed on the "
+"results page."
+msgstr ""
+"Ak zapnete túto možnosť, výsledky sa roztřiedia podľa kategórií otázok."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:731
+#: lib/view/WpProQuiz_View_QuizEdit.php:736
+msgid "Hide correct questions - display"
+msgstr "Skryť oznámenia o počte správne zodpovedaných otázok"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:743
+msgid ""
+"If you select this option, no longer the number of correctly answered "
+"questions are displayed on the results page."
+msgstr ""
+"Ak zapnete túto možnosť, nezobrazí sa počet správne zodpovedaných otázok na "
+"obrazovke s výsledkami."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:757
+#: lib/view/WpProQuiz_View_QuizEdit.php:762
+msgid "Hide quiz time - display"
+msgstr "Skryť dobu vyplňovania"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:769
+msgid ""
+"If you enable this option, the time for finishing the quiz won't be "
+"displayed on the results page anymore."
+msgstr ""
+"Ak zapnete túto možnosť, nezobrazí sa na záverečnej obrazovke čas, za ktorý "
+"uživateľ vyplnil kvíz."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:783
+#: lib/view/WpProQuiz_View_QuizEdit.php:788
+msgid "Hide score - display"
+msgstr "Skryť body (skóre)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:795
+msgid ""
+"If you enable this option, final score won't be displayed on the results "
+"page anymore."
+msgstr ""
+"Ak zapnete túto možnosť, na záverečnej obrazovke sa nezobrazí počet "
+"získaných bodov."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:819
+msgid "Question-Options"
+msgstr "Nastavenie otázok"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:825
+#: lib/view/WpProQuiz_View_QuizEdit.php:830
+msgid "Show points"
+msgstr "Zobraziť body"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:837
+msgid "Shows in quiz, how many points are reachable for respective question."
+msgstr "Zobraziť užívateľovi, koľko bodov môže získať za otázku."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:844
+#: lib/view/WpProQuiz_View_QuizEdit.php:849
+msgid "Number answers"
+msgstr "Očíslovať odpovede"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:856
+msgid ""
+"If this option is activated, all answers are numbered (only single and "
+"multiple choice)"
+msgstr "Zapnutím tejto možnosti se odpovede očíslujú (iba tie zaškrtovacie)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:869
+#: lib/view/WpProQuiz_View_QuizEdit.php:874
+msgid "Hide correct- and incorrect message"
+msgstr "Skryť správu o správnej či nesprávnej odpovedi"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:881
+msgid ""
+"If you enable this option, no correct- or incorrect message will be "
+"displayed."
+msgstr ""
+"Ak zapnete túto možnosť, nezobrazí sa správa o nesprávnej či správnej "
+"odpovedi"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:894
+#: lib/view/WpProQuiz_View_QuizEdit.php:899
+msgid "Correct and incorrect answer mark"
+msgstr "Označiť správne a nesprávne odpovede"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:906
+msgid ""
+"If you enable this option, answers won't be color highlighted as correct or "
+"incorrect. "
+msgstr ""
+"Ak vypnete túto možnosť, správne a nesprávne odpovede sa neoznačia farebne."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:919
+#: lib/view/WpProQuiz_View_QuizEdit.php:924
+msgid "Force user to answer each question"
+msgstr "Prinútiť užívateľa odpovedať na každú otázku"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:931
+msgid "If you enable this option, the user is forced to answer each question."
+msgstr ""
+"Ak zapnete túto možnosť, užívateľa prinútite odpovedať na každú otázku."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:932
+msgid ""
+"If the option \"Question overview\" is activated, this notification will "
+"appear after end of the quiz, otherwise after each question."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:939
+#: lib/view/WpProQuiz_View_QuizEdit.php:944
+msgid "Hide question position overview"
+msgstr "Skryť miesto zhrnutia otázky"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:951
+msgid "If you enable this option, the question position overview is hidden."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:964
+#: lib/view/WpProQuiz_View_QuizEdit.php:969
+msgid "Hide question numbering"
+msgstr "Skryť číslovanie otázok"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:976
+msgid "If you enable this option, the question numbering is hidden."
+msgstr "Ak zapnete túto možnosť, skryjete císlovanie otázok."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:989
+#: lib/view/WpProQuiz_View_QuizEdit.php:994
+msgid "Display category"
+msgstr "Zobraz kategóriu"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1001
+msgid "If you enable this option, category will be displayed in the question."
+msgstr "Ak zapnete túto možnosť, kategória bude zobrazená pri otázke."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1026
+msgid ""
+"The leaderboard allows users to enter results in public list and to share "
+"the result this way."
+msgstr ""
+"Rebríček umožňuje užívateľom vložiť svoje výsledky do verejnej štatistiky a "
+"zdieľať svoje výkony s ostatnými."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1029
+msgid "The leaderboard works independent from internal statistics function."
+msgstr "Rebríček funguje samostatne mimo internej štatistiky."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1046
+msgid "Who can sign up to the list"
+msgstr "Možnosť vkladať výsledky platí pre"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1062
+msgid ""
+"Not registered users have to enter name and e-mail (e-mail won't be "
+"displayed)"
+msgstr ""
+"Neregistrovaní uživatelia musai vložiť meno a e-mail (ten nebude zobrazený)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1068
+msgid "insert automatically"
+msgstr "vložiť automaticky"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1076
+msgid ""
+"If you enable this option, logged in users will be automatically entered "
+"into leaderboard"
+msgstr ""
+"Ak zapnete túto možnosť, výsledky prihlásených užívateľov sa automaticky "
+"vložia do rebríčka"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1082
+msgid "display captcha"
+msgstr "zobraziť kontrolný kód captcha"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1090
+msgid ""
+"If you enable this option, additional captcha will be displayed for users "
+"who are not registered."
+msgstr ""
+"Ak zapnete túto možnosť, neregistrovaným uživateľom sa zobrazí kontrolný kód "
+"captcha"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1093
+msgid "This option requires additional plugin:"
+msgstr "Toto nastavenie vyžaduje následujúci plugin:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1098
+msgid "Plugin has been detected."
+msgstr "Plugin nájdený."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1102
+msgid "Plugin is not installed."
+msgstr "Plugin nieje nainštalovaný."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1110
+msgid "Sort list by"
+msgstr "Zoradiť zoznam podľa"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1129
+msgid "Users can apply multiple times"
+msgstr "Užívatelia môžu vložiť výsledky viackrát"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1140
+msgid "User can apply after:"
+msgstr "Rovnaký užívateľ môže vložiť svoje výsledky znova za:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1142
+msgid "minute"
+msgstr "min."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1149
+msgid "How many entries should be displayed"
+msgstr "Koľko výsledkov zobraziť"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1155
+msgid "Entries"
+msgstr "Výsledky"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1162
+msgid "Automatically display leaderboard in quiz result"
+msgstr "Automaticky zobrazovať rebríček vo výsledkoch kvízu"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1166
+msgid "Where should leaderboard be displayed:"
+msgstr "Kde má byť rebríček umiestnený:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1169
+msgid "don't display"
+msgstr "nezobrazovať"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1173
+msgid "below the \"result text\""
+msgstr "pod textom s výsledkami"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1183
+msgid "in a button"
+msgstr "po stlačení tlačítka"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1204
+msgid "Quiz-Mode"
+msgstr "Mód kvízu"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1209
+msgid "Normal"
+msgstr "Normálny"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1210
+msgid "Normal + Back-Button"
+msgstr "Normálny + Tlačítko späť"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1211
+msgid "Check -> continue"
+msgstr "Skontrolovať -> ďalší"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1212
+msgid "Questions below each other"
+msgstr "Otázky zoradené pod sebou"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1224
+msgid ""
+"Displays all questions sequentially, \"right\" or \"false\" will be "
+"displayed at the end of the quiz."
+msgstr ""
+"Zobrazí všetky otázky ako idú za sebou, správne a nesprávne odpovede budú "
+"zobrazené na konci kvízu."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1227
+msgid "Allows to use the back button in a question."
+msgstr "Povolí používať tlačítko späť."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1230
+msgid "Shows \"right or wrong\" after each question."
+msgstr ""
+"Po každej odpovedi ihneď zobrazí, či užívateľ odpovedal správne / nesprávne."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1233
+msgid ""
+"If this option is activated, all answers are displayed below each other, i."
+"e. all questions are on a single page."
+msgstr ""
+"Ak zapnete túto možnosť, všetky otázky a odpovede sa zobrazia pod sebou. "
+"Napr.: celý kvíz bude na jednej stránke."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1275
+msgid "How many questions to be displayed on a page:"
+msgstr "Koľko otázok má byť zobrazených na jednej stránke:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1278
+msgid "(0 = All on one page)"
+msgstr "(0 = všetky na jednej stránke)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1300
+#: lib/view/WpProQuiz_View_QuizEdit.php:1632
+#: lib/view/WpProQuiz_View_Statistics.php:41
+#: lib/view/WpProQuiz_View_Statistics.php:364
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:520
+msgid "Custom fields"
+msgstr "Vlastné polia"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1304
+msgid ""
+"You can create custom fields, e.g. to request the name or the e-mail address "
+"of the users."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1307
+msgid "The statistic function have to be enabled."
+msgstr "Funkcia štatistiky musí byť zapnutá."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1314
+#: lib/view/WpProQuiz_View_QuizEdit.php:1319
+msgid "Custom fields enable"
+msgstr "Zapnúť vlastné polia"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1326
+msgid "If you enable this option, custom fields are enabled."
+msgstr "Ak zapnete túto možnosť, vlastné polia budú zapnuté."
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1333
+#: lib/view/WpProQuiz_View_QuizEdit.php:1338
+msgid "Display position"
+msgstr "Zobraz pozíciu"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1340
+msgid "Where should the fileds be displayed:"
+msgstr "Kde majú byť zobrazené polia:"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1343
+msgid "On the quiz startpage"
+msgstr "Na začiatočnej stránka kvízu"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1355
+msgid "At the end of the quiz (before the quiz result)"
+msgstr "Na konci kvízu (pred výsledkami)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1383
+msgid "Field name"
+msgstr "Meno poľa"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1385
+msgid "Required?"
+msgstr "Povinné?"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1408
+msgid "Text"
+msgstr "Text"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1409
+msgid "Textarea"
+msgstr "Priestor pre text"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1410
+msgid "Checkbox"
+msgstr "Kontrolný priestor"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1411
+msgid "Drop-Down menu"
+msgstr "Sťahovacie menu"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1412
+msgid "Radio"
+msgstr "Rádio"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1413
+msgid "Number"
+msgstr "Číslo"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1414
+msgid "Email"
+msgstr "E-mail"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1415
+msgid "Yes/No"
+msgstr "Áno/Nie"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1416
+#: lib/view/WpProQuiz_View_Statistics.php:323
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:23
+msgid "Date"
+msgstr "Dátum"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1419
+msgid "Edit list"
+msgstr "Upraviť zoznam"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1422
+msgid "One entry per line"
+msgstr "Jedna zápis na riadok"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1427
+msgid "OK"
+msgstr "OK"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1446
+msgid "Add field"
+msgstr "Pridať pole"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1616
+msgid ""
+"If you enable this option, an email is sent with his quiz result to the user."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1628
+msgid "User Email-Address (only registered users)"
+msgstr "E-mail používateľa (iba registrovaní používatelia)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1634
+msgid "(Type Email)"
+msgstr "(Druh E-mailu)"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:32
+msgid "Quiz overview"
+msgstr "Prehľad kvízov"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:34
+msgid "In case of problems"
+msgstr "V prípade problémov"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:36
+msgid "If quiz doesn't work in front-end, please try following:"
+msgstr "Ak kvíz nefunguje na front-ende, skuste následujúce:"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:49
+msgid "Style Manager"
+msgstr "Správa štýlov"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:53
+#: lib/view/WpProQuiz_View_WpqSupport.php:8
+msgid "Support WP-Pro-Quiz"
+msgstr "Podporte WP-Pro-Quiz"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:60
+msgid "Learn more"
+msgstr "Naučiť sa viac"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:84
+msgid "ID"
+msgstr "ID"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:87
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:88
+msgid "Shortcode-Leaderboard"
+msgstr "Shortcode rebríčku"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:116
+msgid "Preview"
+msgstr "Náhľad"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:148
+msgid "Add quiz"
+msgstr "Pridať kvíz"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:152
+#: lib/view/WpProQuiz_View_QuizOverall.php:159
+msgid "Export"
+msgstr "Exportovať"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:154
+#: lib/view/WpProQuiz_View_QuizOverall.php:191
+msgid "Set Quiz Categories"
+msgstr "Nastaviť kategórie kvízu"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:160
+msgid ""
+"Choose the respective question, which you would like to export and press on "
+"\"Start export\""
+msgstr ""
+"Vyberte otázku, ktorú chcete exportovať a kliknite na \"Zahájiť export\""
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:165
+msgid "Format:"
+msgstr "Formát:"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:166
+msgid "*.wpq"
+msgstr "*.wpq"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:167
+msgid "or"
+msgstr "alebo"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:168
+msgid "*.xml"
+msgstr "*.xml"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:170
+msgid "Start export"
+msgstr "Zahájiť export"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:176
+msgid "Import only *.wpq or *.xml files from known and trusted sources."
+msgstr "Importovať iba *.wpq alebo *.xml súbory zo známeho zdroja."
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:184
+#, php-format
+msgid "Maximal %d MiB"
+msgstr "Maximálne %d MiB"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:192
+msgid "Sets multiple quiz categories "
+msgstr "Nastaviť mnoho kvízových kategórií"
+
+#: lib/view/WpProQuiz_View_Statistics.php:28
+#: lib/view/WpProQuiz_View_StatisticsNew.php:56
+#, php-format
+msgid "Quiz: %s - Statistics"
+msgstr "Kvíz: %s - Štatistiky"
+
+#: lib/view/WpProQuiz_View_Statistics.php:33
+#: lib/view/WpProQuiz_View_StatisticsNew.php:61
+msgid "Stats not enabled"
+msgstr "Štatistiky niesú povolené"
+
+#: lib/view/WpProQuiz_View_Statistics.php:34
+#: lib/view/WpProQuiz_View_StatisticsNew.php:62
+msgid "Activate statistics"
+msgstr "Aktivovať štatistiky"
+
+#: lib/view/WpProQuiz_View_Statistics.php:39
+msgid "Users"
+msgstr "Podľa uživateľa"
+
+#: lib/view/WpProQuiz_View_Statistics.php:40
+#: lib/view/WpProQuiz_View_StatisticsNew.php:68
+msgid "Overview"
+msgstr "Celkový prehľad"
+
+#: lib/view/WpProQuiz_View_Statistics.php:68
+msgid "Please select user name:"
+msgstr "Vyberte užívateľa:"
+
+#: lib/view/WpProQuiz_View_Statistics.php:72
+msgid "Select a test:"
+msgstr "Vyberte test:"
+
+#: lib/view/WpProQuiz_View_Statistics.php:82
+msgid "Anonymous user"
+msgstr "Anonym"
+
+#: lib/view/WpProQuiz_View_Statistics.php:91
+msgid "average"
+msgstr "priemerne"
+
+#: lib/view/WpProQuiz_View_Statistics.php:108
+#: lib/view/WpProQuiz_View_Statistics.php:243
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:159
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:589
+msgid "Hints used"
+msgstr "Použité nápovedy"
+
+#: lib/view/WpProQuiz_View_Statistics.php:109
+#: lib/view/WpProQuiz_View_Statistics.php:244
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:160
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:590
+msgid "Time"
+msgstr "Čas"
+
+#: lib/view/WpProQuiz_View_Statistics.php:110
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:161
+msgid "Points scored"
+msgstr "Získané body"
+
+#: lib/view/WpProQuiz_View_Statistics.php:148
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:223
+msgid "Sub-Total: "
+msgstr "Celkovo:"
+
+#: lib/view/WpProQuiz_View_Statistics.php:183
+#: lib/view/WpProQuiz_View_Statistics.php:268
+#: lib/view/WpProQuiz_View_Statistics.php:343
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:269
+#: lib/view/WpProQuiz_View_StatisticsNew.php:163
+#: lib/view/WpProQuiz_View_StatisticsNew.php:247
+msgid "Refresh"
+msgstr "Obnoviť"
+
+#: lib/view/WpProQuiz_View_Statistics.php:187
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:273
+msgid "Reset statistics"
+msgstr "Vynulovať štatistiku"
+
+#: lib/view/WpProQuiz_View_Statistics.php:188
+msgid "Reset user statistics"
+msgstr "Vynulovať štatistiku užívateľa"
+
+#: lib/view/WpProQuiz_View_Statistics.php:189
+#: lib/view/WpProQuiz_View_Statistics.php:270
+#: lib/view/WpProQuiz_View_Statistics.php:345
+#: lib/view/WpProQuiz_View_StatisticsNew.php:165
+#: lib/view/WpProQuiz_View_StatisticsNew.php:249
+msgid "Reset entire statistic"
+msgstr "Vynulovať všetky štatistiky"
+
+#: lib/view/WpProQuiz_View_Statistics.php:214
+#: lib/view/WpProQuiz_View_StatisticsNew.php:206
+msgid "Show only users, who solved the quiz:"
+msgstr "Zobraziť iba užívateľov, kterí kvíz vyriešili:"
+
+#: lib/view/WpProQuiz_View_Statistics.php:293
+#: lib/view/WpProQuiz_View_StatisticsNew.php:99
+msgid "Which users should be displayed:"
+msgstr "Ktorí užívatelia majú byť zobrazení:"
+
+#: lib/view/WpProQuiz_View_Statistics.php:295
+msgid "all"
+msgstr "všetci"
+
+#: lib/view/WpProQuiz_View_Statistics.php:296
+#: lib/view/WpProQuiz_View_StatisticsNew.php:103
+msgid "only registered users"
+msgstr "iba registrovaní"
+
+#: lib/view/WpProQuiz_View_Statistics.php:297
+#: lib/view/WpProQuiz_View_StatisticsNew.php:104
+msgid "only anonymous users"
+msgstr "iba anonymní"
+
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:138
+#, php-format
+msgid "User statistics: %s"
+msgstr "Používateľova štatistika: %s"
+
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:546
+msgid "ticked"
+msgstr "začiarknuté"
+
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:546
+msgid "not ticked"
+msgstr "nezačiarknuté"
+
+#: lib/view/WpProQuiz_View_StatisticsNew.php:67
+msgid "History"
+msgstr "História"
+
+#: lib/view/WpProQuiz_View_StatisticsNew.php:101
+msgid "special filter"
+msgstr "Špeciálny filter"
+
+#: lib/view/WpProQuiz_View_StatisticsNew.php:136
+#, php-format
+msgid "Search to date limit from %s to %s"
+msgstr "Hľadaj v rámci čaového úseku od %s do %s"
+
+#: lib/view/WpProQuiz_View_StyleManager.php:15
+msgid "Front"
+msgstr "Vpredu"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:10
+msgid "Donate"
+msgstr "Prispejte"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:20
+msgid "WP-Pro-Quiz is small but nice free quiz plugin for WordPress."
+msgstr "WP-Pro-Quiz je malý, ale šikovný plugin pre WordPress."
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:21
+msgid ""
+"I try to implement all wishes as fast as possible and help with problems."
+msgstr ""
+"Pokúsil som sa vypočuť všetky priamia a čo nejrýchlejšie vyriešiť problémy."
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:22
+msgid ""
+"Your donations can help to ensure that the project continues to remain free."
+msgstr "Vaše príspevky mi pomôžu, že tento projekt ostane aj naďalej zadarmo."
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:25
+msgid "Translate WP-Pro-Quiz"
+msgstr "Preložte WP-Pro-Quiz"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:27
+msgid "You need:"
+msgstr "Potrebujete:"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:30
+msgid "Latest POT file"
+msgstr "Najnovjší súbor POT"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:35
+msgid "Open PoEdit"
+msgstr "Otvorte PoEdit"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:36
+msgid "File - New catalogue from POT file..."
+msgstr "Zložka - Nový katalog z POT zložky..."
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:37
+msgid "Choose wp-pro-quiz.pot"
+msgstr "Zvoľte wp-pro-quiz.pot"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:38
+msgid "Set \"Translation properties\""
+msgstr "Zvoľte \"Translation properties\""
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:39
+msgid "Save PO file - with the name \"wp-pro-qioz-de_DE.po\""
+msgstr "Uložte súbor PO - s názvom \"wp-pro-qioz-sk_SK.po\""
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:41
+msgid "replace de_DE with your countries short code (e.g. en_US, nl_NL...)"
+msgstr ""
+"prepíšte de_DE s Vašim kódom krajiny (napr.sk_SK, cs_CZ,...)koncovka musí "
+"být zhodná s Vašou jazykovou mutáciou (slovenčina používa sk_SKapod.)"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:44
+msgid "Translate"
+msgstr "Preložte"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:46
+msgid ""
+"Upload generated *.mo file to your server, to /wp-content/plugins/wp-pro-"
+"quiz/languages"
+msgstr ""
+"Nahrajte vygenerované *.mo soubory a váš server do zložky /wp-content/"
+"plugins/wp-pro-quiz/languages"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:47
+msgid "Finished"
+msgstr "Hotovo!"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:51
+msgid ""
+"You can translate WP-Pro-Quiz from existing to existing language (e.g. "
+"english to english) e.g. to rename buttons."
+msgstr ""
+"Môžete preložiť plugin z už existujíceho jazyka (např. z angličtiny do "
+"angličtiny) pre premenovanie tlačídiel a pod."
+
+#~ msgid "E-Mail settings"
+#~ msgstr "Nastavenie e-mailu"
+
+#~ msgid "The statistics function is not available in this option."
+#~ msgstr "Štatistika pri tejto možnosťi nefunguje."
+
+#~ msgid ""
+#~ "This option doesn't work reliable in connection with Frontend-Cache-"
+#~ "Plugins."
+#~ msgstr ""
+#~ "Toto nastavenie nieje spolehlivé v spojení s pluginy \"Frontend-Cache-"
+#~ "Plugins\"."
+
+#~ msgid "Next exercise"
+#~ msgstr "Ďalšie cvičenie"
