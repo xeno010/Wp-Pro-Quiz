@@ -3,8 +3,8 @@ Contributors: xeno010
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BF9JT56N7FAQG
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
-Tested up to: 3.9.2
-Stable tag: 0.31
+Tested up to: 4.0
+Stable tag: 0.32
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,6 +64,7 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Norwegian / norsk (Thanks Stein Ivar J.)
 *		Persian / فارسی (Thanks Behrooz N.)
 *		Russian / русский (Thanks Sergei B. and Alex A.)
+*		Slovak / slovenščina (Thanks Martin D.)
 *		Spanish / español (Thanks Carlos R.)
 *		Swedish / svenska (Thanks Martin J.)
 *		Turkish / Türkçe (Thanks Nsaral)
@@ -319,4 +320,9 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * small bugfix
 
 = 0.32 =
-* Translation for Italian have been added (Thanks Pacaldi)
+* CSS Update for Themes "Respo", "editor" and "twentyfourteen"
+* fixed white space problem in front quiz view
+* fixed bug in Import handler
+* Fixed bug (Illegal string offset '\')
+* Translation for italian have been added (Thanks Pacaldi)
+* Translation for slovak have been added (Thanks Martin D.)
