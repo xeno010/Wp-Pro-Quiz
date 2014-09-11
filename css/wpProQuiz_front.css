@@ -210,6 +210,9 @@
 	font-weight: normal;
 	display: inline;
 }
+.wpProQuiz_questionListItem label {
+	float: none;
+}
 .wpProQuiz_questionListItem input {
 	float: none !important;
 	display: inline !important;
@@ -471,6 +474,7 @@ span.wpProQuiz_catPercent {
 	width: auto !important;
 	border-collapse: separate !important;
 	border-spacing: 2px !important;
+	border: 0;
 }
 .wpProQuiz_forms td {
 	vertical-align: top !important;
@@ -489,4 +493,10 @@ span.wpProQuiz_catPercent {
 }
 .wpProQuiz_resultForm {
 	display: none;
+}
+.wpProQuiz_quiz input[type="checkbox"] {
+	-webkit-appearance: checkbox;
+}
+.wpProQuiz_quiz input[type="radio"] {
+	-webkit-appearance: radio;
 }
