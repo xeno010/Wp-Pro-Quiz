@@ -1026,7 +1026,7 @@
 				$e.find('.wpProQuiz_questionList').each(function() {
 					var questionId = $(this).data('question_id');
 					
-					results[questionId] = {time: 0};
+					results[questionId] = {time: 0, solved: 0};
 				});
 				
 				catResults = {};
@@ -1245,8 +1245,12 @@
 				$e.find('.wpProQuiz_correct_answer').text(results.comp.correctQuestions);
 				
 				results.comp.result = Math.round(results.comp.points / config.globalPoints * 100 * 100) / 100;
+				results.comp.solved = 0;
+
+				//for(var i = 0; i < quizSolved.length; i++)
+				//	results.comp.solved += quizSolved[i] ? 1 : 0;
 				
-				$pointFields = $e.find('.wpProQuiz_points span');
+				var $pointFields = $e.find('.wpProQuiz_points span');
 				
 				$pointFields.eq(0).text(results.comp.points);
 				$pointFields.eq(1).text(config.globalPoints);
@@ -1316,6 +1320,10 @@
 			
 			questionSolved: function(e) {
 				quizSolved[e.values.index] = e.values.solved;
+
+				var $questionList = e.values.item.find(globalNames.questionList);
+				var data = config.json[$questionList.data('question_id')];
+				results[data.id].solved = Number(e.values.fake ? results[data.id].solved : e.values.solved);
 			},
 			
 			sendCompletedQuiz: function() {
@@ -1464,7 +1472,7 @@
 					$this.data('check', true);
 					
 					if(!endCheck)
-						$e.trigger({type: 'questionSolved', values: {item: $this, index: $this.index(), solved: true}});
+						$e.trigger({type: 'questionSolved', values: {item: $this, index: $this.index(), solved: true, fake: true}});
 				});
 			},
 			

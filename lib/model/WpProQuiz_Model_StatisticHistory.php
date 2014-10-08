@@ -16,6 +16,7 @@ class WpProQuiz_Model_StatisticHistory extends WpProQuiz_Model_Model {
 	protected $_gPoints = 0;
 	protected $_formData = null;
 	protected $_formOverview = array();
+	protected $_solvedCount = 0;
 	
 	public function setUserId($_userId) {
 		$this->_userId = (int)$_userId;
@@ -93,43 +94,43 @@ class WpProQuiz_Model_StatisticHistory extends WpProQuiz_Model_Model {
 		$this->_result = (float)$_result;
 		return $this;
 	}
-	
+
 	public function getResult() {
 		return $this->_result;
 	}
-	
+
 	public function setFormatTime($_formatTime) {
 		$this->_formatTime = (string)$_formatTime;
 		return $this;
 	}
-	
+
 	public function getFormatTime() {
 		return $this->_formatTime;
 	}
-	
+
 	public function setFormatCorrect($_formatCorrect) {
 		$this->_formatCorrect = (string)$_formatCorrect;
 		return $this;
 	}
-	
+
 	public function getFormatCorrect() {
 		return $this->_formatCorrect;
 	}
-	
+
 	public function setFormatIncorrect($_formatIncorrect) {
 		$this->_formatIncorrect = (string)$_formatIncorrect;
 		return $this;
 	}
-	
+
 	public function getFormatIncorrect() {
 		return $this->_formatIncorrect;
 	}
-	
+
 	public function setGPoints($_gPoints) {
 		$this->_gPoints = (int)$_gPoints;
 		return $this;
 	}
-	
+
 	public function getGPoints() {
 		return $this->_gPoints;
 	}
@@ -152,5 +153,12 @@ class WpProQuiz_Model_StatisticHistory extends WpProQuiz_Model_Model {
 		return $this->_formOverview;
 	}
 
-	
+	public function setSolvedCount($_solvedCount) {
+		$this->_solvedCount = (int)$_solvedCount;
+		return $this;
+	}
+
+	public function getSolvedCount() {
+		return $this->_solvedCount;
+	}
 }

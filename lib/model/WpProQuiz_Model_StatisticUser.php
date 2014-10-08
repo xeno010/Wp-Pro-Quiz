@@ -14,6 +14,7 @@ class WpProQuiz_Model_StatisticUser extends WpProQuiz_Model_Model {
 	protected $_statisticAnswerData = null;
 	protected $_questionAnswerData = null;
 	protected $_answerType = '';
+	protected $_solvedCount = 0;
 
 	public function setCorrectCount($_correctCount) {
 		$this->_correctCount = (int)$_correctCount;
@@ -136,5 +137,13 @@ class WpProQuiz_Model_StatisticUser extends WpProQuiz_Model_Model {
 	public function getAnswerType() {
 		return $this->_answerType;
 	}
-	
+
+	public function setSolvedCount($_solvedCount) {
+		$this->_solvedCount = (int)$_solvedCount;
+		return $this;
+	}
+
+	public function getSolvedCount() {
+		return $this->_solvedCount;
+	}
 }

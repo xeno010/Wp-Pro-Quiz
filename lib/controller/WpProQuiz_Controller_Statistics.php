@@ -255,6 +255,7 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 			$s->setQuestionId($k);
 			$s->setUserId($userId);
 			$s->setHintCount(isset($v['tip']) ? 1 : 0);
+			$s->setSolvedCount(isset($v['solved']) && $v['solved'] ? 1 : 0);
 			$s->setCorrectCount($v['correct'] ? 1 : 0);
 			$s->setIncorrectCount($v['correct'] ? 0 : 1);
 			$s->setPoints($v['points']);
@@ -684,6 +685,8 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$output = array();
 		
 		foreach($statisticUsers as $statistic) {
+			/* @var $statistic WpProQuiz_Model_StatisticUser */
+
 			if(!isset($output[$statistic->getCategoryId()])) {
 				$output[$statistic->getCategoryId()] = array(
 					'questions' => array(),
@@ -704,7 +707,8 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 				'statistcAnswerData' => $statistic->getStatisticAnswerData(),
 				'questionName' => $statistic->getQuestionName(),
 				'questionAnswerData' => $statistic->getQuestionAnswerData(),
-				'answerType' => $statistic->getAnswerType()
+				'answerType' => $statistic->getAnswerType(),
+				'solvedCount' => $statistic->getSolvedCount()
 			);
 		}
 		

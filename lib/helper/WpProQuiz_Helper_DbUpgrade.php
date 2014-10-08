@@ -1078,6 +1078,14 @@ class WpProQuiz_Helper_DbUpgrade {
 				ADD  `show_in_statistic` TINYINT( 1 ) UNSIGNED NOT NULL AFTER  `sort` ;
 		');
 
+		$this->_wpdb->query('
+			ALTER TABLE  '.$this->_wpdb->prefix.'wp_pro_quiz_statistic
+				ADD  `solved_count` TINYINT( 1 ) NOT NULL AFTER  `hint_count` ;
+		');
+
+		$this->_wpdb->query('UPDATE '.$this->_wpdb->prefix.'wp_pro_quiz_statistic
+				SET solved_count = -1');
+
 		return 25;
 	}
 }

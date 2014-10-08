@@ -10,6 +10,7 @@ class WpProQuiz_Model_StatisticUserMapper extends WpProQuiz_Model_Mapper {
 					SUM(s.correct_count) AS correct_count,
 					SUM(s.incorrect_count) AS incorrect_count,
 					SUM(s.hint_count) AS hint_count,
+					SUM(s.solved_count) AS solved_count,
 					SUM(s.points) AS points,
 					AVG(s.question_time) AS question_time,
 					s.answer_data AS statistic_answer_data,

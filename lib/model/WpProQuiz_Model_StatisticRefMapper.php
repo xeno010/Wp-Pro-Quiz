@@ -190,6 +190,8 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper {
 		}
 	
 		foreach($statisticModel as $d) {
+			/* @var $d WpProQuiz_Model_Statistic */
+
 			$answerData = $d->getAnswerData() === null ? 'NULL' : $this->_wpdb->prepare('%s', json_encode($d->getAnswerData()));
 			
 			$values[] = '( '.implode(', ', array(
@@ -198,6 +200,7 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper {
 					'correct_count' => $d->getCorrectCount(),
 					'incorrect_count' => $d->getIncorrectCount(),
 					'hint_count' => $d->getHintCount(),
+					'solved_count' => $d->getSolvedCount(),
 					'points' => $d->getPoints(),
 					'question_time' => $d->getQuestionTime(),
 					'answer_data' => $answerData
@@ -207,7 +210,7 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper {
 		$this->_wpdb->query(
 				'INSERT INTO
 				'.$this->_tableStatistic.' (
-					statistic_ref_id, question_id, correct_count, incorrect_count, hint_count, points, question_time, answer_data
+					statistic_ref_id, question_id, correct_count, incorrect_count, hint_count, solved_count, points, question_time, answer_data
 				)
 			VALUES
 				'.implode(', ', $values)
@@ -340,6 +343,7 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper {
 					sf.*,
 					SUM(s.correct_count) AS correct_count,
 					SUM(s.incorrect_count) AS incorrect_count,
+					SUM(s.solved_count) as solved_count,
 					SUM(s.points) AS points, 
 					SUM(q.points) AS g_points 
 				FROM

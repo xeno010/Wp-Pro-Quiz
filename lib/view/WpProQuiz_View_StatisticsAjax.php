@@ -30,6 +30,7 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View {
 					<th scope="col" style="width: 200px;"><?php _e('Date', 'wp-pro-quiz'); ?></th>
 					<th scope="col" style="width: 100px;"><?php _e('Correct', 'wp-pro-quiz'); ?></th>
 					<th scope="col" style="width: 100px;"><?php _e('Incorrect', 'wp-pro-quiz'); ?></th>
+					<th scope="col" style="width: 100px;"><?php _e('Solved', 'wp-pro-quiz'); ?></th>
 					<th scope="col" style="width: 100px;"><?php _e('Points', 'wp-pro-quiz'); ?></th>
 					<th scope="col" style="width: 60px;"><?php _e('Results', 'wp-pro-quiz'); ?></th>
 				</tr>
@@ -58,6 +59,7 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View {
 					<th><?php echo $model->getFormatTime(); ?></th>
 					<th style="color: green;"><?php echo $model->getFormatCorrect(); ?></th>
 					<th style="color: red;"><?php echo $model->getFormatIncorrect(); ?></th>
+					<th><?php echo $model->getSolvedCount() < 0 ? '---' : sprintf(__('%d of %d', 'wp-pro-quiz'), $model->getSolvedCount(), $model->getCorrectCount() + $model->getIncorrectCount()); ?></th>
 					<th><?php echo $model->getPoints(); ?></th>
 					<th style="font-weight: bold;"><?php echo $model->getResult(); ?>%</th>
 				</tr>
@@ -167,6 +169,7 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View {
 					<th scope="col" style="width: 100px;"><?php _e('Correct', 'wp-pro-quiz'); ?></th>
 					<th scope="col" style="width: 100px;"><?php _e('Incorrect', 'wp-pro-quiz'); ?></th>
 					<th scope="col" style="width: 100px;"><?php _e('Hints used', 'wp-pro-quiz'); ?></th>
+					<th scope="col" style="width: 100px;"><?php _e('Solved', 'wp-pro-quiz'); ?></th>
 					<th scope="col" style="width: 100px;"><?php _e('Time', 'wp-pro-quiz'); ?> <span style="font-size: x-small;">(hh:mm:ss)</span></th>
 					<th scope="col" style="width: 100px;"><?php _e('Points scored', 'wp-pro-quiz'); ?></th>
 					<th scope="col" style="width: 60px;"><?php _e('Results', 'wp-pro-quiz'); ?></th>
@@ -174,10 +177,10 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View {
 			</thead>
 			<tbody>
 				<?php 
-					$gCorrect = $gIncorrect = $gHintCount = $gPoints =  $gGPoints = $gTime = 0;
+					$gCorrect = $gIncorrect = $gHintCount = $gPoints =  $gGPoints = $gTime = $gSolvedCount = 0;
 					
 					foreach($this->userStatistic as $cat) { 
-						$cCorrect = $cIncorrect = $cHintCount = $cPoints =  $cGPoints = $cTime = 0;
+						$cCorrect = $cIncorrect = $cHintCount = $cPoints =  $cGPoints = $cTime = $cSolvedCount = 0;
 				?>
 				<tr class="categoryTr">
 					<th colspan="9">
@@ -195,6 +198,7 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View {
 					$cIncorrect += $q['incorrect'];
 					$cHintCount += $q['hintCount'];
 					$cTime += $q['time'];
+					$cSolvedCount += $q['solvedCount'];
 				?>
 				<tr>
 					<th><?php echo $index++; ?></th>
@@ -209,6 +213,7 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View {
 					<th style="color: green;"><?php echo $q['correct'].' ('.round(100 * $q['correct'] / $sum, 2).'%)'; ?></th>
 					<th style="color: red;"><?php echo $q['incorrect'].' ('.round(100 * $q['incorrect'] / $sum, 2).'%)'; ?></th>
 					<th><?php echo $q['hintCount']; ?></th>
+					<th><?php echo $q['solvedCount'] < 0 ? '---' : ($q['solvedCount'] ? __('yes', 'wp-pro-quiz') : __('no', 'wp-pro-quiz')); ?></th>
 					<th><?php echo WpProQuiz_Helper_Until::convertToTimeString($q['time']); ?></th>
 					<th><?php echo $q['points']; ?></th>
 					<th></th>
@@ -236,6 +241,7 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View {
 					<th style="color: green;"><?php echo $cCorrect.' ('.round(100 * $cCorrect / $sum, 2).'%)'; ?></th>
 					<th style="color: red;"><?php echo $cIncorrect.' ('.round(100 * $cIncorrect / $sum, 2).'%)'; ?></th>
 					<th><?php echo $cHintCount; ?></th>
+					<th><?php echo $cSolvedCount < 0 ? '---' : sprintf(__('%d of %d', 'wp-pro-quiz'), $cSolvedCount, $sum); ?></th>
 					<th><?php echo WpProQuiz_Helper_Until::convertToTimeString($cTime); ?></th>
 					<th><?php echo $cPoints; ?></th>
 					<th style="font-weight: bold;"><?php echo $result; ?></th>
@@ -251,6 +257,7 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View {
 					$gIncorrect += $cIncorrect;
 					$gHintCount += $cHintCount;
 					$gTime += $cTime;
+					$gSolvedCount += $cSolvedCount;
 					
 					} 
 				?>
@@ -267,6 +274,7 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View {
 					<th style="color: green;"><?php echo $gCorrect.' ('.round(100 * $gCorrect / $sum, 2).'%)'; ?></th>
 					<th style="color: red;"><?php echo $gIncorrect.' ('.round(100 * $gIncorrect / $sum, 2).'%)'; ?></th>
 					<th><?php echo $gHintCount; ?></th>
+					<th><?php echo $gSolvedCount < 0 ? '---' : sprintf(__('%d of %d', 'wp-pro-quiz'), $gSolvedCount, $sum); ?></th>
 					<th><?php echo WpProQuiz_Helper_Until::convertToTimeString($gTime); ?></th>
 					<th><?php echo $gPoints; ?></th>
 					<th style="font-weight: bold;"><?php echo $result; ?></th>
