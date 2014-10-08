@@ -1383,6 +1383,15 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									<th><?php _e('Field name', 'wp-pro-quiz'); ?></th>
 									<th><?php _e('Type', 'wp-pro-quiz'); ?></th>
 									<th><?php _e('Required?', 'wp-pro-quiz'); ?></th>
+									<th>
+										<?php _e('Show in statistic table?', 'wp-pro-quiz'); ?>
+										<div style="display: inline-block;" class="wpProQuiz_demoBox">
+											<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a>
+											<div style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+												<img alt="" src="<?php echo WPPROQUIZ_URL.'/img/formStatisticOverview.png'; ?> ">
+											</div>
+										</div>
+									</th>
 									<th></th>
 								</tr>
 							</thead>
@@ -1429,6 +1438,9 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</td>
 									<td>
 										<input type="checkbox" name="form[][required]" value="1" <?php $this->checked($form->isRequired()); ?>>
+									</td>
+									<td>
+										<input type="checkbox" name="form[][show_in_statistic]" value="1" <?php $this->checked($form->isShowInStatistic()); ?>>
 									</td>
 									<td>
 										<input type="button" name="form_delete" value="<?php _e('Delete', 'wp-pro-quiz'); ?>" class="button-secondary">

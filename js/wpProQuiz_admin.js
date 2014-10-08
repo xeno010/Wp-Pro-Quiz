@@ -997,11 +997,11 @@ jQuery(document).ready(function($) {
 			
 			$('.wpProQuiz_demoBox a').mouseover(function(e) {
 				var $this = $(this);
-				var d = $(document).width();
+				var d = $('#poststuff').width();
 				var img = $this.siblings().outerWidth(true);
 			
 				if(e.pageX + img > d) {
-						var v = d - (e.pageX + img + 30);
+						var v = d + (e.pageX - (e.pageX + img + 30));
 						$(this).next().css('left', v + "px");
 				}
 			

@@ -599,9 +599,12 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		
 		$statisticRefMapper = new WpProQuiz_Model_StatisticRefMapper();
 		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		$formMapper = new WpProQuiz_Model_FormMapper();
 		
 		$quizId = $data['quizId'];
-		
+
+		$forms = $formMapper->fetch($quizId);
+
 		$page = (isset($data['page']) && $data['page'] > 0) ? $data['page'] : 1;
 		$limit = $data['pageLimit'];
 		$start = $limit * ($page - 1);
@@ -610,9 +613,9 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 		$endTime = (int)$data['dateTo'] ? $data['dateTo'] + 86400 : 0;
 		
 		$statisticModel = $statisticRefMapper->fetchHistory($quizId, $start, $limit, $data['users'], $startTime, $endTime);
-		
+
 		foreach($statisticModel as $model) {
-			/*@var $model WpProQuiz_Model_StatisticHistory */
+			/* @var $model WpProQuiz_Model_StatisticHistory */
 			
 			if(!$model->getUserId())
 				$model->setUserName(__('Anonymous', 'wp-pro-quiz'));
@@ -627,10 +630,25 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 			
 			$model->setFormatCorrect($model->getCorrectCount().' ('.round(100 * $model->getCorrectCount() / $sum, 2).'%)');
 			$model->setFormatIncorrect($model->getIncorrectCount().' ('.round(100 * $model->getIncorrectCount() / $sum, 2).'%)');
+
+			$formData = $model->getFormData();
+			$formOverview = array();
+
+			foreach($forms as $form) {
+				/* @var $form WpProQuiz_Model_Form */
+				if($form->isShowInStatistic()) {
+					$formOverview[] = $formData != null && isset($formData[$form->getFormId()])
+						? WpProQuiz_Helper_Form::formToString($form, $formData[$form->getFormId()])
+						: '----';
+				}
+			}
+
+			$model->setFormOverview($formOverview);
 		}
 		
 		$view = new WpProQuiz_View_StatisticsAjax();
 		$view->historyModel = $statisticModel;
+		$view->forms = $forms;
 		
 		$html = $view->getHistoryTable();
 		$navi = null;
@@ -639,7 +657,7 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller {
 			$count = $statisticRefMapper->countHistory($quizId, $data['users'], $startTime, $endTime);
 			$navi = ceil(($count > 0 ? $count : 1) / $limit);
 		}
-		
+
 		return json_encode(array(
 				'html' => $html,
 				'navi' => $navi

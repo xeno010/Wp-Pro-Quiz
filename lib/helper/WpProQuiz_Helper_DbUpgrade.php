@@ -1071,4 +1071,13 @@ class WpProQuiz_Helper_DbUpgrade {
 		
 		return 24;
 	}
+
+	private function upgradeDbV24() {
+		$this->_wpdb->query('
+			ALTER TABLE  '.$this->_wpdb->prefix.'wp_pro_quiz_form
+				ADD  `show_in_statistic` TINYINT( 1 ) UNSIGNED NOT NULL AFTER  `sort` ;
+		');
+
+		return 25;
+	}
 }

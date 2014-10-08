@@ -364,6 +364,8 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper {
 		foreach($result as $row) {
 			if(!empty($row['user_login']))
 				$row['user_name'] = $row['user_login'] . ' ('. $row['display_name'] .')';
+
+			$row['form_data'] = $row['form_data'] === null ? null : @json_decode($row['form_data'], true);
 			
 			$r[] = new WpProQuiz_Model_StatisticHistory($row);
 		}

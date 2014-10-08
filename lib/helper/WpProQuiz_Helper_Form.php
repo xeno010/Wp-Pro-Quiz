@@ -76,4 +76,28 @@ class WpProQuiz_Helper_Form {
 		
 		return null;
 	}
+
+	public static function formToString(WpProQuiz_Model_Form $form, $str) {
+		switch ($form->getType()) {
+			case WpProQuiz_Model_Form::FORM_TYPE_TEXT:
+			case WpProQuiz_Model_Form::FORM_TYPE_TEXTAREA:
+			case WpProQuiz_Model_Form::FORM_TYPE_EMAIL:
+			case WpProQuiz_Model_Form::FORM_TYPE_NUMBER:
+			case WpProQuiz_Model_Form::FORM_TYPE_RADIO:
+			case WpProQuiz_Model_Form::FORM_TYPE_SELECT:
+				return esc_html($str);
+				break;
+			case WpProQuiz_Model_Form::FORM_TYPE_CHECKBOX:
+				return $str == '1' ? __('ticked', 'wp-pro-quiz') : __('not ticked', 'wp-pro-quiz');
+				break;
+			case WpProQuiz_Model_Form::FORM_TYPE_YES_NO:
+				return $str == 1 ? __('Yes') : __('No');
+				break;
+			case WpProQuiz_Model_Form::FORM_TYPE_DATE:
+				return date_format(date_create($str), get_option('date_format'));
+				break;
+		}
+
+		return '';
+	}
 }

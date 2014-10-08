@@ -14,6 +14,8 @@ class WpProQuiz_Model_StatisticHistory extends WpProQuiz_Model_Model {
 	protected $_formatCorrect = '';
 	protected $_formatIncorrect = '';
 	protected $_gPoints = 0;
+	protected $_formData = null;
+	protected $_formOverview = array();
 	
 	public function setUserId($_userId) {
 		$this->_userId = (int)$_userId;
@@ -131,6 +133,24 @@ class WpProQuiz_Model_StatisticHistory extends WpProQuiz_Model_Model {
 	public function getGPoints() {
 		return $this->_gPoints;
 	}
-	
+
+	public function setFormData($_formData) {
+		$this->_formData = (array)$_formData;
+		return $this;
+	}
+
+	public function getFormData() {
+		return $this->_formData;
+	}
+
+	public function setFormOverview($_formOverview) {
+		$this->_formOverview = (array)$_formOverview;
+		return $this;
+	}
+
+	public function getFormOverview() {
+		return $this->_formOverview;
+	}
+
 	
 }

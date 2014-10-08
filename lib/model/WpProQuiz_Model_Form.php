@@ -17,6 +17,7 @@ class WpProQuiz_Model_Form extends WpProQuiz_Model_Model {
 	protected $_required = false;
 	protected $_sort = 0;
 	protected $_data = null;
+	protected $_showInStatistic = false;
 	
 	public function setFormId($_formId) {
 		$this->_formId = (int)$_formId;
@@ -79,5 +80,14 @@ class WpProQuiz_Model_Form extends WpProQuiz_Model_Model {
 	
 	public function getData() {
 		return $this->_data;
+	}
+
+	public function setShowInStatistic($_showInStatistic) {
+		$this->_showInStatistic = (bool)$_showInStatistic;
+		return $this;
+	}
+
+	public function isShowInStatistic() {
+		return $this->_showInStatistic;
 	}
 }

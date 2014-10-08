@@ -102,7 +102,7 @@ class WpProQuiz_Controller_Front {
 		if($this->_settings->isAddRawShortcode()) {
 			return '[raw]'.$content.'[/raw]';
 		} 
-		
+
 		return $content;
 	}
 	

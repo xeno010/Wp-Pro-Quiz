@@ -26,21 +26,22 @@ class WpProQuiz_Model_FormMapper extends WpProQuiz_Model_Mapper {
 					$form->getFieldname(),
 					$form->getType(),
 					(int)$form->isRequired(),
-					$form->getSort()
+					$form->getSort(),
+					(int)$form->isShowInStatistic()
 			);
 			
 			if($form->getData() === null) {
-				$values[] = '('. $this->_wpdb->prepare('%d, %d, %s, %d, %d, %d', $data).')';
+				$values[] = '('. $this->_wpdb->prepare('%d, %d, %s, %d, %d, %d, %d', $data).')';
 			} else {
 				$data[] = @json_encode($form->getData());
-				$values2[] = '('. $this->_wpdb->prepare('%d, %d, %s, %d, %d, %d, %s', $data).')';
+				$values2[] = '('. $this->_wpdb->prepare('%d, %d, %s, %d, %d, %d, %d, %s', $data).')';
 			}
 		}
 		
 		if(!empty($values)) {
 			$this->_wpdb->query('
 				REPLACE INTO '.$this->_tableForm.'
-					(form_id, quiz_id, fieldname, type, required, sort)
+					(form_id, quiz_id, fieldname, type, required, sort, show_in_statistic)
 				VALUES '.implode(', ', $values).'
 			');
 		}
@@ -48,7 +49,7 @@ class WpProQuiz_Model_FormMapper extends WpProQuiz_Model_Mapper {
 		if(!empty($values2)) {
 			$this->_wpdb->query('
 				REPLACE INTO '.$this->_tableForm.'
-					(form_id, quiz_id, fieldname, type, required, sort, data)
+					(form_id, quiz_id, fieldname, type, required, sort, show_in_statistic, data)
 				VALUES '.implode(', ', $values2).'
 			');
 		}

@@ -20,6 +20,13 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View {
 			<thead>
 				<tr>
 					<th scope="col"><?php _e('Username', 'wp-pro-quiz'); ?></th>
+
+					<?php foreach($this->forms as $form) { /* @var $form WpProQuiz_Model_Form */
+						if($form->isShowInStatistic()) {
+							echo '<th scope="col">'.$form->getFieldname().'</th>';
+						}
+					} ?>
+
 					<th scope="col" style="width: 200px;"><?php _e('Date', 'wp-pro-quiz'); ?></th>
 					<th scope="col" style="width: 100px;"><?php _e('Correct', 'wp-pro-quiz'); ?></th>
 					<th scope="col" style="width: 100px;"><?php _e('Incorrect', 'wp-pro-quiz'); ?></th>
@@ -45,6 +52,9 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View {
 						</div>
 						
 					</th>
+					<?php foreach($model->getFormOverview() as $form) {
+						echo '<th>'.esc_html($form).'</th>';
+					} ?>
 					<th><?php echo $model->getFormatTime(); ?></th>
 					<th style="color: green;"><?php echo $model->getFormatCorrect(); ?></th>
 					<th style="color: red;"><?php echo $model->getFormatIncorrect(); ?></th>
