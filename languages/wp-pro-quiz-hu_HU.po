@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP-Pro-Quiz\n"
-"POT-Creation-Date: 2014-10-09 09:26+0100\n"
-"PO-Revision-Date: 2014-10-09 09:26+0100\n"
+"POT-Creation-Date: 2014-10-09 10:37+0100\n"
+"PO-Revision-Date: 2014-10-09 10:37+0100\n"
 "Last-Translator: Julius Fischer <webmaster@it-gecko.de>\n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -261,7 +261,7 @@ msgstr "Kategóriák"
 #: lib/controller/WpProQuiz_Controller_Statistics.php:56
 #: lib/controller/WpProQuiz_Controller_Statistics.php:694
 #: lib/view/WpProQuiz_View_QuestionEdit.php:91
-#: lib/view/WpProQuiz_View_QuizEdit.php:51
+#: lib/view/WpProQuiz_View_QuizEdit.php:54
 #: lib/view/WpProQuiz_View_QuizOverall.php:209
 msgid "No category"
 msgstr "Nincs kategória"
@@ -413,8 +413,8 @@ msgstr "WP-Pro-Quiz"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:7
 #: lib/view/WpProQuiz_View_FrontToplist.php:8
-#: lib/view/WpProQuiz_View_QuizEdit.php:1026
-#: lib/view/WpProQuiz_View_QuizEdit.php:1038
+#: lib/view/WpProQuiz_View_QuizEdit.php:1029
+#: lib/view/WpProQuiz_View_QuizEdit.php:1041
 #: lib/view/WpProQuiz_View_QuizOverall.php:124
 msgid "Leaderboard"
 msgstr "Ranglista"
@@ -424,7 +424,7 @@ msgstr "Ranglista"
 #: lib/view/WpProQuiz_View_Import.php:22
 #: lib/view/WpProQuiz_View_QuestionEdit.php:24
 #: lib/view/WpProQuiz_View_QuestionOverall.php:19
-#: lib/view/WpProQuiz_View_QuizEdit.php:20
+#: lib/view/WpProQuiz_View_QuizEdit.php:23
 #: lib/view/WpProQuiz_View_Statistics.php:29
 #: lib/view/WpProQuiz_View_StatisticsNew.php:57
 #: lib/view/WpProQuiz_View_StyleManager.php:11
@@ -446,17 +446,17 @@ msgid "Sort by:"
 msgstr "Rendezés...alapján"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:18
-#: lib/view/WpProQuiz_View_QuizEdit.php:1118
+#: lib/view/WpProQuiz_View_QuizEdit.php:1121
 msgid "best user"
 msgstr "Legjobb felhasználó"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:19
-#: lib/view/WpProQuiz_View_QuizEdit.php:1122
+#: lib/view/WpProQuiz_View_QuizEdit.php:1125
 msgid "newest entry"
 msgstr "legújabb bejegyzés"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:20
-#: lib/view/WpProQuiz_View_QuizEdit.php:1126
+#: lib/view/WpProQuiz_View_QuizEdit.php:1129
 msgid "oldest entry"
 msgstr "legrégebbi bejegyzés"
 
@@ -470,7 +470,7 @@ msgstr "Hány bejegyzés látszódjon egy oldalon:"
 
 #: lib/view/WpProQuiz_View_AdminToplist.php:38
 #: lib/view/WpProQuiz_View_AdminToplist.php:57
-#: lib/view/WpProQuiz_View_QuizEdit.php:1387
+#: lib/view/WpProQuiz_View_QuizEdit.php:1390
 msgid "Type"
 msgstr "Típus"
 
@@ -541,7 +541,7 @@ msgstr "Szerkesztés"
 #: lib/view/WpProQuiz_View_GobalSettings.php:191
 #: lib/view/WpProQuiz_View_GobalSettings.php:216
 #: lib/view/WpProQuiz_View_QuestionOverall.php:55
-#: lib/view/WpProQuiz_View_QuizEdit.php:1449
+#: lib/view/WpProQuiz_View_QuizEdit.php:1452
 #: lib/view/WpProQuiz_View_QuizOverall.php:112
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:51
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:649
@@ -577,9 +577,9 @@ msgid "Restart quiz"
 msgstr "A kvíz újra indítása"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:28
-#: lib/view/WpProQuiz_View_QuizEdit.php:417
-#: lib/view/WpProQuiz_View_QuizEdit.php:427
-#: lib/view/WpProQuiz_View_QuizEdit.php:432
+#: lib/view/WpProQuiz_View_QuizEdit.php:420
+#: lib/view/WpProQuiz_View_QuizEdit.php:430
+#: lib/view/WpProQuiz_View_QuizEdit.php:435
 msgid "Quiz-summary"
 msgstr "Kvíz-összesítő"
 
@@ -661,8 +661,8 @@ msgid "Information"
 msgstr "Információ"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:563
-#: lib/view/WpProQuiz_View_QuizEdit.php:187
-#: lib/view/WpProQuiz_View_QuizEdit.php:192
+#: lib/view/WpProQuiz_View_QuizEdit.php:190
+#: lib/view/WpProQuiz_View_QuizEdit.php:195
 msgid "Time limit"
 msgstr "Idő határ"
 
@@ -768,8 +768,8 @@ msgid "Hint"
 msgstr "Segítség"
 
 #: lib/view/WpProQuiz_View_FrontQuiz.php:954
-#: lib/view/WpProQuiz_View_QuizEdit.php:446
-#: lib/view/WpProQuiz_View_QuizEdit.php:451
+#: lib/view/WpProQuiz_View_QuizEdit.php:449
+#: lib/view/WpProQuiz_View_QuizEdit.php:454
 msgid "Skip question"
 msgstr "A kérdés kihagyása"
 
@@ -822,7 +822,7 @@ msgstr "Felmerülő problémák esetén javasolt beállítások"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:30
 #: lib/view/WpProQuiz_View_QuestionEdit.php:263
-#: lib/view/WpProQuiz_View_QuizEdit.php:652
+#: lib/view/WpProQuiz_View_QuizEdit.php:655
 #: lib/view/WpProQuiz_View_QuizOverall.php:227
 #: lib/view/WpProQuiz_View_WpqSupport.php:45
 msgid "Save"
@@ -877,18 +877,18 @@ msgstr "Kérdés sablon kezelés"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:232
 #: lib/view/WpProQuiz_View_GobalSettings.php:528
-#: lib/view/WpProQuiz_View_QuizEdit.php:1475
+#: lib/view/WpProQuiz_View_QuizEdit.php:1478
 msgid "Admin e-mail settings"
 msgstr "Admin e-mail beállítások"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:238
-#: lib/view/WpProQuiz_View_QuizEdit.php:1508
-#: lib/view/WpProQuiz_View_QuizEdit.php:1638
+#: lib/view/WpProQuiz_View_QuizEdit.php:1511
+#: lib/view/WpProQuiz_View_QuizEdit.php:1641
 msgid "To:"
 msgstr "Címzett:"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:245
-#: lib/view/WpProQuiz_View_QuizEdit.php:1515
+#: lib/view/WpProQuiz_View_QuizEdit.php:1518
 msgid ""
 "Separate multiple email addresses with a comma, e.g. wp@test.com, test@test."
 "com"
@@ -897,22 +897,22 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:251
 #: lib/view/WpProQuiz_View_GobalSettings.php:323
-#: lib/view/WpProQuiz_View_QuizEdit.php:1521
-#: lib/view/WpProQuiz_View_QuizEdit.php:1656
+#: lib/view/WpProQuiz_View_QuizEdit.php:1524
+#: lib/view/WpProQuiz_View_QuizEdit.php:1659
 msgid "From:"
 msgstr "Feladó:"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:264
 #: lib/view/WpProQuiz_View_GobalSettings.php:333
-#: lib/view/WpProQuiz_View_QuizEdit.php:1534
-#: lib/view/WpProQuiz_View_QuizEdit.php:1666
+#: lib/view/WpProQuiz_View_QuizEdit.php:1537
+#: lib/view/WpProQuiz_View_QuizEdit.php:1669
 msgid "Subject:"
 msgstr "Tárgy:"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:274
 #: lib/view/WpProQuiz_View_GobalSettings.php:343
-#: lib/view/WpProQuiz_View_QuizEdit.php:1544
-#: lib/view/WpProQuiz_View_QuizEdit.php:1676
+#: lib/view/WpProQuiz_View_QuizEdit.php:1547
+#: lib/view/WpProQuiz_View_QuizEdit.php:1679
 msgid "HTML"
 msgstr "HTML"
 
@@ -921,72 +921,72 @@ msgstr "HTML"
 #: lib/view/WpProQuiz_View_GobalSettings.php:413
 #: lib/view/WpProQuiz_View_GobalSettings.php:435
 #: lib/view/WpProQuiz_View_GobalSettings.php:487
-#: lib/view/WpProQuiz_View_QuizEdit.php:88
-#: lib/view/WpProQuiz_View_QuizEdit.php:107
-#: lib/view/WpProQuiz_View_QuizEdit.php:126
-#: lib/view/WpProQuiz_View_QuizEdit.php:145
-#: lib/view/WpProQuiz_View_QuizEdit.php:161
-#: lib/view/WpProQuiz_View_QuizEdit.php:177
-#: lib/view/WpProQuiz_View_QuizEdit.php:214
-#: lib/view/WpProQuiz_View_QuizEdit.php:254
-#: lib/view/WpProQuiz_View_QuizEdit.php:312
-#: lib/view/WpProQuiz_View_QuizEdit.php:341
-#: lib/view/WpProQuiz_View_QuizEdit.php:402
-#: lib/view/WpProQuiz_View_QuizEdit.php:506
-#: lib/view/WpProQuiz_View_QuizEdit.php:529
-#: lib/view/WpProQuiz_View_QuizEdit.php:548
-#: lib/view/WpProQuiz_View_QuizEdit.php:692
-#: lib/view/WpProQuiz_View_QuizEdit.php:717
-#: lib/view/WpProQuiz_View_QuizEdit.php:743
-#: lib/view/WpProQuiz_View_QuizEdit.php:769
-#: lib/view/WpProQuiz_View_QuizEdit.php:795
-#: lib/view/WpProQuiz_View_QuizEdit.php:837
-#: lib/view/WpProQuiz_View_QuizEdit.php:856
-#: lib/view/WpProQuiz_View_QuizEdit.php:881
-#: lib/view/WpProQuiz_View_QuizEdit.php:931
-#: lib/view/WpProQuiz_View_QuizEdit.php:951
-#: lib/view/WpProQuiz_View_QuizEdit.php:976
-#: lib/view/WpProQuiz_View_QuizEdit.php:1001
-#: lib/view/WpProQuiz_View_QuizEdit.php:1043
-#: lib/view/WpProQuiz_View_QuizEdit.php:1076
-#: lib/view/WpProQuiz_View_QuizEdit.php:1090
-#: lib/view/WpProQuiz_View_QuizEdit.php:1138
-#: lib/view/WpProQuiz_View_QuizEdit.php:1220
-#: lib/view/WpProQuiz_View_QuizEdit.php:1221
-#: lib/view/WpProQuiz_View_QuizEdit.php:1222
+#: lib/view/WpProQuiz_View_QuizEdit.php:91
+#: lib/view/WpProQuiz_View_QuizEdit.php:110
+#: lib/view/WpProQuiz_View_QuizEdit.php:129
+#: lib/view/WpProQuiz_View_QuizEdit.php:148
+#: lib/view/WpProQuiz_View_QuizEdit.php:164
+#: lib/view/WpProQuiz_View_QuizEdit.php:180
+#: lib/view/WpProQuiz_View_QuizEdit.php:217
+#: lib/view/WpProQuiz_View_QuizEdit.php:257
+#: lib/view/WpProQuiz_View_QuizEdit.php:315
+#: lib/view/WpProQuiz_View_QuizEdit.php:344
+#: lib/view/WpProQuiz_View_QuizEdit.php:405
+#: lib/view/WpProQuiz_View_QuizEdit.php:509
+#: lib/view/WpProQuiz_View_QuizEdit.php:532
+#: lib/view/WpProQuiz_View_QuizEdit.php:551
+#: lib/view/WpProQuiz_View_QuizEdit.php:695
+#: lib/view/WpProQuiz_View_QuizEdit.php:720
+#: lib/view/WpProQuiz_View_QuizEdit.php:746
+#: lib/view/WpProQuiz_View_QuizEdit.php:772
+#: lib/view/WpProQuiz_View_QuizEdit.php:798
+#: lib/view/WpProQuiz_View_QuizEdit.php:840
+#: lib/view/WpProQuiz_View_QuizEdit.php:859
+#: lib/view/WpProQuiz_View_QuizEdit.php:884
+#: lib/view/WpProQuiz_View_QuizEdit.php:934
+#: lib/view/WpProQuiz_View_QuizEdit.php:954
+#: lib/view/WpProQuiz_View_QuizEdit.php:979
+#: lib/view/WpProQuiz_View_QuizEdit.php:1004
+#: lib/view/WpProQuiz_View_QuizEdit.php:1046
+#: lib/view/WpProQuiz_View_QuizEdit.php:1079
+#: lib/view/WpProQuiz_View_QuizEdit.php:1093
+#: lib/view/WpProQuiz_View_QuizEdit.php:1141
 #: lib/view/WpProQuiz_View_QuizEdit.php:1223
-#: lib/view/WpProQuiz_View_QuizEdit.php:1326
-#: lib/view/WpProQuiz_View_QuizEdit.php:1548
-#: lib/view/WpProQuiz_View_QuizEdit.php:1628
-#: lib/view/WpProQuiz_View_QuizEdit.php:1680
+#: lib/view/WpProQuiz_View_QuizEdit.php:1224
+#: lib/view/WpProQuiz_View_QuizEdit.php:1225
+#: lib/view/WpProQuiz_View_QuizEdit.php:1226
+#: lib/view/WpProQuiz_View_QuizEdit.php:1329
+#: lib/view/WpProQuiz_View_QuizEdit.php:1551
+#: lib/view/WpProQuiz_View_QuizEdit.php:1631
+#: lib/view/WpProQuiz_View_QuizEdit.php:1683
 msgid "Activate"
 msgstr "Aktiválás"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:284
 #: lib/view/WpProQuiz_View_GobalSettings.php:353
-#: lib/view/WpProQuiz_View_QuizEdit.php:1554
-#: lib/view/WpProQuiz_View_QuizEdit.php:1686
+#: lib/view/WpProQuiz_View_QuizEdit.php:1557
+#: lib/view/WpProQuiz_View_QuizEdit.php:1689
 msgid "Message body:"
 msgstr "Üzenet tartalma:"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:292
 #: lib/view/WpProQuiz_View_GobalSettings.php:361
-#: lib/view/WpProQuiz_View_QuizEdit.php:1566
-#: lib/view/WpProQuiz_View_QuizEdit.php:1698
+#: lib/view/WpProQuiz_View_QuizEdit.php:1569
+#: lib/view/WpProQuiz_View_QuizEdit.php:1701
 msgid "Allowed variables"
 msgstr "Lehetséges változók"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:294
 #: lib/view/WpProQuiz_View_GobalSettings.php:363
-#: lib/view/WpProQuiz_View_QuizEdit.php:1577
-#: lib/view/WpProQuiz_View_QuizEdit.php:1709
+#: lib/view/WpProQuiz_View_QuizEdit.php:1580
+#: lib/view/WpProQuiz_View_QuizEdit.php:1712
 msgid "User-ID"
 msgstr "Felhasználó-ID"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:295
 #: lib/view/WpProQuiz_View_GobalSettings.php:364
-#: lib/view/WpProQuiz_View_QuizEdit.php:1578
-#: lib/view/WpProQuiz_View_QuizEdit.php:1710
+#: lib/view/WpProQuiz_View_QuizEdit.php:1581
+#: lib/view/WpProQuiz_View_QuizEdit.php:1713
 #: lib/view/WpProQuiz_View_Statistics.php:322
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:22
 msgid "Username"
@@ -994,42 +994,42 @@ msgstr "Felhasználónév"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:296
 #: lib/view/WpProQuiz_View_GobalSettings.php:365
-#: lib/view/WpProQuiz_View_QuizEdit.php:1579
-#: lib/view/WpProQuiz_View_QuizEdit.php:1711
+#: lib/view/WpProQuiz_View_QuizEdit.php:1582
+#: lib/view/WpProQuiz_View_QuizEdit.php:1714
 msgid "Quiz-Name"
 msgstr "Kvíz név"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:297
 #: lib/view/WpProQuiz_View_GobalSettings.php:366
-#: lib/view/WpProQuiz_View_QuizEdit.php:1580
-#: lib/view/WpProQuiz_View_QuizEdit.php:1712
+#: lib/view/WpProQuiz_View_QuizEdit.php:1583
+#: lib/view/WpProQuiz_View_QuizEdit.php:1715
 msgid "Result in precent"
 msgstr "Százalékban megadott eredmény"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:298
 #: lib/view/WpProQuiz_View_GobalSettings.php:367
-#: lib/view/WpProQuiz_View_QuizEdit.php:1581
-#: lib/view/WpProQuiz_View_QuizEdit.php:1713
+#: lib/view/WpProQuiz_View_QuizEdit.php:1584
+#: lib/view/WpProQuiz_View_QuizEdit.php:1716
 msgid "Reached points"
 msgstr "Elért pontszám"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:299
 #: lib/view/WpProQuiz_View_GobalSettings.php:368
-#: lib/view/WpProQuiz_View_QuizEdit.php:1582
-#: lib/view/WpProQuiz_View_QuizEdit.php:1714
+#: lib/view/WpProQuiz_View_QuizEdit.php:1585
+#: lib/view/WpProQuiz_View_QuizEdit.php:1717
 msgid "IP-address of the user"
 msgstr "Felhasználó IP-címe"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:300
 #: lib/view/WpProQuiz_View_GobalSettings.php:369
-#: lib/view/WpProQuiz_View_QuizEdit.php:1583
-#: lib/view/WpProQuiz_View_QuizEdit.php:1715
+#: lib/view/WpProQuiz_View_QuizEdit.php:1586
+#: lib/view/WpProQuiz_View_QuizEdit.php:1718
 msgid "Category-Overview"
 msgstr "Kategória áttekintése"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:317
 #: lib/view/WpProQuiz_View_GobalSettings.php:529
-#: lib/view/WpProQuiz_View_QuizEdit.php:1613
+#: lib/view/WpProQuiz_View_QuizEdit.php:1616
 msgid "User e-mail settings"
 msgstr "Felhasználó e-mail beállításai"
 
@@ -1120,11 +1120,11 @@ msgid "Touch Library"
 msgstr "Touch Library"
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:465
-#: lib/view/WpProQuiz_View_QuizEdit.php:436
-#: lib/view/WpProQuiz_View_QuizEdit.php:455
-#: lib/view/WpProQuiz_View_QuizEdit.php:475
-#: lib/view/WpProQuiz_View_QuizEdit.php:906
-#: lib/view/WpProQuiz_View_QuizEdit.php:1490
+#: lib/view/WpProQuiz_View_QuizEdit.php:439
+#: lib/view/WpProQuiz_View_QuizEdit.php:458
+#: lib/view/WpProQuiz_View_QuizEdit.php:478
+#: lib/view/WpProQuiz_View_QuizEdit.php:909
+#: lib/view/WpProQuiz_View_QuizEdit.php:1493
 msgid "Deactivate"
 msgstr "Deaktiválás"
 
@@ -1257,7 +1257,7 @@ msgid ""
 msgstr ""
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:33
-#: lib/view/WpProQuiz_View_QuizEdit.php:29
+#: lib/view/WpProQuiz_View_QuizEdit.php:32
 msgid "load template"
 msgstr "Sablon betöltése"
 
@@ -1270,9 +1270,9 @@ msgstr "Cím"
 #: lib/view/WpProQuiz_View_QuestionEdit.php:125
 #: lib/view/WpProQuiz_View_QuestionEdit.php:142
 #: lib/view/WpProQuiz_View_QuestionEdit.php:154
-#: lib/view/WpProQuiz_View_QuizEdit.php:40
-#: lib/view/WpProQuiz_View_QuizEdit.php:579
-#: lib/view/WpProQuiz_View_QuizEdit.php:1026
+#: lib/view/WpProQuiz_View_QuizEdit.php:43
+#: lib/view/WpProQuiz_View_QuizEdit.php:582
+#: lib/view/WpProQuiz_View_QuizEdit.php:1029
 msgid "(optional)"
 msgstr "(opcionális)"
 
@@ -1287,9 +1287,9 @@ msgstr ""
 #: lib/view/WpProQuiz_View_QuestionEdit.php:49
 #: lib/view/WpProQuiz_View_QuestionEdit.php:110
 #: lib/view/WpProQuiz_View_QuestionEdit.php:211
-#: lib/view/WpProQuiz_View_QuizEdit.php:34
-#: lib/view/WpProQuiz_View_QuizEdit.php:568
-#: lib/view/WpProQuiz_View_QuizEdit.php:1207
+#: lib/view/WpProQuiz_View_QuizEdit.php:37
+#: lib/view/WpProQuiz_View_QuizEdit.php:571
+#: lib/view/WpProQuiz_View_QuizEdit.php:1210
 msgid "(required)"
 msgstr "(ajánlott)"
 
@@ -1319,7 +1319,7 @@ msgstr "Helyes és helytelen válasz esetén is látható legyen az elért ponts
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:80
 #: lib/view/WpProQuiz_View_QuestionOverall.php:29
-#: lib/view/WpProQuiz_View_QuizEdit.php:40
+#: lib/view/WpProQuiz_View_QuizEdit.php:43
 #: lib/view/WpProQuiz_View_QuizOverall.php:86
 #: lib/view/WpProQuiz_View_Statistics.php:124
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:187
@@ -1335,22 +1335,22 @@ msgstr ""
 "statisztika funkcióban."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:86
-#: lib/view/WpProQuiz_View_QuizEdit.php:46
+#: lib/view/WpProQuiz_View_QuizEdit.php:49
 #: lib/view/WpProQuiz_View_QuizOverall.php:204
 msgid "You can manage categories in global settings."
 msgstr "Az általános beállítások alatt lehet a kategóriákat szerkeszteni."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:90
 #: lib/view/WpProQuiz_View_QuestionEdit.php:100
-#: lib/view/WpProQuiz_View_QuizEdit.php:50
-#: lib/view/WpProQuiz_View_QuizEdit.php:60
+#: lib/view/WpProQuiz_View_QuizEdit.php:53
+#: lib/view/WpProQuiz_View_QuizEdit.php:63
 #: lib/view/WpProQuiz_View_QuizOverall.php:208
 #: lib/view/WpProQuiz_View_QuizOverall.php:218
 msgid "Create new category"
 msgstr "Új kategória létrehozása"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:102
-#: lib/view/WpProQuiz_View_QuizEdit.php:62
+#: lib/view/WpProQuiz_View_QuizEdit.php:65
 #: lib/view/WpProQuiz_View_QuizOverall.php:220
 msgid "Create"
 msgstr "Létrehoz"
@@ -1484,24 +1484,24 @@ msgstr ""
 "hosszabb meghatározás szöveg is. Az alap 20%."
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:266
-#: lib/view/WpProQuiz_View_QuizEdit.php:655
+#: lib/view/WpProQuiz_View_QuizEdit.php:658
 msgid "template name"
 msgstr "sablon név"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:268
-#: lib/view/WpProQuiz_View_QuizEdit.php:657
+#: lib/view/WpProQuiz_View_QuizEdit.php:660
 msgid "Create new template"
 msgstr "Új sablon létrehozása"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:276
-#: lib/view/WpProQuiz_View_QuizEdit.php:665
+#: lib/view/WpProQuiz_View_QuizEdit.php:668
 msgid "Save as template"
 msgstr "Sablonként való mentés"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:295
 #: lib/view/WpProQuiz_View_QuestionEdit.php:345
 #: lib/view/WpProQuiz_View_QuestionEdit.php:398
-#: lib/view/WpProQuiz_View_QuizEdit.php:73
+#: lib/view/WpProQuiz_View_QuizEdit.php:76
 msgid "Options"
 msgstr "Opciók"
 
@@ -1533,7 +1533,7 @@ msgstr "Média hozzáadása"
 #: lib/view/WpProQuiz_View_QuestionEdit.php:385
 #: lib/view/WpProQuiz_View_QuestionEdit.php:427
 #: lib/view/WpProQuiz_View_QuestionOverall.php:59
-#: lib/view/WpProQuiz_View_QuizEdit.php:1450
+#: lib/view/WpProQuiz_View_QuizEdit.php:1453
 msgid "Move"
 msgstr "Mozgatás"
 
@@ -1609,29 +1609,29 @@ msgstr "kevésbé igaz { [1] [2] [3] [4] [5] } inkább igaz"
 
 #: lib/view/WpProQuiz_View_QuestionEdit.php:485
 #: lib/view/WpProQuiz_View_QuestionEdit.php:494
-#: lib/view/WpProQuiz_View_QuizEdit.php:411
-#: lib/view/WpProQuiz_View_QuizEdit.php:417
-#: lib/view/WpProQuiz_View_QuizEdit.php:698
-#: lib/view/WpProQuiz_View_QuizEdit.php:725
-#: lib/view/WpProQuiz_View_QuizEdit.php:751
-#: lib/view/WpProQuiz_View_QuizEdit.php:777
-#: lib/view/WpProQuiz_View_QuizEdit.php:803
-#: lib/view/WpProQuiz_View_QuizEdit.php:862
-#: lib/view/WpProQuiz_View_QuizEdit.php:887
-#: lib/view/WpProQuiz_View_QuizEdit.php:912
-#: lib/view/WpProQuiz_View_QuizEdit.php:957
-#: lib/view/WpProQuiz_View_QuizEdit.php:982
-#: lib/view/WpProQuiz_View_QuizEdit.php:1007
-#: lib/view/WpProQuiz_View_QuizEdit.php:1179
-#: lib/view/WpProQuiz_View_QuizEdit.php:1189
-#: lib/view/WpProQuiz_View_QuizEdit.php:1242
-#: lib/view/WpProQuiz_View_QuizEdit.php:1250
-#: lib/view/WpProQuiz_View_QuizEdit.php:1258
-#: lib/view/WpProQuiz_View_QuizEdit.php:1266
-#: lib/view/WpProQuiz_View_QuizEdit.php:1349
-#: lib/view/WpProQuiz_View_QuizEdit.php:1361
-#: lib/view/WpProQuiz_View_QuizEdit.php:1368
-#: lib/view/WpProQuiz_View_QuizEdit.php:1392
+#: lib/view/WpProQuiz_View_QuizEdit.php:414
+#: lib/view/WpProQuiz_View_QuizEdit.php:420
+#: lib/view/WpProQuiz_View_QuizEdit.php:701
+#: lib/view/WpProQuiz_View_QuizEdit.php:728
+#: lib/view/WpProQuiz_View_QuizEdit.php:754
+#: lib/view/WpProQuiz_View_QuizEdit.php:780
+#: lib/view/WpProQuiz_View_QuizEdit.php:806
+#: lib/view/WpProQuiz_View_QuizEdit.php:865
+#: lib/view/WpProQuiz_View_QuizEdit.php:890
+#: lib/view/WpProQuiz_View_QuizEdit.php:915
+#: lib/view/WpProQuiz_View_QuizEdit.php:960
+#: lib/view/WpProQuiz_View_QuizEdit.php:985
+#: lib/view/WpProQuiz_View_QuizEdit.php:1010
+#: lib/view/WpProQuiz_View_QuizEdit.php:1182
+#: lib/view/WpProQuiz_View_QuizEdit.php:1192
+#: lib/view/WpProQuiz_View_QuizEdit.php:1245
+#: lib/view/WpProQuiz_View_QuizEdit.php:1253
+#: lib/view/WpProQuiz_View_QuizEdit.php:1261
+#: lib/view/WpProQuiz_View_QuizEdit.php:1269
+#: lib/view/WpProQuiz_View_QuizEdit.php:1352
+#: lib/view/WpProQuiz_View_QuizEdit.php:1364
+#: lib/view/WpProQuiz_View_QuizEdit.php:1371
+#: lib/view/WpProQuiz_View_QuizEdit.php:1395
 msgid "Demo"
 msgstr "Demó"
 
@@ -1715,80 +1715,80 @@ msgstr ""
 msgid "Copy questions"
 msgstr "Kérdések másolása"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:34
+#: lib/view/WpProQuiz_View_QuizEdit.php:37
 msgid "Quiz title"
 msgstr "Kvíz cím"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:43
+#: lib/view/WpProQuiz_View_QuizEdit.php:46
 #: lib/view/WpProQuiz_View_QuizOverall.php:201
 msgid "You can assign classify category for a quiz."
 msgstr ""
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:79
+#: lib/view/WpProQuiz_View_QuizEdit.php:82
 msgid "Hide quiz title"
 msgstr "Kvíz címének elrejtése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:84
+#: lib/view/WpProQuiz_View_QuizEdit.php:87
 msgid "Hide title"
 msgstr "Cím elrejtése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:91
+#: lib/view/WpProQuiz_View_QuizEdit.php:94
 msgid "The title serves as quiz heading."
 msgstr "A cím egyben a kvíz leírása is."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:98
-#: lib/view/WpProQuiz_View_QuizEdit.php:103
+#: lib/view/WpProQuiz_View_QuizEdit.php:101
+#: lib/view/WpProQuiz_View_QuizEdit.php:106
 msgid "Hide \"Restart quiz\" button"
 msgstr "A \"Kvíz újraindítása\" gomb elrejtése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:110
+#: lib/view/WpProQuiz_View_QuizEdit.php:113
 msgid "Hide the \"Restart quiz\" button in the Frontend."
 msgstr "Elrejti a \"Kvíz újraindítása\" gombot az oldalon."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:117
-#: lib/view/WpProQuiz_View_QuizEdit.php:122
+#: lib/view/WpProQuiz_View_QuizEdit.php:120
+#: lib/view/WpProQuiz_View_QuizEdit.php:125
 msgid "Hide \"View question\" button"
 msgstr "A \"Kérdések átnézése\" gomb elrejtése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:129
+#: lib/view/WpProQuiz_View_QuizEdit.php:132
 msgid "Hide the \"View question\" button in the Frontend."
 msgstr "Elrejti a \"Kérdés megtekintése\" gombot az oldalon."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:136
-#: lib/view/WpProQuiz_View_QuizEdit.php:141
+#: lib/view/WpProQuiz_View_QuizEdit.php:139
+#: lib/view/WpProQuiz_View_QuizEdit.php:144
 msgid "Display question randomly"
 msgstr "A kérdések véletlenszerű megjelenése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:152
-#: lib/view/WpProQuiz_View_QuizEdit.php:157
+#: lib/view/WpProQuiz_View_QuizEdit.php:155
+#: lib/view/WpProQuiz_View_QuizEdit.php:160
 msgid "Display answers randomly"
 msgstr "A válaszok véletlenszerű megjelenése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:168
-#: lib/view/WpProQuiz_View_QuizEdit.php:173
+#: lib/view/WpProQuiz_View_QuizEdit.php:171
+#: lib/view/WpProQuiz_View_QuizEdit.php:176
 msgid "Sort questions by category"
 msgstr "Kérdések kategória szerinti rendezése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:180
+#: lib/view/WpProQuiz_View_QuizEdit.php:183
 msgid ""
 "Also works in conjunction with the \"display randomly question\" option."
 msgstr "Működik kötőszavakkal is a \"jeleníts meg random kérdést\" opciónál."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:195
+#: lib/view/WpProQuiz_View_QuizEdit.php:198
 msgid "Seconds"
 msgstr "Másodperc"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:198
+#: lib/view/WpProQuiz_View_QuizEdit.php:201
 msgid "0 = no limit"
 msgstr "0= nincs határ"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:205
-#: lib/view/WpProQuiz_View_QuizEdit.php:210
+#: lib/view/WpProQuiz_View_QuizEdit.php:208
+#: lib/view/WpProQuiz_View_QuizEdit.php:213
 #: lib/view/WpProQuiz_View_QuizOverall.php:120
 msgid "Statistics"
 msgstr "Statisztikák"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:217
+#: lib/view/WpProQuiz_View_QuizEdit.php:220
 msgid ""
 "Statistics about right or wrong answers. Statistics will be saved by "
 "completed quiz, not after every question. The statistics is only visible "
@@ -1798,16 +1798,16 @@ msgstr ""
 "kerül mentésre, nem kérdésenként, és csak az Adminisztrátori felületen "
 "érhető el. (ez egy belső statisztika)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:224
-#: lib/view/WpProQuiz_View_QuizEdit.php:229
+#: lib/view/WpProQuiz_View_QuizEdit.php:227
+#: lib/view/WpProQuiz_View_QuizEdit.php:232
 msgid "Statistics IP-lock"
 msgstr "Statisztika IP zár"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:233
+#: lib/view/WpProQuiz_View_QuizEdit.php:236
 msgid "in minutes (recommended 1440 minutes = 1 day)"
 msgstr "percekben megadva (javasolt: 1440 perc = 1nap)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:236
+#: lib/view/WpProQuiz_View_QuizEdit.php:239
 msgid ""
 "Protect the statistics from spam. Result will only be saved every X minutes "
 "from same IP. (0 = deactivated)"
@@ -1815,12 +1815,12 @@ msgstr ""
 "Megvédi a statisztikát a csalásoktól. Az eredmény csak X percenként kerül "
 "mentésre egy azonos IP-rő. (0 = deaktiválás)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:243
-#: lib/view/WpProQuiz_View_QuizEdit.php:249
+#: lib/view/WpProQuiz_View_QuizEdit.php:246
+#: lib/view/WpProQuiz_View_QuizEdit.php:252
 msgid "Execute quiz only once"
 msgstr "Csak egyszer lehet a kvízt kitölteni"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:257
+#: lib/view/WpProQuiz_View_QuizEdit.php:260
 msgid ""
 "If you activate this option, the user can complete the quiz only once. "
 "Afterwards the quiz is blocked for this user."
@@ -1828,31 +1828,31 @@ msgstr ""
 "Ha aktiválod ezt az opciót, a felhasználó csak egyszer töltheti ki a kvízt. "
 "Ezután a kvíz nem jelenik meg többször a felhasználónak."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:261
+#: lib/view/WpProQuiz_View_QuizEdit.php:264
 msgid "This option applies to:"
 msgstr "Ez az opció alkalmas:"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:269
-#: lib/view/WpProQuiz_View_QuizEdit.php:1054
+#: lib/view/WpProQuiz_View_QuizEdit.php:272
+#: lib/view/WpProQuiz_View_QuizEdit.php:1057
 #: lib/view/WpProQuiz_View_StatisticsNew.php:102
 msgid "all users"
 msgstr "minden felhasználó"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:273
-#: lib/view/WpProQuiz_View_QuizEdit.php:1058
+#: lib/view/WpProQuiz_View_QuizEdit.php:276
+#: lib/view/WpProQuiz_View_QuizEdit.php:1061
 msgid "registered useres only"
 msgstr "csak regisztrált felhasználók részére"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:277
-#: lib/view/WpProQuiz_View_QuizEdit.php:1062
+#: lib/view/WpProQuiz_View_QuizEdit.php:280
+#: lib/view/WpProQuiz_View_QuizEdit.php:1065
 msgid "anonymous users only"
 msgstr "csak anonim felhasználók részére"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:283
+#: lib/view/WpProQuiz_View_QuizEdit.php:286
 msgid "user identification by cookie"
 msgstr "cookie alapján meghatározott felhasználó"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:286
+#: lib/view/WpProQuiz_View_QuizEdit.php:289
 msgid ""
 "If you activate this option, a cookie is set additionally for unregistrated "
 "(anonymous) users. This ensures a longer assignment of the user than the "
@@ -1862,24 +1862,24 @@ msgstr ""
 "felhasználók azonosítására. Ez hosszabb távon kötődik felhasználóhoz, mint "
 "az IP megjelölés."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:291
+#: lib/view/WpProQuiz_View_QuizEdit.php:294
 msgid "Reset the user identification"
 msgstr "Felhasználói azonosítás törlése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:292
+#: lib/view/WpProQuiz_View_QuizEdit.php:295
 msgid "User identification has been reset."
 msgstr "Felhasználói azonosítás törlése megtörtént."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:294
+#: lib/view/WpProQuiz_View_QuizEdit.php:297
 msgid "Resets user identification for all users."
 msgstr "Törli az összes Felhasználó azonosítását."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:303
-#: lib/view/WpProQuiz_View_QuizEdit.php:308
+#: lib/view/WpProQuiz_View_QuizEdit.php:306
+#: lib/view/WpProQuiz_View_QuizEdit.php:311
 msgid "Show only specific number of questions"
 msgstr "Csak bizonyos számú kérdés jelenjen meg"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:315
+#: lib/view/WpProQuiz_View_QuizEdit.php:318
 msgid ""
 "If you enable this option, maximum number of displayed questions will be X "
 "from X questions. (The output of questions is random)"
@@ -1887,20 +1887,20 @@ msgstr ""
 "Amennyiben ezt engedélyezed, a megjeleníthető kérdések maximuma X lesz X "
 "kérdésből. (A kérdések megjelenése véletlenszerű lesz)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:319
+#: lib/view/WpProQuiz_View_QuizEdit.php:322
 msgid "How many questions should be displayed simultaneously:"
 msgstr "Hány kérdés jelenjen meg egyszerre:"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:324
+#: lib/view/WpProQuiz_View_QuizEdit.php:327
 msgid "in percent"
 msgstr "százalékosan"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:332
-#: lib/view/WpProQuiz_View_QuizEdit.php:337
+#: lib/view/WpProQuiz_View_QuizEdit.php:335
+#: lib/view/WpProQuiz_View_QuizEdit.php:340
 msgid "Prerequisites"
 msgstr "Előfeltételek"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:344
+#: lib/view/WpProQuiz_View_QuizEdit.php:347
 msgid ""
 "If you enable this option, you can choose quiz, which user have to finish "
 "before he can start this quiz."
@@ -1908,7 +1908,7 @@ msgstr ""
 "Ha bekapcsolod ezt az opciót, kiválaszthatod azt a kvízt, amelyet a "
 "felhasználónak be kell fejeznie ahhoz, hogy elkezdhesse ezt."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:347
+#: lib/view/WpProQuiz_View_QuizEdit.php:350
 msgid ""
 "In all selected quizzes statistic function have to be active. If it is not "
 "it will be activated automatically."
@@ -1916,21 +1916,21 @@ msgstr ""
 "Mindegyik kvízes statisztikai funkciónak működnie kell. Ha nem, "
 "automatikusan fog aktiválódni."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:352
+#: lib/view/WpProQuiz_View_QuizEdit.php:355
 msgid "Quiz"
 msgstr "Kvíz"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:354
+#: lib/view/WpProQuiz_View_QuizEdit.php:357
 msgid "Prerequisites (This quiz have to be finished)"
 msgstr "Előfeltételek (Ezt a kvízt be kell fejezni)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:393
-#: lib/view/WpProQuiz_View_QuizEdit.php:398
-#: lib/view/WpProQuiz_View_QuizEdit.php:411
+#: lib/view/WpProQuiz_View_QuizEdit.php:396
+#: lib/view/WpProQuiz_View_QuizEdit.php:401
+#: lib/view/WpProQuiz_View_QuizEdit.php:414
 msgid "Question overview"
 msgstr "Kérdések áttekintése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:405
+#: lib/view/WpProQuiz_View_QuizEdit.php:408
 msgid ""
 "Add at the top of the quiz a question overview, which allows easy "
 "navigation. Additional questions can be marked \"to review\"."
@@ -1938,18 +1938,18 @@ msgstr ""
 "A kvíz tetejéhez kérdés áttekintőt ad, mely segíti a könnyebb navigálást. "
 "További kérdések megjelölhetőek \"felülvizsgálatra\"."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:408
+#: lib/view/WpProQuiz_View_QuizEdit.php:411
 msgid "Additional quiz overview will be displayed, before quiz is finished."
 msgstr "További kvíz áttekintést a kvíz befejezése előtt mutatunk majd."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:439
+#: lib/view/WpProQuiz_View_QuizEdit.php:442
 msgid ""
 "If you enalbe this option, no quiz overview will be displayed, before "
 "finishing quiz."
 msgstr ""
 "Ha ezt az opciót választod, nem lesz kvíz áttekintő a kvíz befejezése előtt."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:458
+#: lib/view/WpProQuiz_View_QuizEdit.php:461
 msgid ""
 "If you enable this option, user won't be able to skip question. (only in "
 "\"Overview -> next\" mode). User still will be able to navigate over "
@@ -1959,25 +1959,25 @@ msgstr ""
 "\"Áttekintés->következő\" módban). A felhasználó át tud lépni a \"Kérdés- "
 "Áttekintés\"-be."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:466
-#: lib/view/WpProQuiz_View_QuizEdit.php:471
-#: lib/view/WpProQuiz_View_QuizEdit.php:1481
-#: lib/view/WpProQuiz_View_QuizEdit.php:1486
+#: lib/view/WpProQuiz_View_QuizEdit.php:469
+#: lib/view/WpProQuiz_View_QuizEdit.php:474
+#: lib/view/WpProQuiz_View_QuizEdit.php:1484
+#: lib/view/WpProQuiz_View_QuizEdit.php:1489
 msgid "Admin e-mail notification"
 msgstr "Admin e-mail visszajelzés"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:479
-#: lib/view/WpProQuiz_View_QuizEdit.php:1494
+#: lib/view/WpProQuiz_View_QuizEdit.php:482
+#: lib/view/WpProQuiz_View_QuizEdit.php:1497
 msgid "for registered users only"
 msgstr "csak regisztrált felhasználó számára"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:483
-#: lib/view/WpProQuiz_View_QuizEdit.php:1498
+#: lib/view/WpProQuiz_View_QuizEdit.php:486
+#: lib/view/WpProQuiz_View_QuizEdit.php:1501
 msgid "for all users"
 msgstr "minden felhasználó számára"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:486
-#: lib/view/WpProQuiz_View_QuizEdit.php:1501
+#: lib/view/WpProQuiz_View_QuizEdit.php:489
+#: lib/view/WpProQuiz_View_QuizEdit.php:1504
 msgid ""
 "If you enable this option, you will be informed if a user completes this "
 "quiz."
@@ -1985,19 +1985,19 @@ msgstr ""
 "Ha ezt az opciót bekapcsolod, jelzést kapsz arról, ha egy felhasználó "
 "kitöltötte a kvízt."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:489
-#: lib/view/WpProQuiz_View_QuizEdit.php:512
+#: lib/view/WpProQuiz_View_QuizEdit.php:492
+#: lib/view/WpProQuiz_View_QuizEdit.php:515
 msgid "E-Mail settings can be edited in global settings."
 msgstr "E-mail beállítások az általános beállítások alatt szerkeszthetők."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:497
-#: lib/view/WpProQuiz_View_QuizEdit.php:502
-#: lib/view/WpProQuiz_View_QuizEdit.php:1619
-#: lib/view/WpProQuiz_View_QuizEdit.php:1624
+#: lib/view/WpProQuiz_View_QuizEdit.php:500
+#: lib/view/WpProQuiz_View_QuizEdit.php:505
+#: lib/view/WpProQuiz_View_QuizEdit.php:1622
+#: lib/view/WpProQuiz_View_QuizEdit.php:1627
 msgid "User e-mail notification"
 msgstr "Felhasználói e-mail visszajelzés"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:509
+#: lib/view/WpProQuiz_View_QuizEdit.php:512
 msgid ""
 "If you enable this option, an email is sent with his quiz result to the "
 "user. (only registered users)"
@@ -2005,12 +2005,12 @@ msgstr ""
 "Ha engedélyezed ezt az opciót, egy e-mail értesíti a felhasználót az "
 "eredményéről. (csak regisztráltakat)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:520
-#: lib/view/WpProQuiz_View_QuizEdit.php:525
+#: lib/view/WpProQuiz_View_QuizEdit.php:523
+#: lib/view/WpProQuiz_View_QuizEdit.php:528
 msgid "Autostart"
 msgstr "Automatikus indítás"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:532
+#: lib/view/WpProQuiz_View_QuizEdit.php:535
 msgid ""
 "If you enable this option, the quiz will start automatically after the page "
 "is loaded."
@@ -2018,31 +2018,31 @@ msgstr ""
 "Ha bekapcsolod ezt az opciót, a kvíz automatikusan elindul, miután "
 "betöltődött az oldal."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:539
-#: lib/view/WpProQuiz_View_QuizEdit.php:544
+#: lib/view/WpProQuiz_View_QuizEdit.php:542
+#: lib/view/WpProQuiz_View_QuizEdit.php:547
 msgid "Only registered users are allowed to start the quiz"
 msgstr "Csak a regisztrált felhasználók kezdhetik el a kvízt."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:551
+#: lib/view/WpProQuiz_View_QuizEdit.php:554
 msgid ""
 "If you enable this option, only registered users allowed start the quiz."
 msgstr ""
 "Ha bejelölöd ezt az opciót, csak a regisztrált felhasználók kezdhetik el a "
 "kvízt."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:568
+#: lib/view/WpProQuiz_View_QuizEdit.php:571
 msgid "Quiz description"
 msgstr "Kvíz leírása"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:571
+#: lib/view/WpProQuiz_View_QuizEdit.php:574
 msgid "This text will be displayed before start of the quiz."
 msgstr "Ez a szöveg fog megjelenni a kvíz megkezdése előtt."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:579
+#: lib/view/WpProQuiz_View_QuizEdit.php:582
 msgid "Results text"
 msgstr "Végeredmény szöveg"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:582
+#: lib/view/WpProQuiz_View_QuizEdit.php:585
 msgid ""
 "This text will be displayed at the end of the quiz (in results). (this text "
 "is optional)"
@@ -2050,19 +2050,19 @@ msgstr ""
 "Ez a szöveg fog megjelenni a kvíz végén (a végeredményekben) (ez a szöveg "
 "opcionális)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:586
+#: lib/view/WpProQuiz_View_QuizEdit.php:589
 msgid "Activate graduation"
 msgstr "Fokozatokra osztás aktíválása"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:592
+#: lib/view/WpProQuiz_View_QuizEdit.php:595
 msgid "Hint:"
 msgstr "Segítség:"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:594
+#: lib/view/WpProQuiz_View_QuizEdit.php:597
 msgid "Maximal 15 levels"
 msgstr "Maximum 15 szint"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:596
+#: lib/view/WpProQuiz_View_QuizEdit.php:599
 #, php-format
 msgid ""
 "Percentages refer to the total score of the quiz. (Current total %d points "
@@ -2071,26 +2071,26 @@ msgstr ""
 "A százalékok meghatározzák a kvíz teljes pontszámát. (Aktuális totál %d pont "
 "%d kérdésekben.)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:599
+#: lib/view/WpProQuiz_View_QuizEdit.php:602
 msgid "Values can also be mixed up"
 msgstr "Az értékek felcserélhetőek"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:600
+#: lib/view/WpProQuiz_View_QuizEdit.php:603
 msgid "10,15% or 10.15% allowed (max. two digits after the decimal point)"
 msgstr "10,15% vagy 10.15% megengedett (max. két számjegy a tizedes után)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:616
-#: lib/view/WpProQuiz_View_QuizEdit.php:627
+#: lib/view/WpProQuiz_View_QuizEdit.php:619
+#: lib/view/WpProQuiz_View_QuizEdit.php:630
 msgid "from:"
 msgstr "feladó:"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:616
-#: lib/view/WpProQuiz_View_QuizEdit.php:627
+#: lib/view/WpProQuiz_View_QuizEdit.php:619
+#: lib/view/WpProQuiz_View_QuizEdit.php:630
 msgid "percent"
 msgstr "százalék"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:616
-#: lib/view/WpProQuiz_View_QuizEdit.php:627
+#: lib/view/WpProQuiz_View_QuizEdit.php:619
+#: lib/view/WpProQuiz_View_QuizEdit.php:630
 #, php-format
 msgid ""
 "(Will be displayed, when result-percent is >= <span class=\"resultProzent\">"
@@ -2099,40 +2099,40 @@ msgstr ""
 "(Megjelenítésre kerül, amennyiben a végeredmény százalék >= <span class="
 "\"resultProzent\">%s</span>%%)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:617
-#: lib/view/WpProQuiz_View_QuizEdit.php:628
+#: lib/view/WpProQuiz_View_QuizEdit.php:620
+#: lib/view/WpProQuiz_View_QuizEdit.php:631
 msgid "Delete graduation"
 msgstr "Fokozatokra osztás törlése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:635
+#: lib/view/WpProQuiz_View_QuizEdit.php:638
 msgid "Add graduation"
 msgstr "Fokozatokra osztás megadása"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:646
-#: lib/view/WpProQuiz_View_QuizEdit.php:1569
-#: lib/view/WpProQuiz_View_QuizEdit.php:1701
+#: lib/view/WpProQuiz_View_QuizEdit.php:649
+#: lib/view/WpProQuiz_View_QuizEdit.php:1572
+#: lib/view/WpProQuiz_View_QuizEdit.php:1704
 msgid "Custom fields - Variables"
 msgstr ""
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:677
+#: lib/view/WpProQuiz_View_QuizEdit.php:680
 msgid "Result-Options"
 msgstr "Eredmény-opciók"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:683
-#: lib/view/WpProQuiz_View_QuizEdit.php:688
+#: lib/view/WpProQuiz_View_QuizEdit.php:686
+#: lib/view/WpProQuiz_View_QuizEdit.php:691
 msgid "Show average points"
 msgstr "Átlag pontszám megjelenítése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:695
+#: lib/view/WpProQuiz_View_QuizEdit.php:698
 msgid "Statistics-function must be enabled."
 msgstr "A statisztika funkciót be kell kapcsolni."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:708
-#: lib/view/WpProQuiz_View_QuizEdit.php:713
+#: lib/view/WpProQuiz_View_QuizEdit.php:711
+#: lib/view/WpProQuiz_View_QuizEdit.php:716
 msgid "Show category score"
 msgstr "Kategória pontszám megjelenítése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:720
+#: lib/view/WpProQuiz_View_QuizEdit.php:723
 msgid ""
 "If you enable this option, the results of each category is displayed on the "
 "results page."
@@ -2140,12 +2140,12 @@ msgstr ""
 "Amennyiben ezt az opciót választod, a kategóriánkénti végeredményt nem "
 "mutatjuk meg az összefoglaló képernyőn."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:734
-#: lib/view/WpProQuiz_View_QuizEdit.php:739
+#: lib/view/WpProQuiz_View_QuizEdit.php:737
+#: lib/view/WpProQuiz_View_QuizEdit.php:742
 msgid "Hide correct questions - display"
 msgstr "Helyes kérdések elrejtése - kijelző"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:746
+#: lib/view/WpProQuiz_View_QuizEdit.php:749
 msgid ""
 "If you select this option, no longer the number of correctly answered "
 "questions are displayed on the results page."
@@ -2153,12 +2153,12 @@ msgstr ""
 "Amennyiben ezt az opciót választod, nem jelenik meg a \"helyes válaszok száma"
 "\" az összefoglaló nézetben."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:760
-#: lib/view/WpProQuiz_View_QuizEdit.php:765
+#: lib/view/WpProQuiz_View_QuizEdit.php:763
+#: lib/view/WpProQuiz_View_QuizEdit.php:768
 msgid "Hide quiz time - display"
 msgstr "Kvíz idejének elrejtése - kijelző"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:772
+#: lib/view/WpProQuiz_View_QuizEdit.php:775
 msgid ""
 "If you enable this option, the time for finishing the quiz won't be "
 "displayed on the results page anymore."
@@ -2166,12 +2166,12 @@ msgstr ""
 "Amennyiben ezt az opciót megjelölöd, a kvízre fordított időt nem mutatjuk "
 "meg a végeredmény oldalon."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:786
-#: lib/view/WpProQuiz_View_QuizEdit.php:791
+#: lib/view/WpProQuiz_View_QuizEdit.php:789
+#: lib/view/WpProQuiz_View_QuizEdit.php:794
 msgid "Hide score - display"
 msgstr "Pontszám elrejtése - kijelző"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:798
+#: lib/view/WpProQuiz_View_QuizEdit.php:801
 msgid ""
 "If you enable this option, final score won't be displayed on the results "
 "page anymore."
@@ -2179,25 +2179,25 @@ msgstr ""
 "Ha bekapcsolod ezt az opciót, a végső pontszám nem jelenik meg a végeredmény "
 "oldalon."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:822
+#: lib/view/WpProQuiz_View_QuizEdit.php:825
 msgid "Question-Options"
 msgstr "Kérdés opciók"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:828
-#: lib/view/WpProQuiz_View_QuizEdit.php:833
+#: lib/view/WpProQuiz_View_QuizEdit.php:831
+#: lib/view/WpProQuiz_View_QuizEdit.php:836
 msgid "Show points"
 msgstr "Pontok megmutatása"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:840
+#: lib/view/WpProQuiz_View_QuizEdit.php:843
 msgid "Shows in quiz, how many points are reachable for respective question."
 msgstr "Megmutatja a kvízben, mennyi pontot lehet elérni a függő kérdésekből."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:847
-#: lib/view/WpProQuiz_View_QuizEdit.php:852
+#: lib/view/WpProQuiz_View_QuizEdit.php:850
+#: lib/view/WpProQuiz_View_QuizEdit.php:855
 msgid "Number answers"
 msgstr "Számos válaszok"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:859
+#: lib/view/WpProQuiz_View_QuizEdit.php:862
 msgid ""
 "If this option is activated, all answers are numbered (only single and "
 "multiple choice)"
@@ -2205,12 +2205,12 @@ msgstr ""
 "Amennyiben ez az opció aktív, minden választ beszámozunk (csak egyszerű és "
 "többes válasz esetén)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:872
-#: lib/view/WpProQuiz_View_QuizEdit.php:877
+#: lib/view/WpProQuiz_View_QuizEdit.php:875
+#: lib/view/WpProQuiz_View_QuizEdit.php:880
 msgid "Hide correct- and incorrect message"
 msgstr "Helyes és helytelen üzenet elrejtése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:884
+#: lib/view/WpProQuiz_View_QuizEdit.php:887
 msgid ""
 "If you enable this option, no correct- or incorrect message will be "
 "displayed."
@@ -2218,12 +2218,12 @@ msgstr ""
 "Ha bekapcsolod ezt az opciót, nem fog látszódni helyes vagy helytelen "
 "visszaigazoló üzenet."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:897
-#: lib/view/WpProQuiz_View_QuizEdit.php:902
+#: lib/view/WpProQuiz_View_QuizEdit.php:900
+#: lib/view/WpProQuiz_View_QuizEdit.php:905
 msgid "Correct and incorrect answer mark"
 msgstr "Helyes és helytelen válasz jelzés"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:909
+#: lib/view/WpProQuiz_View_QuizEdit.php:912
 msgid ""
 "If you enable this option, answers won't be color highlighted as correct or "
 "incorrect. "
@@ -2231,18 +2231,18 @@ msgstr ""
 "Ha bekapcsolod ezt az opciót, a válaszoknál nem jelenik meg jelzőszín, ami "
 "visszaigazolást ad arról, hogy helyes vagy helytelen."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:922
-#: lib/view/WpProQuiz_View_QuizEdit.php:927
+#: lib/view/WpProQuiz_View_QuizEdit.php:925
+#: lib/view/WpProQuiz_View_QuizEdit.php:930
 msgid "Force user to answer each question"
 msgstr "Erőltessük, hogy a felhasználó mindenre adjon választ"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:934
+#: lib/view/WpProQuiz_View_QuizEdit.php:937
 msgid "If you enable this option, the user is forced to answer each question."
 msgstr ""
 "Ha bekapcsolod ezt az opciót, a felhasználónak minden egyes kérdésre választ "
 "kell adni."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:935
+#: lib/view/WpProQuiz_View_QuizEdit.php:938
 msgid ""
 "If the option \"Question overview\" is activated, this notification will "
 "appear after end of the quiz, otherwise after each question."
@@ -2250,36 +2250,36 @@ msgstr ""
 "Amennyiben a \"Kérdés áttekintés\" opció aktív, ez a figyelmeztetés csak a "
 "kvíz végén fog megjelenni, máskülönben minden kérdés után."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:942
-#: lib/view/WpProQuiz_View_QuizEdit.php:947
+#: lib/view/WpProQuiz_View_QuizEdit.php:945
+#: lib/view/WpProQuiz_View_QuizEdit.php:950
 msgid "Hide question position overview"
 msgstr "Elrejti a kérdés helyzetének megtekintését"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:954
+#: lib/view/WpProQuiz_View_QuizEdit.php:957
 msgid "If you enable this option, the question position overview is hidden."
 msgstr ""
 "Amennyiben ezt jóváhagyod, nem látszik, hogy hányadik kérdésnél járunk."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:967
-#: lib/view/WpProQuiz_View_QuizEdit.php:972
+#: lib/view/WpProQuiz_View_QuizEdit.php:970
+#: lib/view/WpProQuiz_View_QuizEdit.php:975
 msgid "Hide question numbering"
 msgstr "A kérdések számozásának elrejtése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:979
+#: lib/view/WpProQuiz_View_QuizEdit.php:982
 msgid "If you enable this option, the question numbering is hidden."
 msgstr "Ha bekapcsolod ezt az opciót, a kérdések számozása nem fog látszani."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:992
-#: lib/view/WpProQuiz_View_QuizEdit.php:997
+#: lib/view/WpProQuiz_View_QuizEdit.php:995
+#: lib/view/WpProQuiz_View_QuizEdit.php:1000
 msgid "Display category"
 msgstr "Kategória megjelenítése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1004
+#: lib/view/WpProQuiz_View_QuizEdit.php:1007
 msgid "If you enable this option, category will be displayed in the question."
 msgstr ""
 "Ha bekapcsolod ezt az opciót, a kategória elnevezése megjelenik a kérdésnél."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1029
+#: lib/view/WpProQuiz_View_QuizEdit.php:1032
 msgid ""
 "The leaderboard allows users to enter results in public list and to share "
 "the result this way."
@@ -2287,15 +2287,15 @@ msgstr ""
 "A Ranglista lehetővé teszi, hogy a felhasználók az eredményeiket "
 "publikálják, és megosszák."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1032
+#: lib/view/WpProQuiz_View_QuizEdit.php:1035
 msgid "The leaderboard works independent from internal statistics function."
 msgstr "A Ranglista a belső statisztika funkciótól függetlenül működik."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1049
+#: lib/view/WpProQuiz_View_QuizEdit.php:1052
 msgid "Who can sign up to the list"
 msgstr "Ki tud feliratkozni a listára"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1065
+#: lib/view/WpProQuiz_View_QuizEdit.php:1068
 msgid ""
 "Not registered users have to enter name and e-mail (e-mail won't be "
 "displayed)"
@@ -2303,11 +2303,11 @@ msgstr ""
 "Nem regisztrált felhasználóknak be kell adniuk a nevüket és e-mailjüket (az "
 "e-mailt nem mutatjuk meg)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1071
+#: lib/view/WpProQuiz_View_QuizEdit.php:1074
 msgid "insert automatically"
 msgstr "automatikus beillesztés"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1079
+#: lib/view/WpProQuiz_View_QuizEdit.php:1082
 msgid ""
 "If you enable this option, logged in users will be automatically entered "
 "into leaderboard"
@@ -2315,11 +2315,11 @@ msgstr ""
 "Amennyiben ezt kiválasztod, a regisztrált felhasználók automatikusan "
 "bekerülnek a Ranglistába"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1085
+#: lib/view/WpProQuiz_View_QuizEdit.php:1088
 msgid "display captcha"
 msgstr "ellenőrző jelszó kérése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1093
+#: lib/view/WpProQuiz_View_QuizEdit.php:1096
 msgid ""
 "If you enable this option, additional captcha will be displayed for users "
 "who are not registered."
@@ -2327,83 +2327,83 @@ msgstr ""
 "Ha ezt az opciót bekapcsolod, ellenőrző jelszó jelenik meg a nem regisztrált "
 "felhasználóknak."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1096
+#: lib/view/WpProQuiz_View_QuizEdit.php:1099
 msgid "This option requires additional plugin:"
 msgstr "Ez az opció további bővítményt igényel."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1101
+#: lib/view/WpProQuiz_View_QuizEdit.php:1104
 msgid "Plugin has been detected."
 msgstr "Bővítmény érhető el."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1105
+#: lib/view/WpProQuiz_View_QuizEdit.php:1108
 msgid "Plugin is not installed."
 msgstr "A bővítmény nincs telepítve."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1113
+#: lib/view/WpProQuiz_View_QuizEdit.php:1116
 msgid "Sort list by"
 msgstr "Lista rendezése ... szerint"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1132
+#: lib/view/WpProQuiz_View_QuizEdit.php:1135
 msgid "Users can apply multiple times"
 msgstr "A felhasználók többször kitölthetik"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1143
+#: lib/view/WpProQuiz_View_QuizEdit.php:1146
 msgid "User can apply after:"
 msgstr "A felhasználó kitöltheti ezt követően:"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1145
+#: lib/view/WpProQuiz_View_QuizEdit.php:1148
 msgid "minute"
 msgstr "perc"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1152
+#: lib/view/WpProQuiz_View_QuizEdit.php:1155
 msgid "How many entries should be displayed"
 msgstr "Hány elemet mutassunk meg"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1158
+#: lib/view/WpProQuiz_View_QuizEdit.php:1161
 msgid "Entries"
 msgstr "Elemek"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1165
+#: lib/view/WpProQuiz_View_QuizEdit.php:1168
 msgid "Automatically display leaderboard in quiz result"
 msgstr "Automatikusan megjelenik a Ranglista a kvíz végeredménynél"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1169
+#: lib/view/WpProQuiz_View_QuizEdit.php:1172
 msgid "Where should leaderboard be displayed:"
 msgstr "Hol jelenjen meg a Ranglista:"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1172
+#: lib/view/WpProQuiz_View_QuizEdit.php:1175
 msgid "don't display"
 msgstr "ne jelenítse meg"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1176
+#: lib/view/WpProQuiz_View_QuizEdit.php:1179
 msgid "below the \"result text\""
 msgstr "a \"végeredmény szöveg\" alatt"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1186
+#: lib/view/WpProQuiz_View_QuizEdit.php:1189
 msgid "in a button"
 msgstr "a gombon"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1207
+#: lib/view/WpProQuiz_View_QuizEdit.php:1210
 msgid "Quiz-Mode"
 msgstr "Kvíz-mód"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1212
+#: lib/view/WpProQuiz_View_QuizEdit.php:1215
 msgid "Normal"
 msgstr "Normál"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1213
+#: lib/view/WpProQuiz_View_QuizEdit.php:1216
 msgid "Normal + Back-Button"
 msgstr "Normál + Vissza-Gomb"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1214
+#: lib/view/WpProQuiz_View_QuizEdit.php:1217
 msgid "Check -> continue"
 msgstr "Ellenőrzés -> folytatás"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1215
+#: lib/view/WpProQuiz_View_QuizEdit.php:1218
 msgid "Questions below each other"
 msgstr "A kérdések egymás alatt legyenek"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1227
+#: lib/view/WpProQuiz_View_QuizEdit.php:1230
 msgid ""
 "Displays all questions sequentially, \"right\" or \"false\" will be "
 "displayed at the end of the quiz."
@@ -2411,15 +2411,15 @@ msgstr ""
 "A kérdések egymást követik. Hogy a válasz \"helyes\" vagy \"helytelen\", "
 "csak a kvíz végén mutatjuk meg."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1230
+#: lib/view/WpProQuiz_View_QuizEdit.php:1233
 msgid "Allows to use the back button in a question."
 msgstr "A kérdés során lehetővé teszi a \"vissza\" gomb használatát."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1233
+#: lib/view/WpProQuiz_View_QuizEdit.php:1236
 msgid "Shows \"right or wrong\" after each question."
 msgstr "Megmutatja, hogy  \"helyes vagy helytelen\" minden egyes kérdés után"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1236
+#: lib/view/WpProQuiz_View_QuizEdit.php:1239
 msgid ""
 "If this option is activated, all answers are displayed below each other, i."
 "e. all questions are on a single page."
@@ -2427,23 +2427,23 @@ msgstr ""
 "Amennyiben ezt engedélyezed, az összes válasz egymás alatt fog megjelenni. "
 "Pl: minden kérdés egyetlen oldalon"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1278
+#: lib/view/WpProQuiz_View_QuizEdit.php:1281
 msgid "How many questions to be displayed on a page:"
 msgstr "Mennyi kérdést mutassunk egy oldalon:"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1281
+#: lib/view/WpProQuiz_View_QuizEdit.php:1284
 msgid "(0 = All on one page)"
 msgstr "(0 = Minden egy oldalon)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1303
-#: lib/view/WpProQuiz_View_QuizEdit.php:1647
+#: lib/view/WpProQuiz_View_QuizEdit.php:1306
+#: lib/view/WpProQuiz_View_QuizEdit.php:1650
 #: lib/view/WpProQuiz_View_Statistics.php:41
 #: lib/view/WpProQuiz_View_Statistics.php:364
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:538
 msgid "Custom fields"
 msgstr "Egyedi mezők"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1307
+#: lib/view/WpProQuiz_View_QuizEdit.php:1310
 msgid ""
 "You can create custom fields, e.g. to request the name or the e-mail address "
 "of the users."
@@ -2451,112 +2451,112 @@ msgstr ""
 "Egyedi mezőket tudsz létrehozni, pl. hogy emailt és nevet kérj a "
 "felhasználótól."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1310
+#: lib/view/WpProQuiz_View_QuizEdit.php:1313
 msgid "The statistic function have to be enabled."
 msgstr "A statisztikai funkciót be kell kapcsolni."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1317
-#: lib/view/WpProQuiz_View_QuizEdit.php:1322
+#: lib/view/WpProQuiz_View_QuizEdit.php:1320
+#: lib/view/WpProQuiz_View_QuizEdit.php:1325
 msgid "Custom fields enable"
 msgstr "Egyedi mezők engedélyezve"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1329
+#: lib/view/WpProQuiz_View_QuizEdit.php:1332
 msgid "If you enable this option, custom fields are enabled."
 msgstr "Amennyiben ezt bejelölöd, az egyedi mezők engedélyezve lesznek."
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1336
-#: lib/view/WpProQuiz_View_QuizEdit.php:1341
+#: lib/view/WpProQuiz_View_QuizEdit.php:1339
+#: lib/view/WpProQuiz_View_QuizEdit.php:1344
 msgid "Display position"
 msgstr "Megjelenés pozíciója"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1343
+#: lib/view/WpProQuiz_View_QuizEdit.php:1346
 msgid "Where should the fileds be displayed:"
 msgstr "Hol jelenjenek meg a mezők:"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1346
+#: lib/view/WpProQuiz_View_QuizEdit.php:1349
 msgid "On the quiz startpage"
 msgstr "A kvíz kezdőoldalán"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1358
+#: lib/view/WpProQuiz_View_QuizEdit.php:1361
 msgid "At the end of the quiz (before the quiz result)"
 msgstr "A kvíz végén (a kvíz kiértékelése előtt)"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1386
+#: lib/view/WpProQuiz_View_QuizEdit.php:1389
 msgid "Field name"
 msgstr "Mező neve"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1388
+#: lib/view/WpProQuiz_View_QuizEdit.php:1391
 msgid "Required?"
 msgstr "Kötelező?"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1390
+#: lib/view/WpProQuiz_View_QuizEdit.php:1393
 msgid "Show in statistic table?"
 msgstr ""
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1420
+#: lib/view/WpProQuiz_View_QuizEdit.php:1423
 msgid "Text"
 msgstr "Szöveg"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1421
+#: lib/view/WpProQuiz_View_QuizEdit.php:1424
 msgid "Textarea"
 msgstr "Szövegmező"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1422
+#: lib/view/WpProQuiz_View_QuizEdit.php:1425
 msgid "Checkbox"
 msgstr "jelölőnégyzet"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1423
+#: lib/view/WpProQuiz_View_QuizEdit.php:1426
 msgid "Drop-Down menu"
 msgstr "Legördülő menü"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1424
+#: lib/view/WpProQuiz_View_QuizEdit.php:1427
 msgid "Radio"
 msgstr "Rádió"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1425
+#: lib/view/WpProQuiz_View_QuizEdit.php:1428
 msgid "Number"
 msgstr "Szám"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1426
+#: lib/view/WpProQuiz_View_QuizEdit.php:1429
 msgid "Email"
 msgstr "E-mail"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1427
+#: lib/view/WpProQuiz_View_QuizEdit.php:1430
 msgid "Yes/No"
 msgstr "Igen/Nem"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1428
+#: lib/view/WpProQuiz_View_QuizEdit.php:1431
 #: lib/view/WpProQuiz_View_Statistics.php:323
 #: lib/view/WpProQuiz_View_StatisticsAjax.php:30
 msgid "Date"
 msgstr "Dátum"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1431
+#: lib/view/WpProQuiz_View_QuizEdit.php:1434
 msgid "Edit list"
 msgstr "Lista szerkesztése"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1434
+#: lib/view/WpProQuiz_View_QuizEdit.php:1437
 msgid "One entry per line"
 msgstr "Egy szöveg soronként"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1439
+#: lib/view/WpProQuiz_View_QuizEdit.php:1442
 msgid "OK"
 msgstr "Rendben"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1461
+#: lib/view/WpProQuiz_View_QuizEdit.php:1464
 msgid "Add field"
 msgstr "Mező hozzáadása"
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1631
+#: lib/view/WpProQuiz_View_QuizEdit.php:1634
 msgid ""
 "If you enable this option, an email is sent with his quiz result to the user."
 msgstr ""
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1643
+#: lib/view/WpProQuiz_View_QuizEdit.php:1646
 msgid "User Email-Address (only registered users)"
 msgstr ""
 
-#: lib/view/WpProQuiz_View_QuizEdit.php:1649
+#: lib/view/WpProQuiz_View_QuizEdit.php:1652
 msgid "(Type Email)"
 msgstr ""
 

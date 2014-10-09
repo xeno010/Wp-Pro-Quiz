@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 24;
+	const WPPROQUIZ_DB_VERSION = 25;
 
 	private $_wpdb;
 	private $_prefix;
@@ -77,6 +77,7 @@ class WpProQuiz_Helper_DbUpgrade {
 			  type tinyint(4) NOT NULL,
 			  required tinyint(1) unsigned NOT NULL,
 			  sort tinyint(4) NOT NULL,
+			  show_in_statistic tinyint(1) unsigned NOT NULL,
 			  data mediumtext,
 			  PRIMARY KEY  (form_id),
 			  KEY quiz_id (quiz_id)
@@ -143,6 +144,7 @@ class WpProQuiz_Helper_DbUpgrade {
 			  category_id int(10) unsigned NOT NULL,
 			  admin_email text NOT NULL,
   			  user_email text NOT NULL,
+			  plugin_container text,
 			  PRIMARY KEY  (id)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 			
@@ -184,6 +186,7 @@ class WpProQuiz_Helper_DbUpgrade {
 			  correct_count int(10) unsigned NOT NULL,
 			  incorrect_count int(10) unsigned NOT NULL,
 			  hint_count int(10) unsigned NOT NULL,
+			  solved_count tinyint(1) NOT NULL,
 			  points int(10) unsigned NOT NULL,
 			  question_time int(10) unsigned NOT NULL,
 			  answer_data text,

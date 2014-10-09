@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
 Tested up to: 4.0
-Stable tag: 0.32
+Stable tag: 0.33
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -327,3 +327,8 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * Fixed bug (Illegal string offset '\')
 * Translation for italian have been added (Thanks Pacaldi)
 * Translation for slovak have been added (Thanks Martin D.)
+
+= 0.33 =
+* Translation for hungarian have been added (Thanks Webstar Csoport Kft.)
+* Added "solved" display in statistic-overview
+* Added option: show custom forms in statistics table
