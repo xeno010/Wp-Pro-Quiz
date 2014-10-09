@@ -13,6 +13,9 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 	border-right: 1px solid #A0A0A0;
 	padding: 5px;
 }
+.wpProQuiz_demoBox {
+	position:  relative;
+}
 </style>
 <div class="wrap wpProQuiz_quizEdit">
 	<h2 style="margin-bottom: 10px;"><?php echo $this->header; ?></h2>

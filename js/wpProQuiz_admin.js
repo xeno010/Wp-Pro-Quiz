@@ -1001,8 +1001,9 @@ jQuery(document).ready(function($) {
 				var img = $this.siblings().outerWidth(true);
 			
 				if(e.pageX + img > d) {
-						var v = d + (e.pageX - (e.pageX + img + 30));
-						$(this).next().css('left', v + "px");
+					//var v = d + (e.pageX - (e.pageX + img + 30));
+					var v = jQuery(document).width() - $this.parent().offset().left - img - 30;
+					$(this).next().css('left', v + "px");
 				}
 			
 				$(this).next().show();
