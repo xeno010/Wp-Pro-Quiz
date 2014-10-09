@@ -125,7 +125,8 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'show_category' => (int)$data->isShowCategory(),
 			'category_id' => (int)$data->getCategoryId(),
 			'admin_email' => $data->getAdminEmail(true),
-			'user_email' => $data->getUserEmail(true)
+			'user_email' => $data->getUserEmail(true),
+			'plugin_container' => $data->getPluginContainer(true)
 		);
 		
 		if($data->getId() != 0) {
@@ -134,13 +135,13 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					array(
 							'id' => $data->getId()
 					),
-					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%s'),
+					array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%s', '%s'),
 					array('%d'));
 		} else {
 			
 			$result = $this->_wpdb->insert($this->_table,
 						$set,
-						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%s'));
+						array('%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%s', '%s'));
 
 			$data->setId($this->_wpdb->insert_id);
 		}

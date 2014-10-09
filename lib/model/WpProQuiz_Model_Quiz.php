@@ -105,6 +105,9 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_categoryName = '';
 	protected $_adminEmail = null;
 	protected $_userEmail = null;
+
+	//0.33
+	protected $_pluginContainer = null;
 	
 	public function setId($_id) {
 		$this->_id = (int)$_id;
@@ -711,5 +714,32 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 		}
 	
 		return $this->_userEmail;
+	}
+
+	public function setPluginContainer($_pluginContainer) {
+		$this->_pluginContainer = $_pluginContainer;
+
+		return $this;
+	}
+
+	public function getPluginContainer($serialize = false) {
+		if($this->_pluginContainer === null)
+			$this->_pluginContainer = new WpProQuiz_Model_PluginContainer();
+
+		if(is_object($this->_pluginContainer) || $this->_pluginContainer instanceof WpProQuiz_Model_PluginContainer) {
+			if($serialize) {
+				return @serialize($this->_pluginContainer);
+			}
+		} else {
+			if(!$serialize) {
+				if(WpProQuiz_Helper_Until::saveUnserialize($this->_pluginContainer, $into) === false) {
+					return null;
+				}
+
+				$this->_pluginContainer = $into;
+			}
+		}
+
+		return $this->_pluginContainer;
 	}
 }

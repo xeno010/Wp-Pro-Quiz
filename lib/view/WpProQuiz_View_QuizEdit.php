@@ -5,7 +5,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 	 * @var WpProQuiz_Model_Quiz
 	 */
 	public $quiz;
-	
+
 	public function show() {
 ?>
 <style>
@@ -66,6 +66,9 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 					</div>
 				</div>
 			</div>
+
+			<?php do_action('wpProQuiz_action_plugin_quizEdit', $this); ?>
+
 			<div class="postbox">
 				<h3 class="hndle"><?php _e('Options', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">

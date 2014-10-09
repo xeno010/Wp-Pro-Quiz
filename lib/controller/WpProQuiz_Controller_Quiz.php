@@ -87,7 +87,10 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			
 			$quiz = new WpProQuiz_Model_Quiz($this->_post);
 			$quiz->setId($quizId);
-				
+
+			if(isset($this->_post['plugin']))
+				$quiz->getPluginContainer()->set($this->_post['plugin']);
+
 			if($this->checkValidit($this->_post)) {
 				if($quizId)
 					WpProQuiz_View_View::admin_notices(__('Quiz edited', 'wp-pro-quiz'), 'info');

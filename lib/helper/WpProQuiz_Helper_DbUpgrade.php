@@ -1086,6 +1086,11 @@ class WpProQuiz_Helper_DbUpgrade {
 		$this->_wpdb->query('UPDATE '.$this->_wpdb->prefix.'wp_pro_quiz_statistic
 				SET solved_count = -1');
 
+		$this->_wpdb->query('
+			ALTER TABLE  '.$this->_wpdb->prefix.'wp_pro_quiz_master
+				ADD  `plugin_container` TEXT NULL DEFAULT NULL ;
+		');
+
 		return 25;
 	}
 }
