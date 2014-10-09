@@ -53,6 +53,7 @@ A powerful and beautiful quiz plugin for WordPress.
 - French / français (Thanks Aurélien C.)
 - German / deutsch
 - Greek / ελληνικά (Thanks Ζαχαρίας Σ.)
+- Hungarian / magyar (Thanks Webstar Csoport Kft.)
 - Indonesian / Bahasa Indonesia (Thanks dieka91 and Creative Computer Club)
 - Italian / Italiano (Thanks Pacaldi)
 - Norwegian / norsk (Thanks Stein Ivar J.)
