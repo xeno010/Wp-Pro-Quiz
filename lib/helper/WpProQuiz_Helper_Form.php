@@ -94,7 +94,7 @@ class WpProQuiz_Helper_Form {
 				return $str == 1 ? __('Yes') : __('No');
 				break;
 			case WpProQuiz_Model_Form::FORM_TYPE_DATE:
-				return date_format(date_create($str), get_option('date_format'));
+				return empty($str) ? '' : date_format(date_create($str), get_option('date_format'));
 				break;
 		}
 

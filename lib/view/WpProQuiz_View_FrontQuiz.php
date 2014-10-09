@@ -33,7 +33,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			'prerequisite_msg' => __('You have to finish following quiz, to start this quiz:', 'wp-pro-quiz')
 		);
 
-		return apply_filters('wpProQuiz_filter_frontButtonNames', $this, $names) + $names;
+		return apply_filters('wpProQuiz_filter_frontButtonNames', $names, $this) + $names;
 	}
 
 	/**
