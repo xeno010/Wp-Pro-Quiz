@@ -21,7 +21,10 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 
 	private $_buttonNames = array();
 
-	private function getButtonNames() {
+	private function loadButtonNames() {
+		if(!empty($this->_buttonNames))
+			return;
+
 		$names = array(
 			'start_quiz' => __('Start quiz', 'wp-pro-quiz'),
 			'restart_quiz' => __('Restart quiz', 'wp-pro-quiz'),
@@ -33,7 +36,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 			'prerequisite_msg' => __('You have to finish following quiz, to start this quiz:', 'wp-pro-quiz')
 		);
 
-		return apply_filters('wpProQuiz_filter_frontButtonNames', $names, $this) + $names;
+		$this->_buttonNames = ((array) apply_filters('wpProQuiz_filter_frontButtonNames', $names, $this)) + $names;
 	}
 
 	/**
@@ -49,7 +52,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 	}
 	
 	public function show($preview = false) {
-		$this->_buttonNames = $this->getButtonNames();
+		$this->loadButtonNames();
 
 		$question_count = count($this->question);
 		
@@ -152,6 +155,8 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 	}
 	
 	public function showMaxQuestion() {
+		$this->loadButtonNames();
+
 		$question_count = count($this->question);
 
 		$result = $this->quiz->getResultText();
@@ -213,7 +218,9 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 	
 	public function getQuizData() {
 		ob_start();
-	
+
+		$this->loadButtonNames();
+
 		$quizData = $this->showQuizBox(count($this->question));
 
 		$quizData['content'] = ob_get_contents();
