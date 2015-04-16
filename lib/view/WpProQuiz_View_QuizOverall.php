@@ -27,6 +27,13 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 .wpProQuiz_exportCheck {
 	display: none;
 }
+
+@media screen and (max-width: 782px) {
+	.wpProQuiz_InfoBar {
+		display:none;
+	}
+}
+
 </style>
 <div class="wrap wpProQuiz_quizOverall" style="position: relative;">
 	<h2><?php _e('Quiz overview', 'wp-pro-quiz'); ?></h2>
@@ -45,15 +52,15 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 	
 	<div>
 	
-		<div style="margin: 8px 0px; float: left;">
+		<div style="margin: 8px 0px; float: left; display: none;">
 			<a class="button-primary" style="font-weight: bold; display: none;" href="admin.php?page=wpProQuiz&module=styleManager"><?php _e('Style Manager', 'wp-pro-quiz'); ?></a>
 			<?php if(current_user_can('wpProQuiz_change_settings')) { ?>
-			<a class="button-primary" style="font-weight: bold;" href="admin.php?page=wpProQuiz&module=globalSettings"><?php _e('Global settings', 'wp-pro-quiz'); ?></a>
+			<a class="button-primary" style="font-weight: bold; display: none;" href="admin.php?page=wpProQuiz&module=globalSettings"><?php _e('Global settings', 'wp-pro-quiz'); ?></a>
 			<?php } ?>
-			<a class="button-primary" style="font-weight: bold;" href="admin.php?page=wpProQuiz&module=wpq_support"><?php _e('Support WP-Pro-Quiz', 'wp-pro-quiz'); ?></a>
+			<a class="button-primary" style="font-weight: bold; display: none;" href="admin.php?page=wpProQuiz&module=wpq_support"><?php _e('Support WP-Pro-Quiz', 'wp-pro-quiz'); ?></a>
 		</div>
 		
-		<div style="margin-top:-36px; float: right;">
+		<div class="wpProQuiz_InfoBar" style="margin-top:-36px; float: right;">
 			
 			<div style="background-color: #FFFBCC; padding: 6px; border: 1px solid #E6DB55; float: left;">
 				<strong><?php _e('You need special WP-Pro-Quiz modification for your website?', 'wp-pro-quiz'); ?></strong><br>
@@ -76,6 +83,12 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 	
 		<div style="clear: both;"></div>
 	</div>
+
+	<p>
+		<?php if(current_user_can('wpProQuiz_add_quiz')) { ?>
+			<a class="button-secondary" href="admin.php?page=wpProQuiz&action=addEdit"><?php echo __('Add quiz', 'wp-pro-quiz'); ?></a>
+		<?php } ?>
+	</p>
 	
 	<table class="wp-list-table widefat">
 		<thead>

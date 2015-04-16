@@ -151,19 +151,46 @@ class WpProQuiz_Controller_Admin {
 	}
 	
 	public function register_page() {
-		$page = add_menu_page(
+		$pages = array();
+
+		$pages[] = add_menu_page(
 					'WP-Pro-Quiz',
 					'WP-Pro-Quiz',
 					'wpProQuiz_show',
 					'wpProQuiz',
 					array($this, 'route'));
 
-		add_action('admin_print_scripts-'.$page, array($this, 'enqueueScript'));
+
+		$pages[] = add_submenu_page(
+			'wpProQuiz',
+			__( 'Global settings', 'wp-pro-quiz' ),
+			__( 'Global settings', 'wp-pro-quiz' ),
+			'wpProQuiz_change_settings',
+			'wpProQuiz_globalSettings',
+			array( $this, 'route' ) );
+
+		$pages[] = add_submenu_page(
+			'wpProQuiz',
+			__( 'Support', 'wp-pro-quiz' ),
+			__( 'Support', 'wp-pro-quiz' ),
+			'wpProQuiz_show',
+			'wpProQuiz_wpq_support',
+			array( $this, 'route' ) );
+
+		foreach($pages as $p) {
+			add_action('admin_print_scripts-'.$p, array($this, 'enqueueScript'));
+		}
 	}
 	
 	public function route() {
 		$module = isset($_GET['module']) ? $_GET['module'] : 'overallView';
-		
+
+		if(isset($_GET['page'])) {
+			if(preg_match('#wpProQuiz_(.+)#', trim($_GET['page']), $matches)) {
+				$module = $matches[1];
+			}
+		}
+
 		$c = null;
 		
 		switch ($module) {
