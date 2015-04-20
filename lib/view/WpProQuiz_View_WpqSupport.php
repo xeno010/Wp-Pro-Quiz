@@ -9,7 +9,7 @@ class WpProQuiz_View_WpqSupport extends WpProQuiz_View_View {
 
 	<h3><?php _e('Donate', 'wp-pro-quiz'); ?></h3>
 	
-	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
 		<input type="hidden" name="cmd" value="_s-xclick">
 		<input type="hidden" name="hosted_button_id" value="BF9JT56N7FAQG">
 		<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -21,7 +21,11 @@ class WpProQuiz_View_WpqSupport extends WpProQuiz_View_View {
 		<?php _e('I try to implement all wishes as fast as possible and help with problems.', 'wp-pro-quiz'); ?> <br> 
 		<?php _e('Your donations can help to ensure that the project continues to remain free.', 'wp-pro-quiz'); ?>
 	</p>
-	
+
+	<h3><?php _e('WP-Pro-Quiz special modification', 'wp-pro-quiz'); ?></h3>
+	<strong><?php _e('You need special WP-Pro-Quiz modification for your website?', 'wp-pro-quiz'); ?></strong><br>
+	<a class="button-primary"  href="admin.php?page=wpProQuiz&module=info_adaptation" style="margin-top: 5px;"><?php _e('Learn more', 'wp-pro-quiz'); ?></a>
+
 	<h3 style="margin-top: 40px;"><?php _e('Translate WP-Pro-Quiz', 'wp-pro-quiz'); ?></h3>
 	
 	<h4><?php _e('You need:', 'wp-pro-quiz'); ?></h4>
