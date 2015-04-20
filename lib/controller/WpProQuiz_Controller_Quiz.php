@@ -26,9 +26,37 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 			case 'reset_lock':
 				$this->resetLock($_GET['id']);
 				break;
+			default:
+				$this->showAction();
+				break;
 		}
 	}
-	
+
+	public function routeAction() {
+		$action = isset($_GET['action']) ? $_GET['action'] : 'show';
+
+		switch ($action) {
+			default:
+				$this->showActionHook();
+				break;
+		}
+	}
+
+	private function showActionHook() {
+		if(!class_exists('WP_List_Table')){
+			require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+		}
+
+		set_current_screen('toplevel_page_wpproquiz');
+
+		add_filter( 'manage_' . get_current_screen()->id . '_columns', array('WpProQuiz_View_QuizOverallTable', 'getColumnDefs'));
+
+		add_screen_option( 'per_page', array(
+			'label' => __( 'Quiz', 'wp-pro-quiz' ),
+			'default' => 20,
+			'option' => 'wp_pro_quiz_quiz_overview_per_page' ) );
+	}
+
 	private function addEditQuiz() {
 		$quizId = isset($_GET['quizId']) ? (int)$_GET['quizId'] : 0;
 		
@@ -286,7 +314,13 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		
 		exit;
 	}
-	
+
+	private function getCurrentPage() {
+		$pagenum = isset( $_REQUEST['paged'] ) ? absint( $_REQUEST['paged'] ) : 0;
+
+		return max( 1, $pagenum );
+	}
+
 	private function showAction() {
 		if(!current_user_can('wpProQuiz_show')) {
 			wp_die(__('You do not have sufficient permissions to access this page.'));
@@ -296,10 +330,30 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		
 		$m = new WpProQuiz_Model_QuizMapper();
 		$categoryMapper = new WpProQuiz_Model_CategoryMapper();
-		
-		$this->view->quiz = $m->fetchAll();
-		$this->view->categories = $categoryMapper->fetchAll(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);
-		
+
+		$per_page = (int) get_user_option( 'wp_pro_quiz_quiz_overview_per_page' );
+		if ( empty( $per_page ) || $per_page < 1 )
+			$per_page = 20;
+
+//		$per_page = 50;
+		$current_page = $this->getCurrentPage();
+		$search = isset($_GET['s']) ? trim($_GET['s']) : '';
+		$orderBy = isset($_GET['orderby']) ? trim($_GET['orderby']) : '';
+		$order = isset($_GET['order']) ? trim($_GET['order']) : '';
+		$offset = ( $current_page-1 )* $per_page;
+		$limit = $per_page;
+		$filter = array();
+
+		if(isset($_GET['cat']))
+			$filter['cat'] = $_GET['cat'];
+
+		$result = $m->fetchTable($orderBy, $order, $search, $limit, $offset, $filter);
+
+		$this->view->quizItems = $result['quiz'];
+		$this->view->quizCount = $result['count'];
+		$this->view->categoryItems = $categoryMapper->fetchAll(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);;
+		$this->view->perPage = $per_page;
+
 		$this->view->show();
 	}
 	

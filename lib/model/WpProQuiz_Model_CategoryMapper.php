@@ -1,6 +1,11 @@
 <?php
 class WpProQuiz_Model_CategoryMapper extends WpProQuiz_Model_Mapper {
-	
+
+	/**
+	 * @param string $type
+	 *
+	 * @return WpProQuiz_Model_Category[]
+	 */
 	public function fetchAll($type = WpProQuiz_Model_Category::CATEGORY_TYPE_QUESTION) {
 		$type = $type == WpProQuiz_Model_Category::CATEGORY_TYPE_QUESTION ? $type : WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ;
 		

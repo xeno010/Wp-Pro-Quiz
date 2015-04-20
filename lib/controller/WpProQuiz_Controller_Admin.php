@@ -8,7 +8,7 @@ class WpProQuiz_Controller_Admin {
 		$this->_ajax = new WpProQuiz_Controller_Ajax();
 		
 		$this->_ajax->init();
-		
+
 		//deprecated - use WpProQuiz_Controller_Ajax
 		add_action('wp_ajax_wp_pro_quiz_update_sort', array($this, 'updateSort'));
 		add_action('wp_ajax_wp_pro_quiz_load_question', array($this, 'updateSort'));
@@ -35,6 +35,15 @@ class WpProQuiz_Controller_Admin {
 		
 		
 		add_action('admin_menu', array($this, 'register_page'));
+
+		add_filter('set-screen-option', array($this, 'setScreenOption'), 10, 3);
+	}
+
+	public function setScreenOption($status, $option, $value) {
+		if ( 'wp_pro_quiz_quiz_overview_per_page' == $option )
+			return $value;
+
+		return $status;
 	}
 	
 	public function loadQuizData() {
@@ -179,10 +188,24 @@ class WpProQuiz_Controller_Admin {
 
 		foreach($pages as $p) {
 			add_action('admin_print_scripts-'.$p, array($this, 'enqueueScript'));
+			add_action('load-'.$p, array($this, 'routeLoadAction'));
 		}
+
+		if(! empty($_REQUEST['_wp_http_referer']) ){
+			wp_redirect( remove_query_arg( array('_wp_http_referer', '_wpnonce'), wp_unslash($_SERVER['REQUEST_URI']) ) );
+			exit;
+		}
+	}
+
+	public function routeLoadAction() {
+		$this->_route(true);
 	}
 	
 	public function route() {
+		$this->_route();
+	}
+
+	private function _route($routeAction = false) {
 		$module = isset($_GET['module']) ? $_GET['module'] : 'overallView';
 
 		if(isset($_GET['page'])) {
@@ -192,7 +215,7 @@ class WpProQuiz_Controller_Admin {
 		}
 
 		$c = null;
-		
+
 		switch ($module) {
 			case 'overallView':
 				$c = new WpProQuiz_Controller_Quiz();
@@ -227,7 +250,13 @@ class WpProQuiz_Controller_Admin {
 		}
 
 		if($c !== null) {
-			$c->route();
+			if($routeAction) {
+				if(method_exists($c, 'routeAction')) {
+					$c->routeAction();
+				}
+			} else {
+				$c->route();
+			}
 		}
 	}
 }

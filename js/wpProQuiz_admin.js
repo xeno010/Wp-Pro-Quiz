@@ -21,209 +21,209 @@ jQuery(document).ready(function($) {
 	
 	$.fn.wpProQuiz_quizOverall = function() {
 		
-		function isEmpty(text) {
-			text = $.trim(text);
-			
-			return (!text || 0 === text.length);
-		};
-		
-		function ajaxPost(func, data, success) {
-			var d = {
-				action: 'wp_pro_quiz_admin_ajax',
-				func: func,
-				data: data
-			};
-			
-			$.post(ajaxurl, d, success, 'json');
-		};
-		
-		var methods = {
-			changeExport: function(input) {
-				$input = $(input);
-				$export = $('.wpProQuiz_exportList');
-				$export2 = $('.wpProQuiz_setQuizCategoryList');
-				$ul = $export.find('ul').first();
-				$ul2 = $export2.find('ul').first();
-				$export.find('li').remove();
-				$export2.find('li').remove();
-				
-				$('input[name="exportItems"]').each(function() {
-					$this = $(this);
-
-					if(this.checked) {
-						var text = $this.parent().parent().find('.wpProQuiz_quizName a:eq(0)').text();
-						$('<li>' + text + '</li>').appendTo($ul);							
-						$('<li>' + text + '</li>').appendTo($ul2);							
-					}
-				});
-			},
-			
-			startExport: function() {
-				$ele = $('input[name="exportItems"]:checked');
-				
-				if($ele.length < 1) {
-					alert(wpProQuizLocalize.no_selected_quiz);
-					return false;
-				}
-				
-				$hidden = $('#exportHidden');
-				
-				$hidden.html('');
-				
-				$('input[name="exportItems"]').each(function() {
-					$this = $(this);
-					
-					if(this.checked) {
-						$('<input type="hidden" value="'+ this.value +'" name="exportIds[]">').appendTo($hidden);						
-					}
-				});
-				
-				return true;
-			},
-			
-			setCategoriesStart: function() {
-				$ele = $('input[name="exportItems"]:checked');
-				
-				if($ele.length < 1) {
-					alert(wpProQuizLocalize.no_selected_quiz);
-					return false;
-				}
-				
-				var ids = [];
-				
-				$('input[name="exportItems"]').each(function() {
-					$this = $(this);
-					
-					if(this.checked) {
-						ids.push(this.value);
-					}
-				});
-				
-				var categoryId = $('select[name="category"]').val();
-				
-				var data = {
-					categoryId: categoryId,
-					quizIds: ids
-				};
-				
-				$('#ajaxLoad').show();
-				
-				ajaxPost('setQuizMultipleCategories', data, function(json) {
-					location.reload();
-				});
-				
-				return true;
-			},
-			
-			addCategory: function() {
-				var name = $.trim($('input[name="categoryAdd"]').val());
-				
-				if(isEmpty(name)) {
-					return;
-				}
-				
-				var data = {
-					categoryName: name,
-					type: 'quiz'
-				};
-				
-				ajaxPost('categoryAdd', data, function(json) {
-					if(json.err) {
-						$('#categoryMsgBox').text(json.err).show('fast').delay(2000).hide('fast');
-						return;
-					}
-					
-					var $option = $(document.createElement('option'))
-						.val(json.categoryId)
-						.text(json.categoryName)
-						.attr('selected', 'selected');
-					
-					$('select[name="category"]').append($option).change();
-					
-				});
-			}
-		};
-		
-		var init = function() {
-			$('.wpProQuiz_delete').click(function(e) {
-				var b = confirm(wpProQuizLocalize.delete_msg);
-
-				if(!b) {
-					e.preventDefault();
-					return false;
-				}
-
-				return true;
-			});
-			
-			$('.wpProQuiz_import').click(function(e) {
-				e.preventDefault();
-				$('.wpProQuiz_importList').show('fast');
-				
-				$('.wpProQuiz_exportList, .wpProQuiz_setQuizCategoryList').hide();
-				$('.wpProQuiz_exportCheck').hide();
-				
-			});
-			
-			$('.wpProQuiz_export').click(function(e) {
-				e.preventDefault();
-				
-				$('.wpProQuiz_exportList').show('fast');
-				$('.wpProQuiz_exportCheck').show('fast');
-				$('.wpProQuiz_importList, .wpProQuiz_setQuizCategoryList').hide();
-			});
-			
-			$('.wpProQuiz_setQuizCategory').click(function(e) {
-				e.preventDefault();
-				
-				$('.wpProQuiz_setQuizCategoryList').show('fast');
-				$('.wpProQuiz_exportCheck').show('fast');
-				$('.wpProQuiz_importList, .wpProQuiz_exportList').hide();
-			});
-			
-			$('input[name="exportItems"]').change(function() {
-				methods.changeExport(this);
-			});
-			
-			$('input[name="exportItemsAll"]').change(function() {
-				var $input = $('input[name="exportItems"]');
-				if(this.checked)
-					$input.attr('checked', true);
-				else
-					$input.attr('checked', false);
-				
-				$input.change();
-			});
-			
-			$('#exportStart').click(function(e) {
-
-				if(!methods.startExport())
-					e.preventDefault();
-			});
-			
-			$('#setCategoriesStart').click(function(e) {
-				
-				if(!methods.setCategoriesStart())
-					e.preventDefault();
-			});
-			
-			$('select[name="category"]').change(function() {
-				var $this = $(this);
-				var box = $('#categoryAddBox').hide();
-				
-				
-				if($this.val() == "-1") {
-					box.show();
-				}
-				
-			}).change();
-			
-			$('#categoryAddBtn').click(function() {
-				methods.addCategory();
-			});
-		};
-		
-		init();
+		//function isEmpty(text) {
+		//	text = $.trim(text);
+		//
+		//	return (!text || 0 === text.length);
+		//};
+		//
+		//function ajaxPost(func, data, success) {
+		//	var d = {
+		//		action: 'wp_pro_quiz_admin_ajax',
+		//		func: func,
+		//		data: data
+		//	};
+		//
+		//	$.post(ajaxurl, d, success, 'json');
+		//};
+		//
+		//var methods = {
+		//	changeExport: function(input) {
+		//		$input = $(input);
+		//		$export = $('.wpProQuiz_exportList');
+		//		$export2 = $('.wpProQuiz_setQuizCategoryList');
+		//		$ul = $export.find('ul').first();
+		//		$ul2 = $export2.find('ul').first();
+		//		$export.find('li').remove();
+		//		$export2.find('li').remove();
+		//
+		//		$('input[name="exportItems"]').each(function() {
+		//			$this = $(this);
+		//
+		//			if(this.checked) {
+		//				var text = $this.parent().parent().find('.wpProQuiz_quizName a:eq(0)').text();
+		//				$('<li>' + text + '</li>').appendTo($ul);
+		//				$('<li>' + text + '</li>').appendTo($ul2);
+		//			}
+		//		});
+		//	},
+		//
+		//	startExport: function() {
+		//		$ele = $('input[name="exportItems"]:checked');
+		//
+		//		if($ele.length < 1) {
+		//			alert(wpProQuizLocalize.no_selected_quiz);
+		//			return false;
+		//		}
+		//
+		//		$hidden = $('#exportHidden');
+		//
+		//		$hidden.html('');
+		//
+		//		$('input[name="exportItems"]').each(function() {
+		//			$this = $(this);
+		//
+		//			if(this.checked) {
+		//				$('<input type="hidden" value="'+ this.value +'" name="exportIds[]">').appendTo($hidden);
+		//			}
+		//		});
+		//
+		//		return true;
+		//	},
+		//
+		//	setCategoriesStart: function() {
+		//		$ele = $('input[name="exportItems"]:checked');
+		//
+		//		if($ele.length < 1) {
+		//			alert(wpProQuizLocalize.no_selected_quiz);
+		//			return false;
+		//		}
+		//
+		//		var ids = [];
+		//
+		//		$('input[name="exportItems"]').each(function() {
+		//			$this = $(this);
+		//
+		//			if(this.checked) {
+		//				ids.push(this.value);
+		//			}
+		//		});
+		//
+		//		var categoryId = $('select[name="category"]').val();
+		//
+		//		var data = {
+		//			categoryId: categoryId,
+		//			quizIds: ids
+		//		};
+		//
+		//		$('#ajaxLoad').show();
+		//
+		//		ajaxPost('setQuizMultipleCategories', data, function(json) {
+		//			location.reload();
+		//		});
+		//
+		//		return true;
+		//	},
+		//
+		//	addCategory: function() {
+		//		var name = $.trim($('input[name="categoryAdd"]').val());
+		//
+		//		if(isEmpty(name)) {
+		//			return;
+		//		}
+		//
+		//		var data = {
+		//			categoryName: name,
+		//			type: 'quiz'
+		//		};
+		//
+		//		ajaxPost('categoryAdd', data, function(json) {
+		//			if(json.err) {
+		//				$('#categoryMsgBox').text(json.err).show('fast').delay(2000).hide('fast');
+		//				return;
+		//			}
+		//
+		//			var $option = $(document.createElement('option'))
+		//				.val(json.categoryId)
+		//				.text(json.categoryName)
+		//				.attr('selected', 'selected');
+		//
+		//			$('select[name="category"]').append($option).change();
+		//
+		//		});
+		//	}
+		//};
+		//
+		//var init = function() {
+		//	$('.wpProQuiz_delete').click(function(e) {
+		//		var b = confirm(wpProQuizLocalize.delete_msg);
+		//
+		//		if(!b) {
+		//			e.preventDefault();
+		//			return false;
+		//		}
+		//
+		//		return true;
+		//	});
+		//
+		//	$('.wpProQuiz_import').click(function(e) {
+		//		e.preventDefault();
+		//		$('.wpProQuiz_importList').show('fast');
+		//
+		//		$('.wpProQuiz_exportList, .wpProQuiz_setQuizCategoryList').hide();
+		//		$('.wpProQuiz_exportCheck').hide();
+		//
+		//	});
+		//
+		//	$('.wpProQuiz_export').click(function(e) {
+		//		e.preventDefault();
+		//
+		//		$('.wpProQuiz_exportList').show('fast');
+		//		$('.wpProQuiz_exportCheck').show('fast');
+		//		$('.wpProQuiz_importList, .wpProQuiz_setQuizCategoryList').hide();
+		//	});
+		//
+		//	$('.wpProQuiz_setQuizCategory').click(function(e) {
+		//		e.preventDefault();
+		//
+		//		$('.wpProQuiz_setQuizCategoryList').show('fast');
+		//		$('.wpProQuiz_exportCheck').show('fast');
+		//		$('.wpProQuiz_importList, .wpProQuiz_exportList').hide();
+		//	});
+		//
+		//	$('input[name="exportItems"]').change(function() {
+		//		methods.changeExport(this);
+		//	});
+		//
+		//	$('input[name="exportItemsAll"]').change(function() {
+		//		var $input = $('input[name="exportItems"]');
+		//		if(this.checked)
+		//			$input.attr('checked', true);
+		//		else
+		//			$input.attr('checked', false);
+		//
+		//		$input.change();
+		//	});
+		//
+		//	$('#exportStart').click(function(e) {
+		//
+		//		if(!methods.startExport())
+		//			e.preventDefault();
+		//	});
+		//
+		//	$('#setCategoriesStart').click(function(e) {
+		//
+		//		if(!methods.setCategoriesStart())
+		//			e.preventDefault();
+		//	});
+		//
+		//	$('select[name="category"]').change(function() {
+		//		var $this = $(this);
+		//		var box = $('#categoryAddBox').hide();
+		//
+		//
+		//		if($this.val() == "-1") {
+		//			box.show();
+		//		}
+		//
+		//	}).change();
+		//
+		//	$('#categoryAddBtn').click(function() {
+		//		methods.addCategory();
+		//	});
+		//};
+		//
+		//init();
 	};
 	
 //	$.fn.wpProQuiz_questionEdit = function() {

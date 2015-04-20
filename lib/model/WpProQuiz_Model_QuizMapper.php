@@ -66,6 +66,84 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 		
 		return $r;
 	}
+
+	/**
+	 * @param $orderBy
+	 * @param $order
+	 * @param $search
+	 * @param $limit
+	 * @param $offset
+	 * @param $filter
+	 *
+	 * @return array
+	 */
+	public function fetchTable($orderBy, $order, $search, $limit, $offset, $filter) {
+		$r = array();
+
+		switch($orderBy) {
+			case 'category';
+				$_orderBy = 'c.category_name';
+				break;
+			default:
+				$_orderBy = 'm.name';
+				break;
+		}
+
+		$whereFilter = '';
+
+		if($filter) {
+			if(isset($filter['cat']) && $filter['cat']) {
+				$whereFilter = ' AND m.category_id = '. ((int) $filter['cat']);
+			}
+		}
+
+		$results = $this->_wpdb->get_results($this->_wpdb->prepare(
+			"
+				SELECT
+					m.*,
+					c.category_name
+				FROM
+					{$this->_table} AS m
+					LEFT JOIN {$this->_tableCategory} AS c
+						ON c.category_id = m.category_id
+				WHERE
+					m.name LIKE %s
+					{$whereFilter}
+				ORDER BY
+					{$_orderBy} ".($order == 'asc' ? 'asc' : 'desc')."
+				LIMIT %d, %d
+			",
+		array(
+			'%'.$search.'%', $offset, $limit
+		)), ARRAY_A);
+
+		foreach ($results as $row) {
+
+			if($row['result_grade_enabled'])
+				$row['result_text'] = unserialize($row['result_text']);
+
+			$r[] =  new WpProQuiz_Model_Quiz($row);
+		}
+
+		$count = $this->_wpdb->get_var($this->_wpdb->prepare(
+			"
+				SELECT
+					COUNT(*) as count_rows
+				FROM
+					{$this->_table} AS m
+				WHERE
+					m.name LIKE %s
+					{$whereFilter}
+			",
+			array(
+				'%'.$search.'%'
+			)));
+
+		return array(
+			'quiz' => $r,
+			'count' => $count ? $count : 0
+		);
+	}
 	
 	public function save(WpProQuiz_Model_Quiz $data) {
 		
