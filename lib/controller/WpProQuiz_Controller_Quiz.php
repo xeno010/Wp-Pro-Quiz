@@ -43,11 +43,14 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 	}
 
 	private function showActionHook() {
+		if(! empty($_REQUEST['_wp_http_referer']) ){
+			wp_redirect( remove_query_arg( array('_wp_http_referer', '_wpnonce'), wp_unslash($_SERVER['REQUEST_URI']) ) );
+			exit;
+		}
+
 		if(!class_exists('WP_List_Table')){
 			require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 		}
-
-		set_current_screen('toplevel_page_wpproquiz');
 
 		add_filter( 'manage_' . get_current_screen()->id . '_columns', array('WpProQuiz_View_QuizOverallTable', 'getColumnDefs'));
 

@@ -243,7 +243,7 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 	</h2>
 
 	<div>
-		<div class="wpProQuiz_InfoBar" style="margin-top:-36px; float: right;">
+		<div class="wpProQuiz_InfoBar" style="display: none; margin-top:-36px; float: right;">
 			
 			<div style="background-color: #FFFBCC; padding: 6px; border: 1px solid #E6DB55; float: left;">
 				<strong><?php _e('You need special WP-Pro-Quiz modification for your website?', 'wp-pro-quiz'); ?></strong><br>

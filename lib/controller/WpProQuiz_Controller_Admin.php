@@ -180,8 +180,8 @@ class WpProQuiz_Controller_Admin {
 
 		$pages[] = add_submenu_page(
 			'wpProQuiz',
-			__( 'Support', 'wp-pro-quiz' ),
-			__( 'Support', 'wp-pro-quiz' ),
+			__( 'Support & More', 'wp-pro-quiz' ),
+			__( 'Support & More', 'wp-pro-quiz' ),
 			'wpProQuiz_show',
 			'wpProQuiz_wpq_support',
 			array( $this, 'route' ) );
@@ -190,14 +190,23 @@ class WpProQuiz_Controller_Admin {
 			add_action('admin_print_scripts-'.$p, array($this, 'enqueueScript'));
 			add_action('load-'.$p, array($this, 'routeLoadAction'));
 		}
-
-		if(! empty($_REQUEST['_wp_http_referer']) ){
-			wp_redirect( remove_query_arg( array('_wp_http_referer', '_wpnonce'), wp_unslash($_SERVER['REQUEST_URI']) ) );
-			exit;
-		}
 	}
 
 	public function routeLoadAction() {
+		$screen     = get_current_screen();
+
+		if(!empty($screen)) {
+			// Workaround for wp_ajax_hidden_columns() with sanitize_key()
+			set_current_screen(strtolower($screen->id));
+
+			$screen = get_current_screen();
+		}
+
+		$helperView = new WpProQuiz_View_GlobalHelperTabs();
+
+		$screen->add_help_tab($helperView->getHelperTab());
+		$screen->set_help_sidebar($helperView->getHelperSidebar());
+
 		$this->_route(true);
 	}
 	
