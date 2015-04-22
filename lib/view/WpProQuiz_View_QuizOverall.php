@@ -201,6 +201,23 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 			return true;
 		}
 
+		function handleDeleteAction() {
+			var items = getCheckedItems();
+			var $form = $('#deleteForm').empty();
+
+			$.each(items, function (i, v) {
+				$form.append(
+					$('<input>').attr({
+						type: 'hidden',
+						name: 'ids[]',
+						value: v.ID
+					})
+				);
+			});
+
+			$form.submit();
+		}
+
 		function handleAction(action) {
 			switch (action) {
 				case 'export':
@@ -208,6 +225,9 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 					return false;
 				case 'set_category':
 					handleSetCategoryAction();
+					return false;
+				case 'delete':
+					handleDeleteAction();
 					return false;
 			}
 
@@ -221,6 +241,18 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 		$('#doaction2').click(function () {
 			return handleAction($('[name="action2"]').val());
 		});
+
+		$('.wpProQuiz_delete').click(function(e) {
+			var b = confirm(wpProQuizLocalize.delete_msg);
+
+			if(!b) {
+				e.preventDefault();
+				return false;
+			}
+
+			return true;
+		});
+
 	});
 </script>
 
@@ -241,6 +273,10 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View {
 			<a class="add-new-h2 wpProQuiz_import" href="#"><?php echo __('Import', 'wp-pro-quiz'); ?></a>
 		<?php } ?>
 	</h2>
+
+	<form action="?page=wpProQuiz&action=deleteMulti" method="post" style="display: none;" id="deleteForm">
+
+	</form>
 
 	<div>
 		<div class="wpProQuiz_InfoBar" style="display: none; margin-top:-36px; float: right;">

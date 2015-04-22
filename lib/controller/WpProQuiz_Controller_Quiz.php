@@ -23,6 +23,9 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 				if(isset($_GET['id']))
 					$this->deleteAction($_GET['id']);
 				break;
+			case 'deleteMulti':
+				$this->deleteMultiAction();
+				break;
 			case 'reset_lock':
 				$this->resetLock($_GET['id']);
 				break;
@@ -328,7 +331,7 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 		if(!current_user_can('wpProQuiz_show')) {
 			wp_die(__('You do not have sufficient permissions to access this page.'));
 		}
-		
+
 		$this->view = new WpProQuiz_View_QuizOverall();
 		
 		$m = new WpProQuiz_Model_QuizMapper();
@@ -655,32 +658,37 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller {
 	}
 	
 	private function deleteAction($id) {
-		
 		if(!current_user_can('wpProQuiz_delete_quiz')) {
 			wp_die(__('You do not have sufficient permissions to access this page.'));
 		}
-		
+
 		$m = new WpProQuiz_Model_QuizMapper();
-// 		$qm = new WpProQuiz_Model_QuestionMapper();
-// 		$lm = new WpProQuiz_Model_LockMapper();
-// 		$srm = new WpProQuiz_Model_StatisticRefMapper();
-// 		$pm = new WpProQuiz_Model_PrerequisiteMapper();
-// 		$tm = new WpProQuiz_Model_ToplistMapper();
-		
-// 		$m->delete($id);
-// 		$qm->deleteByQuizId($id);
-// 		$lm->deleteByQuizId($id);
-// 		$srm->deleteAll($id);
-// 		$pm->delete($id);
-// 		$tm->delete($id);
-		
+
 		$m->deleteAll($id);
-		
+
 		WpProQuiz_View_View::admin_notices(__('Quiz deleted', 'wp-pro-quiz'), 'info');
-		
+
 		$this->showAction();
 	}
-	
+
+	private function deleteMultiAction() {
+		if(!current_user_can('wpProQuiz_delete_quiz')) {
+			wp_die(__('You do not have sufficient permissions to access this page.'));
+		}
+
+		$m = new WpProQuiz_Model_QuizMapper();
+
+		if(!empty($_POST['ids'])) {
+			foreach($_POST['ids'] as $id) {
+				$m->deleteAll($id);
+			}
+		}
+
+		WpProQuiz_View_View::admin_notices(__('Quiz deleted', 'wp-pro-quiz'), 'info');
+
+		$this->showAction();
+	}
+
 	private function checkValidit($post) {
 		return (isset($post['name']) && !empty($post['name']) && isset($post['text']) && !empty($post['text']));
 	}
