@@ -40,7 +40,7 @@ class WpProQuiz_Controller_Admin {
 	}
 
 	public function setScreenOption($status, $option, $value) {
-		if ( 'wp_pro_quiz_quiz_overview_per_page' == $option )
+		if ( in_array($option, array('wp_pro_quiz_quiz_overview_per_page', 'wp_pro_quiz_question_overview_per_page')))
 			return $value;
 
 		return $status;
@@ -197,7 +197,12 @@ class WpProQuiz_Controller_Admin {
 
 		if(!empty($screen)) {
 			// Workaround for wp_ajax_hidden_columns() with sanitize_key()
-			set_current_screen(strtolower($screen->id));
+			$name = strtolower($screen->id);
+
+			if(!empty($_GET['module']))
+				$name .= '_'.strtolower($_GET['module']);
+
+			set_current_screen($name);
 
 			$screen = get_current_screen();
 		}

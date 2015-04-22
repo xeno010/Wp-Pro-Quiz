@@ -40,7 +40,10 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 		
 		return new WpProQuiz_Model_Quiz($results);
 	}
-	
+
+	/**
+	 * @return WpProQuiz_Model_Quiz[]
+	 */
 	public function fetchAll() {
 		$r = array();
 		

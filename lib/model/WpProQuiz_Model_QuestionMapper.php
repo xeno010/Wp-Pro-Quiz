@@ -152,7 +152,14 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 		
 		return is_array($id) ? $a : (isset($a[0]) ? $a[0] : null);
 	}
-	
+
+	/**
+	 * @param $quizId
+	 * @param bool $rand
+	 * @param int $max
+	 *
+	 * @return WpProQuiz_Model_Question[]
+	 */
 	public function fetchAll($quizId, $rand = false, $max = 0) {
 		
 		if($rand) {
@@ -192,8 +199,86 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 		
 		return $a;
 	}
+
+	/**
+	 * @param $orderBy
+	 * @param $order
+	 * @param $search
+	 * @param $limit
+	 * @param $offset
+	 * @param $filter
+	 *
+	 * @return array
+	 */
+	public function fetchTable($quizId, $orderBy, $order, $search, $limit, $offset, $filter) {
+		$r = array();
+
+		switch ( $orderBy ) {
+			case 'category';
+				$_orderBy = 'c.category_name';
+				break;
+			case 'name':
+				$_orderBy = 'q.title';
+				break;
+			default:
+				$_orderBy = 'q.sort';
+				$order = 'asc';
+				break;
+		}
+
+		$whereFilter = '';
+
+		if ( $filter ) {
+			if ( isset( $filter['cat'] ) && $filter['cat'] ) {
+				$whereFilter = ' AND q.category_id = ' . ( (int) $filter['cat'] );
+			}
+		}
+
+		$results = $this->_wpdb->get_results( $this->_wpdb->prepare( "
+				SELECT
+					q.*,
+					c.category_name
+				FROM
+					{$this->_table} AS q
+					LEFT JOIN {$this->_tableCategory} AS c
+						ON c.category_id = q.category_id
+				WHERE
+					quiz_id = %d AND q.online = 1 AND
+					q.title LIKE %s
+					{$whereFilter}
+				ORDER BY
+					{$_orderBy} " . ( $order == 'asc' ? 'asc' : 'desc' ) . "
+				LIMIT %d, %d
+			", array( $quizId,
+				'%' . $search . '%', $offset, $limit
+			) ), ARRAY_A );
+
+		foreach ( $results as $row ) {
+			$r[] = new WpProQuiz_Model_Question( $row );
+		}
+
+		$count = $this->_wpdb->get_var( $this->_wpdb->prepare( "
+				SELECT
+					COUNT(*) as count_rows
+				FROM
+					{$this->_table} AS q
+				WHERE
+					quiz_id = %d AND q.online = 1 AND
+					q.title LIKE %s
+					{$whereFilter}
+			", array($quizId,
+				'%' . $search . '%'
+			) ) );
+
+		return array(
+			'questions'  => $r,
+			'count' => $count ? $count : 0
+		);
+	}
 	
-	public function fetchAllList($quizId, $list) {
+	public function fetchAllList($quizId, $list, $sort = false) {
+		$sort = $sort ? 'ORDER BY sort' : '';
+
 		$results = $this->_wpdb->get_results(
 				$this->_wpdb->prepare(
 						'SELECT
@@ -201,7 +286,8 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 							FROM
 								'. $this->_tableQuestion.'
 							WHERE
-								quiz_id = %d AND online = 1'
+								quiz_id = %d AND online = 1
+							'.$sort
 						, $quizId),
 				ARRAY_A);
 		
@@ -235,5 +321,19 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 		}
 		
 		return $a;
+	}
+
+	public function setMultipeCategories($questionIds, $categoryId) {
+		$categoryId = $categoryId < 0 ? 0 : $categoryId;
+
+		$questionIds = implode(', ', array_map('intval', (array)$questionIds));
+
+		return $this->_wpdb->query($this->_wpdb->prepare(
+			"UPDATE
+					{$this->_table}
+				SET
+					`category_id` = %d
+				WHERE id IN(".$questionIds.")"
+			, $categoryId));
 	}
 }

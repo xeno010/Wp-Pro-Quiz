@@ -44,6 +44,9 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			case 'delete':
 				$this->deleteAction($_GET['id']);
 				break;
+			case 'delete_multi':
+				$this->deleteMultiAction($_GET['quiz_id']);
+				break;
 			case 'save_sort':
 				$this->saveSort();
 				break;
@@ -53,9 +56,40 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 			case 'copy_question':
 				$this->copyQuestion($_GET['quiz_id']);
 				break;
+			default:
+				$this->showAction();
+				break;
 		}
 	}
-	
+
+	public function routeAction() {
+		$action = isset($_GET['action']) ? $_GET['action'] : 'show';
+
+		switch ($action) {
+			default:
+				$this->showActionHook();
+				break;
+		}
+	}
+
+	private function showActionHook() {
+		if(! empty($_REQUEST['_wp_http_referer']) ){
+			wp_redirect( remove_query_arg( array('_wp_http_referer', '_wpnonce'), wp_unslash($_SERVER['REQUEST_URI']) ) );
+			exit;
+		}
+
+		if(!class_exists('WP_List_Table')){
+			require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+		}
+
+		add_filter( 'manage_' . get_current_screen()->id . '_columns', array('WpProQuiz_View_QuestionOverallTable', 'getColumnDefs'));
+
+		add_screen_option( 'per_page', array(
+			'label' => __( 'Questions', 'wp-pro-quiz' ),
+			'default' => 20,
+			'option' => 'wp_pro_quiz_question_overview_per_page' ) );
+	}
+
 	private function addEditQuestion($quizId) {
 		$questionId = isset($_GET['questionId']) ? (int)$_GET['questionId'] : 0;
 
@@ -271,7 +305,23 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		
 		$this->showAction();
 	}
-	
+
+	public function deleteMultiAction($quizId) {
+		if(!current_user_can('wpProQuiz_delete_quiz')) {
+			wp_die(__('You do not have sufficient permissions to access this page.'));
+		}
+
+		$mapper = new WpProQuiz_Model_QuestionMapper();
+
+		if(!empty($_POST['ids'])) {
+			foreach($_POST['ids'] as $id) {
+				$mapper->setOnlineOff($id);
+			}
+		}
+
+		$this->showAction();
+	}
+
 	/**
 	 * @deprecated
 	 */
@@ -534,6 +584,12 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		
 		return $a;
 	}
+
+	private function getCurrentPage() {
+		$pagenum = isset( $_REQUEST['paged'] ) ? absint( $_REQUEST['paged'] ) : 0;
+
+		return max( 1, $pagenum );
+	}
 	
 	public function showAction() {
 		if(!current_user_can('wpProQuiz_show')) {
@@ -542,10 +598,108 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller {
 		
 		$m = new WpProQuiz_Model_QuizMapper();
 		$mm = new WpProQuiz_Model_QuestionMapper();
+		$categoryMapper = new WpProQuiz_Model_CategoryMapper();
 		
 		$this->view = new WpProQuiz_View_QuestionOverall();
 		$this->view->quiz = $m->fetch($this->_quizId);
-		$this->view->question = $mm->fetchAll($this->_quizId);
+
+		$per_page = (int) get_user_option( 'wp_pro_quiz_question_overview_per_page' );
+		if ( empty( $per_page ) || $per_page < 1 )
+			$per_page = 20;
+
+		$current_page = $this->getCurrentPage();
+		$search = isset($_GET['s']) ? trim($_GET['s']) : '';
+		$orderBy = isset($_GET['orderby']) ? trim($_GET['orderby']) : '';
+		$order = isset($_GET['order']) ? trim($_GET['order']) : '';
+		$offset = ( $current_page-1 )* $per_page;
+		$limit = $per_page;
+		$filter = array();
+
+		if(isset($_GET['cat']))
+			$filter['cat'] = $_GET['cat'];
+
+		$result = $mm->fetchTable($this->_quizId, $orderBy, $order, $search, $limit, $offset, $filter);
+
+		$this->view->questionItems = $result['questions'];
+		$this->view->questionCount = $result['count'];
+		$this->view->categoryItems = $categoryMapper->fetchAll(WpProQuiz_Model_Category::CATEGORY_TYPE_QUESTION);
+		$this->view->perPage = $per_page;
+
 		$this->view->show();
+	}
+
+	public static function ajaxSetQuestionMultipleCategories($data, $func) {
+		if(!current_user_can('wpProQuiz_edit_quiz')) {
+			return json_encode(array());
+		}
+
+		$quizMapper = new WpProQuiz_Model_QuestionMapper();
+
+		$quizMapper->setMultipeCategories($data['questionIds'], $data['categoryId']);
+
+		return json_encode(array());
+	}
+
+	public static function ajaxLoadQuestionsSort($data, $func) {
+		if(!current_user_can('wpProQuiz_edit_quiz')) {
+			return json_encode(array());
+		}
+
+		$quizMapper = new WpProQuiz_Model_QuestionMapper();
+
+		$questions = $quizMapper->fetchAllList($data['quizId'], array('id', 'title'), true);
+
+		return json_encode($questions);
+	}
+
+	public static function ajaxSaveSort($data, $func) {
+		if(!current_user_can('wpProQuiz_edit_quiz')) {
+			return json_encode(array());
+		}
+
+		$mapper = new WpProQuiz_Model_QuestionMapper();
+
+		foreach($data['sort'] as $k => $v)
+			$mapper->updateSort($v, $k);
+
+		return json_encode(array());
+	}
+
+	public static function ajaxLoadCopyQuestion($data, $func) {
+		if(!current_user_can('wpProQuiz_edit_quiz')) {
+			echo json_encode(array());
+			exit;
+		}
+
+		$quizId = $data['quizId'];
+		$quizMapper = new WpProQuiz_Model_QuizMapper();
+		$questionMapper = new WpProQuiz_Model_QuestionMapper();
+		$data = array();
+
+		$quiz = $quizMapper->fetchAll();
+
+		foreach($quiz as $qz) {
+
+			if($qz->getId() == $quizId)
+				continue;
+
+			$question = $questionMapper->fetchAll($qz->getId());
+			$questionArray = array();
+
+			foreach($question as $qu) {
+				$questionArray[] = array(
+					'name' => $qu->getTitle(),
+					'id' => $qu->getId()
+				);
+			}
+
+			$data[] = array(
+				'name' => $qz->getName(),
+				'id' => $qz->getId(),
+				'question' => $questionArray
+			);
+		}
+
+		return json_encode($data);
 	}
 }

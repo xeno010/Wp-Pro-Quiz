@@ -58,7 +58,12 @@ class WpProQuiz_Controller_Ajax {
 				
 			'quizLoadData' => array('WpProQuiz_Controller_Front', 'ajaxQuizLoadData'),
 				
-			'setQuizMultipleCategories' => array('WpProQuiz_Controller_Quiz', 'ajaxSetQuizMultipleCategories')
+			'setQuizMultipleCategories' => array('WpProQuiz_Controller_Quiz', 'ajaxSetQuizMultipleCategories'),
+			'setQuestionMultipleCategories' => array('WpProQuiz_Controller_Question', 'ajaxSetQuestionMultipleCategories'),
+
+			'loadQuestionsSort' => array('WpProQuiz_Controller_Question', 'ajaxLoadQuestionsSort'),
+			'questionSaveSort' => array('WpProQuiz_Controller_Question', 'ajaxSaveSort'),
+			'questionaLoadCopyQuestion' => array('WpProQuiz_Controller_Question', 'ajaxLoadCopyQuestion')
 		);
 		
 		//nopriv
