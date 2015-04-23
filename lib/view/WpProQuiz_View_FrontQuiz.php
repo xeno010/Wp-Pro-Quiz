@@ -48,7 +48,12 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		$t = str_replace("\r\n", "\n", strtolower($data->getAnswer()));
 		$t = str_replace("\r", "\n", $t);
 		$t = explode("\n", $t);
-		return array_values(array_filter(array_map('trim', $t)));
+
+		return array_values(array_filter(array_map('trim', $t), array($this, 'removeEmptyElements')));
+	}
+
+	private function removeEmptyElements($v) {
+		return !empty( $v ) || $v === '0';
 	}
 	
 	public function show($preview = false) {
