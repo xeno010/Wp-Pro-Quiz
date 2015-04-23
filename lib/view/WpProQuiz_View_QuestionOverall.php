@@ -242,8 +242,6 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 			$('#loadDataImg').show();
 
 			ajaxPost('questionaLoadCopyQuestion', data, function (json) {
-				console.debug(json);
-
 				$.each(json, function(i, v) {
 						var group = $(document.createElement('optgroup'))
 							.attr('label', v.name);
