@@ -56,6 +56,7 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Danish / dansk (Thanks Kenneth D.)
 *		Dutch / nederlands (Thanks Bas W. and Jurriën van den H.)
 * 		English (Thanks Alexander M.)
+*       Finnish / Suomi (Thanks Mikko Sävilahti)
 *		French / français (Thanks Aurélien C.)
 *		German / deutsch
 *		Greek / ελληνικά (Thanks Ζαχαρίας Σ.)
@@ -113,6 +114,7 @@ https://github.com/xeno010/Wp-Pro-Quiz/wiki
 = XX =
 * fix #2 - Free Answer: "0" Answer is marked as incorrect (https://github.com/xeno010/Wp-Pro-Quiz/issues/2)
 * Translation for korean have been added (Thanks Kyeong Choi)
+* Translation for finnish have been added (Thanks Mikko Sävilahti)
 * Updated italian translation (Thanks Fabio)
 
 = 0.35 =

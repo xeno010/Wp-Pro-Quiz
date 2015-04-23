@@ -50,6 +50,7 @@ A powerful and beautiful quiz plugin for WordPress.
 - Danish / dansk (Thanks Kenneth D.)
 - Dutch / nederlands (Thanks Bas W. and Jurriën van den H.)
 - English (Thanks Alexander M.)
+- Finnish / Suomi (Thanks Mikko Sävilahti)
 - French / français (Thanks Aurélien C.)
 - German / deutsch
 - Greek / ελληνικά (Thanks Ζαχαρίας Σ.)
