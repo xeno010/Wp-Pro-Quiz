@@ -68,7 +68,10 @@ class WpProQuiz_View_QuestionOverallTable extends WP_List_Table {
 			$actions['wpProQuiz_delete'] = sprintf('<a style="color: red;" href="?page=wpProQuiz&module=question&action=delete&quiz_id=%1$s&id=%2$s">'.__('Delete', 'wp-pro-quiz').'</a>',
 				$item['quizId'], $item['ID']);
 
-		return sprintf('<a class="row-title" href="#">%2$s</a> %3$s', $item['ID'], $item['name'], $this->row_actions($actions) );
+		if(current_user_can('wpProQuiz_edit_quiz'))
+			return sprintf('<a class="row-title" href="?page=wpProQuiz&module=question&action=addEdit&quiz_id=%1$s&questionId=%2$s">%3$s</a> %4$s', $item['quizId'], $item['ID'], $item['name'], $this->row_actions($actions) );
+		else
+			return sprintf('<a class="row-title" href="#">%2$s</a> %3$s', $item['ID'], $item['name'], $this->row_actions($actions) );
 	}
 
 	function get_bulk_actions() {

@@ -90,7 +90,7 @@ class WpProQuiz_View_QuizOverallTable extends WP_List_Table {
 			$actions['export'] = __('Export', 'wp-pro-quiz');
 
 		if(current_user_can('wpProQuiz_edit_quiz'))
-			$actions['set_category'] = __('Set Categories', 'wp-pro-quiz');
+			$actions['set_category'] = __('Set Category', 'wp-pro-quiz');
 
 		return $actions;
 	}
