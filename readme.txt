@@ -1,6 +1,6 @@
 === Wp-Pro-Quiz ===
 Contributors: xeno010
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BF9JT56N7FAQG
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZPNURT6RYXY
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
 Tested up to: 4.0

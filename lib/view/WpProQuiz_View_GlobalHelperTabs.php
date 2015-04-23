@@ -44,10 +44,10 @@ class WpProQuiz_View_GlobalHelperTabs {
 
 		<h4><?php _e('Donate', 'wp-pro-quiz'); ?></h4>
 
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="BF9JT56N7FAQG">
-			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<input type="hidden" name="hosted_button_id" value="KCZPNURT6RYXY">
+			<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
 			<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
 		</form>
 
@@ -70,7 +70,7 @@ class WpProQuiz_View_GlobalHelperTabs {
 			<a href="https://github.com/xeno010/Wp-Pro-Quiz/wiki" target="_blank">Wiki</a>
 		</p>
 		<p>
-			<a href="admin.php?page=wpProQuiz_wpq_support"><?php _e('Donate', 'wp-pro-quiz'); ?></a>
+			<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZPNURT6RYXY"><?php _e('Donate', 'wp-pro-quiz'); ?></a>
 		</p>
 
 
