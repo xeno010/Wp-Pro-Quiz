@@ -3,8 +3,8 @@ Contributors: xeno010
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZPNURT6RYXY
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
-Tested up to: 4.0
-Stable tag: 0.34
+Tested up to: 4.1.2
+Stable tag: 0.35
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,12 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 * Support for "User Role Editor" etc.
 * Support for BuddyPress achievements 3.x.x
 
+= Wp-Pro-Quiz is now on Github! =
+https://github.com/xeno010/Wp-Pro-Quiz
+
+= Wp-ProQuiz - Wiki =
+https://github.com/xeno010/Wp-Pro-Quiz/wiki
+
 = Support = 
 * English: http://wordpress.org/support/plugin/wp-pro-quiz
 * German/Deutsch: http://www.it-gecko.de/kontakt
@@ -102,6 +108,11 @@ http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "D
 12. Adminmenu - Question statistics
 
 == Changelog ==
+
+= 0.35 =
+* Bugfix
+* New quiz and question overview design
+* New menu structure
 
 = 0.34 =
 * Bugfix
