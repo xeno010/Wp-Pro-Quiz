@@ -19,7 +19,7 @@
 	margin-bottom: 10px !important;
 }
 *+html .wpProQuiz_button, *+html .wpProQuiz_button:hover {
-	padding: 3px 0px !important;
+	padding: 3px 0 !important;
 }
 .wpProQuiz_button, .wpProQuiz_button:hover {
 	margin: 0 !important;
@@ -57,11 +57,20 @@
 	border: 0 !important;
 }
 
-.wpProQuiz_questionListItem > table{
+.wpProQuiz_questionListItem > table {
 	border-collapse: collapse !important;
 	margin: 0 !important;
 	padding: 0 !important;
 	width: 100%;
+	border: none !important;
+	text-align: left !important;
+}
+.wpProQuiz_questionListItem > table .alt {
+	background: inherit !important;
+}
+
+.wpProQuiz_questionListItem > table td {
+	text-align: left !important;
 }
 
 .wpProQuiz_list, .wpProQuiz_listItem, .wpProQuiz_questionList, .wpProQuiz_sortStringList, .wpProQuiz_sortStringList, .wpProQuiz_maxtrixSortCriterion, .wpProQuiz_resultsList, .wpProQuiz_catOverview ol {
@@ -139,7 +148,7 @@
 	bottom: 5px !important;
 	left: 5px !important;
 	right: 5px !important;
-	box-shadow: 2px 2px 5px 0px #313131 !important;
+	box-shadow: 2px 2px 5px 0 #313131 !important;
 	z-index: 99999 !important;
 }
 .wpProQuiz_matrixSortString, .wpProQuiz_matrixSortString > h3{
@@ -296,11 +305,18 @@
     border-collapse: collapse !important;
     margin: 0 !important;
     border: 0 !important;
+	text-align: left !important;
+}
+.wpProQuiz_resultTable table td {
+	text-align: left !important;
+}
+.wpProQuiz_resultTable .alt {
+	background: inherit !important;
 }
 .wpProQuiz_resultName {
 	width: 100px !important;
     border-right: 1px solid rgb(134, 134, 134) !important;
-    padding: 10px 0px !important;
+    padding: 10px 0 !important;
     border-bottom: 0 !important;
     border-top: 0 !important;
     border-left: 0 !important;
@@ -358,7 +374,7 @@
 .wpProQuiz_reviewQuestionTarget {
 	font-weight: bold;
 	border-color: #7DB1D3 !important;
-	box-shadow: 0px 0px 2px 1px #C4C4C4;
+	box-shadow: 0 0 2px 1px #C4C4C4;
 }
 .wpProQuiz_reviewQuestion li, .wpProQuiz_checkPage li {
 	float: left !important;
@@ -427,7 +443,7 @@
  	margin: 20px 0 20px 0 !important;
  }
 .wpProQuiz_header {
-	margin: 0px !important;
+	margin: 0 !important;
 }
 .wpProQuiz_catOverview {
 	margin-top: 10px;
@@ -475,7 +491,15 @@ span.wpProQuiz_catPercent {
 	border-collapse: separate !important;
 	border-spacing: 2px !important;
 	border: 0;
+	text-align: left !important;
 }
+.wpProQuiz_forms table .alt {
+	background: inherit !important;
+}
+.wpProQuiz_forms table td {
+	text-align: left !important;
+}
+
 .wpProQuiz_forms td {
 	vertical-align: top !important;
 	padding: 0 0 8px 0 !important;
