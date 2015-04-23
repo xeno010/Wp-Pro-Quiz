@@ -61,7 +61,7 @@ A powerful and beautiful quiz plugin for WordPress.
 *		Greek / ελληνικά (Thanks Ζαχαρίας Σ.)
 *       Hungarian / magyar (Thanks Webstar Csoport Kft.)
 *		Indonesian / Bahasa Indonesia (Thanks dieka91 and Creative Computer Club)
-*		Italian / Italiano (Thanks Pacaldi)
+*		Italian / Italiano (Thanks Pacaldi and Fabio)
 *       Korean / 한국어 (Thanks Kyeong Choi)
 *		Norwegian / norsk (Thanks Stein Ivar J.)
 *		Persian / فارسی (Thanks Behrooz N.)
@@ -113,6 +113,7 @@ https://github.com/xeno010/Wp-Pro-Quiz/wiki
 = XX =
 * fix #2 - Free Answer: "0" Answer is marked as incorrect (https://github.com/xeno010/Wp-Pro-Quiz/issues/2)
 * Translation for korean have been added (Thanks Kyeong Choi)
+* Updated italian translation (Thanks Fabio)
 
 = 0.35 =
 * Bugfix
