@@ -3,8 +3,8 @@ Contributors: xeno010
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZPNURT6RYXY
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
-Tested up to: 4.1.2
-Stable tag: 0.35
+Tested up to: 4.2
+Stable tag: 0.36
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,8 +111,9 @@ https://github.com/xeno010/Wp-Pro-Quiz/wiki
 
 == Changelog ==
 
-= XX =
-* fix #2 - Free Answer: "0" Answer is marked as incorrect (https://github.com/xeno010/Wp-Pro-Quiz/issues/2)
+= 0.36 =
+* Fix #3 (Missing translation) (https://github.com/xeno010/Wp-Pro-Quiz/issues/3)
+* Fix #2 - Free Answer: "0" Answer is marked as incorrect (https://github.com/xeno010/Wp-Pro-Quiz/issues/2)
 * Translation for korean have been added (Thanks Kyeong Choi)
 * Translation for finnish have been added (Thanks Mikko Sävilahti)
 * Updated italian translation (Thanks Fabio)
