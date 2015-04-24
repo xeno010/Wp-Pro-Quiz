@@ -67,7 +67,7 @@ class WpProQuiz_View_GlobalHelperTabs {
 			<a href="https://github.com/xeno010/Wp-Pro-Quiz" target="_blank">Github</a>
 		</p>
 		<p>
-			<a href="https://github.com/xeno010/Wp-Pro-Quiz/wiki" target="_blank">Wiki</a>
+			<a href="https://github.com/xeno010/Wp-Pro-Quiz/wiki" target="_blank"><?php _e('Wiki', 'wp-pro-quiz'); ?></a>
 		</p>
 		<p>
 			<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZPNURT6RYXY"><?php _e('Donate', 'wp-pro-quiz'); ?></a>

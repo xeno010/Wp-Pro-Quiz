@@ -290,7 +290,7 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 
 <div class="wrap wpProQuiz_questionOverall">
 	<h2>
-		Quiz: <?php echo $this->quiz->getName(); ?>
+		<?php printf(__('Quiz: %s', 'wp-pro-quiz'), $this->quiz->getName()); ?>
 
 		<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
 			<a class="add-new-h2" href="?page=wpProQuiz&module=question&action=addEdit&quiz_id=<?php echo $this->quiz->getId(); ?>"><?php _e('Add question', 'wp-pro-quiz'); ?></a>

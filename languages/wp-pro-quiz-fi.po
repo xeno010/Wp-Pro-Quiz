@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP-Pro-Quiz\n"
-"POT-Creation-Date: 2015-04-23 15:21+0100\n"
-"PO-Revision-Date: 2015-04-23 15:21+0100\n"
+"POT-Creation-Date: 2015-04-24 09:52+0100\n"
+"PO-Revision-Date: 2015-04-24 09:52+0100\n"
 "Last-Translator: Julius Fischer <webmaster@it-gecko.de>\n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -855,6 +855,10 @@ msgstr ""
 
 #: lib/view/WpProQuiz_View_GlobalHelperTabs.php:64
 msgid "Support"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GlobalHelperTabs.php:70
+msgid "Wiki"
 msgstr ""
 
 #: lib/view/WpProQuiz_View_GobalSettings.php:14
@@ -1740,6 +1744,11 @@ msgstr "\"Eri pisteet - moodi 2\" pois päältä"
 #: lib/view/WpProQuiz_View_QuestionEdit.php:556
 msgid "\"Different points - mode 2\" enabled"
 msgstr "\"Eri pisteet - moodi 2\" päällä"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:293
+#, php-format
+msgid "Quiz: %s"
+msgstr ""
 
 #: lib/view/WpProQuiz_View_QuestionOverall.php:296
 msgid "Add question"
