@@ -36,7 +36,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 			<div class="postbox">
 				<h3 class="hndle"><?php _e('Quiz title', 'wp-pro-quiz'); ?> <?php _e('(required)', 'wp-pro-quiz'); ?></h3>
 				<div class="inside">
-					<input name="name" id="wpProQuiz_title" type="text" class="regular-text" value="<?php echo $this->quiz->getName(); ?>">
+					<input name="name" id="wpProQuiz_title" type="text" class="regular-text" value="<?php echo htmlspecialchars($this->quiz->getName(), ENT_QUOTES); ?>">
 				</div>
 			</div>
 			<div class="postbox">
