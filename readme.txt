@@ -66,6 +66,7 @@ A powerful and beautiful quiz plugin for WordPress.
 *       Korean / 한국어 (Thanks Kyeong Choi)
 *		Norwegian / norsk (Thanks Stein Ivar J.)
 *		Persian / فارسی (Thanks Behrooz N.)
+*		Polish / polski (Thanks Piotr Sz. BaGGietka)
 *		Russian / русский (Thanks Sergei B. and Alex A.)
 *		Slovak / slovenščina (Thanks Martin D.)
 *		Spanish / español (Thanks Carlos R.)
