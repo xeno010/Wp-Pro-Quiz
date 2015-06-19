@@ -38,6 +38,10 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 		return $this->_wpdb->get_var($this->_wpdb->prepare(
 			"SELECT MAX(sort) AS max_sort FROM {$this->_tableQuestion} WHERE quiz_id = %d AND online = 1", $quizId));
 	}
+
+    public function getSortByQuestionId($questionId) {
+        return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT sort FROM {$this->_tableQuestion} WHERE id = %d", $questionId));
+    }
 	
 	public function save(WpProQuiz_Model_Question $question, $auto = false) {
 		$sort = null;
@@ -48,8 +52,8 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper {
 			if($statisticMapper->isStatisticByQuestionId($question->getId())) {
 				$this->setOnlineOff($question->getId());
 				$question->setQuizId($this->getQuizId($question->getId()));
+				$sort = $this->getSortByQuestionId($question->getId());
 				$question->setId(0);
-				$sort = $question->getSort();
 			}
 		}
 		
