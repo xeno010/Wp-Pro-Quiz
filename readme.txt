@@ -112,6 +112,11 @@ https://github.com/xeno010/Wp-Pro-Quiz/wiki
 
 == Changelog ==
 
+= XX =
+* Fix #5 - order of questions changes (https://github.com/xeno010/Wp-Pro-Quiz/issues/5)
+* Merge pull request #6 - escape double quotes that breaks <input> tag (https://github.com/xeno010/Wp-Pro-Quiz/pull/6)
+* Translation for polish have been added (Thanks Behrooz N.)
+
 = 0.36 =
 * Fix #3 (Missing translation) (https://github.com/xeno010/Wp-Pro-Quiz/issues/3)
 * Fix #2 - Free Answer: "0" Answer is marked as incorrect (https://github.com/xeno010/Wp-Pro-Quiz/issues/2)
