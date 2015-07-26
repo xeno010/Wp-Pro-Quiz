@@ -180,6 +180,7 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 			'show_max_question' => (int)$data->isShowMaxQuestion(),
 			'show_max_question_value' => (int)$data->getShowMaxQuestionValue(),
 			'show_max_question_percent' => (int)$data->isShowMaxQuestionPercent(),
+			'end_on_first_incorrect' => (int)$data->isEndOnFirstIncorrect(),
 			'toplist_activated' => (int)$data->isToplistActivated(),
 			'toplist_data' => $data->getToplistData(),
 			'show_average_result' => (int)$data->isShowAverageResult(),

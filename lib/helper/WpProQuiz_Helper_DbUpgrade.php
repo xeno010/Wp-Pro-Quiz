@@ -1,7 +1,7 @@
 <?php
 class WpProQuiz_Helper_DbUpgrade {
 	
-	const WPPROQUIZ_DB_VERSION = 25;
+	const WPPROQUIZ_DB_VERSION = 26;
 
 	private $_wpdb;
 	private $_prefix;
@@ -117,6 +117,7 @@ class WpProQuiz_Helper_DbUpgrade {
 			  show_max_question tinyint(1) NOT NULL,
 			  show_max_question_value int(10) unsigned NOT NULL,
 			  show_max_question_percent tinyint(1) NOT NULL,
+			  end_on_first_incorrect TINYINT( 1 ) UNSIGNED NOT NULL,
 			  toplist_activated tinyint(1) NOT NULL,
 			  toplist_data text NOT NULL,
 			  show_average_result tinyint(1) NOT NULL,
@@ -1096,4 +1097,14 @@ class WpProQuiz_Helper_DbUpgrade {
 
 		return 25;
 	}
+
+	private function upgradeDbV25() {
+		$this->_wpdb->query('
+			ALTER TABLE  '.$this->_wpdb->prefix.'wp_pro_quiz_master
+				ADD  `end_on_first_incorrect` TINYINT( 1 ) UNSIGNED NOT NULL after `show_max_question_percent` ;
+		');
+
+		return 26;
+	}
+
 }

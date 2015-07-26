@@ -114,6 +114,8 @@ class WpProQuiz_Helper_ExportXml {
 		$quizElement->appendChild($showMaxQuestion = $dom->createElement('showMaxQuestion', $this->booleanToTrueOrFalse($quiz->isShowMaxQuestion())));
 		$showMaxQuestion->setAttribute('showMaxQuestionValue', $quiz->getShowMaxQuestionValue());
 		$showMaxQuestion->setAttribute('showMaxQuestionPercent', $this->booleanToTrueOrFalse($quiz->isShowMaxQuestionPercent()));
+
+		$quizElement->appendChild($dom->createElement('endOnFirstIncorrect', $this->booleanToTrueOrFalse($quiz->isEndOnFirstIncorrect())));
 		
 		
 		//Toplist

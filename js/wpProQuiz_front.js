@@ -32,7 +32,8 @@
 			hideQuestionPositionOverview: 0,
 			formActivated: 0,
 			maxShowQuestion: 0,
-			sortCategories: 0
+			sortCategories: 0,
+			endOnFirstIncorrect: 0
 		};
 		
 		var quizStatus = {
@@ -40,7 +41,8 @@
 			isLocked: 0,
 			loadLock: 0,
 			isPrerequisite: 0,
-			isUserStartLocked: 0
+			isUserStartLocked: 0,
+			isErrorInQuiz: 0
 		};
 		
 		var globalNames = {
@@ -800,6 +802,7 @@
 					bitOptions.formActivated = config.bo & (1 << 13);
 					bitOptions.maxShowQuestion = config.bo & (1 << 14);
 					bitOptions.sortCategories = config.bo & (1 << 15);
+					bitOptions.endOnFirstIncorrect = config.bo & (1 << 16);
 					
 					var cors = config.bo & (1 << 5);
 					
@@ -1464,6 +1467,12 @@
 						$this.find('.wpProQuiz_correct').show();
 						results['comp'].correctQuestions += 1;
 					} else {
+						if(bitOptions.endOnFirstIncorrect) {
+							if (!quizStatus.isErrorInQuiz) {
+								quizStatus.isErrorInQuiz = true;
+								plugin.methode.showQuizSummary();
+							}
+						}
 						$this.find('.wpProQuiz_incorrect').show();
 					}
 					

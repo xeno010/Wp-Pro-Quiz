@@ -155,6 +155,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View {
 		$bo |= ((int)$this->quiz->isFormActivated()) << 13;
 		$bo |= ((int)$this->quiz->isShowMaxQuestion()) << 14;
 		$bo |= ((int)$this->quiz->isSortCategories()) << 15;
+		$bo |= ((int)$this->quiz->isEndOnFirstIncorrect()) << 16;
 		
 		return $bo;
 	}

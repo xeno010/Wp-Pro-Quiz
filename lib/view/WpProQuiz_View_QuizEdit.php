@@ -330,7 +330,26 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View {
 									</fieldset>
 								</td>
 							</tr>
-							<tr>
+						<tr>
+								<th scope="row">
+									<?php _e('End quiz after first incorrect answer', 'wp-pro-quiz'); ?>
+								</th>
+								<td>
+									<fieldset>
+										<legend class="screen-reader-text">
+											<span><?php _e('End quiz after first incorrect answer', 'wp-pro-quiz'); ?></span>
+										</legend>
+										<label>
+											<input type="checkbox" value="1" name="endOnFirstIncorrect" <?php echo $this->quiz->isEndOnFirstIncorrect() ? 'checked="checked"' : '' ?>>
+											<?php _e('Activate', 'wp-pro-quiz'); ?>
+										</label>
+										<p class="description">
+											<?php _e('If you enable this option, first incorrect answer will end the test', 'wp-pro-quiz'); ?>
+										</p>
+									</fieldset>
+								</td>
+						</tr>
+						<tr>
 								<th scope="row">
 									<?php _e('Prerequisites', 'wp-pro-quiz'); ?>
 								</th>

@@ -262,6 +262,8 @@ class WpProQuiz_Helper_ImportXml {
 				$model->setShowMaxQuestionPercent($attr->showMaxQuestionPercent == 'true');
 			}
 		}
+
+		$model->setEndOnFirstIncorrect($xml->endOnFirstIncorrect == 'true');
 		
 		if(isset($xml->toplist)) {
 			$model->setToplistActivated($xml->toplist->attributes()->activated == 'true');

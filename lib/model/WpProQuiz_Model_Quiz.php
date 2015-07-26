@@ -53,7 +53,7 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	protected $_showMaxQuestion = false;
 	protected $_showMaxQuestionValue = 1;
 	protected $_showMaxQuestionPercent = false;
-	
+
 	//0.19
 	protected $_toplistActivated = false;
 	protected $_toplistDataAddPermissions = 1;
@@ -108,6 +108,9 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 
 	//0.33
 	protected $_pluginContainer = null;
+
+	//0.37
+	protected $_endOnFirstIncorrect = false;
 	
 	public function setId($_id) {
 		$this->_id = (int)$_id;
@@ -335,6 +338,15 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model {
 	
 	public function isShowMaxQuestionPercent() {
 		return $this->_showMaxQuestionPercent;
+	}
+
+	public function setEndOnFirstIncorrect($_endOnFirstIncorrect) {
+			$this->_endOnFirstIncorrect = (bool)$_endOnFirstIncorrect;
+			return $this;
+	}
+
+	public function isEndOnFirstIncorrect() {
+			return $this->_endOnFirstIncorrect;
 	}
 	
 	public function setToplistActivated($_toplistActivated) {
