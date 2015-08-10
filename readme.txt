@@ -112,7 +112,8 @@ https://github.com/xeno010/Wp-Pro-Quiz/wiki
 
 == Changelog ==
 
-= XX =
+= Current Master Branch =
+* Fix #7 - compatibility with All In One WP Security (https://github.com/xeno010/Wp-Pro-Quiz/issues/7)
 * Fix #5 - order of questions changes (https://github.com/xeno010/Wp-Pro-Quiz/issues/5)
 * Merge pull request #6 - escape double quotes that breaks <input> tag (https://github.com/xeno010/Wp-Pro-Quiz/pull/6)
 * Translation for polish have been added (Thanks Behrooz N.)
