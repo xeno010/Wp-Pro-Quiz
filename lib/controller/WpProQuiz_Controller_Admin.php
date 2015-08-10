@@ -175,7 +175,7 @@ class WpProQuiz_Controller_Admin {
 			__( 'Global settings', 'wp-pro-quiz' ),
 			__( 'Global settings', 'wp-pro-quiz' ),
 			'wpProQuiz_change_settings',
-			'wpProQuiz_globalSettings',
+			'wpProQuiz_glSettings',
 			array( $this, 'route' ) );
 
 		$pages[] = add_submenu_page(
@@ -246,7 +246,7 @@ class WpProQuiz_Controller_Admin {
 			case 'importExport':
 				$c = new WpProQuiz_Controller_ImportExport();
 				break;
-			case 'globalSettings':
+			case 'glSettings':
 				$c = new WpProQuiz_Controller_GlobalSettings();
 				break;
 			case 'styleManager':
