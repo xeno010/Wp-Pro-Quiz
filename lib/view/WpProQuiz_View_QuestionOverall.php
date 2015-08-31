@@ -1,4 +1,5 @@
 <?php
+
 class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 	
 	public function show() {

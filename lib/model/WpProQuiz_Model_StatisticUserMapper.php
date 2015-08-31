@@ -1,12 +1,15 @@
 <?php
-class WpProQuiz_Model_StatisticUserMapper extends WpProQuiz_Model_Mapper {
-	
-	public function fetchUserStatistic($refIdUserId, $quizId, $avg = false) {
-		$where = $avg ? 'sf.user_id = %d' : 'sf.statistic_ref_id = %d';
-		
-		$result = $this->_wpdb->get_results(
-			$this->_wpdb->prepare(
-				"SELECT 
+
+class WpProQuiz_Model_StatisticUserMapper extends WpProQuiz_Model_Mapper
+{
+
+    public function fetchUserStatistic($refIdUserId, $quizId, $avg = false)
+    {
+        $where = $avg ? 'sf.user_id = %d' : 'sf.statistic_ref_id = %d';
+
+        $result = $this->_wpdb->get_results(
+            $this->_wpdb->prepare(
+                "SELECT
 					SUM(s.correct_count) AS correct_count,
 					SUM(s.incorrect_count) AS incorrect_count,
 					SUM(s.hint_count) AS hint_count,
@@ -32,23 +35,23 @@ class WpProQuiz_Model_StatisticUserMapper extends WpProQuiz_Model_Mapper {
 					s.question_id
 				ORDER BY
 					ISNULL(c.category_name), c.category_name, q.sort",
-			$refIdUserId, $quizId), ARRAY_A);
-		
-		$r = array();
-		
-		foreach($result as $row) {
-			if(!$avg) {
-				if($row['statistic_answer_data'] !== null) {
-					$row['statistic_answer_data'] = json_decode($row['statistic_answer_data'], true);
-				}
-			} else {
-				$row['statistic_answer_data'] = null;
-				$row['question_answer_data'] = null;
-			}
-			
-			$r[] = new WpProQuiz_Model_StatisticUser($row);	
-		}
-		
-		return $r;
-	}
+                $refIdUserId, $quizId), ARRAY_A);
+
+        $r = array();
+
+        foreach ($result as $row) {
+            if (!$avg) {
+                if ($row['statistic_answer_data'] !== null) {
+                    $row['statistic_answer_data'] = json_decode($row['statistic_answer_data'], true);
+                }
+            } else {
+                $row['statistic_answer_data'] = null;
+                $row['question_answer_data'] = null;
+            }
+
+            $r[] = new WpProQuiz_Model_StatisticUser($row);
+        }
+
+        return $r;
+    }
 }
