@@ -45,8 +45,6 @@ function wpProQuiz_autoload($class)
         return;
     }
 
-    $dir = '';
-
     switch ($c[1]) {
         case 'View':
             $dir = 'view';
@@ -67,8 +65,11 @@ function wpProQuiz_autoload($class)
             return;
     }
 
-    if (file_exists(WPPROQUIZ_PATH . '/lib/' . $dir . '/' . $class . '.php')) {
-        include_once WPPROQUIZ_PATH . '/lib/' . $dir . '/' . $class . '.php';
+    $classPath = WPPROQUIZ_PATH . '/lib/' . $dir . '/' . $class . '.php';
+
+    if (file_exists($classPath)) {
+        /** @noinspection PhpIncludeInspection */
+        include_once $classPath;
     }
 }
 
@@ -80,30 +81,15 @@ function wpProQuiz_pluginLoaded()
     if (get_option('wpProQuiz_version') !== WPPROQUIZ_VERSION) {
         WpProQuiz_Helper_Upgrade::upgrade();
     }
-
-// 	//ACHIEVEMENTS Version 2.x.x
-// 	if(defined('ACHIEVEMENTS_IS_INSTALLED') && ACHIEVEMENTS_IS_INSTALLED === 1 && defined('ACHIEVEMENTS_VERSION')) {
-// 		$version = ACHIEVEMENTS_VERSION;
-// 		if($version{0} == '2') {
-// 			new WpProQuiz_Plugin_BpAchievementsV2();
-// 		}
-// 	}
-
 }
 
 function wpProQuiz_achievementsV3()
 {
-    achievements()->extensions->wp_pro_quiz = new WpProQuiz_Plugin_BpAchievementsV3();
+    if (function_exists('achievements')) {
+        achievements()->extensions->wp_pro_quiz = new WpProQuiz_Plugin_BpAchievementsV3();
 
-    do_action('wpProQuiz_achievementsV3');
+        do_action('wpProQuiz_achievementsV3');
+    }
 }
 
 add_action('dpa_ready', 'wpProQuiz_achievementsV3');
-
-// //ACHIEVEMENTS Version 2.x.x
-// $bpAchievementsV2_path = realpath(ABSPATH.PLUGINDIR.'/achievements/loader.php');
-
-// if($bpAchievementsV2_path !== false) {
-// 	register_deactivation_hook($bpAchievementsV2_path, array('WpProQuiz_Plugin_BpAchievementsV2', 'deinstall'));
-// 	register_activation_hook($bpAchievementsV2_path, array('WpProQuiz_Plugin_BpAchievementsV2', 'install'));
-// }
