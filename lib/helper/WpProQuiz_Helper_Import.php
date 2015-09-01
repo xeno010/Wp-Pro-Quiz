@@ -39,7 +39,7 @@ class WpProQuiz_Helper_Import
         $code = substr($this->_content, 0, 13);
 
         $c = substr($code, 0, 3);
-        $v1 = substr($code, 3, 5);
+        //$v1 = substr($code, 3, 5);
         $v2 = substr($code, 8, 5);
 
         if ($c !== 'WPQ') {
@@ -123,6 +123,8 @@ class WpProQuiz_Helper_Import
         $categoryArrayQuiz = $categoryMapper->getCategoryArrayForImport(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);
 
         foreach ($o['master'] as $master) {
+            /** @var WpProQuiz_Model_Quiz $master */
+
             if (get_class($master) !== 'WpProQuiz_Model_Quiz') {
                 continue;
             }
@@ -187,6 +189,7 @@ class WpProQuiz_Helper_Import
             $sort = 0;
 
             foreach ($o['question'][$oldId] as $question) {
+                /** @var WpProQuiz_Model_Question $question */
 
                 if (get_class($question) !== 'WpProQuiz_Model_Question') {
                     continue;

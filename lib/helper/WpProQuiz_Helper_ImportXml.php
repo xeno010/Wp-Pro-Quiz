@@ -98,6 +98,8 @@ class WpProQuiz_Helper_ImportXml
         $categoryArrayQuiz = $categoryMapper->getCategoryArrayForImport(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);
 
         foreach ($data['master'] as $quiz) {
+            /** @var WpProQuiz_Model_Quiz $quiz */
+
             if (get_class($quiz) !== 'WpProQuiz_Model_Quiz') {
                 continue;
             }
@@ -143,6 +145,7 @@ class WpProQuiz_Helper_ImportXml
             $sort = 0;
 
             foreach ($data['question'][$oldId] as $question) {
+                /** @var WpProQuiz_Model_Question $question */
 
                 if (get_class($question) !== 'WpProQuiz_Model_Question') {
                     continue;
@@ -178,6 +181,10 @@ class WpProQuiz_Helper_ImportXml
         return $this->_error;
     }
 
+    /**
+     * @param SimpleXMLElement $xml
+     * @return WpProQuiz_Model_Form
+     */
     private function createFormModel($xml)
     {
         $form = new WpProQuiz_Model_Form();
@@ -207,6 +214,10 @@ class WpProQuiz_Helper_ImportXml
         return $form;
     }
 
+    /**
+     * @param SimpleXMLElement $xml
+     * @return null|WpProQuiz_Model_Quiz
+     */
     private function createQuizModel($xml)
     {
         $model = new WpProQuiz_Model_Quiz();

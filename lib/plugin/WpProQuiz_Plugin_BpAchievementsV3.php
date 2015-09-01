@@ -28,21 +28,25 @@ class WpProQuiz_Plugin_BpAchievementsV3 extends DPA_Extension
         $this->wporg_url = 'http://wordpress.org/extend/plugins/wp-pro-quiz/';
     }
 
-    public function do_update($current_version)
+    public function do_update()
     {
         $this->insertTerm();
     }
 
     public function insertTerm()
     {
-        $taxId = dpa_get_event_tax_id();
+        if (function_exists('dpa_get_event_tax_id')) {
+            $taxId = dpa_get_event_tax_id();
 
-        foreach ($this->actions as $actionName => $desc) {
-            $e = term_exists($actionName, $taxId);
+            foreach ($this->actions as $actionName => $desc) {
+                $e = term_exists($actionName, $taxId);
 
-            if ($e === 0 || $e === null) {
-                wp_insert_term($actionName, $taxId, array('description' => $desc));
+                if ($e === 0 || $e === null) {
+                    wp_insert_term($actionName, $taxId, array('description' => $desc));
+                }
             }
+
         }
+
     }
 }

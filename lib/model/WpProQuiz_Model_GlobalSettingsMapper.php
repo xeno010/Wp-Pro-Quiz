@@ -43,6 +43,9 @@ class WpProQuiz_Model_GlobalSettingsMapper extends WpProQuiz_Model_Mapper
         delete_option('wpProQuiz_corsActivated');
     }
 
+    /**
+     * @return array
+     */
     public function getEmailSettings()
     {
         $e = get_option('wpProQuiz_emailSettings', null);
@@ -79,6 +82,9 @@ Result: $result
         }
     }
 
+    /**
+     * @return array
+     */
     public function getUserEmailSettings()
     {
         $e = get_option('wpProQuiz_userEmailSettings', null);

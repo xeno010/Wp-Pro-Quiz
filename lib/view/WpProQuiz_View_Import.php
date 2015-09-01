@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @property bool error
+ * @property string importType
+ * @property bool finish
+ * @property array import
+ * @property string importData
+ */
 class WpProQuiz_View_Import extends WpProQuiz_View_View
 {
 

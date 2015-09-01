@@ -2524,48 +2524,48 @@ jQuery(document).ready(function ($) {
                     },
 
                     loadUsersStatistic: function () {
-                        var userId = $('#userSelect').val();
-
-                        var data = {
-                            userId: userId,
-                            quizId: quizId,
-                            testId: $('#testSelect').val()
-                        };
-
-                        methode.toggleLoadBox(false);
-
-                        global.ajaxPost('statisticLoad', data, function (json) {
-                            $.each(json.question, function () {
-                                var $tr = $('#wpProQuiz_tr_' + this.questionId);
-
-                                methode.setStatisticData($tr, this);
-                            });
-
-                            $.each(json.category, function (i, v) {
-                                var $tr = $('#wpProQuiz_ctr_' + i);
-
-                                methode.setStatisticData($tr, v);
-                            });
-
-                            $('#testSelect option:gt(0)').remove();
-                            var $testSelect = $('#testSelect');
-
-                            $.each(json.tests, function () {
-                                var $option = $(document.createElement('option'));
-
-                                $option.val(this.id);
-                                $option.text(this.date);
-
-                                if (json.testId == this.id)
-                                    $option.attr('selected', true);
-
-                                $testSelect.append($option);
-                            });
-
-                            methode.parseFormData(json.formData);
-
-                            methode.toggleLoadBox(true);
-                        });
+                        //var userId = $('#userSelect').val();
+                        //
+                        //var data = {
+                        //    userId: userId,
+                        //    quizId: quizId,
+                        //    testId: $('#testSelect').val()
+                        //};
+                        //
+                        //methode.toggleLoadBox(false);
+                        //
+                        //global.ajaxPost('statisticLoad', data, function (json) {
+                        //    $.each(json.question, function () {
+                        //        var $tr = $('#wpProQuiz_tr_' + this.questionId);
+                        //
+                        //        methode.setStatisticData($tr, this);
+                        //    });
+                        //
+                        //    $.each(json.category, function (i, v) {
+                        //        var $tr = $('#wpProQuiz_ctr_' + i);
+                        //
+                        //        methode.setStatisticData($tr, v);
+                        //    });
+                        //
+                        //    $('#testSelect option:gt(0)').remove();
+                        //    var $testSelect = $('#testSelect');
+                        //
+                        //    $.each(json.tests, function () {
+                        //        var $option = $(document.createElement('option'));
+                        //
+                        //        $option.val(this.id);
+                        //        $option.text(this.date);
+                        //
+                        //        if (json.testId == this.id)
+                        //            $option.attr('selected', true);
+                        //
+                        //        $testSelect.append($option);
+                        //    });
+                        //
+                        //    methode.parseFormData(json.formData);
+                        //
+                        //    methode.toggleLoadBox(true);
+                        //});
                     },
 
                     loadUsersStatistic_: function (userId, testId) {

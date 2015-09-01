@@ -40,12 +40,15 @@ class WpProQuiz_Helper_Form
                 return true;
 
         }
+
+        return false;
     }
 
     /**
      *
      * @param WpProQuiz_Model_Form $form
      * @param array $data
+     * @return null|string
      */
     public static function validData($form, $data)
     {

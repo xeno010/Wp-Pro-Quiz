@@ -1,13 +1,17 @@
 <?php
 
+/**
+ * @property WpProQuiz_Model_Form[] forms
+ * @property WpProQuiz_Model_Quiz quiz
+ * @property array prerequisiteQuizList
+ * @property WpProQuiz_Model_Template[] templates
+ * @property array quizList
+ * @property bool captchaIsInstalled
+ * @property WpProQuiz_Model_Category[] categories
+ * @property string header
+ */
 class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View
 {
-
-    /**
-     * @var WpProQuiz_Model_Quiz
-     */
-    public $quiz;
-
     public function show()
     {
         ?>

@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @property WpProQuiz_Model_StatisticHistory[] historyModel
+ * @property WpProQuiz_Model_Form[] forms
+ * @property bool avg
+ * @property WpProQuiz_Model_StatisticRefModel statisticModel
+ * @property string userName
+ * @property array userStatistic
+ */
 class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View
 {
 

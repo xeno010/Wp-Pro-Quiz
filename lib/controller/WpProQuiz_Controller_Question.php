@@ -2,12 +2,10 @@
 
 class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
 {
-
     private $_quizId;
 
     public function route()
     {
-
         if (!isset($_GET['quiz_id']) || empty($_GET['quiz_id'])) {
             WpProQuiz_View_View::admin_notices(__('Quiz not found', 'wp-pro-quiz'), 'error');
 
@@ -25,32 +23,18 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
             return;
         }
 
-// 		if(isset($this->_post['hidden_action'])) {
-// 			switch ($this->_post['hidden_action']) {
-// 				case 'edit':
-// 					$this->editPostAction($this->_post['questionId']);
-// 					break;
-// 			}
-// 		}
-
         switch ($action) {
-// 			case 'add':
-// 				$this->createAction();
-// 				break;
             case 'show':
                 $this->showAction();
                 break;
             case 'addEdit':
                 $this->addEditQuestion((int)$_GET['quiz_id']);
                 break;
-// 			case 'edit':
-// 				$this->editAction($_GET['id']);
-// 				break;
             case 'delete':
                 $this->deleteAction($_GET['id']);
                 break;
             case 'delete_multi':
-                $this->deleteMultiAction($_GET['quiz_id']);
+                $this->deleteMultiAction();
                 break;
             case 'save_sort':
                 $this->saveSort();
@@ -136,6 +120,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
             $data = $template->getData();
 
             if ($data !== null) {
+                /** @var WpProQuiz_Model_Question $question */
                 $question = $data['question'];
                 $question->setId($questionId);
                 $question->setQuizId($quizId);
@@ -158,20 +143,20 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
             }
         }
 
-        $this->view = new WpProQuiz_View_QuestionEdit();
-        $this->view->categories = $cateoryMapper->fetchAll();
-        $this->view->quiz = $quizMapper->fetch($quizId);
-        $this->view->templates = $templateMapper->fetchAll(WpProQuiz_Model_Template::TEMPLATE_TYPE_QUESTION, false);
-        $this->view->question = $question;
-        $this->view->data = $this->setAnswerObject($question);
+        $view = new WpProQuiz_View_QuestionEdit();
+        $view->categories = $cateoryMapper->fetchAll();
+        $view->quiz = $quizMapper->fetch($quizId);
+        $view->templates = $templateMapper->fetchAll(WpProQuiz_Model_Template::TEMPLATE_TYPE_QUESTION, false);
+        $view->question = $question;
+        $view->answerData = $this->setAnswerObject($question);
 
-        $this->view->header = $questionId ? __('Edit question', 'wp-pro-quiz') : __('New question', 'wp-pro-quiz');
+        $view->header = $questionId ? __('Edit question', 'wp-pro-quiz') : __('New question', 'wp-pro-quiz');
 
-        if ($this->view->question->isAnswerPointsActivated()) {
-            $this->view->question->setPoints(1);
+        if ($view->question->isAnswerPointsActivated()) {
+            $view->question->setPoints(1);
         }
 
-        $this->view->show();
+        $view->show();
     }
 
     private function saveTemplate()
@@ -328,7 +313,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
         $this->showAction();
     }
 
-    public function deleteMultiAction($quizId)
+    public function deleteMultiAction()
     {
         if (!current_user_can('wpProQuiz_delete_quiz')) {
             wp_die(__('You do not have sufficient permissions to access this page.'));
@@ -347,10 +332,10 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
 
     /**
      * @deprecated
+     * @param $id
      */
     public function editAction($id)
     {
-
         if (!current_user_can('wpProQuiz_edit_quiz')) {
             wp_die(__('You do not have sufficient permissions to access this page.'));
         }
@@ -359,30 +344,24 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
         $quizMapper = new WpProQuiz_Model_QuizMapper();
         $cateoryMapper = new WpProQuiz_Model_CategoryMapper();
 
-// 		if($mapper->existsAndWritable($id) == 0) {
-// 			WpProQuiz_View_View::admin_notices(__('Question not found', 'wp-pro-quiz'), 'error');
-// 			return;
-// 		}
+        $view = new WpProQuiz_View_QuestionEdit();
+        $view->quiz = $quizMapper->fetch($id);
+        $view->question = $questionMapper->fetch($id);
+        $view->answerData = $this->setAnswerObject($view->question);
+        $view->categories = $cateoryMapper->fetchAll();
 
-// 		$this->editPostAction($id);
+        $view->header = __('Edit question', 'wp-pro-quiz');
 
-        $this->view = new WpProQuiz_View_QuestionEdit();
-        $this->view->quiz = $quizMapper->fetch($id);
-        $this->view->question = $questionMapper->fetch($id);
-        $this->view->data = $this->setAnswerObject($this->view->question);
-        $this->view->categories = $cateoryMapper->fetchAll();
-
-        $this->view->header = __('Edit question', 'wp-pro-quiz');
-
-        if ($this->view->question->isAnswerPointsActivated()) {
-            $this->view->question->setPoints(1);
+        if ($view->question->isAnswerPointsActivated()) {
+            $view->question->setPoints(1);
         }
 
-        $this->view->show();
+        $view->show();
     }
 
     /**
      * @deprecated
+     * @param $id
      */
     public function editPostAction($id)
     {
@@ -428,7 +407,6 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
      */
     public function createAction()
     {
-
         if (!current_user_can('wpProQuiz_add_quiz')) {
             wp_die(__('You do not have sufficient permissions to access this page.'));
         }
@@ -437,64 +415,20 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
         $cateoryMapper = new WpProQuiz_Model_CategoryMapper();
         $templateMapper = new WpProQuiz_Model_TemplateMapper();
 
-// 		$post = null;
+        $view = new WpProQuiz_View_QuestionEdit();
+        $view->question = new WpProQuiz_Model_Question();
+        $view->categories = $cateoryMapper->fetchAll();
+        $view->quiz = $quizMapper->fetch($this->_quizId);
+        $view->answerData = $this->setAnswerObject();
+        $view->templates = $templateMapper->fetchAll(WpProQuiz_Model_Template::TEMPLATE_TYPE_QUESTION, false);
 
-// 		if(isset($this->_post['submit'])) {
+        $view->header = __('New question', 'wp-pro-quiz');
 
-// 			$questionMapper = new WpProQuiz_Model_QuestionMapper();
-
-// 			$post = WpProQuiz_Controller_Request::getPost();
-
-// 			$post['title'] = isset($post['title']) ? trim($post['title']) : '';
-// 			$post['quizId'] = $this->_quizId;
-
-// 			$clearPost = $this->clearPost($post);
-
-// 			$post['answerData'] = $clearPost['answerData'];
-
-// 			if(empty($post['title'])) {
-// 				$count = $questionMapper->count($this->_quizId);
-
-// 				$post['title'] = sprintf(__('Question: %d', 'wp-pro-quiz'), $count+1);
-// 			}
-
-// 			if($post['answerType'] === 'assessment_answer') {
-// 				$post['answerPointsActivated'] = 1;
-// 			}
-
-// 			if(isset($post['answerPointsActivated'])) {
-// 				if(isset($post['answerPointsDiffModusActivated'])) {
-// 					$post['points']	= $clearPost['maxPoints'];
-// 				} else {
-// 					$post['points'] = $clearPost['points'];
-// 				}
-// 			}
-
-// 			$post['categoryId'] = $post['category'] > 0 ? $post['category'] : 0;
-
-// 			$questionMapper->save(new WpProQuiz_Model_Question($post));
-
-// 			WpProQuiz_View_View::admin_notices(__('Question added', 'wp-pro-quiz'), 'info');
-
-// 			$this->showAction();
-
-// 			return;
-// 		}
-
-        $this->view = new WpProQuiz_View_QuestionEdit();
-        $this->view->question = new WpProQuiz_Model_Question();
-        $this->view->categories = $cateoryMapper->fetchAll();
-        $this->view->quiz = $quizMapper->fetch($this->_quizId);
-        $this->view->data = $this->setAnswerObject();
-        $this->view->templates = $templateMapper->fetchAll(WpProQuiz_Model_Template::TEMPLATE_TYPE_QUESTION, false);
-
-        $this->view->header = __('New question', 'wp-pro-quiz');
-
-        if ($this->view->question->isAnswerPointsActivated()) {
-            $this->view->question->setPoints(1);
+        if ($view->question->isAnswerPointsActivated()) {
+            $view->question->setPoints(1);
         }
 
-        $this->view->show();
+        $view->show();
     }
 
     private function setAnswerObject(WpProQuiz_Model_Question $question = null)
@@ -640,8 +574,8 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
         $mm = new WpProQuiz_Model_QuestionMapper();
         $categoryMapper = new WpProQuiz_Model_CategoryMapper();
 
-        $this->view = new WpProQuiz_View_QuestionOverall();
-        $this->view->quiz = $m->fetch($this->_quizId);
+        $view = new WpProQuiz_View_QuestionOverall();
+        $view->quiz = $m->fetch($this->_quizId);
 
         $per_page = (int)get_user_option('wp_pro_quiz_question_overview_per_page');
         if (empty($per_page) || $per_page < 1) {
@@ -662,15 +596,15 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
 
         $result = $mm->fetchTable($this->_quizId, $orderBy, $order, $search, $limit, $offset, $filter);
 
-        $this->view->questionItems = $result['questions'];
-        $this->view->questionCount = $result['count'];
-        $this->view->categoryItems = $categoryMapper->fetchAll(WpProQuiz_Model_Category::CATEGORY_TYPE_QUESTION);
-        $this->view->perPage = $per_page;
+        $view->questionItems = $result['questions'];
+        $view->questionCount = $result['count'];
+        $view->categoryItems = $categoryMapper->fetchAll(WpProQuiz_Model_Category::CATEGORY_TYPE_QUESTION);
+        $view->perPage = $per_page;
 
-        $this->view->show();
+        $view->show();
     }
 
-    public static function ajaxSetQuestionMultipleCategories($data, $func)
+    public static function ajaxSetQuestionMultipleCategories($data)
     {
         if (!current_user_can('wpProQuiz_edit_quiz')) {
             return json_encode(array());
@@ -683,7 +617,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
         return json_encode(array());
     }
 
-    public static function ajaxLoadQuestionsSort($data, $func)
+    public static function ajaxLoadQuestionsSort($data)
     {
         if (!current_user_can('wpProQuiz_edit_quiz')) {
             return json_encode(array());
@@ -696,7 +630,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
         return json_encode($questions);
     }
 
-    public static function ajaxSaveSort($data, $func)
+    public static function ajaxSaveSort($data)
     {
         if (!current_user_can('wpProQuiz_edit_quiz')) {
             return json_encode(array());
@@ -711,7 +645,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
         return json_encode(array());
     }
 
-    public static function ajaxLoadCopyQuestion($data, $func)
+    public static function ajaxLoadCopyQuestion($data)
     {
         if (!current_user_can('wpProQuiz_edit_quiz')) {
             echo json_encode(array());

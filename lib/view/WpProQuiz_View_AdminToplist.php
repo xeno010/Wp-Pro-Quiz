@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @property WpProQuiz_Model_Quiz quiz
+ */
 class WpProQuiz_View_AdminToplist extends WpProQuiz_View_View
 {
 

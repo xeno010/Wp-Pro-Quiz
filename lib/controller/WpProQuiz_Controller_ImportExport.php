@@ -52,8 +52,8 @@ class WpProQuiz_Controller_ImportExport extends WpProQuiz_Controller_Controller
             wp_die(__('You do not have sufficient permissions to access this page.'));
         }
 
-        $this->view = new WpProQuiz_View_Import();
-        $this->view->error = false;
+        $view = new WpProQuiz_View_Import();
+        $view->error = false;
 
         if (isset($_FILES, $_FILES['import']) && substr($_FILES['import']['name'],
                 -3) == 'xml' || isset($this->_post['importType']) && $this->_post['importType'] == 'xml'
@@ -65,41 +65,41 @@ class WpProQuiz_Controller_ImportExport extends WpProQuiz_Controller_Controller
             $importType = 'wpq';
         }
 
-        $this->view->importType = $importType;
+        $view->importType = $importType;
 
         if (isset($_FILES, $_FILES['import']) && $_FILES['import']['error'] == 0) {
             if ($import->setImportFileUpload($_FILES['import']) === false) {
-                $this->view->error = $import->getError();
+                $view->error = $import->getError();
             } else {
                 $data = $import->getImportData();
 
                 if ($data === false) {
-                    $this->view->error = $import->getError();
+                    $view->error = $import->getError();
                 }
 
-                $this->view->import = $data;
-                $this->view->importData = $import->getContent();
+                $view->import = $data;
+                $view->importData = $import->getContent();
 
                 unset($data);
             }
         } else {
             if (isset($this->_post, $this->_post['importSave'])) {
                 if ($import->setImportString($this->_post['importData']) === false) {
-                    $this->view->error = $import->getError();
+                    $view->error = $import->getError();
                 } else {
                     $ids = isset($this->_post['importItems']) ? $this->_post['importItems'] : false;
 
                     if ($ids !== false && $import->saveImport($ids) === false) {
-                        $this->view->error = $import->getError();
+                        $view->error = $import->getError();
                     } else {
-                        $this->view->finish = true;
+                        $view->finish = true;
                     }
                 }
             } else {
-                $this->view->error = __('File cannot be processed', 'wp-pro-quiz');
+                $view->error = __('File cannot be processed', 'wp-pro-quiz');
             }
         }
 
-        $this->view->show();
+        $view->show();
     }
 }

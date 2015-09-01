@@ -50,15 +50,6 @@ class WpProQuiz_Controller_Ajax
             'categoryAdd' => array('WpProQuiz_Controller_Category', 'ajaxAddCategory'),
             'categoryDelete' => array('WpProQuiz_Controller_Category', 'ajaxDeleteCategory'),
             'categoryEdit' => array('WpProQuiz_Controller_Category', 'ajaxEditCategory'),
-            'statisticLoad' => array('WpProQuiz_Controller_Statistics', 'ajaxLoadStatistic'),
-            /** @deprecated * */
-            'statisticLoadOverview' => array('WpProQuiz_Controller_Statistics', 'ajaxLoadStatsticOverview'),
-            /** @deprecated * */
-            'statisticReset' => array('WpProQuiz_Controller_Statistics', 'ajaxReset'),
-            /** @deprecated * */
-            'statisticLoadFormOverview' => array('WpProQuiz_Controller_Statistics', 'ajaxLoadFormOverview'),
-            /** @deprecated * */
-
             'statisticLoadHistory' => array('WpProQuiz_Controller_Statistics', 'ajaxLoadHistory'),
             'statisticLoadUser' => array('WpProQuiz_Controller_Statistics', 'ajaxLoadStatisticUser'),
             'statisticResetNew' => array('WpProQuiz_Controller_Statistics', 'ajaxRestStatistic'),

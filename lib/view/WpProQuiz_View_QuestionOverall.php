@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @property WpProQuiz_Model_Quiz quiz
+ * @property  WpProQuiz_Model_Question[] questionItems
+ * @property  int questionCount
+ * @property WpProQuiz_Model_Category[] categoryItems
+ * @property int perPage
+ */
 class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 	
 	public function show() {

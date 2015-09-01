@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * @property WpProQuiz_Model_GlobalSettings settings
+ * @property bool isRaw
+ * @property WpProQuiz_Model_Category[] category
+ * @property WpProQuiz_Model_Category[] categoryQuiz
+ * @property array email
+ * @property array userEmail
+ * @property WpProQuiz_Model_Template[] templateQuiz
+ * @property WpProQuiz_Model_Template[] templateQuestion
+ * @property string toplistDataFormat
+ * @property string statisticTimeFormat
+ */
 class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View
 {
 

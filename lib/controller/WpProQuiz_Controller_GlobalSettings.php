@@ -40,12 +40,6 @@ class WpProQuiz_Controller_GlobalSettings extends WpProQuiz_Controller_Controlle
             if (add_option('wpProQuiz_statisticTimeFormat', $statisticTimeFormat, '', 'no') === false) {
                 update_option('wpProQuiz_statisticTimeFormat', $statisticTimeFormat);
             }
-
-            //Email
-            //$mapper->saveEmailSettiongs($this->_post['email']);
-
-            //$mapper->saveUserEmailSettiongs($this->_post['userEmail']);
-
         } else {
             if (isset($this->_post['databaseFix'])) {
                 WpProQuiz_View_View::admin_notices(__('Database repaired', 'wp-pro-quiz'), 'info');

@@ -5,6 +5,7 @@ class WpProQuiz_Model_TemplateMapper extends WpProQuiz_Model_Mapper
 
     /**
      * @param WpProQuiz_Model_Template $template
+     * @return WpProQuiz_Model_Template
      */
     public function save($template)
     {
@@ -34,6 +35,11 @@ class WpProQuiz_Model_TemplateMapper extends WpProQuiz_Model_Mapper
         return $this->_wpdb->delete($this->_tableTemplate, array('template_id' => $templateId), array('%d'));
     }
 
+    /**
+     * @param $type
+     * @param bool|true $loadData
+     * @return WpProQuiz_Model_Template[]
+     */
     public function fetchAll($type, $loadData = true)
     {
         $r = array();

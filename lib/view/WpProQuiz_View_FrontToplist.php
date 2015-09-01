@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @property WpProQuiz_Model_Quiz quiz
+ * @property bool inQuiz
+ * @property int points
+ */
 class WpProQuiz_View_FrontToplist extends WpProQuiz_View_View
 {
 

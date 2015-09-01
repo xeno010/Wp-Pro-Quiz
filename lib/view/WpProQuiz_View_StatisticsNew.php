@@ -1,11 +1,11 @@
 <?php
 
+/**
+ * @property array users
+ * @property WpProQuiz_Model_Quiz quiz
+ */
 class WpProQuiz_View_StatisticsNew extends WpProQuiz_View_View
 {
-    /**
-     * @var WpProQuiz_Model_Quiz
-     */
-    public $quiz;
 
     public function show()
     {

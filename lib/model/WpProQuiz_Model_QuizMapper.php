@@ -24,6 +24,10 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
         return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT COUNT(*) FROM {$this->_table} WHERE id = %d", $id));
     }
 
+    /**
+     * @param $id
+     * @return WpProQuiz_Model_Quiz
+     */
     public function fetch($id)
     {
         $results = $this->_wpdb->get_row(
@@ -352,6 +356,10 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
         return $data;
     }
 
+    /**
+     * @param $id
+     * @return int
+     */
     public function sumQuestionPoints($id)
     {
         return $this->_wpdb->get_var($this->_wpdb->prepare("SELECT SUM(points) FROM {$this->_tableQuestion} WHERE quiz_id = %d AND online = 1",
@@ -419,8 +427,6 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 
     public function setMultipeCategories($quizIds, $categoryId)
     {
-        $categoryId < 0 ? 0 : $categoryId;
-
         $quizIds = implode(', ', array_map('intval', (array)$quizIds));
 
         return $this->_wpdb->query($this->_wpdb->prepare(

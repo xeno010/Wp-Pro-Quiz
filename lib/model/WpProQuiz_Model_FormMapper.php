@@ -15,7 +15,7 @@ class WpProQuiz_Model_FormMapper extends WpProQuiz_Model_Mapper
     }
 
     /**
-     * @param WpProQuiz_Model_Form $forms
+     * @param WpProQuiz_Model_Form[] $forms
      */
     public function update($forms)
     {
@@ -59,6 +59,10 @@ class WpProQuiz_Model_FormMapper extends WpProQuiz_Model_Mapper
         }
     }
 
+    /**
+     * @param $quizId
+     * @return WpProQuiz_Model_Form[]
+     */
     public function fetch($quizId)
     {
         $results = $this->_wpdb->get_results(

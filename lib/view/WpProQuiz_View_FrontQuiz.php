@@ -1,23 +1,13 @@
 <?php
 
+/**
+ * @property WpProQuiz_Model_Quiz quiz
+ * @property WpProQuiz_Model_Question[] question
+ * @property WpProQuiz_Model_Category[] category
+ * @property WpProQuiz_Model_Form[] forms
+ */
 class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View
 {
-
-    /**
-     * @var WpProQuiz_Model_Quiz
-     */
-    public $quiz;
-
-    /**
-     * @var WpProQuiz_Model_Question[]
-     */
-    public $question;
-
-    /**
-     * @var WpProQuiz_Model_Category[]
-     */
-    public $category;
-
     private $_clozeTemp = array();
     private $_assessmetTemp = array();
 

@@ -1,18 +1,15 @@
 <?php
 
+/**
+ * @property WpProQuiz_Model_Category[] categories
+ * @property WpProQuiz_Model_Quiz quiz
+ * @property WpProQuiz_Model_Template[] templates
+ * @property WpProQuiz_Model_Question question
+ * @property string header
+ * @property array answerData
+ */
 class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
 {
-
-    /**
-     * @var WpProQuiz_Model_Category
-     */
-    public $categories;
-
-    /**
-     * @var WpProQuiz_Model_Question;
-     */
-    public $question;
-
     public function show()
     {
 

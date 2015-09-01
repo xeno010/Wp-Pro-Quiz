@@ -24,6 +24,10 @@ class WpProQuiz_Model_CategoryMapper extends WpProQuiz_Model_Mapper
         return $r;
     }
 
+    /**
+     * @param $quizId
+     * @return WpProQuiz_Model_Category[]
+     */
     public function fetchByQuiz($quizId)
     {
         $r = array();
@@ -52,8 +56,6 @@ class WpProQuiz_Model_CategoryMapper extends WpProQuiz_Model_Mapper
 
     public function save(WpProQuiz_Model_Category $category)
     {
-        $data = array('category_name' => $category->getCategoryName());
-        $format = array('%s');
         $type = $category->getType();
 
         if ($category->getCategoryId() == 0) {

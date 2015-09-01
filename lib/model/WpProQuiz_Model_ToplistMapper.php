@@ -57,7 +57,7 @@ class WpProQuiz_Model_ToplistMapper extends WpProQuiz_Model_Mapper
 
     public function save(WpProQuiz_Model_Toplist $toplist)
     {
-        $result = $this->_wpdb->insert($this->_tableToplist,
+        $this->_wpdb->insert($this->_tableToplist,
             array(
                 'quiz_id' => $toplist->getQuizId(),
                 'user_id' => $toplist->getUserId(),
@@ -73,9 +73,15 @@ class WpProQuiz_Model_ToplistMapper extends WpProQuiz_Model_Mapper
         $toplist->setToplistId($this->_wpdb->insert_id);
     }
 
+    /**
+     * @param $quizId
+     * @param $limit
+     * @param $sort
+     * @param int $start
+     * @return WpProQuiz_Model_Toplist[]
+     */
     public function fetch($quizId, $limit, $sort, $start = 0)
     {
-        $s = '';
         $r = array();
 
         $start = (int)$start;

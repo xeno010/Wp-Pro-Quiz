@@ -49,6 +49,8 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 
             return new WpProQuiz_Model_StatisticRefModel($row);
         }
+
+        return null;
     }
 
     public function fetchAvg($quizId, $userId)
@@ -157,7 +159,7 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
     /**
      *
      * @param WpProQuiz_Model_StatisticRefModel $statisticRefModel
-     * @param WpProQuiz_Model_Statistic $statisticModel
+     * @param WpProQuiz_Model_Statistic[] $statisticModel
      */
     public function statisticSave($statisticRefModel, $statisticModel)
     {
@@ -200,8 +202,6 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
         }
 
         foreach ($statisticModel as $d) {
-            /* @var $d WpProQuiz_Model_Statistic */
-
             $answerData = $d->getAnswerData() === null ? 'NULL' : $this->_wpdb->prepare('%s',
                 json_encode($d->getAnswerData()));
 
@@ -328,9 +328,17 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
         return $r;
     }
 
+    /**
+     * @param $quizId
+     * @param $page
+     * @param $limit
+     * @param int $users
+     * @param int $startTime
+     * @param int $endTime
+     * @return WpProQuiz_Model_StatisticHistory[]
+     */
     public function fetchHistory($quizId, $page, $limit, $users = -1, $startTime = 0, $endTime = 0)
     {
-        $where = '';
         $timeWhere = '';
 
         switch ($users) {
@@ -426,7 +434,6 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
     public function countHistory($quizId, $users = -1, $startTime = 0, $endTime = 0)
     {
         $timeWhere = '';
-        $where = '';
 
         switch ($users) {
             case -3: //only anonym

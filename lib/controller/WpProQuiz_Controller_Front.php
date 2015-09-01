@@ -215,7 +215,7 @@ class WpProQuiz_Controller_Front
         $this->_settings = $mapper->fetchAll();
     }
 
-    public static function ajaxQuizLoadData($data, $func)
+    public static function ajaxQuizLoadData($data)
     {
         $id = $data['quizId'];
 

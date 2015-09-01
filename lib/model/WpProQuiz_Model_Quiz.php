@@ -846,6 +846,10 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model
         return $this;
     }
 
+    /**
+     * @param bool|false $serialize
+     * @return null|string|WpProQuiz_Model_Email
+     */
     public function getAdminEmail($serialize = false)
     {
         if ($this->_adminEmail === null) {
@@ -876,6 +880,10 @@ class WpProQuiz_Model_Quiz extends WpProQuiz_Model_Model
         return $this;
     }
 
+    /**
+     * @param bool|false $serialize
+     * @return null|string|WpProQuiz_Model_Email
+     */
     public function getUserEmail($serialize = false)
     {
         if ($this->_userEmail === null) {

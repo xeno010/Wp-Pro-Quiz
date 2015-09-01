@@ -167,6 +167,10 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper
         return $model;
     }
 
+    /**
+     * @param $id
+     * @return WpProQuiz_Model_Question|WpProQuiz_Model_Question[]|null
+     */
     public function fetchById($id)
     {
 
@@ -244,13 +248,13 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper
     }
 
     /**
+     * @param $quizId
      * @param $orderBy
      * @param $order
      * @param $search
      * @param $limit
      * @param $offset
      * @param $filter
-     *
      * @return array
      */
     public function fetchTable($quizId, $orderBy, $order, $search, $limit, $offset, $filter)

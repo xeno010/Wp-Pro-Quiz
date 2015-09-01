@@ -27,6 +27,10 @@ class WpProQuiz_Helper_Export
         return $code . base64_encode(serialize($export));
     }
 
+    /**
+     * @param $ids
+     * @return WpProQuiz_Model_Quiz[]
+     */
     private function getQuizMaster($ids)
     {
         $m = new WpProQuiz_Model_QuizMapper();

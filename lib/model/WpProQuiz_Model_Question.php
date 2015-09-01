@@ -208,6 +208,10 @@ class WpProQuiz_Model_Question extends WpProQuiz_Model_Model
         return $this;
     }
 
+    /**
+     * @param bool|false $serialize
+     * @return WpProQuiz_Model_AnswerTypes[]|null|string
+     */
     public function getAnswerData($serialize = false)
     {
         if ($this->_answerData === null) {

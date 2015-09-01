@@ -57,6 +57,8 @@ class WpProQuiz_Helper_ExportXml
     /**
      * @param DOMDocument $dom
      * @param WpProQuiz_Model_Quiz $quiz
+     * @param $forms
+     * @return DOMElement
      */
     private function getQuizElement($dom, $quiz, $forms)
     {
@@ -305,6 +307,8 @@ class WpProQuiz_Helper_ExportXml
 
         if (is_array($answerData)) {
             foreach ($answerData as $answer) {
+                /** @var WpProQuiz_Model_AnswerTypes $answer */
+
                 $answerElement = $dom->createElement('answer');
                 $answerElement->setAttribute('points', $answer->getPoints());
                 $answerElement->setAttribute('correct', $this->booleanToTrueOrFalse($answer->isCorrect()));

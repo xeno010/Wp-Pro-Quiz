@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @property WpProQuiz_Model_Quiz[]  quizItems
+ * @property int quizCount
+ * @property WpProQuiz_Model_Category[] categoryItems
+ * @property int perPage
+ */
 class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View
 {
 

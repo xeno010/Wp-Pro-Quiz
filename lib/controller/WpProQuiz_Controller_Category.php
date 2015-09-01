@@ -3,7 +3,7 @@
 class WpProQuiz_Controller_Category
 {
 
-    public static function ajaxAddCategory($data, $func)
+    public static function ajaxAddCategory($data)
     {
         if (!current_user_can('wpProQuiz_edit_quiz')) {
             return json_encode(array());
@@ -21,7 +21,7 @@ class WpProQuiz_Controller_Category
         ));
     }
 
-    public static function ajaxEditCategory($data, $func)
+    public static function ajaxEditCategory($data)
     {
         if (!current_user_can('wpProQuiz_edit_quiz')) {
             return json_encode(array());
@@ -36,7 +36,7 @@ class WpProQuiz_Controller_Category
         return json_encode(array());
     }
 
-    public static function ajaxDeleteCategory($data, $func)
+    public static function ajaxDeleteCategory($data)
     {
         if (!current_user_can('wpProQuiz_edit_quiz')) {
             return json_encode(array());
