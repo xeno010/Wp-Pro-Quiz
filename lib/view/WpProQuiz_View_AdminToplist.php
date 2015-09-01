@@ -7,6 +7,9 @@ class WpProQuiz_View_AdminToplist extends WpProQuiz_View_View
     {
         ?>
         <div class="wrap wpProQuiz_toplist">
+
+            <input type="hidden" name="ajax_quiz_id" value="<?php echo $this->quiz->getId(); ?>">
+
             <h2><?php _e('Leaderboard', 'wp-pro-quiz');
                 echo ': ', $this->quiz->getName(); ?></h2>
             <a class="button-secondary" href="admin.php?page=wpProQuiz"><?php _e('back to overview',

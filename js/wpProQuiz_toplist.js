@@ -54,8 +54,13 @@ function wpProQuiz_fetchToplist() {
                 return;
 
             jQuery.post(WpProQuizGlobal.ajaxurl, {
-                action: 'wp_pro_quiz_show_front_toplist',
-                quizIds: quizIds
+                //action: 'wp_pro_quiz_show_front_toplist',
+                //quizIds: quizIds
+                action: 'wp_pro_quiz_admin_ajax',
+                func: 'showFrontToplist',
+                data: {
+                    quizIds: quizIds
+                }
             }, function (json) {
                 plugin.toplist.handleRequest(json);
             }, 'json');

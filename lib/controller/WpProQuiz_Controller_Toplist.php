@@ -10,85 +10,85 @@ class WpProQuiz_Controller_Toplist extends WpProQuiz_Controller_Controller
         $action = isset($_GET['action']) ? $_GET['action'] : 'show';
 
         switch ($action) {
-            case 'load_toplist':
-                $this->loadToplist($quizId);
-                break;
-            case 'show':
+//            case 'load_toplist':
+//                $this->loadToplist($quizId);
+//                break;
+//            case 'show':
             default:
                 $this->showAdminToplist($quizId);
                 break;
         }
     }
 
-    private function loadToplist($quizId)
-    {
-        if (!current_user_can('wpProQuiz_toplist_edit')) {
-            echo json_encode(array());
+//    private function loadToplist($quizId)
+//    {
+//        if (!current_user_can('wpProQuiz_toplist_edit')) {
+//            echo json_encode(array());
+//
+//            return;
+//        }
+//
+//        $toplistMapper = new WpProQuiz_Model_ToplistMapper();
+//        $j = array('data' => array());
+//        $limit = (int)$this->_post['limit'];
+//        $start = $limit * ($this->_post['page'] - 1);
+//        $isNav = isset($this->_post['nav']);
+//
+//        if (isset($this->_post['a'])) {
+//            switch ($this->_post['a']) {
+//                case 'deleteAll':
+//                    $toplistMapper->delete($quizId);
+//                    break;
+//                case 'delete':
+//                    if (!empty($this->_post['toplistIds'])) {
+//                        $toplistMapper->delete($quizId, $this->_post['toplistIds']);
+//                    }
+//                    break;
+//            }
+//
+//            $start = 0;
+//            $isNav = true;
+//        }
+//
+//        $toplist = $toplistMapper->fetch($quizId, $limit, $this->_post['sort'], $start);
+//
+//        foreach ($toplist as $tp) {
+//            $j['data'][] = array(
+//                'id' => $tp->getToplistId(),
+//                'name' => $tp->getName(),
+//                'email' => $tp->getEmail(),
+//                'type' => $tp->getUserId() ? 'R' : 'UR',
+//                'date' => WpProQuiz_Helper_Until::convertTime($tp->getDate(),
+//                    get_option('wpProQuiz_toplistDataFormat', 'Y/m/d g:i A')),
+//                'points' => $tp->getPoints(),
+//                'result' => $tp->getResult()
+//            );
+//        }
+//
+//        if ($isNav) {
+//
+//            $count = $toplistMapper->count($quizId);
+//            $pages = ceil($count / $limit);
+//            $j['nav'] = array(
+//                'count' => $count,
+//                'pages' => $pages ? $pages : 1
+//            );
+//        }
+//
+//        echo json_encode($j);
+//    }
 
-            return;
-        }
-
-        $toplistMapper = new WpProQuiz_Model_ToplistMapper();
-        $j = array('data' => array());
-        $limit = (int)$this->_post['limit'];
-        $start = $limit * ($this->_post['page'] - 1);
-        $isNav = isset($this->_post['nav']);
-
-        if (isset($this->_post['a'])) {
-            switch ($this->_post['a']) {
-                case 'deleteAll':
-                    $toplistMapper->delete($quizId);
-                    break;
-                case 'delete':
-                    if (!empty($this->_post['toplistIds'])) {
-                        $toplistMapper->delete($quizId, $this->_post['toplistIds']);
-                    }
-                    break;
-            }
-
-            $start = 0;
-            $isNav = true;
-        }
-
-        $toplist = $toplistMapper->fetch($quizId, $limit, $this->_post['sort'], $start);
-
-        foreach ($toplist as $tp) {
-            $j['data'][] = array(
-                'id' => $tp->getToplistId(),
-                'name' => $tp->getName(),
-                'email' => $tp->getEmail(),
-                'type' => $tp->getUserId() ? 'R' : 'UR',
-                'date' => WpProQuiz_Helper_Until::convertTime($tp->getDate(),
-                    get_option('wpProQuiz_toplistDataFormat', 'Y/m/d g:i A')),
-                'points' => $tp->getPoints(),
-                'result' => $tp->getResult()
-            );
-        }
-
-        if ($isNav) {
-
-            $count = $toplistMapper->count($quizId);
-            $pages = ceil($count / $limit);
-            $j['nav'] = array(
-                'count' => $count,
-                'pages' => $pages ? $pages : 1
-            );
-        }
-
-        echo json_encode($j);
-    }
-
-    private function editAdminToplist()
-    {
-        $toplistId = $this->_post['toplistId'];
-        $username = trim($this->_post['name']);
-        $email = trim($this->_post['email']);
-
-        if (empty($name) || empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-            return array('error' => __('No name or e-mail entered.', 'wp-pro-quiz'));
-        }
-
-    }
+//    private function editAdminToplist()
+//    {
+//        $toplistId = $this->_post['toplistId'];
+//        $username = trim($this->_post['name']);
+//        $email = trim($this->_post['email']);
+//
+//        if (empty($name) || empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+//            return array('error' => __('No name or e-mail entered.', 'wp-pro-quiz'));
+//        }
+//
+//    }
 
     private function showAdminToplist($quizId)
     {
@@ -131,36 +131,36 @@ class WpProQuiz_Controller_Toplist extends WpProQuiz_Controller_Controller
         return $data;
     }
 
-    public function addInToplist()
-    {
-        $quizId = isset($this->_post['quizId']) ? $this->_post['quizId'] : 0;
-        $prefix = !empty($this->_post['prefix']) ? trim($this->_post['prefix']) : '';
-        $quizMapper = new WpProQuiz_Model_QuizMapper();
-
-        $quiz = $quizMapper->fetch($quizId);
-
-        $r = $this->handleAddInToplist($quiz);
-
-        if ($quiz->isToplistActivated() && $quiz->isToplistDataCaptcha() && get_current_user_id() == 0) {
-            $captcha = WpProQuiz_Helper_Captcha::getInstance();
-
-            if ($captcha->isSupported()) {
-                $captcha->remove($prefix);
-                $captcha->cleanup();
-
-                if ($r !== true) {
-                    $r['captcha']['img'] = WPPROQUIZ_CAPTCHA_URL . '/' . $captcha->createImage();
-                    $r['captcha']['code'] = $captcha->getPrefix();
-                }
-            }
-        }
-
-        if ($r === true) {
-            $r = array('text' => __('You signed up successfully.', 'wp-pro-quiz'), 'clear' => true);
-        }
-
-        echo json_encode($r);
-    }
+//    public function addInToplist()
+//    {
+//        $quizId = isset($this->_post['quizId']) ? $this->_post['quizId'] : 0;
+//        $prefix = !empty($this->_post['prefix']) ? trim($this->_post['prefix']) : '';
+//        $quizMapper = new WpProQuiz_Model_QuizMapper();
+//
+//        $quiz = $quizMapper->fetch($quizId);
+//
+//        $r = $this->handleAddInToplist($quiz);
+//
+//        if ($quiz->isToplistActivated() && $quiz->isToplistDataCaptcha() && get_current_user_id() == 0) {
+//            $captcha = WpProQuiz_Helper_Captcha::getInstance();
+//
+//            if ($captcha->isSupported()) {
+//                $captcha->remove($prefix);
+//                $captcha->cleanup();
+//
+//                if ($r !== true) {
+//                    $r['captcha']['img'] = WPPROQUIZ_CAPTCHA_URL . '/' . $captcha->createImage();
+//                    $r['captcha']['code'] = $captcha->getPrefix();
+//                }
+//            }
+//        }
+//
+//        if ($r === true) {
+//            $r = array('text' => __('You signed up successfully.', 'wp-pro-quiz'), 'clear' => true);
+//        }
+//
+//        echo json_encode($r);
+//    }
 
     private function handleAddInToplist(WpProQuiz_Model_Quiz $quiz)
     {
@@ -267,12 +267,138 @@ class WpProQuiz_Controller_Toplist extends WpProQuiz_Controller_Controller
         return false;
     }
 
-    public function showFrontToplist()
+//    public function showFrontToplist()
+//    {
+//        $quizIds = empty($this->_post['quizIds']) ? array() : array_unique((array)$this->_post['quizIds']);
+//        $toplistMapper = new WpProQuiz_Model_ToplistMapper();
+//        $quizMapper = new WpProQuiz_Model_QuizMapper();
+//        $r = array();
+//        $j = array();
+//
+//        foreach ($quizIds as $quizId) {
+//            $quiz = $quizMapper->fetch($quizId);
+//            if ($quiz == null || $quiz->getId() == 0) {
+//                continue;
+//            }
+//
+//            $toplist = $toplistMapper->fetch($quizId, $quiz->getToplistDataShowLimit(), $quiz->getToplistDataSort());
+//
+//            foreach ($toplist as $tp) {
+//                $j[$quizId][] = array(
+//                    'name' => $tp->getName(),
+//                    'date' => WpProQuiz_Helper_Until::convertTime($tp->getDate(),
+//                        get_option('wpProQuiz_toplistDataFormat', 'Y/m/d g:i A')),
+//                    'points' => $tp->getPoints(),
+//                    'result' => $tp->getResult()
+//                );
+//            }
+//        }
+//
+//        echo json_encode($j);
+//    }
+
+    public static function ajaxAdminToplist($data)
     {
-        $quizIds = empty($this->_post['quizIds']) ? array() : array_unique((array)$this->_post['quizIds']);
+        if (!current_user_can('wpProQuiz_toplist_edit')) {
+            return json_encode(array());
+        }
+
+        $toplistMapper = new WpProQuiz_Model_ToplistMapper();
+
+        $j = array('data' => array());
+        $limit = (int)$data['limit'];
+        $start = $limit * ($data['page'] - 1);
+        $isNav = isset($data['nav']);
+        $quizId = $data['quizId'];
+
+        if (isset($data['a'])) {
+            switch ($data['a']) {
+                case 'deleteAll':
+                    $toplistMapper->delete($quizId);
+                    break;
+                case 'delete':
+                    if (!empty($data['toplistIds'])) {
+                        $toplistMapper->delete($quizId, $data['toplistIds']);
+                    }
+                    break;
+            }
+
+            $start = 0;
+            $isNav = true;
+        }
+
+        $toplist = $toplistMapper->fetch($quizId, $limit, $data['sort'], $start);
+
+        foreach ($toplist as $tp) {
+            $j['data'][] = array(
+                'id' => $tp->getToplistId(),
+                'name' => $tp->getName(),
+                'email' => $tp->getEmail(),
+                'type' => $tp->getUserId() ? 'R' : 'UR',
+                'date' => WpProQuiz_Helper_Until::convertTime($tp->getDate(),
+                    get_option('wpProQuiz_toplistDataFormat', 'Y/m/d g:i A')),
+                'points' => $tp->getPoints(),
+                'result' => $tp->getResult()
+            );
+        }
+
+        if ($isNav) {
+
+            $count = $toplistMapper->count($quizId);
+            $pages = ceil($count / $limit);
+            $j['nav'] = array(
+                'count' => $count,
+                'pages' => $pages ? $pages : 1
+            );
+        }
+
+        return json_encode($j);
+    }
+
+    public static function ajaxAddInToplist($data)
+    {
+        // workaround ...
+        $_POST = $_POST['data'];
+
+        $ctn = new WpProQuiz_Controller_Toplist();
+
+        $quizId = isset($data['quizId']) ? $data['quizId'] : 0;
+        $prefix = !empty($data['prefix']) ? trim($data['prefix']) : '';
+        $quizMapper = new WpProQuiz_Model_QuizMapper();
+
+        $quiz = $quizMapper->fetch($quizId);
+
+        $r = $ctn->handleAddInToplist($quiz);
+
+        if ($quiz->isToplistActivated() && $quiz->isToplistDataCaptcha() && get_current_user_id() == 0) {
+            $captcha = WpProQuiz_Helper_Captcha::getInstance();
+
+            if ($captcha->isSupported()) {
+                $captcha->remove($prefix);
+                $captcha->cleanup();
+
+                if ($r !== true) {
+                    $r['captcha']['img'] = WPPROQUIZ_CAPTCHA_URL . '/' . $captcha->createImage();
+                    $r['captcha']['code'] = $captcha->getPrefix();
+                }
+            }
+        }
+
+        if ($r === true) {
+            $r = array('text' => __('You signed up successfully.', 'wp-pro-quiz'), 'clear' => true);
+        }
+
+        return json_encode($r);
+    }
+
+    public static function ajaxShowFrontToplist($data)
+    {
+        // workaround ...
+        $_POST = $_POST['data'];
+
+        $quizIds = empty($data['quizIds']) ? array() : array_unique((array)$data['quizIds']);
         $toplistMapper = new WpProQuiz_Model_ToplistMapper();
         $quizMapper = new WpProQuiz_Model_QuizMapper();
-        $r = array();
         $j = array();
 
         foreach ($quizIds as $quizId) {
@@ -294,6 +420,6 @@ class WpProQuiz_Controller_Toplist extends WpProQuiz_Controller_Controller
             }
         }
 
-        echo json_encode($j);
+        return json_encode($j);
     }
 }

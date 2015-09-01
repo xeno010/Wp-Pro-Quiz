@@ -839,13 +839,19 @@ jQuery(document).ready(function ($) {
             },
 
             resetLock: function () {
-                var location = window.location.pathname + window.location.search;
-                var url = location.replace('admin.php', 'admin-ajax.php');
-                url = url.replace('action=edit', 'action=reset_lock');
+                //var location = window.location.pathname + window.location.search;
+                //var url = location.replace('admin.php', 'admin-ajax.php');
+                //url = url.replace('action=edit', 'action=reset_lock');
+                //
+                //$.post(url, {
+                //    action: 'wp_pro_quiz_reset_lock'
+                //}, function (data) {
+                //    $('#resetLockMsg').show('fast').delay(2000).hide('fast');
+                //});
 
-                $.post(url, {
-                    action: 'wp_pro_quiz_reset_lock'
-                }, function (data) {
+                ajaxPost('resetLock', {
+                    quizId: $('input[name="ajax_quiz_id"]').val()
+                }, function () {
                     $('#resetLockMsg').show('fast').delay(2000).hide('fast');
                 });
             },
@@ -1466,6 +1472,16 @@ jQuery(document).ready(function ($) {
     };
 
     $.fn.wpProQuiz_toplist = function () {
+        function ajaxPost(func, data, success) {
+            var d = {
+                action: 'wp_pro_quiz_admin_ajax',
+                func: func,
+                data: data
+            };
+
+            $.post(ajaxurl, d, success, 'json');
+        }
+
         var elements = {
             sort: $('#wpProQuiz_sorting'),
             pageLimit: $('#wpProQuiz_pageLimit'),
@@ -1480,14 +1496,15 @@ jQuery(document).ready(function ($) {
 
         var methods = {
             loadData: function (action) {
-                var location = window.location.pathname + window.location.search;
-                var url = location.replace('admin.php', 'admin-ajax.php') + '&action=load_toplist';
+                //var location = window.location.pathname + window.location.search;
+                //var url = location.replace('admin.php', 'admin-ajax.php') + '&action=load_toplist';
                 var th = this;
                 var data = {
-                    action: 'wp_pro_quiz_load_toplist',
+                    //action: 'wp_pro_quiz_load_toplist',
                     sort: elements.sort.val(),
                     limit: elements.pageLimit.val(),
-                    page: elements.currentPage.val()
+                    page: elements.currentPage.val(),
+                    quizId: $('input[name="ajax_quiz_id"]').val()
                 };
 
                 if (action != undefined) {
@@ -1497,18 +1514,29 @@ jQuery(document).ready(function ($) {
                 elements.loadDataBox.show();
                 elements.content.hide();
 
-                $.post(url, data, function (json) {
-                    //methods.handleDataRequest(json.data);
+                //$.post(url, data, function (json) {
+                //    //methods.handleDataRequest(json.data);
+                //    th.handleDataRequest(json.data);
+                //
+                //    if (json.nav != undefined) {
+                //        //methods.handleNav(json.nav);
+                //        th.handleNav(json.nav);
+                //    }
+                //
+                //    elements.loadDataBox.hide();
+                //    elements.content.show();
+                //}, 'json');
+
+                ajaxPost('adminToplist', data, function (json) {
                     th.handleDataRequest(json.data);
 
                     if (json.nav != undefined) {
-                        //methods.handleNav(json.nav);
                         th.handleNav(json.nav);
                     }
 
                     elements.loadDataBox.hide();
                     elements.content.show();
-                }, 'json');
+                });
             },
 
             handleNav: function (nav) {

@@ -26,6 +26,9 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View
 
             <form method="post"
                   action="admin.php?page=wpProQuiz&action=addEdit&quizId=<?php echo $this->quiz->getId(); ?>">
+
+                <input type="hidden" name="ajax_quiz_id" value="<?php echo $this->quiz->getId(); ?>">
+
                 <a style="float: left;" class="button-secondary"
                    href="admin.php?page=wpProQuiz"><?php _e('back to overview', 'wp-pro-quiz'); ?></a>
 

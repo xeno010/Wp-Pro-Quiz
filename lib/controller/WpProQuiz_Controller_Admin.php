@@ -13,28 +13,28 @@ class WpProQuiz_Controller_Admin
         $this->_ajax->init();
 
         //deprecated - use WpProQuiz_Controller_Ajax
-        add_action('wp_ajax_wp_pro_quiz_update_sort', array($this, 'updateSort'));
-        add_action('wp_ajax_wp_pro_quiz_load_question', array($this, 'updateSort'));
+//        add_action('wp_ajax_wp_pro_quiz_update_sort', array($this, 'updateSort'));
+//        add_action('wp_ajax_wp_pro_quiz_load_question', array($this, 'updateSort'));
 
-        add_action('wp_ajax_wp_pro_quiz_reset_lock', array($this, 'resetLock'));
+//        add_action('wp_ajax_wp_pro_quiz_reset_lock', array($this, 'resetLock'));
 
-        add_action('wp_ajax_wp_pro_quiz_load_toplist', array($this, 'adminToplist'));
+//        add_action('wp_ajax_wp_pro_quiz_load_toplist', array($this, 'adminToplist'));
 
-        add_action('wp_ajax_wp_pro_quiz_completed_quiz', array($this, 'completedQuiz'));
-        add_action('wp_ajax_nopriv_wp_pro_quiz_completed_quiz', array($this, 'completedQuiz'));
+//        add_action('wp_ajax_wp_pro_quiz_completed_quiz', array($this, 'completedQuiz'));
+//        add_action('wp_ajax_nopriv_wp_pro_quiz_completed_quiz', array($this, 'completedQuiz'));
 
-        add_action('wp_ajax_wp_pro_quiz_check_lock', array($this, 'quizCheckLock'));
-        add_action('wp_ajax_nopriv_wp_pro_quiz_check_lock', array($this, 'quizCheckLock'));
+//        add_action('wp_ajax_wp_pro_quiz_check_lock', array($this, 'quizCheckLock'));
+//        add_action('wp_ajax_nopriv_wp_pro_quiz_check_lock', array($this, 'quizCheckLock'));
 
         //0.19
-        add_action('wp_ajax_wp_pro_quiz_add_toplist', array($this, 'addInToplist'));
-        add_action('wp_ajax_nopriv_wp_pro_quiz_add_toplist', array($this, 'addInToplist'));
+//        add_action('wp_ajax_wp_pro_quiz_add_toplist', array($this, 'addInToplist'));
+//        add_action('wp_ajax_nopriv_wp_pro_quiz_add_toplist', array($this, 'addInToplist'));
 
-        add_action('wp_ajax_wp_pro_quiz_show_front_toplist', array($this, 'showFrontToplist'));
-        add_action('wp_ajax_nopriv_wp_pro_quiz_show_front_toplist', array($this, 'showFrontToplist'));
+//        add_action('wp_ajax_wp_pro_quiz_show_front_toplist', array($this, 'showFrontToplist'));
+//        add_action('wp_ajax_nopriv_wp_pro_quiz_show_front_toplist', array($this, 'showFrontToplist'));
 
-        add_action('wp_ajax_wp_pro_quiz_load_quiz_data', array($this, 'loadQuizData'));
-        add_action('wp_ajax_nopriv_wp_pro_quiz_load_quiz_data', array($this, 'loadQuizData'));
+//        add_action('wp_ajax_wp_pro_quiz_load_quiz_data', array($this, 'loadQuizData'));
+//        add_action('wp_ajax_nopriv_wp_pro_quiz_load_quiz_data', array($this, 'loadQuizData'));
 
         add_action('admin_menu', array($this, 'register_page'));
 
@@ -50,67 +50,67 @@ class WpProQuiz_Controller_Admin
         return $status;
     }
 
-    public function loadQuizData()
-    {
-        $q = new WpProQuiz_Controller_Quiz();
+//    public function loadQuizData()
+//    {
+//        $q = new WpProQuiz_Controller_Quiz();
+//
+//        echo json_encode($q->loadQuizData());
+//
+//        exit;
+//    }
 
-        echo json_encode($q->loadQuizData());
+//    public function adminToplist()
+//    {
+//        $t = new WpProQuiz_Controller_Toplist();
+//        $t->route();
+//
+//        exit;
+//    }
 
-        exit;
-    }
+//    public function showFrontToplist()
+//    {
+//        $t = new WpProQuiz_Controller_Toplist();
+//
+//        $t->showFrontToplist();
+//
+//        exit;
+//    }
 
-    public function adminToplist()
-    {
-        $t = new WpProQuiz_Controller_Toplist();
-        $t->route();
+//    public function addInToplist()
+//    {
+//        $t = new WpProQuiz_Controller_Toplist();
+//
+//        $t->addInToplist();
+//
+//        exit;
+//    }
 
-        exit;
-    }
+//    public function resetLock()
+//    {
+//        $c = new WpProQuiz_Controller_Quiz();
+//        $c->route();
+//    }
 
-    public function showFrontToplist()
-    {
-        $t = new WpProQuiz_Controller_Toplist();
+//    public function quizCheckLock()
+//    {
+//        $quizController = new WpProQuiz_Controller_Quiz();
+//
+//        echo json_encode($quizController->isLockQuiz($_POST['quizId']));
+//
+//        exit;
+//    }
 
-        $t->showFrontToplist();
+//    public function updateSort()
+//    {
+//        $c = new WpProQuiz_Controller_Question();
+//        $c->route();
+//    }
 
-        exit;
-    }
-
-    public function addInToplist()
-    {
-        $t = new WpProQuiz_Controller_Toplist();
-
-        $t->addInToplist();
-
-        exit;
-    }
-
-    public function resetLock()
-    {
-        $c = new WpProQuiz_Controller_Quiz();
-        $c->route();
-    }
-
-    public function quizCheckLock()
-    {
-        $quizController = new WpProQuiz_Controller_Quiz();
-
-        echo json_encode($quizController->isLockQuiz($_POST['quizId']));
-
-        exit;
-    }
-
-    public function updateSort()
-    {
-        $c = new WpProQuiz_Controller_Question();
-        $c->route();
-    }
-
-    public function completedQuiz()
-    {
-        $quiz = new WpProQuiz_Controller_Quiz();
-        $quiz->completedQuiz();
-    }
+//    public function completedQuiz()
+//    {
+//        $quiz = new WpProQuiz_Controller_Quiz();
+//        $quiz->completedQuiz();
+//    }
 
     private function localizeScript()
     {

@@ -1387,11 +1387,21 @@
 
                 var formData = formClass.getFormData();
 
+                //plugin.methode.ajax({
+                //    action: 'wp_pro_quiz_completed_quiz',
+                //    quizId: config.quizId,
+                //    results: results,
+                //    forms: formData
+                //});
+
                 plugin.methode.ajax({
-                    action: 'wp_pro_quiz_completed_quiz',
-                    quizId: config.quizId,
-                    results: results,
-                    forms: formData
+                    action: 'wp_pro_quiz_admin_ajax',
+                    func: 'completedQuiz',
+                    data: {
+                        quizId: config.quizId,
+                        results: results,
+                        forms: formData
+                    }
                 });
             },
 
@@ -1576,8 +1586,14 @@
                 quizStatus.loadLock = 1;
 
                 plugin.methode.ajax({
-                    action: 'wp_pro_quiz_check_lock',
-                    quizId: config.quizId
+                    //action: 'wp_pro_quiz_check_lock',
+                    //quizId: config.quizId
+
+                    action: 'wp_pro_quiz_admin_ajax',
+                    func: 'quizCheckLock',
+                    data: {
+                        quizId: config.quizId
+                    }
                 }, function (json) {
 
                     if (json.lock != undefined) {
@@ -1607,8 +1623,11 @@
 
             loadQuizData: function () {
                 plugin.methode.ajax({
-                    action: 'wp_pro_quiz_load_quiz_data',
-                    quizId: config.quizId
+                    action: 'wp_pro_quiz_admin_ajax',
+                    func: 'loadQuizData',
+                    data: {
+                        quizId: config.quizId
+                    }
                 }, function (json) {
                     if (json.toplist) {
                         plugin.methode.handleToplistData(json.toplist);
@@ -1618,6 +1637,19 @@
                         plugin.methode.setAverageResult(json.averageResult, true);
                     }
                 });
+
+                //plugin.methode.ajax({
+                //    action: 'wp_pro_quiz_load_quiz_data',
+                //    quizId: config.quizId
+                //}, function (json) {
+                //    if (json.toplist) {
+                //        plugin.methode.handleToplistData(json.toplist);
+                //    }
+                //
+                //    if (json.averageResult != undefined) {
+                //        plugin.methode.setAverageResult(json.averageResult, true);
+                //    }
+                //});
             },
 
             setAverageResult: function (p, g) {
@@ -1683,15 +1715,28 @@
                 var $addBox = $e.find('.wpProQuiz_addBox').hide();
 
                 plugin.methode.ajax({
-                    action: 'wp_pro_quiz_add_toplist',
-                    quizId: config.quizId,
-                    token: toplistData.token,
-                    name: $addBox.find('input[name="wpProQuiz_toplistName"]').val(),
-                    email: $addBox.find('input[name="wpProQuiz_toplistEmail"]').val(),
-                    captcha: $addBox.find('input[name="wpProQuiz_captcha"]').val(),
-                    prefix: $addBox.find('input[name="wpProQuiz_captchaPrefix"]').val(),
-                    points: results.comp.points,
-                    totalPoints: config.globalPoints
+                    //action: 'wp_pro_quiz_add_toplist',
+                    //quizId: config.quizId,
+                    //token: toplistData.token,
+                    //name: $addBox.find('input[name="wpProQuiz_toplistName"]').val(),
+                    //email: $addBox.find('input[name="wpProQuiz_toplistEmail"]').val(),
+                    //captcha: $addBox.find('input[name="wpProQuiz_captcha"]').val(),
+                    //prefix: $addBox.find('input[name="wpProQuiz_captchaPrefix"]').val(),
+                    //points: results.comp.points,
+                    //totalPoints: config.globalPoints
+
+                    action: 'wp_pro_quiz_admin_ajax',
+                    func: 'addInToplist',
+                    data: {
+                        quizId: config.quizId,
+                        token: toplistData.token,
+                        name: $addBox.find('input[name="wpProQuiz_toplistName"]').val(),
+                        email: $addBox.find('input[name="wpProQuiz_toplistEmail"]').val(),
+                        captcha: $addBox.find('input[name="wpProQuiz_captcha"]').val(),
+                        prefix: $addBox.find('input[name="wpProQuiz_captchaPrefix"]').val(),
+                        points: results.comp.points,
+                        totalPoints: config.globalPoints
+                    }
                 }, function (json) {
                     $addToplistMessage.text(json.text);
 

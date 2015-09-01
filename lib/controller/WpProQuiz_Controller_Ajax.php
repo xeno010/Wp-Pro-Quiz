@@ -73,12 +73,24 @@ class WpProQuiz_Controller_Ajax
             ),
             'loadQuestionsSort' => array('WpProQuiz_Controller_Question', 'ajaxLoadQuestionsSort'),
             'questionSaveSort' => array('WpProQuiz_Controller_Question', 'ajaxSaveSort'),
-            'questionaLoadCopyQuestion' => array('WpProQuiz_Controller_Question', 'ajaxLoadCopyQuestion')
+            'questionaLoadCopyQuestion' => array('WpProQuiz_Controller_Question', 'ajaxLoadCopyQuestion'),
+            'loadQuizData' => array('WpProQuiz_Controller_Quiz', 'ajaxLoadQuizData'),
+            'resetLock' => array('WpProQuiz_Controller_Quiz', 'ajaxResetLock'),
+            'adminToplist' => array('WpProQuiz_Controller_Toplist', 'ajaxAdminToplist'),
+            'completedQuiz' => array('WpProQuiz_Controller_Quiz', 'ajaxCompletedQuiz'),
+            'quizCheckLock' => array('WpProQuiz_Controller_Quiz', 'ajaxQuizCheckLock'),
+            'addInToplist' => array('WpProQuiz_Controller_Toplist', 'ajaxAddInToplist'),
+            'showFrontToplist' => array('WpProQuiz_Controller_Toplist', 'ajaxShowFrontToplist')
         );
 
         //nopriv
         $this->_frontCallbacks = array(
-            'quizLoadData' => array('WpProQuiz_Controller_Front', 'ajaxQuizLoadData')
+            'quizLoadData' => array('WpProQuiz_Controller_Front', 'ajaxQuizLoadData'),
+            'loadQuizData' => array('WpProQuiz_Controller_Quiz', 'ajaxLoadQuizData'),
+            'completedQuiz' => array('WpProQuiz_Controller_Quiz', 'ajaxCompletedQuiz'),
+            'quizCheckLock' => array('WpProQuiz_Controller_Quiz', 'ajaxQuizCheckLock'),
+            'addInToplist' => array('WpProQuiz_Controller_Toplist', 'ajaxAddInToplist'),
+            'showFrontToplist' => array('WpProQuiz_Controller_Toplist', 'ajaxShowFrontToplist')
         );
     }
 }
