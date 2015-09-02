@@ -264,14 +264,14 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
                             </label>
                         </div>
                     </div>
-                    <?php $this->singleChoiceOptions($this->data['classic_answer']); ?>
+                    <?php $this->singleChoiceOptions($this->answerData['classic_answer']); ?>
                     <div class="postbox">
                         <h3 class="hndle"><?php _e('Answers', 'wp-pro-quiz'); ?><?php _e('(required)',
                                 'wp-pro-quiz'); ?></h3>
 
                         <div class="inside answer_felder">
                             <div class="free_answer">
-                                <?php $this->freeChoice($this->data['free_answer']); ?>
+                                <?php $this->freeChoice($this->answerData['free_answer']); ?>
                             </div>
                             <div class="sort_answer">
                                 <p class="description">
@@ -279,14 +279,14 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
                                         'wp-pro-quiz'); ?>
                                 </p>
                                 <ul class="answerList">
-                                    <?php $this->sortingChoice($this->data['sort_answer']); ?>
+                                    <?php $this->sortingChoice($this->answerData['sort_answer']); ?>
                                 </ul>
                                 <input type="button" class="button-primary addAnswer"
                                        value="<?php _e('Add new answer', 'wp-pro-quiz'); ?>">
                             </div>
                             <div class="classic_answer">
                                 <ul class="answerList">
-                                    <?php $this->singleMultiCoice($this->data['classic_answer']); ?>
+                                    <?php $this->singleMultiCoice($this->answerData['classic_answer']); ?>
                                 </ul>
                                 <input type="button" class="button-primary addAnswer"
                                        value="<?php _e('Add new answer', 'wp-pro-quiz'); ?>">
@@ -315,16 +315,16 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
                                 </p>
                                 <br>
                                 <ul class="answerList">
-                                    <?php $this->matrixSortingChoice($this->data['matrix_sort_answer']); ?>
+                                    <?php $this->matrixSortingChoice($this->answerData['matrix_sort_answer']); ?>
                                 </ul>
                                 <input type="button" class="button-primary addAnswer"
                                        value="<?php _e('Add new answer', 'wp-pro-quiz'); ?>">
                             </div>
                             <div class="cloze_answer">
-                                <?php $this->clozeChoice($this->data['cloze_answer']); ?>
+                                <?php $this->clozeChoice($this->answerData['cloze_answer']); ?>
                             </div>
                             <div class="assessment_answer">
-                                <?php $this->assessmentChoice($this->data['assessment_answer']); ?>
+                                <?php $this->assessmentChoice($this->answerData['assessment_answer']); ?>
                             </div>
                         </div>
                     </div>
