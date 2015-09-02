@@ -13,13 +13,6 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller
             case 'addEdit':
                 $this->addEditQuiz();
                 break;
-// 			case 'add':
-// 				$this->createAction();
-// 				break;
-// 			case 'edit':
-// 				if(isset($_GET['id']))
-// 					$this->editAction($_GET['id']);
-// 				break;
             case 'delete':
                 if (isset($_GET['id'])) {
                     $this->deleteAction($_GET['id']);
@@ -28,9 +21,6 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller
             case 'deleteMulti':
                 $this->deleteMultiAction();
                 break;
-//            case 'reset_lock':
-//                $this->resetLock($_GET['id']);
-//                break;
             default:
                 $this->showAction();
                 break;
