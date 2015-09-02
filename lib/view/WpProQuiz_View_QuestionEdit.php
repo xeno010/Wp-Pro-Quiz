@@ -264,7 +264,7 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
                             </label>
                         </div>
                     </div>
-                    <?php $this->singleChoiceOptions($this->answerData['classic_answer']); ?>
+                    <?php $this->singleChoiceOptions(); ?>
                     <div class="postbox">
                         <h3 class="hndle"><?php _e('Answers', 'wp-pro-quiz'); ?><?php _e('(required)',
                                 'wp-pro-quiz'); ?></h3>
@@ -357,6 +357,9 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
         <?php
     }
 
+    /**
+     * @param WpProQuiz_Model_AnswerTypes[] $data
+     */
     private function singleMultiCoice($data)
     {
         foreach ($data as $d) {
@@ -417,6 +420,9 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
         }
     }
 
+    /**
+     * @param WpProQuiz_Model_AnswerTypes[] $data
+     */
     private function matrixSortingChoice($data)
     {
         foreach ($data as $d) {
@@ -480,6 +486,9 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
         }
     }
 
+    /**
+     * @param WpProQuiz_Model_AnswerTypes[] $data
+     */
     private function sortingChoice($data)
     {
         foreach ($data as $d) {
@@ -529,6 +538,9 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
         }
     }
 
+    /**
+     * @param WpProQuiz_Model_AnswerTypes[] $data
+     */
     private function freeChoice($data)
     {
         $single = $data[0];
@@ -546,6 +558,9 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
         <?php
     }
 
+    /**
+     * @param WpProQuiz_Model_AnswerTypes[] $data
+     */
     private function clozeChoice($data)
     {
         $single = $data[0];
@@ -573,6 +588,9 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
         <?php
     }
 
+    /**
+     * @param WpProQuiz_Model_AnswerTypes[] $data
+     */
     private function assessmentChoice($data)
     {
         $single = $data[0];
@@ -594,7 +612,7 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
             <a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a>
 
             <div
-                style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+                style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0 0 10px 4px rgb(44, 44, 44); display: none; ">
                 <img alt="" src="<?php echo WPPROQUIZ_URL . '/img/assessmentDemo1.png'; ?> ">
             </div>
         </div>
@@ -605,7 +623,7 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
             <a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a>
 
             <div
-                style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
+                style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0 0 10px 4px rgb(44, 44, 44); display: none; ">
                 <img alt="" src="<?php echo WPPROQUIZ_URL . '/img/assessmentDemo2.png'; ?> ">
             </div>
         </div>
@@ -618,7 +636,7 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
         <?php
     }
 
-    private function singleChoiceOptions($data)
+    private function singleChoiceOptions()
     {
         ?>
         <div class="postbox" id="singleChoiceOptions">
