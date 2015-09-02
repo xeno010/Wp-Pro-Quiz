@@ -2,7 +2,6 @@
 
 class WpProQuiz_Model_LockMapper extends WpProQuiz_Model_Mapper
 {
-
     protected $_table;
 
     public function __construct()
@@ -12,19 +11,29 @@ class WpProQuiz_Model_LockMapper extends WpProQuiz_Model_Mapper
         $this->_table = $this->_prefix . 'lock';
     }
 
+    /**
+     * @param WpProQuiz_Model_Lock $lock
+     *
+     * @return false|int
+     */
     public function insert(WpProQuiz_Model_Lock $lock)
     {
-        $this->_wpdb->insert($this->_table, array(
+        return $this->_wpdb->insert($this->_table, array(
             'quiz_id' => $lock->getQuizId(),
             'lock_ip' => $lock->getLockIp(),
             'user_id' => $lock->getUserId(),
             'lock_type' => $lock->getLockType(),
-            'lock_date' => $lock->getLockDate(),
-            'lock_type' => $lock->getLockType()
-        ),
-            array('%d', '%s', '%d', '%d', '%d', '%d'));
+            'lock_date' => $lock->getLockDate()
+        ), array('%d', '%s', '%d', '%d', '%d'));
     }
 
+    /**
+     * @param int $quizId
+     * @param string $lockIp
+     * @param int $userId
+     *
+     * @return null|WpProQuiz_Model_Lock
+     */
     public function fetch($quizId, $lockIp, $userId)
     {
         $row = $this->_wpdb->get_row(
@@ -42,13 +51,17 @@ class WpProQuiz_Model_LockMapper extends WpProQuiz_Model_Mapper
                 $quizId, $lockIp, $userId)
         );
 
-        if ($row === null) {
-            return null;
-        }
-
-        return new WpProQuiz_Model_Lock($row);
+        return $row !== null ? new WpProQuiz_Model_Lock($row) : null;
     }
 
+    /**
+     * @param int $quizId
+     * @param string $lockIp
+     * @param int $userId
+     * @param int $type
+     *
+     * @return bool
+     */
     public function isLock($quizId, $lockIp, $userId, $type)
     {
         $c = $this->_wpdb->get_var(
@@ -57,20 +70,21 @@ class WpProQuiz_Model_LockMapper extends WpProQuiz_Model_Mapper
 						WHERE quiz_id = %d AND lock_ip = %s AND user_id = %d AND lock_type = %d", $quizId, $lockIp,
                 $userId, $type));
 
-        if ($c === null || $c == 0) {
-            return false;
-        }
-
-        return true;
+        return $c !== null && $c > 0;
     }
 
+    /**
+     * @param int $lockTime
+     * @param int $quizId
+     * @param int $time
+     * @param int $type
+     * @param bool|false|int $userId
+     *
+     * @return false|int
+     */
     public function deleteOldLock($lockTime, $quizId, $time, $type, $userId = false)
     {
-        $user = '';
-
-        if ($userId !== false) {
-            $user = 'AND user_id = ' . ((int)$userId);
-        }
+        $user = $userId === false ? '' : ('AND user_id = ' . ((int)$userId));
 
         return $this->_wpdb->query(
             $this->_wpdb->prepare(
@@ -87,7 +101,6 @@ class WpProQuiz_Model_LockMapper extends WpProQuiz_Model_Mapper
 
     public function deleteByQuizId($quizId, $type = false)
     {
-
         $where = array('quiz_id' => $quizId);
         $whereP = array('%d');
 
