@@ -1176,7 +1176,19 @@ jQuery(document).ready(function ($) {
                     switchEditors.go('adminEmailEditor', 'html');
                 }
 
-            }).change();
+            });
+
+            $('input[name="adminEmail[html]"]').change(function () {
+                if (switchEditors == undefined)
+                    return false;
+
+                if (this.checked) {
+                    switchEditors.go('adminEmailEditor', 'tmce');
+                } else {
+                    switchEditors.go('adminEmailEditor', 'html');
+                }
+
+            });
 
             $('input[name="userEmail[html]"]').change(function () {
                 if (switchEditors == undefined)
@@ -1188,7 +1200,12 @@ jQuery(document).ready(function ($) {
                     switchEditors.go('userEmailEditor', 'html');
                 }
 
-            }).change();
+            });
+
+            setTimeout(function () {
+                $('input[name="userEmail[html]"]').change();
+                $('input[name="email[html]"]').change();
+            }, 1000);
         };
 
         init();

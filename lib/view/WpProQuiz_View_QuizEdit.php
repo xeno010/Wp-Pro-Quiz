@@ -752,7 +752,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View
 
                                             if ($this->quiz->isResultGradeEnabled() && isset($resultText['text'][$i])) {
                                                 ?>
-                                                <li style="padding: 5px; border: 1; border: 1px dotted;">
+                                                <li style="padding: 5px; border: 1px dotted;">
                                                     <div
                                                         style="margin-bottom: 5px;"><?php wp_editor($resultText['text'][$i],
                                                             'resultText_' . $i, array(
@@ -777,7 +777,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View
                                                 </li>
 
                                             <?php } else { ?>
-                                                <li style="padding: 5px; border: 1; border: 1px dotted; <?php echo $i ? 'display:none;' : '' ?>">
+                                                <li style="padding: 5px; border: 1px dotted; <?php echo $i ? 'display:none;' : '' ?>">
                                                     <div style="margin-bottom: 5px;"><?php wp_editor('',
                                                             'resultText_' . $i, array(
                                                                 'textarea_rows' => 3,
