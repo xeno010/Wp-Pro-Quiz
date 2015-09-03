@@ -115,7 +115,9 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View
 
         $bo = $this->createOption($preview);
 
-        ?>
+        /*
+         * old function
+         *
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
                 $('#wpProQuiz_<?php echo $this->quiz->getId(); ?>').wpProQuizFront({
@@ -131,6 +133,28 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View
                     lbn: <?php echo json_encode(($this->quiz->isShowReviewQuestion() && !$this->quiz->isQuizSummaryHide()) ? $this->_buttonNames['quiz_summary'] : $this->_buttonNames['finish_quiz']); ?>,
                     json: <?php echo json_encode($quizData['json']); ?>
                 });
+            });
+        </script>
+        */
+        ?>
+        <script type="text/javascript">
+            window.wpProQuizInitList = window.wpProQuizInitList || [];
+
+            window.wpProQuizInitList.push({
+                id: '#wpProQuiz_<?php echo $this->quiz->getId(); ?>',
+                init: {
+                    quizId: <?php echo (int)$this->quiz->getId(); ?>,
+                    mode: <?php echo (int)$this->quiz->getQuizModus(); ?>,
+                    globalPoints: <?php echo (int)$quizData['globalPoints']; ?>,
+                    timelimit: <?php echo (int)$this->quiz->getTimeLimit(); ?>,
+                    resultsGrade: <?php echo $resultsProzent; ?>,
+                    bo: <?php echo $bo ?>,
+                    qpp: <?php echo $this->quiz->getQuestionsPerPage(); ?>,
+                    catPoints: <?php echo json_encode($quizData['catPoints']); ?>,
+                    formPos: <?php echo (int)$this->quiz->getFormShowPosition(); ?>,
+                    lbn: <?php echo json_encode(($this->quiz->isShowReviewQuestion() && !$this->quiz->isQuizSummaryHide()) ? $this->_buttonNames['quiz_summary'] : $this->_buttonNames['finish_quiz']); ?>,
+                    json: <?php echo json_encode($quizData['json']); ?>
+                }
             });
         </script>
         <?php
