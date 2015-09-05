@@ -49,6 +49,26 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View
                 }
             }
 
+            #wpProQuiz_tab_donat {
+                float: right;
+                height: 28px;
+                margin: 0 0 0 6px;
+                border: 1px solid #ddd;
+                border-top: none;
+                box-shadow: 0 1px 1px -1px rgba(0,0,0,.1);
+                background: #FFDB94;
+            }
+
+            #wpProQuiz_tab_donat > a {
+                color: #3A3A3A !important;
+                font-weight: bold !important;
+            }
+
+            #wpProQuiz_tab_donat > a:after{
+                content: '' !important;
+                padding: 0 5px 0 5px !important;
+            }
+
         </style>
 
         <script type="text/javascript">
@@ -264,6 +284,8 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View
                     return true;
                 });
 
+                $('#screen-meta-links').append($('#wpProQuiz_tab_donat').show());
+
             });
         </script>
 
@@ -274,6 +296,10 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View
         $this->showExportListBox();
         $this->showSetQuizCategoryListBox();
         ?>
+
+        <div id="wpProQuiz_tab_donat" style="display: none;" class="hide-if-no-js screen-meta-toggle">
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZPNURT6RYXY" class="button show-settings" target="_blank"><?php _e('Donate', 'wp-pro-quiz'); ?></a>
+        </div>
 
         <div class="wrap wpProQuiz_quizOverall" style="">
             <h2>
