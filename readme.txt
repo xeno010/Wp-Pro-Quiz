@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
 Tested up to: 4.3
-Stable tag: 0.36
+Stable tag: 0.37
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,7 +112,7 @@ https://github.com/xeno010/Wp-Pro-Quiz/wiki
 
 == Changelog ==
 
-= Current Master Branch =
+= 0.37 =
 * New frontend init structure
 * Added gulp support
 * Fix #7 - compatibility with All In One WP Security (https://github.com/xeno010/Wp-Pro-Quiz/issues/7)
