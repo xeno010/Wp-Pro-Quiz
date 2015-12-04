@@ -17,16 +17,6 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
             'id' => $id
         ),
             array('%d'));
-
-        /**
-         * Fired when a WP Pro Quiz is deleted.
-         *
-         * @since 0.38.0
-         *
-         * @param int $id The Quiz ID that has just been deleted
-         */
-        do_action( 'wp_pro_quiz_delete_quiz', $id );
-
     }
 
     public function exists($id)
@@ -425,7 +415,7 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 
     public function deleteAll($quizId)
     {
-        return $this->_wpdb->query(
+        $delete = $this->_wpdb->query(
             $this->_wpdb->prepare(
                 "DELETE
 					m, q, l, p, t, f, sr, s 
@@ -442,6 +432,18 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
 					m.id = %d"
                 , $quizId)
         );
+
+        /**
+         * Fired when a WP Pro Quiz is deleted.
+         *
+         * @since 0.38.0
+         *
+         * @param int $quizId The Quiz ID that has just been deleted
+         */
+        do_action( 'wp_pro_quiz_delete_quiz', $quizId );
+
+        return $delete;
+
     }
 
     public function setMultipeCategories($quizIds, $categoryId)
