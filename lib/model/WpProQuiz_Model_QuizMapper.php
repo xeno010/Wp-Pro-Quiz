@@ -353,6 +353,15 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
             return null;
         }
 
+        /**
+         * Fired when a new WP Pro Quiz is created.
+         *
+         * @since 0.38.0
+         *
+         * @param WpProQuiz_Model_Quiz Object $data The newly created WpProQuiz_Model_Quiz object
+         */
+        do_action( 'wp_pro_quiz_save_quiz', $data );
+
         return $data;
     }
 
