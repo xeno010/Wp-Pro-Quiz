@@ -17,6 +17,16 @@ class WpProQuiz_Model_QuizMapper extends WpProQuiz_Model_Mapper
             'id' => $id
         ),
             array('%d'));
+
+        /**
+         * Fired when a WP Pro Quiz is deleted.
+         *
+         * @since 0.38.0
+         *
+         * @param int $id The Quiz ID that has just been deleted
+         */
+        do_action( 'wp_pro_quiz_delete_quiz', $id );
+
     }
 
     public function exists($id)
