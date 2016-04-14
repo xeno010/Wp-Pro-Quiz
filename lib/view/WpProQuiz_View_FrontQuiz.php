@@ -1021,7 +1021,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View
 										<?php _e('Correct', 'wp-pro-quiz'); ?>
 									</span>
                                             <span
-                                                style="float: right;"><?php echo $question->getPoints() . ' / ' . $question->getPoints(); ?><?php _e('Points',
+                                                style="float: right;"><?php echo $question->getPoints() . ' / ' . $question->getPoints(); ?> <?php _e('Points',
                                                     'wp-pro-quiz'); ?></span>
 
                                             <div style="clear: both;"></div>
