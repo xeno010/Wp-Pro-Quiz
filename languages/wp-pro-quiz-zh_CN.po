@@ -1,0 +1,2885 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP-Pro-Quiz\n"
+"POT-Creation-Date: 2015-08-30 10:30+0200\n"
+"PO-Revision-Date: 2016-03-26 12:40+0800\n"
+"Last-Translator: Riley Ge <rlge@tson.com>\n"
+"Language-Team: 迪森科技http://tson.com/ <rlge@tson.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:109
+msgid "Do you really want to delete the quiz/question?"
+msgstr "确定删除测验/问题吗？"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:110
+msgid "Title is not filled!"
+msgstr "标题未填写！"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:111
+msgid "No question deposited!"
+msgstr "尚未发布问题！"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:112
+msgid "Correct answer was not selected!"
+msgstr "尚未选择正确答案！"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:113
+msgid "No answer deposited!"
+msgstr "尚未设置答案！"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:114
+msgid "No quiz description filled!"
+msgstr "测验描述未填写！"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:115
+msgid "The percent values in result text are incorrect."
+msgstr "结果字段的百分比值错误。"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:116
+msgid "No number in the field \"Points\" or less than 1"
+msgstr "配分栏尚未填入数字或填入值小于1"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:117
+msgid "No number in the field \"Points\" or less than 0"
+msgstr "配分栏尚未填入数字或填入值小于0"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:118
+msgid "No quiz selected"
+msgstr "未选择测验"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:119
+msgid "Do you really want to reset the statistic?"
+msgstr "确定重设统计表？"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:120
+#: lib/view/WpProQuiz_View_FrontToplist.php:26
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:40
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:41
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:41
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:615
+msgid "No data available"
+msgstr "无可用资料"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:121
+msgid "No sort element in the criterion"
+msgstr "没有排序的标准"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:122
+msgid ""
+"\"Different points for every answer\" is not possible at \"Free\" choice"
+msgstr "自由选项无法为每个答案设置不同配分"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:123
+msgid "You must specify a name."
+msgstr "必须指定一个名称。"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:124
+msgid "This entry should really be deleted?"
+msgstr "确定删除此项目？"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:125
+msgid "Not all fields completed."
+msgstr "有字段未完成。"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:126
+msgid "You must specify a template name."
+msgstr "必须指定一个样板名称。"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:129
+#: lib/view/WpProQuiz_View_StatisticsNew.php:181
+msgid "Close"
+msgstr "关闭"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:130
+msgid "Today"
+msgstr "今日"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:175
+#: lib/controller/WpProQuiz_Controller_Admin.php:176
+#: lib/view/WpProQuiz_View_GobalSettings.php:7
+#: lib/view/WpProQuiz_View_GobalSettings.php:12
+#: lib/view/WpProQuiz_View_GobalSettings.php:42
+msgid "Global settings"
+msgstr "全局设置"
+
+#: lib/controller/WpProQuiz_Controller_Admin.php:183
+#: lib/controller/WpProQuiz_Controller_Admin.php:184
+msgid "Support & More"
+msgstr ""
+
+#: lib/controller/WpProQuiz_Controller_Front.php:47
+#: lib/controller/WpProQuiz_Controller_Front.php:66
+#: lib/controller/WpProQuiz_Controller_Preview.php:15
+#: lib/view/WpProQuiz_View_AdminToplist.php:47
+#: lib/view/WpProQuiz_View_FrontQuiz.php:249
+#: lib/view/WpProQuiz_View_QuestionOverall.php:354
+#: lib/view/WpProQuiz_View_Statistics.php:46
+#: lib/view/WpProQuiz_View_StatisticsNew.php:73
+#: lib/view/WpProQuiz_View_StatisticsNew.php:149
+#: lib/view/WpProQuiz_View_StatisticsNew.php:187
+#: lib/view/WpProQuiz_View_StatisticsNew.php:233
+msgid "Loading"
+msgstr "载入中"
+
+#: lib/controller/WpProQuiz_Controller_Front.php:48
+#: lib/controller/WpProQuiz_Controller_Front.php:67
+#: lib/controller/WpProQuiz_Controller_Preview.php:16
+msgid "You must answer this question."
+msgstr "您必须回答这个问题。"
+
+#: lib/controller/WpProQuiz_Controller_Front.php:49
+#: lib/controller/WpProQuiz_Controller_Front.php:68
+#: lib/controller/WpProQuiz_Controller_Preview.php:17
+msgid "You must answer all questions before you can completed the quiz."
+msgstr "您必须回答所有问题才能完成测验。"
+
+#: lib/controller/WpProQuiz_Controller_Front.php:50
+#: lib/controller/WpProQuiz_Controller_Front.php:69
+#: lib/controller/WpProQuiz_Controller_Preview.php:18
+msgid "All fields have to be filled."
+msgstr "所有字段必填。"
+
+#: lib/controller/WpProQuiz_Controller_GlobalSettings.php:11
+#: lib/controller/WpProQuiz_Controller_ImportExport.php:23
+#: lib/controller/WpProQuiz_Controller_ImportExport.php:47
+#: lib/controller/WpProQuiz_Controller_Question.php:98
+#: lib/controller/WpProQuiz_Controller_Question.php:102
+#: lib/controller/WpProQuiz_Controller_Question.php:223
+#: lib/controller/WpProQuiz_Controller_Question.php:300
+#: lib/controller/WpProQuiz_Controller_Question.php:311
+#: lib/controller/WpProQuiz_Controller_Question.php:331
+#: lib/controller/WpProQuiz_Controller_Question.php:408
+#: lib/controller/WpProQuiz_Controller_Question.php:596
+#: lib/controller/WpProQuiz_Controller_Quiz.php:71
+#: lib/controller/WpProQuiz_Controller_Quiz.php:75
+#: lib/controller/WpProQuiz_Controller_Quiz.php:332
+#: lib/controller/WpProQuiz_Controller_Quiz.php:369
+#: lib/controller/WpProQuiz_Controller_Quiz.php:453
+#: lib/controller/WpProQuiz_Controller_Quiz.php:662
+#: lib/controller/WpProQuiz_Controller_Quiz.php:676
+#: lib/controller/WpProQuiz_Controller_Statistics.php:40
+#: lib/controller/WpProQuiz_Controller_Toplist.php:88
+msgid "You do not have sufficient permissions to access this page."
+msgstr "您没有足够的权限登入页面。"
+
+#: lib/controller/WpProQuiz_Controller_GlobalSettings.php:22
+msgid "Settings saved"
+msgstr "设置已储存"
+
+#: lib/controller/WpProQuiz_Controller_GlobalSettings.php:46
+msgid "Database repaired"
+msgstr "数据库已修复"
+
+#: lib/controller/WpProQuiz_Controller_ImportExport.php:91
+#: lib/helper/WpProQuiz_Helper_Import.php:57
+#: lib/helper/WpProQuiz_Helper_Import.php:66
+#: lib/helper/WpProQuiz_Helper_Import.php:73
+msgid "File cannot be processed"
+msgstr "文件不能被处理"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:9
+#: lib/controller/WpProQuiz_Controller_Question.php:19
+#: lib/controller/WpProQuiz_Controller_Quiz.php:91
+#: lib/controller/WpProQuiz_Controller_Quiz.php:386
+msgid "Quiz not found"
+msgstr "找不到测验"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:88
+#: lib/view/WpProQuiz_View_FrontQuiz.php:509
+#: lib/view/WpProQuiz_View_Import.php:44
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:63
+msgid "Questions"
+msgstr "问题"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:112
+msgid "Question not found"
+msgstr "找不到问题"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:134
+#: lib/controller/WpProQuiz_Controller_Question.php:398
+msgid "Question edited"
+msgstr "问题已编辑"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:136
+msgid "Question added"
+msgstr "问题已加入"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:154
+#: lib/controller/WpProQuiz_Controller_Question.php:352
+msgid "Edit question"
+msgstr "编辑问题"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:154
+#: lib/controller/WpProQuiz_Controller_Question.php:466
+msgid "New question"
+msgstr "新问题"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:200
+#: lib/controller/WpProQuiz_Controller_Question.php:380
+#, php-format
+msgid "Question: %d"
+msgstr "问题： %d"
+
+#: lib/controller/WpProQuiz_Controller_Question.php:237
+msgid "questions copied"
+msgstr "问题已复制"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:61
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:27
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:28
+#: lib/view/WpProQuiz_View_QuizEdit.php:355
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:28
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:29
+msgid "Quiz"
+msgstr "测验"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:130
+#: lib/controller/WpProQuiz_Controller_Quiz.php:401
+msgid "Quiz edited"
+msgstr "测验已编辑"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:132
+msgid "quiz created"
+msgstr "测验已建立"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:154
+#: lib/controller/WpProQuiz_Controller_Quiz.php:422
+#: lib/controller/WpProQuiz_Controller_Quiz.php:494
+msgid "Quiz title or quiz description are not filled"
+msgstr "测验标题或测验描述未填写"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:172
+#: lib/controller/WpProQuiz_Controller_Quiz.php:379
+#: lib/view/WpProQuiz_View_QuestionOverall.php:306
+msgid "Edit quiz"
+msgstr "编辑测验"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:172
+#: lib/controller/WpProQuiz_Controller_Quiz.php:457
+#: lib/controller/WpProQuiz_Controller_Quiz.php:475
+msgid "Create quiz"
+msgstr "建立测验"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:577
+msgid "Template stored"
+msgstr "样版已储存"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:669
+#: lib/controller/WpProQuiz_Controller_Quiz.php:687
+msgid "Quiz deleted"
+msgstr "测验已删除"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:951
+#: lib/controller/WpProQuiz_Controller_QuizCompleted.php:190
+#: lib/view/WpProQuiz_View_FrontQuiz.php:667
+msgid "Not categorized"
+msgstr "未分类"
+
+#: lib/controller/WpProQuiz_Controller_Quiz.php:957
+#: lib/controller/WpProQuiz_Controller_QuizCompleted.php:196
+#: lib/view/WpProQuiz_View_FrontQuiz.php:662
+msgid "Categories"
+msgstr "类别"
+
+#: lib/controller/WpProQuiz_Controller_Statistics.php:56
+#: lib/controller/WpProQuiz_Controller_Statistics.php:694
+#: lib/view/WpProQuiz_View_QuestionEdit.php:91
+#: lib/view/WpProQuiz_View_QuestionOverall.php:394
+#: lib/view/WpProQuiz_View_QuizEdit.php:54
+#: lib/view/WpProQuiz_View_QuizOverall.php:421
+msgid "No category"
+msgstr "无分类"
+
+#: lib/controller/WpProQuiz_Controller_Statistics.php:572
+#: lib/controller/WpProQuiz_Controller_Statistics.php:622
+#: lib/controller/WpProQuiz_Controller_Statistics.php:720
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:624
+msgid "Anonymous"
+msgstr "匿名"
+
+#: lib/controller/WpProQuiz_Controller_Statistics.php:624
+#: lib/controller/WpProQuiz_Controller_Statistics.php:728
+msgid "Deleted user"
+msgstr "已删除的用户"
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:80
+#: lib/controller/WpProQuiz_Controller_Toplist.php:211
+msgid "No name or e-mail entered."
+msgstr "名称或电子邮件未输入。"
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:148
+msgid "You signed up successfully."
+msgstr "登入成功。"
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:156
+#: lib/controller/WpProQuiz_Controller_Toplist.php:160
+#: lib/controller/WpProQuiz_Controller_Toplist.php:177
+#: lib/controller/WpProQuiz_Controller_Toplist.php:181
+#: lib/controller/WpProQuiz_Controller_Toplist.php:187
+msgid "An error has occurred."
+msgstr "发生一个错误。"
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:198
+#: lib/controller/WpProQuiz_Controller_Toplist.php:207
+msgid "You can not enter again."
+msgstr "您不能输入两次。"
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:215
+msgid "Your name can not exceed 15 characters."
+msgstr "您的名称不能超过15个字符。"
+
+#: lib/controller/WpProQuiz_Controller_Toplist.php:223
+msgid "You entered wrong captcha code."
+msgstr "验证码输入错误。"
+
+#: lib/helper/WpProQuiz_Helper_Form.php:91
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:564
+msgid "ticked"
+msgstr "记号"
+
+#: lib/helper/WpProQuiz_Helper_Form.php:91
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:564
+msgid "not ticked"
+msgstr "未记号"
+
+#: lib/helper/WpProQuiz_Helper_Form.php:94
+#: lib/view/WpProQuiz_View_FrontQuiz.php:444
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:567
+msgid "Yes"
+msgstr "是"
+
+#: lib/helper/WpProQuiz_Helper_Form.php:94
+#: lib/view/WpProQuiz_View_FrontQuiz.php:449
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:567
+msgid "No"
+msgstr "否"
+
+#: lib/helper/WpProQuiz_Helper_Import.php:9
+#: lib/helper/WpProQuiz_Helper_ImportXml.php:8
+msgid "File was not uploaded"
+msgstr "文件未上传"
+
+#: lib/helper/WpProQuiz_Helper_Import.php:38
+msgid "File have wrong format"
+msgstr "文件格式错误"
+
+#: lib/helper/WpProQuiz_Helper_Import.php:43
+msgid "File is not compatible with the current version"
+msgstr "文件与当前版本不兼容"
+
+#: lib/helper/WpProQuiz_Helper_ImportXml.php:27
+#: lib/helper/WpProQuiz_Helper_ImportXml.php:40
+msgid "XML could not be loaded."
+msgstr "无法载入 XML。"
+
+#: lib/model/WpProQuiz_Model_Email.php:78
+#: lib/model/WpProQuiz_Model_Email.php:88
+#: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:47
+#: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:79
+msgid "Wp-Pro-Quiz: One user completed a quiz"
+msgstr "Wp-Pro-Quiz: 有一个用户完成测验"
+
+#: lib/model/WpProQuiz_Model_Email.php:79
+#: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:49
+msgid ""
+"Wp-Pro-Quiz\n"
+"\n"
+"The user \"$username\" has completed \"$quizname\" the quiz.\n"
+"\n"
+"Points: $points\n"
+"Result: $result\n"
+"\n"
+msgstr ""
+"Wp-Pro-Quiz\n"
+"\n"
+"用户 \"$username\" 已完成 \"$quizname\" 测验。\n"
+"\n"
+"分数： $points\n"
+"结果： $result\n"
+"\n"
+
+#: lib/model/WpProQuiz_Model_Email.php:89
+#: lib/model/WpProQuiz_Model_GlobalSettingsMapper.php:81
+msgid ""
+"Wp-Pro-Quiz\n"
+"\n"
+"You have completed the quiz \"$quizname\".\n"
+"\n"
+"Points: $points\n"
+"Result: $result\n"
+"\n"
+msgstr ""
+"Wp-Pro-Quiz\n"
+"\n"
+"您已完成测验 \"$quizname\".\n"
+"\n"
+"分数： $points\n"
+"结果： $result\n"
+"\n"
+
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV2.php:33
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:6
+msgid "The user completed a quiz."
+msgstr "用户完成测验。"
+
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:7
+msgid "The user completed a quiz with 100 percent."
+msgstr "用户完成一项 100% 测验。"
+
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:18
+msgid "A powerful and beautiful quiz plugin for WordPress."
+msgstr "功能与外观兼具的 WordPress 外挂。"
+
+#: lib/plugin/WpProQuiz_Plugin_BpAchievementsV3.php:21
+#: lib/view/WpProQuiz_View_QuizOverall.php:290
+msgid "WP-Pro-Quiz"
+msgstr "WP-Pro-Quiz"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:7
+#: lib/view/WpProQuiz_View_FrontToplist.php:8
+#: lib/view/WpProQuiz_View_QuizEdit.php:1029
+#: lib/view/WpProQuiz_View_QuizEdit.php:1041
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:78
+msgid "Leaderboard"
+msgstr "排行榜"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:8
+#: lib/view/WpProQuiz_View_GobalSettings.php:9
+#: lib/view/WpProQuiz_View_Import.php:22
+#: lib/view/WpProQuiz_View_QuestionEdit.php:24
+#: lib/view/WpProQuiz_View_QuestionOverall.php:301
+#: lib/view/WpProQuiz_View_QuizEdit.php:23
+#: lib/view/WpProQuiz_View_Statistics.php:29
+#: lib/view/WpProQuiz_View_StatisticsNew.php:57
+#: lib/view/WpProQuiz_View_StyleManager.php:11
+msgid "back to overview"
+msgstr "返回概观"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:11
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:106
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:115
+#: lib/view/WpProQuiz_View_Statistics.php:209
+#: lib/view/WpProQuiz_View_Statistics.php:288
+#: lib/view/WpProQuiz_View_StatisticsNew.php:94
+#: lib/view/WpProQuiz_View_StatisticsNew.php:140
+#: lib/view/WpProQuiz_View_StatisticsNew.php:201
+#: lib/view/WpProQuiz_View_StatisticsNew.php:224
+msgid "Filter"
+msgstr "筛选"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:16
+msgid "Sort by:"
+msgstr "排序："
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:18
+#: lib/view/WpProQuiz_View_QuizEdit.php:1121
+msgid "best user"
+msgstr "用户分数"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:19
+#: lib/view/WpProQuiz_View_QuizEdit.php:1125
+msgid "newest entry"
+msgstr "新项目"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:20
+#: lib/view/WpProQuiz_View_QuizEdit.php:1129
+msgid "oldest entry"
+msgstr "旧项目"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:26
+#: lib/view/WpProQuiz_View_Statistics.php:220
+#: lib/view/WpProQuiz_View_Statistics.php:303
+#: lib/view/WpProQuiz_View_StatisticsNew.php:120
+#: lib/view/WpProQuiz_View_StatisticsNew.php:212
+msgid "How many entries should be shown on one page:"
+msgstr "一页显示多少项目："
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:38
+#: lib/view/WpProQuiz_View_AdminToplist.php:57
+#: lib/view/WpProQuiz_View_QuizEdit.php:1390
+msgid "Type"
+msgstr "格式"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:38
+msgid "UR = unregistered user, R = registered user"
+msgstr "UR = 未注册用户, R = 已注册用户"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:55
+#: lib/view/WpProQuiz_View_Statistics.php:239
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:603
+#: lib/view/WpProQuiz_View_StatisticsNew.php:107
+msgid "User"
+msgstr "用户"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:56
+#: lib/view/WpProQuiz_View_FrontQuiz.php:257
+msgid "E-Mail"
+msgstr "邮箱"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:58
+#: lib/view/WpProQuiz_View_FrontToplist.php:16
+msgid "Entered on"
+msgstr "登入"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:59
+#: lib/view/WpProQuiz_View_FrontQuiz.php:909
+#: lib/view/WpProQuiz_View_FrontQuiz.php:931
+#: lib/view/WpProQuiz_View_FrontToplist.php:17
+#: lib/view/WpProQuiz_View_QuestionEdit.php:49
+#: lib/view/WpProQuiz_View_QuestionEdit.php:56
+#: lib/view/WpProQuiz_View_QuestionEdit.php:317
+#: lib/view/WpProQuiz_View_QuestionEdit.php:355
+#: lib/view/WpProQuiz_View_QuestionEdit.php:414
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:19
+#: lib/view/WpProQuiz_View_Statistics.php:105
+#: lib/view/WpProQuiz_View_Statistics.php:240
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:34
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:168
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:604
+msgid "Points"
+msgstr "得分"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:60
+#: lib/view/WpProQuiz_View_FrontQuiz.php:621
+#: lib/view/WpProQuiz_View_Statistics.php:111
+#: lib/view/WpProQuiz_View_Statistics.php:245
+#: lib/view/WpProQuiz_View_Statistics.php:324
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:35
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:175
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:609
+msgid "Results"
+msgstr "百分比"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:72
+#: lib/view/WpProQuiz_View_GobalSettings.php:140
+#: lib/view/WpProQuiz_View_GobalSettings.php:166
+#: lib/view/WpProQuiz_View_GobalSettings.php:192
+#: lib/view/WpProQuiz_View_GobalSettings.php:217
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:64
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:67
+msgid "Edit"
+msgstr "编辑"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:75
+#: lib/view/WpProQuiz_View_AdminToplist.php:100
+#: lib/view/WpProQuiz_View_GobalSettings.php:139
+#: lib/view/WpProQuiz_View_GobalSettings.php:165
+#: lib/view/WpProQuiz_View_GobalSettings.php:191
+#: lib/view/WpProQuiz_View_GobalSettings.php:216
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:68
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:81
+#: lib/view/WpProQuiz_View_QuizEdit.php:1452
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:70
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:87
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:51
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:649
+msgid "Delete"
+msgstr "删除"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:80
+msgid "save"
+msgstr "储存"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:81
+msgid "cancel"
+msgstr "取消"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:99
+msgid "Action"
+msgstr "动作"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:102
+msgid "Apply"
+msgstr "套用"
+
+#: lib/view/WpProQuiz_View_AdminToplist.php:103
+msgid "Delete all entries"
+msgstr "删除全部项目"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:29
+msgid "Start quiz"
+msgstr "开始测验"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:30
+msgid "Restart quiz"
+msgstr "重新开始"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:31
+#: lib/view/WpProQuiz_View_QuizEdit.php:420
+#: lib/view/WpProQuiz_View_QuizEdit.php:430
+#: lib/view/WpProQuiz_View_QuizEdit.php:435
+msgid "Quiz-summary"
+msgstr "测验概述"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:32
+msgid "Finish quiz"
+msgstr "完成测验"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:33
+msgid "Quiz is loading..."
+msgstr "测验载入中..."
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:34
+msgid ""
+"You have already completed the quiz before. Hence you can not start it again."
+msgstr "您已完成过测验，因此您不能再测验。"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:35
+msgid "You must sign in or sign up to start the quiz."
+msgstr "您必须登入或注册才能开始测验。"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:36
+msgid "You have to finish following quiz, to start this quiz:"
+msgstr "您必须先完成以下测验才能开始："
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:247
+msgid "Your result has been entered into leaderboard"
+msgstr "成绩是否列入排行榜？"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:254
+#: lib/view/WpProQuiz_View_FrontToplist.php:15
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:17
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:17
+msgid "Name"
+msgstr "名称"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:262
+msgid "Captcha"
+msgstr "验证码"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:268
+msgid "Send"
+msgstr "列入"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:359
+#: lib/view/WpProQuiz_View_FrontQuiz.php:458
+msgid "You must fill out this field."
+msgstr "此字段必填。"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:362
+msgid "You must specify a number."
+msgstr "您必须指定一个数字。"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:363
+msgid "You must specify a text."
+msgstr "您必须指定一段文字。"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:364
+msgid "You must specify an email address."
+msgstr "您必须指定一个邮箱。"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:365
+msgid "You must specify a date."
+msgstr "您必须指定一个日期。"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:507
+#, php-format
+msgid "%s of %s questions completed"
+msgstr "已完成 %s/%s 个问题"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:524
+#: lib/view/WpProQuiz_View_FrontQuiz.php:539
+msgid "Information"
+msgstr "信息"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:575
+#: lib/view/WpProQuiz_View_QuizEdit.php:190
+#: lib/view/WpProQuiz_View_QuizEdit.php:195
+msgid "Time limit"
+msgstr "时间限制"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:596
+msgid "Answered"
+msgstr "已答"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:600
+msgid "Review"
+msgstr "回顾"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:607
+msgid "Review question"
+msgstr "回顾问题"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:624
+#, php-format
+msgid "%s of %s questions answered correctly"
+msgstr "答对 %s/%s 个问题"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:628
+msgid "Your time: <span></span>"
+msgstr "答题时间： <span></span>"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:632
+msgid "Time has elapsed"
+msgstr "时间已花费"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:636
+#, php-format
+msgid "You have reached %s of %s points, (%s)"
+msgstr "您获得 %s/%s 分数 (%s)"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:644
+msgid "Average score"
+msgstr "平均分数"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:651
+msgid "Your score"
+msgstr "您的成绩"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:702
+msgid "View questions"
+msgstr "查看试题"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:705
+msgid "Show leaderboard"
+msgstr "显示排行榜"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:764
+#, php-format
+msgid "Question %s of %s"
+msgstr "%s/%s问题"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:767
+#: lib/view/WpProQuiz_View_QuestionEdit.php:110
+#: lib/view/WpProQuiz_View_Statistics.php:104
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:167
+msgid "Question"
+msgstr "问题"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:771
+#, php-format
+msgid "%d points"
+msgstr "%d 分"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:777
+#, php-format
+msgid "Category: %s"
+msgstr "类别： %s"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:786
+#: lib/view/WpProQuiz_View_QuestionEdit.php:347
+msgid "Sort elements"
+msgstr "排序内容"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:907
+#: lib/view/WpProQuiz_View_FrontQuiz.php:914
+#: lib/view/WpProQuiz_View_QuestionEdit.php:305
+#: lib/view/WpProQuiz_View_Statistics.php:106
+#: lib/view/WpProQuiz_View_Statistics.php:241
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:31
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:169
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:354
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:605
+msgid "Correct"
+msgstr "正确"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:929
+#: lib/view/WpProQuiz_View_FrontQuiz.php:936
+#: lib/view/WpProQuiz_View_Statistics.php:107
+#: lib/view/WpProQuiz_View_Statistics.php:242
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:32
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:170
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:606
+msgid "Incorrect"
+msgstr "错误"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:959
+#: lib/view/WpProQuiz_View_FrontQuiz.php:970
+#: lib/view/WpProQuiz_View_QuestionEdit.php:154
+msgid "Hint"
+msgstr "提示"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:966
+#: lib/view/WpProQuiz_View_QuizEdit.php:449
+#: lib/view/WpProQuiz_View_QuizEdit.php:454
+msgid "Skip question"
+msgstr "跳过问题"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:968
+msgid "Back"
+msgstr "上一题"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:972
+msgid "Check"
+msgstr "检查"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:973
+msgid "Next"
+msgstr "下一题"
+
+#: lib/view/WpProQuiz_View_FrontQuiz.php:986
+#: lib/view/WpProQuiz_View_FrontQuiz.php:987
+#, php-format
+msgid "Page %d"
+msgstr "页 %d"
+
+#: lib/view/WpProQuiz_View_FrontToplist.php:11
+#, php-format
+msgid "maximum of %s points"
+msgstr "满分%s 分"
+
+#: lib/view/WpProQuiz_View_FrontToplist.php:14
+msgid "Pos."
+msgstr "编号"
+
+#: lib/view/WpProQuiz_View_FrontToplist.php:18
+msgid "Result"
+msgstr "百分比"
+
+#: lib/view/WpProQuiz_View_FrontToplist.php:23
+msgid "Table is loading"
+msgstr "表格加载中"
+
+#: lib/view/WpProQuiz_View_GlobalHelperTabs.php:29
+msgid "Wp-Pro-Quiz"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GlobalHelperTabs.php:45
+#: lib/view/WpProQuiz_View_GlobalHelperTabs.php:73
+#: lib/view/WpProQuiz_View_WpqSupport.php:10
+msgid "Donate"
+msgstr "赞助"
+
+#: lib/view/WpProQuiz_View_GlobalHelperTabs.php:61
+msgid "For more information:"
+msgstr "更多信息："
+
+#: lib/view/WpProQuiz_View_GlobalHelperTabs.php:64
+msgid "Support"
+msgstr "支持"
+
+#: lib/view/WpProQuiz_View_GlobalHelperTabs.php:70
+msgid "Wiki"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:14
+#: lib/view/WpProQuiz_View_GobalSettings.php:398
+msgid "Settings in case of problems"
+msgstr "预防问题的设置"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:30
+#: lib/view/WpProQuiz_View_QuestionEdit.php:263
+#: lib/view/WpProQuiz_View_QuestionOverall.php:412
+#: lib/view/WpProQuiz_View_QuestionOverall.php:428
+#: lib/view/WpProQuiz_View_QuestionOverall.php:435
+#: lib/view/WpProQuiz_View_QuizEdit.php:655
+#: lib/view/WpProQuiz_View_QuizOverall.php:439
+#: lib/view/WpProQuiz_View_WpqSupport.php:59
+msgid "Save"
+msgstr "储存"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:48
+#: lib/view/WpProQuiz_View_GobalSettings.php:53
+msgid "Leaderboard time format"
+msgstr "排行榜时间格式"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:75
+msgid "Custom"
+msgstr "自定义"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:79
+#: lib/view/WpProQuiz_View_GobalSettings.php:113
+msgid "Documentation on date and time formatting"
+msgstr "文件以日期和时间格式"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:87
+#: lib/view/WpProQuiz_View_GobalSettings.php:92
+msgid "Statistic time format"
+msgstr "统计表时间格式"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:96
+msgid "Select example:"
+msgstr "选择范例："
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:109
+msgid "Time format:"
+msgstr "时间格式："
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:122
+#: lib/view/WpProQuiz_View_GobalSettings.php:127
+msgid "Category management"
+msgstr "类别管理"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:148
+#: lib/view/WpProQuiz_View_GobalSettings.php:153
+msgid "Quiz Category management"
+msgstr "试卷分类管理"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:174
+#: lib/view/WpProQuiz_View_GobalSettings.php:179
+msgid "Quiz template management"
+msgstr "测验样版管理"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:199
+#: lib/view/WpProQuiz_View_GobalSettings.php:204
+msgid "Question template management"
+msgstr "问题样版管理"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:232
+#: lib/view/WpProQuiz_View_GobalSettings.php:528
+#: lib/view/WpProQuiz_View_QuizEdit.php:1478
+msgid "Admin e-mail settings"
+msgstr "管理员邮箱设置"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:238
+#: lib/view/WpProQuiz_View_QuizEdit.php:1511
+#: lib/view/WpProQuiz_View_QuizEdit.php:1641
+msgid "To:"
+msgstr "致："
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:245
+#: lib/view/WpProQuiz_View_QuizEdit.php:1518
+msgid ""
+"Separate multiple email addresses with a comma, e.g. wp@test.com, test@test."
+"com"
+msgstr "以逗号分隔多个电子邮件，例如 wp@test.com, test@test.com"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:251
+#: lib/view/WpProQuiz_View_GobalSettings.php:323
+#: lib/view/WpProQuiz_View_QuizEdit.php:1524
+#: lib/view/WpProQuiz_View_QuizEdit.php:1659
+msgid "From:"
+msgstr "从："
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:264
+#: lib/view/WpProQuiz_View_GobalSettings.php:333
+#: lib/view/WpProQuiz_View_QuizEdit.php:1537
+#: lib/view/WpProQuiz_View_QuizEdit.php:1669
+msgid "Subject:"
+msgstr "主旨："
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:274
+#: lib/view/WpProQuiz_View_GobalSettings.php:343
+#: lib/view/WpProQuiz_View_QuizEdit.php:1547
+#: lib/view/WpProQuiz_View_QuizEdit.php:1679
+msgid "HTML"
+msgstr "HTML"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:278
+#: lib/view/WpProQuiz_View_GobalSettings.php:347
+#: lib/view/WpProQuiz_View_GobalSettings.php:413
+#: lib/view/WpProQuiz_View_GobalSettings.php:435
+#: lib/view/WpProQuiz_View_GobalSettings.php:487
+#: lib/view/WpProQuiz_View_QuizEdit.php:91
+#: lib/view/WpProQuiz_View_QuizEdit.php:110
+#: lib/view/WpProQuiz_View_QuizEdit.php:129
+#: lib/view/WpProQuiz_View_QuizEdit.php:148
+#: lib/view/WpProQuiz_View_QuizEdit.php:164
+#: lib/view/WpProQuiz_View_QuizEdit.php:180
+#: lib/view/WpProQuiz_View_QuizEdit.php:217
+#: lib/view/WpProQuiz_View_QuizEdit.php:257
+#: lib/view/WpProQuiz_View_QuizEdit.php:315
+#: lib/view/WpProQuiz_View_QuizEdit.php:344
+#: lib/view/WpProQuiz_View_QuizEdit.php:405
+#: lib/view/WpProQuiz_View_QuizEdit.php:509
+#: lib/view/WpProQuiz_View_QuizEdit.php:532
+#: lib/view/WpProQuiz_View_QuizEdit.php:551
+#: lib/view/WpProQuiz_View_QuizEdit.php:695
+#: lib/view/WpProQuiz_View_QuizEdit.php:720
+#: lib/view/WpProQuiz_View_QuizEdit.php:746
+#: lib/view/WpProQuiz_View_QuizEdit.php:772
+#: lib/view/WpProQuiz_View_QuizEdit.php:798
+#: lib/view/WpProQuiz_View_QuizEdit.php:840
+#: lib/view/WpProQuiz_View_QuizEdit.php:859
+#: lib/view/WpProQuiz_View_QuizEdit.php:884
+#: lib/view/WpProQuiz_View_QuizEdit.php:934
+#: lib/view/WpProQuiz_View_QuizEdit.php:954
+#: lib/view/WpProQuiz_View_QuizEdit.php:979
+#: lib/view/WpProQuiz_View_QuizEdit.php:1004
+#: lib/view/WpProQuiz_View_QuizEdit.php:1046
+#: lib/view/WpProQuiz_View_QuizEdit.php:1079
+#: lib/view/WpProQuiz_View_QuizEdit.php:1093
+#: lib/view/WpProQuiz_View_QuizEdit.php:1141
+#: lib/view/WpProQuiz_View_QuizEdit.php:1223
+#: lib/view/WpProQuiz_View_QuizEdit.php:1224
+#: lib/view/WpProQuiz_View_QuizEdit.php:1225
+#: lib/view/WpProQuiz_View_QuizEdit.php:1226
+#: lib/view/WpProQuiz_View_QuizEdit.php:1329
+#: lib/view/WpProQuiz_View_QuizEdit.php:1551
+#: lib/view/WpProQuiz_View_QuizEdit.php:1631
+#: lib/view/WpProQuiz_View_QuizEdit.php:1683
+msgid "Activate"
+msgstr "启用"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:284
+#: lib/view/WpProQuiz_View_GobalSettings.php:353
+#: lib/view/WpProQuiz_View_QuizEdit.php:1557
+#: lib/view/WpProQuiz_View_QuizEdit.php:1689
+msgid "Message body:"
+msgstr "讯息内容："
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:292
+#: lib/view/WpProQuiz_View_GobalSettings.php:361
+#: lib/view/WpProQuiz_View_QuizEdit.php:1569
+#: lib/view/WpProQuiz_View_QuizEdit.php:1701
+msgid "Allowed variables"
+msgstr "可允许变量"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:294
+#: lib/view/WpProQuiz_View_GobalSettings.php:363
+#: lib/view/WpProQuiz_View_QuizEdit.php:1580
+#: lib/view/WpProQuiz_View_QuizEdit.php:1712
+msgid "User-ID"
+msgstr "用户ID"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:295
+#: lib/view/WpProQuiz_View_GobalSettings.php:364
+#: lib/view/WpProQuiz_View_QuizEdit.php:1581
+#: lib/view/WpProQuiz_View_QuizEdit.php:1713
+#: lib/view/WpProQuiz_View_Statistics.php:322
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:22
+msgid "Username"
+msgstr "用户名称"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:296
+#: lib/view/WpProQuiz_View_GobalSettings.php:365
+#: lib/view/WpProQuiz_View_QuizEdit.php:1582
+#: lib/view/WpProQuiz_View_QuizEdit.php:1714
+msgid "Quiz-Name"
+msgstr "测验名称"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:297
+#: lib/view/WpProQuiz_View_GobalSettings.php:366
+#: lib/view/WpProQuiz_View_QuizEdit.php:1583
+#: lib/view/WpProQuiz_View_QuizEdit.php:1715
+msgid "Result in precent"
+msgstr "以百分比显示"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:298
+#: lib/view/WpProQuiz_View_GobalSettings.php:367
+#: lib/view/WpProQuiz_View_QuizEdit.php:1584
+#: lib/view/WpProQuiz_View_QuizEdit.php:1716
+msgid "Reached points"
+msgstr "已达成分数"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:299
+#: lib/view/WpProQuiz_View_GobalSettings.php:368
+#: lib/view/WpProQuiz_View_QuizEdit.php:1585
+#: lib/view/WpProQuiz_View_QuizEdit.php:1717
+msgid "IP-address of the user"
+msgstr "用户IP地址"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:300
+#: lib/view/WpProQuiz_View_GobalSettings.php:369
+#: lib/view/WpProQuiz_View_QuizEdit.php:1586
+#: lib/view/WpProQuiz_View_QuizEdit.php:1718
+msgid "Category-Overview"
+msgstr "类别概观"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:317
+#: lib/view/WpProQuiz_View_GobalSettings.php:529
+#: lib/view/WpProQuiz_View_QuizEdit.php:1616
+msgid "User e-mail settings"
+msgstr "用户邮箱设置"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:384
+msgid "to activate"
+msgstr "以启用"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:386
+msgid "not to activate"
+msgstr "不启用"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:392
+#: lib/view/WpProQuiz_View_WpqSupport.php:64
+msgid "Please note"
+msgstr "请注意"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:394
+msgid ""
+"These settings should only be set in cases of problems with Wp-Pro-Quiz."
+msgstr "为了预防 Wp-Pro-Quiz 发生问题进行的设置。"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:404
+#: lib/view/WpProQuiz_View_GobalSettings.php:409
+msgid "Automatically add [raw] shortcode"
+msgstr "自定义加入 [raw] 短码"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:413
+#, php-format
+msgid "It is recommended %s this option on your system."
+msgstr "建议 %s 选项在您的系统上。"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:416
+msgid ""
+"If this option is activated, a [raw] shortcode is automatically set around "
+"WpProQuiz shortcode ( [WpProQuiz X] ) into [raw] [WpProQuiz X] [/raw]"
+msgstr ""
+"若该选项启动，一个 [raw] 短码会自动将 WpProQuiz 短码 ( [WpProQuiz X] ) 变成 "
+"[raw] [WpProQuiz X] [/raw]"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:419
+msgid ""
+"Own themes changes internal  order of filters, what causes the problems. "
+"With additional shortcode [raw] this is prevented."
+msgstr "使用额外 [raw] 短码可避免自有主题变更内部筛选顺序问题。"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:426
+#: lib/view/WpProQuiz_View_GobalSettings.php:431
+msgid "Do not load the Javascript-files in the footer"
+msgstr "请勿于页尾载入 Javascript 文件"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:438
+msgid ""
+"Generally all WpProQuiz-Javascript files are loaded in the footer and only "
+"when they are really needed."
+msgstr ""
+"如果激活这个选项，所有 WpProQuiz-JavaScript 文件将会放在页首部分，即使不需要"
+"也会被加载。"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:441
+msgid "In very old Wordpress themes this can lead to problems."
+msgstr "在较旧的 Wordpress 主题可能会造成问题。"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:444
+msgid ""
+"If you activate this option, all WpProQuiz-Javascript files are loaded in "
+"the header even if they are not needed."
+msgstr ""
+"如果激活这个选项，所有 WpProQuiz-JavaScript 文件将会放在页首部分，即使不需要"
+"也会被加载。"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:447
+#, php-format
+msgid ""
+"Anyone who wants to learn more about this topic should read through the "
+"following websites %s and %s."
+msgstr "想学习更多 关于这个主题的内容请详阅以下网站 %s 与 %s。"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:456
+#: lib/view/WpProQuiz_View_GobalSettings.php:461
+msgid "Touch Library"
+msgstr "触控功能"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:465
+#: lib/view/WpProQuiz_View_QuizEdit.php:439
+#: lib/view/WpProQuiz_View_QuizEdit.php:458
+#: lib/view/WpProQuiz_View_QuizEdit.php:478
+#: lib/view/WpProQuiz_View_QuizEdit.php:909
+#: lib/view/WpProQuiz_View_QuizEdit.php:1493
+msgid "Deactivate"
+msgstr "关闭"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:468
+msgid "In Version 0.13 a new Touch Library was added for mobile devices."
+msgstr "版本 0.13 加入新触控功能以支持行动装置。"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:471
+msgid "If you have any problems with the Touch Library, please deactivate it."
+msgstr "如果您对触控功能有任何问题，请关闭它。"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:478
+#: lib/view/WpProQuiz_View_GobalSettings.php:483
+msgid "jQuery support cors"
+msgstr "jQuery 支援 cors"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:490
+msgid "Is required only in rare cases."
+msgstr "只有在特殊情况才需要。"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:493
+msgid "If you have problems with the front ajax, please activate it."
+msgstr "如果您对前台的 ajax 有任何问题，请关闭它。"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:496
+msgid "e.g. Domain with special characters in combination with IE"
+msgstr "例如 使用 IE 浏览器时网址含有特殊字符组合。"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:503
+#: lib/view/WpProQuiz_View_GobalSettings.php:508
+#: lib/view/WpProQuiz_View_GobalSettings.php:510
+msgid "Repair database"
+msgstr "修复数据库"
+
+#: lib/view/WpProQuiz_View_GobalSettings.php:512
+msgid "No date will be deleted. Only WP-Pro-Quiz tables will be repaired."
+msgstr "没有日期被删除。只有 WP-Pro-Quiz 数据库表格被修复。"
+
+#: lib/view/WpProQuiz_View_Import.php:21
+#: lib/view/WpProQuiz_View_QuizOverall.php:273
+#: lib/view/WpProQuiz_View_QuizOverall.php:308
+#: lib/view/WpProQuiz_View_QuizOverall.php:353
+msgid "Import"
+msgstr "输入"
+
+#: lib/view/WpProQuiz_View_Import.php:25
+msgid "Error"
+msgstr "错误"
+
+#: lib/view/WpProQuiz_View_Import.php:32
+msgid "Successfully"
+msgstr "成功"
+
+#: lib/view/WpProQuiz_View_Import.php:34
+msgid "Import completed successfully"
+msgstr "全部输入成功"
+
+#: lib/view/WpProQuiz_View_Import.php:43
+msgid "Quiz name"
+msgstr "测验名称"
+
+#: lib/view/WpProQuiz_View_Import.php:69
+#: lib/view/WpProQuiz_View_QuizOverall.php:364
+msgid "Start import"
+msgstr "开始输入"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:7
+#: lib/view/WpProQuiz_View_WpqSupport.php:31
+msgid "WP-Pro-Quiz special modification"
+msgstr "WP-Pro-Quiz 特定修改"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:9
+#: lib/view/WpProQuiz_View_QuizOverall.php:285
+#: lib/view/WpProQuiz_View_WpqSupport.php:32
+msgid "You need special WP-Pro-Quiz modification for your website?"
+msgstr "你需要为你的网站对 WP-Pro-Quiz 进行特定修改吗?"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:11
+msgid "We offer you:"
+msgstr "我们可以提供："
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:13
+msgid "Design adaption for your theme"
+msgstr "设计主题"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:14
+msgid "Creation of additional modules for your needs"
+msgstr "按照您的需求设计新的功能模块"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:15
+msgid "Premium Support"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:18
+msgid "Contact us:"
+msgstr "联系我们："
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:20
+msgid "Send us an e-mail"
+msgstr "给我们发送邮件："
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:21
+msgid "The e-mail must be written in english or german"
+msgstr "邮件必须使用英语或者德语"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:22
+msgid "Explain your wish detailed and exactly as possible"
+msgstr "尽可能详尽的技术您的需求"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:24
+msgid "You can send us screenshots, sketches and attachments"
+msgstr "您可以给我们发送屏幕截图、草图以及附件"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:27
+msgid "Send us your full name and your web address (webpage-URL)"
+msgstr "将您的命名及网址（网页URL）发送给我们"
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:28
+msgid ""
+"If you wish design adaption, we additionally need the name of your theme"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:32
+msgid ""
+"After receiving your e-mail we will verify your request on feasibility. "
+"After this you will receive e-mail from us with further details and offer."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_InfoAdaptation.php:35
+msgid ""
+"Extended support in first 6 months. Reported bugs and updates of WP Pro Quiz "
+"are supported. Exception are major releases (update of main version)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:33
+#: lib/view/WpProQuiz_View_QuizEdit.php:32
+msgid "load template"
+msgstr "载入样板"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:40
+msgid "Title"
+msgstr "题目"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:40
+#: lib/view/WpProQuiz_View_QuestionEdit.php:80
+#: lib/view/WpProQuiz_View_QuestionEdit.php:125
+#: lib/view/WpProQuiz_View_QuestionEdit.php:142
+#: lib/view/WpProQuiz_View_QuestionEdit.php:154
+#: lib/view/WpProQuiz_View_QuizEdit.php:43
+#: lib/view/WpProQuiz_View_QuizEdit.php:582
+#: lib/view/WpProQuiz_View_QuizEdit.php:1029
+msgid "(optional)"
+msgstr "(非必要)"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:43
+msgid ""
+"The title is used for overview, it is not visible in quiz. If you leave the "
+"title field empty, a title will be generated."
+msgstr ""
+"此标题为叙述用，不会显示在测验里。如果您标题字段保持空白，系统会自动产生一个"
+"标题。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:49
+#: lib/view/WpProQuiz_View_QuestionEdit.php:110
+#: lib/view/WpProQuiz_View_QuestionEdit.php:211
+#: lib/view/WpProQuiz_View_QuizEdit.php:37
+#: lib/view/WpProQuiz_View_QuizEdit.php:571
+#: lib/view/WpProQuiz_View_QuizEdit.php:1210
+msgid "(required)"
+msgstr "(必填)"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:53
+msgid "Points for this question (Standard is 1 point)"
+msgstr "问题分数 (标准是1分)"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:59
+msgid ""
+"This points will be rewarded, only if the user closes the question correctly."
+msgstr "只有当用户选择正确答案才会获得分数。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:65
+msgid "Different points for each answer"
+msgstr "不同答案给予不同分数"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:68
+msgid ""
+"If you enable this option, you can enter different points for every answer."
+msgstr "如果您启用该选项，您可以针对每个答案给予不同的分数。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:74
+msgid "Show reached points in the correct- and incorrect message?"
+msgstr "以正确和错误的讯息显示获得的分数。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:80
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:18
+#: lib/view/WpProQuiz_View_QuizEdit.php:43
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:18
+#: lib/view/WpProQuiz_View_Statistics.php:124
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:187
+msgid "Category"
+msgstr "类别"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:83
+msgid ""
+"You can assign classify category for a question. Categories are e.g. visible "
+"in statistics function."
+msgstr "您可以对一个问题指派类别等级。类别定义可从「状态功能」内检视。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:86
+#: lib/view/WpProQuiz_View_QuestionOverall.php:389
+#: lib/view/WpProQuiz_View_QuizEdit.php:49
+#: lib/view/WpProQuiz_View_QuizOverall.php:416
+msgid "You can manage categories in global settings."
+msgstr "您可以从「全局设置」中管理默认类别。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:90
+#: lib/view/WpProQuiz_View_QuestionEdit.php:100
+#: lib/view/WpProQuiz_View_QuestionOverall.php:393
+#: lib/view/WpProQuiz_View_QuestionOverall.php:403
+#: lib/view/WpProQuiz_View_QuizEdit.php:53
+#: lib/view/WpProQuiz_View_QuizEdit.php:63
+#: lib/view/WpProQuiz_View_QuizOverall.php:420
+#: lib/view/WpProQuiz_View_QuizOverall.php:430
+msgid "Create new category"
+msgstr "建立新类别"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:102
+#: lib/view/WpProQuiz_View_QuestionOverall.php:405
+#: lib/view/WpProQuiz_View_QuizEdit.php:65
+#: lib/view/WpProQuiz_View_QuizOverall.php:432
+msgid "Create"
+msgstr "建立"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:118
+msgid "Message with the correct / incorrect answer"
+msgstr "提供正确或错误答案的讯息"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:120
+msgid "Deactivated in quiz settings."
+msgstr "测验设置内不启用。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:125
+msgid "Message with the correct answer"
+msgstr "正确答案讯息"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:128
+msgid ""
+"This text will be visible if answered correctly. It can be used as "
+"explanation for complex questions. The message \"Right\" or \"Wrong\" is "
+"always displayed automatically."
+msgstr ""
+"当回答正确时会显示这段文字，提供复杂问题的说明。 讯息 \"正确\" 或 \"错误\" 则"
+"会自动显示。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:132
+msgid "Same text for correct- and incorrect-message?"
+msgstr "正确和错误讯息使用相同文字？"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:142
+msgid "Message with the incorrect answer"
+msgstr "错误达案讯息"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:145
+msgid ""
+"This text will be visible if answered incorrectly. It can be used as "
+"explanation for complex questions. The message \"Right\" or \"Wrong\" is "
+"always displayed automatically."
+msgstr ""
+"当回答错误时会显示这段文字，提供复杂问题的说明。 讯息 \"正确\" or \"错误\" 则"
+"会自动显示。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:157
+msgid "Here you can enter solution hint."
+msgstr "您可以在此输入问题提示。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:161
+msgid "Activate hint for this question?"
+msgstr "针对问题启用提示？"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:173
+msgid "Answer type"
+msgstr "答案型式"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:181
+msgid "Single choice"
+msgstr "单选"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:185
+msgid "Multiple choice"
+msgstr "多选"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:189
+msgid "\"Free\" choice"
+msgstr "\"自由\" 作答"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:193
+msgid "\"Sorting\" choice"
+msgstr "\"排序\" 作答"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:197
+msgid "\"Matrix Sorting\" choice"
+msgstr "\"矩阵排序\" 作答"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:201
+msgid "Cloze"
+msgstr "填充"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:205
+msgid "Assessment"
+msgstr "评估"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:211
+msgid "Answers"
+msgstr "答案"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:218
+msgid ""
+"Please sort the answers in right order with the \"Move\" - Button. The "
+"answers will be displayed randomly."
+msgstr "请使用 \"移动\" 按钮排序答案的正确顺序。答案会随机排列显示。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:223
+#: lib/view/WpProQuiz_View_QuestionEdit.php:229
+#: lib/view/WpProQuiz_View_QuestionEdit.php:251
+msgid "Add new answer"
+msgstr "加入新答案"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:233
+msgid ""
+"In this mode, not a list have to be sorted, but elements must be assigned to "
+"matching criterion."
+msgstr "在此模式内，并非排序一个清单，必须将「要素」指派至标准答案。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:236
+msgid ""
+"You can create sort elements with empty criteria, which can't be assigned by "
+"user."
+msgstr "您可以建立新标准以排序元素，并非由用户指派。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:240
+msgid "Percentage width of criteria table column:"
+msgstr "标准表格字段宽度百分比："
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:245
+msgid ""
+"Allows adjustment of the left column's width, and the right column will auto-"
+"fill the rest of the available space. Increase this to allow accommodate "
+"longer criterion text. Defaults to 20%."
+msgstr ""
+"允许调整左侧字段宽度，右侧字段会自动补足剩下的空间。增加此项目以容纳更多标准"
+"文字，默认是到 20% 。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:266
+#: lib/view/WpProQuiz_View_QuizEdit.php:658
+msgid "template name"
+msgstr "样板名称"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:268
+#: lib/view/WpProQuiz_View_QuizEdit.php:660
+msgid "Create new template"
+msgstr "建立新样板"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:276
+#: lib/view/WpProQuiz_View_QuizEdit.php:668
+msgid "Save as template"
+msgstr "储存为样板"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:295
+#: lib/view/WpProQuiz_View_QuestionEdit.php:345
+#: lib/view/WpProQuiz_View_QuestionEdit.php:398
+#: lib/view/WpProQuiz_View_QuizEdit.php:76
+msgid "Options"
+msgstr "选项"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:296
+#: lib/view/WpProQuiz_View_QuestionEdit.php:399
+msgid "Answer"
+msgstr "答案"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:311
+#: lib/view/WpProQuiz_View_QuestionEdit.php:370
+#: lib/view/WpProQuiz_View_QuestionEdit.php:376
+#: lib/view/WpProQuiz_View_QuestionEdit.php:408
+msgid "Allow HTML"
+msgstr "允许 HTML"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:328
+#: lib/view/WpProQuiz_View_QuestionEdit.php:383
+#: lib/view/WpProQuiz_View_QuestionEdit.php:425
+msgid "Delete answer"
+msgstr "删除答案"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:329
+#: lib/view/WpProQuiz_View_QuestionEdit.php:384
+#: lib/view/WpProQuiz_View_QuestionEdit.php:426
+msgid "Add Media"
+msgstr "增加媒材"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:330
+#: lib/view/WpProQuiz_View_QuestionEdit.php:385
+#: lib/view/WpProQuiz_View_QuestionEdit.php:427
+#: lib/view/WpProQuiz_View_QuizEdit.php:1453
+msgid "Move"
+msgstr "移动"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:346
+msgid "Criterion"
+msgstr "标准"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:438
+msgid ""
+"correct answers (one per line) (answers will be converted to lower case)"
+msgstr "正确答案(每行一个) (答案会被转换为小写)"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:451
+msgid ""
+"Enclose the searched words with { } e.g. \"I {play} soccer\". Capital and "
+"small letters will be ignored."
+msgstr "以 { } 符号圈选搜寻字，例如 \"我 {玩} 足球\"。英文字母大小写将被忽略。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:454
+msgid ""
+"You can specify multiple options for a search word. Enclose the word with "
+"[ ] e.g. <span style=\"font-style: normal; letter-spacing: 2px;\"> \"I "
+"{[play][love][hate]} soccer\" </span>. In this case answers play, love OR "
+"hate are correct."
+msgstr ""
+"您可以针对搜寻字指定多个答案选项，使用 [ ] 符号圈选该字，例如 <span style="
+"\"font-style: normal; letter-spacing: 2px;\"> \"我 {[玩][爱][恨]} 足球\" </"
+"span>。 在此情况回答玩、爱或恨都是正确的。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:457
+msgid ""
+"If mode \"Different points for every answer\" is activated, you can assign "
+"points with |POINTS. Otherwise 1 point will be awarded for every answer."
+msgstr ""
+"如果模式 \"每个答案不同配分\" 已启用，您可以使用 \"|分数\" 来配分。否则每个答"
+"案只会分配 1 分。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:460
+msgid ""
+"e.g. \"I {play} soccer, with a {ball|3}\" - \"play\" gives 1 point and \"ball"
+"\" 3 points."
+msgstr ""
+"例如 \"我 用一个 {球|3} {玩} 足球\" - \"玩\" 分配 1 分， \"球\" 则分配 3 分。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:472
+msgid "Here you can create an assessment question."
+msgstr "您可以在此建立一个评估问题。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:475
+msgid ""
+"Enclose a assesment with {}. The individual assessments are marked with []."
+msgstr "使用 {} 符号圈选一个评估。 独立的评估会以 [] 符号注记。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:477
+msgid "The number of options in the maximum score."
+msgstr "选项数量的最大分数。"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:480
+msgid "Examples:"
+msgstr "例如："
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:482
+msgid "less true { [1] [2] [3] [4] [5] } more true"
+msgstr "更少 { [1] [2] [3] [4] [5] } 更多"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:485
+#: lib/view/WpProQuiz_View_QuestionEdit.php:494
+#: lib/view/WpProQuiz_View_QuizEdit.php:414
+#: lib/view/WpProQuiz_View_QuizEdit.php:420
+#: lib/view/WpProQuiz_View_QuizEdit.php:701
+#: lib/view/WpProQuiz_View_QuizEdit.php:728
+#: lib/view/WpProQuiz_View_QuizEdit.php:754
+#: lib/view/WpProQuiz_View_QuizEdit.php:780
+#: lib/view/WpProQuiz_View_QuizEdit.php:806
+#: lib/view/WpProQuiz_View_QuizEdit.php:865
+#: lib/view/WpProQuiz_View_QuizEdit.php:890
+#: lib/view/WpProQuiz_View_QuizEdit.php:915
+#: lib/view/WpProQuiz_View_QuizEdit.php:960
+#: lib/view/WpProQuiz_View_QuizEdit.php:985
+#: lib/view/WpProQuiz_View_QuizEdit.php:1010
+#: lib/view/WpProQuiz_View_QuizEdit.php:1182
+#: lib/view/WpProQuiz_View_QuizEdit.php:1192
+#: lib/view/WpProQuiz_View_QuizEdit.php:1245
+#: lib/view/WpProQuiz_View_QuizEdit.php:1253
+#: lib/view/WpProQuiz_View_QuizEdit.php:1261
+#: lib/view/WpProQuiz_View_QuizEdit.php:1269
+#: lib/view/WpProQuiz_View_QuizEdit.php:1352
+#: lib/view/WpProQuiz_View_QuizEdit.php:1364
+#: lib/view/WpProQuiz_View_QuizEdit.php:1371
+#: lib/view/WpProQuiz_View_QuizEdit.php:1395
+msgid "Demo"
+msgstr "展示"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:491
+msgid "less true { [a] [b] [c] } more true"
+msgstr "更少 { [a] [b] [c] } 更多"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:510
+msgid "Single choice options"
+msgstr "单选选项"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:513
+msgid ""
+"If \"Different points for each answer\" is activated, you can activate a "
+"special mode.<br> This changes the calculation of the points"
+msgstr ""
+"如果 \"每个答案不同配分\" 已启用，您可以启用一个特别模式。<br> 这会改变分数的"
+"计算"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:517
+msgid "Different points - modus 2 activate"
+msgstr "不同配分 - 模式 2 启用"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:521
+msgid "Disables the distinction between correct and incorrect."
+msgstr "关闭正确与错误的区别"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:525
+msgid "disable correct and incorrent"
+msgstr "关闭正确与错误"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:529
+msgid "Explanation of points calculation"
+msgstr "分数计算解释"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:549
+#: lib/view/WpProQuiz_View_QuestionEdit.php:554
+msgid "\"Different points for each answer\" enabled"
+msgstr "\"每个答案不同配分\" 开启"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:551
+msgid "\"Different points - mode 2\" disable"
+msgstr "\"不同配分 - 模式 2\" 关闭"
+
+#: lib/view/WpProQuiz_View_QuestionEdit.php:556
+msgid "\"Different points - mode 2\" enabled"
+msgstr "\"不同配分 - 模式 2\" 开启"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:293
+#, php-format
+msgid "Quiz: %s"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:296
+msgid "Add question"
+msgstr "加入问题"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:307
+msgid "Sort Question"
+msgstr "排序："
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:308
+#: lib/view/WpProQuiz_View_QuestionOverall.php:349
+msgid "Copy questions from another Quiz"
+msgstr "从其他测验复制问题"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:332
+#: lib/view/WpProQuiz_View_QuizOverall.php:321
+msgid "Search"
+msgstr "搜索"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:350
+msgid ""
+"Here you can copy questions from another quiz into this quiz. (Multiple "
+"selection enabled)"
+msgstr "您可以在此复制其他测验的问题到这次测验。 (允许多选)"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:362
+msgid "Copy questions"
+msgstr "复制问题"
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:376
+msgid "Set Question Categories"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:377
+msgid "Sets multiple question categories"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionOverall.php:386
+msgid "You can assign classify category for a question."
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:84
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:93
+msgid "Set Category"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:95
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:104
+msgid "Filter by category"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuestionOverallTable.php:97
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:106
+msgid "All categories"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:37
+msgid "Quiz title"
+msgstr "测验名称"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:46
+#: lib/view/WpProQuiz_View_QuizOverall.php:413
+msgid "You can assign classify category for a quiz."
+msgstr "您可以从「全局设置」中设置默认类别。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:82
+msgid "Hide quiz title"
+msgstr "隐藏测验名称"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:87
+msgid "Hide title"
+msgstr "隐藏名称"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:94
+msgid "The title serves as quiz heading."
+msgstr "用来当作测验标题。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:101
+#: lib/view/WpProQuiz_View_QuizEdit.php:106
+msgid "Hide \"Restart quiz\" button"
+msgstr "隐藏 \"重新开始\" 按钮"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:113
+msgid "Hide the \"Restart quiz\" button in the Frontend."
+msgstr "隐藏 \"重新开始\" 前台按钮。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:120
+#: lib/view/WpProQuiz_View_QuizEdit.php:125
+msgid "Hide \"View question\" button"
+msgstr "隐藏 \"查看试题\" 按钮"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:132
+msgid "Hide the \"View question\" button in the Frontend."
+msgstr "隐藏 \"查看试题\" 前台按钮。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:139
+#: lib/view/WpProQuiz_View_QuizEdit.php:144
+msgid "Display question randomly"
+msgstr "随机显示问题"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:155
+#: lib/view/WpProQuiz_View_QuizEdit.php:160
+msgid "Display answers randomly"
+msgstr "随机显示答案"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:171
+#: lib/view/WpProQuiz_View_QuizEdit.php:176
+msgid "Sort questions by category"
+msgstr "以类别排序问题"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:183
+msgid ""
+"Also works in conjunction with the \"display randomly question\" option."
+msgstr "能与 \"随机显示问题\" 选项一道执行。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:198
+msgid "Seconds"
+msgstr "秒"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:201
+msgid "0 = no limit"
+msgstr "0 = 没有限制"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:208
+#: lib/view/WpProQuiz_View_QuizEdit.php:213
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:75
+msgid "Statistics"
+msgstr "状态"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:220
+msgid ""
+"Statistics about right or wrong answers. Statistics will be saved by "
+"completed quiz, not after every question. The statistics is only visible "
+"over administration menu. (internal statistics)"
+msgstr ""
+"记录正确或错误答案的状态功能。当用户完成测验后才会储存作答状态，状态信息只能"
+"透过管理接口看见(内部状态)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:227
+#: lib/view/WpProQuiz_View_QuizEdit.php:232
+msgid "Statistics IP-lock"
+msgstr "状态 IP-锁定"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:236
+msgid "in minutes (recommended 1440 minutes = 1 day)"
+msgstr "以分钟表示 (建议 1440 分钟 = 1 天)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:239
+msgid ""
+"Protect the statistics from spam. Result will only be saved every X minutes "
+"from same IP. (0 = deactivated)"
+msgstr ""
+"保护状态避免垃圾机器人攻击。同一个 IP 每隔多少分钟才会储存结果 (0 = 不启用)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:246
+#: lib/view/WpProQuiz_View_QuizEdit.php:252
+msgid "Execute quiz only once"
+msgstr "只执行一次测验"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:260
+msgid ""
+"If you activate this option, the user can complete the quiz only once. "
+"Afterwards the quiz is blocked for this user."
+msgstr "如果您启用这个选项，用户只能做一次测验，之后测验就会封锁该用户。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:264
+msgid "This option applies to:"
+msgstr "选项适用于："
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:272
+#: lib/view/WpProQuiz_View_QuizEdit.php:1057
+#: lib/view/WpProQuiz_View_StatisticsNew.php:102
+msgid "all users"
+msgstr "全部用户"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:276
+#: lib/view/WpProQuiz_View_QuizEdit.php:1061
+msgid "registered useres only"
+msgstr "只限已注册用户"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:280
+#: lib/view/WpProQuiz_View_QuizEdit.php:1065
+msgid "anonymous users only"
+msgstr "只限匿名用户"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:286
+msgid "user identification by cookie"
+msgstr "使用 cookie 识别用户"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:289
+msgid ""
+"If you activate this option, a cookie is set additionally for unregistrated "
+"(anonymous) users. This ensures a longer assignment of the user than the "
+"simple assignment by the IP address."
+msgstr ""
+"如果您启用这个选项，对于未注册 (匿名) 的用户会额外设置一个 cookie。 用来保证"
+"比透过 IP 地址简单指派用户来得更长。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:294
+msgid "Reset the user identification"
+msgstr "重设用户识别"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:295
+msgid "User identification has been reset."
+msgstr "用户识别已重设。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:297
+msgid "Resets user identification for all users."
+msgstr "重设所有用户识别。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:306
+#: lib/view/WpProQuiz_View_QuizEdit.php:311
+msgid "Show only specific number of questions"
+msgstr "只显示特定数量的问题"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:318
+msgid ""
+"If you enable this option, maximum number of displayed questions will be X "
+"from X questions. (The output of questions is random)"
+msgstr ""
+"如果您启用这个选项， 会从全部问题中选出数个问题来进行测验。(问题以随机方式输"
+"出)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:322
+msgid "How many questions should be displayed simultaneously:"
+msgstr "多少问题应该要同时显示："
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:327
+msgid "in percent"
+msgstr "以百分比"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:335
+#: lib/view/WpProQuiz_View_QuizEdit.php:340
+msgid "Prerequisites"
+msgstr "先决条件"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:347
+msgid ""
+"If you enable this option, you can choose quiz, which user have to finish "
+"before he can start this quiz."
+msgstr "如果您启用这个选项，您可以让用户在进行正式测验前先完成您所挑选的测验。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:350
+msgid ""
+"In all selected quizzes statistic function have to be active. If it is not "
+"it will be activated automatically."
+msgstr "在所有被选择的测验状态功能必须被启用，否则将会自动启用。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:357
+msgid "Prerequisites (This quiz have to be finished)"
+msgstr "必备条件(必须完成测验)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:396
+#: lib/view/WpProQuiz_View_QuizEdit.php:401
+#: lib/view/WpProQuiz_View_QuizEdit.php:414
+msgid "Question overview"
+msgstr "问题概览"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:408
+msgid ""
+"Add at the top of the quiz a question overview, which allows easy "
+"navigation. Additional questions can be marked \"to review\"."
+msgstr ""
+"在测验上方加上问题概览，提供简单导览。额外的问题可以被标注为 \"检视\"。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:411
+msgid "Additional quiz overview will be displayed, before quiz is finished."
+msgstr "在测验完成前，会额外显示测验概览。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:442
+msgid ""
+"If you enalbe this option, no quiz overview will be displayed, before "
+"finishing quiz."
+msgstr "如果您启用该选项，在完成测验前不会显示测验概览。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:461
+msgid ""
+"If you enable this option, user won't be able to skip question. (only in "
+"\"Overview -> next\" mode). User still will be able to navigate over "
+"\"Question-Overview\""
+msgstr ""
+"如果您启用该选项，用户无法跳过问题。 (只有在 \"概览 -> 下一个\" 模式)。用户仍"
+"然可以导览 \"问题概览\""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:469
+#: lib/view/WpProQuiz_View_QuizEdit.php:474
+#: lib/view/WpProQuiz_View_QuizEdit.php:1484
+#: lib/view/WpProQuiz_View_QuizEdit.php:1489
+msgid "Admin e-mail notification"
+msgstr "管理者邮件通知"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:482
+#: lib/view/WpProQuiz_View_QuizEdit.php:1497
+msgid "for registered users only"
+msgstr "只针对已注册用户"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:486
+#: lib/view/WpProQuiz_View_QuizEdit.php:1501
+msgid "for all users"
+msgstr "针对全部用户"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:489
+#: lib/view/WpProQuiz_View_QuizEdit.php:1504
+msgid ""
+"If you enable this option, you will be informed if a user completes this "
+"quiz."
+msgstr "如果您启用该选项，当用户完成测验时会知会您。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:492
+#: lib/view/WpProQuiz_View_QuizEdit.php:515
+msgid "E-Mail settings can be edited in global settings."
+msgstr "电子邮件设置可以在「全局设置」中编辑"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:500
+#: lib/view/WpProQuiz_View_QuizEdit.php:505
+#: lib/view/WpProQuiz_View_QuizEdit.php:1622
+#: lib/view/WpProQuiz_View_QuizEdit.php:1627
+msgid "User e-mail notification"
+msgstr "用户邮件通知"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:512
+msgid ""
+"If you enable this option, an email is sent with his quiz result to the "
+"user. (only registered users)"
+msgstr "如果您启用该选项，将会将测验结果通过邮件发送给用户。(只有注册的用户)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:523
+#: lib/view/WpProQuiz_View_QuizEdit.php:528
+msgid "Autostart"
+msgstr "自动开始"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:535
+msgid ""
+"If you enable this option, the quiz will start automatically after the page "
+"is loaded."
+msgstr "如果您启用该选项，测验将会在网页加载后自动开始。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:542
+#: lib/view/WpProQuiz_View_QuizEdit.php:547
+msgid "Only registered users are allowed to start the quiz"
+msgstr "只有注册的用户能被允许开始测验"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:554
+msgid ""
+"If you enable this option, only registered users allowed start the quiz."
+msgstr "如果您启用该选项，只有注册的用户能被允许开始测验。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:571
+msgid "Quiz description"
+msgstr "问题描述"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:574
+msgid "This text will be displayed before start of the quiz."
+msgstr "在测验开始前显示以下文字。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:582
+msgid "Results text"
+msgstr "测验结果"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:585
+msgid ""
+"This text will be displayed at the end of the quiz (in results). (this text "
+"is optional)"
+msgstr "在测验结尾显示以下文字 (在测验结果内)。 (非必填)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:589
+msgid "Activate graduation"
+msgstr "启用刻度"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:595
+msgid "Hint:"
+msgstr "提示："
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:597
+msgid "Maximal 15 levels"
+msgstr "最大 15 级"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:599
+#, php-format
+msgid ""
+"Percentages refer to the total score of the quiz. (Current total %d points "
+"in %d questions."
+msgstr "参考测验全部分数的百分比。 (目前全部 %d 分， %d 个问题)。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:602
+msgid "Values can also be mixed up"
+msgstr "数值也可混合"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:603
+msgid "10,15% or 10.15% allowed (max. two digits after the decimal point)"
+msgstr "允许 10,15% 或 10.15% (最多，小数点后两位数)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:619
+#: lib/view/WpProQuiz_View_QuizEdit.php:630
+msgid "from:"
+msgstr "从："
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:619
+#: lib/view/WpProQuiz_View_QuizEdit.php:630
+msgid "percent"
+msgstr "百分比"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:619
+#: lib/view/WpProQuiz_View_QuizEdit.php:630
+#, php-format
+msgid ""
+"(Will be displayed, when result-percent is >= <span class=\"resultProzent\">"
+"%s</span>%%)"
+msgstr "(将会显示，当百分比 >= <span class=\"resultProzent\">%s</span>%%)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:620
+#: lib/view/WpProQuiz_View_QuizEdit.php:631
+msgid "Delete graduation"
+msgstr "删除刻度"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:638
+msgid "Add graduation"
+msgstr "增加刻度"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:649
+#: lib/view/WpProQuiz_View_QuizEdit.php:1572
+#: lib/view/WpProQuiz_View_QuizEdit.php:1704
+msgid "Custom fields - Variables"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:680
+msgid "Result-Options"
+msgstr "结果选项"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:686
+#: lib/view/WpProQuiz_View_QuizEdit.php:691
+msgid "Show average points"
+msgstr "显示平均分数"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:698
+msgid "Statistics-function must be enabled."
+msgstr "状态功能必须启用。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:711
+#: lib/view/WpProQuiz_View_QuizEdit.php:716
+msgid "Show category score"
+msgstr "显示分类分数"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:723
+msgid ""
+"If you enable this option, the results of each category is displayed on the "
+"results page."
+msgstr "如果您启用该选项，每个分类的结果会显示在结果页面。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:737
+#: lib/view/WpProQuiz_View_QuizEdit.php:742
+msgid "Hide correct questions - display"
+msgstr "隐藏正确问题 - 显示"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:749
+msgid ""
+"If you select this option, no longer the number of correctly answered "
+"questions are displayed on the results page."
+msgstr "如果您选择该选项，不管答对几题都会显示在结果页面。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:763
+#: lib/view/WpProQuiz_View_QuizEdit.php:768
+msgid "Hide quiz time - display"
+msgstr "隐藏测验时间 - 显示"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:775
+msgid ""
+"If you enable this option, the time for finishing the quiz won't be "
+"displayed on the results page anymore."
+msgstr "如果您启用该选项，完成测验的时间将不再显示在结果页面。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:789
+#: lib/view/WpProQuiz_View_QuizEdit.php:794
+msgid "Hide score - display"
+msgstr "隐藏分数 - 显示"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:801
+msgid ""
+"If you enable this option, final score won't be displayed on the results "
+"page anymore."
+msgstr "如果您启用该选项，最后分数将不再显示在结果页面。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:825
+msgid "Question-Options"
+msgstr "问题选项"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:831
+#: lib/view/WpProQuiz_View_QuizEdit.php:836
+msgid "Show points"
+msgstr "显示分数"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:843
+msgid "Shows in quiz, how many points are reachable for respective question."
+msgstr "在测验中显示，对各别问题已得到多少分数。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:850
+#: lib/view/WpProQuiz_View_QuizEdit.php:855
+msgid "Number answers"
+msgstr "答案编号"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:862
+msgid ""
+"If this option is activated, all answers are numbered (only single and "
+"multiple choice)"
+msgstr "如果这个选项已启用，全部答案会被编号 (只有单选与多选)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:875
+#: lib/view/WpProQuiz_View_QuizEdit.php:880
+msgid "Hide correct- and incorrect message"
+msgstr "隐藏正确与错误讯息"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:887
+msgid ""
+"If you enable this option, no correct- or incorrect message will be "
+"displayed."
+msgstr "如果您启用该选项，正确或错误讯息将不再显示。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:900
+#: lib/view/WpProQuiz_View_QuizEdit.php:905
+msgid "Correct and incorrect answer mark"
+msgstr "标示正确与错误答案"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:912
+msgid ""
+"If you enable this option, answers won't be color highlighted as correct or "
+"incorrect. "
+msgstr "如果您启用该选项，答案将不会以颜色区分正确或错误。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:925
+#: lib/view/WpProQuiz_View_QuizEdit.php:930
+msgid "Force user to answer each question"
+msgstr "要求用户回答每个问题"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:937
+msgid "If you enable this option, the user is forced to answer each question."
+msgstr "如果您启用该选项，用户必须回答每个问题。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:938
+msgid ""
+"If the option \"Question overview\" is activated, this notification will "
+"appear after end of the quiz, otherwise after each question."
+msgstr ""
+"如果 \"问题概览\" 选项已启动，将会在测验结尾出现说明，否则就是在每个问题之"
+"后。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:945
+#: lib/view/WpProQuiz_View_QuizEdit.php:950
+msgid "Hide question position overview"
+msgstr "隐藏问题位置概览"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:957
+msgid "If you enable this option, the question position overview is hidden."
+msgstr "如果您启用该选项，问题概览位置会隐藏。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:970
+#: lib/view/WpProQuiz_View_QuizEdit.php:975
+msgid "Hide question numbering"
+msgstr "隐藏问题计数"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:982
+msgid "If you enable this option, the question numbering is hidden."
+msgstr "如果您启用该选项，会隐藏问题计数。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:995
+#: lib/view/WpProQuiz_View_QuizEdit.php:1000
+msgid "Display category"
+msgstr "显示分类"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1007
+msgid "If you enable this option, category will be displayed in the question."
+msgstr "如果您启用该选项，将会在问题内显示类别。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1032
+msgid ""
+"The leaderboard allows users to enter results in public list and to share "
+"the result this way."
+msgstr "排行榜提供用户在公开列表中输入与分享测验结果。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1035
+msgid "The leaderboard works independent from internal statistics function."
+msgstr "排行榜独立运作，不受内部状态功能影响。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1052
+msgid "Who can sign up to the list"
+msgstr "谁能登入排行榜"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1068
+msgid ""
+"Not registered users have to enter name and e-mail (e-mail won't be "
+"displayed)"
+msgstr "未注册用户必须输入名称与电子邮件(电子邮件不会显示)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1074
+msgid "insert automatically"
+msgstr "自动插入"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1082
+msgid ""
+"If you enable this option, logged in users will be automatically entered "
+"into leaderboard"
+msgstr "如果您启用该选项，用户登入后会自动进入排行榜"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1088
+msgid "display captcha"
+msgstr "显示验证码"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1096
+msgid ""
+"If you enable this option, additional captcha will be displayed for users "
+"who are not registered."
+msgstr "如果您启用该选项，未注册的用户将会要求输入验证码。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1099
+msgid "This option requires additional plugin:"
+msgstr "此选项需要安装额外的外挂："
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1104
+msgid "Plugin has been detected."
+msgstr "已侦测到的外挂。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1108
+msgid "Plugin is not installed."
+msgstr "外挂未安装。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1116
+msgid "Sort list by"
+msgstr "排序列表以"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1135
+msgid "Users can apply multiple times"
+msgstr "用户可以重复进行测验"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1146
+msgid "User can apply after:"
+msgstr "用户可以进行测验："
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1148
+msgid "minute"
+msgstr "分"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1155
+msgid "How many entries should be displayed"
+msgstr "显示多少登记数"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1161
+msgid "Entries"
+msgstr "登记数"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1168
+msgid "Automatically display leaderboard in quiz result"
+msgstr "测验结果自动显示排行榜"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1172
+msgid "Where should leaderboard be displayed:"
+msgstr "排行榜显示位置："
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1175
+msgid "don't display"
+msgstr "不显示"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1179
+msgid "below the \"result text\""
+msgstr "在 \"结果文字\" 下"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1189
+msgid "in a button"
+msgstr "在按钮之下"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1210
+msgid "Quiz-Mode"
+msgstr "测验模式"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1215
+msgid "Normal"
+msgstr "一般"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1216
+msgid "Normal + Back-Button"
+msgstr "一般 + 后退按钮"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1217
+msgid "Check -> continue"
+msgstr "检查 -> 继续"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1218
+msgid "Questions below each other"
+msgstr "问题清单"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1230
+msgid ""
+"Displays all questions sequentially, \"right\" or \"false\" will be "
+"displayed at the end of the quiz."
+msgstr "依序显示所有问题，测验结束后将显示 \"对\" 或 \"错\"。 "
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1233
+msgid "Allows to use the back button in a question."
+msgstr "在问题内允许使用后退按钮(回上一题)。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1236
+msgid "Shows \"right or wrong\" after each question."
+msgstr "每个问题后显示 \"对或错\" 。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1239
+msgid ""
+"If this option is activated, all answers are displayed below each other, i."
+"e. all questions are on a single page."
+msgstr "如果启用该选项，问题会以列表方式显示，例如单一页面显示全部问题。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1281
+msgid "How many questions to be displayed on a page:"
+msgstr "单一页面显示多少问题："
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1284
+msgid "(0 = All on one page)"
+msgstr "(0 = 全部同一页)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1306
+#: lib/view/WpProQuiz_View_QuizEdit.php:1650
+#: lib/view/WpProQuiz_View_Statistics.php:41
+#: lib/view/WpProQuiz_View_Statistics.php:364
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:538
+msgid "Custom fields"
+msgstr "自定义字段"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1310
+msgid ""
+"You can create custom fields, e.g. to request the name or the e-mail address "
+"of the users."
+msgstr "您可以建立自定义字段，例如要求用户输入名称或电子邮件。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1313
+msgid "The statistic function have to be enabled."
+msgstr "状态功能必须先启用。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1320
+#: lib/view/WpProQuiz_View_QuizEdit.php:1325
+msgid "Custom fields enable"
+msgstr "自定义字段启用"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1332
+msgid "If you enable this option, custom fields are enabled."
+msgstr "如果您启用该选项，自定义字段将会启用。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1339
+#: lib/view/WpProQuiz_View_QuizEdit.php:1344
+msgid "Display position"
+msgstr "显示位置"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1346
+msgid "Where should the fileds be displayed:"
+msgstr "字段显示位置："
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1349
+msgid "On the quiz startpage"
+msgstr "在测验开始页面"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1361
+msgid "At the end of the quiz (before the quiz result)"
+msgstr "在测验结束后(在测验结果前)"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1389
+msgid "Field name"
+msgstr "名称字段"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1391
+msgid "Required?"
+msgstr "必填？"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1393
+msgid "Show in statistic table?"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1423
+msgid "Text"
+msgstr "文字"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1424
+msgid "Textarea"
+msgstr "文本块"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1425
+msgid "Checkbox"
+msgstr "勾选栏"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1426
+msgid "Drop-Down menu"
+msgstr "下拉选单"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1427
+msgid "Radio"
+msgstr "单选栏"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1428
+msgid "Number"
+msgstr "数量"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1429
+msgid "Email"
+msgstr "电子邮件"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1430
+msgid "Yes/No"
+msgstr "是/否"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1431
+#: lib/view/WpProQuiz_View_Statistics.php:323
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:30
+msgid "Date"
+msgstr "日期"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1434
+msgid "Edit list"
+msgstr "编辑列表"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1437
+msgid "One entry per line"
+msgstr "每横列一个项目"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1442
+msgid "OK"
+msgstr "好"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1464
+msgid "Add field"
+msgstr "加入字段"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1634
+msgid ""
+"If you enable this option, an email is sent with his quiz result to the user."
+msgstr "如果您启用该选项，将会将测验结果通过邮件发送给用户。"
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1646
+msgid "User Email-Address (only registered users)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizEdit.php:1652
+msgid "(Type Email)"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:269
+msgid "Quiz overview"
+msgstr "测验总览"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:271
+#: lib/view/WpProQuiz_View_QuizOverall.php:306
+msgid "Add quiz"
+msgstr "加入测验"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:286
+#: lib/view/WpProQuiz_View_WpqSupport.php:33
+msgid "Learn more"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:354
+msgid "Import only *.wpq or *.xml files from known and trusted sources."
+msgstr "只从已知与可信的来源汇入 *.wpq 或 *.xml 文件。"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:362
+#, php-format
+msgid "Maximal %d MiB"
+msgstr "最大 %d MiB"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:378
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:90
+msgid "Export"
+msgstr "输出"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:379
+msgid ""
+"Choose the respective question, which you would like to export and press on "
+"\"Start export\""
+msgstr "选择您想要输出的问题然后按下 \"开始输出\""
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:384
+msgid "Format:"
+msgstr "格示："
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:385
+msgid "*.wpq"
+msgstr "*.wpq"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:386
+msgid "or"
+msgstr "或"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:387
+msgid "*.xml"
+msgstr "*.xml"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:389
+msgid "Start export"
+msgstr "开始输出"
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:403
+msgid "Set Quiz Categories"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizOverall.php:404
+msgid "Sets multiple quiz categories "
+msgstr ""
+
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:19
+msgid "Shortcode"
+msgstr "简码"
+
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:20
+msgid "Shortcode-Leaderboard"
+msgstr "简码-排行榜"
+
+#: lib/view/WpProQuiz_View_QuizOverallTable.php:72
+msgid "Preview"
+msgstr "预览"
+
+#: lib/view/WpProQuiz_View_Statistics.php:28
+#: lib/view/WpProQuiz_View_StatisticsNew.php:56
+#, php-format
+msgid "Quiz: %s - Statistics"
+msgstr "测验： %s - 状态"
+
+#: lib/view/WpProQuiz_View_Statistics.php:33
+#: lib/view/WpProQuiz_View_StatisticsNew.php:61
+msgid "Stats not enabled"
+msgstr "状态未启用"
+
+#: lib/view/WpProQuiz_View_Statistics.php:34
+#: lib/view/WpProQuiz_View_StatisticsNew.php:62
+msgid "Activate statistics"
+msgstr "启用状态"
+
+#: lib/view/WpProQuiz_View_Statistics.php:39
+msgid "Users"
+msgstr "用户"
+
+#: lib/view/WpProQuiz_View_Statistics.php:40
+#: lib/view/WpProQuiz_View_StatisticsNew.php:68
+msgid "Overview"
+msgstr "总览"
+
+#: lib/view/WpProQuiz_View_Statistics.php:68
+msgid "Please select user name:"
+msgstr "请选择用户名称："
+
+#: lib/view/WpProQuiz_View_Statistics.php:72
+msgid "Select a test:"
+msgstr "选择测验："
+
+#: lib/view/WpProQuiz_View_Statistics.php:82
+msgid "Anonymous user"
+msgstr "匿名用户"
+
+#: lib/view/WpProQuiz_View_Statistics.php:91
+msgid "average"
+msgstr "平均"
+
+#: lib/view/WpProQuiz_View_Statistics.php:108
+#: lib/view/WpProQuiz_View_Statistics.php:243
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:171
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:607
+msgid "Hints used"
+msgstr "使用提示数"
+
+#: lib/view/WpProQuiz_View_Statistics.php:109
+#: lib/view/WpProQuiz_View_Statistics.php:244
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:173
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:608
+msgid "Time"
+msgstr "时间"
+
+#: lib/view/WpProQuiz_View_Statistics.php:110
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:174
+msgid "Points scored"
+msgstr "已获得分数"
+
+#: lib/view/WpProQuiz_View_Statistics.php:148
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:238
+msgid "Sub-Total: "
+msgstr "小计："
+
+#: lib/view/WpProQuiz_View_Statistics.php:169
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:272
+msgid "Total"
+msgstr "总合"
+
+#: lib/view/WpProQuiz_View_Statistics.php:183
+#: lib/view/WpProQuiz_View_Statistics.php:268
+#: lib/view/WpProQuiz_View_Statistics.php:343
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:287
+#: lib/view/WpProQuiz_View_StatisticsNew.php:163
+#: lib/view/WpProQuiz_View_StatisticsNew.php:247
+msgid "Refresh"
+msgstr "更新"
+
+#: lib/view/WpProQuiz_View_Statistics.php:187
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:291
+msgid "Reset statistics"
+msgstr "重置状态"
+
+#: lib/view/WpProQuiz_View_Statistics.php:188
+msgid "Reset user statistics"
+msgstr "重置用户状态"
+
+#: lib/view/WpProQuiz_View_Statistics.php:189
+#: lib/view/WpProQuiz_View_Statistics.php:270
+#: lib/view/WpProQuiz_View_Statistics.php:345
+#: lib/view/WpProQuiz_View_StatisticsNew.php:165
+#: lib/view/WpProQuiz_View_StatisticsNew.php:249
+msgid "Reset entire statistic"
+msgstr "重置全部状态"
+
+#: lib/view/WpProQuiz_View_Statistics.php:214
+#: lib/view/WpProQuiz_View_StatisticsNew.php:206
+msgid "Show only users, who solved the quiz:"
+msgstr "只显示完成测验的用户："
+
+#: lib/view/WpProQuiz_View_Statistics.php:293
+#: lib/view/WpProQuiz_View_StatisticsNew.php:99
+msgid "Which users should be displayed:"
+msgstr "用户显示方式："
+
+#: lib/view/WpProQuiz_View_Statistics.php:295
+msgid "all"
+msgstr "全部"
+
+#: lib/view/WpProQuiz_View_Statistics.php:296
+#: lib/view/WpProQuiz_View_StatisticsNew.php:103
+msgid "only registered users"
+msgstr "只有注册用户"
+
+#: lib/view/WpProQuiz_View_Statistics.php:297
+#: lib/view/WpProQuiz_View_StatisticsNew.php:104
+msgid "only anonymous users"
+msgstr "只有匿名用户"
+
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:33
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:172
+msgid "Solved"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:62
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:244
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:277
+#, php-format
+msgid "%d of %d"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:150
+#, php-format
+msgid "User statistics: %s"
+msgstr "用户状态：%s"
+
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:216
+msgid "yes"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_StatisticsAjax.php:216
+msgid "no"
+msgstr ""
+
+#: lib/view/WpProQuiz_View_StatisticsNew.php:67
+msgid "History"
+msgstr "历程"
+
+#: lib/view/WpProQuiz_View_StatisticsNew.php:101
+msgid "special filter"
+msgstr "特别筛选"
+
+#: lib/view/WpProQuiz_View_StatisticsNew.php:136
+#, php-format
+msgid "Search to date limit from %s to %s"
+msgstr "以日期搜寻从 %s 至 %s"
+
+#: lib/view/WpProQuiz_View_StyleManager.php:15
+msgid "Front"
+msgstr "前端"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:8
+msgid "Support WP-Pro-Quiz"
+msgstr "支持 WP-Pro-Quiz"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:20
+msgid "WP-Pro-Quiz is small but nice free quiz plugin for WordPress."
+msgstr "WP-Pro-Quiz 虽小但却是免费好用的 WordPress 外挂。"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:21
+msgid ""
+"I try to implement all wishes as fast as possible and help with problems."
+msgstr "我尝试尽可能快速实现所有功能并帮助解决问题。"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:22
+msgid ""
+"Your donations can help to ensure that the project continues to remain free."
+msgstr "您的赞助可以帮助此项项目持续免费释出。"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:39
+msgid "Translate WP-Pro-Quiz"
+msgstr "翻译 WP-Pro-Quiz"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:41
+msgid "You need:"
+msgstr "您需要："
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:44
+msgid "Latest POT file"
+msgstr "最新 POT 文件"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:49
+msgid "Open PoEdit"
+msgstr "开启 PoEdit"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:50
+msgid "File - New catalogue from POT file..."
+msgstr "文件 - 从 POT 文件新建..."
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:51
+msgid "Choose wp-pro-quiz.pot"
+msgstr "选择 wp-pro-quiz.pot"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:52
+msgid "Set \"Translation properties\""
+msgstr "设置 \"项目信息\""
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:53
+msgid "Save PO file - with the name \"wp-pro-qioz-de_DE.po\""
+msgstr "保存 PO 文件 - 文件名为 \"wp-pro-qioz-zh_CN.po\""
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:55
+msgid "replace de_DE with your countries short code (e.g. en_US, nl_NL...)"
+msgstr "翻译文件必须使用您国家的代码，例如zh_CN(中文-简体)"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:58
+msgid "Translate"
+msgstr "翻译"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:60
+msgid ""
+"Upload generated *.mo file to your server, to /wp-content/plugins/wp-pro-"
+"quiz/languages"
+msgstr ""
+"上传生成的 *.mo 档到您的服务器上，放在 /wp-content/plugins/wp-pro-quiz/"
+"languages 文件夹内"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:61
+msgid "Finished"
+msgstr "完成"
+
+#: lib/view/WpProQuiz_View_WpqSupport.php:65
+msgid ""
+"You can translate WP-Pro-Quiz from existing to existing language (e.g. "
+"english to english) e.g. to rename buttons."
+msgstr ""
+"您可以从已存在的语言文件翻译 WP-Pro-Quiz 至相同的语言文件(例如英文至英文) 例"
+"如重新命名按钮。"
+
+#~ msgid "Questions sorted"
+#~ msgstr "问题排序"
+
+#~ msgid "Save order"
+#~ msgstr "储存排序"
+
+#~ msgid "In case of problems"
+#~ msgstr "预防问题"
+
+#~ msgid "If quiz doesn't work in front-end, please try following:"
+#~ msgstr "如果前台测验无法运作，请尝试以下步骤："
+
+#~ msgid "Style Manager"
+#~ msgstr "风格管理"
+
+#~ msgid "ID"
+#~ msgstr "编号"
+
+#~ msgid "E-Mail settings"
+#~ msgstr "电子信箱设定"
