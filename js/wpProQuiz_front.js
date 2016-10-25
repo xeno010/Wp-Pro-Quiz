@@ -714,7 +714,7 @@ wpProQuizReady(function () {
                         case typeConst.EMAIL:
                             if (isRequired || !funcs.isEmpty(value))
                                 test = !funcs.isEmpty(value) && new RegExp(/^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/)
-                                        .test(value);
+                                        .test(value.toLowerCase());
 
                             break;
                         case typeConst.CHECKBOX:
