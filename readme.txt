@@ -3,7 +3,7 @@ Contributors: xeno010
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZPNURT6RYXY
 Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
-Tested up to: 4.3
+Tested up to: 4.6.1
 Stable tag: 0.37
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -51,6 +51,7 @@ A powerful and beautiful quiz plugin for WordPress.
 = Translations =
 * Arabic / عربي (Thanks Abuhassan)
 * Brazilian Portuguese / Português do Brasil (Thanks Gabriel V.)
+* Chinese (Simplified) (Thanks Riley Ge)
 * Chinese (Traditional) (Thanks Dinno Lin)
 * Czech / čeština (Thanks Petr Š.)
 * Danish / dansk (Thanks Kenneth D.)
@@ -72,6 +73,7 @@ A powerful and beautiful quiz plugin for WordPress.
 * Spanish / español (Thanks Carlos R.)
 * Swedish / svenska (Thanks Martin J.)
 * Turkish / Türkçe (Thanks Nsaral)
+* Vietnamese / Tiếng Việt (Thanks vy2014)
 
 = Live Demo =
 http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "Demo")
@@ -111,6 +113,12 @@ https://github.com/xeno010/Wp-Pro-Quiz/wiki
 12. Adminmenu - Question statistics
 
 == Changelog ==
+
+= Not published =
+* Bugfix: Add whitespace between number of Points and string Point on correct answer
+* Translation for vietnamese have been added (Thanks vy2014)
+* Translation for simplified chinese have been added (Thanks Riley Ge)
+* Fix #35 - Email field doesn't allow capital letters
 
 = 0.37 =
 * New frontend init structure

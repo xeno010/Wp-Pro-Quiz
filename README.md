@@ -39,6 +39,7 @@ A powerful and beautiful quiz plugin for WordPress.
 ##Translations
 - Arabic / عربي (Thanks Abuhassan)
 - Brazilian Portuguese / Português do Brasil (Thanks Gabriel V.)
+- Chinese (Simplified) (Thanks Riley Ge)
 - Chinese (Traditional) (Thanks Dinno Lin)
 - Czech / čeština (Thanks Petr Š.)
 - Danish / dansk (Thanks Kenneth D.)
@@ -60,6 +61,7 @@ A powerful and beautiful quiz plugin for WordPress.
 - Spanish / español (Thanks Carlos R.)
 - Swedish / svenska (Thanks Martin J.)
 - Turkish / Türkçe (Thanks Nsaral)
+- Vietnamese / Tiếng Việt (Thanks vy2014)
 
 ##Live Demo
 http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "Demo")
