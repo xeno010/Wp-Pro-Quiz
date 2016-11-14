@@ -343,16 +343,16 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 
         switch ($users) {
             case -3: //only anonym
-                $where = 'AND user_id = 0';
+                $where = 'AND sf.user_id = 0';
                 break;
             case -2: //only reg user
-                $where = 'AND user_id > 0';
+                $where = 'AND sf.user_id > 0';
                 break;
             case -1: //all
                 $where = '';
                 break;
             default:
-                $where = 'AND user_id = ' . (int)$users;
+                $where = 'AND sf.user_id = ' . (int)$users;
                 break;
         }
 
@@ -367,7 +367,6 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
         $result = $this->_wpdb->get_results(
             $this->_wpdb->prepare('
 				SELECT
-					u.`user_login`, u.`display_name`, u.ID AS user_id,
 					sf.*,
 					SUM(s.correct_count) AS correct_count,
 					SUM(s.incorrect_count) AS incorrect_count,
@@ -377,7 +376,6 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 				FROM
 					' . $this->_tableStatisticRef . ' AS sf
 					INNER JOIN ' . $this->_tableStatistic . ' AS s ON(s.statistic_ref_id = sf.statistic_ref_id)
-					LEFT JOIN ' . $this->_wpdb->users . ' AS u ON(u.ID = sf.user_id)
 					INNER JOIN ' . $this->_tableQuestion . ' AS q ON(q.id = s.question_id)
 				WHERE
 					sf.quiz_id = %d AND sf.is_old = 0 ' . $where . ' ' . $timeWhere . '
@@ -393,10 +391,26 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 
         $r = array();
 
+	// Fetch user data.
+	$user_ids = wp_list_pluck( $result, 'user_id' );
+	if ( $user_ids ) {
+		$user_data_raw = get_users( array(
+			'fields' => array( 'user_login', 'display_name', 'ID' ),
+			'include' => $user_ids,
+		) );
+
+		// Reindex for easier lookup.
+		$user_data = array();
+		foreach ( $user_data_raw as $udr ) {
+			$user_data[ $udr->ID ] = $udr;
+		}
+	}
+
         foreach ($result as $row) {
-            if (!empty($row['user_login'])) {
-                $row['user_name'] = $row['user_login'] . ' (' . $row['display_name'] . ')';
-            }
+	    if ( isset( $user_data[ $row['user_id'] ] ) ) {
+		$user = $user_data[ $row['user_id'] ];
+                $row['user_name'] = $user->user_login . ' (' . $user->display_name . ')';
+	    }
 
             $row['form_data'] = $row['form_data'] === null ? null : @json_decode($row['form_data'], true);
 
