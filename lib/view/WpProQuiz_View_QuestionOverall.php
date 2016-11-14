@@ -413,7 +413,7 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 							<input type="button" class="button-secondary" name="" id="categoryAddBtn" value="<?php _e('Create', 'wp-pro-quiz'); ?>">
 						</div>
 						<div id="categoryMsgBox" style="display:none; padding: 5px; border: 1px solid rgb(160, 160, 160); background-color: rgb(255, 255, 168); font-weight: bold; margin: 5px; ">
-							Kategorie gespeichert
+							<?php _e('Category saved', 'wp-pro-quiz'); ?>
 						</div>
 					</div>
 
@@ -431,7 +431,7 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 
 		<div id="wpProQuiz_sortQuestion_box" style="display: none;">
 			<div id="wpProQuiz_sortQuestion">
-				<h4>Sort questions</h4>
+				<h4><?php _e('Sort questions', 'wp-pro-quiz'); ?></h4>
 				<p>
 					<a href="#" class="button-secondary saveQuestionSort"><?php _e( 'Save' ); ?></a>
 				</p>
