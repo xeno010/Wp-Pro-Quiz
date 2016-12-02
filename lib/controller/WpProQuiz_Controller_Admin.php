@@ -77,7 +77,7 @@ class WpProQuiz_Controller_Admin
         );
 
         wp_enqueue_style('jquery-ui',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
+            set_url_scheme( 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' ) );
 
         $this->localizeScript();
     }
