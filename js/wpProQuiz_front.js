@@ -1380,10 +1380,10 @@ wpProQuizReady(function () {
 
                 $e.find('.wpProQuiz_correct_answer').text(results.comp.correctQuestions);
 
-                results.comp.result = Math.round(results.comp.points / config.globalPoints * 100 * 100) / 100;
+                results.comp.result = Math.round((results.comp.correctQuestions-(config.globalPoints-results.comp.correctQuestions)*0.33)/config.globalPoints)*100;
                 results.comp.solved = 0;
 
-                //for(var i = 0; i < quizSolved.length; i++)
+                //for(var i = 0; i < quizSolved.length; i++);
                 //	results.comp.solved += quizSolved[i] ? 1 : 0;
 
                 var $pointFields = $e.find('.wpProQuiz_points span');
