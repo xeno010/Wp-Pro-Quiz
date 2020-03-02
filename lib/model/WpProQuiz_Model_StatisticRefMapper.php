@@ -5,7 +5,7 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 
     public function fetchAll($quizId, $userId, $testId = 0)
     {
-        $r = array();
+        $r = [];
 
         if (!$testId || $userId > 0) {
             $where = ' AND is_old = 0 ';
@@ -55,7 +55,7 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 
     public function fetchAvg($quizId, $userId)
     {
-        $r = array();
+        $r = [];
 
         $results = $this->_wpdb->get_results(
             $this->_wpdb->prepare('
@@ -87,14 +87,13 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
     public function fetchOverview($quizId, $onlyCompleded, $start, $limit)
     {
         $sql = 'SELECT
-						u.`user_login`, u.`display_name`, u.ID AS user_id,
+						sf.user_id,
 						SUM(s.`correct_count`) as correct_count,
 						SUM(s.`incorrect_count`) as incorrect_count,
 						SUM(s.`hint_count`) as hint_count,
 						SUM(s.`points`) as points,
 						(SUM(s.question_time)) as question_time
 					FROM
-						`' . $this->_wpdb->users . '` AS u
 						' . ($onlyCompleded ? 'INNER' : 'LEFT') . ' JOIN `' . $this->_tableStatisticRef . '` AS sf ON
 								(sf.user_id = u.ID AND sf.quiz_id = %d)
 						LEFT JOIN `' . $this->_tableStatistic . '` AS s ON ( s.statistic_ref_id = sf.statistic_ref_id )
@@ -102,42 +101,26 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 					ORDER BY u.`user_login`
 					LIMIT %d , %d';
 
-        $a = array();
+        $a = [];
 
         $results = $this->_wpdb->get_results(
             $this->_wpdb->prepare($sql, $quizId, $start, $limit),
             ARRAY_A);
 
-        foreach ($results as $row) {
+        $userData = $this->fetchUsers($this->getUserIdFromResult($results));
 
-            $row['user_name'] = $row['user_login'] . ' (' . $row['display_name'] . ')';
+        foreach ($results as $row) {
+            if (isset($userData[$row['user_id']])) {
+                $user = $userData[$row['user_id']];
+
+                $row['user_name'] = $user->user_login . ' (' . $user->display_name . ')';
+            }
 
             $a[] = new WpProQuiz_Model_StatisticOverview($row);
         }
 
         return $a;
 
-    }
-
-    public function countOverview($quizId, $onlyCompleded)
-    {
-
-        if ($onlyCompleded) {
-            return $this->_wpdb->get_var(
-                $this->_wpdb->prepare(
-                    "SELECT
-							COUNT(user_id)
-						FROM {$this->_tableStatisticRef}
-						WHERE
-							quiz_id = %d",
-                    $quizId
-                )
-            );
-        } else {
-            return $this->_wpdb->get_var(
-                "SELECT COUNT(ID) FROM {$this->_wpdb->users}"
-            );
-        }
     }
 
     public function fetchByQuiz($quizId)
@@ -163,7 +146,7 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
      */
     public function statisticSave($statisticRefModel, $statisticModel)
     {
-        $values = array();
+        $values = [];
 
         $refId = null;
         $isOld = false;
@@ -182,14 +165,14 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 
         if ($refId === null) {
 
-            $refData = array(
+            $refData = [
                 'quiz_id' => $statisticRefModel->getQuizId(),
                 'user_id' => $statisticRefModel->getUserId(),
                 'create_time' => $statisticRefModel->getCreateTime(),
-                'is_old' => (int)$isOld
-            );
+                'is_old' => (int)$isOld,
+            ];
 
-            $refFormat = array('%d', '%d', '%d', '%d');
+            $refFormat = ['%d', '%d', '%d', '%d'];
 
             if ($statisticRefModel->getFormData() !== null && is_array($statisticRefModel->getFormData())) {
                 $refData['form_data'] = @json_encode($statisticRefModel->getFormData());
@@ -205,7 +188,7 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
             $answerData = $d->getAnswerData() === null ? 'NULL' : $this->_wpdb->prepare('%s',
                 json_encode($d->getAnswerData()));
 
-            $values[] = '( ' . implode(', ', array(
+            $values[] = '( ' . implode(', ', [
                     'statistic_ref_id' => $refId,
                     'question_id' => $d->getQuestionId(),
                     'correct_count' => $d->getCorrectCount(),
@@ -214,8 +197,8 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
                     'solved_count' => $d->getSolvedCount(),
                     'points' => $d->getPoints(),
                     'question_time' => $d->getQuestionTime(),
-                    'answer_data' => $answerData
-                )) . ' )';
+                    'answer_data' => $answerData,
+                ]) . ' )';
         }
 
         $this->_wpdb->query(
@@ -276,7 +259,7 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 
     public function deleteQuestion($questionId)
     {
-        return $this->_wpdb->delete($this->_tableStatistic, array('question_id' => $questionId), array('%d'));
+        return $this->_wpdb->delete($this->_tableStatistic, ['question_id' => $questionId], ['%d']);
     }
 
     public function fetchFormOverview($quizId, $page, $limit, $onlyUser = 0)
@@ -296,7 +279,6 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
         $result = $this->_wpdb->get_results(
             $this->_wpdb->prepare('
 				SELECT 
-					u.`user_login`, u.`display_name`, u.ID AS user_id, 
 					sf.*,
 					SUM(s.correct_count) AS correct_count,
 					SUM(s.incorrect_count) AS incorrect_count,
@@ -304,7 +286,6 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 				FROM 
 					' . $this->_tableStatisticRef . ' AS sf
 					INNER JOIN ' . $this->_tableStatistic . ' AS s ON(s.statistic_ref_id = sf.statistic_ref_id)
-					LEFT JOIN ' . $this->_wpdb->users . ' AS u ON(u.ID = sf.user_id)
 				WHERE 
 					quiz_id = %d AND sf.form_data IS NOT NULL ' . $where . '
 				GROUP BY 
@@ -317,10 +298,15 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
             ARRAY_A
         );
 
-        $r = array();
+        $r = [];
+        $userData = $this->fetchUsers($this->getUserIdFromResult($result));
 
         foreach ($result as $row) {
-            $row['user_name'] = $row['user_login'] . ' (' . $row['display_name'] . ')';
+            if (isset($userData[$row['user_id']])) {
+                $user = $userData[$row['user_id']];
+
+                $row['user_name'] = $user->user_login . ' (' . $user->display_name . ')';
+            }
 
             $r[] = new WpProQuiz_Model_StatisticFormOverview($row);
         }
@@ -343,16 +329,16 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 
         switch ($users) {
             case -3: //only anonym
-                $where = 'AND user_id = 0';
+                $where = 'AND sf.user_id = 0';
                 break;
             case -2: //only reg user
-                $where = 'AND user_id > 0';
+                $where = 'AND sf.user_id > 0';
                 break;
             case -1: //all
                 $where = '';
                 break;
             default:
-                $where = 'AND user_id = ' . (int)$users;
+                $where = 'AND sf.user_id = ' . (int)$users;
                 break;
         }
 
@@ -367,7 +353,6 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
         $result = $this->_wpdb->get_results(
             $this->_wpdb->prepare('
 				SELECT
-					u.`user_login`, u.`display_name`, u.ID AS user_id,
 					sf.*,
 					SUM(s.correct_count) AS correct_count,
 					SUM(s.incorrect_count) AS incorrect_count,
@@ -377,7 +362,6 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 				FROM
 					' . $this->_tableStatisticRef . ' AS sf
 					INNER JOIN ' . $this->_tableStatistic . ' AS s ON(s.statistic_ref_id = sf.statistic_ref_id)
-					LEFT JOIN ' . $this->_wpdb->users . ' AS u ON(u.ID = sf.user_id)
 					INNER JOIN ' . $this->_tableQuestion . ' AS q ON(q.id = s.question_id)
 				WHERE
 					sf.quiz_id = %d AND sf.is_old = 0 ' . $where . ' ' . $timeWhere . '
@@ -391,11 +375,14 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
             ARRAY_A
         );
 
-        $r = array();
+        $userData = $this->fetchUsers($this->getUserIdFromResult($result));
+        $r = [];
 
         foreach ($result as $row) {
-            if (!empty($row['user_login'])) {
-                $row['user_name'] = $row['user_login'] . ' (' . $row['display_name'] . ')';
+            if (isset($userData[$row['user_id']])) {
+                $user = $userData[$row['user_id']];
+
+                $row['user_name'] = $user->user_login . ' (' . $user->display_name . ')';
             }
 
             $row['form_data'] = $row['form_data'] === null ? null : @json_decode($row['form_data'], true);
@@ -496,13 +483,44 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 
     public function fetchStatisticOverview($quizId, $onlyCompleded, $start, $limit)
     {
-        $a = array();
+        $include = [];
+
+        if ($onlyCompleded) {
+            $include = $this->fetchUserIdFromStatisticRef($quizId);
+        }
+
+        // Start with limit 1 -> anao
+        /** @var WP_User[] $userData */
+        $userData = get_users([
+            'fields' => ['user_login', 'display_name', 'ID'],
+            'number' => $limit,
+            'offset' => $start,
+            'include' => $include,
+        ]);
+
+        if (in_array(0, $include) || (!$onlyCompleded && $start == 0)) {
+            array_unshift($userData, (object)[
+                'ID' => 0,
+                'user_login' => '',
+                'display_name' => '',
+            ]);
+        }
+
+        return $this->fetchStatisticFromUserList($userData, $quizId, $start, $limit);
+    }
+
+    protected function fetchStatisticFromUserList($userData, $quizId, $start, $limit)
+    {
+        $idList = implode(', ', wp_list_pluck($userData, 'ID'));
+
+        if (empty($idList)) {
+            return [];
+        }
 
         $results = $this->_wpdb->get_results(
             $this->_wpdb->prepare(
-                '(
-						SELECT
-							u.`user_login`, u.`display_name`, u.ID AS user_id,
+                'SELECT
+                            sf.user_id,
 							SUM(s.`correct_count`) as correct_count,
 							SUM(s.`incorrect_count`) as incorrect_count,
 							SUM(s.`hint_count`) as hint_count,
@@ -510,80 +528,91 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 							AVG(s.question_time) as question_time,
 							SUM(q.points * (s.correct_count + s.incorrect_count)) AS g_points
 						FROM
-							' . $this->_wpdb->users . ' AS u
-							' . ($onlyCompleded ? 'INNER' : 'LEFT') . ' JOIN ' . $this->_tableStatisticRef . ' AS sf ON (sf.user_id = u.ID AND sf.quiz_id = %d)
+							' . $this->_tableStatisticRef . ' AS sf
 							LEFT JOIN ' . $this->_tableStatistic . ' AS s ON ( s.statistic_ref_id = sf.statistic_ref_id )
 							LEFT JOIN ' . $this->_tableQuestion . ' AS q ON(q.id = s.question_id)
-						GROUP BY u.ID
-					)
-						UNION
-					(
-						SELECT
-							NULL, NULL, 0,
-							SUM(s.`correct_count`) as correct_count,
-							SUM(s.`incorrect_count`) as incorrect_count,
-							SUM(s.`hint_count`) as hint_count,
-							SUM(s.`points`) as points,
-							AVG(s.question_time) as question_time,
-							SUM(q.points * (s.correct_count + s.incorrect_count)) AS g_points
-						FROM
-							' . $this->_tableMaster . ' AS m
-							' . ($onlyCompleded ? 'INNER' : 'LEFT') . ' JOIN ' . $this->_tableStatisticRef . ' AS sf ON(sf.quiz_id = m.id AND sf.user_id = 0)
-							LEFT JOIN ' . $this->_tableStatistic . ' AS s ON (s.statistic_ref_id = sf.statistic_ref_id)
-							LEFT JOIN ' . $this->_tableQuestion . ' AS q ON (q.id = s.question_id)
-						WHERE
-							m.id = %d
-						GROUP BY sf.user_id
-					)
-					
-					ORDER BY 
-						user_login
-					LIMIT
-						%d, %d',
-                $quizId, $quizId, $start, $limit),
+                        WHERE
+                            sf.user_id IN(' . $idList . ') AND sf.quiz_id = %d
+						GROUP BY 
+						    sf.user_id
+						LIMIT
+						    %d, %d',
+                $quizId, $start, $limit),
             ARRAY_A
         );
 
-        foreach ($results as $row) {
-            if (!empty($row['user_login'])) {
-                $row['user_name'] = $row['user_login'] . ' (' . $row['display_name'] . ')';
-            }
+        $statistics = [];
 
-            $a[] = new WpProQuiz_Model_StatisticOverview($row);
+        foreach ($results as $result) {
+            $statistics[$result['user_id']] = $result;
+        }
+
+        $a = [];
+
+        foreach ($userData as $user) {
+            if (isset($statistics[$user->ID])) {
+                if ($user->ID) {
+                    $statistics[$user->ID]['user_name'] = $user->user_login . ' (' . $user->display_name . ')';
+                }
+
+                $a[] = new WpProQuiz_Model_StatisticOverview($statistics[$user->ID]);
+            } else {
+                $a[] = new WpProQuiz_Model_StatisticOverview([
+                    'user_id' => $user->ID,
+                    'user_name' => $user->ID ? $user->user_login . ' (' . $user->display_name . ')' : '',
+                    'correct_count' => 0,
+                    'incorrect_count' => 0,
+                    'hint_count' => 0,
+                    'points' => 0,
+                    'question_time' => 0,
+                    'g_points' => 0,
+                ]);
+            }
         }
 
         return $a;
     }
 
-    public function countOverviewNew($quizId, $onlyCompleded)
+    protected function fetchUserIdFromStatisticRef($quizId)
     {
-        return $this->_wpdb->get_var(
+        $results = $this->_wpdb->get_results(
             $this->_wpdb->prepare(
                 'SELECT
-					COUNT(*) as g_count
-				FROM
-					(
-						(SELECT
-							u.ID
+                            sf.user_id
 						FROM
-							' . $this->_wpdb->users . ' AS u
-							' . ($onlyCompleded ? 'INNER' : 'LEFT') . ' JOIN ' . $this->_tableStatisticRef . ' AS sf ON (sf.user_id = u.ID AND sf.quiz_id = %d)
-							LEFT JOIN ' . $this->_tableStatistic . ' AS s ON ( s.statistic_ref_id = sf.statistic_ref_id )
-							LEFT JOIN ' . $this->_tableQuestion . ' AS q ON(q.id = s.question_id)
-						GROUP BY u.ID )
-					UNION
-						(SELECT
-							sf.user_id
-						FROM
-							' . $this->_tableMaster . ' AS m
-							' . ($onlyCompleded ? 'INNER' : 'LEFT') . ' JOIN ' . $this->_tableStatisticRef . ' AS sf ON(sf.quiz_id = m.id AND sf.user_id = 0)
-							LEFT JOIN ' . $this->_tableStatistic . ' AS s ON (s.statistic_ref_id = sf.statistic_ref_id)
-							LEFT JOIN ' . $this->_tableQuestion . ' AS q ON (q.id = s.question_id)
-						WHERE
-							m.id = %d
-						GROUP BY sf.user_id) 
-					) AS c_all',
-                $quizId, $quizId));
+							' . $this->_tableStatisticRef . ' AS sf
+                        WHERE
+                            sf.quiz_id = %d
+						GROUP BY 
+						    sf.user_id',
+                $quizId),
+            ARRAY_A
+        );
+
+        $r = [];
+
+        foreach ($results as $result) {
+            $r[] = $result['user_id'];
+        }
+
+        return $r;
+    }
+
+    public function countOverviewNew($quizId, $onlyCompleded)
+    {
+        if ($onlyCompleded) {
+            return $this->_wpdb->get_var(
+                $this->_wpdb->prepare(
+                    'SELECT
+					            COUNT(*) as g_count
+				            FROM
+				                ' . $this->_tableStatisticRef . '
+                            WHERE
+                                quiz_id = %d
+                            GROUP BY user_id', $quizId));
+        } else {
+            return count_users()['total_users'];
+        }
     }
 
     public function fetchFrontAvg($quizId)

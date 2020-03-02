@@ -52,4 +52,36 @@ class WpProQuiz_Model_Mapper
     {
         return $this->_wpdb->insert_id;
     }
+
+    /**
+     * @param $result
+     * @param string $key
+     * @return array
+     */
+    protected function getUserIdFromResult($result, $key = 'user_id')
+    {
+        return array_filter(wp_list_pluck($result, $key));
+    }
+
+    /**
+     * @param array $ids
+     * @param array $fields
+     *
+     * @return WP_User[]
+     */
+    protected function fetchUsers($ids, $fields = ['user_login', 'display_name', 'ID'])
+    {
+        $user_data_raw = get_users([
+            'fields' => $fields,
+            'include' => $ids,
+        ]);
+
+        $user_data = [];
+
+        foreach ($user_data_raw as $udr) {
+            $user_data[$udr->ID] = $udr;
+        }
+
+        return $user_data;
+    }
 }
