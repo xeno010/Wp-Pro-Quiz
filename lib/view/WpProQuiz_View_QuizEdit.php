@@ -613,7 +613,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View
 									</fieldset>
 								</td>
 							</tr>
-							
+
 							<tr>
 								<th scope="row">
 									<?php _e('User e-mail notification', 'wp-pro-quiz'); ?>
@@ -1452,7 +1452,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View
                                     <?php _e('below the "result text"', 'wp-pro-quiz'); ?>
                                 </label>
 									<span class="wpProQuiz_demoBox" style="margin-right: 5px;">
-										<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+										<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a>
 										<span
                                             style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
 											<img alt=""
@@ -1465,7 +1465,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View
                                     <?php _e('in a button', 'wp-pro-quiz'); ?>
                                 </label>
 									<span class="wpProQuiz_demoBox">
-										<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a> 
+										<a href="#"><?php _e('Demo', 'wp-pro-quiz'); ?></a>
 										<span
                                             style="z-index: 9999999; position: absolute; background-color: #E9E9E9; padding: 10px; box-shadow: 0px 0px 10px 4px rgb(44, 44, 44); display: none; ">
 											<img alt=""
@@ -1601,7 +1601,7 @@ class WpProQuiz_View_QuizEdit extends WpProQuiz_View_View
         $forms = $this->forms;
         $index = 0;
 
-        if (!count($forms)) {
+        if (!is_array($forms) || !count($forms)) {
             $forms = array(new WpProQuiz_Model_Form(), new WpProQuiz_Model_Form());
         } else {
             array_unshift($forms, new WpProQuiz_Model_Form());
