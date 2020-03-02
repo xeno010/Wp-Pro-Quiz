@@ -8,6 +8,7 @@ Author: Julius Fischer
 Author URI: http://www.it-gecko.de
 Text Domain: wp-pro-quiz
 Domain Path: /languages
+Requires PHP: 5.6
 */
 
 define('WPPROQUIZ_VERSION', '0.37');

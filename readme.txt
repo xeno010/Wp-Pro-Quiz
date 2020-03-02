@@ -5,6 +5,7 @@ Tags: quiz, test, answer, question, learning, assessment
 Requires at least: 3.3
 Tested up to: 4.6.1
 Stable tag: 0.37
+Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +15,7 @@ A powerful and beautiful quiz plugin for WordPress.
 
 A powerful and beautiful quiz plugin for WordPress.
 
-= Functions = 
+= Functions =
 * Single Choice
 * Multiple Choice
 * "Sorting" Choice
@@ -88,7 +89,7 @@ https://github.com/xeno010/Wp-Pro-Quiz
 = Wp-ProQuiz - Wiki =
 https://github.com/xeno010/Wp-Pro-Quiz/wiki
 
-= Support = 
+= Support =
 * English: http://wordpress.org/support/plugin/wp-pro-quiz
 * German/Deutsch: http://www.it-gecko.de/kontakt
 
