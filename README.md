@@ -1,8 +1,10 @@
-#Wp-Pro-Quiz
+# Wp-Pro-Quiz
 
 A powerful and beautiful quiz plugin for WordPress.
 
-##Functions
+![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/wp-pro-quiz) ![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dm/wp-pro-quiz) ![WordPress Plugin Active Installs](https://img.shields.io/wordpress/plugin/installs/wp-pro-quiz) ![WordPress Plugin: Tested WP Version](https://img.shields.io/wordpress/plugin/tested/wp-pro-quiz) ![WordPress Plugin: Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/wp-pro-quiz)
+
+## Functions
 - Single Choice
 - Multiple Choice
 - "Sorting" Choice
@@ -36,7 +38,7 @@ A powerful and beautiful quiz plugin for WordPress.
 - Fully compatible with cache plugins (e.g. WP-Super-Cache or W3 Total Cache)
 
 
-##Translations
+## Translations
 - Arabic / عربي (Thanks Abuhassan)
 - Brazilian Portuguese / Português do Brasil (Thanks Gabriel V.)
 - Chinese (Simplified) (Thanks Riley Ge)
@@ -63,18 +65,18 @@ A powerful and beautiful quiz plugin for WordPress.
 - Turkish / Türkçe (Thanks Nsaral)
 - Vietnamese / Tiếng Việt (Thanks vy2014)
 
-##Live Demo
+## Live Demo
 http://www.it-gecko.de/wp-pro-quiz-quiz-plugin-fuer-wordpress.html (scroll to "Demo")
 
-##Special
+## Special
 - Support for "User Role Editor" etc.
 - Support for BuddyPress achievements 3.x.x
 
-##Support
+## Support
 - English: http://wordpress.org/support/plugin/wp-pro-quiz
 - German/Deutsch: http://www.it-gecko.de/kontakt
 
-##Installation
+## Installation
 
 1. Upload the wp-pro-quiz folder to the /wp-content/plugins/ directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
