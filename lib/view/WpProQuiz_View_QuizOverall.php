@@ -327,22 +327,6 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View
                            style="margin-top: 5px;"><?php _e('Learn more', 'wp-pro-quiz'); ?></a>
                     </div>
 
-                    <div
-                        style="background-color: #FFFBCC; padding: 3px 35px; border: 1px solid #E6DB55; float: left; margin-left: 10px;">
-                        <span style="font-weight: bold; margin-left: 15px;"><?php _e('WP-Pro-Quiz',
-                                'wp-pro-quiz'); ?></span>
-
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_s-xclick">
-                            <input type="hidden" name="hosted_button_id" value="BF9JT56N7FAQG">
-                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-                                   border="0" name="submit"
-                                   alt="Jetzt einfach, schnell und sicher online bezahlen – mit PayPal.">
-                            <img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1"
-                                 height="1">
-                        </form>
-                    </div>
-
                     <div style="clear: both;"></div>
                 </div>
                 <div style="clear: both;"></div>

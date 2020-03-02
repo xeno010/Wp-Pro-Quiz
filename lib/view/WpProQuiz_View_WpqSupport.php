@@ -12,13 +12,7 @@ class WpProQuiz_View_WpqSupport extends WpProQuiz_View_View
 
             <h3><?php _e('Donate', 'wp-pro-quiz'); ?></h3>
 
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="KCZPNURT6RYXY">
-                <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0"
-                       name="submit" alt="PayPal – The safer, easier way to pay online.">
-                <img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
-            </form>
+            <a class="button" style="background-color: #ffb735;font-weight: bold;" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZPNURT6RYXY"><?php _e('PayPal Donate', 'wp-pro-quiz'); ?></a>
 
             <p>
                 <?php _e('WP-Pro-Quiz is small but nice free quiz plugin for WordPress.', 'wp-pro-quiz'); ?> <br>
@@ -29,12 +23,8 @@ class WpProQuiz_View_WpqSupport extends WpProQuiz_View_View
             </p>
 
             <h3>Wp-Pro-Quiz on Github</h3>
-            <iframe src="https://ghbtns.com/github-btn.html?user=xeno010&repo=Wp-Pro-Quiz&type=star&count=true"
-                    frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-            <iframe src="https://ghbtns.com/github-btn.html?user=xeno010&repo=Wp-Pro-Quiz&type=watch&count=true&v=2"
-                    frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-            <iframe src="https://ghbtns.com/github-btn.html?user=xeno010&repo=Wp-Pro-Quiz&type=fork&count=true"
-                    frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+
+            <a class="button" target="_blank" href="https://github.com/xeno010/Wp-Pro-Quiz"><?php _e('Wp-Pro-Quiz on Github', 'wp-pro-quiz'); ?></a>
 
 
             <h3><?php _e('WP-Pro-Quiz special modification', 'wp-pro-quiz'); ?></h3>
