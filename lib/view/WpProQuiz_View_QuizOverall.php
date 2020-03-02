@@ -402,7 +402,7 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View
                         <input type="file" name="import" accept=".wpq,.xml"
                                required="required"> <?php printf(__('Maximal %d MiB', 'wp-pro-quiz'), $uploadMB); ?>
                     </div>
-                    <input class="button-primary" name="exportStart" id="exportStart"
+                    <input class="button-primary" name="importStart" id="importStart"
                            value="<?php _e('Start import', 'wp-pro-quiz'); ?>" type="submit">
                 </form>
             </div>
