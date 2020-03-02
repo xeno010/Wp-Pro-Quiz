@@ -513,7 +513,7 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View
 
             $a = '';
 
-            $checked = isset($answerData[$i]) ? $answerData[$i] - 1 : -1;
+            $checked = isset($answerData[$i]) ? ((int)$answerData[$i]) - 1 : -1;
 
             for ($j = 0, $cj = count($ms[1]); $j < $cj; $j++) {
                 $v = $ms[1][$j];
