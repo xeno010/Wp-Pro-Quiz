@@ -1,15 +1,25 @@
 <?php
-/*
-Plugin Name: WP-Pro-Quiz
-Plugin URI: http://wordpress.org/extend/plugins/wp-pro-quiz
-Description: A powerful and beautiful quiz plugin for WordPress.
-Version: 0.37
-Author: Julius Fischer
-Author URI: http://www.it-gecko.de
-Text Domain: wp-pro-quiz
-Domain Path: /languages
-Requires PHP: 5.6
-*/
+/**
+ * Wp-Pro-Quiz
+ *
+ * @author Julius Fischer
+ * @copyright 2012-2020 Julius Fischer (IT-Gecko.de)
+ * @license GPL-2.0-or-later
+ *
+ * @wordpress-plugin
+ * Plugin Name: Wp-Pro-Quiz
+ * Plugin URI: http://wordpress.org/extend/plugins/wp-pro-quiz
+ * Description: A powerful and beautiful quiz plugin for WordPress.
+ * Version: 0.37
+ * Requires at least: 3.3
+ * Requires PHP: 5.6
+ * Author: Julius Fischer
+ * Author URI: http://www.it-gecko.de
+ * Text Domain: wp-pro-quiz
+ * Domain Path: /languages
+ * License: GPL v2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ */
 
 define('WPPROQUIZ_VERSION', '0.37');
 
@@ -28,7 +38,7 @@ define('WPPROQUIZ_CAPTCHA_URL', $uploadDir['baseurl'] . '/wp_pro_quiz_captcha');
 
 spl_autoload_register('wpProQuiz_autoload');
 
-register_activation_hook(__FILE__, array('WpProQuiz_Helper_Upgrade', 'upgrade'));
+register_activation_hook(__FILE__, ['WpProQuiz_Helper_Upgrade', 'upgrade']);
 
 add_action('plugins_loaded', 'wpProQuiz_pluginLoaded');
 
