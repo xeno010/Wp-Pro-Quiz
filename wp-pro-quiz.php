@@ -11,12 +11,11 @@
  * Plugin URI: http://wordpress.org/extend/plugins/wp-pro-quiz
  * Description: A powerful and beautiful quiz plugin for WordPress.
  * Version: 0.37
- * Requires at least: 3.3
+ * Requires at least: 4.6
  * Requires PHP: 5.6
  * Author: Julius Fischer
  * Author URI: http://www.it-gecko.de
  * Text Domain: wp-pro-quiz
- * Domain Path: /languages
  * License: GPL v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
@@ -86,9 +85,6 @@ function wpProQuiz_autoload($class)
 
 function wpProQuiz_pluginLoaded()
 {
-
-    load_plugin_textdomain('wp-pro-quiz', false, WPPROQUIZ_PPATH . '/languages');
-
     if (get_option('wpProQuiz_version') !== WPPROQUIZ_VERSION) {
         WpProQuiz_Helper_Upgrade::upgrade();
     }

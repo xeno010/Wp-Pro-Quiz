@@ -2,7 +2,7 @@
 Contributors: xeno010
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZPNURT6RYXY
 Tags: quiz, test, lead, score, survey, answer, question, learning, assessment
-Requires at least: 3.3
+Requires at least: 4.6
 Tested up to: 5.3.2
 Stable tag: 0.37
 Requires PHP: 5.6

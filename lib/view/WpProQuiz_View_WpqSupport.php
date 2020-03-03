@@ -35,41 +35,21 @@ class WpProQuiz_View_WpqSupport extends WpProQuiz_View_View
 
             <h3>Wp-Pro-Quiz Wiki</h3>
 
-            <a class="button-primary" target="_blank" href="https://github.com/xeno010/Wp-Pro-Quiz/wiki">--> Wiki
-                <--</a>
+            <a class="button-primary" target="_blank" href="https://github.com/xeno010/Wp-Pro-Quiz/wiki">--> Wiki <--</a>
 
             <h3 style="margin-top: 40px;"><?php _e('Translate WP-Pro-Quiz', 'wp-pro-quiz'); ?></h3>
 
-            <h4><?php _e('You need:', 'wp-pro-quiz'); ?></h4>
-            <ul style="list-style: disc; padding-left: 10px; list-style-position: inside;">
-                <li><a href="http://www.poedit.net/" target="_blank">PoEdit</a></li>
-                <li><a href="http://plugins.svn.wordpress.org/wp-pro-quiz/trunk/languages/wp-pro-quiz.pot"
-                       target="_blank"><?php _e('Latest POT file', 'wp-pro-quiz'); ?></a></li>
+            <p>
+                <?php _e('To translate wp-pro-quiz, please follow these steps:', 'wp-pro-quiz'); ?>
+            </p>
+
+            <ul style="list-style: decimal; padding: 0 22px;">
+                <li><?php _e('Login to your account on wordpress.org (or create an account if you don’t have one yet).', 'wp-pro-quiz'); ?></li>
+                <li><?php _e('Go to https://translate.wordpress.org.', 'wp-pro-quiz'); ?></li>
+                <li><?php _e('Select your language and click ‘Contribute Translation’.', 'wp-pro-quiz'); ?></li>
+                <li><?php _e('Go to the Plugins tab and search for ‘Wp-Pro-Quiz’.', 'wp-pro-quiz'); ?></li>
+                <li><?php _e('Select the plugin and start translating!', 'wp-pro-quiz'); ?></li>
             </ul>
-
-            <h4>PoEdit:</h4>
-            <ul style="padding-left: 10px; list-style: disc inside;">
-                <li><?php _e('Open PoEdit', 'wp-pro-quiz'); ?></li>
-                <li><?php _e('File - New catalogue from POT file...', 'wp-pro-quiz'); ?></li>
-                <li><?php _e('Choose wp-pro-quiz.pot', 'wp-pro-quiz'); ?></li>
-                <li><?php _e('Set "Translation properties"', 'wp-pro-quiz'); ?></li>
-                <li><?php _e('Save PO file - with the name "wp-pro-qioz-de_DE.po"', 'wp-pro-quiz'); ?>
-                    <ul style="list-style: disc; padding-left: 10px; list-style-position: inside;">
-                        <li><?php _e('replace de_DE with your countries short code (e.g. en_US, nl_NL...)',
-                                'wp-pro-quiz'); ?></li>
-                    </ul>
-                </li>
-                <li><?php _e('Translate', 'wp-pro-quiz'); ?></li>
-                <li><?php _e('Save', 'wp-pro-quiz'); ?></li>
-                <li><?php _e('Upload generated *.mo file to your server, to /wp-content/plugins/wp-pro-quiz/languages',
-                        'wp-pro-quiz'); ?></li>
-                <li><?php _e('Finished', 'wp-pro-quiz'); ?></li>
-            </ul>
-
-            <h4><?php _e('Please note', 'wp-pro-quiz'); ?>:</h4>
-
-            <p><?php _e('You can translate WP-Pro-Quiz from existing to existing language (e.g. english to english) e.g. to rename buttons.',
-                    'wp-pro-quiz'); ?></p>
 
         </div>
 
