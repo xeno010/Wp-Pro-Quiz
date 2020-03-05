@@ -41,6 +41,8 @@ register_activation_hook(__FILE__, ['WpProQuiz_Helper_Upgrade', 'upgrade']);
 
 add_action('plugins_loaded', 'wpProQuiz_pluginLoaded');
 
+WpProQuiz_Helper_GutenbergBlock::init();
+
 if (is_admin()) {
     new WpProQuiz_Controller_Admin();
 } else {
