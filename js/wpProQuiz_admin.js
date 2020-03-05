@@ -232,7 +232,7 @@ jQuery(document).ready(function ($) {
 //			if($('input[name="answerType"][checked="checked"]').size() < 1) {
 //				$('input[name="answerType"][value="single"]').attr({'checked': 'checked'});
 //			}
-//			
+//
 //			$('input[name="answerType"]:checked').click();
 //			$('#wpProQuiz_correctSameText').change();
 //			$('#wpProQuiz_tip').change();
@@ -244,7 +244,7 @@ jQuery(document).ready(function ($) {
 //			setup: function() {
 //				$('input[name="answerType"]').click(function(e) {
 //					$('.answer_felder').children().css('display', 'none');
-//	
+//
 //					switch (this.value) {
 //					case 'single':
 //						formListener.displaySingle('radio');
@@ -285,21 +285,21 @@ jQuery(document).ready(function ($) {
 //						formListener.setValueClassicAnswer();
 //					}
 //				});
-//				
+//
 //				$('#wpProQuiz_correctSameText').change(function() {
 //					if(this.checked)
 //						$('#wpProQuiz_incorrectMassageBox').hide();
 //					else
 //						$('#wpProQuiz_incorrectMassageBox').show();
 //				});
-//				
+//
 //				$('#wpProQuiz_tip').change(function(e) {
 //					if(this.checked)
 //						$('#wpProQuiz_tipBox').show();
 //					else
 //						$('#wpProQuiz_tipBox').hide();
 //				});
-//				
+//
 //				$('input[name="pointsPerAnswer"]').change(function() {
 //					if(this.checked) {
 //						$('#wpProQuiz_showPointsBox').show();
@@ -307,7 +307,7 @@ jQuery(document).ready(function ($) {
 //						$('#wpProQuiz_showPointsBox').hide();
 //					}
 //				});
-//				
+//
 //				$('input[name="answerPointsActivated"]').change(function() {
 //					if(this.checked) {
 //						$('input[name="points"]').attr('disabled', 'disabled');
@@ -319,7 +319,7 @@ jQuery(document).ready(function ($) {
 //						$('#wpProQuiz_showPointsBox').hide();
 //					}
 //				});
-//				
+//
 //				$('.wpProQuiz_demoBox a').mouseover(function() {
 //					$(this).next().show();
 //				}).mouseout(function() {
@@ -327,7 +327,7 @@ jQuery(document).ready(function ($) {
 //				}).click(function() {
 //					return false;
 //				});
-//				
+//
 //			},
 //
 //			displaySingle: function(type) {
@@ -345,11 +345,11 @@ jQuery(document).ready(function ($) {
 //			displaySortAnswer: function() {
 //				$('.sort_answer').css('display', 'block');
 //			},
-//			
+//
 //			displayMatrixSortAnswer: function() {
 //				$('.matrix_sort_answer').show();
 //			},
-//			
+//
 //			displayClozeAnswer: function() {
 //				$('.cloze_answer').show();
 //			},
@@ -360,7 +360,7 @@ jQuery(document).ready(function ($) {
 //						.appendTo($(obj).siblings('ul'));
 //
 //				formListener.setValueClassicAnswer();
-//				
+//
 //				$('.deleteAnswer').click(function(e) {
 //					formListener.deleteAnswer(this);
 //				});
@@ -373,10 +373,10 @@ jQuery(document).ready(function ($) {
 //			},
 //
 //			setValueClassicAnswer: function() {
-//				
+//
 //				$('.classic_answer ul, .matrix_sort_answer ul, .sort_answer ul').children().each(function() {
 //					var index = $(this).index();
-//					
+//
 //					$(this).find( 'input[name="answerJson[classic_answer][correct][]"], '
 //								+ 'input[name="answerJson[classic_answer][html][]"], '
 //								+ 'input[name="answerJson[answer_matrix_sort][answer_html][]"], '
@@ -387,28 +387,28 @@ jQuery(document).ready(function ($) {
 //		};
 //
 //		var validate = function () {
-//			
+//
 //			var question = '';
 //			var type = $('input[name="answerType"]:checked');
 //			var $points = $('input[name="points"]');
-//			
+//
 //			if(tinymce.editors.question != undefined && !tinymce.editors.question.isHidden()) {
 //				question = tinymce.editors.question.getContent();
 //			} else {
 //				question = $('textarea[name="question"]').val();
 //			}
-//			
+//
 //			if(isNaN($points.val()) || $points.val() < 1) {
 //				alert(wpProQuizLocalize.no_nummber_points);
 //				$points.focus();
 //				return false;
 //			}
-//			
+//
 //			if(isEmpty(question)) {
 //				alert(wpProQuizLocalize.no_question_msg);
 //				return false;
 //			}
-//			
+//
 //
 //			if(type.val() == 'single' || type.val() == 'multiple') {
 //				var findChecked = true;
@@ -418,18 +418,18 @@ jQuery(document).ready(function ($) {
 //						findChecked &= true;
 //					} else {
 //						findChecked = false;
-//					} 
+//					}
 //				})
 //				.size() < 1) {
 //					alert(wpProQuizLocalize.no_correct_msg);
 //					return false;
 //				}
-//				
+//
 //				if($('input[name="answerPointsActivated"]:checked').length) {
 //					$('input[name="answerJson[classic_answer][points][]"]').each(function() {
 //						if($.trim($(this).parentsUntil('table').find('textarea').val()) != '') {
 //							var points = $.trim($(this).val());
-//							
+//
 //							if(isNaN(points) || points == '' || points < 0) {
 //								findPoints = false;
 //							} else {
@@ -437,7 +437,7 @@ jQuery(document).ready(function ($) {
 //							}
 //						}
 //					});
-//					
+//
 //					if(!findPoints) {
 //						alert(wpProQuizLocalize.no_nummber_points_new);
 //						return false;
@@ -451,7 +451,7 @@ jQuery(document).ready(function ($) {
 //			} else if(type.val() == 'sort_answer') {
 //				var findChecked = false;
 //				var findPoints = true;
-//				
+//
 //				$('textarea[name="answerJson[answer_sort][answer][]"]').each(function() {
 //					if(isEmpty($(this).val())) {
 //						findChecked |= false;
@@ -459,12 +459,12 @@ jQuery(document).ready(function ($) {
 //						findChecked = true;
 //					}
 //				});
-//				
+//
 //				if($('input[name="answerPointsActivated"]:checked').length) {
 //					$('input[name="answerJson[answer_sort][points][]"]').each(function() {
 //						if($.trim($(this).parentsUntil('table').find('textarea').val()) != '') {
 //							var points = $.trim($(this).val());
-//							
+//
 //							if(isNaN(points) || points == '' || points < 0) {
 //								findPoints = false;
 //							} else {
@@ -472,13 +472,13 @@ jQuery(document).ready(function ($) {
 //							}
 //						}
 //					});
-//					
+//
 //					if(!findPoints) {
 //						alert(wpProQuizLocalize.no_nummber_points_new);
 //						return false;
 //					}
 //				}
-//				
+//
 //				if(!findChecked) {
 //					alert(wpProQuizLocalize.no_answer_msg);
 //					return false;
@@ -490,9 +490,9 @@ jQuery(document).ready(function ($) {
 //					if(isEmpty($(this).val())) {
 //						findChecked |= false;
 //					} else {
-//						
+//
 //						var $sortString = $(this).parent().parent().find('textarea[name="answerJson[answer_matrix_sort][sort_string][]"]');
-//						
+//
 //						if(isEmpty($sortString.val())) {
 //							findChecked |= false;
 //						} else {
@@ -500,12 +500,12 @@ jQuery(document).ready(function ($) {
 //						}
 //					}
 //				});
-//				
+//
 //				if($('input[name="answerPointsActivated"]:checked').length) {
 //					$('input[name="answerJson[answer_matrix_sort][points][]"]').each(function() {
 //						if($.trim($(this).parentsUntil('table').find('textarea').val()) != '') {
 //							var points = $.trim($(this).val());
-//							
+//
 //							if(isNaN(points) || points == '' || points < 0) {
 //								findPoints = false;
 //							} else {
@@ -513,33 +513,33 @@ jQuery(document).ready(function ($) {
 //							}
 //						}
 //					});
-//					
+//
 //					if(!findPoints) {
 //						alert(wpProQuizLocalize.no_nummber_points_new);
 //						return false;
 //					}
 //				}
-//				
+//
 //				if(!findChecked) {
 //					alert(wpProQuizLocalize.no_answer_msg);
 //					return false;
 //				}
 //			} else if(type.val() == 'cloze_answer') {
 //				var clozeText = '';
-//				
+//
 //				if(tinymce.editors.cloze != undefined && !tinymce.editors.cloze.isHidden()) {
 //					clozeText = tinymce.editors.cloze.getContent();
 //				} else {
 //					clozeText = $('textarea[name="answerJson[answer_cloze][text]"]').val();
 //				}
-//				
+//
 //				if(isEmpty(clozeText)) {
 //					alert(wpProQuizLocalize.no_answer_msg);
 //					return false;
 //				}
 //			} else if(type.val() == 'free_answer') {
 //				var freeText = $('textarea[name="answerJson[free_answer][correct]"]').val();
-//				
+//
 //				if(isEmpty(freeText)) {
 //					alert(wpProQuizLocalize.no_answer_msg);
 //					return false;
@@ -553,7 +553,7 @@ jQuery(document).ready(function ($) {
 //			str = $.trim(str);
 //			return (!str || 0 === str.length);
 //		};
-//	
+//
 //		formListener.setup();
 //		setup();
 //	};
@@ -1944,12 +1944,12 @@ jQuery(document).ready(function ($) {
                 var init = function () {
 //					$('.wpProQuiz_tab').click(function() {
 //						var $this = $(this);
-//						
+//
 //						$('.wpProQuiz_tab').removeClass('button-primary').addClass('button-secondary');
 //						$this.removeClass('button-secondary').addClass('button-primary');
-//						
+//
 //						$('#problemInfo, #problemContent, #globalContent').hide('fast');
-//						
+//
 //						if($this.attr('id') == 'globalTab') {
 //							$('#globalContent').show('fast');
 //						} else {
@@ -3390,4 +3390,24 @@ jQuery(document).ready(function ($) {
 
         init();
     }
+
+
+    $('.wpProQuiz-top-tab-wrapper > a.nav-tab').click(function (e) {
+        e.preventDefault();
+
+        var $this = $(this);
+
+        $('.wpProQuiz-top-tab-wrapper > a.nav-tab').removeClass('nav-tab-active');
+        $this.addClass('nav-tab-active');
+
+        $('.wpProQuiz-tab-content').removeClass('wpProQuiz-tab-content-active');
+        $('#' + $this.data('tab')).addClass('wpProQuiz-tab-content-active');
+
+        $(document).trigger({
+            type: 'changeTab',
+            tabId: '#' + $this.data('tab')
+        });
+
+        return false;
+    })
 });
