@@ -18,35 +18,34 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View
     public function show()
     {
         ?>
+        <style>
+            .wpProQuiz-tab-content:not(.wpProQuiz-tab-content-active) {
+                display: none;
+            }
+        </style>
+
         <div class="wrap wpProQuiz_globalSettings">
             <h2 style="margin-bottom: 10px;"><?php _e('Global settings', 'wp-pro-quiz'); ?></h2>
 
-            <a class="button-secondary" href="admin.php?page=wpProQuiz"><?php _e('back to overview',
-                    'wp-pro-quiz'); ?></a>
-
-            <div class="wpProQuiz_tab_wrapper" style="padding: 10px 0px;">
-                <a class="button-primary" href="#" data-tab="#globalContent"><?php _e('Global settings',
-                        'wp-pro-quiz'); ?></a>
-                <!-- <a class="button-secondary" href="#" data-tab="#emailSettingsTab"><?php //_e('E-Mail settings', 'wp-pro-quiz');
-                ?></a> -->
-                <a class="button-secondary" href="#" data-tab="#problemContent"><?php _e('Settings in case of problems',
-                        'wp-pro-quiz'); ?></a>
+            <div class="nav-tab-wrapper wpProQuiz-top-tab-wrapper">
+                <a href="#globalContent" data-tab="globalContent" class="nav-tab nav-tab-active"><?php _e('Global settings', 'wp-pro-quiz'); ?></a>
+                <a href="#problemContent" data-tab="problemContent" class="nav-tab "><?php _e('Settings in case of problems', 'wp-pro-quiz'); ?></a>
             </div>
 
             <form method="post">
                 <div id="poststuff">
-                    <div id="globalContent">
+                    <div id="globalContent" class="wpProQuiz-tab-content wpProQuiz-tab-content-active">
 
                         <?php $this->globalSettings(); ?>
 
                     </div>
-                    <!-- <div id="emailSettingsTab" style="display: none;">
-				<?php //$this->emailSettingsTab();
-                    ?>
-			</div>  -->
-                    <div class="postbox" id="problemContent" style="display: none;">
-                        <?php $this->problemSettings(); ?>
+
+                    <div id="problemContent" class="wpProQuiz-tab-content">
+                        <div class="postbox">
+                            <?php $this->problemSettings(); ?>
+                        </div>
                     </div>
+
                     <input type="submit" name="submit" class="button-primary" id="wpProQuiz_save"
                            value="<?php _e('Save', 'wp-pro-quiz'); ?>">
                 </div>
@@ -291,177 +290,6 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View
         <?php
     }
 
-    private function emailSettings()
-    {
-        ?>
-        <div class="postbox" id="adminEmailSettings">
-            <h3 class="hndle"><?php _e('Admin e-mail settings', 'wp-pro-quiz'); ?></h3>
-
-            <div class="inside">
-                <table class="form-table">
-                    <tbody>
-                    <tr>
-                        <th scope="row">
-                            <?php _e('To:', 'wp-pro-quiz'); ?>
-                        </th>
-                        <td>
-                            <label>
-                                <input type="text" name="email[to]" value="<?php echo $this->email['to']; ?>"
-                                       class="regular-text">
-                            </label>
-
-                            <p class="description">
-                                <?php _e('Separate multiple email addresses with a comma, e.g. wp@test.com, test@test.com',
-                                    'wp-pro-quiz'); ?>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <?php _e('From:', 'wp-pro-quiz'); ?>
-                        </th>
-                        <td>
-                            <label>
-                                <input type="text" name="email[from]" value="<?php echo $this->email['from']; ?>"
-                                       class="regular-text">
-                            </label>
-                            <!-- 								<p class="description"> -->
-                            <?php //_e('Server-Adresse empfohlen, z.B. info@YOUR-PAGE.com', 'wp-pro-quiz');
-                            ?>
-                            <!-- 								</p> -->
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <?php _e('Subject:', 'wp-pro-quiz'); ?>
-                        </th>
-                        <td>
-                            <label>
-                                <input type="text" name="email[subject]" value="<?php echo $this->email['subject']; ?>"
-                                       class="regular-text">
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <?php _e('HTML', 'wp-pro-quiz'); ?>
-                        </th>
-                        <td>
-                            <label>
-                                <input type="checkbox" name="email[html]"
-                                       value="1" <?php $this->checked(isset($this->email['html']) ? $this->email['html'] : false); ?>> <?php _e('Activate',
-                                    'wp-pro-quiz'); ?>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <?php _e('Message body:', 'wp-pro-quiz'); ?>
-                        </th>
-                        <td>
-                            <?php
-                            wp_editor($this->email['message'], 'adminEmailEditor',
-                                array('textarea_rows' => 20, 'textarea_name' => 'email[message]'));
-                            ?>
-
-                            <div>
-                                <h4><?php _e('Allowed variables', 'wp-pro-quiz'); ?>:</h4>
-                                <ul>
-                                    <li><span>$userId</span> - <?php _e('User-ID', 'wp-pro-quiz'); ?></li>
-                                    <li><span>$username</span> - <?php _e('Username', 'wp-pro-quiz'); ?></li>
-                                    <li><span>$quizname</span> - <?php _e('Quiz-Name', 'wp-pro-quiz'); ?></li>
-                                    <li><span>$result</span> - <?php _e('Result in precent', 'wp-pro-quiz'); ?></li>
-                                    <li><span>$points</span> - <?php _e('Reached points', 'wp-pro-quiz'); ?></li>
-                                    <li><span>$ip</span> - <?php _e('IP-address of the user', 'wp-pro-quiz'); ?></li>
-                                    <li><span>$categories</span> - <?php _e('Category-Overview', 'wp-pro-quiz'); ?></li>
-                                </ul>
-                            </div>
-
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <?php
-    }
-
-    private function userEmailSettings()
-    {
-        ?>
-        <div class="postbox" id="userEmailSettings" style="display: none;">
-            <h3 class="hndle"><?php _e('User e-mail settings', 'wp-pro-quiz'); ?></h3>
-
-            <div class="inside">
-                <table class="form-table">
-                    <tbody>
-                    <tr>
-                        <th scope="row">
-                            <?php _e('From:', 'wp-pro-quiz'); ?>
-                        </th>
-                        <td>
-                            <label>
-                                <input type="text" name="userEmail[from]"
-                                       value="<?php echo $this->userEmail['from']; ?>" class="regular-text">
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <?php _e('Subject:', 'wp-pro-quiz'); ?>
-                        </th>
-                        <td>
-                            <label>
-                                <input type="text" name="userEmail[subject]"
-                                       value="<?php echo $this->userEmail['subject']; ?>" class="regular-text">
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <?php _e('HTML', 'wp-pro-quiz'); ?>
-                        </th>
-                        <td>
-                            <label>
-                                <input type="checkbox" name="userEmail[html]"
-                                       value="1" <?php $this->checked($this->userEmail['html']); ?>> <?php _e('Activate',
-                                    'wp-pro-quiz'); ?>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <?php _e('Message body:', 'wp-pro-quiz'); ?>
-                        </th>
-                        <td>
-                            <?php
-                            wp_editor($this->userEmail['message'], 'userEmailEditor',
-                                array('textarea_rows' => 20, 'textarea_name' => 'userEmail[message]'));
-                            ?>
-
-                            <div>
-                                <h4><?php _e('Allowed variables', 'wp-pro-quiz'); ?>:</h4>
-                                <ul>
-                                    <li><span>$userId</span> - <?php _e('User-ID', 'wp-pro-quiz'); ?></li>
-                                    <li><span>$username</span> - <?php _e('Username', 'wp-pro-quiz'); ?></li>
-                                    <li><span>$quizname</span> - <?php _e('Quiz-Name', 'wp-pro-quiz'); ?></li>
-                                    <li><span>$result</span> - <?php _e('Result in precent', 'wp-pro-quiz'); ?></li>
-                                    <li><span>$points</span> - <?php _e('Reached points', 'wp-pro-quiz'); ?></li>
-                                    <li><span>$ip</span> - <?php _e('IP-address of the user', 'wp-pro-quiz'); ?></li>
-                                    <li><span>$categories</span> - <?php _e('Category-Overview', 'wp-pro-quiz'); ?></li>
-                                </ul>
-                            </div>
-
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <?php
-    }
-
     private function problemSettings()
     {
         if ($this->isRaw) {
@@ -637,20 +465,4 @@ class WpProQuiz_View_GobalSettings extends WpProQuiz_View_View
         <?php
     }
 
-    private function emailSettingsTab()
-    {
-        ?>
-
-        <div class="wpProQuiz_tab_wrapper" style="padding-bottom: 10px;">
-            <a class="button-primary" href="#" data-tab="#adminEmailSettings"><?php _e('Admin e-mail settings',
-                    'wp-pro-quiz'); ?></a>
-            <a class="button-secondary" href="#" data-tab="#userEmailSettings"><?php _e('User e-mail settings',
-                    'wp-pro-quiz'); ?></a>
-        </div>
-
-        <?php $this->emailSettings(); ?>
-        <?php $this->userEmailSettings(); ?>
-
-        <?php
-    }
 }
