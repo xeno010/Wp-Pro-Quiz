@@ -14,6 +14,8 @@ class WpProQuiz_Controller_Admin
         add_action('admin_menu', array($this, 'register_page'));
 
         add_filter('set-screen-option', array($this, 'setScreenOption'), 10, 3);
+
+        WpProQuiz_Helper_TinyMcePlugin::init();
     }
 
     public function setScreenOption($status, $option, $value)
