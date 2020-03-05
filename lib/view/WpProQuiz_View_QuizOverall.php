@@ -311,6 +311,7 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View
                 if (current_user_can('wpProQuiz_import')) { ?>
                     <a class="add-new-h2 wpProQuiz_import" href="#"><?php echo __('Import', 'wp-pro-quiz'); ?></a>
                 <?php } ?>
+                <?php do_action('wpProQuiz_view_quizOverall_head_buttons', $this); ?>
             </h2>
 
             <form action="?page=wpProQuiz&action=deleteMulti" method="post" style="display: none;" id="deleteForm">
@@ -392,12 +393,11 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View
                     <p><?php _e('Import only *.wpq or *.xml files from known and trusted sources.',
                             'wp-pro-quiz'); ?></p>
 
+                    <?php do_action('wpProQuiz_view_quizOVerall_importListBox', $this); ?>
+
                     <div style="margin-bottom: 10px">
                         <?php
-                        $maxUpload = (int)(ini_get('upload_max_filesize'));
-                        $maxPost = (int)(ini_get('post_max_size'));
-                        $memoryLimit = (int)(ini_get('memory_limit'));
-                        $uploadMB = min($maxUpload, $maxPost, $memoryLimit);
+                        $uploadMB = $this->getMaxUploadSize();
                         ?>
                         <input type="file" name="import" accept=".wpq,.xml"
                                required="required"> <?php printf(__('Maximal %d MiB', 'wp-pro-quiz'), $uploadMB); ?>
@@ -409,6 +409,15 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View
         </div>
 
         <?php
+    }
+
+    protected function getMaxUploadSize() {
+        $maxUpload = (int)(ini_get('upload_max_filesize'));
+        $maxPost = (int)(ini_get('post_max_size'));
+        $memoryLimit = (int)(ini_get('memory_limit'));
+        $uploadMB = min($maxUpload, $maxPost, $memoryLimit);
+
+        return apply_filters('wpProQuiz_filter_max_update_size', $uploadMB);
     }
 
     protected function showExportListBox()

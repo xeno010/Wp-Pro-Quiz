@@ -329,6 +329,8 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
                         </div>
                     </div>
 
+                    <?php do_action('wpProQuiz_view_questionEdit_after_postbox', $this) ?>
+
                     <div style="float: left;">
                         <input type="submit" name="submit" id="saveQuestion" class="button-primary"
                                value="<?php _e('Save', 'wp-pro-quiz'); ?>">

@@ -8,13 +8,13 @@
  * @property int perPage
  */
 class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
-	
+
 	public function show() {
 ?>
 <style>
 .wpProQuiz_questionCopy, .wpProQuiz_setQuestionCategoryList {
-	padding: 20px; 
-	background-color: rgb(223, 238, 255); 
+	padding: 20px;
+	background-color: rgb(223, 238, 255);
 	border: 1px dotted;
 	margin-top: 10px;
 }
@@ -303,6 +303,8 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 		<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
 			<a class="add-new-h2" href="?page=wpProQuiz&module=question&action=addEdit&quiz_id=<?php echo $this->quiz->getId(); ?>"><?php _e('Add question', 'wp-pro-quiz'); ?></a>
 		<?php } ?>
+
+		<?php do_action('wpProQuiz_view_questionOverall_head_buttons', $this); ?>
 	</h2>
 
 	<p>
@@ -315,7 +317,7 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 			<a class="button-secondary" id="sortQuestionBtn" href="#"><?php _e('Sort Question', 'wp-pro-quiz'); ?></a>
 			<a class="button-secondary" href="#" id="wpProQuiz_questionCopyBtn"><?php _e('Copy questions from another Quiz', 'wp-pro-quiz'); ?></a>
 		<?php } ?>
-
+        <?php do_action('wpProQuiz_view_questionOverall_body_buttons', $this); ?>
 	</p>
 
 	<form action="?page=wpProQuiz&module=question&action=delete_multi&quiz_id=<?php echo $this->quiz->getId(); ?>" method="post" style="display: none;" id="deleteForm">
