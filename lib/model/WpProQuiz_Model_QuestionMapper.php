@@ -156,7 +156,7 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper
 					q.*,
 					c.category_name
 				FROM
-					" . $this->_table . "
+					" . $this->_table . " AS q
 					LEFT JOIN " . $this->_tableCategory . " AS c
 									ON c.category_id = q.category_id
 				WHERE
