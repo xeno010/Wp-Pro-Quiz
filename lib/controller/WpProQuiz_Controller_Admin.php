@@ -195,6 +195,9 @@ class WpProQuiz_Controller_Admin
             case 'info_adaptation':
                 $c = new WpProQuiz_Controller_InfoAdaptation();
                 break;
+            case 'questionExport':
+                $c = new WpProQuiz_Controller_QuestionExport();
+                break;
         }
 
         if ($c !== null) {

@@ -96,6 +96,10 @@ class WpProQuiz_View_QuestionOverallTable extends WP_List_Table
             $actions['delete'] = __('Delete', 'wp-pro-quiz');
         }
 
+        if (current_user_can('wpProQuiz_export')) {
+            $actions['export'] = __('Export', 'wp-pro-quiz');
+        }
+
         if (current_user_can('wpProQuiz_edit_quiz')) {
             $actions['set_category'] = __('Set Category', 'wp-pro-quiz');
         }

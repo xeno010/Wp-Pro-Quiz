@@ -6,24 +6,25 @@
  * @property  int questionCount
  * @property WpProQuiz_Model_Category[] categoryItems
  * @property int perPage
+ * @property array $exportFormats
  */
 class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 
 	public function show() {
 ?>
 <style>
-.wpProQuiz_questionCopy, .wpProQuiz_setQuestionCategoryList {
+.wpProQuiz_exportList, .wpProQuiz_questionCopy, .wpProQuiz_setQuestionCategoryList {
 	padding: 20px;
 	background-color: rgb(223, 238, 255);
 	border: 1px dotted;
 	margin-top: 10px;
 }
-.wpProQuiz_setQuestionCategoryList ul {
+.wpProQuiz_exportList ul, .wpProQuiz_setQuestionCategoryList ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-.wpProQuiz_setQuestionCategoryList li {
+.wpProQuiz_exportList li, .wpProQuiz_setQuestionCategoryList li {
 	float: left;
 	padding: 3px;
 	border: 1px solid #B3B3B3;
@@ -141,6 +142,31 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 			return items;
 		}
 
+		function handleExportAction() {
+            var items = getCheckedItems();
+
+            if (!items || !items.length)
+                return false;
+
+            var $exportBox = $('.wpProQuiz_exportList');
+            var $hiddenBox = $exportBox.find('#exportHidden').empty();
+            var $ulBox = $exportBox.find('ul').empty();
+
+            $.each(items, function (i, v) {
+                $ulBox.append(
+                    $('<li>').text(v.name)
+                );
+
+                $hiddenBox.append(
+                    $('<input type="hidden" name="exportIds[]">').val(v.ID)
+                );
+            });
+
+            showWpProQuizModalBox('', 'wpProQuiz_questionExportList_box');
+
+            return true;
+        }
+
 		function handleSetCategoryAction() {
 			var items = getCheckedItems();
 
@@ -191,6 +217,9 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 				case 'delete':
 					handleDeleteAction();
 					return false;
+                case 'export':
+                    handleExportAction();
+                    return false;
 			}
 
 			return true;
@@ -290,6 +319,7 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 		<?php
 			add_thickbox();
 
+			$this->showQuestonExportListBox();
 			$this->showSetQuestionCategoryListBox();
 			$this->showSortQuestionBox();
 			$this->showCopyQuestionBox();
@@ -448,4 +478,40 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 		</div>
 		<?php
 	}
+
+	protected function showQuestonExportListBox()
+    {
+        ?>
+
+        <div id="wpProQuiz_questionExportList_box" style="display: none;">
+            <div class="wpProQuiz_exportList">
+                <form action="<?php echo admin_url('admin.php?page=wpProQuiz&module=questionExport&action=export&noheader=true'); ?>" method="POST">
+                    <h3 style="margin-top: 0;"><?php _e('Export', 'wp-pro-quiz'); ?></h3>
+
+                    <p><?php echo __('Choose the respective question, which you would like to export and press on "Start export"',
+                            'wp-pro-quiz'); ?></p>
+
+                    <?php do_action('wpProQuiz_view_questionOverall_exportListBox', $this); ?>
+
+                    <ul></ul>
+                    <div style="clear: both; margin-bottom: 10px;"></div>
+                    <div id="exportHidden"></div>
+                    <div style="margin-bottom: 15px;">
+                        <label><?php _e('Format:'); ?></label>
+                        <select name="exportType">
+                            <?php
+                                foreach ($this->exportFormats as $key => $value) {
+                                    echo '<option value="'.esc_attr($key).'">'.esc_html($value).'</option>';
+                                }
+                                ?>
+                        </select>
+                    </div>
+                    <input class="button-primary" name="exportStart" id="exportStart"
+                           value="<?php echo __('Start export', 'wp-pro-quiz'); ?>" type="submit">
+                </form>
+            </div>
+        </div>
+
+        <?php
+    }
 }

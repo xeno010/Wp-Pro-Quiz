@@ -463,6 +463,13 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
         return max(1, $pagenum);
     }
 
+    public function getExportFormats()
+    {
+        $helper = new WpProQuiz_Helper_QuestionExport();
+
+        return $helper->getSupportedExportFormats();
+    }
+
     public function showAction()
     {
         if (!current_user_can('wpProQuiz_show')) {
@@ -499,6 +506,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
         $view->questionCount = $result['count'];
         $view->categoryItems = $categoryMapper->fetchAll(WpProQuiz_Model_Category::CATEGORY_TYPE_QUESTION);
         $view->perPage = $per_page;
+        $view->exportFormats = $this->getExportFormats();
 
         $view->show();
     }
