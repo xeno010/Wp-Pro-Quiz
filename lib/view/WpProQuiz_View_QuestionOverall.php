@@ -7,13 +7,14 @@
  * @property WpProQuiz_Model_Category[] categoryItems
  * @property int perPage
  * @property array $exportFormats
+ * @property array $importFormats
  */
 class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 
 	public function show() {
 ?>
 <style>
-.wpProQuiz_exportList, .wpProQuiz_questionCopy, .wpProQuiz_setQuestionCategoryList {
+.wpProQuiz_exportList, .wpProQuiz_importList, .wpProQuiz_questionCopy, .wpProQuiz_setQuestionCategoryList {
 	padding: 20px;
 	background-color: rgb(223, 238, 255);
 	border: 1px dotted;
@@ -111,6 +112,12 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 					location.reload();
 				});
 			});
+
+			$('.wpProQuiz_import').click(function () {
+                showWpProQuizModalBox('', 'wpProQuiz_questionImportList_box');
+
+                return false;
+            });
 		}
 
 		initGlobal();
@@ -320,6 +327,7 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 			add_thickbox();
 
 			$this->showQuestonExportListBox();
+			$this->showQuestionImportListBox();
 			$this->showSetQuestionCategoryListBox();
 			$this->showSortQuestionBox();
 			$this->showCopyQuestionBox();
@@ -333,6 +341,9 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
 		<?php if(current_user_can('wpProQuiz_edit_quiz')) { ?>
 			<a class="add-new-h2" href="?page=wpProQuiz&module=question&action=addEdit&quiz_id=<?php echo $this->quiz->getId(); ?>"><?php _e('Add question', 'wp-pro-quiz'); ?></a>
 		<?php } ?>
+        <?php if (current_user_can('wpProQuiz_import')) { ?>
+            <a class="add-new-h2 wpProQuiz_import" href="#"><?php echo __('Import', 'wp-pro-quiz'); ?></a>
+        <?php } ?>
 
 		<?php do_action('wpProQuiz_view_questionOverall_head_buttons', $this); ?>
 	</h2>
@@ -513,5 +524,46 @@ class WpProQuiz_View_QuestionOverall extends WpProQuiz_View_View {
         </div>
 
         <?php
+    }
+
+    protected function showQuestionImportListBox()
+    {
+        ?>
+
+        <div id="wpProQuiz_questionImportList_box" style="display: none;">
+            <div class="wpProQuiz_importList">
+                <form action="<?php echo admin_url('admin.php?page=wpProQuiz&module=questionImport&action=preview&quizId='.$this->quiz->getId()); ?>" method="POST"
+                      enctype="multipart/form-data">
+                    <h3 style="margin-top: 0;"><?php _e('Import', 'wp-pro-quiz'); ?></h3>
+
+                    <p><?php _e('Import only files from known and trusted sources.', 'wp-pro-quiz'); ?></p>
+                    <p><?php echo sprintf(__('Supported formats: %s', 'wp-pro-quiz'), implode(', ', $this->importFormats['extensions'])) ?></p>
+
+                    <?php do_action('wpProQuiz_view_questionOverall_importListBox', $this); ?>
+
+                    <div style="margin-bottom: 10px">
+                        <?php
+                        $uploadMB = $this->getMaxUploadSize();
+                        ?>
+                        <input type="file" name="import" accept="<?php echo implode(',', $this->importFormats['accept']) ?>"
+                               required="required"> <?php printf(__('Maximal %d MiB', 'wp-pro-quiz'), $uploadMB); ?>
+                    </div>
+                    <input class="button-primary" name="importStart" id="importStart"
+                           value="<?php _e('Start import', 'wp-pro-quiz'); ?>" type="submit">
+                </form>
+            </div>
+        </div>
+
+        <?php
+    }
+
+    protected function getMaxUploadSize()
+    {
+        $maxUpload = (int)(ini_get('upload_max_filesize'));
+        $maxPost = (int)(ini_get('post_max_size'));
+        $memoryLimit = (int)(ini_get('memory_limit'));
+        $uploadMB = min($maxUpload, $maxPost, $memoryLimit);
+
+        return apply_filters('wpProQuiz_filter_max_update_size', $uploadMB);
     }
 }

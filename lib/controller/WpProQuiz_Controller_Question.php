@@ -463,11 +463,31 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
         return max(1, $pagenum);
     }
 
-    public function getExportFormats()
+    protected function getExportFormats()
     {
         $helper = new WpProQuiz_Helper_QuestionExport();
 
         return $helper->getSupportedExportFormats();
+    }
+
+    protected function getImportFormats()
+    {
+        $helper = new WpProQuiz_Helper_QuestionImport();
+        $helper->getSupportedFileExtensions();
+
+        $extensions = [];
+        $accept = [];
+
+        foreach ($helper->getSupportedFileExtensions() as $extension) {
+            $extensions[] = '*.' . $extension;
+            $accept[] = '.'.$extension;
+        }
+
+//        foreach ($helper->getSupportedTypes() as $type) {
+//            $accept[] = $type;
+//        }
+
+        return ['extensions' => $extensions, 'accept' => $accept];
     }
 
     public function showAction()
@@ -507,6 +527,7 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
         $view->categoryItems = $categoryMapper->fetchAll(WpProQuiz_Model_Category::CATEGORY_TYPE_QUESTION);
         $view->perPage = $per_page;
         $view->exportFormats = $this->getExportFormats();
+        $view->importFormats = $this->getImportFormats();
 
         $view->show();
     }
