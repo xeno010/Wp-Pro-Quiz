@@ -153,11 +153,14 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper
         $row = $this->_wpdb->get_row(
             $this->_wpdb->prepare(
                 "SELECT
-					*
+					q.*,
+					c.category_name
 				FROM
 					" . $this->_table . "
+					LEFT JOIN " . $this->_tableCategory . " AS c
+									ON c.category_id = q.category_id
 				WHERE
-					id = %d AND online = 1",
+					q.id = %d AND q.online = 1",
                 $id),
             ARRAY_A
         );
@@ -183,11 +186,14 @@ class WpProQuiz_Model_QuestionMapper extends WpProQuiz_Model_Mapper
 
         $results = $this->_wpdb->get_results(
             "SELECT
-					*
+					q.*,
+					c.category_name 
 				FROM
-					" . $this->_table . "
+					" . $this->_table . " AS q
+					LEFT JOIN " . $this->_tableCategory . " AS c
+									ON c.category_id = q.category_id
 				WHERE
-					id IN(" . implode(', ', $ids) . ") AND online = 1",
+					q.id IN(" . implode(', ', $ids) . ") AND q.online = 1",
             ARRAY_A
         );
 
