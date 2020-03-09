@@ -3,6 +3,7 @@
 /**
  * @property array users
  * @property WpProQuiz_Model_Quiz quiz
+ * @property array $supportedExportFormats
  */
 class WpProQuiz_View_StatisticsNew extends WpProQuiz_View_View
 {
@@ -56,7 +57,30 @@ class WpProQuiz_View_StatisticsNew extends WpProQuiz_View_View
             tr:hover .wpProQuiz_actions {
                 display: block;
             }
+            .wpProQuiz_exportList {
+                padding: 20px;
+                background-color: rgb(223, 238, 255);
+                border: 1px dotted;
+                margin-top: 10px;
+            }
+            .wpProQuiz_exportList ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            .wpProQuiz_exportList li {
+                float: left;
+                padding: 3px;
+                border: 1px solid #B3B3B3;
+                margin-right: 5px;
+                background-color: #F3F3F3;
+            }
         </style>
+
+        <?php
+        add_thickbox();
+        $this->showExportListBox();
+        ?>
 
         <div class="wrap wpProQuiz_statisticsNew">
             <input type="hidden" id="quizId" value="<?php echo $this->quiz->getId(); ?>" name="quizId">
@@ -191,6 +215,7 @@ class WpProQuiz_View_StatisticsNew extends WpProQuiz_View_View
 
                 <div style="float: right;">
                     <a class="button-secondary wpProQuiz_update" href="#"><?php _e('Refresh', 'wp-pro-quiz'); ?></a>
+                    <a class="button-secondary wpProQuiz_export" href="#"><?php _e('Export', 'wp-pro-quiz'); ?></a>
                     <?php if (current_user_can('wpProQuiz_reset_statistics')) { ?>
                         <a class="button-secondary wpProQuiz_resetComplete" href="#"><?php _e('Reset entire statistic',
                                 'wp-pro-quiz'); ?></a>
@@ -289,6 +314,7 @@ class WpProQuiz_View_StatisticsNew extends WpProQuiz_View_View
 
                 <div style="float: right;">
                     <a class="button-secondary wpProQuiz_update" href="#"><?php _e('Refresh', 'wp-pro-quiz'); ?></a>
+                    <a class="button-secondary wpProQuiz_export" href="#"><?php _e('Export', 'wp-pro-quiz'); ?></a>
                     <?php if (current_user_can('wpProQuiz_reset_statistics')) { ?>
                         <a class="button-secondary wpProQuiz_resetComplete" href="#"><?php _e('Reset entire statistic',
                                 'wp-pro-quiz'); ?></a>
@@ -299,6 +325,38 @@ class WpProQuiz_View_StatisticsNew extends WpProQuiz_View_View
             </div>
 
         </div>
+        <?php
+    }
+
+    protected function showExportListBox()
+    {
+        ?>
+
+        <div id="wpProQuiz_statsticExportList_box" style="display: none;">
+            <div class="wpProQuiz_exportList">
+                <form action="" method="POST">
+                    <h3 style="margin-top: 0;"><?php _e('Export', 'wp-pro-quiz'); ?></h3>
+
+                    <p><?php echo __('Please select a format', 'wp-pro-quiz'); ?></p>
+
+                    <?php do_action('wpProQuiz_view_statistics_exportListBox', $this); ?>
+
+                    <div style="margin-bottom: 15px;">
+                        <label><?php _e('Format:'); ?></label>
+                        <select name="exportType">
+                            <?php
+                            foreach ($this->supportedExportFormats as $key => $value) {
+                                echo '<option value="'.esc_attr($key).'">'.esc_html($value).'</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <input class="button-primary" name="exportStart" id="exportStart"
+                           value="<?php echo __('Start export', 'wp-pro-quiz'); ?>" type="submit">
+                </form>
+            </div>
+        </div>
+
         <?php
     }
 }

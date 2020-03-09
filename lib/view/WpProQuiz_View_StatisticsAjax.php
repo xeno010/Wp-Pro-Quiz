@@ -7,6 +7,9 @@
  * @property WpProQuiz_Model_StatisticRefModel statisticModel
  * @property string userName
  * @property array userStatistic
+ * @property int quizId
+ * @property int userId
+ * @property int refId
  */
 class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View
 {
@@ -67,7 +70,10 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View
 							<span>
 								<a style="color: red;" class="wpProQuiz_delete" href="#"><?php _e('Delete',
                                         'wp-pro-quiz'); ?></a>
-							</span>
+							</span> |
+                                <span>
+                                    <a class="wpProQuiz_export" href="#" data-baseurl="admin.php?page=wpProQuiz&module=statistic_export&action=user_export&quiz_id=<?php echo $model->getQuizId(); ?>&user_id=0&ref_id=<?php echo $model->getStatisticRefId(); ?>&avg=0&noheader=true"><?php _e('Export', 'wp-pro-quiz'); ?></a>
+                                </span>
                             </div>
 
                         </th>
@@ -327,6 +333,7 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View
         <div style="margin-top: 10px;">
             <div style="float: left;">
                 <a class="button-secondary wpProQuiz_update" href="#"><?php _e('Refresh', 'wp-pro-quiz'); ?></a>
+                <a class="button-secondary wpProQuiz_export" href="#" data-baseurl="admin.php?page=wpProQuiz&module=statistic_export&action=user_export&quiz_id=<?php echo $this->quizId; ?>&user_id=<?php echo $this->userId; ?>&ref_id=<?php echo $this->refId; ?>&avg=<?php echo $this->avg; ?>&noheader=true"><?php _e('Export', 'wp-pro-quiz'); ?></a>
             </div>
             <div style="float: right;">
                 <?php if (current_user_can('wpProQuiz_reset_statistics')) { ?>
@@ -737,6 +744,10 @@ class WpProQuiz_View_StatisticsAjax extends WpProQuiz_View_View
 								<a style="color: red;" class="wpProQuiz_delete" href="#"><?php _e('Delete',
                                         'wp-pro-quiz'); ?></a>
 							</span>
+                                |
+                                <span>
+                                    <a class="wpProQuiz_export" href="#" data-baseurl="admin.php?page=wpProQuiz&module=statistic_export&action=user_export&quiz_id=<?php echo $this->quizId; ?>&user_id=<?php echo $model->getUserId(); ?>&ref_id=0&avg=1&noheader=true"><?php _e('Export', 'wp-pro-quiz'); ?></a>
+                                </span>
                             </div>
 
                         </th>

@@ -201,6 +201,9 @@ class WpProQuiz_Controller_Admin
             case 'questionImport':
                 $c = new WpProQuiz_Controller_QuestionImport();
                 break;
+            case 'statistic_export':
+                $c = new WpProQuiz_Controller_StatisticExport();
+                break;
         }
 
         if ($c !== null) {

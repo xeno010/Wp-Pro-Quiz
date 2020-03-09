@@ -51,6 +51,7 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller
 
         $view->quiz = $quiz;
         $view->users = $users;
+        $view->supportedExportFormats = $this->getSupportedExpoterFormats();
         $view->show();
     }
 
@@ -358,6 +359,9 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller
 
         $view = new WpProQuiz_View_StatisticsAjax();
 
+        $view->userId = $userId;
+        $view->quizId = $quizId;
+        $view->refId = $refId;
         $view->avg = $avg;
         $view->statisticModel = $statisticRefMapper->fetchByRefId($refIdUserId, $quizId, $avg);
 
@@ -428,6 +432,7 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller
 
         $view = new WpProQuiz_View_StatisticsAjax();
         $view->statisticModel = $statisticModel;
+        $view->quizId = $quizId;
 
         $navi = null;
 
@@ -440,5 +445,12 @@ class WpProQuiz_Controller_Statistics extends WpProQuiz_Controller_Controller
             'navi' => $navi,
             'html' => $view->getOverviewTable()
         ));
+    }
+
+    protected function getSupportedExpoterFormats()
+    {
+        $helper = new WpProQuiz_Helper_StatisticExport();
+
+        return $helper->getSupportedExportFormats();
     }
 }

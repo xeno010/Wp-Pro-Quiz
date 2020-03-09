@@ -90,7 +90,7 @@ class WpProQuiz_Helper_Form
         return null;
     }
 
-    public static function formToString(WpProQuiz_Model_Form $form, $str)
+    public static function formToString(WpProQuiz_Model_Form $form, $str, $escape = true)
     {
         switch ($form->getType()) {
             case WpProQuiz_Model_Form::FORM_TYPE_TEXT:
@@ -99,7 +99,7 @@ class WpProQuiz_Helper_Form
             case WpProQuiz_Model_Form::FORM_TYPE_NUMBER:
             case WpProQuiz_Model_Form::FORM_TYPE_RADIO:
             case WpProQuiz_Model_Form::FORM_TYPE_SELECT:
-                return esc_html($str);
+                return $escape ? esc_html($str) : $str;
                 break;
             case WpProQuiz_Model_Form::FORM_TYPE_CHECKBOX:
                 return $str == '1' ? __('ticked', 'wp-pro-quiz') : __('not ticked', 'wp-pro-quiz');

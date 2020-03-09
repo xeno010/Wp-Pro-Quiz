@@ -3066,7 +3066,7 @@ jQuery(document).ready(function ($) {
 
                 var methode = {
                     loadHistoryAjax: function () {
-
+                        var self = this;
                         var data = $.extend({
                             page: historyFilter.data.generateNav ? 1 : historyNavigator.getCurrentPage()
                         }, historyFilter.data);
@@ -3094,6 +3094,14 @@ jQuery(document).ready(function ($) {
                                 return false;
                             });
 
+                            content.find('.wpProQuiz_export').click(function () {
+                                self.setExportBoxAction($(this).data('baseurl'));
+                                self.showWpProQuizModalBox('', 'wpProQuiz_statsticExportList_box');
+
+                                return false;
+                            });
+
+
                             methode.loadBox(false);
                         });
 
@@ -3102,6 +3110,7 @@ jQuery(document).ready(function ($) {
                     loadUserAjax: function (userId, refId, avg) {
                         $('#wpProQuiz_user_overlay, #wpProQuiz_loadUserData').show();
 
+                        var self = this;
                         var content = $('#wpProQuiz_user_content').hide();
 
                         var data = {
@@ -3116,6 +3125,16 @@ jQuery(document).ready(function ($) {
 
                             content.find('.wpProQuiz_update').click(function () {
                                 methode.loadUserAjax(userId, refId, avg);
+
+                                return false;
+                            });
+
+                            content.find('.wpProQuiz_export').click(function () {
+                                self.setExportBoxAction($(this).data('baseurl'));
+
+                                $('#wpProQuiz_overlay_close').click();
+
+                                self.showWpProQuizModalBox('', 'wpProQuiz_statsticExportList_box');
 
                                 return false;
                             });
@@ -3151,6 +3170,7 @@ jQuery(document).ready(function ($) {
 
                         $('#wpProQuiz_loadDataOverview').show();
 
+                        var self = this;
                         var content = $('#wpProQuiz_overviewLoadContext').hide();
 
                         global.ajaxPost('statisticLoadOverviewNew', data, function (json) {
@@ -3173,8 +3193,59 @@ jQuery(document).ready(function ($) {
                                 return false;
                             });
 
+                            content.find('.wpProQuiz_export').click(function () {
+                                self.setExportBoxAction($(this).data('baseurl'));
+                                self.showWpProQuizModalBox('', 'wpProQuiz_statsticExportList_box');
+
+                                return false;
+                            });
+
                             $('#wpProQuiz_loadDataOverview').hide();
                         });
+                    },
+
+                    showWpProQuizModalBox: function(title, id) {
+                        var width = Math.min($('.wpProQuiz_tabContent').width() - 50, 600);
+                        var a = '#TB_inline?width=' + width + '&inlineId=' + id;
+
+                        tb_show(title, a, false);
+                    },
+
+                    setExportBoxAction: function(action) {
+                        var $box = $('#wpProQuiz_statsticExportList_box');
+                        $box.find('form').attr('action', action);
+                    },
+
+                    exportHistory: function() {
+                        var data = $.extend({
+                            page: historyNavigator.getCurrentPage()
+                        }, historyFilter.data);
+
+                        var url = 'admin.php?page=wpProQuiz&module=statistic_export&action=history_export&noheader=true' +
+                            '&_page=' + data.page +
+                            '&quiz_id=' + data.quizId +
+                            '&users=' + data.users +
+                            '&page_limit=' + data.pageLimit +
+                            '&date_from=' + data.dateFrom +
+                            '&date_to=' + data.dateTo;
+
+                        this.setExportBoxAction(url);
+                        this.showWpProQuizModalBox('', 'wpProQuiz_statsticExportList_box');
+                    },
+
+                    exportOverview: function() {
+                        var data = $.extend({
+                            page: historyNavigator.getCurrentPage()
+                        }, overviewFilter.data);
+
+                        var url = 'admin.php?page=wpProQuiz&module=statistic_export&action=overview_export&noheader=true' +
+                            '&_page=' + data.page +
+                            '&quiz_id=' + data.quizId +
+                            '&only_completed=' + data.onlyCompleted +
+                            '&page_limit=' + data.pageLimit;
+
+                        this.setExportBoxAction(url);
+                        this.showWpProQuizModalBox('', 'wpProQuiz_statsticExportList_box');
                     }
                 };
 
@@ -3241,9 +3312,23 @@ jQuery(document).ready(function ($) {
                         return false;
                     });
 
+                    $('#wpProQuiz_tabHistory .wpProQuiz_export').click(function () {
+                        historyFilter.changeFilter();
+                        methode.exportHistory();
+
+                        return false;
+                    });
+
                     $('#wpProQuiz_tabOverview .wpProQuiz_update').click(function () {
                         overviewFilter.changeFilter();
                         methode.loadOverviewAjax();
+
+                        return false;
+                    });
+
+                    $('#wpProQuiz_tabOverview .wpProQuiz_export').click(function () {
+                        historyFilter.changeFilter();
+                        methode.exportOverview();
 
                         return false;
                     });

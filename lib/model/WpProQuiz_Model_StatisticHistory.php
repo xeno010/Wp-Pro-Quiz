@@ -19,6 +19,7 @@ class WpProQuiz_Model_StatisticHistory extends WpProQuiz_Model_Model
     protected $_formData = null;
     protected $_formOverview = array();
     protected $_solvedCount = 0;
+    protected $_questionTime = 0;
 
     public function setUserId($_userId)
     {
@@ -210,5 +211,21 @@ class WpProQuiz_Model_StatisticHistory extends WpProQuiz_Model_Model
     public function getSolvedCount()
     {
         return $this->_solvedCount;
+    }
+
+    /**
+     * @param int $questionTime
+     */
+    public function setQuestionTime($questionTime)
+    {
+        $this->_questionTime = (int)$questionTime;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuestionTime()
+    {
+        return $this->_questionTime;
     }
 }
