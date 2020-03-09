@@ -358,7 +358,8 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 					SUM(s.incorrect_count) AS incorrect_count,
 					SUM(s.solved_count) as solved_count,
 					SUM(s.points) AS points, 
-					SUM(q.points) AS g_points 
+					SUM(q.points) AS g_points,
+					SUM(s.question_time) as question_time
 				FROM
 					' . $this->_tableStatisticRef . ' AS sf
 					INNER JOIN ' . $this->_tableStatistic . ' AS s ON(s.statistic_ref_id = sf.statistic_ref_id)
@@ -525,7 +526,7 @@ class WpProQuiz_Model_StatisticRefMapper extends WpProQuiz_Model_Mapper
 							SUM(s.`incorrect_count`) as incorrect_count,
 							SUM(s.`hint_count`) as hint_count,
 							SUM(s.`points`) as points,
-							AVG(s.question_time) as question_time,
+							SUM(s.question_time) as question_time,
 							SUM(q.points * (s.correct_count + s.incorrect_count)) AS g_points
 						FROM
 							' . $this->_tableStatisticRef . ' AS sf
