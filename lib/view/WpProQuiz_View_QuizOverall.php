@@ -5,6 +5,8 @@
  * @property int quizCount
  * @property WpProQuiz_Model_Category[] categoryItems
  * @property int perPage
+ * @property array supportedExportFormats
+ * @property array supportedImportFormats
  */
 class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View
 {
@@ -390,8 +392,9 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View
                       enctype="multipart/form-data">
                     <h3 style="margin-top: 0;"><?php _e('Import', 'wp-pro-quiz'); ?></h3>
 
-                    <p><?php _e('Import only *.wpq or *.xml files from known and trusted sources.',
-                            'wp-pro-quiz'); ?></p>
+                    <p><?php _e('Import only files from known and trusted sources.', 'wp-pro-quiz'); ?></p>
+                    <p><?php echo sprintf(__('Supported formats: %s', 'wp-pro-quiz'), implode(', ', $this->supportedImportFormats['extensions'])) ?></p>
+
 
                     <?php do_action('wpProQuiz_view_quizOVerall_importListBox', $this); ?>
 
@@ -435,11 +438,14 @@ class WpProQuiz_View_QuizOverall extends WpProQuiz_View_View
                     <div style="clear: both; margin-bottom: 10px;"></div>
                     <div id="exportHidden"></div>
                     <div style="margin-bottom: 15px;">
-                        <?php _e('Format:'); ?>
-                        <label><input type="radio" name="exportType" value="wpq"
-                                      checked="checked"> <?php _e('*.wpq'); ?></label>
-                        <?php _e('or'); ?>
-                        <label><input type="radio" name="exportType" value="xml"> <?php _e('*.xml'); ?></label>
+                        <label><?php _e('Format:'); ?></label>
+                        <select name="exportType">
+                            <?php
+                            foreach ($this->supportedExportFormats as $key => $value) {
+                                echo '<option value="'.esc_attr($key).'">'.esc_html($value).'</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
                     <input class="button-primary" name="exportStart" id="exportStart"
                            value="<?php echo __('Start export', 'wp-pro-quiz'); ?>" type="submit">

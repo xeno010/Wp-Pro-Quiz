@@ -1,53 +1,25 @@
 <?php
 
-class WpProQuiz_Helper_ImportXml
+class WpProQuiz_Helper_XmlQuizImporter implements WpProQuiz_Helper_QuizImporterInterface
 {
-    private $_content = null;
-    private $_error = false;
+    /**
+     * @var string
+     */
+    private $content;
 
-    public function setImportFileUpload($file)
+    public function __construct($content)
     {
-        if (!is_uploaded_file($file['tmp_name'])) {
-            $this->setError(__('File was not uploaded', 'wp-pro-quiz'));
-
-            return false;
-        }
-
-        $this->_content = trim(file_get_contents($file['tmp_name']));
-
-        return $this->checkCode();
+        $this->content = $content;
     }
 
-    public function setImportString($str)
+    public function getImport()
     {
-        $this->_content = gzuncompress(base64_decode(trim($str)));
-
-        return true;
-    }
-
-    private function checkCode()
-    {
-        $xml = @simplexml_load_string($this->_content);
-
-        if ($xml === false) {
-            $this->_error = __('XML could not be loaded.', 'wp-pro-quiz');
-
-            return false;
-        }
-
-        return isset($xml->header);
-    }
-
-    public function getImportData()
-    {
-        $xml = @simplexml_load_string($this->_content, 'SimpleXMLElement', LIBXML_NOCDATA);
-        $a = array('master' => array(), 'question' => array(), 'forms' => array());
+        $xml = $this->createXmlObject();
+        $a = ['master' => [], 'question' => [], 'forms' => []];
         $i = 0;
 
         if ($xml === false) {
-            $this->_error = __('XML could not be loaded.', 'wp-pro-quiz');
-
-            return false;
+            return new WP_Error(__('XML could not be loaded.', 'wp-pro-quiz'));
         }
 
         if (isset($xml->data) && isset($xml->data->quiz)) {
@@ -81,19 +53,14 @@ class WpProQuiz_Helper_ImportXml
         return $a;
     }
 
-    public function getContent()
-    {
-        return base64_encode(gzcompress($this->_content));
-    }
-
-    public function saveImport($ids)
+    public function import($ids = false)
     {
         $quizMapper = new WpProQuiz_Model_QuizMapper();
         $questionMapper = new WpProQuiz_Model_QuestionMapper();
         $categoryMapper = new WpProQuiz_Model_CategoryMapper();
         $formMapper = new WpProQuiz_Model_FormMapper();
 
-        $data = $this->getImportData();
+        $data = $this->getImport();
         $categoryArray = $categoryMapper->getCategoryArrayForImport();
         $categoryArrayQuiz = $categoryMapper->getCategoryArrayForImport(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);
 
@@ -176,9 +143,9 @@ class WpProQuiz_Helper_ImportXml
         return true;
     }
 
-    public function getError()
+    protected function createXmlObject()
     {
-        return $this->_error;
+        return @simplexml_load_string($this->content, 'SimpleXMLElement', LIBXML_NOCDATA);
     }
 
     /**
@@ -198,7 +165,7 @@ class WpProQuiz_Helper_ImportXml
         }
 
         if (isset($xml->formData)) {
-            $d = array();
+            $d = [];
 
             foreach ($xml->formData as $data) {
                 $v = trim((string)$data);
@@ -242,7 +209,7 @@ class WpProQuiz_Helper_ImportXml
                 $model->setResultGradeEnabled($attr->gradeEnabled == 'true');
 
                 if ($model->isResultGradeEnabled()) {
-                    $resultArray = array('text' => array(), 'prozent' => array());
+                    $resultArray = ['text' => [], 'prozent' => []];
 
                     foreach ($xml->resultText->text as $result) {
                         $resultArray['text'][] = trim((string)$result);
@@ -382,7 +349,7 @@ class WpProQuiz_Helper_ImportXml
 
     /**
      *
-     * @param DOMDocument $xml
+     * @param DOMDocument|SimpleXMLElement $xml
      * @return NULL|WpProQuiz_Model_Question
      */
     private function createQuestionModel($xml)
@@ -409,7 +376,7 @@ class WpProQuiz_Helper_ImportXml
         $model->setDisableCorrect($xml->disableCorrect == 'true');
         $model->setCategoryName(trim($xml->category));
 
-        $answerData = array();
+        $answerData = [];
 
         if (isset($xml->answers)) {
             foreach ($xml->answers->answer as $answer) {
@@ -459,4 +426,25 @@ class WpProQuiz_Helper_ImportXml
 
         return $model;
     }
+
+    /**
+     * @param resource|string $res
+     *
+     * @return self|null
+     */
+    public static function factory($res)
+    {
+        $importer = null;
+
+        if (is_resource($res)) {
+            $res = stream_get_contents($res);
+        }
+
+        if (is_string($res) && !empty($res)) {
+            $importer = new self($res);
+        }
+
+        return $importer;
+    }
+
 }

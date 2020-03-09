@@ -264,6 +264,33 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller
         return max(1, $pagenum);
     }
 
+
+    protected function getSupportedExportFormats()
+    {
+        $helper = new WpProQuiz_Helper_QuizExport();
+
+        return $helper->getSupportedExportFormats();
+    }
+
+    protected function getSupportedImportFormats()
+    {
+        $helper = new WpProQuiz_Helper_QuizImport();
+
+        $extensions = [];
+        $accept = [];
+
+        foreach ($helper->getSupportedFileExtensions() as $extension) {
+            $extensions[] = '*.' . $extension;
+            $accept[] = '.'.$extension;
+        }
+
+//        foreach ($helper->getSupportedTypes() as $type) {
+//            $accept[] = $type;
+//        }
+
+        return ['extensions' => $extensions, 'accept' => $accept];
+    }
+
     private function showAction()
     {
         if (!current_user_can('wpProQuiz_show')) {
@@ -298,6 +325,8 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller
         $view->quizCount = $result['count'];
         $view->categoryItems = $categoryMapper->fetchAll(WpProQuiz_Model_Category::CATEGORY_TYPE_QUIZ);;
         $view->perPage = $per_page;
+        $view->supportedExportFormats = $this->getSupportedExportFormats();
+        $view->supportedImportFormats = $this->getSupportedImportFormats();
 
         $view->show();
     }

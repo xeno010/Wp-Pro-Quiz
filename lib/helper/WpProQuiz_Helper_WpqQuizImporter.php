@@ -1,102 +1,61 @@
 <?php
 
-class WpProQuiz_Helper_Import
+class WpProQuiz_Helper_WpqQuizImporter implements WpProQuiz_Helper_QuizImporterInterface
 {
 
-    private $_content = null;
-    private $_error = false;
+    /**
+     * @var string
+     */
+    private $content;
 
-    public function setImportFileUpload($file)
+    public function __construct($content)
     {
-        if (!is_uploaded_file($file['tmp_name'])) {
-            $this->setError(__('File was not uploaded', 'wp-pro-quiz'));
-
-            return false;
-        }
-
-        return $this->setImportString(file_get_contents($file['tmp_name']));
+        $this->content = $content;
     }
 
-    public function setImportString($str)
+    protected function validate()
     {
-        $this->_content = trim($str);
-
-        return $this->checkCode();
-    }
-
-    private function setError($str)
-    {
-        $this->_error = $str;
-    }
-
-    public function getError()
-    {
-        return $this->_error;
-    }
-
-    private function checkCode()
-    {
-        $code = substr($this->_content, 0, 13);
+        $code = substr($this->content, 0, 13);
 
         $c = substr($code, 0, 3);
-        //$v1 = substr($code, 3, 5);
         $v2 = substr($code, 8, 5);
 
         if ($c !== 'WPQ') {
-            $this->setError(__('File have wrong format', 'wp-pro-quiz'));
-
             return false;
         }
 
         if ($v2 < 3) {
-            $this->setError(__('File is not compatible with the current version'));
-
             return false;
         }
 
         return true;
     }
 
-    public function getContent()
+    public function getImport()
     {
-        return $this->_content;
-    }
-
-    public function getImportData()
-    {
-
-        if ($this->_content === null) {
-            $this->setError(__('File cannot be processed', 'wp-pro-quiz'));
-
-            return false;
+        if (!$this->validate()) {
+            return new WP_Error(__('File cannot be processed', 'wp-pro-quiz'));
         }
 
-        $data = substr($this->_content, 13);
-
+        $data = substr($this->content, 13);
         $b = base64_decode($data);
 
         if ($b === null) {
-            $this->setError(__('File cannot be processed', 'wp-pro-quiz'));
-
-            return false;
+            return new WP_Error(__('File cannot be processed', 'wp-pro-quiz'));
         }
 
         $check = $this->saveUnserialize($b, $o);
 
         if ($check === false || !is_array($o)) {
-            $this->setError(__('File cannot be processed', 'wp-pro-quiz'));
-
-            return false;
+            return new WP_Error(__('File cannot be processed', 'wp-pro-quiz'));
         }
-
-        unset($b);
 
         return $o;
     }
 
-    public function saveImport($ids = false)
+    public function import($ids = false)
     {
-        $data = $this->getImportData();
+        $data = $this->getImport();
 
         if ($data === false) {
             return false;
@@ -105,14 +64,41 @@ class WpProQuiz_Helper_Import
         switch ($data['exportVersion']) {
             case '3':
             case '4':
-                return $this->importData($data, $ids, $data['exportVersion']);
+                return $this->saveToDatabase($data, $ids, $data['exportVersion']);
                 break;
         }
 
         return false;
     }
 
-    private function importData($o, $ids = false, $version = '1')
+    protected function saveUnserialize($str, &$into)
+    {
+        $into = @unserialize($str);
+
+        return $into !== false || rtrim($str) === serialize(false);
+    }
+
+    /**
+     * @param resource|string $res
+     *
+     * @return self|null
+     */
+    public static function factory($res)
+    {
+        $importer = null;
+
+        if (is_resource($res)) {
+            $res = stream_get_contents($res);
+        }
+
+        if (is_string($res) && !empty($res)) {
+            $importer = new self($res);
+        }
+
+        return $importer;
+    }
+
+    private function saveToDatabase($o, $ids = false, $version = '1')
     {
         $quizMapper = new WpProQuiz_Model_QuizMapper();
         $questionMapper = new WpProQuiz_Model_QuestionMapper();
@@ -219,12 +205,5 @@ class WpProQuiz_Helper_Import
         }
 
         return true;
-    }
-
-    private function saveUnserialize($str, &$into)
-    {
-        $into = @unserialize($str);
-
-        return $into !== false || rtrim($str) === serialize(false);
     }
 }

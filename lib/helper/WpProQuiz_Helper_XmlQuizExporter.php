@@ -1,11 +1,38 @@
 <?php
 
-class WpProQuiz_Helper_ExportXml
+class WpProQuiz_Helper_XmlQuizExporter implements WpProQuiz_Helper_QuizExporterInterface
 {
+
+    /**
+     * @var int[]
+     */
+    private $ids;
+
+    public function __construct($ids)
+    {
+        $this->ids = $ids;
+    }
+
+    public function response()
+    {
+        $this->printHeader($this->getFilename());
+
+        return $this->export($this->ids);
+    }
+
+    protected function getFilename()
+    {
+        return 'WpProQuiz_export_' . time() . '.xml';
+    }
+
+    protected function printHeader($filename)
+    {
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+    }
 
     public function export($ids)
     {
-
         $dom = new DOMDocument('1.0', 'utf-8');
 
         $root = $dom->createElement('wpProQuiz');
@@ -31,7 +58,7 @@ class WpProQuiz_Helper_ExportXml
             }
 
             $questionModel = $questionMapper->fetchAll($quizModel->getId());
-            $forms = array();
+            $forms = [];
 
             if ($quizModel->isFormActivated()) {
                 $forms = $formMapper->fetch($quizModel->getId());

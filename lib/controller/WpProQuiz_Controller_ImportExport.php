@@ -27,77 +27,113 @@ class WpProQuiz_Controller_ImportExport extends WpProQuiz_Controller_Controller
             wp_die(__('You do not have sufficient permissions to access this page.'));
         }
 
-        if (isset($this->_post ['exportType']) && $this->_post ['exportType'] == 'xml') {
-            $export = new WpProQuiz_Helper_ExportXml();
-            $filename = 'WpProQuiz_export_' . time() . '.xml';
-        } else {
-            $export = new WpProQuiz_Helper_Export();
-            $filename = 'WpProQuiz_export_' . time() . '.wpq';
+        $helper = new WpProQuiz_Helper_QuizExport();
+        $exporter = $helper->factory($this->_post['exportIds'], $_POST['exportType']);
+
+        if ($exporter === null) {
+            wp_die(__('Unsupported expoter', 'wp-pro-quiz'));
         }
 
-        $a = $export->export($this->_post['exportIds']);
+        $response = $exporter->response();
 
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="' . $filename . '"');
-
-        echo $a;
+        if ($response instanceof WP_Error) {
+            wp_die($response);
+        } else if ($response !== null) {
+            echo $response;
+        }
 
         exit;
     }
 
     private function handleImport()
     {
-
         if (!current_user_can('wpProQuiz_import')) {
             wp_die(__('You do not have sufficient permissions to access this page.'));
         }
 
-        $view = new WpProQuiz_View_Import();
-        $view->error = false;
-
-        if (isset($_FILES, $_FILES['import']) && substr($_FILES['import']['name'],
-                -3) == 'xml' || isset($this->_post['importType']) && $this->_post['importType'] == 'xml'
-        ) {
-            $import = new WpProQuiz_Helper_ImportXml();
-            $importType = 'xml';
+        if (isset($_FILES) && isset($_FILES['import']) && $_FILES['import']['size'] > 0 && $_FILES['import']['error'] == 0) {
+            $this->previewImport();
         } else {
-            $import = new WpProQuiz_Helper_Import();
-            $importType = 'wpq';
+            if(isset($this->_post, $this->_post['importSave'])) {
+                $this->saveImport();
+            } else {
+                $view = new WpProQuiz_View_Import();
+                $view->error = __('File cannot be processed', 'wp-pro-quiz');
+                $view->show();
+            }
         }
 
-        $view->importType = $importType;
+        return;
+    }
 
-        if (isset($_FILES, $_FILES['import']) && $_FILES['import']['error'] == 0) {
-            if ($import->setImportFileUpload($_FILES['import']) === false) {
-                $view->error = $import->getError();
-            } else {
-                $data = $import->getImportData();
+    protected function previewImport()
+    {
+        $name = $_FILES['import']['name'];
+        $type = $_FILES['import']['type'];
+        $data = file_get_contents($_FILES['import']['tmp_name']);
 
-                if ($data === false) {
-                    $view->error = $import->getError();
-                }
+        $helper = new WpProQuiz_Helper_QuizImport();
 
-                $view->import = $data;
-                $view->importData = $import->getContent();
+        if (!$helper->canHandle($name, $type)) {
+            wp_die(__('Unsupport import'));
+        }
 
-                unset($data);
-            }
+        $importer = $helper->factory($name, $type, $data);
+
+        if ($importer === null) {
+            wp_die(__('Unsupport import'));
+        }
+
+        $import = $importer->getImport();
+
+        $view = new WpProQuiz_View_Import();
+        $view->error = false;
+        $view->importType = $type;
+        $view->name = $name;
+        $view->importData = base64_encode($data);
+
+        if (is_wp_error($import)) {
+            $view->error = $import->get_error_message();
         } else {
-            if (isset($this->_post, $this->_post['importSave'])) {
-                if ($import->setImportString($this->_post['importData']) === false) {
-                    $view->error = $import->getError();
-                } else {
-                    $ids = isset($this->_post['importItems']) ? $this->_post['importItems'] : false;
+            $view->import = $import;
+        }
 
-                    if ($ids !== false && $import->saveImport($ids) === false) {
-                        $view->error = $import->getError();
-                    } else {
-                        $view->finish = true;
-                    }
-                }
-            } else {
-                $view->error = __('File cannot be processed', 'wp-pro-quiz');
-            }
+        $view->show();
+    }
+
+    protected function saveImport()
+    {
+        if(empty($_POST['name']) || empty($_POST['importType']) || empty($_POST['importData'])) {
+            WpProQuiz_View_View::admin_notices(__('Import failed', 'wp-pro-quiz'), 'error');
+
+            return;
+        }
+
+        $name = $_POST['name'];
+        $type = $_POST['importType'];
+        $data = base64_decode($_POST['importData']);
+        $ids = isset($this->_post['importItems']) ? $this->_post['importItems'] : false;
+
+        $helper = new WpProQuiz_Helper_QuizImport();
+
+        if (!$helper->canHandle($name, $type)) {
+            wp_die(__('Unsupport import'));
+        }
+
+        $importer = $helper->factory($name, $type, $data);
+
+        if ($importer === null) {
+            wp_die(__('Unsupport import'));
+        }
+
+        $result = $importer->import($ids);
+
+        $view = new WpProQuiz_View_Import();
+
+        if (is_wp_error($result)) {
+            $view->error = false;
+        } else {
+            $view->finish = true;
         }
 
         $view->show();

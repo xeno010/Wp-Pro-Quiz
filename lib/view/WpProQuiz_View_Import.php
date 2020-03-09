@@ -6,6 +6,7 @@
  * @property bool finish
  * @property array import
  * @property string importData
+ * @property string name
  */
 class WpProQuiz_View_Import extends WpProQuiz_View_View
 {
@@ -82,6 +83,7 @@ class WpProQuiz_View_Import extends WpProQuiz_View_View
                             <?php } ?>
                             </tbody>
                         </table>
+                        <input name="name" value="<?php echo $this->name; ?>" type="hidden">
                         <input name="importData" value="<?php echo $this->importData; ?>" type="hidden">
                         <input name="importType" value="<?php echo $this->importType; ?>" type="hidden">
                         <input style="margin-top: 20px;" class="button-primary" name="importSave"
