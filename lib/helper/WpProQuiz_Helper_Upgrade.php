@@ -66,7 +66,7 @@ class WpProQuiz_Helper_Upgrade
         //ACHIEVEMENTS Version 2.x.x
         if (defined('ACHIEVEMENTS_IS_INSTALLED') && ACHIEVEMENTS_IS_INSTALLED === 1 && defined('ACHIEVEMENTS_VERSION')) {
             $version = ACHIEVEMENTS_VERSION;
-            if ($version{0} == '2') {
+            if ($version[0] == '2') {
                 WpProQuiz_Plugin_BpAchievementsV2::install();
             }
         }
