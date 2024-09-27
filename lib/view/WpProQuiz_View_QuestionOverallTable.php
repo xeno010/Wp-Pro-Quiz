@@ -74,9 +74,9 @@ class WpProQuiz_View_QuestionOverallTable extends WP_List_Table
         }
 
         if (current_user_can('wpProQuiz_delete_quiz')) {
-            $actions['wpProQuiz_delete'] = sprintf('<a style="color: red;" href="?page=wpProQuiz&module=question&action=delete&quiz_id=%1$s&id=%2$s">' . __('Delete',
-                    'wp-pro-quiz') . '</a>',
-                $item['quizId'], $item['ID']);
+            $trashUrl = wp_nonce_url(sprintf('?page=wpProQuiz&module=question&action=delete&quiz_id=%1$s&id=%2$s', $item['quizId'], $item['ID']), 'trash-wpProQuiz-question-'.$item['ID']);
+
+            $actions['wpProQuiz_delete'] = '<a style="color: red;" href="'.$trashUrl.'">' . __('Delete','wp-pro-quiz') . '</a>';
         }
 
         if (current_user_can('wpProQuiz_edit_quiz')) {

@@ -302,10 +302,11 @@ class WpProQuiz_Controller_Question extends WpProQuiz_Controller_Controller
 
     public function deleteAction($id)
     {
-
         if (!current_user_can('wpProQuiz_delete_quiz')) {
             wp_die(__('You do not have sufficient permissions to access this page.'));
         }
+
+        check_admin_referer( 'trash-wpProQuiz-question-' . $id );
 
         $mapper = new WpProQuiz_Model_QuestionMapper();
         $mapper->setOnlineOff($id);

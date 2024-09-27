@@ -486,6 +486,8 @@ class WpProQuiz_Controller_Quiz extends WpProQuiz_Controller_Controller
             wp_die(__('You do not have sufficient permissions to access this page.'));
         }
 
+        check_admin_referer( 'trash-wpProQuiz-quiz-' . $id );
+
         $m = new WpProQuiz_Model_QuizMapper();
 
         $m->deleteAll($id);
