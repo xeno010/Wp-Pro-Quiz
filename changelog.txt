@@ -1,3 +1,11 @@
+= 0.38 =
+* fix incompatibility with >= PHP 7.4
+* add "nonces" to quiz and question delete url (fix CVE-2020-36504)
+* added action to quiz saved and deleted
+* new quiz exporter
+* add statistic exporter
+* added support for question import and export
+
 = 0.37 =
 * New frontend init structure
 * Added gulp support
