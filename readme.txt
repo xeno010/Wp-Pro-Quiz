@@ -3,9 +3,9 @@ Contributors: xeno010
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZPNURT6RYXY
 Tags: quiz, test, lead, score, survey, answer, question, learning, assessment
 Requires at least: 4.6
-Tested up to: 5.3.2
+Tested up to: 6.6.2
 Stable tag: 0.37
-Requires PHP: 5.6
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

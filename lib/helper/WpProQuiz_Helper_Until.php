@@ -119,12 +119,12 @@ class WpProQuiz_Helper_Until
         $esc = false;
 
         for ($i = 0, $len = strlen($format); $i < $len; $i++) {
-            $c = $format{$i};
+            $c = $format[$i];
 
             //escaping
             if ($c === '\\') {
                 $i++;
-                $c = $format{$c};
+                $c = $format[$c];
 
                 $jsFormat .= $esc ? $c : '\'' . $c;
 
